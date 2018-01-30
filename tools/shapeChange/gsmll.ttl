@@ -1,0 +1,1311 @@
+@prefix gsmll: <http://geosciml.org/ont/gsmll#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+gsmll:ContactView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "A placeholder allowing any user-defined attributes to be delivered in addition to those specified above."@en .
+
+gsmll:GeologicSpecimenView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Globally unique identifier (eg, an IGSN sample number).  Should have the same value as a corresponding GeoSciML GeologicSpecimen."@en .
+
+gsmll:GeologicUnitView.name
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Display name for the the GeologicalUnit."@en .
+
+gsmll:ContactView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Globally unique identifier. Should have the same value as a corresponding GeoSciML MappedFeature."@en .
+
+gsmll:BoreholeView  a    owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:BoreholeView.any
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:inclinationType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:boreholeMaterialCustodian
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:boreholeLength_m
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:operator
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:drillStartDate
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:drillingMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:elevation_srs
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.metadata_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:elevation_m
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:startPoint
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.name
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:purpose
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:drillEndDate
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:driller
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:BoreholeView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:status
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:parentBorehole_uri
+                         ] ;
+        skos:definition  "Simplified view of a GeoSciML Borehole. In GeoSciML terms, this will be an instance of a Borehole feature with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:SiteObservationView
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:observedProperty
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.metadata_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:siteName
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:observedValue
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.observationMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.label
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:observationName
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:propertyType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:SiteObservationView.any
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:featureOfInterest
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:observedValueUom
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:integer ;
+                           owl:onProperty     gsmll:symbolRotation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:SiteObservationView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:featureOfInterest_uri
+                         ] ;
+        skos:definition  "Simplified view of a point-located geological observation, like a structural measurement. This is a simplified instance of a sampling point from Observations & Measurements (ISO19156) with an associated geological observation.  Key property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:landformClass_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI identifier of landform term drawn from a controlled vocabulary."@en .
+
+gsmll:SiteObservationView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "Additional user-defined properties."@en .
+
+gsmll:GeologicUnitView.representativeOlderAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative lower value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and  may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history."@en .
+
+gsmll:ContactView  a     owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.observationMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:ContactView.any
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.name
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:contactType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:contactType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.metadata_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ContactView.specification_uri
+                         ] ;
+        skos:definition  "Simplified view of a GeoSciML Contact. In GeoSciML terms this will be an instance of a MappedFeature with key property values from the associated Contact feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:elevation_srs  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI of a spatial reference system of the elevation value. (eg, mean sea level)  Mandatory if elevation_m is populated."@en .
+
+gsmll:drillStartDate  a  owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The date of the start of drilling (formatted as a gml:timePosition - eg, 2012-03-17)"@en .
+
+gsmll:samplingMethod  a  owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The method used to collect the specimen (eg, diamond drilling, field mapping survey)"@en .
+
+gsmll:contactType  a     owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Type of Contact (as defined in GeoSciML)."@en .
+
+gsmll:observationName
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text string to identify the observation."@en .
+
+gsmll:GeologicSpecimenView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Detailed description of the specimen."@en .
+
+gsmll:status  a          owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The present status of the borehole (eg, abandoned, completed, proposed, suspended)"@en .
+
+gsmll:ShearDisplacementStructureView.representativeYoungerAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative upper value in a range of stratigraphic age intervals for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and  may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history."@en .
+
+gsmll:specimenType_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI link for a specimen type identifier from a controlled vocabulary."@en .
+
+gsmll:ShearDisplacementStructureView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a metadata record describing the provenance of data."@en .
+
+<http://geosciml.org/ont/gsmll>
+        a                owl:Ontology ;
+        owl:imports      <http://www.opengis.net/ont/geosparql> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmll/4.1.0" ;
+        owl:versionInfo  "4.1.0" ;
+        skos:definition  "The GeoSciML Lite (previously name \"Portrayal\") schema standardizes the interaction (request/response formats) with layer-based map services. It is best thought of as a view of GeoSciML and O&M data that denormalizes the data and concatenates complex property values into single, human-readable, labels and returns single, representative, values from controlled vocabularies for properties multi-valued properties that can be used when generating thematic maps, or portrayals, of the data.\r\n\r\nIt is separate to, but harmonized with, GeoSciML and O&M and conforms to the level 0 of the Simple Features Profile for GML (link). Labels, will be 'free-text' fields that will be, in robust services, well-structured summaries of complex GeoSciML data, while the representative thematic properties will be URIs of concepts in a controlled vocabulary (for example CGI Simple Lithology). There will also be links, via identifier URIs, providing hooks to full GeoSciML or O&M representations of a the geologic feature in question."@en .
+
+gsmll:ContactView.name
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Display name for the Contact."@en .
+
+gsmll:ContactView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a metadata record describing the provenance of data."@en .
+
+gsmll:ShearDisplacementStructureView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Globally unique identifer. Should have the same value as the corresponding GeoSciML MappedFeature."@en .
+
+gsmll:BoreholeView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text describing details and citations to source materials for the borehole and, if available, providing URLs to reference material and publications describing the borehole. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri."@en .
+
+gsmll:currentLocation
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The current location of the specimen (eg, a warehouse or other repository location)"@en .
+
+gsmll:displacement  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Summarises the displacement across the ShearDisplacementStructure."@en .
+
+gsmll:BoreholeView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "An estimate of the accuracy of the location of the borehole collar location."@en .
+
+gsmll:observedValue  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Although this field is implemented as a character string to conform with simple feature requirements, it can be encoded as a swe:Record.  This value may be numeric (eg; 235 degrees, 50 ppm) or textual (eg; red)."@en .
+
+gsmll:ShearDisplacementStructureView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "A placeholder allowing any user-defined attributes to be delivered in addition to those specified above."@en .
+
+gsmll:BoreholeView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Globally unique identifer.  Should have the same value as a corresponding GeoSciML Borehole."@en .
+
+gsmll:BoreholeView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a metadata record describing the provenance of data."@en .
+
+gsmll:GeomorphologicUnitView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Globally unique identifier. Should have the same value as the corresponding GeoSciML MappedFeature."@en .
+
+gsmll:GeomorphologicUnitView.representativeLithology_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeomorphologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit."@en .
+
+gsmll:deformationStyle_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept from a vocabulary defining the ShearDisplacementStructure deformation style. Mandatory propery - if not value is provided then a URI referring to a conctrolled concept explaining why the value is nil must be provided."@en .
+
+gsmll:boreholeLength_m
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:double ;
+        skos:definition  "The length of a borehole, in metres, as determined by the data provider.  Length may have different sources, eg, driller's measurement, logger's measurement, survey measurement)"@en .
+
+gsmll:drillingMethod  a  owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Indicates the drilling method, or methods, used for this borehole (eg, RAB, auger, diamond core drilling, air core drilling, piston)"@en .
+
+gsmll:parentBorehole_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to the unique ID of a parent borehole (eg, parent well of a sidetrack wellbore)"@en .
+
+gsmll:purpose  a         owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The purpose for which the borehole was drilled. (eg, mineral exploration, hydrocarbon exploration, hydrocarbon production, groundwater monitoring, geothermal)"@en .
+
+gsmll:propertyType_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI to a term from a controlled vocabulary of observed property types."@en .
+
+gsmll:observedProperty
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The property reported in this record. (eg. orientation, age, density, gold content). Preferably a term from a controlled vocabulary."@en .
+
+gsmll:BoreholeView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal."@en .
+
+gsmll:SiteObservationView.observationMethod
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Preferably a term from a controlled vocabulary to categorize the observation method. Further details on procedure can be put in the source field."@en .
+
+gsmll:featureOfInterest_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI link to a document describing the feature of interest (eg, a GeoSciML geologic unit or structure)."@en .
+
+gsmll:ShearDisplacementStructureView.geologicHistory
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text (possibly formatted with formal syntax) description of the age of the ShearDisplacementStructure (where age is a sequence of events and may include process and environment information)."@en .
+
+gsmll:inclinationType
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Indicates the type of inclination of the borehole (eg, vertical, inclined up, inclined down, horizontal)"@en .
+
+gsmll:activity  a        owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Term to specify if the feature is changing and how fast.\r\ne.g. active, dormant, stable...."@en .
+
+gsmll:GeologicSpecimenView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Citation of the source of the data (eg, a publication, map, etc)"@en .
+
+gsmll:SiteObservationView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text description of measurement procedure, processing, and provenance of data."@en .
+
+gsmll:GeologicUnitView.numericYoungerAge
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:double ;
+        skos:definition  "Younger age in numerical representation in Ma"@en .
+
+gsmll:GeomorphologicUnitView.name
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Display name for the GeomorphologicUnit."@en .
+
+gsmll:GeologicUnitView.representativeAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeologicUnit. This will be defined entirely at the discretion of the data provider and  may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history."@en .
+
+gsmll:GeomorphologicUnitView
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.name
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:representativeNumericAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.representativeAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.representativeLithology_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:activity
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.observationMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:unitType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:landformClass_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.geologicHistory
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:activity_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.lithology
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.metadata_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.any
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeomorphologicUnitView.specification_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:unitType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:landformClass
+                         ] ;
+        skos:definition  "Simplified view of a GeoSciML GeomorphologicUnit. In GeoSciML terms this will be in instance of a MappedFeature with key property values from the associated GeomorphologicUnit feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:SiteObservationView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol to portray this observation. Conventions for symbol identifiers can be adopted within information exchange communities. In any given exchange document, the symbols should all be from the same portrayal scheme, which can be specified in the portrayal section of an associated ISO metadata record."@en .
+
+gsmll:SiteObservationView.label
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Short text string to associate with a symbol in a visualization/portrayal"@en .
+
+gsmll:GeologicUnitView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal."@en .
+
+gsmll:GeologicUnitView.lithology
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text (possibly formatted with formal syntax) description of the GeologicUnit's lithology."@en .
+
+gsmll:GeologicUnitView.representativeLithology_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit."@en .
+
+gsmll:landformClass  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Term to specify a broad classification of landform, preferably from a controlled vocabulary. (eg, anthropogenic, natural)"@en .
+
+gsmll:GeomorphologicUnitView.observationMethod
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick approach to observation metadata when data are reported using a feature view (as opposed to observation view)."@en .
+
+gsmll:specimenType  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Description of the specimen type. Preferably a term from a controlled vocabulary (eg, hand specimen, thin section, drill core)."@en .
+
+gsmll:SiteObservationView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text string providing descriptive information about the observation."@en .
+
+gsmll:ShearDisplacementStructureView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key inforamtion that would also be in the metadata record referenced by metadata_uri."@en .
+
+gsmll:samplingTime  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Date (+/- time) when the specimen was collected.  (formatted as a gml:timePosition - eg, 2012-03-28)"@en .
+
+gsmll:driller  a         owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The organisation responsible for drilling the borehole (as opposed to commissioning the borehole)."@en .
+
+gsmll:GeomorphologicUnitView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal."@en .
+
+gsmll:rank  a            owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Rank of GeologicUnit (as defined by ISC. eg; group, formation, member)."@en .
+
+gsmll:SiteObservationView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI link to metadata document."@en .
+
+gsmll:geologicUnitType
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Type of GeologicUnit (as defined in GeoSciML)."@en .
+
+gsmll:GeomorphologicUnitView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Quantitative values define the radius of an uncertainty buffer around a mappedFeature (eg: a positionAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line)."@en .
+
+gsmll:GeologicUnitView.numericOlderAge
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:double ;
+        skos:definition  "Older age in numerical representation in Ma."@en .
+
+gsmll:ShearDisplacementStructureView.representativeAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative stratigraphic age interval for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history."@en .
+
+gsmll:GeologicUnitView.representativeYoungerAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative upper value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and  may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history."@en .
+
+gsmll:GeologicUnitView.geologicHistory
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text (possibly formatted with formal syntax) description of the age of the GeologicUnit (where age is a sequence of events and may include process and environment information)."@en .
+
+gsmll:ShearDisplacementStructureView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text description of the ShearDisplacementStructure, typically taken from an entry on a geological map legend."@en .
+
+gsmll:GeomorphologicUnitView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri."@en .
+
+gsmll:GeomorphologicUnitView.geologicHistory
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text (possibly formatted with formal syntax) description of the age of the GeomorphologicUnit (where age is a sequence of events and may include process and environment information)."@en .
+
+gsmll:contactType_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept from a vocabulary defining the Contact types. Mandatory property - if not value is provided then a URI referring to a controlled concept explaining why the value is nil must be provided."@en .
+
+gsmll:GeologicSpecimenView.label
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Short label for map display. (eg, a sample number)"@en .
+
+gsmll:startPoint  a      owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Indicates the position relative to the ground surface where the borehole commenced (eg, open pit floor or wall, underground, natural land surface, sea floor)"@en .
+
+gsmll:unitType  a        owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Type of GeomorphologicUnit. Preferably from a controlled vocabular (eg, hill, crater, moraine, plain)"@en .
+
+gsmll:GeologicSpecimenView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Description of the positional accuracy of the sampling location. (eg, 50 metres)"@en .
+
+gsmll:materialClass  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Classification of the material that comprises the specimen. Preferably a term from a controlled vocabulary (eg, rock, sediment, etc)"@en .
+
+gsmll:materialClass_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI link for a class of material drawn from a controlled vocabulary."@en .
+
+gsmll:ContactView.specification_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring the GeoSciML Contact feature that describes the instance in detail. Mandatory property - if not value is provided then a URI referring to a controlled concept explaining why the value is nil must be provided."@en .
+
+gsmll:ShearDisplacementStructureView.numericYoungerAge
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:double ;
+        skos:definition  "Younger age of the fault/shear structure, represented Ma."@en .
+
+gsmll:siteName  a        owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The name of the sampling feature at this location (e.g. a station number, a borehole)"@en .
+
+gsmll:GeologicSpecimenView
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:specimenType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:materialClass_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.label
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:materialClass
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:samplingMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:currentLocation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:specimenType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:samplingTime
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.any
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicSpecimenView.metadata_uri
+                         ] ;
+        skos:definition  "A simplified view of a point-located specimen from GeoSciML GeologicSpecimen (an extension of Observations & Measurements - ISO19156) with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:GeologicSpecimenView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal."@en .
+
+gsmll:ShearDisplacementStructureView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal."@en .
+
+gsmll:elevation_m  a     owl:DatatypeProperty ;
+        rdfs:range       xsd:double ;
+        skos:definition  "Compromise approach to supply elevation data, in metres, for the borehole (ie, wellbore) start point.  This is to allow for legacy data without elevation data, and for software that cannot process a 3D GM_Point. The SRS will be a one dimensional vertical SRS (ie, EPSG code in the range 5600-5799)."@en .
+
+gsmll:ContactView.observationMethod
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and dirty approach to observation metadata when data are reported using a feature view (as opposed to observation view)."@en .
+
+gsmll:observedValueUom
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The unit of measure for a numerical value of an observation or measurement, preferable from a controlled vocabulary."@en .
+
+gsmll:activity_uri  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI identifier of activity term drawn from a controlled vocabulary."@en .
+
+gsmll:ContactView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri."@en .
+
+gsmll:ShearDisplacementStructureView.representativeOlderAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative lower value in a range of stratigraphic age intervals for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and  may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history."@en .
+
+gsmll:BoreholeView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text description of the borehole."@en .
+
+gsmll:BoreholeView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "A placeholder allowing any user-defined attributes to be delivered in addition to those specified above."@en .
+
+gsmll:GeologicUnitView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Quantitative values define the radius of an uncertainty buffer around a mappedFeature (eg: a positionAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line)."@en .
+
+gsmll:unitType_uri  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept from a vocabulary defining the GeomorphologicUnit types. Mandatory property - if no value is provided then a URI referring to a controlled concept explaining why the value is nil must be provided."@en .
+
+gsmll:GeologicUnitView.source
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key inforamtion that would also be in the metadata record referenced by metadata_uri."@en .
+
+gsmll:faultType  a       owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Type of ShearDisplacementStructure (as defined in GeoSciML)."@en .
+
+gsmll:ContactView.genericSymbolizer
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal."@en .
+
+gsmll:GeologicSpecimenView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "Place holder for user-defined properties."@en .
+
+gsmll:GeologicUnitView.specification_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring the GeoSciML GeologicUnit feature that describes the instance in detail. Mandatory property - if not value is provided then a URI referring to a controlled concept explaining why the value is nil must be provided."@en .
+
+gsmll:drillEndDate  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The date of the end of drilling (formatted as a gml:timePosition - eg, 2012-03-28)"@en .
+
+gsmll:geologicUnitType_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept from a vocabulary defining the GeologicUnit types. Mandatory property - if not value is provided then a URI referring to a controlled concept explaining why the value is nil must be provided."@en .
+
+gsmll:GeologicUnitView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "A placeholder allowing any user-defined attributes to be delivered in addition to those specified above."@en .
+
+gsmll:movementType_uri
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept from a vocabulary defining the ShearDisplacementStructure movement type. Mandatory propery - if not value is provided then a URI referring to a conctrolled concept explaining why the value is nil must be provided."@en .
+
+gsmll:GeomorphologicUnitView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a metadata record describing the provenance of data."@en .
+
+gsmll:GeologicUnitView.observationMethod
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and dirty approach to observation metadata when data are reported using a feature view (as opposed to observation view)."@en .
+
+gsmll:ShearDisplacementStructureView.numericOlderAge
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:double ;
+        skos:definition  "Older age of the fault/shear structure, represented Ma."@en .
+
+gsmll:faultType_uri  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept from a vocabulary defining the fault (ShearDisplacementStructure) type. Mandatory propery - if not value is provided then a URI referring to a conctrolled concept explaining why the value is nil must be provided."@en .
+
+gsmll:GeomorphologicUnitView.specification_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring the GeoSciML GeomorphologicUnit feature that describes the instance in detail. Mandatory property - if not value is provided then a URI referring to a controlled concept explaining why the value is nil must be provided."@en .
+
+gsmll:representativeNumericAge
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:double ;
+        skos:definition  "Numerical representation of the representative age in Ma."@en .
+
+gsmll:GeomorphologicUnitView.any
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       owl:Class ;
+        skos:definition  "A placeholder allowing any user-defined attributes to be delivered in addition to those specified above."@en .
+
+gsmll:GeomorphologicUnitView.representativeAge_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeomorphologicUnit. This will be defined entirely at the discretion of the data provider. Typically geomorphic units are not assigned age ranges."@en .
+
+gsmll:operator  a        owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Organisation or agency responsible for commissioning of the borehole (as opposed to the agency which drilled the borehole)."@en .
+
+gsmll:GeologicUnitView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Globally unique identifer. Should have the same value as the corresponding GeoSciML MappedFeature."@en .
+
+gsmll:GeologicUnitView
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.observationMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:GeologicUnitView.numericOlderAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.specification_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.lithology
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.representativeOlderAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:geologicUnitType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.metadata_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:GeologicUnitView.numericYoungerAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.representativeYoungerAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.representativeLithology_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.representativeAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.name
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:geologicUnitType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.geologicHistory
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:GeologicUnitView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:rank
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:GeologicUnitView.any
+                         ] ;
+        skos:definition  "Simplified view of a GeoSciML GeologicUnit. In GeoSciML terms this will be an instance of a MappedFeature with key property values from the associated GeologicUnit feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:deformationStyle
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Describes the style of deformation (eg brittle,ductile etc) for the ShearDisplacementStructure."@en .
+
+gsmll:symbolRotation  a  owl:DatatypeProperty ;
+        rdfs:range       xsd:integer ;
+        skos:definition  "Integer value between 0 and 360 to specify rotation of symbol at this location, e.g. rotation of a geologic strike and dip symbol to reflect the strike azimuth."@en .
+
+gsmll:GeomorphologicUnitView.lithology
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text (possibly formatted with formal syntax) description of the GeomorphologicUnit's lithological composition."@en .
+
+gsmll:GeologicSpecimenView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicSpecimenView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI link to a metadata document."@en .
+
+gsmll:ContactView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Quantitative values define the radius of an uncertainty buffer around a mappedFeature (eg: a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line)."@en .
+
+gsmll:SiteObservationView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Estimate of the position uncertainty for the site location. For numerical measurements, include a unit of measure in the description. (eg, 50 metres, poor, good)."@en .
+
+gsmll:ContactView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ContactView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text description of the Contact, typically taken from an entry on a geological map legend."@en .
+
+gsmll:GeologicUnitView.metadata_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring to a metadata record describing the provenance of data."@en .
+
+gsmll:GeologicUnitView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text description of the GeologicUnit, typically taken from an entry on a geological map legend."@en .
+
+gsmll:movementType  a    owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Summarises the type of movement (eg dip-slip, strike-slip) on the ShearDisplacementStructure."@en .
+
+gsmll:SiteObservationView.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:SiteObservationView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Unique identifier for this site observation record."@en .
+
+gsmll:ShearDisplacementStructureView.specification_uri
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "URI referring the the GeoSciML ShearDisplacementStructure feature that describes the instance in detail. Mandatory propery - if not value is provided then a URI referring to a conctrolled concept explaining why the value is nil must be provided."@en .
+
+gsmll:boreholeMaterialCustodian
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Organisation that is the custodian of the material recovered from the borehole"@en .
+
+gsmll:featureOfInterest
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "The geologic feature that the observation is intended to characterize, e.g. foliation (observed property= orientation), a geologic unit (observed property = age,magnetic susceptibility, density, uranium content)."@en .
+
+gsmll:ShearDisplacementStructureView.positionalAccuracy
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Quantitative values define the radius of an uncertainty buffer around a mappedFeature (eg: a positionAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line)."@en .
+
+gsmll:ShearDisplacementStructureView.observationMethod
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and dirty approach to observation metadata when data are reported using a feature view (as opposed to observation view)."@en .
+
+gsmll:ShearDisplacementStructureView
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:faultType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.numericYoungerAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.specification_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:displacement
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.representativeAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.name
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.numericOlderAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.any
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:deformationStyle_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.identifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.representativeYoungerAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:faultType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:movementType_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:deformationStyle
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.genericSymbolizer
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.positionalAccuracy
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:movementType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.metadata_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.geologicHistory
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.representativeOlderAge_uri
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.description
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmll:ShearDisplacementStructureView.observationMethod
+                         ] ;
+        skos:definition  "Simplified view of a GeoSciML ShearDisplacementStructure. In GeoSciML terms this will be an instance of a MappedFeature with key property values from the associated ShearDisplacementStructure feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with '_uri' and will contain URIs referring to controlled concepts in published vocabularies."@en .
+
+gsmll:GeomorphologicUnitView.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:GeomorphologicUnitView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text description of the GeomorphologicUnit, typically taken from an entry on a map legend."@en .
+
+gsmll:BoreholeView.name
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:BoreholeView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Display name for the borehole."@en .
+
+gsmll:ShearDisplacementStructureView.name
+        a                owl:DatatypeProperty ;
+        rdfs:domain      gsmll:ShearDisplacementStructureView ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Display name for the the ShearDisplacementStructure."@en .

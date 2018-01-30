@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShapeChangeConfiguration xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1" 
+xmlns:sc="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 http://shapechange.net/resources/schema/ShapeChangeConfiguration.xsd">
+	<input>
+		<parameter name="inputModelType" value="EA7"/>
+		<!-- location of the EAP file, we should keep it on SVN and pull it from there instead, or actually use the XMI since this is what svn stores -->
+		<parameter name="inputFile" value="/geosciml/GeoSciMLv4.eap"/>
+		<!-- regexp of the target namespace we want to process -->
+		<!--<parameter name="appSchemaNamespaceRegex" value="^http://www.opengis.net/gsml/.*"/>
+		<parameter name="appSchemaNameRegex" value="^GeoSciML.*"/>
+		<parameter name="appSchemaNamespaceRegex" value="^http://xmlns\.geosciml\.org/geosciml\-lite/4\.1"/>-->
+		<parameter name="appSchemaName" value="GeoSciMLBasic"/>
+		<parameter name="publicOnly" value="true"/>
+		<parameter name="checkingConstraints" value="disabled"/>
+		<parameter name="sortedSchemaOutput" value="true"/>
+		<xi:include href="http://shapechange.net/resources/config/StandardAliases.xml"/>
+	</input>
+	<!-- logging parameters -->
+	<log>
+		<parameter name="reportLevel" value="INFO"/>
+		<parameter name="logFile" value="/sc/Ontology/loggsml.xml"/>
+	</log>
+	<!-- destination -->
+	<targets>
+	<TargetOwl class="de.interactive_instruments.ShapeChange.Target.Ontology.OWLISO19150" mode="enabled"> <!-- inputs="TRF" -->
+ <targetParameter name="outputDirectory" value="/sc/Ontology/out"/>
+ <targetParameter name="defaultEncodingRule" value="ENC_RDF"/>
+ <targetParameter name="URIbase" value="http://geosciml.org/ont"/>
+ <targetParameter name="language" value="en"/>
+ <targetParameter name="defaultTypeImplementation" value="skos:Concept"/>
+ <descriptorTargets>
+  <DescriptorTarget target="rdfs:label" template="[[alias]]"/>
+  <DescriptorTarget target="rdfs:isDefinedBy" template="[[TV:inspireConcept]]" format="IRI"/>
+  <DescriptorTarget target="skos:definition" template="[[definition]]" noValueText="N/A"/>
+  <DescriptorTarget target="rdfs:comment" template="[[description]]" noValueText="N/A"/>
+ </descriptorTargets>
+ <xi:include href="http://shapechange.net/resources/config/StandardNamespaces-owl.xml"/>
+ <namespaces>
+  <!--<Namespace nsabr="locn" ns="https://www.w3.org/ns/locn#" location="https://www.w3.org/ns/locn.ttl"/>-->
+  <Namespace nsabr="skos" ns="http://www.w3.org/2004/02/skos/core#"/>
+  <Namespace nsabr="swe" ns="urn:x-gsml-rdf:types" location="http://schemas.geosciml.org/rdf/types.ttl"/>
+  <Namespace nsabr="sf" ns="http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling" location="http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling.ttl"/>
+  <Namespace nsabr="om" ns="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#" location="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation.ttl"/>
+  <Namespace nsabr="meta" ns="http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation" location="http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata.ttl"/>
+  <Namespace nsabr="time" ns="http://www.w3.org/2006/time#" location="https://www.w3.org/2006/time"/> <!-- this ontology does not have period though -->
+  <Namespace nsabr="gtrs" ns="http://resource.geosciml.org/schema/cgi/trs/3.0/" location="http://def.seegrid.csiro.au/static/ontology/geotime/gtrs.ttl"/>
+  </namespaces>
+ <xi:include href="http://shapechange.net/resources/config/StandardMapEntries-owl.xml"/>
+ <rdfMapEntries>
+ <!--
+  <RdfTypeMapEntry type="AddressRepresentation" target="locn:Address"/>
+  <RdfTypeMapEntry type="TM_Position" target="xsd:date"/>
+  <RdfTypeMapEntry type="ConditionOfFacilityType" target="skos:Concept"/>
+  <RdfTypeMapEntry type="VoidValueReason" target="skos:Concept"/>
+  <RdfTypeMapEntry type="ApplicationSchemaValue" target="skos:Concept"/>
+-->
+
+ </rdfMapEntries>
+ 
+ <rdfMapEntries >
+	<RdfTypeMapEntry type="Category" target="swe:Category" targetType="class"/>
+	<RdfTypeMapEntry type="Quantity" target="swe:Quantity" targetType="class"/>
+	<RdfTypeMapEntry type="DataRecord" target="swe:DataRecord" targetType="class"/>
+	<RdfTypeMapEntry type="QuantityRange" target="swe:QuantityRange" targetType="class"/>
+	<RdfTypeMapEntry type="SF_SamplingFeature" target="sf:SF_SamplingFeature" targetType="class"/>
+	<RdfTypeMapEntry type="SF_SamplingFeatureCollection" target="sf:SF_SamplingFeatureCollection" targetType="class"/>
+	<RdfTypeMapEntry type="SF_SamplingCurve" target="sf:SF_SamplingCurve" targetType="class"/>
+	<RdfTypeMapEntry type="SF_SamplingPoint" target="sf:SF_SamplingPoint" targetType="class"/>
+	<RdfTypeMapEntry type="SF_Specimen" target="sf:SF_Specimen" targetType="class"/>
+	<RdfTypeMapEntry type="SF_Process" target="sf:SF_Process" targetType="class"/>
+	<RdfTypeMapEntry type="Observation" target="om:OM_Observation" targetType="class"/>
+	<RdfTypeMapEntry type="CI_Responsibility" target="meta:ResponsibleParty" targetType="class"/>
+	<RdfTypeMapEntry type="TM_Period" target="time:Period" targetType="class"/>
+	<RdfTypeMapEntry type="TM_Instant" target="time:Instant" targetType="class"/>
+	<RdfTypeMapEntry type="CI_Citation" target="meta:Citation" targetType="class"/>
+	<RdfTypeMapEntry type="TimeOrdinalReferenceSystem" target="gtrs:TimeOrdinalReferenceSystem " targetType="class"/>
+	<RdfTypeMapEntry type="TM_TemporalReferenceSystem" target="gtrs:TM_TemporalReferenceSystem" targetType="class"/>
+	<RdfTypeMapEntry type="lax" target="owl:Class"/> <!-- RDF is already lax -->
+	
+	<RdfPropertyMapEntry property="shape" target="gsp:hasGeometry" range="gsp:Geometry"/>
+ </rdfMapEntries>
+ <!--
+ <rdfConversionParameters>
+  <StereotypeConversionParameter wellknown="FeatureType" subClassOf="geo:Feature"/>
+ </rdfConversionParameters>
+ -->
+ <rules>
+  <EncodingRule name="ENC_RDF">
+   <rule name="rule-owl-pkg-singleOntologyPerSchema"/>
+   <rule name="rule-owl-pkg-ontologyName-code"/>
+   <rule name="rule-owl-pkg-versionInfo"/>
+   <rule name="rule-owl-pkg-versionIRI"/>
+   <rule name="rule-owl-cls-iso191502IsAbstract"/>
+   <rule name="rule-owl-cls-generalization"/>
+   <rule name="rule-owl-cls-encode-featuretypes"/>
+   <rule name="rule-owl-cls-encode-objecttypes"/>
+   <rule name="rule-owl-cls-encode-mixintypes"/>
+   <rule name="rule-owl-cls-encode-datatypes"/>
+   <rule name="rule-owl-cls-encode-basictypes"/>
+   <rule name="rule-owl-prop-general"/>
+   <rule name="rule-owl-prop-range-global"/>
+   <!--<rule name="rule-owl-prop-localScopeAll"/>  this will turn all properties in [class].[Propert] -->
+   <rule name="rule-owl-prop-globalScopeByConversionParameter"/>
+   <rule name="rule-owl-prop-globalScopeByUniquePropertyName"/> <!-- assume property name is unique in this namespace, if not, prefix with class name -->
+   <!--<rule name="rule-owl-prop-localScopeAll"/>  constrain the property domain to the "owner" -->
+   <rule name="rule-owl-prop-mapping-compare-specifications"/>
+   <rule name="rule-owl-all-constraints-humanReadableTextOnly"/>
+   <rule name="rule-owl-cls-union"/>
+   <rule name="rule-owl-cls-unionSets"/>
+   <rule name="rule-owl-cls-enumerationAsCodelist"/>
+   <rule name="rule-owl-cls-codelist-191502-naming"/>
+   <!--<rule name="rule-owl-cls-iso191502Enumeration"/>-->
+   <!--<rule name="rule-owl-cls-codelist-19150-2"/> -->
+  <rule name="rule-owl-cls-codelist-19150-2-skos-collection"/>  <!-- defines the xxxTerm as a subClass of skos:Concept-->
+  <!--<rule name="rule-owl-cls-codelist-19150-2-differentIndividuals"/> -->
+  <!-- <rule name="rule-owl-cls-codelist-external"/> -->
+  <rule name="rule-owl-prop-external-reference"/>
+  <rule name="rule-owl-prop-range-local-withUniversalQuantification"/>
+  </EncodingRule>
+ </rules>
+</TargetOwl>
+	</targets>
+</ShapeChangeConfiguration>

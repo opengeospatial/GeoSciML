@@ -1,0 +1,309 @@
+@prefix swe:   <urn:x-gsml-rdf:types> .
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling> .
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
+@prefix ts:    <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix gsmlbh: <http://geosciml.org/ont/gsmlbh#> .
+@prefix ci: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#> .
+@prefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#> .
+
+gsmlbh:BoreholeDetails
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  om:SimpleMeasure ;
+                           owl:onProperty     gsmlbh:boreholeLength
+                         ] ;
+        
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  ts:Period ;
+                           owl:onProperty     gsmlbh:dateOfDrilling
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  ci:ResponsibleParty ;
+                           owl:onProperty     gsmlbh:dataCustodian
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlbh:inclinationType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  ci:ResponsibleParty ;
+                           owl:onProperty     gsmlbh:driller
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  ci:ResponsibleParty ;
+                           owl:onProperty     gsmlbh:boreholeMaterialCustodian
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlbh:purpose
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  ci:ResponsibleParty;
+                           owl:onProperty     gsmlbh:operator
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlbh:startPoint
+                         ] ;
+        skos:definition  "Borehole specific index (or metadata) information"@en , "Borehole-specific index or header information. This data does not relate to downhole intervals."@en .
+
+gsmlbh:Borehole  a       owl:Class ;
+        rdfs:subClassOf  sf:SF_SamplingCurve ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:OriginPosition ;
+                           owl:onProperty     gsmlbh:referenceLocation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:DrillingDetails ;
+                           owl:onProperty     gsmlbh:downholeDrillingDetails
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:OriginPosition ;
+                           owl:onProperty     gsmlbh:referenceLocation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:MappedInterval ;
+                           owl:onProperty     gsmlbh:logElement
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:MappedInterval ;
+                           owl:onProperty     gsmlbh:logElement
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:BoreholeDetails ;
+                           owl:onProperty     gsmlbh:indexData
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:BoreholeDetails ;
+                           owl:onProperty     gsmlbh:indexData
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:DrillingDetails ;
+                           owl:onProperty     gsmlbh:downholeDrillingDetails
+                         ] ;
+        skos:definition  "A borehole is the generalized term for any narrow shaft drilled in the ground, either vertically, horizontally, or inclined."@en , "A borehole is the generalized term for any narrow shaft drilled in the ground, either vertically or horizontally."@en .
+
+gsmlbh:DrillingDetails.intervalBegin
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:DrillingDetails ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "The measured distance of the start of the interval along the path of the borehole. The measured value must be less than or equal to the IntervalEnd value.  The \"IntervalBegin\" and \"IntervalEnd\" elements are added in version 3.2 as a measure to overcome problems with the delivery and queryability of 1D GML shapes via the \"shape\" property."@en .
+
+gsmlbh:drillingMethod
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Indicates the drilling method used. Appropriate terms would include rotary air blast; auger; diamond core; air core; etc"@en .
+
+gsmlbh:dataCustodian  a  owl:ObjectProperty ;
+        rdfs:range       ci:ResponsibleParty ;
+        skos:definition  "The custodian (person or organisation) that is the custodian of data pertaining to this borehole."@en .
+
+gsmlbh:purpose  a        owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The purpose for which the borehole was drilled. eg, site investigation, mineral exploration, hydrocarbon exploration, water resources"@en .
+
+gsmlbh:BoreholeInterval
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:Borehole ;
+                           owl:onProperty     gsmlbh:BoreholeInterval.parentBorehole
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  rdfs:Resource ;
+                           owl:onProperty     gsmlbh:BoreholeInterval.collectionIdentifier
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlbh:BoreholeInterval.mappedIntervalEnd
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlbh:BoreholeInterval.mappedIntervalBegin
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Feature ;
+                           owl:onProperty     gsmlbh:BoreholeInterval.specification
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlbh:BoreholeInterval.observationMethod
+                         ] ;
+        skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
+
+gsmlbh:logElement  a     owl:ObjectProperty ;
+        rdfs:range       gsmlbh:MappedInterval ;
+        skos:definition  "Links to 1-D MappedFeature instances that are logged (interpreted) intervals within a borehole. This requirement is common in geoscience boreholes"@en .
+
+gsmlbh:BoreholeInterval.mappedIntervalBegin
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "The measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.  The \"mappedIntervalBegin\" and \"mappedIntervalEnd\" elements are included here as a measure to overcome problems with the delivery and queryability of 1D GML shapes via the \"shape\" property."@en .
+
+gsmlbh:elevation  a      owl:ObjectProperty ;
+        rdfs:range       gsp:Geometry ;
+        skos:definition  "Compromise approach to supply elevation explictly for location; this is to allow for software that cannot process 3-D GM_Point. Use null if elevation is unknown. Direct position shall have a dimension of 1, and CRS will be a \"vertical\" CRS (e.g. EPSG CRSs in the range 5600-5799)."@en .
+
+gsmlbh:inclinationType
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Indicates the inclination of the borehole. Appropriate terms would include vertical; inclined up; inclined down, horizontal"@en .
+
+gsmlbh:startPoint  a     owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Indicates the position relative to ground surface where the borehole commenced. Appropriate terms would include Drilled from Ground Surface; Drilled Underground;  Drilled from Quarry Floor etc"@en .
+
+gsmlbh:boreholeLength
+        a                owl:ObjectProperty ;
+        rdfs:range       om:SimpleMeasure ;
+        skos:definition  "The \"length\" of a borehole will be determined by the data provider (ie, \"length\" can have different sources, like drillers measurement, loggers measurement, survey measurement, etc)"@en .
+
+gsmlbh:dateOfDrilling
+        a                owl:ObjectProperty ;
+        rdfs:range       ts:Period ;
+        skos:definition  "The time period during which drilling of the borehole occurred."@en .
+
+gsmlbh:driller  a        owl:ObjectProperty ;
+        rdfs:range       ci:ResponsibleParty ;
+        skos:definition  "The organisation responsible for drilling the borehole (as opposed to commissioning the borehole)"@en .
+
+gsmlbh:boreholeMaterialCustodian
+        a                owl:ObjectProperty ;
+        rdfs:range       ci:ResponsibleParty ;
+        skos:definition  "Organisation that is custodian of the core recovered from the borehole"@en .
+
+gsmlbh:location  a       owl:ObjectProperty ;
+        rdfs:range       gsp:Geometry ;
+        skos:definition  "The location of the BoreholeCollar"@en .
+
+gsmlbh:operator  a       owl:ObjectProperty ;
+        rdfs:range       ci:ResponsibleParty ;
+        skos:definition  "Organisation responsible for commissioning the borehole (as opposed to drilling the borehole)"@en .
+
+gsmlbh:boreholeDiameter
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "The diameter of the drilled hole"@en .
+
+<http://geosciml.org/ont/gsmlbh>
+        a                owl:Ontology ;
+        owl:imports      <http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling.ttl> , <http://schemas.geosciml.org/rdf/types.ttl> , <https://www.w3.org/2006/time> , <http://www.opengis.net/ont/geosparql> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlbh/3.1.0" ;
+        owl:versionInfo  "3.1.0" ;
+        skos:definition  "The GeoSciML Borehole package contains model elements for representing Boreholes. This is primarily through re-use of standard components from the (external) Observations and Measurements package."@en .
+
+gsmlbh:MappedInterval
+        a                owl:Class ;
+        skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
+
+gsmlbh:BoreholeInterval.parentBorehole
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       gsmlbh:Borehole ;
+        skos:definition  "The borehole in which the interval occurs."@en .
+
+gsmlbh:BoreholeInterval.observationMethod
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       swe:Category ;
+        skos:definition  "The method used to observe the properties of the borehole"@en .
+
+gsmlbh:downholeDrillingDetails
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlbh:DrillingDetails ;
+        skos:definition  "Specifies the drilling method and borehole diameter for intervals down the borehole"@en .
+
+gsmlbh:DrillingDetails.interval
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:DrillingDetails ;
+        rdfs:range       gsp:Geometry ;
+        skos:definition  "A shape that is a 1-D interval (eg, a \"from\" and \"to\", or \"top\" and \"base\" measurement) and uses the SRS of the containing borehole."@en .
+
+gsmlbh:indexData  a      owl:ObjectProperty ;
+        rdfs:range       gsmlbh:BoreholeDetails ;
+        skos:definition  "Specifies the Borehole details"@en .
+
+gsmlbh:BoreholeInterval.specification
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       gsp:Feature ;
+        skos:definition  "The domain feature that is sampled by the interval (eg, a GeologicUnit). Equaivalent to O&M \"sampledFeature\"."@en .
+
+gsmlbh:referenceLocation
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlbh:OriginPosition ;
+        skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush)."@en .
+
+gsmlbh:BoreholeInterval.collectionIdentifier
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       rdfs:Resource ;
+        skos:definition  "A property to group BoreholeIntervals in order to implement multiple logs on a single borehole. GenericName should identify a particular log observation event."@en .
+
+gsmlbh:OriginPosition
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlbh:Borehole ;
+                           owl:onProperty     gsmlbh:relatedBorehole
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsmlbh:elevation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsmlbh:location
+                         ] ;
+        skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush).\r\n\r\nIf a text descripiton of the location is available, it should be placed in the gml:description for that feature.  If no GM_Point is available, an OGC nil value should be used.\r\n\r\nImplementers delivering 3-D origin locations should provide an elevation to improve interoperability. \r\n\r\nIn situations where the origin position changes over the life of the borehole (eg, due to subsidence or destruction of the original collar), the origin position should be updated to the new location."@en .
+
+gsmlbh:DrillingDetails
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlbh:DrillingDetails.intervalEnd
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlbh:DrillingDetails.intervalBegin
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsmlbh:DrillingDetails.interval
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlbh:boreholeDiameter
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlbh:drillingMethod
+                         ] ;
+        skos:definition  "A class to capture description of drilling methods and hole diameter down the hole."@en .
+
+gsmlbh:BoreholeInterval.mappedIntervalEnd
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "The measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.  The \"mappedIntervalBegin\" and \"mappedIntervalEnd\" elements are included here as a measure to overcome problems with the delivery and queryability of 1D GML shapes via the \"shape\" property."@en .
+
+gsmlbh:DrillingDetails.intervalEnd
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:DrillingDetails ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "The measured distance of the end of the interval along the path of the borehole. The measured value must be greater than or equal to the IntervalBegin value.  The \"IntervalBegin\" and \"IntervalEnd\" elements are added in version 3.2 as a measure to overcome problems with the delivery and queryability of 1D GML shapes via the \"shape\" property."@en .
+
+gsmlbh:relatedBorehole
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlbh:Borehole ;
+        skos:definition  "The hole that has this collar for its start point"@en .

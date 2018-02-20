@@ -2,7 +2,7 @@
 
 ## Example
 
-`java -jar RdfConv.jar -i ..\..\instances\borehole.ttl -t JSON-LD > ..\..\instances\borehole.json`
+`java -jar RdfConv.jar -i ..\..\instances\borehole.ttl -t JSON-LD > ..\..\instances\borehole.jsonld`
 
 ## Usage
 

@@ -1,0 +1,230 @@
+{
+  "@id" : "http://data.brgm.fr/id/borehole/bss000ecxq",
+  "@type" : "http://geosciml.org/ont/gsmll#BoreholeView",
+  "accesstophysicaldrillcore" : "False",
+  "boreholeid" : "BSS000ECXQ",
+  "boreholeuse" : "unknown",
+  "boreholeuse-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "cored" : "False",
+  "description" : "Borehole from BSS (french subsoils databank)",
+  "detaileddescription" : "template",
+  "detaileddescription-href" : "http://www.opengis.net/def/nil/OGC/0/template",
+  "drillingmethod" : "unknown",
+  "geologicaldescription" : "template",
+  "geologicaldescription-href" : "http://www.opengis.net/def/nil/OGC/0/template",
+  "geophysicallogs" : "unknown",
+  "geophysicallogs-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "geotechnicalinfo" : "unknown",
+  "geotechnicalinfo-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "gmlidentifier" : "http://ressource.brgm-rec.fr/data/BoreholeView/BSS000ECXQ",
+  "groundwaterchemistry" : "unknown",
+  "groundwaterchemistry-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "groundwaterlevel" : "unknown",
+  "groundwaterlevel-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "inclinationtype" : "vertical",
+  "oldbssdesignation" : "P",
+  "oldbssid" : "00482X0025/P",
+  "oldbssindice" : "00482X0025",
+  "operator" : "NA",
+  "poregaschemistry" : "unknown",
+  "poregaschemistry-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "positionalaccuracy" : "10",
+  "purpose" : "unknown",
+  "rockgeochemistry" : "unknown",
+  "rockgeochemistry-href" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "startpoint" : "naturalLandSurface",
+  "http://data.brgm.fr/def/epos#status" : "drillingCompleted",
+  "hasGeometry" : "http://data.brgm.fr/id/borehole/geometrie/bss000ecxq",
+  "http://geosciml.org/ont/gsmlbh#boreholeLength" : 45.3,
+  "dateOfDrilling" : "_:b2",
+  "driller" : "_:b1",
+  "drillingMethod" : "http://www.opengis.net/def/nil/OGC/0/unknown",
+  "inclinationType" : "http://resource.europe-geology.eu/vocabs/BoreholeInclinationType/vertical",
+  "http://geosciml.org/ont/gsmlbh#purpose" : {
+    "@id" : "http://www.opengis.net/def/nil/OGC/0/unknown"
+  },
+  "BoreholeView.source" : "http://ficheinfoterre.brgm.fr/InfoterreFiche/ficheBss.action?id=00482X0025/P",
+  "boreholeMaterialCustodian" : "_:b0",
+  "http://geosciml.org/ont/gsmll#elevation_m" : 136.0,
+  "elevation_srs" : "http://www.opengis.net/def/crs/EPSG/0/5720",
+  "genericSymbolizer" : "Not provided",
+  "metadata" : "http://www.geocatalogue.fr/Detail.do?fileIdentifier=BR_BSS_BAA",
+  "startPoint" : "http://resource.europe-geology.eu/vocabs/BoreholeStartPoint/naturalLandSurface",
+  "status" : "http://resource.europe-geology.eu/vocabs/BoreholeStatus/drillingCompleted",
+  "label" : "Forage BSS000ECXQ",
+  "sameAs" : "http://ressource.brgm-rec.fr/data/Borehole/BSS000ECXQ",
+  "@context" : {
+    "hasGeometry" : {
+      "@id" : "http://data.ign.fr/def/geometrie#hasGeometry",
+      "@type" : "@id"
+    },
+    "drillingmethod" : {
+      "@id" : "http://data.brgm.fr/def/epos#drillingmethod"
+    },
+    "startPoint" : {
+      "@id" : "http://geosciml.org/ont/gsmll#startPoint",
+      "@type" : "@id"
+    },
+    "purpose" : {
+      "@id" : "http://data.brgm.fr/def/epos#purpose"
+    },
+    "oldbssdesignation" : {
+      "@id" : "http://data.brgm.fr/def/epos#oldbssdesignation"
+    },
+    "operator" : {
+      "@id" : "http://data.brgm.fr/def/epos#operator"
+    },
+    "detaileddescription-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#detaileddescription-href",
+      "@type" : "@id"
+    },
+    "rockgeochemistry-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#rockgeochemistry-href",
+      "@type" : "@id"
+    },
+    "metadata" : {
+      "@id" : "http://geosciml.org/ont/gsmll#metadata",
+      "@type" : "@id"
+    },
+    "geophysicallogs-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#geophysicallogs-href",
+      "@type" : "@id"
+    },
+    "geologicaldescription" : {
+      "@id" : "http://data.brgm.fr/def/epos#geologicaldescription"
+    },
+    "genericSymbolizer" : {
+      "@id" : "http://geosciml.org/ont/gsmll#genericSymbolizer"
+    },
+    "boreholeMaterialCustodian" : {
+      "@id" : "http://geosciml.org/ont/gsmll#boreholeMaterialCustodian",
+      "@type" : "@id"
+    },
+    "inclinationType" : {
+      "@id" : "http://geosciml.org/ont/gsmlbh#inclinationType",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "detaileddescription" : {
+      "@id" : "http://data.brgm.fr/def/epos#detaileddescription"
+    },
+    "gmlidentifier" : {
+      "@id" : "http://data.brgm.fr/def/epos#gmlidentifier",
+      "@type" : "@id"
+    },
+    "geophysicallogs" : {
+      "@id" : "http://data.brgm.fr/def/epos#geophysicallogs"
+    },
+    "groundwaterlevel" : {
+      "@id" : "http://data.brgm.fr/def/epos#groundwaterlevel"
+    },
+    "boreholeuse-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#boreholeuse-href",
+      "@type" : "@id"
+    },
+    "description" : {
+      "@id" : "http://data.brgm.fr/def/epos#description"
+    },
+    "BoreholeView.source" : {
+      "@id" : "http://geosciml.org/ont/gsmll#BoreholeView.source"
+    },
+    "geotechnicalinfo-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#geotechnicalinfo-href",
+      "@type" : "@id"
+    },
+    "driller" : {
+      "@id" : "http://geosciml.org/ont/gsmlbh#driller",
+      "@type" : "@id"
+    },
+    "poregaschemistry" : {
+      "@id" : "http://data.brgm.fr/def/epos#poregaschemistry"
+    },
+    "oldbssindice" : {
+      "@id" : "http://data.brgm.fr/def/epos#oldbssindice"
+    },
+    "sameAs" : {
+      "@id" : "http://www.w3.org/2002/07/owl#sameAs",
+      "@type" : "@id"
+    },
+    "status" : {
+      "@id" : "http://geosciml.org/ont/gsmll#status",
+      "@type" : "@id"
+    },
+    "drillingMethod" : {
+      "@id" : "http://geosciml.org/ont/gsmlbh#drillingMethod",
+      "@type" : "@id"
+    },
+    "dateOfDrilling" : {
+      "@id" : "http://geosciml.org/ont/gsmlbh#dateOfDrilling",
+      "@type" : "@id"
+    },
+    "geologicaldescription-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#geologicaldescription-href",
+      "@type" : "@id"
+    },
+    "poregaschemistry-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#poregaschemistry-href",
+      "@type" : "@id"
+    },
+    "elevation_srs" : {
+      "@id" : "http://geosciml.org/ont/gsmll#elevation_srs",
+      "@type" : "@id"
+    },
+    "boreholeid" : {
+      "@id" : "http://data.brgm.fr/def/epos#boreholeid"
+    },
+    "startpoint" : {
+      "@id" : "http://data.brgm.fr/def/epos#startpoint"
+    },
+    "geotechnicalinfo" : {
+      "@id" : "http://data.brgm.fr/def/epos#geotechnicalinfo"
+    },
+    "boreholeuse" : {
+      "@id" : "http://data.brgm.fr/def/epos#boreholeuse"
+    },
+    "inclinationtype" : {
+      "@id" : "http://data.brgm.fr/def/epos#inclinationtype"
+    },
+    "elevation_m" : {
+      "@id" : "http://geosciml.org/ont/gsmll#elevation_m",
+      "@type" : "http://www.w3.org/2001/XMLSchema#double"
+    },
+    "positionalaccuracy" : {
+      "@id" : "http://data.brgm.fr/def/epos#positionalaccuracy"
+    },
+    "groundwaterchemistry-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#groundwaterchemistry-href",
+      "@type" : "@id"
+    },
+    "accesstophysicaldrillcore" : {
+      "@id" : "http://data.brgm.fr/def/epos#accesstophysicaldrillcore"
+    },
+    "groundwaterchemistry" : {
+      "@id" : "http://data.brgm.fr/def/epos#groundwaterchemistry"
+    },
+    "oldbssid" : {
+      "@id" : "http://data.brgm.fr/def/epos#oldbssid"
+    },
+    "groundwaterlevel-href" : {
+      "@id" : "http://data.brgm.fr/def/epos#groundwaterlevel-href",
+      "@type" : "@id"
+    },
+    "cored" : {
+      "@id" : "http://data.brgm.fr/def/epos#cored"
+    },
+    "rockgeochemistry" : {
+      "@id" : "http://data.brgm.fr/def/epos#rockgeochemistry"
+    },
+    "boreholeLength" : {
+      "@id" : "http://geosciml.org/ont/gsmlbh#boreholeLength",
+      "@type" : "http://www.w3.org/2001/XMLSchema#double"
+    },
+    "rgf" : "http://vmrd87.brgm.fr/datalift/project/rgf",
+    "epos" : "http://vmrd87.brgm.fr/datalift/project/epos",
+    "links" : "http://vmrd87.brgm.fr/datalift/project/links",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "cleanedup" : "http://vmrd87.brgm.fr/datalift/project/cleanedup"
+  }
+}

@@ -8,7 +8,7 @@
 
 (only supports CONSTRUCT, as it expect a model as a result)
 
-`java -jar RdfConv.jar -i ..\..\instances\borehole.ttl -t JSON-LD -q label.sparql`
+`java -jar RdfConv.jar -i ..\..\instances\borehole.ttl -t JSON-LD -q bss000ecxq.sparql`
 
 ## Usage
 

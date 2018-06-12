@@ -44,6 +44,7 @@ In the GeoSciML owl, the vocab properties are typed with a class that is the top
 					.....
 	
 ## Vocabulary construction:	
+
     <owl:Class rdf:about="http://resource.geosciml.org/classifier/cgi/lithOntology/AnyConsolDegree">
         <rdfs:label>any consolidation degree</rdfs:label>
     </owl:Class>

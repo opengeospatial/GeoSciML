@@ -27,7 +27,7 @@ In the GeoSciML owl, the vocab properties are typed with a class that is the top
 	
 ## Definition of a rockMaterial class
 
-<owl:Class rdf:about="&CGI_Lith;alkali_feldspar_granite">
+    <owl:Class rdf:about="&CGI_Lith;alkali_feldspar_granite">
         <rdfs:label>alkali feldspar granite</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>

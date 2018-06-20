@@ -1,0 +1,77 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix gsmltrs: <http://geosciml.org/ont/gsmltrs#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix gtrs:  <http://resource.geosciml.org/schema/cgi/trs/3.0/> .
+
+gsmltrs:TimeOrdinalEraBoundary
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmltrs:positionalUncertainty
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  time:Instant ;
+                           owl:onProperty     gsmltrs:position
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmltrs:TimeOrdinalEra ;
+                           owl:onProperty     gsmltrs:previousEra
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmltrs:TimeOrdinalEra ;
+                           owl:onProperty     gsmltrs:nextEra
+                         ] ;
+        skos:definition  "A point in Earth's history which bounds a TimeOrdinalEra."@en .
+
+gsmltrs:position  a      owl:ObjectProperty ;
+        rdfs:range       time:Instant ;
+        skos:definition  "A point in time corresponding to the era boundary"@en .
+
+gsmltrs:TimeOrdinalEra
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmltrs:TimeOrdinalEra ;
+                           owl:onProperty     gsmltrs:member
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmltrs:TimeOrdinalEraBoundary ;
+                           owl:onProperty     gsmltrs:end
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmltrs:TimeOrdinalEraBoundary ;
+                           owl:onProperty     gsmltrs:start
+                         ] ;
+        skos:definition  "The association of an era with a stratotype is optional.  In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used.  Rather, the association of an Era with geologic units and sections is indirect, via the association of an era with Boundaries, which are in turn tied to Stratotype Points, which occur within host Stratotype Sections. \r\nNote that the \"German School\" defines stratigraphic eras conceptually, without reference to stratotypes."@en .
+
+gsmltrs:end  a           owl:ObjectProperty ;
+        rdfs:range       gsmltrs:TimeOrdinalEraBoundary ;
+        skos:definition  "Younger time boundary of an era"@en .
+
+gsmltrs:start  a         owl:ObjectProperty ;
+        rdfs:range       gsmltrs:TimeOrdinalEraBoundary ;
+        skos:definition  "Older time boundary of an era"@en .
+
+gsmltrs:positionalUncertainty
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A measure of the uncertainty in the estimate of the point in time of the era boundary"@en .
+
+gsmltrs:previousEra  a  owl:ObjectProperty ;
+        rdfs:range  gsmltrs:TimeOrdinalEra .
+
+gsmltrs:member  a   owl:ObjectProperty ;
+        rdfs:range  gsmltrs:TimeOrdinalEra .
+
+<http://geosciml.org/ont/gsmltrs>
+        a                owl:Ontology ;
+        owl:imports      <https://www.w3.org/2006/time> , <http://def.seegrid.csiro.au/static/ontology/geotime/gtrs.ttl> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmltrs/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "This package is an extension of ISO19108 Temporal Schema"@en .
+
+gsmltrs:nextEra  a  owl:ObjectProperty ;
+        rdfs:range  gsmltrs:TimeOrdinalEra .

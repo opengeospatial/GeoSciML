@@ -1,0 +1,405 @@
+@prefix swe:   <urn:x-gsml-rdf:types> .
+@prefix gsmlpp: <http://geosciml.org/ont/gsmlpp#> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix gsmlem: <http://geosciml.org/ont/gsmlem#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix gsmlf: <http://geosciml.org/ont/gsmlf#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gsml:  <http://geosciml.org/ont/gsml#> .
+@prefix gsmlga: <http://geosciml.org/ont/gsmlga#> .
+
+gsmlem:peakPressureValue
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "A numerical value to indicate the estimated pressure at peak metamorphic conditions."@en .
+
+gsmlem:constituent  a    owl:ObjectProperty ;
+        rdfs:range       gsmlem:ConstituentPart ;
+        skos:definition  "Specifies the ConstituentPart that makes up part of the CompoundMaterial"@en .
+
+gsmlem:EarthMaterial  a        owl:Class ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  skos:Concept ;
+                                 owl:onProperty     gsmlem:metadata
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  gsmlem:ChemicalComposition ;
+                                 owl:onProperty     gsmlem:geochemistry
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  gsmlpp:PhysicalDescription ;
+                                 owl:onProperty     gsmlem:physicalProperty
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  skos:Concept ;
+                                 owl:onProperty     gsmlem:purpose
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  swe:Category ;
+                                 owl:onProperty     gsmlem:color
+                               ] ;
+        iso19150-2:isAbstract  true ;
+        skos:definition        "The Earth Material class holds a description of a naturally occurring substance in the Earth.  Earth Material represents material composition or substance, and is thus independent of quantity or location. Ideally, Earth Materials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations may enter into the description as well."@en .
+
+gsmlem:material  a       owl:ObjectProperty ;
+        rdfs:range       gsmlem:EarthMaterial ;
+        skos:definition  "Specifies the EarthMaterial that is forming the ConstituentPart"@en .
+
+<http://geosciml.org/ont/gsmlem>
+        a                owl:Ontology ;
+        owl:imports      <http://geosciml.org/ont/gsmlga> , <http://geosciml.org/ont/gsml> , <http://www.opengis.net/ont/geosparql> , <http://schemas.geosciml.org/rdf/types.ttl> , <http://geosciml.org/ont/gsmlf> , <http://geosciml.org/ont/gsmlpp> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlem/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "The GeoSciML EarthMaterial package contains classes representing a description of a naturally occurring substance in the Earth.  \r\n\r\nEarth Material represents material composition or substance, and is thus independent of quantity or location. Ideally, Earth Materials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations may enter into the description as well."@en .
+
+gsmlem:role  a           owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The role a ConstituentPart plays in a CompoundMaterial aggregation. The same EarthMaterial may occur as different ConstituentParts playing different roles within the same CompoundMaterial.  For example, feldspar may be present as groundmass (a ConstituentPart::role) and as phenocrysts (an ConstituentPart::role) within a single igneous rock."@en .
+
+gsmlem:physicalProperty
+        a           owl:ObjectProperty ;
+        rdfs:range  gsmlpp:PhysicalDescription .
+
+gsmlem:alterationProduct
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:EarthMaterial ;
+        skos:definition  "AlterationProduct is the material result of alteration processes, e.g. alteration minerals, saprolite, ferricrete, clay, calcrete, skarn, etc. Materials observed in a soil profile could be identified using this property."@en .
+
+gsmlem:metamorphicFacies
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "A description of characteristic mineral assemblages indicative of certain metamorphic P-T conditions. Examples include Barrovian metasedimentary zones (eg: biotite facies, kyanite facies) or assemblages developed in rocks of more mafic composition (eg: greenschist facies, amphibolite facies)."@en .
+
+gsmlem:protolithLithology
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:EarthMaterial ;
+        skos:definition  "An interpretation of the EarthMaterial that constituted the pre-metamorphic lithology for this metamorphosed CompoundMaterial."@en .
+
+gsmlem:particleType  a   owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Terms to specify the nature of individual particles of each constituent in an Earth Material aggregation, based mostly on their genesis.  If applied on ParticleDescription for CompoundMaterial, then would characterize all particles in aggregate. Use this property on CompoundMaterial to distinguish rocks composed of crystals (crystalline rocks) from rocks composed of granular particles (clasts, fragments). Examples include oolith, crystals, pore space. Constituent type is determined based on the nature of the particles, and ideally is independent of the relationship between particles in a compound material aggregation.\r\nSee discussion of particleType vs ConstituentPart.role in the scope notes for ConstituentPart."@en .
+
+gsmlem:ConstituentPart
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:ConstituentPart ;
+                           owl:onProperty     gsmlem:relatedMaterial
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:ParticleGeometryDescription ;
+                           owl:onProperty     gsmlem:ConstituentPart.particleGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:EarthMaterial ;
+                           owl:onProperty     gsmlem:material
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlem:role
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlem:proportion
+                         ] ;
+        skos:definition  "The Constituent Part class describes how Earth Materials may be made up of other Earth Materials, including the proportion of the constituent part in the whole (eg: 20%, minor, dominant); the role that the constituent plays in the whole (eg: matrix, groundmass, framework, phenocryst, xenolith, vein). The particleType property that specifies type of particle (eg: grain, clast, crystal, fossil, oolite) has been moved to the ParticleGeometryDescription data type, associated with both ConstituentPart and CompoundMaterial (GeoSciMLv2, RC3, Uppsala, Sweden).\r\n\r\nThe distinction between \"role\" and \"particleType\" is subtle.  An operational test is that constituentType may be determined independent of relationship between particles in the aggregation, whereas role requires consideration of the relationship to other particles. A particle may be identified as clast, independent of its material composition, and independent of its relationship to other grains in a rock. The term 'floating clast' is a role, because it is dependent on the relationship 'not in contact with other clasts'. Consider Dunham's textural classification of carbonate rocks (wackestone, packstone, grainstone...) in the description of carbonate rocks. The description is predicated on identification of two kinds of intraclasts (grains) and matrix (carbonate mud), and then uses this distinction to establish relationships--mud supported vs. grain supported -- that define roles for the two types of constituents (framework, matrix...).\r\n\r\nexamples of type vs. role:\r\nParticle type: clast. Role: framework, floating particle\r\n\r\nparticle type: crystal. Role: matrix, pseudomatrix (in case that matrix is interpreted as recrystallized material)\r\n\r\nparticle type: clast. Role: matrix (in case that matrix is interpreted as very-fine grained detrital fraction)\r\n\r\nparticle type: crystal. Role: cement (in case that material insterstitial to particles is crystalline material introduced during diagenesis)\r\n\r\nparticle type: crystal. Role: phenocryst (in igneous rock)\r\n\r\nparticle type: microlite Role: groundmass (in porphyrytic igneous rock)\r\n\r\nparticle type: crystal. Role: framework (in igneous rock)\r\n\r\nparticle type: pyroclast. role: framework (in tuff)\r\n\r\nparticle type: crystal Role: oikocryst\r\n\r\nparticle type: crystal Role: overgrowth\r\n\r\nparticle type: biogenic particle Role: floating particle\r\n\r\nparticle type: ooid Role: framework"@en .
+
+gsmlem:alterationEvent
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlga:GeologicEvent ;
+        skos:definition  "To denote the age, environment and process associated with alteration of a GeologicUnit or material"@en .
+
+gsmlem:sourceOrganism
+        a           owl:ObjectProperty ;
+        rdfs:range  gsmlf:Organism .
+
+gsmlem:fabric  a         owl:ObjectProperty ;
+        rdfs:range       gsmlem:FabricDescription ;
+        skos:definition  "Contains the description of the fabric associated with a CompoundMaterial"@en .
+
+gsmlem:purpose  a        owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Specification of the intended purpose/level of abstraction for the given EarthMaterial. Scoped name because intention is asserted by author of the data instance. \r\nValues: Instance, TypicalNorm, IdentifyingNorm."@en .
+
+gsmlem:color  a          owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Terms to specify color of the earth material.  Color schemes such as the Munsell rock and soil color schemes could be used."@en .
+
+gsmlem:FabricDescription
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlem:fabricType
+                         ] ;
+        skos:definition  "The FabricDescription class describes all types of fabrics associated with a CompoundMaterial (ie, tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale.  FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation [Passchier and Trouw, 1998], and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly (Turner and Weiss [1963] p. 21-24; Hobbs and others [1976], p. 73; Jackson [1997]; Passchier and Trouw [1998]). \r\n\r\nFabricDescription is distinguished from Particle Geometry based on the criteria that Particle Geometry is preserved if a CompoundMaterial is disaggregated, while FabricDescription is not defined if the material is disaggregated.\r\n\r\nUse gml:description to capture any free text to indicate any specific or peculiar features of the described fabric in the CompoundMaterial."@en .
+
+gsmlem:aspectRatio  a    owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "AspectRatio describes the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. Equates to sphericity in sedimentary rocks (ie: the degree to which the shape of a particle approximates a sphere).  A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape (Sneed and Folk, 1958; Zingg, 1935). (eg: prolate, slightly flattened, very bladed, equant, acicular, tabular)"@en .
+
+gsmlem:MetamorphicDescription
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:GeologicEvent ;
+                           owl:onProperty     gsmlem:metamorphicEvent
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:EarthMaterial ;
+                           owl:onProperty     gsmlem:protolithLithology
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlem:peakTemperatureValue
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlem:peakPressureValue
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:metamorphicGrade
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:metamorphicFacies
+                         ] ;
+        skos:definition  "MetamorphicDescription describes the character of metamorphism applied to a CompoundMaterial or GeologicUnit using one or more properties including estimated intensity (grade; eg high grade, low grade), characteristic metamorphic mineral assemblages (facies; eg, greenschist, amphibolite), peak P-T estimates, and protolith material if known."@en .
+
+gsmlem:alterationDistribution
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "AlterationDistribution describes the spatial distribution or geometry of alteration zones. eg: patchy, spotted, banded, viens, vein breccia, pervasive, disseminated, etc"@en .
+
+gsmlem:metamorphicGrade
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "A term to indicate the intensity or rank of metamorphism applied to an EarthMaterial (eg: high metamorphic grade, low metamorphic grade)\r\nIndicates in a general way the P-T environment in which the metamorphism took place. Determination of metamorphic grade is based on mineral assemblages (ie, facies) present in a rock that are interpreted to have crystallized in equilibrium during a particular metamorphic event."@en .
+
+gsmlem:consolidationDegree
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "A property that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration (NADMSC, 2004)"@en .
+
+gsmlem:chemicalAnalysis
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:DataRecord ;
+        skos:definition  "This element delivers a swe:DataRecord of analyte concentrations (ie, swe:Quantity elements) which describe the chemical composition of an earth material or geologic unit"@en .
+
+gsmlem:lithology  a      owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A controlled concept indicating the name of the RockMaterial type (eg, quartz sandstone, basalt, muscovite schist, sand, mud, soil, saprolite).\r\nIgneous rock definitions are governed by IUGS agreed vocabulary"@en .
+
+gsmlem:metadata  a  owl:ObjectProperty ;
+        rdfs:range  skos:Concept .
+
+gsmlem:OrganicMaterial
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlem:EarthMaterial ;
+        skos:definition  "An EarthMaterial that belongs to the class of chemical compounds having a reduced carbon basis (as distinct from carbonates), and derived from living organisms.  Includes high-carbon EarthMaterials such as bitumen, peat, and coal.  \r\n\r\nThis class is an empty placeholder for extension at a later date, or by other domain models"@en .
+
+gsmlem:ChemicalComposition
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:DataRecord ;
+                           owl:onProperty     gsmlem:chemicalAnalysis
+                         ] .
+
+gsmlem:ConstituentPart.particleGeometry
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlem:ConstituentPart ;
+        rdfs:range       gsmlem:ParticleGeometryDescription ;
+        skos:definition  "Description of geometry of individual subset of particles"@en .
+
+gsmlem:compositionCategory
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Term to specify the gross compositional character of a compound material. Composition as used here is loosely construed to include both chemical composition and petrograpic composition, thus multiple values may be applied to a single rock, e.g. metaluminous and alkalic, undersaturated and basic, etc. Terms would typically include broad chemical classifications such as silicate, carbonate, ferromagnesian, oxide.  However, this attribute may have different terminology for different kinds of rocks - for example sandstone petrographic classification terms (e.g. feldspathic) might be placed here."@en .
+
+gsmlem:mineralName  a    owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Name of the mineral (eg: orthoclase) or mineral family (eg: feldspar), approved by the International Mineralogical Association. (eg: http://www.mindat.org/mineralindex.php)"@en .
+
+gsmlem:CompoundMaterial
+        a                      owl:Class ;
+        rdfs:subClassOf        gsmlem:EarthMaterial ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  gsmlem:ParticleGeometryDescription ;
+                                 owl:onProperty     gsmlem:CompoundMaterial.particleGeometry
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  gsmlem:ConstituentPart ;
+                                 owl:onProperty     gsmlem:constituent
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  swe:Category ;
+                                 owl:onProperty     gsmlem:geneticCategory
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  swe:Category ;
+                                 owl:onProperty     gsmlem:compositionCategory
+                               ] ;
+        iso19150-2:isAbstract  true ;
+        skos:definition        "An EarthMaterial composed of particles composed of EarthMaterials, possibly including other CompoundMaterials. \r\n\r\nThis class is provided primarily as an extensibility point for related domain models that wish to import and build on GeoSciML, and wish to define material types that are compound but are not rock or rock-like material. For most users of GeoSciML \"RockMaterial\" should be used."@en .
+
+gsmlem:alterationDegree
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "AlterationDegree is a term to specify degree of modification from original material.  eg: weak, moderate, strong, intense"@en .
+
+gsmlem:relatedMaterial
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:ConstituentPart ;
+        skos:definition  "Specifies the ConstituentPart that is playing the target role in the MaterialRelation"@en .
+
+gsmlem:Mineral  a        owl:Class ;
+        rdfs:subClassOf  gsmlem:EarthMaterial ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlem:mineralName
+                         ] ;
+        skos:definition  "A naturally occurring inorganic element or compound having a periodically repeating arrangement of atoms and a characteristic chemical composition or range of compositions, resulting in distinctive physical properties.  Includes mercury as a general exception to the requirement of crystallinity.  Also includes crypto-crystalline materials such as chalcedony and amorphous silica."@en .
+
+gsmlem:proportion  a     owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "The fraction of the whole that is formed by a ConstituentPart in a part/whole relationship.  Used for the ConstituentPart portion in a CompoundMaterial. \r\n\r\nQuantity that specifies the fraction of the Earth Material formed by the part (eg: 20%, minor, dominant)"@en .
+
+gsmlem:AlterationDescription
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:GeologicEvent ;
+                           owl:onProperty     gsmlem:alterationEvent
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:alterationDistribution
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:EarthMaterial ;
+                           owl:onProperty     gsmlem:alterationProduct
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:alterationDegree
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlem:alterationType
+                         ] ;
+        skos:definition  "AlterationDescription decribes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. Includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic.\r\n\r\nA soil profile description would have to be constructed as a GeologicUnit with unit parts representing the various horizons in the profile.\r\n\r\nThickness of a weathering profile can be delivered as unitThickness of an AlterationUnit."@en .
+
+gsmlem:metamorphicProperties
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:MetamorphicDescription ;
+        skos:definition  "Describes the character of metamorphism applied to a CompoundMaterial or GeologicUnit using one or more properties including estimated intensity (grade; eg high grade, low grade), characteristic metamorphic mineral assemblages (facies; eg, greenschist, amphibolite), peak P-T estimates, and protolith material if known."@en .
+
+gsmlem:sorting  a        owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "The Sorting attribute holds text terms to specify size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk (1968, 1974).  Example terms for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranuilar, seriate."@en .
+
+gsmlem:RockMaterial  a   owl:Class ;
+        rdfs:subClassOf  gsmlem:CompoundMaterial ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:FabricDescription ;
+                           owl:onProperty     gsmlem:fabric
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:AlterationDescription ;
+                           owl:onProperty     gsmlem:alterationProperties
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:MetamorphicDescription ;
+                           owl:onProperty     gsmlem:metamorphicProperties
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlem:lithology
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:consolidationDegree
+                         ] ;
+        skos:definition  "A specialized CompoundMaterial that includes consolidated and unconsolidated materials as well as mixtures of consolidated and unconsolidated materials."@en .
+
+gsmlem:fabricType  a     owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Attribute to denote the type of fabric in the CompoundMaterial (eg, rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. FabricDescription is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation [Passchier and Trouw, 1998], and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly."@en .
+
+gsmlem:geneticCategory
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "A term that represents a summary geologic history of the material. (ie, a genetic process classifier term) Examples include igneous, sedimentary, metamorphic, shock metamorphic, volcanic, pyroclastic."@en .
+
+gsmlem:metamorphicEvent
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlga:GeologicEvent ;
+        skos:definition  "To denote the age, environment and process associated with a particular metamorphic assemblage in a GeologicUnit"@en .
+
+gsmlem:peakTemperatureValue
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "A numerical value to indicate the estimated temperature at peak metamorphic conditions."@en .
+
+gsmlem:alterationType
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "AlterationType is a general description of the dominant alteration mineralogy or alteration type, in common usage. Examples include: argillic, phyllic, potassic, propylitic, calc-silicate, skarn, deuteric, greisen, serpenitisation,  weathering, etc."@en .
+
+gsmlem:ParticleGeometryDescription
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlf:Organism ;
+                           owl:onProperty     gsmlem:sourceOrganism
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:sorting
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlem:size
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsp:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlem:aspectRatio
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlem:particleType
+                         ] ;
+        skos:definition  "ParticleGeometryDescription describes particles in a CompoundMaterial independent of their relationship to each other or orientation. It is distinguished from Fabric in that the ParticleGeometryDescription remains constant if the material is disaggregated into its constituent particles, whereas Fabric is lost if the material is disaggregated.  Properties include the particle size (grainsize), particle sorting (size distribution, eg: well sorted, poorly sorted, bimodal sorting), particle shape (surface rounding or crystal face development, eg: well rounded, euhedral, anhedral), and particle aspectRatio (eg: elongated, platy, bladed, compact, acicular)."@en .
+
+gsmlem:geochemistry  a   owl:ObjectProperty ;
+        rdfs:range       gsmlem:ChemicalComposition ;
+        skos:definition  "Delivers a representative chemical analysis of the EarthMaterial"@en .
+
+gsmlem:size  a           owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "The Size attribute specifies particle grainsize.  Values may be reported using absolute measurements (eg: range, mean, median, mode, maximum) or as descriptive terms from a schema appropriate to the type of Compound Material (eg: the Udden-Wentworth sheme for clastic sedimentary rocks - silt, sand, gravel; volcaniclastic rocks - ash, lapilli, bomb; crystalline rocks - fine, medium, coarse, cryptocrystalline)"@en .
+
+gsmlem:alterationProperties
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:AlterationDescription ;
+        skos:definition  "Decribes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. Includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic."@en .
+
+gsmlem:InorganicFluid
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlem:EarthMaterial ;
+        skos:definition  "An inorganic, non-crystalline EarthMaterial (solid, liquid, or gas) that tends to flow or conform to the shape of its container.  Includes glass.  By convention liquid mercury is considered a mineral (examples: water, brine, glass)\r\n\r\nThis class is an empty placeholder for extension at a later date, or by other domain models."@en .
+
+gsmlem:MaterialRelation
+        a                owl:Class ;
+        rdfs:subClassOf  gsml:GeologicRelation ;
+        skos:definition  "The MaterialRelation class describes the relationships between constituent parts in an Earth Material (eg: A mineral overgrowth on a phenocryst within a granite). \r\n\r\nRelationships are always binary and directional.  There is always a single source and a single target. The relationship is always defined from the perspective of the Source and is generally an active verb.\r\n\r\nExample:  Consider an overgrowth of albite on plagioclase in a granite. The Source would originate with the albite constituentPart description.  In this case, the Target would point to the plagioclase constituentPart description and the relationship attribute would be 'overgrowth' and the sourceRole is 'overgrows'.  Other appropriate role attributes might include: crosscuts, replaces, etc. for crosscutting and replacement relationships.\r\n\r\nInverse relationships must be explicitly recorded as well or else they are invisible."@en .
+
+gsmlem:CompoundMaterial.particleGeometry
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlem:CompoundMaterial ;
+        rdfs:range       gsmlem:ParticleGeometryDescription ;
+        skos:definition  "Describes the particle geometry of the CompoundMaterial"@en .

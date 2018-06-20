@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="sc/gsml3.xml" end="Wed Jun 20 18:33:19 EDT 2018" resultCode="0" start="Wed Jun 20 18:28:43 EDT 2018" version="2.5.0">
+  <Messages>
+    <Info message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
+    <Info message="---------- Semantic validation of ShapeChange configuration: COMPLETE ----------"/>
+    <Info message="Connecting to C:\etc\gsmlogc\GeoSciML\GeoSciMLv3.2\GeoSciMLv3.2_unversioned.EAP"/>
+    <Info message="Connected to C:\etc\gsmlogc\GeoSciML\GeoSciMLv3.2\GeoSciMLv3.2_unversioned.EAP"/>
+    <Info message="Starting reading C:\etc\gsmlogc\GeoSciML\GeoSciMLv3.2\GeoSciMLv3.2_unversioned.EAP"/>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::Rel-r::licensePart::licensePartId'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::Rel-r::licensePart::licensePartIdRef'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::Rel-r::licensePart::varRef'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::attribute::form'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::element::form'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::simpleType::final'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::attribute::use'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::occurs::maxOccurs'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::wildcard::namespace'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::narrowMaxMin::minOccurs'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::narrowMaxMin::maxOccurs'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::wildcard::processContents'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::complexType::block'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::element::final'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::complexType::final'"/>
+    </Warning>
+    <Warning message="Stereotype &lt;&lt;XSDattribute&gt;&gt; not supported for UML model elements of type 'AssociationEnd'.">
+      <Detail message="Context: Property 'Model::Domain Model::HollowWorld::ISO TC211::ISO 19153 GeoDRM RM::ISO 19153:2013 GeoDRM RM::Data Model::XMLSchema::element::block'"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'xsdDocument', but in addition to returned value 'FIXME', an additional value 'geomExt.xsd' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'xsdDocument', but in addition to returned value 'cv.xsd', an additional value 'FIXME' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="Application schema 'xlinks' with ID '556' is not associated with an XML Schema document. A default name is used: 'xlinks.xsd'."/>
+    <Info message="Finished reading C:\etc\gsmlogc\GeoSciML\GeoSciMLv3.2\GeoSciMLv3.2_unversioned.EAP"/>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Error message="The property 'member' in class 'GSML' has a sequence number that is already in use for another property (collectionType) which will be overwritten.">
+      <Detail message="Context: Package 'Model::Domain Model::GeoSciML v3.2::GeoSciML::Collection'"/>
+    </Error>
+    <Info message="Restriction of property 'metadata' in class 'GeologicEvent' from supertype 'GeologicFeature'."/>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Info message="Application schema found, package name: 'CGI_Utilities', target namespace: 'http://xmlns.geosciml.org/Utilities/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="The default type implementation is 'skos:Concept'."/>
+    <Info message="Application schema found, package name: 'Collection', target namespace: 'http://xmlns.geosciml.org/Collection/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'EarthMaterial', target namespace: 'http://xmlns.geosciml.org/EarthMaterial/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'Fossil', target namespace: 'http://xmlns.geosciml.org/Fossil/3.0'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'GeologicAge', target namespace: 'http://xmlns.geosciml.org/GeologicAge/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'GeologicStructure', target namespace: 'http://xmlns.geosciml.org/GeologicStructure/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'GeologicTimescale', target namespace: 'http://xmlns.geosciml.org/GeologicTime/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'GeologicUnit', target namespace: 'http://xmlns.geosciml.org/GeologicUnit/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'Geomorphology', target namespace: 'http://xmlns.geosciml.org/Geomorphology/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'LaboratoryAnalysis-Specimen', target namespace: 'http://xmlns.geosciml.org/LaboratoryAnalysis-Specimen/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'TemporalReferenceSystem', target namespace: 'http://xmlns.geosciml.org/TemporalReferenceSystem/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'PhysicalProperties', target namespace: 'http://xmlns.geosciml.org/PhysicalProperties/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'Vocabulary', target namespace: 'http://xmlns.geosciml.org/Vocabulary/3.0'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'GeoSciML-Core', target namespace: 'http://xmlns.geosciml.org/GeoSciML-Core/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Info message="Application schema found, package name: 'Borehole', target namespace: 'http://xmlns.geosciml.org/Borehole/3.2'"/>
+    <Info message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'INPUT'."/>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'DescriptionPurpose'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::GeologicFeature::purpose"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'purpose'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::GeologicFeature::purpose"/>
+    </Warning>
+    <Error message="Type 'MD_Metadata' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Metadata entity set information::MD_Metadata"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'MD_Metadata'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::GeologicFeature::metadata"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'metadata'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::GeologicFeature::metadata"/>
+    </Warning>
+    <Error message="Type 'MD_RepresentativeFraction' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Identification information::MD_RepresentativeFraction"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'MD_RepresentativeFraction'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::resolutionScale"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'resolutionScale'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::resolutionScale"/>
+    </Warning>
+    <Error message="Type 'SF_SpatialSamplingFeature' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19156:2011 Observations and Measurements::Sampling Features::spatialSamplingFeature::SF_SpatialSamplingFeature"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'SF_SpatialSamplingFeature'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::samplingFrame"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'samplingFrame'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::samplingFrame"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'metadata'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::metadata"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'GeologicRelationshipTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::relationship"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'relationship'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::relationship"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'RelationRoleTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::sourceRole"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'sourceRole'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::sourceRole"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'targetRole'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::targetRole"/>
+    </Warning>
+    <Error message="Type 'CI_ResponsibleParty' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Citation and responsible party information::CI_ResponsibleParty"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'CI_ResponsibleParty'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::operator"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'operator'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::operator"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'driller'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::driller"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'BoreholeStartPointCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::startPoint"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'startPoint'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::startPoint"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'BoreholeInclinationCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::inclinationType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'inclinationType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::inclinationType"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'boreholeMaterialCustodian'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::boreholeMaterialCustodian"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'BoreholePurposeCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::purpose"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'purpose'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::purpose"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'dataCustodian'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::dataCustodian"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'BoreholeDrillingMethodCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::DrillingDetails::drillingMethod"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'drillingMethod'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::DrillingDetails::drillingMethod"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'metadata'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Collection::GSML::metadata"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'purpose'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::EarthMaterial::purpose"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'metadata'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::EarthMaterial::metadata"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'ConstituentPartRoleTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::ConstituentPart::role"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'role'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::ConstituentPart::role"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'MineralNameTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::Mineral::mineralName"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'mineralName'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::Mineral::mineralName"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'FabricTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::FabricDescription::fabricType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'fabricType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::FabricDescription::fabricType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'ParticleTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::ParticleGeometryDescription::particleType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'particleType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::ParticleGeometryDescription::particleType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'AlterationTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::AlterationDescription::alterationType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'alterationType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::AlterationDescription::alterationType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'LithologyTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::RockMaterial::lithology"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'lithology'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::RockMaterial::lithology"/>
+    </Warning>
+    <Error message="Type 'DQ_QuantitativeAttributeAccuracy' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Data quality information::DQ_QuantitativeAttributeAccuracy"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'DQ_QuantitativeAttributeAccuracy'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicDateEstimate::quality"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'quality'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicDateEstimate::quality"/>
+    </Warning>
+    <Error message="Type 'OM_Observation' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: observation::OM_Observation"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'OM_Observation'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicDateEstimate::observationalBasis"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'observationalBasis'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicDateEstimate::observationalBasis"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'EventProcessTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicEvent::eventProcess"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'eventProcess'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicEvent::eventProcess"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'metadata'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicEvent::metadata"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'AnthropogenicGeomorphologicFeatureTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::AnthropogenicGeomorphologicFeature::AnthropogenicGeomorphologicFeatureType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'AnthropogenicGeomorphologicFeatureType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::AnthropogenicGeomorphologicFeature::AnthropogenicGeomorphologicFeatureType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'NaturalGeomorphologicFeatureTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::NaturalGeomorphologicFeature::NaturalGeomorphologicFeatureType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'NaturalGeomorphologicFeatureType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::NaturalGeomorphologicFeature::NaturalGeomorphologicFeatureType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'ActivityStatus'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::NaturalGeomorphologicFeature::activity"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'activity'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::NaturalGeomorphologicFeature::activity"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'GeochronologicEraRank'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicTimescale::TimeScale::GeochronologicEra::rank"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'rank'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicTimescale::TimeScale::GeochronologicEra::rank"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'GeologicUnitPartRoleTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnitPart::role"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'role'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnitPart::role"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'GeologicUnitTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnit::geologicUnitType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'geologicUnitType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnit::geologicUnitType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'RankTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnit::rank"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'rank'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnit::rank"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'CompositionPartRoleTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::CompositionPart::role"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'role'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::CompositionPart::role"/>
+    </Warning>
+    <Error message="Type 'LI_ProcessStep' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Data quality information::LI_ProcessStep"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'LI_ProcessStep'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalProcess::computation"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'computation'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalProcess::computation"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'InstrumentTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalInstrument::type"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'type'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalInstrument::type"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'location'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalInstrument::location"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'AnalyticalMethodTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalMethod::methodName"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'methodName'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalMethod::methodName"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'operator'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalSession::operator"/>
+    </Warning>
+    <Error message="Type 'NamedValue' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: observation::NamedValue"/>
+    </Error>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'NamedValue'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalSession::parameter"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'parameter'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalSession::parameter"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'IsotopicEventType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::isotopicEvent"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'isotopicEvent'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::isotopicEvent"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'IsotopicSystemName'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::isotopicSystem"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'isotopicSystem'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::isotopicSystem"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'StatisticalMethodTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::statisticalMethod"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'statisticalMethod'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::statisticalMethod"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'interpretedBy'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::interpretedBy"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'GeologicSamplingMethodTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSamplingMethod::method"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'method'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSamplingMethod::method"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'parameter'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSamplingMethod::parameter"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'GeologicSpecimenPreparationTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSpecimenPreparation::preparationMethod"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'preparationMethod'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSpecimenPreparation::preparationMethod"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'parameter'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSpecimenPreparation::parameter"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'PhysicalPropertyTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::PhysicalProperties::PhysicalDescription::propertyName"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'propertyName'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::PhysicalProperties::PhysicalDescription::propertyName"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'MovementSenseTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::DisplacementValue::movementSense"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'movementSense'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::DisplacementValue::movementSense"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'MovementTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::DisplacementValue::movementType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'movementType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::DisplacementValue::movementType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'LineationTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Lineation::lineationType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'lineationType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Lineation::lineationType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'NonDirectionalStructureTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::NonDirectionalStructure::structureType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'structureType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::NonDirectionalStructure::structureType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'ContactTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Contact::contactType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'contactType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Contact::contactType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'FaultTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::ShearDisplacementStructure::faultType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'faultType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::ShearDisplacementStructure::faultType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'DeformationStyleTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::ShearDisplacementStructure::deformationStyle"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'deformationStyle'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::ShearDisplacementStructure::deformationStyle"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'FoldProfileTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Fold::profileType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'profileType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Fold::profileType"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'FoliationTypeTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Foliation::foliationType"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'foliationType'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Foliation::foliationType"/>
+    </Warning>
+    <Warning message="Default type implementation is used as range of property 'positionalUncertainty'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::TemporalReferenceSystem::TimeOrdinalEraBoundary::positionalUncertainty"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'ConventionCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_PlanarOrientation::convention"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'convention'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_PlanarOrientation::convention"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'PlanarPolarityCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_PlanarOrientation::polarity"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'polarity'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_PlanarOrientation::polarity"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'LinearDirectedCode'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_LinearOrientation::directed"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'directed'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_LinearOrientation::directed"/>
+    </Warning>
+    <Error message="Could not find a type mapping and also no class within the model to map class 'DeterminationMethodTerm'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_GeometricDescriptionValue::determinationMethod"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'determinationMethod'.">
+      <Detail message="--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_GeometricDescriptionValue::determinationMethod"/>
+    </Warning>
+    <Error message="Type 'OM_Process' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: observation::OM_Process"/>
+    </Error>
+    <Error message="Could not identify a mapping for the supertype 'OM_Process' of class 'AnalyticalProcess'.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalProcess"/>
+    </Error>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Error message="The class 'GeologicSpecimenPreparation' is modelled as a feature or data type, but has at least one supertype of a different category. The supertype is ignored.">
+      <Detail message="Context: Package 'Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen'"/>
+    </Error>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/geomExt/0.0' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@720b71. Name: GeometryExtensions"/>
+    </Warning>
+    <Warning message="A single value was requested for tag 'targetNamespace', but in addition to returned value 'FIXME', an additional value 'http://www.opengis.net/cv/0.2.1' exists and is ignored.">
+      <Detail message="Context: class InfoImpl. Element: de.interactive_instruments.ShapeChange.Model.EA.PackageInfoEA@126f7b2. Name: InterleavedCoverages"/>
+    </Warning>
+    <Error message="Type 'PreparationStep' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: specimen::PreparationStep"/>
+    </Error>
+    <Error message="Could not identify a mapping for the supertype 'PreparationStep' of class 'GeologicSpecimenPreparation'.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSpecimenPreparation"/>
+    </Error>
+    <Error message="Type 'Definition' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19136 GML::dictionary::Definition"/>
+    </Error>
+    <Error message="Could not identify a mapping for the supertype 'Definition' of class 'ControlledConcept'.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::Vocabulary::ControlledConcept"/>
+    </Error>
+    <Error message="Type 'Dictionary' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19136 GML::dictionary::Dictionary"/>
+    </Error>
+    <Error message="Could not identify a mapping for the supertype 'Dictionary' of class 'GeologicVocabulary'.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::Vocabulary::GeologicVocabulary"/>
+    </Error>
+    <Error message="Could not identify a mapping for the supertype 'Definition' of class 'VocabRelation'.">
+      <Detail message="--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::Vocabulary::VocabRelation"/>
+    </Error>
+    <Error message="Association classes are not supported by this target. Association class 'GeologicFeatureRelation' not represented in the ontology. Use the AssociationClassMapper transformation to convert association classes before executing the ontology target."/>
+    <Error message="Association classes are not supported by this target. Association class 'MaterialRelation' not represented in the ontology. Use the AssociationClassMapper transformation to convert association classes before executing the ontology target."/>
+    <Info message="Executed target class 'de.interactive_instruments.ShapeChange.Target.Ontology.OWLISO19150' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+  </Messages>
+  <Results>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsml.ttl" scope="http://geosciml.org/ont/gsml" target="ISO 19150-2 OWL Ontology">gsml.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlbh.ttl" scope="http://geosciml.org/ont/gsmlbh" target="ISO 19150-2 OWL Ontology">gsmlbh.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlc.ttl" scope="http://geosciml.org/ont/gsmlc" target="ISO 19150-2 OWL Ontology">gsmlc.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlem.ttl" scope="http://geosciml.org/ont/gsmlem" target="ISO 19150-2 OWL Ontology">gsmlem.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlf.ttl" scope="http://geosciml.org/ont/gsmlf" target="ISO 19150-2 OWL Ontology">gsmlf.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlga.ttl" scope="http://geosciml.org/ont/gsmlga" target="ISO 19150-2 OWL Ontology">gsmlga.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlgm.ttl" scope="http://geosciml.org/ont/gsmlgm" target="ISO 19150-2 OWL Ontology">gsmlgm.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlgt.ttl" scope="http://geosciml.org/ont/gsmlgt" target="ISO 19150-2 OWL Ontology">gsmlgt.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlgu.ttl" scope="http://geosciml.org/ont/gsmlgu" target="ISO 19150-2 OWL Ontology">gsmlgu.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlla.ttl" scope="http://geosciml.org/ont/gsmlla" target="ISO 19150-2 OWL Ontology">gsmlla.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlpp.ttl" scope="http://geosciml.org/ont/gsmlpp" target="ISO 19150-2 OWL Ontology">gsmlpp.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlst.ttl" scope="http://geosciml.org/ont/gsmlst" target="ISO 19150-2 OWL Ontology">gsmlst.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmltrs.ttl" scope="http://geosciml.org/ont/gsmltrs" target="ISO 19150-2 OWL Ontology">gsmltrs.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlu.ttl" scope="http://geosciml.org/ont/gsmlu" target="ISO 19150-2 OWL Ontology">gsmlu.ttl</Result>
+    <Result href="file:/C:/etc/gsmlogc/GeoSciML/GeoSciMLv3.2/sc/INPUT/gsmlv.ttl" scope="http://geosciml.org/ont/gsmlv" target="ISO 19150-2 OWL Ontology">gsmlv.ttl</Result>
+  </Results>
+</ShapeChangeResult>

@@ -1,0 +1,35 @@
+@prefix swe:   <urn:x-gsml-rdf:types> .
+@prefix gsmlpp: <http://geosciml.org/ont/gsmlpp#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://geosciml.org/ont/gsmlpp>
+        a                owl:Ontology ;
+        owl:imports      <http://schemas.geosciml.org/rdf/types.ttl> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlpp/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "The PhysicalProperties Application Schema permits description of bulk physical properties of earth materials, geologic units and geologic structures.  The model borrows from the SWECommon model to describe scalar (quantity) values of physical property measurements such as density, porosity, permeability, magnetic susceptibility, and other geophysical properties.\r\n\r\nIndividual physical property measurements made on sampling features such as specimens, outcrops, and boreholes should be delivered using the ISO19156 Observations and Measurements model."@en .
+
+gsmlpp:propertyName  a   owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A term from a controlled vocabulary of physical properties of rock materials (eg; density, porosity, magnetic susceptibility, remanent magnetism, permeability, seismic velocity)"@en .
+
+gsmlpp:propertyMeasure
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Quantity ;
+        skos:definition  "A scalar measurement of the physical property of a rock material, unit or structure"@en .
+
+gsmlpp:PhysicalDescription
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Quantity ;
+                           owl:onProperty     gsmlpp:propertyMeasure
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlpp:propertyName
+                         ] ;
+        skos:definition  "A class to describe the numeric physical properties of a geologic unit, earth material, or geologic structure. (eg; density, porosity, magnetic susceptibility, remanent magnetism).  These properties are modelled here as scalar numeric values (swe:Quantity).  \r\n\r\nVector and tensor physical properties are considered to be more applicable to located observations and should be delivered as SamplingFeature/Observations with associated geologic unit or geologic structure features."@en .

@@ -1,0 +1,321 @@
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix meta:  <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix gsmlla: <http://geosciml.org/ont/gsmlla#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix gsmlga: <http://geosciml.org/ont/gsmlga#> .
+
+gsmlla:GeochronologicInterpretation.citation
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:GeochronologicInterpretation ;
+        rdfs:range       meta:Citation ;
+        skos:definition  "Use ISO metadata citation element to describe author and other reference information.  Can be used to describe reference for new or legacy data"@en .
+
+<http://geosciml.org/ont/gsmlla>
+        a                owl:Ontology ;
+        owl:imports      <http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling.ttl> , <http://geosciml.org/ont/gsmlga> , <http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata.ttl> , <https://www.w3.org/2006/time> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlla/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "The LaboratoryAnlaysis-Specimen application schema extends the ISO19156 schema for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, most commonly in a laboratory environment. (Design of this package is based upon, and extends, the MOLES v3 data model.)"@en .
+
+gsmlla:methodName  a     owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Reference to a controlled vocabulary of names of analytical method used in a session (eg; XRF mass spectrometry, ICPMS, SHRIMP geochronology)"@en .
+
+gsmlla:preparationMethod
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A term from a controlled vocabulary to describe the method employed for the preparation of a geologic specimen for further analysis."@en .
+
+gsmlla:referenceAnalyses
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlla:ReferenceSpecimen ;
+        skos:definition  "Describes any reference specimens (ie, standards, blanks) used in the analytical session."@en .
+
+gsmlla:time  a           owl:ObjectProperty ;
+        rdfs:range       time:Period ;
+        skos:definition  "The time period during which the analysis was performed"@en .
+
+gsmlla:isotopicEvent  a  owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Describes any isotopic events that are relevant to the interpretation. eg; closure, isotopic mixing, Pb loss, etc"@en .
+
+gsmlla:location  a       owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The location and owner of an instrument"@en .
+
+gsmlla:operator  a       owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The name of the operator or organisation responsible for the analytical session"@en .
+
+gsmlla:GeologicSamplingMethod
+        a                owl:Class ;
+        rdfs:subClassOf  sf:SF_Process ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:GeologicSamplingMethod.parameter
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:GeologicSamplingMethod.method
+                         ] ;
+        skos:definition  "Implementation of SF_Process to describe the method used to obtain a geologic specimen\r\neg:\r\ndiamond drilling\r\npercussion drilling\r\npiston core drilling\r\nvibro core drilling\r\nchannel sampling\r\nsea floor dredging\r\ngeological hammer"@en .
+
+gsmlla:GeologicSamplingMethod.method
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:GeologicSamplingMethod ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Name of the process used to obtain or create a geologic specimen. eg:\r\ndiamond drilling\r\npercussion drilling\r\npiston core drilling\r\nvibro core drilling\r\nchannel sampling\r\nsea floor dredging\r\ncrushing\r\nmineral separation\r\nmelting\r\ngeological hammer"@en .
+
+gsmlla:type  a           owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The category of instrument used in an analytical session (eg; XRF, ICPMS, SHRIMP, etc)"@en .
+
+gsmlla:GeologicSamplingMethod.parameter
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:GeologicSamplingMethod ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "One or more specific parameters used in the sampling process."@en .
+
+gsmlla:ReferenceSpecimen
+        a                owl:Class ;
+        rdfs:subClassOf  sf:SF_Specimen ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlla:AnalyticalSession ;
+                           owl:onProperty     gsmlla:ReferenceSpecimen.usedIn
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  meta:Citation ;
+                           owl:onProperty     gsmlla:referenceDescription
+                         ] ;
+        skos:definition  "A reference specimen is a specimen with known or accepted values of some property. The citation property describes the location of a published description of these values.  Reference specimens include analytical blanks.\r\n\r\nAnalytical results from a reference specimen analysed during an AnalyticalSession are delivered in the same way as the results of other specimens analysed in that session."@en .
+
+gsmlla:interpretedBy  a  owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Party responsible for this interpretation"@en .
+
+gsmlla:Image  a          owl:Class ;
+        rdfs:subClassOf  sf:SF_SamplingFeature ;
+        skos:definition  "Use gml:description for xlink:href URL to a photographic image.  SF_Process = camera. For example, photographs of ion microprobe grain mounts."@en .
+
+gsmlla:sourceCollection
+        a                owl:ObjectProperty ;
+        rdfs:range       sf:SF_SamplingFeatureCollection ;
+        skos:definition  "Each geochronological interpretation has a mandatory association to a collection of sampling features (eg; a collection of burn spots or craters from a SHRIMP analytical session).  Legacy published data for which the SamplingFeatureCollection is unknown may be delivered with SamplingFeatureCollection = 'unknown'."@en .
+
+gsmlla:preferredInterpretation
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:boolean ;
+        skos:definition  "Indicates whether this interpretation is the preferred interpretation (ie; the analytical data may be reinterpreted)"@en .
+
+gsmlla:instrument  a     owl:ObjectProperty ;
+        rdfs:range       gsmlla:AnalyticalInstrument ;
+        skos:definition  "Identifies the instrument used in the analytical session"@en .
+
+gsmlla:interpretedAge
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlga:GeologicEvent ;
+        skos:definition  "Use GeoSciML GeologicEvent to describe event age, process and environment.  e.g, Event age = 350 Ma +/- 3 Ma.  Event process = intrusion, extrusion, metamorphism. Event environment = plutonic, marine."@en .
+
+gsmlla:ReferenceSpecimen.usedIn
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:ReferenceSpecimen ;
+        rdfs:range       gsmlla:AnalyticalSession ;
+        skos:definition  "Identifies any analytical sessions in which the reference specimens were used"@en .
+
+gsmlla:AnalyticalMethod
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  meta:Citation ;
+                           owl:onProperty     gsmlla:AnalyticalMethod.citation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:methodName
+                         ] ;
+        skos:definition  "Name, and published citation (nillable), of the analytical method used in an analytical session"@en .
+
+gsmlla:statisticalMethod
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The statistical method used to interpret the results"@en .
+
+gsmlla:AnalyticalSession.parameter
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:AnalyticalSession ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "This association is analogous to the \"parameter\" attribute of OM_Observation, but in this case describes environmental or instrument setting parameters that apply to an entire analytical session (eg, voltage, current, temperature, vacuum).  The \"name\" attribute of NamedValue is implemented in OMXML as a byReference URI to a controlled list."@en .
+
+gsmlla:AnalyticalInstrument.usedIn
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:AnalyticalInstrument ;
+        rdfs:range       gsmlla:AnalyticalSession ;
+        skos:definition  "Identifies one or more analytical sessions which used this instrument"@en .
+
+gsmlla:AnalyticalMethod.citation
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:AnalyticalMethod ;
+        rdfs:range       meta:Citation ;
+        skos:definition  "A published description of a particular analytical method (eg; a standard operating procedure document).  This attribute is nillable if such a document does not exist."@en .
+
+gsmlla:AnalyticalSession
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlla:ReferenceSpecimen ;
+                           owl:onProperty     gsmlla:referenceAnalyses
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlla:AnalyticalInstrument ;
+                           owl:onProperty     gsmlla:instrument
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:AnalyticalSession.parameter
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:operator
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  time:Period ;
+                           owl:onProperty     gsmlla:time
+                         ] ;
+        skos:definition  "This class describes the time and operator of a particular laboratory analytical session. AnalyticalSession also has associated links to the type of instrument and analytical method used, processing steps applied to data collected during a session, and instrument parameters unique to that session."@en .
+
+gsmlla:AnalyticalProcess
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:computation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlla:AnalyticalSession ;
+                           owl:onProperty     gsmlla:acquisition
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlla:AnalyticalMethod ;
+                           owl:onProperty     gsmlla:AnalyticalProcess.method
+                         ] ;
+        skos:definition  "Concrete implementation of OM_Process.  Links to an analytical session (data acquisition) or a computational process which produce analytical results."@en .
+
+gsmlla:isotopicSystem
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Describes the isotopic system used to calculate geochronological age. StatisticalAgeTypes vocabulary would contain values like:\r\nAr-Ar, K-Ar, Nd-Sm, Pb-Pb, Rb-Sr, Re-Os, U-Pb, etc"@en .
+
+gsmlla:GeologicSpecimenPreparation.parameter
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:GeologicSpecimenPreparation ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "One or more parameters used in this preparation step. eg, mesh size in a sieving process, type of chemical additives, parameters in a mineral separation process"@en .
+
+gsmlla:referenceDescription
+        a                owl:ObjectProperty ;
+        rdfs:range       meta:Citation ;
+        skos:definition  "Citation of published analytical results for this standard reference specimen"@en .
+
+gsmlla:GeologicSpecimenPreparation
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:GeologicSpecimenPreparation.parameter
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:preparationMethod
+                         ] ;
+        skos:definition  "An extension of OGC Specimen:PreparationStep to allow details of preparation steps to be delivered (eg, filtration and mesh size, chemical additives, crushing methods, drying parameters, etc)"@en .
+
+gsmlla:AnalyticalInstrument
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlla:AnalyticalSession ;
+                           owl:onProperty     gsmlla:AnalyticalInstrument.usedIn
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:location
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  time:Instant ;
+                           owl:onProperty     gsmlla:commissionDate
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlla:serialNumber
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlla:model
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:type
+                         ] ;
+        skos:definition  "Type of instrument used to perform an analytical observation"@en .
+
+gsmlla:model  a          owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "An optional text string to identify the model of instrument used. (eg instrument type = XRD, model = Siemens Diffraktometer D500)"@en .
+
+gsmlla:GeochronologicInterpretation
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:boolean ;
+                           owl:onProperty     gsmlla:preferredInterpretation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  sf:SF_SamplingFeatureCollection ;
+                           owl:onProperty     gsmlla:sourceCollection
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:statisticalMethod
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:isotopicEvent
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:isotopicSystem
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:GeologicEvent ;
+                           owl:onProperty     gsmlla:interpretedAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  meta:Citation ;
+                           owl:onProperty     gsmlla:GeochronologicInterpretation.citation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlla:interpretedBy
+                         ] ;
+        skos:definition  "An interpretation made by a geologist of the age of a specimen made by statistical analysis of a single collection of observations.  A specimen may have multiple geochronological interpretations made on it, each related to a different observation collection."@en .
+
+gsmlla:commissionDate
+        a                owl:ObjectProperty ;
+        rdfs:range       time:Instant ;
+        skos:definition  "The date of the commissioning of an instrument (optional)"@en .
+
+gsmlla:serialNumber  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "An optional text string for the serial number of the machine used in an analytical session."@en .
+
+gsmlla:AnalyticalProcess.method
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlla:AnalyticalProcess ;
+        rdfs:range       gsmlla:AnalyticalMethod ;
+        skos:definition  "Identifies the type of analytical method used to make an observation."@en .
+
+gsmlla:acquisition  a    owl:ObjectProperty ;
+        rdfs:range       gsmlla:AnalyticalSession ;
+        skos:definition  "Describes the analytical session (eg, laboratory session) in which an observation was made and data acquired."@en .
+
+gsmlla:computation  a  owl:ObjectProperty ;
+        rdfs:range  skos:Concept .

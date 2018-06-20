@@ -1,0 +1,25 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix gsmlv: <http://geosciml.org/ont/gsmlv#> .
+@prefix gsmlf: <http://geosciml.org/ont/gsmlf#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+gsmlf:classifier  a      owl:ObjectProperty ;
+        rdfs:range       gsmlv:ControlledConcept ;
+        skos:definition  "Classifies the Organism with a formal nomenclature (ControlledConcept)"@en .
+
+gsmlf:Organism  a        owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlv:ControlledConcept ;
+                           owl:onProperty     gsmlf:classifier
+                         ] ;
+        skos:definition  "Broad class to represent any living or once living thing. This is the connection to taxonomy/biology for fossils."@en .
+
+<http://geosciml.org/ont/gsmlf>
+        a                owl:Ontology ;
+        owl:imports      <http://geosciml.org/ont/gsmlv> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlf/3.0.0" ;
+        owl:versionInfo  "3.0.0" ;
+        skos:definition  "The Fossil package is provided for information only.  It is not encoded as part of the GeoSciML schemas.  Associations to other GeoSciML packages are all byReference only.\r\n\r\nFossilMolds and TraceFossils are modelled as types of non-directional GeologicStructures. Fossils are linked to living or once living things by the Organism class.\r\n\r\nFossils that occur as constituent parts of rocks are described as particleType = \"fossil\". Fossils are linked (byReference) to living or once living things by the Organism class.\r\n\r\nFossil specimens are modelled as O&M SF_Specimen, with specimenType = \"fossil\". Results of observations on that specimen can describe the fossil."@en .

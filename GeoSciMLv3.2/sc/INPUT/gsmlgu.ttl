@@ -1,0 +1,233 @@
+@prefix swe:   <urn:x-gsml-rdf:types> .
+@prefix gsmlpp: <http://geosciml.org/ont/gsmlpp#> .
+@prefix gsmlgu: <http://geosciml.org/ont/gsmlgu#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix gsmlem: <http://geosciml.org/ont/gsmlem#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gsml:  <http://geosciml.org/ont/gsml#> .
+
+gsmlgu:CompositionPart.role
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlgu:CompositionPart ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Defines the relationship of the earth material constituent in the geologic unit, e.g. vein, interbedded constituent, layers, dominant constituent. Scoped name because role is asserted by the geologist building the description."@en .
+
+gsmlgu:unitComposition
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Composition-based classification that requires integrating the character of the unit over large area, not applicable at the rock-material/specimen level. Examples: alkalic, subaluminous, peraluminous, I-Type, carbonate, phosphate."@en .
+
+gsmlgu:rank  a           owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Term that classifies the geologic unit in a generalization hierarchy from most local/smallest volume to most regional. Scoped name because classification is asserted, not based on observational data.\r\nExamples: group, subgroup, formation, member, bed, intrusion, complex, batholith"@en .
+
+gsmlgu:CompositionPart.proportion
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlgu:CompositionPart ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "Quantity that specifies the fraction of the geologic unit composed of the compound material."@en .
+
+gsmlgu:beddingPattern
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Term(s) specifying patterns of bedding thickness or relationships between bedding packages, \r\nExamples: thinning upward, thickening upward"@en .
+
+gsmlgu:geochemistry  a   owl:ObjectProperty ;
+        rdfs:range       gsmlem:ChemicalComposition ;
+        skos:definition  "Delivers a representative geochemical analysis of the GeologicUnit"@en .
+
+gsmlgu:BeddingDescription
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlgu:beddingThickness
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlgu:beddingStyle
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlgu:beddingPattern
+                         ] ;
+        skos:definition  "Description of bedding characteristics (eg, bed thickness,  bedding style or shape, patterns of variation in bedding thickness) in a geologic unit that has stratification."@en .
+
+gsmlgu:GeologicUnitPart
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgu:GeologicUnit ;
+                           owl:onProperty     gsmlgu:containedUnit
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlgu:GeologicUnitPart.proportion
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgu:GeologicUnitPart.role
+                         ] ;
+        skos:definition  "GeologicUnitPart associates a GeologicUnit with another GeologicUnit that is a proper part of that unit. Parts may be formal or notional. Formal parts refer to a specific body of rock, as in formal stratigraphic members. Notional parts refer to assemblages of particular EarthMaterials with particular internal structure, which may be repeated in various places within a unit (e.g. 'turbidite sequence', 'point bar assemblage', 'leucosome veins')"@en .
+
+gsmlgu:metamorphicCharacter
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:MetamorphicDescription ;
+        skos:definition  "Contains the description of the metamorphic character"@en .
+
+gsmlgu:beddingStyle  a   owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Term(s) specifying the style of bedding in a stratified geologic unit, e.g. lenticular, irregular, planar, vague, massive"@en .
+
+gsmlgu:outcropCharacter
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Describes the nature of outcrops formed by a geologic unit. Examples: bouldery, cliff-forming, ledge-forming, slope-forming, poorly exposed"@en .
+
+gsmlgu:bodyMorphology
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "The geometry or form of a GeologicUnit.  Examples include: dike (dyke), cone, fan, sheet, etc. Morphology is independent of the substance (EarthMaterial) that composes the GeologicUnit or process that formed it."@en .
+
+gsmlgu:exposureColor  a  owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "Typical color at the outcrop of a geologic unit."@en .
+
+gsmlgu:composition  a    owl:ObjectProperty ;
+        rdfs:range       gsmlgu:CompositionPart ;
+        skos:definition  "Describes the composition (detailed, instance specific, lithologic description) of the GeologicUnit"@en .
+
+gsmlgu:part  a           owl:ObjectProperty ;
+        rdfs:range       gsmlgu:GeologicUnitPart ;
+        skos:definition  "indicates a subsiduary unit with its role and proportion with respect to the container unit"@en .
+
+gsmlgu:containedUnit  a  owl:ObjectProperty ;
+        rdfs:range       gsmlgu:GeologicUnit ;
+        skos:definition  "Indicates the parent unit that contains the GeologicUnitPart."@en .
+
+gsmlgu:CompositionPart
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlgu:CompositionPart.proportion
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:CompoundMaterial ;
+                           owl:onProperty     gsmlgu:material
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgu:CompositionPart.role
+                         ] ;
+        skos:definition  "Element to represent composition of a geologic unit in terms of earth material constituents."@en .
+
+gsmlgu:physicalProperty
+        a           owl:ObjectProperty ;
+        rdfs:range  gsmlpp:PhysicalDescription .
+
+gsmlgu:geologicUnitType
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A scoped name pointing to a vocabulary defining the type of unit. Logical constraints of definition of unit and valid property cardinalities should be contained in the definition. Use of the CGI Geologic Unit Type vocabulary (eg: something like http://geosciml.org/classifierScheme/CGI/GeologicUnitType/200811) is preferred."@en .
+
+gsmlgu:unitThickness  a  owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "Typical thickness of the geologic unit. Always reported as a range. If have a single value, the upper and lower limit of range are the same."@en .
+
+<http://geosciml.org/ont/gsmlgu>
+        a                owl:Ontology ;
+        owl:imports      <http://geosciml.org/ont/gsml> , <http://geosciml.org/ont/gsmlpp> , <http://geosciml.org/ont/gsmlem> , <http://schemas.geosciml.org/rdf/types.ttl> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlgu/3.2" ;
+        owl:versionInfo  "3.2" ;
+        skos:definition  "The GeoSciML GeologicUnit Package contains classes representing notional geologic units, whose complete and precise extent is inferred to exist. Explicit spatial properties are available through association with a MappedFeature. \r\n\r\nGeologic units includes both formal units (i.e. formally adopted and named in the official lexicon) and informal units (i.e. named but not promoted to the lexicon) and unnamed units (i.e. recognisable and described and delineable in the field but not otherwise formalised).\r\n\r\nChange in version 3.2 --> The GeologicUnit package now imports CGI_Utilities in order to gain access to the new GSML_QuantityRange element (an extension of swe:QuantityRange)."@en .
+
+gsmlgu:GeologicUnit  a   owl:Class ;
+        rdfs:subClassOf  gsml:GeologicFeature ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlgu:exposureColor
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlgu:unitComposition
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgu:geologicUnitType
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlgu:bodyMorphology
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgu:GeologicUnitPart ;
+                           owl:onProperty     gsmlgu:part
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:MetamorphicDescription ;
+                           owl:onProperty     gsmlgu:metamorphicCharacter
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgu:CompositionPart ;
+                           owl:onProperty     gsmlgu:composition
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:ChemicalComposition ;
+                           owl:onProperty     gsmlgu:geochemistry
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlgu:unitThickness
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgu:BeddingDescription ;
+                           owl:onProperty     gsmlgu:bedding
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgu:rank
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:AlterationDescription ;
+                           owl:onProperty     gsmlgu:alterationCharacter
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlpp:PhysicalDescription ;
+                           owl:onProperty     gsmlgu:physicalProperty
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlgu:outcropCharacter
+                         ] ;
+        skos:definition  "Operationally, the GeologicUnit element is a container used to associate geologic properties with some mapped occurrence (through GeologicFeature.occurrence -> MappedFeature link), or with a geologic unit ControlledConcept in a vocabulary (through the GeologicUnit.classifier ->ControlledConcept link).\r\n\r\nConceptually, may represent a body of material in the Earth whose complete and precise extent is inferred to exist (NADM GeologicUnit, Stratigraphic unit in sense of NACSN or International Stratigraphic Code), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like 'granitic rock' or 'alluvial deposit', surficial units like 'till' or 'old alluvium').\r\n\r\nSpatial properties are only available through association with a MappedFeature. Includes both formal units (i.e. formally adopted and named in the official lexicon) and informal units (i.e. named but not promoted to the lexicon) and unnamed units (i.e. recognisable and described and delineable in the field but not otherwise formalised)."@en .
+
+gsmlgu:bedding  a        owl:ObjectProperty ;
+        rdfs:range       gsmlgu:BeddingDescription ;
+        skos:definition  "An association to describe the character of bedding in a stratified geologic unit."@en .
+
+gsmlgu:alterationCharacter
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:AlterationDescription ;
+        skos:definition  "Describes the alteration character (either hydrothermal or weathering) of a GeologicUnit"@en .
+
+gsmlgu:material  a       owl:ObjectProperty ;
+        rdfs:range       gsmlem:CompoundMaterial ;
+        skos:definition  "Description of the compound material that comprises part or all of the geologic unit"@en .
+
+gsmlgu:beddingThickness
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "Term(s) or numeric values characterizing the thickness of bedding in the unit."@en .
+
+gsmlgu:GeologicUnitPart.proportion
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlgu:GeologicUnitPart ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "Quantity that specifies the fraction of the geologic unit formed by the part."@en .
+
+gsmlgu:GeologicUnitPart.role
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlgu:GeologicUnitPart ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Nature of the parts, e.g. facies, stratigraphic, interbeds, geographic, eastern facies,"@en .

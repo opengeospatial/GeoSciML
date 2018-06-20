@@ -1,0 +1,148 @@
+@prefix gsmlgt: <http://geosciml.org/ont/gsmlgt#> .
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix gsmltrs: <http://geosciml.org/ont/gsmltrs#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gtrs:  <http://resource.geosciml.org/schema/cgi/trs/3.0/> .
+
+gsmlgt:GeologicTimescale
+        a                owl:Class ;
+        rdfs:subClassOf  gtrs:TimeOrdinalReferenceSystem ;
+        skos:definition  "The classic \"Geologic Timescale\" comprising an ordered, hierarchical set of named \"eras\" is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is in principle defined independently."@en .
+
+<http://geosciml.org/ont/gsmlgt>
+        a                owl:Ontology ;
+        owl:imports      <http://def.seegrid.csiro.au/static/ontology/geotime/gtrs.ttl> , <http://geosciml.org/ont/gsmltrs> , <http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling.ttl> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlgt/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "The Geologic Timescale package contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the International Commission on Stratigraphy."@en .
+
+gsmlgt:StratigraphicSection
+        a                owl:Class ;
+        rdfs:subClassOf  sf:SF_SamplingCurve ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:conservation
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:accessibility
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:geologicDescription
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:geologicSetting
+                         ] ;
+        skos:definition  "A sampled section of the stratigraphic record used to define a period in geologic time"@en .
+
+gsmlgt:status  a         owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "A description of the status of stratigraphic point (eg, formally accepted, etc)"@en .
+
+gsmlgt:geologicDescription
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "A description of the geology of the stratigraphic section (eg, lithology, paleontology, paleogeography, etc)"@en .
+
+gsmlgt:accessibility  a  owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "A description of the ability to access the stratigraphic section"@en .
+
+gsmlgt:GeochronologicEra.stratotype
+        a            owl:ObjectProperty ;
+        rdfs:domain  gsmlgt:GeochronologicEra ;
+        rdfs:range   gsmlgt:StratigraphicSection .
+
+gsmlgt:StandardGlobalNumericalAge
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlgt:NumericEraBoundary ;
+        skos:definition  "A standard numeric age point (a numeric analogue to a 'golden spike') applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary (Walshe, Gradstein and Ogg, 2004)"@en .
+
+gsmlgt:GlobalStratotypePoint
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlgt:StratigraphicPoint ;
+        skos:definition  "A type of stratigraphic point used to define a globally agreed point in geologic time"@en .
+
+gsmlgt:conservation  a   owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "A description of measures to conserve the stratigraphic section"@en .
+
+gsmlgt:StratigraphicPoint
+        a                owl:Class ;
+        rdfs:subClassOf  sf:SF_SamplingPoint ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:status
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:additionalCorrelationProperty
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:string ;
+                           owl:onProperty     gsmlgt:primaryGuidingCriterion
+                         ] ;
+        skos:definition  "A point in the stratigraphic record used to define a geochronologic boundary or point in geologic time"@en .
+
+gsmlgt:rank  a           owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A term from a controlled vocabulary describing the rank of the time period (eg, eon, era, period, stage)"@en .
+
+gsmlgt:GlobalStratotypeSection
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlgt:StratigraphicSection ;
+        skos:definition  "A type of stratigraphic section used to define a globally agreed standard period of geologic time"@en .
+
+gsmlgt:GeochronologicBoundary.stratotype
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlgt:GeochronologicBoundary ;
+        rdfs:range       gsmlgt:StratigraphicPoint ;
+        skos:definition  "Several StratigraphicPoints may be associated with a boundary, but only one may have GSSP ratified status. The others are proposed equivalent."@en .
+
+gsmlgt:primaryGuidingCriterion
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "A description of the primary criterion used to establish this stratigraphic point"@en .
+
+gsmlgt:geologicSetting
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "A description of the geologic setting of the stratigraphic section"@en .
+
+gsmlgt:NumericEraBoundary
+        a                owl:Class ;
+        rdfs:subClassOf  gsmltrs:TimeOrdinalEraBoundary ;
+        skos:definition  "Used for pre-Ediacaran and Pleistocene / Holocene boundaries in the standard timescale"@en .
+
+gsmlgt:additionalCorrelationProperty
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Any additional criteria used to establish this stratigraphic point"@en .
+
+gsmlgt:GeochronologicBoundary
+        a                owl:Class ;
+        rdfs:subClassOf  gsmltrs:TimeOrdinalEraBoundary ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgt:StratigraphicPoint ;
+                           owl:onProperty     gsmlgt:GeochronologicBoundary.stratotype
+                         ] ;
+        skos:definition  "A boundary between two geochronologic time periods"@en .
+
+gsmlgt:GeochronologicEra
+        a                owl:Class ;
+        rdfs:subClassOf  gsmltrs:TimeOrdinalEra ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgt:StratigraphicSection ;
+                           owl:onProperty     gsmlgt:GeochronologicEra.stratotype
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgt:rank
+                         ] ;
+        skos:definition  "The association of an era with a stratotype is optional.  In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used. \r\n\r\nRather, the association of an Era with geologic units and sections is indirect, via the association of an era with Boundaries, which are in turn tied to Stratotype Points, which occur within host Stratotype Sections. \r\n\r\nNote that the \"German School\" defines stratigraphic eras conceptually, without reference to stratotypes."@en .

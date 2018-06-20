@@ -1,0 +1,134 @@
+@prefix swe:   <urn:x-gsml-rdf:types> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gsmlu: <http://geosciml.org/ont/gsmlu#> .
+
+gsmlu:convention  a      owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The convention used for the measurement"@en .
+
+gsmlu:CGI_GeometricDescriptionValue
+        a                      owl:Class ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  xsd:string ;
+                                 owl:onProperty     gsmlu:descriptiveOrientation
+                               ] ;
+        rdfs:subClassOf        [ a                  owl:Restriction ;
+                                 owl:allValuesFrom  skos:Concept ;
+                                 owl:onProperty     gsmlu:determinationMethod
+                               ] ;
+        iso19150-2:isAbstract  true ;
+        skos:definition        "Description of the planar or linear orientation of a geologic feature.   \r\nAllows specifying direction by direction vector (eg Dip/Dip Direction), compass point (NE),  description (\"toward fold hinge\", \"below')"@en .
+
+gsmlu:determinationMethod
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Describes the way the orientation value was determined (eg measured, inferred from dip slope, etc)"@en .
+
+gsmlu:CGI_Vector  a      owl:Class ;
+        rdfs:subClassOf  gsmlu:CGI_LinearOrientation ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlu:magnitude
+                         ] ;
+        skos:definition  "data type for linear orientation with magnitude. Cardinality on magnitude is 1, if magnitude is unknown use CGI_LinearOrientation"@en .
+
+gsmlu:magnitude  a       owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "The numerical length of a linear vector"@en .
+
+gsmlu:descriptiveOrientation
+        a                owl:DatatypeProperty ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Textual specification of orientation, possibly referencing some local geography"@en .
+
+gsmlu:lowerValue  a  owl:DatatypeProperty ;
+        rdfs:range  xsd:double .
+
+gsmlu:CGI_LinearOrientation
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlu:CGI_GeometricDescriptionValue ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlu:trend
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlu:plunge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlu:directed
+                         ] ;
+        skos:definition  "Description of the measured orientation of a line.  At least one of plunge or trend should not be nil."@en .
+
+gsmlu:upperValue  a  owl:DatatypeProperty ;
+        rdfs:range  xsd:double .
+
+gsmlu:CGI_PlanarOrientation
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlu:CGI_GeometricDescriptionValue ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlu:polarity
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlu:dip
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:QuantityRange ;
+                           owl:onProperty     gsmlu:azimuth
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlu:convention
+                         ] ;
+        skos:definition  "Description of the geometry of a plane."@en .
+
+gsmlu:polarity  a        owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Indicates whether the planar orientation is associated with a directed feature that is overturned, upright, vertical etc."@en .
+
+gsmlu:trend  a           owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "The azimuth (compass bearing) value of the linear orientation."@en .
+
+gsmlu:directed  a        owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "To indicate if orientation represents linear feature that is directed, e.g. clast imbrication, mylonitic lineation with sense of shear, slickenlines with displacement direction, rather than undirected.  A code list to indicate which is the directed end of the linear orientation"@en .
+
+<http://geosciml.org/ont/gsmlu>
+        a                owl:Ontology ;
+        owl:imports      <http://schemas.geosciml.org/rdf/types.ttl> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlu/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "A package of utility elements, including definitions of text and numeric value types, and specialist value types for geological structural measurements and geologic age values.\r\n\r\nThe GeoSciML \"CGI_Value\" model provides a generic way of encoding \"literal\" values, both textual and numeric, which have uncertainty and may be a range. These structures are designed to be able to capture value descriptions as conventionally recorded by geologists.  \r\n\r\nThe Value structures are for when you need \r\n1. a qualifier, \r\n2. to be able to use either single values or ranges, or \r\n3. to express uncertainty on numeric values \r\n4. use numbers or words as alternatives for a single value or in a mixed range\r\n\r\ne.g. \"usually X\", \"greater than Y\" where X and Y are either a quatity (number with a scale) or a term (word from a vocabulary) or a range constructed from measures and terms.\r\n\r\n\"CGI_GeometricDescriptions\" allow describing the planar or linear orientation of a geologic feature. Allows specifying direction by DirectionVector (eg Dip/Dip Direction), compass point (NE), description (\"toward fold hinge\", \"below')\r\n\r\nThese values are usually obtained as the result of an observation. The description of the associated observation event will provide more detail about the observation method, result quality, etc\r\n\r\n\"CGI_NumericAgeRange\" allows the description of geological ages expressed as numbers of years before 1950"@en .
+
+gsmlu:GSML_QuantityRange
+        a                owl:Class ;
+        rdfs:subClassOf  swe:QuantityRange ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmlu:upperValue
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  xsd:double ;
+                           owl:onProperty     gsmlu:lowerValue
+                         ] .
+
+gsmlu:plunge  a          owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "Magnitude of the plunge."@en .
+
+gsmlu:dip  a             owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "Dip is the angle that the structural surface (eg bedding, fault plane) makes with the horizontal measured perpindicular to the strike of the structure and in the vertical plane as a numeric or term"@en .
+
+gsmlu:azimuth  a         owl:ObjectProperty ;
+        rdfs:range       swe:QuantityRange ;
+        skos:definition  "The azimuth (compass point, bearing etc) value of the orientation. Convention reports how azimuth is interpreted; if is quadrant. Allowance of different convention makes querying more difficult."@en .

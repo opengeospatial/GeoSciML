@@ -1,0 +1,253 @@
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix gsmlem: <http://geosciml.org/ont/gsmlem#> .
+@prefix gsmlc: <http://geosciml.org/ont/gsmlc#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gsml:  <http://geosciml.org/ont/gsml#> .
+
+gsmlc:metadata  a   owl:ObjectProperty ;
+        rdfs:range  skos:Concept .
+
+gsmlc:relationItem  a    owl:ObjectProperty ;
+        rdfs:range       gsml:GeologicRelation ;
+        skos:definition  "The relationItem attribute is a placeholder for the GeologicRelation class that is included as a member of a GSML Collection."@en .
+
+<http://geosciml.org/ont/gsmlc>
+        a                owl:Ontology ;
+        owl:imports      <http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling.ttl> , <http://www.opengis.net/ont/geosparql> , <http://geosciml.org/ont/gsml> , <http://geosciml.org/ont/gsmlem> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlc/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "The GeoSciML Collection package contains facade classes that facilitate the structuring of WFS response documents and other application uses."@en .
+
+gsmlc:mappedItem  a      owl:ObjectProperty ;
+        rdfs:range       gsml:MappedFeature ;
+        skos:definition  "The mappedItem attribute is a placeholder for the MappedFeature class that is included as a member of a GSML Collection."@en .
+
+gsmlc:samplingFeatureItem
+        a                owl:ObjectProperty ;
+        rdfs:range       sf:SF_SamplingFeature ;
+        skos:definition  "The SF_SamplingFeatureItem attribute is a placeholder for the SamplingFeature class that is included as a member of a GSML Collection."@en .
+
+gsmlc:earthMaterialItem
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlem:EarthMaterial ;
+        skos:definition  "The earthMaterialItem attribute is a placeholder for the EarthMaterial class that is included as a member of a GSML Collection."@en .
+
+gsmlc:GSMLitem  a        owl:Class ;
+        rdfs:subClassOf  [ a            owl:Class ;
+                           owl:unionOf  ( [ a                   owl:Class ;
+                                            owl:intersectionOf  ( [ a                   owl:Restriction ;
+                                                                    owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty      gsmlc:earthMaterialItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:featureItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:geometryItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:mappedItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:relationItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:samplingFeatureItem
+                                                                  ]
+                                                                )
+                                          ]
+                                          [ a                   owl:Class ;
+                                            owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:earthMaterialItem
+                                                                  ]
+                                                                  [ a                   owl:Restriction ;
+                                                                    owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty      gsmlc:featureItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:geometryItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:mappedItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:relationItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:samplingFeatureItem
+                                                                  ]
+                                                                )
+                                          ]
+                                          [ a                   owl:Class ;
+                                            owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:earthMaterialItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:featureItem
+                                                                  ]
+                                                                  [ a                   owl:Restriction ;
+                                                                    owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty      gsmlc:geometryItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:mappedItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:relationItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:samplingFeatureItem
+                                                                  ]
+                                                                )
+                                          ]
+                                          [ a                   owl:Class ;
+                                            owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:earthMaterialItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:featureItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:geometryItem
+                                                                  ]
+                                                                  [ a                   owl:Restriction ;
+                                                                    owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty      gsmlc:mappedItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:relationItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:samplingFeatureItem
+                                                                  ]
+                                                                )
+                                          ]
+                                          [ a                   owl:Class ;
+                                            owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:earthMaterialItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:featureItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:geometryItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:mappedItem
+                                                                  ]
+                                                                  [ a                   owl:Restriction ;
+                                                                    owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty      gsmlc:relationItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:samplingFeatureItem
+                                                                  ]
+                                                                )
+                                          ]
+                                          [ a                   owl:Class ;
+                                            owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:earthMaterialItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:featureItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:geometryItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:mappedItem
+                                                                  ]
+                                                                  [ a                owl:Restriction ;
+                                                                    owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty   gsmlc:relationItem
+                                                                  ]
+                                                                  [ a                   owl:Restriction ;
+                                                                    owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                    owl:onProperty      gsmlc:samplingFeatureItem
+                                                                  ]
+                                                                )
+                                          ]
+                                        )
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  sf:SF_SamplingFeature ;
+                           owl:onProperty     gsmlc:samplingFeatureItem
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsml:GeologicRelation ;
+                           owl:onProperty     gsmlc:relationItem
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsml:MappedFeature ;
+                           owl:onProperty     gsmlc:mappedItem
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsp:Geometry ;
+                           owl:onProperty     gsmlc:geometryItem
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsml:GeologicFeature ;
+                           owl:onProperty     gsmlc:featureItem
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlem:EarthMaterial ;
+                           owl:onProperty     gsmlc:earthMaterialItem
+                         ] ;
+        skos:definition  "GSMLitem is a union class that specifies the types of features that are allowed to be members of the GSML class, and therefore, members of a GML Collection."@en .
+
+gsmlc:member  a          owl:ObjectProperty ;
+        rdfs:range       gsmlc:GSMLitem ;
+        skos:definition  "Points to a member of a GSML collection, which can be any of the GeoSciML classes that are listed in the GSMLitem union class."@en .
+
+gsmlc:GSML  a            owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlc:metadata
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlc:GSMLitem ;
+                           owl:onProperty     gsmlc:member
+                         ] ;
+        skos:definition  "A collection container for items to be bundled in WFS response documents and other applications. FeatureType stereotype allows this to be a FeatureMember in a WFS_FeatureCollection.\r\n\r\nAn attribute \"collectionType\" is added in version 3.2"@en .
+
+gsmlc:featureItem  a     owl:ObjectProperty ;
+        rdfs:range       gsml:GeologicFeature ;
+        skos:definition  "The featureItem attribute is a placeholder for the GeologicFeature class that is included as a member of a GSML Collection."@en .
+
+gsmlc:geometryItem  a    owl:ObjectProperty ;
+        rdfs:range       gsp:Geometry ;
+        skos:definition  "The geometryItem attribute is a placeholder for the AbstractGeometry class that is included as a member of a GSML Collection."@en .

@@ -1,0 +1,86 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix gsmlv: <http://geosciml.org/ont/gsmlv#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+gsmlv:VocabRelation  a   owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlv:GeologicVocabulary ;
+                           owl:onProperty     gsmlv:VocabRelation.vocabulary
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlv:ControlledConcept ;
+                           owl:onProperty     gsmlv:source
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlv:ControlledConcept ;
+                           owl:onProperty     gsmlv:target
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  rdfs:Resource ;
+                           owl:onProperty     gsmlv:role
+                         ] ;
+        skos:definition  "Relationships between ControlledConcepts. Use to implement thesaurus type relationships like 'broader than', 'narrower than', 'related term', 'synonym' etc. role attribute specifies relationship from source to target, read 'source' 'role' 'target'. \r\n\r\nVocabRelation and some other components may be replaced by another mechanism (OWL, SKOS, RDF, etc) at some future date, according to maturity and adoption level of standard technologies"@en .
+
+gsmlv:prototype  a  owl:ObjectProperty ;
+        rdfs:range  owl:Class .
+
+gsmlv:VocabRelation.vocabulary
+        a            owl:ObjectProperty ;
+        rdfs:domain  gsmlv:VocabRelation ;
+        rdfs:range   gsmlv:GeologicVocabulary .
+
+gsmlv:source  a          owl:ObjectProperty ;
+        rdfs:range       gsmlv:ControlledConcept ;
+        skos:definition  "The 'source' ControlledConcept in theVocabRelation relationship."@en .
+
+gsmlv:ControlledConcept
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlv:VocabRelation ;
+                           owl:onProperty     gsmlv:linkToTarget
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlv:GeologicVocabulary ;
+                           owl:onProperty     gsmlv:ControlledConcept.vocabulary
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  owl:Class ;
+                           owl:onProperty     gsmlv:prototype
+                         ] ;
+        skos:definition  "Element to represent a defined concept.\r\nA concept in the context of a GeologicVocabulary.   A relationship class representing inclusion of an instance of a concept in a GeologicVocabulary. The GeologicConcept instance must have an associated definition (prototype 0..1), which may be text for human interpretation, or a formal description in the form of a geologic entity. \r\n\r\n    * items in the classification framework\r\n    * every GeologicUnit may be classified as being representative of a Controlled Concept. This may be a formal stratigraphic unit from a stratigraphic lexicon, or some generic mappable concept like 'alluvial fan deposit' or 'basaltic rock'.\r\n    * a Controlled Concept instance mayt be associated with one special feature or object, which is the prototype or normative description meant to specify what the concept represents."@en .
+
+gsmlv:target  a          owl:ObjectProperty ;
+        rdfs:range       gsmlv:ControlledConcept ;
+        skos:definition  "The 'target' ControlledConcept in theVocabRelation relationship."@en .
+
+gsmlv:linkToTarget  a    owl:ObjectProperty ;
+        rdfs:range       gsmlv:VocabRelation ;
+        skos:definition  "Links the source ControlledConcept to the appropriate VocabRelation that specifies the target ControlledConcept"@en .
+
+gsmlv:GeologicVocabulary
+        a                owl:Class ;
+        skos:definition  "A collection of terms (ControlledConcepts) and their associated definitions and relationships between the terms, usually organized in some logical fashion such as in a hierarchy (geologic time, rocks, unconsolidated deposits...).   An instance of a GeologicConcept may occur only once in a particular GeologicVocabulary.\r\n\r\nIn GeoSciML this is normally identified using a URN in the \"classifierScheme\" branch of the CGI URN scheme, with the @codesSpace attribute set to \"urn:ieft:rfc:2141\"."@en .
+
+gsmlv:role  a            owl:ObjectProperty ;
+        rdfs:range       rdfs:Resource ;
+        skos:definition  "Term that specifies the relationship between source and target vocabulary terms. Terms should be constructed so the source to target reading of the relationship is clear, for example SourceIsBroaderTerm, SourceIsChildOfTarget."@en .
+
+<http://geosciml.org/ont/gsmlv>
+        a                owl:Ontology ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlv/3.0.0" ;
+        owl:versionInfo  "3.0.0" ;
+        skos:definition  "The GeoSciML Vocabulary package contains classes to support definitions and classifications. \r\n\r\nThis package is a conceptual only, and is implemented using SKOS-RDF encoded vocabularies, and URI's to link by reference to controlled concepts which define classifiers."@en .
+
+gsmlv:ControlledConcept.vocabulary
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlv:ControlledConcept ;
+        rdfs:range       gsmlv:GeologicVocabulary ;
+        skos:definition  "A controlled concept belongs to a single vocabulary, since the context constrains the semantics. However, concepts from different vocabularies may have the same localized term as the value of (one of) its labels."@en .
+
+gsmlv:StratigraphicLexicon
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlv:GeologicVocabulary ;
+        skos:definition  "Geologic vocabulary that is a collection of ControlledConcepts that have (or could have...) GeologicFeature.GeologicUnit prototoype instances."@en .

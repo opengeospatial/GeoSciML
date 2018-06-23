@@ -1,0 +1,289 @@
+Could not find a type mapping and also no class within the model to map class 'DescriptionPurpose'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::GeologicFeature::purpose
+
+
+Type 'MD_Metadata' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Metadata entity set information::MD_Metadata
+
+Could not find a type mapping and also no class within the model to map class 'MD_Metadata'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::GeologicFeature::metadata
+
+Type 'MD_RepresentativeFraction' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Identification information::MD_RepresentativeFraction
+
+Could not find a type mapping and also no class within the model to map class 'MD_RepresentativeFraction'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::resolutionScale
+
+	
+Type 'SF_SpatialSamplingFeature' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19156:2011 Observations and Measurements::Sampling Features::spatialSamplingFeature::SF_SpatialSamplingFeature
+
+
+Could not find a type mapping and also no class within the model to map class 'SF_SpatialSamplingFeature'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicFeature::MappedFeature::samplingFrame
+
+
+Could not find a type mapping and also no class within the model to map class 'GeologicRelationshipTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::relationship
+
+Could not find a type mapping and also no class within the model to map class 'RelationRoleTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeoSciML-Core::GeologicRelation::GeologicRelation::sourceRole
+
+
+Type 'CI_ResponsibleParty' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Citation and responsible party information::CI_ResponsibleParty
+
+Could not find a type mapping and also no class within the model to map class 'CI_ResponsibleParty'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::operator
+
+Could not find a type mapping and also no class within the model to map class 'BoreholeStartPointCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::startPoint
+
+Could not find a type mapping and also no class within the model to map class 'BoreholeInclinationCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::inclinationType
+
+Could not find a type mapping and also no class within the model to map class 'BoreholePurposeCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::BoreholeDetails::purpose
+
+Could not find a type mapping and also no class within the model to map class 'BoreholeDrillingMethodCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Borehole::DrillingDetails::drillingMethod
+
+
+Could not find a type mapping and also no class within the model to map class 'ConstituentPartRoleTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::ConstituentPart::role
+
+Could not find a type mapping and also no class within the model to map class 'MineralNameTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::Mineral::mineralName
+
+Could not find a type mapping and also no class within the model to map class 'FabricTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::FabricDescription::fabricType
+
+Could not find a type mapping and also no class within the model to map class 'ParticleTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::ParticleGeometryDescription::particleType
+
+Could not find a type mapping and also no class within the model to map class 'AlterationTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::AlterationDescription::alterationType
+
+Could not find a type mapping and also no class within the model to map class 'LithologyTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::EarthMaterial::RockMaterial::lithology
+
+Type 'DQ_QuantitativeAttributeAccuracy' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Data quality information::DQ_QuantitativeAttributeAccuracy
+
+Could not find a type mapping and also no class within the model to map class 'DQ_QuantitativeAttributeAccuracy'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicDateEstimate::quality
+
+Type 'OM_Observation' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: observation::OM_Observation
+
+Could not find a type mapping and also no class within the model to map class 'OM_Observation'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicDateEstimate::observationalBasis
+
+Could not find a type mapping and also no class within the model to map class 'EventProcessTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicAge::GeologicEvent::eventProcess
+
+
+Could not find a type mapping and also no class within the model to map class 'AnthropogenicGeomorphologicFeatureTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::AnthropogenicGeomorphologicFeature::AnthropogenicGeomorphologicFeatureType
+
+Could not find a type mapping and also no class within the model to map class 'NaturalGeomorphologicFeatureTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::NaturalGeomorphologicFeature::NaturalGeomorphologicFeatureType
+
+Could not find a type mapping and also no class within the model to map class 'ActivityStatus'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::Geomorphology::NaturalGeomorphologicFeature::activity
+
+Could not find a type mapping and also no class within the model to map class 'GeochronologicEraRank'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicTimescale::TimeScale::GeochronologicEra::rank
+
+Could not find a type mapping and also no class within the model to map class 'GeologicUnitPartRoleTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnitPart::role
+
+Could not find a type mapping and also no class within the model to map class 'GeologicUnitTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnit::geologicUnitType
+
+Could not find a type mapping and also no class within the model to map class 'RankTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::GeologicUnit::rank
+
+Could not find a type mapping and also no class within the model to map class 'CompositionPartRoleTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicUnit::CompositionPart::role
+
+Type 'LI_ProcessStep' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19115:2006 Metadata (Corrigendum)::Data quality information::LI_ProcessStep
+
+
+Could not find a type mapping and also no class within the model to map class 'LI_ProcessStep'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalProcess::computation
+
+
+Could not find a type mapping and also no class within the model to map class 'InstrumentTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalInstrument::type
+
+Could not find a type mapping and also no class within the model to map class 'AnalyticalMethodTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalMethod::methodName
+
+Type 'NamedValue' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: observation::NamedValue
+
+Could not find a type mapping and also no class within the model to map class 'NamedValue'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalSession::parameter
+
+Could not find a type mapping and also no class within the model to map class 'IsotopicEventType'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::isotopicEvent
+
+Could not find a type mapping and also no class within the model to map class 'IsotopicSystemName'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::isotopicSystem
+
+Could not find a type mapping and also no class within the model to map class 'StatisticalMethodTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::Geochronology::GeochronologicInterpretation::statisticalMethod
+
+
+Could not find a type mapping and also no class within the model to map class 'GeologicSamplingMethodTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSamplingMethod::method
+
+
+Could not find a type mapping and also no class within the model to map class 'GeologicSpecimenPreparationTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSpecimenPreparation::preparationMethod
+
+Could not find a type mapping and also no class within the model to map class 'PhysicalPropertyTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::PhysicalProperties::PhysicalDescription::propertyName
+
+Could not find a type mapping and also no class within the model to map class 'MovementSenseTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::DisplacementValue::movementSense
+
+Could not find a type mapping and also no class within the model to map class 'MovementTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::DisplacementValue::movementType
+
+Could not find a type mapping and also no class within the model to map class 'LineationTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Lineation::lineationType
+
+Could not find a type mapping and also no class within the model to map class 'NonDirectionalStructureTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::NonDirectionalStructure::structureType
+
+Could not find a type mapping and also no class within the model to map class 'ContactTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Contact::contactType
+
+Could not find a type mapping and also no class within the model to map class 'FaultTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::ShearDisplacementStructure::faultType
+
+Could not find a type mapping and also no class within the model to map class 'DeformationStyleTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::ShearDisplacementStructure::deformationStyle
+
+Could not find a type mapping and also no class within the model to map class 'FoldProfileTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Fold::profileType
+
+Could not find a type mapping and also no class within the model to map class 'FoliationTypeTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::GeologicStructure::Foliation::foliationType
+
+Could not find a type mapping and also no class within the model to map class 'ConventionCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_PlanarOrientation::convention
+
+Could not find a type mapping and also no class within the model to map class 'PlanarPolarityCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_PlanarOrientation::polarity
+
+Could not find a type mapping and also no class within the model to map class 'LinearDirectedCode'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_LinearOrientation::directed
+
+Could not find a type mapping and also no class within the model to map class 'DeterminationMethodTerm'.
+
+--- Context - Property: Model::Domain Model::GeoSciML v3.2::GeoSciML::CGI_Utilities::CGI_GeometricDescriptionValue::determinationMethod
+
+Type 'OM_Process' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: observation::OM_Process
+
+Could not identify a mapping for the supertype 'OM_Process' of class 'AnalyticalProcess'.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::LaboratoryAnalysis::AnalyticalProcess
+
+Type 'PreparationStep' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: specimen::PreparationStep
+
+Could not identify a mapping for the supertype 'PreparationStep' of class 'GeologicSpecimenPreparation'.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::LaboratoryAnalysis-Specimen::GeologicSpecimen::GeologicSpecimenPreparation
+
+	
+Type 'Definition' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19136 GML::dictionary::Definition
+
+	
+Could not identify a mapping for the supertype 'Definition' of class 'ControlledConcept'.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::Vocabulary::ControlledConcept
+
+Type 'Dictionary' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::External ISO and OGC packages from HollowWorld::ISO 19136 GML::dictionary::Dictionary
+
+Could not identify a mapping for the supertype 'Dictionary' of class 'GeologicVocabulary'.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::Vocabulary::GeologicVocabulary
+
+Could not identify a mapping for the supertype 'Definition' of class 'VocabRelation'.
+
+--- Context - Class: Model::Domain Model::GeoSciML v3.2::GeoSciML::Vocabulary::VocabRelation
+
+Association classes are not supported by this target. Association class 'GeologicFeatureRelation' not represented in the ontology. Use the AssociationClassMapper transformation to convert association classes before executing the ontology target.
+
+	
+Association classes are not supported by this target. Association class 'MaterialRelation' not represented in the ontology. Use the AssociationClassMapper transformation to convert association classes before executing the ontology target.

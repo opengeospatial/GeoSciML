@@ -14,5 +14,5 @@
 
 to get usage instruction
 
-`java -jar RdfConv.jar -i`
+`java -jar RdfConv.jar`
 

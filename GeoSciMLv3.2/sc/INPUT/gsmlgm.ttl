@@ -1,0 +1,62 @@
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gsml:  <http://geosciml.org/ont/gsml#> .
+@prefix gsmlgm: <http://geosciml.org/ont/gsmlgm#> .
+
+gsmlgm:anthropogenicGeomorphologicFeatureType
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A byReference link to a dictionary of terms describing the type of geomorphologic feature"@en .
+
+gsmlgm:naturalGeomorphologicFeatureType
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A byReference link to a dictionary of terms describing the type of geomorphologic feature"@en .
+
+gsmlgm:activity  a       owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Describes the current activity status of the geomorphologic feature (eg, currently active, dormant, inactive, reactivated, etc)"@en .
+
+gsmlgm:GeomorphologicRelation
+        a                owl:Class ;
+        rdfs:subClassOf  gsml:GeologicFeatureRelation ;
+        skos:definition  "Use this association to relate a geomorphologic feature (ie, a landform) to a geologic unit which describes the surficial regolith materials which comprise or lie beneath the landform surface."@en .
+
+gsmlgm:GeomorphologicFeature
+        a                      owl:Class ;
+        rdfs:subClassOf        gsml:GeologicFeature ;
+        iso19150-2:isAbstract  true ;
+        skos:definition        "A feature describing the shape and nature of the Earth's land surface (ie, a landform).  These landforms may be created by natural Earth processes (eg, river channel, beach, moraine, mountain) or through human (anthropogenic) activity (eg, dredged channel, reclaimed land, mine waste dumps)."@en .
+
+gsmlgm:NaturalGeomorphologicFeature
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlgm:GeomorphologicFeature ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgm:activity
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgm:naturalGeomorphologicFeatureType
+                         ] ;
+        skos:definition  "A geomorphologic feature (ie, landform) that has been created by natural Earth processes. For example, river channel, beach ridge, caldera, canyon, moraine, mud flat."@en .
+
+gsmlgm:AnthropogenicGeomorphologicFeature
+        a                owl:Class ;
+        rdfs:subClassOf  gsmlgm:GeomorphologicFeature ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlgm:anthropogenicGeomorphologicFeatureType
+                         ] ;
+        skos:definition  "A geomorphologic feature (ie, landform) which has been created by human activity. For example, dredged channel, midden, open pit, reclaimed land."@en .
+
+<http://geosciml.org/ont/gsmlgm>
+        a                owl:Ontology ;
+        owl:imports      <http://geosciml.org/ont/gsml> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlgm/3.2.0" ;
+        owl:versionInfo  "3.2.0" ;
+        skos:definition  "The Geomorphology package describes features that comprise the shape and nature of the Earth's land surface (ie, landforms).  These landforms may be created by natural Earth processes (eg, river channel, beach, moraine, mountain) or through human (anthropogenic) activity (eg, dredged channel, reclaimed land, mine waste dumps)."@en .

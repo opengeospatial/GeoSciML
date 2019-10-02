@@ -1,0 +1,142 @@
+@prefix swe:   <urn:x-gsml-rdf:types> .
+@prefix gsmlgt: <http://geosciml.org/ont/gsmlgt#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gsml:  <http://geosciml.org/ont/gsml#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix gsmlga: <http://geosciml.org/ont/gsmlga#> .
+
+gsmlga:olderNamedAge  a  owl:ObjectProperty ;
+        rdfs:range       gsmlgt:GeochronologicEra ;
+        skos:definition  "Older boundary of age of event expressed using a geochronologic era defined according to a geologic time scale per GeologicTime schema"@en .
+
+<http://geosciml.org/ont/gsmlga>
+        a                owl:Ontology ;
+        owl:imports      <http://geosciml.org/ont/gsml> , <http://schemas.geosciml.org/rdf/types.ttl> , <http://geosciml.org/ont/gsmlgt> , <https://www.w3.org/2006/time> ;
+        owl:versionIRI   "http://geosciml.org/ont/gsmlga/3.2" ;
+        owl:versionInfo  "3.2" ;
+        skos:definition  "The GeoSciML GeologicAge package contains classes to support the description of geologic ages and events. \r\n\r\nA geologic age is related to a particular GeologicEvent, during which one or more geological processes act to modify geological entities."@en .
+
+gsmlga:olderBoundDate
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlga:GeologicDateEstimate ;
+        skos:definition  "The older bounding time coordinate in an age range"@en .
+
+gsmlga:numericAgeDate
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlga:NumericAgeRange ;
+        skos:definition  "The numericAgeDate attribute is the age of a particular geological event or feature expressed in terms of years before present (1950), using CGI_NumericAgeRange. This datatype allows a younger and older age boundary to express an interval, and a reporting age, which is a single numeric age to report for applications that can not use a numeric range. Age in years before present is an estimated time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials).\r\nNumeric age range uses StratigraphicDateEstimate to allow incorporation of various uncertainty measures using ISO19115 DataQuality elements, and binding with observation features to report details of date determination measurement."@en .
+
+gsmlga:youngerNamedAge
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlgt:GeochronologicEra ;
+        skos:definition  "Younger boundary of age of event expressed using a geochronologic era defined according to a geologic time scale per GeologicTime schema"@en .
+
+gsmlga:GeologicEvent  a  owl:Class ;
+        rdfs:subClassOf  gsml:GeologicFeature ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgt:GeochronologicEra ;
+                           owl:onProperty     gsmlga:olderNamedAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  swe:Category ;
+                           owl:onProperty     gsmlga:eventEnvironment
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgt:GeochronologicEra ;
+                           owl:onProperty     gsmlga:youngerNamedAge
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlga:metadata
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:NumericAgeRange ;
+                           owl:onProperty     gsmlga:numericAgeDate
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlgt:StratigraphicPoint ;
+                           owl:onProperty     gsmlga:prototype
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlga:eventProcess
+                         ] ;
+        skos:definition  "An identifiable event during which one or more geological processes act to modify geological entities. A GeologicEvent must have a specified GeologicAge and may have specified environments and processes. An example might be a cratonic uplift event during which erosion, sedimentation, and volcanism all take place.\r\n\r\nGeological history is an ordered aggregation of Geological Event objects, each of which may have an associated Geological Age, Geological Environment, and one or more Geological Process objects. Genesis typically pertains to some geological phenomenon (Geological Structure, Earth Material, Geological Unit, Fossil, etc.)\r\n\r\nIn GeoSciML 2.0 this ordering cannot be specified.\r\n\r\nA GeologicEvent must have a specified eventAge (numericAgeDate, olderNamedAge, or youngerNamedAge), at least one eventProcess, and may have specified eventEnvironments.  An example might be a cratonic uplift event during which erosion, sedimentation, and volcanism all take place. Traditionally, geologists have described the age of a feature without explicitly specifying the event or processes the age related to. The GeologicEvent package allows for explicitly linking the three, without mandating it.\r\n\r\nThe eventAge attribute is the age of a particular geological event or feature expressed in terms of years before present (absolute age), referred to the geological time scale, or by comparison with other geological events or features (relative age). An eventAge can represent an instant in time, an interval of time, or any combination of multiple instants or intervals. Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages referred to geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or \"contains inclusions of\"."@en .
+
+gsmlga:reportingDate  a  owl:ObjectProperty ;
+        rdfs:range       gsmlga:GeologicDateEstimate ;
+        skos:definition  "Single time coordinate value to report as representative for this NumericAge assignment"@en .
+
+gsmlga:GeologicHistory
+        a                owl:Class ;
+        rdfs:subClassOf  gsml:GeologicFeatureRelation ;
+        skos:definition  "Relates one or more GeologicEvents to a GeologicUnit or GeologicStructure to describe their age or geologic history."@en .
+
+gsmlga:NumericAgeRange
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:GeologicDateEstimate ;
+                           owl:onProperty     gsmlga:youngerBoundDate
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:GeologicDateEstimate ;
+                           owl:onProperty     gsmlga:olderBoundDate
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  gsmlga:GeologicDateEstimate ;
+                           owl:onProperty     gsmlga:reportingDate
+                         ] ;
+        skos:definition  "Class to represent general age assignment using numeric measurement results. All attributes have cardinality 1; report with nilReason=\"missing\" if a value is absent."@en .
+
+gsmlga:GeologicDateEstimate
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlga:observationalBasis
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  skos:Concept ;
+                           owl:onProperty     gsmlga:quality
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  time:Instant ;
+                           owl:onProperty     gsmlga:position
+                         ] ;
+        skos:definition  "An estimate of a point in geologic time and a link to its observational basis"@en .
+
+gsmlga:eventEnvironment
+        a                owl:ObjectProperty ;
+        rdfs:range       swe:Category ;
+        skos:definition  "The physical setting within which a GeologicEvent takes place.  GeologicEnvironment is construed broadly to include physical settings on the Earth surface specified by climate, tectonics, physiography or geography, and settings in the Earth’s interior specified by pressure, temperature, chemical environment, or tectonics."@en .
+
+gsmlga:position  a       owl:ObjectProperty ;
+        rdfs:range       time:Instant ;
+        skos:definition  "A point in geologic time"@en .
+
+gsmlga:youngerBoundDate
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlga:GeologicDateEstimate ;
+        skos:definition  "The younger bounding time coordinate in an age range"@en .
+
+gsmlga:prototype  a  owl:ObjectProperty ;
+        rdfs:range  gsmlgt:StratigraphicPoint .
+
+gsmlga:metadata  a  owl:ObjectProperty ;
+        rdfs:range  skos:Concept .
+
+gsmlga:eventProcess  a   owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "The eventProcess specifies the process or processes that occurred during the event. Examples include deposition, extrusion, intrusion, cooling."@en .
+
+gsmlga:quality  a        owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "A measure of the accuracy of the estimate of the point in time"@en .
+
+gsmlga:observationalBasis
+        a                owl:ObjectProperty ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Descriptions of the age determination acts which support this date estimate"@en .

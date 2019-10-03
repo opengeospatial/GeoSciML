@@ -24,6 +24,8 @@
 @prefix time:  <http://www.w3.org/2006/time#> .
 @prefix vs:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
 
 <http://gwml2.org/def/gwml2>
         a                owl:Ontology ;
@@ -91,7 +93,7 @@ gwml2:gwFlowSystemPart
 
 gwml2:Borehole
         a                owl:Class ;
-        rdfs:subClassOf  <http://def.seegrid.csiro.au/isotc211/iso19156/2011/samplingSF_SamplingCurve> ;
+        rdfs:subClassOf  sf:SF_SamplingCurve ;
         skos:definition  "General term for a hole drilled in the ground for various purposes such extraction of a core, release of fluid, etc."@en .
 
 gwml2:gwDivideSurface
@@ -200,7 +202,7 @@ gwml2:SealingComponent
 
 gwml2:GW_Well
         a                owl:Class ;
-        rdfs:subClassOf  <http://def.seegrid.csiro.au/isotc211/iso19156/2011/samplingSF_SamplingCurve> ;
+        rdfs:subClassOf  sf:SF_SamplingCurve ;
         skos:definition  "A shaft or hole sunk, dug or drilled into the Earth to observe, extract or inject water (after IGH1397)."@en .
 
 gwml2:gwAquiferSystemPart
@@ -252,6 +254,7 @@ gwml2:gwPartOfSystemFlow
 
 gwml2:GW_HydrogeoUnit
         a                owl:Class ;
+		owl:subClassOf   gsmlb:GeologicUnit;
         <http://def.isotc211.org/iso19150-2/2012/base#isAbstract>
                 true ;
         skos:definition  "Any soil or rock unit or zone which by virtue of its hydraulic properties has a distinct influence on the storage or movement of groundwater (after ANS, 1980)."@en .

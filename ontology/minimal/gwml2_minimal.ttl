@@ -5,6 +5,8 @@
 @prefix gwml2: <http://gwml2.org/def/gwml2#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
+@prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
 
 <http://gwml2.org/def/gwml2>
         a                owl:Ontology ;

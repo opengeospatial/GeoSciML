@@ -8,6 +8,7 @@
 @prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
 @prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
 
+
 <http://gwml2.org/def/gwml2>
         a                owl:Ontology ;
         owl:versionIRI   "http://gwml2.org/def/gwml2/2.2.0" ;

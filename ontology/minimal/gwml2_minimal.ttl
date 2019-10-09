@@ -1,31 +1,10 @@
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix ssd:   <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix qb:    <http://purl.org/linked-data/cube#> .
-@prefix dgu:   <http://reference.data.gov.uk/def/reference/> .
-@prefix dct:   <http://purl.org/dc/terms/> .
-@prefix ui:    <http://purl.org/linked-data/registry-ui#> .
-@prefix reg:   <http://purl.org/linked-data/registry#> .
-@prefix api:   <http://purl.org/linked-data/api/vocab#> .
-@prefix vann:  <http://purl.org/vocab/vann/> .
-@prefix prov:  <http://www.w3.org/ns/prov#> .
-@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 @prefix gwml2: <http://gwml2.org/def/gwml2#> .
-@prefix cc:    <http://creativecommons.org/ns#> .
-@prefix void:  <http://rdfs.org/ns/void#> .
-@prefix odrs:  <http://schema.theodi.org/odrs#> .
-@prefix org:   <http://www.w3.org/ns/org#> .
-@prefix env-ui: <http://environment.data.gov.uk/registry/structure/ui/> .
-@prefix version: <http://purl.org/linked-data/version#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix ldp:   <http://www.w3.org/ns/ldp#> .
-@prefix time:  <http://www.w3.org/2006/time#> .
-@prefix vs:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
-@prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
-@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
 
 <http://gwml2.org/def/gwml2>
         a                owl:Ontology ;

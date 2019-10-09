@@ -1,13 +1,10 @@
 @prefix iso19150-2: <http://def.isotc211.org/iso19150-2/2012/base#> .
-@prefix gsp: <http://www.opengis.net/ont/geosparql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
-@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
 
 <http://geosciml.org/def/gsmlb> a owl:Ontology ;
 	owl:versionIRI "http://geosciml.org/ont/gsmlb/4.0.0" ;

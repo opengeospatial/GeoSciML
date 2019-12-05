@@ -8,7 +8,9 @@
 
 <http://geosciml.org/def/gsmlb> a owl:Ontology ;
 	skos:definition "A package of classes representing fundamental geological features (units, structures, and events), earth materials, and the relations between them."@en , 
-					skos:definition  "The GeoSciML Borehole package contains model elements for representing Boreholes. This is primarily through re-use of standard components from the (external) Observations and Measurements package."@en ..
+					"The GeoSciML Borehole package contains model elements for representing Boreholes. This is primarily through re-use of standard components from the (external) Observations and Measurements package."@en .
+
+####from the basic package
 
 gsmlb:AnthropogenicGeomorphologicFeature a owl:Class ;
 	skos:definition "A geomorphologic feature (ie, landform) which has been created by human activity. For example, dredged channel, midden, open pit, reclaimed land."@en ;
@@ -117,3 +119,54 @@ gsmlb:relatedFeature a owl:ObjectProperty ;
 
 gsmlb:targetUnit a owl:ObjectProperty ;
 	skos:definition "Indicates the parent unit that contains the GeologicUnitPart."@en .
+	
+#### From the Borehole package
+
+gsmlbh:relatedBorehole
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlbh:Borehole ;
+        skos:definition  "The hole that has this collar for its start point"@en .
+
+gsmlbh:OriginPosition
+        a                owl:Class ;
+        skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush).\r\n\r\nIf a text descripiton of the location is available, it should be placed in the gml:description for that feature.  If no GM_Point is available, an OGC nil value should be used.\r\n\r\nImplementers delivering 3-D origin locations should provide an elevation to improve interoperability. \r\n\r\nIn situations where the origin position changes over the life of the borehole (eg, due to subsidence or destruction of the original collar), the origin position should be updated to the new location."@en .
+
+gsmlbh:parentBorehole
+        a                owl:ObjectProperty ;
+        rdfs:domain      gsmlbh:BoreholeInterval ;
+        rdfs:range       gsmlbh:Borehole ;
+        skos:definition  "The borehole in which the interval occurs."@en .
+
+gsmlbh:DrillingDetails
+        a                owl:Class ;
+        skos:definition  "A class to capture description of drilling methods and hole diameter down the hole."@en .
+
+gsmlbh:MappedInterval
+        a                owl:Class ;
+        skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
+
+gsmlbh:referenceLocation
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlbh:OriginPosition ;
+        skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush)."@en .
+
+gsmlbh:BoreholeDetails
+        a                owl:Class ;
+        skos:definition  "Borehole-specific index or header information. This data does not relate to downhole intervals."@en , "Borehole specific index (or metadata) information"@en .
+
+gsmlbh:indexData  a      owl:ObjectProperty ;
+        rdfs:range       gsmlbh:BoreholeDetails ;
+        skos:definition  "Specifies the Borehole details"@en .
+
+gsmlbh:logElement  a     owl:ObjectProperty ;
+        rdfs:range       gsmlbh:MappedInterval ;
+        skos:definition  "Links to 1-D MappedFeature instances that are logged (interpreted) intervals within a borehole. This requirement is common in geoscience boreholes"@en .
+
+gsmlbh:BoreholeInterval
+        a                owl:Class ;
+        skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
+
+gsmlbh:downholeDrillingDetails
+        a                owl:ObjectProperty ;
+        rdfs:range       gsmlbh:DrillingDetails ;
+        skos:definition  "Specifies the drilling method and borehole diameter for intervals down the borehole"@en .

@@ -120,6 +120,8 @@ gsmlb:relatedFeature a owl:ObjectProperty ;
 gsmlb:targetUnit a owl:ObjectProperty ;
 	skos:definition "Indicates the parent unit that contains the GeologicUnitPart."@en .
 	
+
+
 #### From the Borehole package
 
 gsmlbh:relatedBorehole

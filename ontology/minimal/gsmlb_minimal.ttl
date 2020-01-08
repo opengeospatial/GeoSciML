@@ -123,52 +123,48 @@ gsmlb:targetUnit a owl:ObjectProperty ;
 
 
 #### From the Borehole package
+gsmlb:Borhole
+        a                owl:Class ;
+        skos:definition  "A borehole is the generalized term for any narrow shaft drilled in the ground, either vertically, horizontally, or inclined."@en .
 
-gsmlbh:relatedBorehole
+gsmlb:relatedBorehole
         a                owl:ObjectProperty ;
-        rdfs:range       gsmlbh:Borehole ;
         skos:definition  "The hole that has this collar for its start point"@en .
 
-gsmlbh:OriginPosition
+gsmlb:OriginPosition
         a                owl:Class ;
         skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush).\r\n\r\nIf a text descripiton of the location is available, it should be placed in the gml:description for that feature.  If no GM_Point is available, an OGC nil value should be used.\r\n\r\nImplementers delivering 3-D origin locations should provide an elevation to improve interoperability. \r\n\r\nIn situations where the origin position changes over the life of the borehole (eg, due to subsidence or destruction of the original collar), the origin position should be updated to the new location."@en .
 
-gsmlbh:parentBorehole
+gsmlb:parentBorehole
         a                owl:ObjectProperty ;
-        rdfs:domain      gsmlbh:BoreholeInterval ;
-        rdfs:range       gsmlbh:Borehole ;
         skos:definition  "The borehole in which the interval occurs."@en .
 
-gsmlbh:DrillingDetails
+gsmlb:DrillingDetails
         a                owl:Class ;
         skos:definition  "A class to capture description of drilling methods and hole diameter down the hole."@en .
 
-gsmlbh:MappedInterval
+gsmlb:MappedInterval
         a                owl:Class ;
         skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
 
-gsmlbh:referenceLocation
+gsmlb:referenceLocation
         a                owl:ObjectProperty ;
-        rdfs:range       gsmlbh:OriginPosition ;
         skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush)."@en .
 
-gsmlbh:BoreholeDetails
+gsmlb:BoreholeDetails
         a                owl:Class ;
         skos:definition  "Borehole-specific index or header information. This data does not relate to downhole intervals."@en , "Borehole specific index (or metadata) information"@en .
 
-gsmlbh:indexData  a      owl:ObjectProperty ;
-        rdfs:range       gsmlbh:BoreholeDetails ;
+gsmlb:indexData  a      owl:ObjectProperty ;
         skos:definition  "Specifies the Borehole details"@en .
 
-gsmlbh:logElement  a     owl:ObjectProperty ;
-        rdfs:range       gsmlbh:MappedInterval ;
+gsmlb:logElement  a     owl:ObjectProperty ;
         skos:definition  "Links to 1-D MappedFeature instances that are logged (interpreted) intervals within a borehole. This requirement is common in geoscience boreholes"@en .
 
-gsmlbh:BoreholeInterval
+gsmlb:BoreholeInterval
         a                owl:Class ;
         skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
 
-gsmlbh:downholeDrillingDetails
+gsmlb:downholeDrillingDetails
         a                owl:ObjectProperty ;
-        rdfs:range       gsmlbh:DrillingDetails ;
         skos:definition  "Specifies the drilling method and borehole diameter for intervals down the borehole"@en .

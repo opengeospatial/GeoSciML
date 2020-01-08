@@ -123,7 +123,7 @@ gsmlb:targetUnit a owl:ObjectProperty ;
 
 
 #### From the Borehole package
-gsmlb:Borhole
+gsmlb:Borehole
         a                owl:Class ;
         skos:definition  "A borehole is the generalized term for any narrow shaft drilled in the ground, either vertically, horizontally, or inclined."@en .
 

@@ -1,0 +1,170 @@
+@prefix iso19150-2: <http://def.isotc211.org/iso19150-2/2012/base#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://geosciml.org/def/gsmlb> a owl:Ontology ;
+	skos:definition "A package of classes representing fundamental geological features (units, structures, and events), earth materials, and the relations between them."@en , 
+					"The GeoSciML Borehole package contains model elements for representing Boreholes. This is primarily through re-use of standard components from the (external) Observations and Measurements package."@en .
+
+####from the basic package
+
+gsmlb:AnthropogenicGeomorphologicFeature a owl:Class ;
+	skos:definition "A geomorphologic feature (ie, landform) which has been created by human activity. For example, dredged channel, midden, open pit, reclaimed land."@en ;
+	rdfs:subClassOf gsmlb:GeomorphologicFeature .
+
+gsmlb:GeomorphologicFeature a owl:Class ;
+	skos:definition "A feature describing the shape and nature of the Earth's land surface (ie, a landform).  These landforms may be created by natural Earth processes (eg, river channel, beach, moraine, mountain) or through human (anthropogenic) activity (eg, dredged channel, reclaimed land, mine waste dumps)."@en ;
+	rdfs:subClassOf gsmlb:GeologicFeature ;
+	iso19150-2:isAbstract "true"^^xsd:boolean .
+
+gsmlb:CompositionPart a owl:Class ;
+	skos:definition "Element to represent composition of a geologic unit in terms of earth material constituents."@en .
+
+gsmlb:Contact a owl:Class ;
+	skos:definition """Very general concept representing any kind of surface separating two geologic units including primary boundaries such as depositional contacts, all kinds of unconformities, intrusive contacts, and gradational contacts, as well as faults that separate geologic units.
+
+Bedding measured as discrete surfaces in the case that those are the feature of interest (e.g. individual cross set surfaces for paleocurrent analysis) should be represented here."""@en ;
+	rdfs:subClassOf gsmlb:GeologicStructure .
+
+gsmlb:GeologicStructure a owl:Class ;
+	skos:definition """A configuration of matter in the Earth based on describable inhomogeneity, pattern, or fracture in an EarthMaterial. 
+The identity of a GeologicStructure is independent of the material that is the substrate for the structure. 
+Properties like \"clast-supported\",  \"matrix-supported\", and \"graded bed\" that do not involve orientation are considered kinds of GeologicStructure 
+because they depend on the configuration of parts of a rock body. Includes sedimentary structures.
+The general GeologicRelation is used to associate penetrative GeologicStructures with GeologicUnits."""@en ;
+	rdfs:subClassOf gsmlb:GeologicFeature ;
+	iso19150-2:isAbstract "true"^^xsd:boolean .
+
+gsmlb:Fold a owl:Class ;
+	skos:definition "One or more systematically curved layers, surfaces, or lines in a rock body. Fold denotes a structure formed by the deformation of a GeologicStructure to form a structure that may be described by the translation of an abstract line (the fold axis) parallel to itself along some curvilinear path (the fold profile). Folds have a hinge zone (zone of maximum curvature along the surface) and limbs (parts of the deformed surface not in the hinge zone).  Folds are described by an axial surface, hinge line , profile geometry, the solid angle between the limbs, and the relationships between adjacent folded surfaces if the folded structure is a Layering fabric (similar, parallel)."@en ;
+	rdfs:subClassOf gsmlb:GeologicStructure .
+
+
+gsmlb:Foliation a owl:Class ;
+	skos:definition """A planar arrangement of textural or structural features in any type of rock.  Includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team, penetrative planar foliation defined by layers > 5 mm thick is considered Layering. 
+Bedding as a fabric representing the average orientation of paleodepositional surface should be encoded through the foliationType; might apply to bedding that is layering or a foliation without layering (e.g. clast alignment in amalgamated beds)."""@en ;
+	rdfs:subClassOf gsmlb:GeologicStructure .
+
+
+gsmlb:GSML a owl:Class ;
+	skos:definition "A collection container for items to be bundled in WFS response documents and other applications. FeatureType stereotype allows this to be a FeatureMember in a WFS_FeatureCollection."@en .
+
+gsmlb:GeologicEvent a owl:Class ;
+	skos:definition "An identifiable event during which one or more geological processes act to modify geological entities. A GeologicEvent may have a specified geologic age (numeric age or GeochologicEraTerm) and may have specified environments and processes. An example might be a cratonic uplift event during which erosion, sedimentation, and volcanism all take place."@en ;
+	rdfs:subClassOf gsmlb:GeologicFeature .
+
+gsmlb:GeologicFeature a owl:Class ;
+	skos:definition """The abstract GeologicFeature class represents a conceptual feature that is hypothesized to exist coherently in the world.
+   * this corresponds with a \"legend item\" from a traditional geologic map
+   * while the bounding coordinates of a Geologic Feature may be described, its shape is not.
+
+The implemented Geologic Feature instance acts as the \"description package\"
+
+    * the description package is classified according to its purpose as an Instance, TypicalNorm, or DefiningNorm."""@en ;
+	iso19150-2:isAbstract "true"^^xsd:boolean .
+
+gsmlb:GeologicUnit a owl:Class ;
+	skos:definition """Operationally, the GeologicUnit element is a container used to associate geologic properties with some mapped occurrence (through GeologicFeature.occurrence -> MappedFeature link), or with a geologic unit ControlledConcept in a vocabulary (through the GeologicUnit.classifier ->ControlledConcept link).
+
+Conceptually, may represent a body of material in the Earth whose complete and precise extent is inferred to exist (NADM GeologicUnit, Stratigraphic unit in sense of NACSN or International Stratigraphic Code), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like 'granitic rock' or 'alluvial deposit', surficial units like 'till' or 'old alluvium').
+
+Spatial properties are only available through association with a MappedFeature. Includes both formal units (i.e. formally adopted and named in the official lexicon) and informal units (i.e. named but not promoted to the lexicon) and unnamed units (i.e. recognisable and described and delineable in the field but not otherwise formalised)."""@en ;
+	rdfs:subClassOf gsmlb:GeologicFeature .
+
+gsmlb:GeologicUnitHierarchy a owl:Class ;
+	skos:definition "GeologicUnitHierarchy associates a GeologicUnit with another GeologicUnit that is a proper part of that unit. Parts may be formal or notional. Formal parts refer to a specific body of rock, as in formal stratigraphic members. Notional parts refer to assemblages of particular EarthMaterials with particular internal structure, which may be repeated in various places within a unit (e.g. 'turbidite sequence', 'point bar assemblage', 'leucosome veins')"@en .
+
+gsmlb:MappedFeature a owl:Class ;
+	skos:definition """A MappedFeature is part of a geological interpretation. 
+It provides a link between a notional feature (description package) and one spatial representation of it, or part of it. (Exposures, Surface Traces and Intercepts, etc)
+    * the specific bounded occurrence, such as an outcrop or map polygon
+    * the Mapped Feature carries a geometry or shape
+          - the association with a Geologic Feature (legend item) provides specification of all the other descriptors
+          - the association with a Sampling Feature provides the context and dimensionality 
+
+A Mapped Feature is always associated with some sampling feature - e.g. a mapping surface, a section, a Borehole (see BoreHolesAndObservation) etc. As noted on the diagram, if the associated sampling feature is a Borehole, then the shape associated with the MappedFeature will usually be either a point or an interval. This reconciles the 2-D (\"map\", section) and 1-D (borehole, traverse) viewpoints in a common abstraction."""@en .
+
+gsmlb:NaturalGeomorphologicFeature a owl:Class ;
+	skos:definition "A geomorphologic feature (ie, landform) that has been created by natural Earth processes. For example, river channel, beach ridge, caldera, canyon, moraine, mud flat."@en ;
+	rdfs:subClassOf gsmlb:GeomorphologicFeature .
+
+gsmlb:NumericAgeRange a owl:Class ;
+	skos:definition "Class to represent general age assignment using numeric measurement results. All attributes have cardinality 1; report with nilReason=\"missing\" if a value is absent."@en .
+
+gsmlb:ShearDisplacementStructure a owl:Class ;
+	skos:definition "A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single 'planar' brittle or ductile surface to a fault system comprised of 10's of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a DeformationUnit"@en ;
+	rdfs:subClassOf gsmlb:GeologicStructure .
+
+gsmlb:composition a owl:ObjectProperty ;
+	skos:definition "Describes the composition (detailed, instance specific, lithologic description) of the GeologicUnit"@en .
+
+gsmlb:geologicHistory a owl:ObjectProperty ;
+	skos:definition "Relates one or more GeologicEvents to a GeologicFeature to describe their age or geologic history"@en .
+
+gsmlb:hierarchyLink a owl:ObjectProperty ;
+	skos:definition "indicates a subsiduary unit with its role and proportion with respect to the container unit"@en .
+
+gsmlb:numericAge a owl:ObjectProperty ;
+	skos:definition "use of GSML_QuantityRange is recommended to have explicit upper and lower values"@en .
+
+gsmlb:occurrence a owl:ObjectProperty ;
+	skos:definition "A description association that links a notional geologic feature with any number of mapped features.  A geologic feature, such as a geologic unit may be linked to mapped features from a number of different maps."@en .
+
+gsmlb:relatedFeature a owl:ObjectProperty ;
+	skos:definition "General structure used to define relationships between any feature or object within GeoSciML. Relationships are always binary and directional.  There is always a single source and a single target.  The relationship is always defined from the perspective of the Source and is generally an active verb"@en .
+
+gsmlb:targetUnit a owl:ObjectProperty ;
+	skos:definition "Indicates the parent unit that contains the GeologicUnitPart."@en .
+	
+
+
+#### From the Borehole package
+gsmlb:Borhole
+        a                owl:Class ;
+        skos:definition  "A borehole is the generalized term for any narrow shaft drilled in the ground, either vertically, horizontally, or inclined."@en .
+
+gsmlb:relatedBorehole
+        a                owl:ObjectProperty ;
+        skos:definition  "The hole that has this collar for its start point"@en .
+
+gsmlb:OriginPosition
+        a                owl:Class ;
+        skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush).\r\n\r\nIf a text descripiton of the location is available, it should be placed in the gml:description for that feature.  If no GM_Point is available, an OGC nil value should be used.\r\n\r\nImplementers delivering 3-D origin locations should provide an elevation to improve interoperability. \r\n\r\nIn situations where the origin position changes over the life of the borehole (eg, due to subsidence or destruction of the original collar), the origin position should be updated to the new location."@en .
+
+gsmlb:parentBorehole
+        a                owl:ObjectProperty ;
+        skos:definition  "The borehole in which the interval occurs."@en .
+
+gsmlb:DrillingDetails
+        a                owl:Class ;
+        skos:definition  "A class to capture description of drilling methods and hole diameter down the hole."@en .
+
+gsmlb:MappedInterval
+        a                owl:Class ;
+        skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
+
+gsmlb:referenceLocation
+        a                owl:ObjectProperty ;
+        skos:definition  "A Borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may, but not necessarily, correspond to the borehole collar location (eg, kelly bush)."@en .
+
+gsmlb:BoreholeDetails
+        a                owl:Class ;
+        skos:definition  "Borehole-specific index or header information. This data does not relate to downhole intervals."@en , "Borehole specific index (or metadata) information"@en .
+
+gsmlb:indexData  a      owl:ObjectProperty ;
+        skos:definition  "Specifies the Borehole details"@en .
+
+gsmlb:logElement  a     owl:ObjectProperty ;
+        skos:definition  "Links to 1-D MappedFeature instances that are logged (interpreted) intervals within a borehole. This requirement is common in geoscience boreholes"@en .
+
+gsmlb:BoreholeInterval
+        a                owl:Class ;
+        skos:definition  "A special kind of Mapped Feature whose shape is 1-D interval and uses the SRS of the containing borehole"@en .
+
+gsmlb:downholeDrillingDetails
+        a                owl:ObjectProperty ;
+        skos:definition  "Specifies the drilling method and borehole diameter for intervals down the borehole"@en .

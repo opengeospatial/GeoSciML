@@ -1,288 +1,403 @@
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix gwml2: <http://gwml2.org/def/gwml2#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc:    <http://purl.org/dc/elements/1.1/> .
-@prefix sf:    <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
+@prefix : <http://gwml2.org/def/gwml2#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sf: <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix gsmlb: <http://geosciml.org/def/gsmlb#> .
+@prefix gwml2: <http://gwml2.org/def/gwml2#> .
+@base <http://gwml2.org/def/gwml2> .
 
+<http://gwml2.org/def/gwml2> rdf:type owl:Ontology ;
+                              owl:versionInfo "2.2.0" ;
+                              skos:definition "Describes the features and properties associated with water well. Imports WellConstruction."@en ,
+                                              "Describes the well drilling and construction details."@en ,
+                                              "Logical Model for GroundWaterML version 2.0 containing the core elements required for groundwater data. Other GWML2 application schema import this schema."@en .
 
-<http://gwml2.org/def/gwml2>
-        a                owl:Ontology ;
-        owl:versionIRI   "http://gwml2.org/def/gwml2/2.2.0" ;
-        owl:versionInfo  "2.2.0" ;
-        skos:definition  "Logical Model for GroundWaterML version 2.0 containing the core elements required for groundwater data. Other GWML2 application schema import this schema."@en , "Describes the features and properties associated with water well. Imports WellConstruction."@en , "Describes the well drilling and construction details."@en .
+#################################################################
+#    Annotation properties
+#################################################################
 
-gwml2:GW_ManagementArea
-        a                owl:Class ;
-        skos:definition  "The GW_ManagementArea class defines properties associated with areas identified for management purposes. These can be delineated by human factors such as policy or regulation concerns, as well as domain (in this case hydrogeologic or hydrologic) concerns. The management area does not necessarily align exactly with the associated hydrogeologic feature boundaries.  \r\n  \r\nA placeholder (stub) to associated  legislative and reference documentation is provided, as a description of the properties of the associated classes is considered out of scope for GroundWaterML2. The INSPIRE Generic Conceptual Model 'Legislation References' and 'DocumentCitation' classes, created also to cover EU Directives reporting, provides possible candidates for these end association classes.   \r\n  \r\nThe GW_ManagementArea class identifies properties associated with managing a human defined area over real world features, in this case groundwater related features. As such, this class could provide a pattern for a more generic OGC 'trans-domain' feature management class.\"  \r\nThis class is equivalent to Inspire AM:ManagementRestrictionOrRegulationZone"@en .
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
 
-gwml2:Sealing
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:WellConstruction ;
-        skos:definition  "Collection of materials that prevent undesirable elements from entering the borehole."@en .
 
-gwml2:gwAreaBody  a      owl:ObjectProperty ;
-        skos:definition  "Relates a management area to the fluid bodies contained within the area. As with units, the spatial boundaries of management areas do not necessarily coincide with the spatial boundaries of fluid bodies."@en .
+#################################################################
+#    Object Properties
+#################################################################
 
-gwml2:Casing
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:WellConstruction ;
-        skos:definition  "Collection of linings of the borehole."@en .
+###  http://gwml2.org/def/gwml2#bholeConstruction
+gwml2:bholeConstruction rdf:type owl:ObjectProperty ;
+                        skos:definition "Relation between a borehole and its construction components."@en .
 
-gwml2:GW_FlowSystem  a   owl:Class ;
-        skos:definition  "Flow path from recharge to discharge location, through hydrogeologic units, and related to a groundwater body. It is a collection or aggregation of specific flows."@en .
 
-gwml2:GW_GeologyLog
-        a                owl:Class ;
-        skos:definition  "Specialization of the OM_Observation class to allow defining the log start end depth for coverages.\r\n\r\nFor Stratigraphic logs, the observedProperty will be a GeoSciML:GeologicUnit/name.\r\nFor Lithologic logs, the observedProperty will be a GeoSciML:GeologicUnit/composition/CompositionPart/material."@en .
+###  http://gwml2.org/def/gwml2#bholeDetails
+gwml2:bholeDetails rdf:type owl:ObjectProperty ;
+                   skos:definition "Characteristics of the borehole associated to a specific collar"@en .
 
-gwml2:sealingElement
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a seal and its parts."@en .
 
-gwml2:GW_AquiferUnit  a  owl:Class ;
-        rdfs:subClassOf  gwml2:GW_HydrogeoUnit ;
-        <http://def.isotc211.org/iso19150-2/2012/base#isAbstract>
-                true ;
-        skos:definition  "Denotes aquifer-related hydrogeologic units: aquifer systems, aquifers, or confining beds."@en .
+###  http://gwml2.org/def/gwml2#bholeHeadworks
+gwml2:bholeHeadworks rdf:type owl:ObjectProperty ;
+                     skos:definition "Relation between a borehole and its collar, which represents the top construction component of the borehole."@en .
 
-gwml2:gwVoidPartOf  a    owl:ObjectProperty ;
-        skos:definition  "Relates which voids are parts of a whole void"@en .
 
-gwml2:collarSeal
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a bore collar and its sealing parts."@en .
+###  http://gwml2.org/def/gwml2#casingElement
+gwml2:casingElement rdf:type owl:ObjectProperty ;
+                    skos:definition "Relation between a casing and its parts."@en .
 
-gwml2:gwVoidUnit  a      owl:ObjectProperty ;
-        skos:definition  "Relates to the hydrogeologic unit hosting the void"@en .
 
-gwml2:GW_GeologyLogCoverage
-        a                owl:Class ;
-        skos:definition  "Overrides discreteCoverage to allow LogValues as elements"@en .
+###  http://gwml2.org/def/gwml2#casingLeft
+gwml2:casingLeft rdf:type owl:ObjectProperty ;
+                 skos:definition "Casing left after plugging"@en .
 
-gwml2:gwPartOfBody  a    owl:ObjectProperty ;
-        skos:definition  "Relates a body part to a whole body"@en .
 
-gwml2:gwBodySurface  a   owl:ObjectProperty ;
-        skos:definition  "Relates a fluid body to a surface hosted by the body"@en .
+###  http://gwml2.org/def/gwml2#casingSlit
+gwml2:casingSlit rdf:type owl:ObjectProperty ;
+                 skos:definition """Casing slit opposing water bearing zones before plugging.
+casing slit opposing water bearing zones before plugging"""@en .
 
-gwml2:gwFlowSystemPart
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates the parts of a flow system to the whole flow system"@en .
 
-gwml2:Borehole
-        a                owl:Class ;
-        rdfs:subClassOf  sf:SF_SamplingCurve ;
-        skos:definition  "General term for a hole drilled in the ground for various purposes such extraction of a core, release of fluid, etc."@en .
+###  http://gwml2.org/def/gwml2#collarSeal
+gwml2:collarSeal rdf:type owl:ObjectProperty ;
+                 skos:definition "Relation between a bore collar and its sealing parts."@en .
 
-gwml2:gwDivideSurface
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to a surface linked to a groundwater divide"@en .
 
-gwml2:ConstructionComponent
-        a                owl:Class ;
-        skos:definition  "Elements used in borehole construction."@en .
+###  http://gwml2.org/def/gwml2#filterElement
+gwml2:filterElement rdf:type owl:ObjectProperty ;
+                    skos:definition "Relation between a filtration device and its parts."@en .
 
-gwml2:gwUnitVoid  a      owl:ObjectProperty ;
-        skos:definition  "Relates hydrogeologic units with a void hosted by the units"@en .
 
-gwml2:gwSurfaceDivide
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to a groundwater divide linked to the fluid body surface"@en .
+###  http://gwml2.org/def/gwml2#gwAquiferSystem
+gwml2:gwAquiferSystem rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates an aquifer system to an aquifer unit"@en .
 
-gwml2:gwFluidBodyUnit
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to the hydrogeologic unit containing the fluid body"@en .
 
-gwml2:Screen
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:WellConstruction ;
-        skos:definition  "Collection of components of the water pump screen."@en .
+###  http://gwml2.org/def/gwml2#gwAquiferSystemPart
+gwml2:gwAquiferSystemPart rdf:type owl:ObjectProperty ;
+                          skos:definition "Relates to the parts of an aquifer system"@en .
 
-gwml2:FiltrationComponent
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:ConstructionComponent ;
-        skos:definition  "Material used to filter the fluid in a borehole or well."@en .
 
-gwml2:gwAquiferSystem
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates an aquifer system to an aquifer unit"@en .
-
-gwml2:GW_FluidBody  a    owl:Class ;
-        skos:definition  "A distinct body of some fluid (liquid, gas) that fills the voids of a container such as an aquifer, system of aquifers, water well, etc; in hydrogeology this body is usually constituted from groundwater, but the model allows for other types of fillers e.g. petroleum."@en .
-
-gwml2:GW_BodySurface  a  owl:Class ;
-        skos:definition  "A surface on a body of groundwater, for a local or regional area, e.g. piezometric, potentiometric, water table, salt wedge, etc."@en .
-
-gwml2:BoreCollar
-        a                owl:Class ;
-        skos:definition  "Topmost component of a borehole construction."@en .
-
-gwml2:gwSurfaceBody  a   owl:ObjectProperty ;
-        skos:definition  "Relates to the fluid body bounded by the surface"@en .
+###  http://gwml2.org/def/gwml2#gwAreaBody
+gwml2:gwAreaBody rdf:type owl:ObjectProperty ;
+                 skos:definition "Relates a management area to the fluid bodies contained within the area. As with units, the spatial boundaries of management areas do not necessarily coincide with the spatial boundaries of fluid bodies."@en .
 
-gwml2:CasingComponent
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:ConstructionComponent ;
-        skos:definition  "A single part of a well casing"@en .
-
-gwml2:GW_HydrogeoVoid
-        a                owl:Class ;
-        skos:definition  "Voids represent the spaces inside (hosted by) a unit or its material. E.g. the pores in an aquifer, or in the sandstone of an aquifer. Voids can contain fluid bodies. Voids are differentiated from 'porosity' in that porosity is the proportion of void volume to total volume, while voids are the spaces themselves. Voids are required in GWML2, for example, to capture the volume of fractures in an aquifer."@en .
-
-gwml2:bholeConstruction
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a borehole and its construction components."@en .
-
-gwml2:GW_Divide  a       owl:Class ;
-        skos:definition  "Line on a water table or piezometric surface on either side of which the groundwater flow diverges. IGH0556"@en .
-
-gwml2:gwUnitFluidBody
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to the fluid body contained by the hydrogeologic unit"@en .
-
-gwml2:GW_AquiferSystem
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:GW_AquiferUnit ;
-        skos:definition  "Aquifer system - A body of permeable and poorly permeable material that functions regionally as a water-yielding unit; it comprises two or more permeable beds separated at least locally by confining beds that impede groundwater movement but do not greatly affect the regional hydraulic continuity of the system; includes both saturated and unsaturated parts of permeable material (after ASCE, 1985)."@en .
-
-gwml2:bholeHeadworks
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a borehole and its collar, which represents the top construction component of the borehole."@en .
-
-gwml2:gwConfiningBed  a  owl:ObjectProperty ;
-        rdfs:label  "Relates confining bed to an aquifer"@en .
 
-gwml2:bholeDetails
-        a                owl:ObjectProperty ;
-        skos:definition  "Characteristics of the borehole associated to a specific collar"@en .
+###  http://gwml2.org/def/gwml2#gwBasinUnit
+gwml2:gwBasinUnit rdf:type owl:ObjectProperty ;
+                  skos:definition "Relates hydrogeologic units and the basins that contain them, in full or part."@en .
 
-gwml2:GW_MonitoringSite
-        a                owl:Class ;
-        skos:definition  "Observation site (e.g. well) used to watch for the advent of an anticipated condition, generally undesirable, such as the advance of the salt-water front in a coastal area where salt-water encroachment is occurring, or the movement of a pollutant injected into a disposal well. IGH0806"@en .
 
-gwml2:casingSlit
-        a                owl:ObjectProperty ;
-        skos:definition  "Casing slit opposing water bearing zones before plugging.\r\ncasing slit opposing water bearing zones before plugging"@en .
+###  http://gwml2.org/def/gwml2#gwBodyPartOf
+gwml2:gwBodyPartOf rdf:type owl:ObjectProperty ;
+                   skos:definition "Relates which body are parts of a whole body"@en .
 
-gwml2:WellConstruction
-        a                owl:Class ;
-        <http://def.isotc211.org/iso19150-2/2012/base#isAbstract>
-                true ;
-        skos:definition  "Construction components of the well. These are particularly important when assessing results of pump tests."@en .
-
-gwml2:gwPartOfVoid  a    owl:ObjectProperty ;
-        skos:definition  "Relates a void part to a void whole"@en .
-
-gwml2:SealingComponent
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:ConstructionComponent ;
-        skos:definition  "A material used for sealing the construction of a borehole or well."@en .
-
-gwml2:GW_Well
-        a                owl:Class ;
-        rdfs:subClassOf  sf:SF_SamplingCurve ;
-        skos:definition  "A shaft or hole sunk, dug or drilled into the Earth to observe, extract or inject water (after IGH1397)."@en .
-
-gwml2:gwAquiferSystemPart
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to the parts of an aquifer system"@en .
-
-gwml2:ScreenComponent
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:ConstructionComponent ;
-        skos:definition  "Component of the well lining where water enters the well."@en .
-
-gwml2:Filtration
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:WellConstruction ;
-        skos:definition  "<font color=\"#0f0f0f\">Collection of filtration components used to filter a fluid body in a well.</font>"@en .
-
-gwml2:result
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates a geology log with a particular collection of values (the result) that represent the group of measurements taken in intervals along the length of the log."@en .
-
-gwml2:gwDivide  a        owl:ObjectProperty ;
-        skos:definition  "Line on a water table or piezometric surface on either side of which the groundwater flow diverges. IGH0556."@en .
-
-gwml2:casingLeft
-        a                owl:ObjectProperty ;
-        skos:definition  "Casing left after plugging"@en .
-
-gwml2:gwManagedUnit  a   owl:ObjectProperty ;
-        skos:definition  "Relates a hydrogeologic unit to a groundwater management area"@en .
-
-gwml2:GW_Aquifer  a      owl:Class ;
-        rdfs:subClassOf  gwml2:GW_AquiferUnit ;
-        skos:definition  "A body of ground that contains, potentially contains or potentially contained sufficient saturated permeable material to yield significant quantities of water to wells and springs (after Lohman and others, 1972)."@en .
-
-gwml2:casingElement
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a casing and its parts."@en .
-
-gwml2:gwBasinUnit  a     owl:ObjectProperty ;
-        skos:definition  "Relates hydrogeologic units and the basins that contain them, in full or part."@en .
-
-gwml2:GW_Spring
-        a                owl:Class ;
-        skos:definition  "Any natural situation where groundwater flows to the surface of the earth."@en .
-
-gwml2:gwPartOfSystemFlow
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates a flow system part to a flow system whole."@en .
-
-gwml2:GW_HydrogeoUnit
-        a                owl:Class ;
-		owl:subClassOf   gsmlb:GeologicUnit;
-        <http://def.isotc211.org/iso19150-2/2012/base#isAbstract>
-                true ;
-        skos:definition  "Any soil or rock unit or zone which by virtue of its hydraulic properties has a distinct influence on the storage or movement of groundwater (after ANS, 1980)."@en .
-
-gwml2:filterElement
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a filtration device and its parts."@en .
-
-gwml2:gwDivideFlow  a  owl:ObjectProperty .
-
-gwml2:gwBodyPartOf  a    owl:ObjectProperty ;
-        skos:definition  "Relates which body are parts of a whole body"@en .
-
-gwml2:gwConfinedAquifer
-        a           owl:ObjectProperty ;
-        rdfs:label  "Relates aquifers to a confining bed"@en .
-
-gwml2:gwManagementArea
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to the management area(s) linked to a hydrogeologic unit"@en .
-
-gwml2:GW_ConfiningBed
-        a                owl:Class ;
-        rdfs:subClassOf  gwml2:GW_AquiferUnit ;
-        skos:definition  "A layer of rock having very low porosity and in consequence hydraulic conductivity that hampers the movement of water into and out of an aquifer (Heath 1983)"@en .
-
-gwml2:GW_Basin  a        owl:Class ;
-        rdfs:subClassOf  gwml2:GW_HydrogeoUnit ;
-        skos:definition  "A large hydrogeologically defined body of ground typically consisting of hydraulically connected hydrogeologic units, whose waters are flowing to a common or multiple outlets, and which is delimited by a groundwater divide."@en .
-
-gwml2:gwWellGeology
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates a GeologyLog with a well."@en .
-
-gwml2:relatedManagementArea
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates a management area part to a management area whole."@en .
-
-gwml2:gwFluidBodyVoid
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates a fluid body to a void"@en .
-
-gwml2:screenElement
-        a                owl:ObjectProperty ;
-        skos:definition  "Relation between a screen and its parts."@en .
-
-gwml2:gwVoidFluidBody
-        a                owl:ObjectProperty ;
-        skos:definition  "Relates to a fluid body found in a hydrogeologic void"@en .
+
+###  http://gwml2.org/def/gwml2#gwBodySurface
+gwml2:gwBodySurface rdf:type owl:ObjectProperty ;
+                    skos:definition "Relates a fluid body to a surface hosted by the body"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwConfinedAquifer
+gwml2:gwConfinedAquifer rdf:type owl:ObjectProperty ;
+                        rdfs:label "Relates aquifers to a confining bed"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwConfiningBed
+gwml2:gwConfiningBed rdf:type owl:ObjectProperty ;
+                     rdfs:label "Relates confining bed to an aquifer"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwDivide
+gwml2:gwDivide rdf:type owl:ObjectProperty ;
+               skos:definition "Line on a water table or piezometric surface on either side of which the groundwater flow diverges. IGH0556."@en .
+
+
+###  http://gwml2.org/def/gwml2#gwDivideFlow
+gwml2:gwDivideFlow rdf:type owl:ObjectProperty .
+
+
+###  http://gwml2.org/def/gwml2#gwDivideSurface
+gwml2:gwDivideSurface rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates to a surface linked to a groundwater divide"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwFlowSystemPart
+gwml2:gwFlowSystemPart rdf:type owl:ObjectProperty ;
+                       skos:definition "Relates the parts of a flow system to the whole flow system"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwFluidBodyUnit
+gwml2:gwFluidBodyUnit rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates to the hydrogeologic unit containing the fluid body"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwFluidBodyVoid
+gwml2:gwFluidBodyVoid rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates a fluid body to a void"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwManagedUnit
+gwml2:gwManagedUnit rdf:type owl:ObjectProperty ;
+                    skos:definition "Relates a hydrogeologic unit to a groundwater management area"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwManagementArea
+gwml2:gwManagementArea rdf:type owl:ObjectProperty ;
+                       skos:definition "Relates to the management area(s) linked to a hydrogeologic unit"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwPartOfBody
+gwml2:gwPartOfBody rdf:type owl:ObjectProperty ;
+                   skos:definition "Relates a body part to a whole body"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwPartOfSystemFlow
+gwml2:gwPartOfSystemFlow rdf:type owl:ObjectProperty ;
+                         skos:definition "Relates a flow system part to a flow system whole."@en .
+
+
+###  http://gwml2.org/def/gwml2#gwPartOfVoid
+gwml2:gwPartOfVoid rdf:type owl:ObjectProperty ;
+                   skos:definition "Relates a void part to a void whole"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwSurfaceBody
+gwml2:gwSurfaceBody rdf:type owl:ObjectProperty ;
+                    skos:definition "Relates to the fluid body bounded by the surface"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwSurfaceDivide
+gwml2:gwSurfaceDivide rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates to a groundwater divide linked to the fluid body surface"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwUnitFluidBody
+gwml2:gwUnitFluidBody rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates to the fluid body contained by the hydrogeologic unit"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwUnitVoid
+gwml2:gwUnitVoid rdf:type owl:ObjectProperty ;
+                 skos:definition "Relates hydrogeologic units with a void hosted by the units"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwVoidFluidBody
+gwml2:gwVoidFluidBody rdf:type owl:ObjectProperty ;
+                      skos:definition "Relates to a fluid body found in a hydrogeologic void"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwVoidPartOf
+gwml2:gwVoidPartOf rdf:type owl:ObjectProperty ;
+                   skos:definition "Relates which voids are parts of a whole void"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwVoidUnit
+gwml2:gwVoidUnit rdf:type owl:ObjectProperty ;
+                 skos:definition "Relates to the hydrogeologic unit hosting the void"@en .
+
+
+###  http://gwml2.org/def/gwml2#gwWellGeology
+gwml2:gwWellGeology rdf:type owl:ObjectProperty ;
+                    skos:definition "Relates a GeologyLog with a well."@en .
+
+
+###  http://gwml2.org/def/gwml2#relatedManagementArea
+gwml2:relatedManagementArea rdf:type owl:ObjectProperty ;
+                            skos:definition "Relates a management area part to a management area whole."@en .
+
+
+###  http://gwml2.org/def/gwml2#result
+gwml2:result rdf:type owl:ObjectProperty ;
+             skos:definition "Relates a geology log with a particular collection of values (the result) that represent the group of measurements taken in intervals along the length of the log."@en .
+
+
+###  http://gwml2.org/def/gwml2#screenElement
+gwml2:screenElement rdf:type owl:ObjectProperty ;
+                    skos:definition "Relation between a screen and its parts."@en .
+
+
+###  http://gwml2.org/def/gwml2#sealingElement
+gwml2:sealingElement rdf:type owl:ObjectProperty ;
+                     skos:definition "Relation between a seal and its parts."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#SF_SamplingCurve
+sf:SF_SamplingCurve rdf:type owl:Class .
+
+
+###  http://gwml2.org/def/gwml2#BoreCollar
+gwml2:BoreCollar rdf:type owl:Class ;
+                 skos:definition "Topmost component of a borehole construction."@en .
+
+
+###  http://gwml2.org/def/gwml2#Borehole
+gwml2:Borehole rdf:type owl:Class ;
+               rdfs:subClassOf sf:SF_SamplingCurve ;
+               skos:definition "General term for a hole drilled in the ground for various purposes such extraction of a core, release of fluid, etc."@en .
+
+
+###  http://gwml2.org/def/gwml2#Casing
+gwml2:Casing rdf:type owl:Class ;
+             rdfs:subClassOf gwml2:WellConstruction ;
+             skos:definition "Collection of linings of the borehole."@en .
+
+
+###  http://gwml2.org/def/gwml2#CasingComponent
+gwml2:CasingComponent rdf:type owl:Class ;
+                      rdfs:subClassOf gwml2:ConstructionComponent ;
+                      skos:definition "A single part of a well casing"@en .
+
+
+###  http://gwml2.org/def/gwml2#ConstructionComponent
+gwml2:ConstructionComponent rdf:type owl:Class ;
+                            skos:definition "Elements used in borehole construction."@en .
+
+
+###  http://gwml2.org/def/gwml2#Filtration
+gwml2:Filtration rdf:type owl:Class ;
+                 rdfs:subClassOf gwml2:WellConstruction ;
+                 skos:definition "<font color=\"#0f0f0f\">Collection of filtration components used to filter a fluid body in a well.</font>"@en .
+
+
+###  http://gwml2.org/def/gwml2#FiltrationComponent
+gwml2:FiltrationComponent rdf:type owl:Class ;
+                          rdfs:subClassOf gwml2:ConstructionComponent ;
+                          skos:definition "Material used to filter the fluid in a borehole or well."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_Aquifer
+gwml2:GW_Aquifer rdf:type owl:Class ;
+                 rdfs:subClassOf gwml2:GW_AquiferUnit ;
+                 skos:definition "A body of ground that contains, potentially contains or potentially contained sufficient saturated permeable material to yield significant quantities of water to wells and springs (after Lohman and others, 1972)."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_AquiferSystem
+gwml2:GW_AquiferSystem rdf:type owl:Class ;
+                       rdfs:subClassOf gwml2:GW_AquiferUnit ;
+                       skos:definition "Aquifer system - A body of permeable and poorly permeable material that functions regionally as a water-yielding unit; it comprises two or more permeable beds separated at least locally by confining beds that impede groundwater movement but do not greatly affect the regional hydraulic continuity of the system; includes both saturated and unsaturated parts of permeable material (after ASCE, 1985)."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_AquiferUnit
+gwml2:GW_AquiferUnit rdf:type owl:Class ;
+                     rdfs:subClassOf gwml2:GW_HydrogeoUnit ;
+                     skos:definition "Denotes aquifer-related hydrogeologic units: aquifer systems, aquifers, or confining beds."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_Basin
+gwml2:GW_Basin rdf:type owl:Class ;
+               rdfs:subClassOf gwml2:GW_HydrogeoUnit ;
+               skos:definition "A large hydrogeologically defined body of ground typically consisting of hydraulically connected hydrogeologic units, whose waters are flowing to a common or multiple outlets, and which is delimited by a groundwater divide."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_BodySurface
+gwml2:GW_BodySurface rdf:type owl:Class ;
+                     skos:definition "A surface on a body of groundwater, for a local or regional area, e.g. piezometric, potentiometric, water table, salt wedge, etc."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_ConfiningBed
+gwml2:GW_ConfiningBed rdf:type owl:Class ;
+                      rdfs:subClassOf gwml2:GW_AquiferUnit ;
+                      skos:definition "A layer of rock having very low porosity and in consequence hydraulic conductivity that hampers the movement of water into and out of an aquifer (Heath 1983)"@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_Divide
+gwml2:GW_Divide rdf:type owl:Class ;
+                skos:definition "Line on a water table or piezometric surface on either side of which the groundwater flow diverges. IGH0556"@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_FlowSystem
+gwml2:GW_FlowSystem rdf:type owl:Class ;
+                    skos:definition "Flow path from recharge to discharge location, through hydrogeologic units, and related to a groundwater body. It is a collection or aggregation of specific flows."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_FluidBody
+gwml2:GW_FluidBody rdf:type owl:Class ;
+                   skos:definition "A distinct body of some fluid (liquid, gas) that fills the voids of a container such as an aquifer, system of aquifers, water well, etc; in hydrogeology this body is usually constituted from groundwater, but the model allows for other types of fillers e.g. petroleum."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_GeologyLog
+gwml2:GW_GeologyLog rdf:type owl:Class ;
+                    skos:definition """Specialization of the OM_Observation class to allow defining the log start end depth for coverages.
+
+For Stratigraphic logs, the observedProperty will be a GeoSciML:GeologicUnit/name.
+For Lithologic logs, the observedProperty will be a GeoSciML:GeologicUnit/composition/CompositionPart/material."""@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_GeologyLogCoverage
+gwml2:GW_GeologyLogCoverage rdf:type owl:Class ;
+                            skos:definition "Overrides discreteCoverage to allow LogValues as elements"@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_HydrogeoUnit
+gwml2:GW_HydrogeoUnit rdf:type owl:Class ;
+                      skos:definition "Any soil or rock unit or zone which by virtue of its hydraulic properties has a distinct influence on the storage or movement of groundwater (after ANS, 1980)."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_HydrogeoVoid
+gwml2:GW_HydrogeoVoid rdf:type owl:Class ;
+                      skos:definition "Voids represent the spaces inside (hosted by) a unit or its material. E.g. the pores in an aquifer, or in the sandstone of an aquifer. Voids can contain fluid bodies. Voids are differentiated from 'porosity' in that porosity is the proportion of void volume to total volume, while voids are the spaces themselves. Voids are required in GWML2, for example, to capture the volume of fractures in an aquifer."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_ManagementArea
+gwml2:GW_ManagementArea rdf:type owl:Class ;
+                        skos:definition """The GW_ManagementArea class defines properties associated with areas identified for management purposes. These can be delineated by human factors such as policy or regulation concerns, as well as domain (in this case hydrogeologic or hydrologic) concerns. The management area does not necessarily align exactly with the associated hydrogeologic feature boundaries.  
+  
+A placeholder (stub) to associated  legislative and reference documentation is provided, as a description of the properties of the associated classes is considered out of scope for GroundWaterML2. The INSPIRE Generic Conceptual Model 'Legislation References' and 'DocumentCitation' classes, created also to cover EU Directives reporting, provides possible candidates for these end association classes.   
+  
+The GW_ManagementArea class identifies properties associated with managing a human defined area over real world features, in this case groundwater related features. As such, this class could provide a pattern for a more generic OGC 'trans-domain' feature management class.\"  
+This class is equivalent to Inspire AM:ManagementRestrictionOrRegulationZone"""@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_MonitoringSite
+gwml2:GW_MonitoringSite rdf:type owl:Class ;
+                        skos:definition "Observation site (e.g. well) used to watch for the advent of an anticipated condition, generally undesirable, such as the advance of the salt-water front in a coastal area where salt-water encroachment is occurring, or the movement of a pollutant injected into a disposal well. IGH0806"@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_Spring
+gwml2:GW_Spring rdf:type owl:Class ;
+                skos:definition "Any natural situation where groundwater flows to the surface of the earth."@en .
+
+
+###  http://gwml2.org/def/gwml2#GW_Well
+gwml2:GW_Well rdf:type owl:Class ;
+              rdfs:subClassOf sf:SF_SamplingCurve ;
+              skos:definition "A shaft or hole sunk, dug or drilled into the Earth to observe, extract or inject water (after IGH1397)."@en .
+
+
+###  http://gwml2.org/def/gwml2#Screen
+gwml2:Screen rdf:type owl:Class ;
+             rdfs:subClassOf gwml2:WellConstruction ;
+             skos:definition "Collection of components of the water pump screen."@en .
+
+
+###  http://gwml2.org/def/gwml2#ScreenComponent
+gwml2:ScreenComponent rdf:type owl:Class ;
+                      rdfs:subClassOf gwml2:ConstructionComponent ;
+                      skos:definition "Component of the well lining where water enters the well."@en .
+
+
+###  http://gwml2.org/def/gwml2#Sealing
+gwml2:Sealing rdf:type owl:Class ;
+              rdfs:subClassOf gwml2:WellConstruction ;
+              skos:definition "Collection of materials that prevent undesirable elements from entering the borehole."@en .
+
+
+###  http://gwml2.org/def/gwml2#SealingComponent
+gwml2:SealingComponent rdf:type owl:Class ;
+                       rdfs:subClassOf gwml2:ConstructionComponent ;
+                       skos:definition "A material used for sealing the construction of a borehole or well."@en .
+
+
+###  http://gwml2.org/def/gwml2#WellConstruction
+gwml2:WellConstruction rdf:type owl:Class ;
+                       skos:definition "Construction components of the well. These are particularly important when assessing results of pump tests."@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

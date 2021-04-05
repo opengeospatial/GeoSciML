@@ -1,5 +1,5 @@
 Borehole GeoJSON encoding
-==============================
+=========================
 Eric Boisvert <eric.boisvert2@canada.ca>
 v1.0, April 2021
 :toc:
@@ -12,7 +12,9 @@ https://github.com/INSPIRE-MIF/2017.2/issues/34
 
 
 
-link:https://forge.brgm.fr/svnrepository/epos/trunk/instances/BoreholeView.xml[Borehole GeoSciml Lite]
+   * link:https://forge.brgm.fr/svnrepository/epos/trunk/instances/BoreholeView.xml[Borehole GeoSciml Lite EPOS]
+   * link:instances/borehole.xml[Borehole Geosciml lite]
+   * link:instances/borehole.geojson[Borehole GeoJson]
 
 == GeoSciML lite reference 
 
@@ -143,7 +145,7 @@ WARNING: Note what happens in the "any" zone (cored and after).  We are not cons
         },
         "name": "Forage BSS001REWW",
         "description": "Borehole description",
-       "identifier":"http://ressource.brgm-rec.fr/data/Borehole/BSS001REWW",
+       "gsmlp_identifier":"http://ressource.brgm-rec.fr/data/Borehole/BSS001REWW",
 		"purpose":"http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrogeologicalSurvey",
 		"status":"http://resource.europe-geology.eu/vocabs/BoreholeStatus/drillingCompleted",
 		"drillingMethod":"http://resource.europe-geology.eu/vocabs/DrillingMethod/hydraulic_rotary_drilling",
@@ -170,7 +172,7 @@ WARNING: Note what happens in the "any" zone (cored and after).  We are not cons
 		"rockGeochemistry": {"href":"http://www.opengis.net/def/nil/OGC/0/unknown" ,"title":"unknown"},
 		"poreGasChemistry": {"href":"http://www.opengis.net/def/nil/OGC/0/inapplicable" ,"title":"inapplicable"},
 	    "geoTechnicalInfo": {"href":"http://www.opengis.net/def/nil/OGC/0/unknown" ,"title":"unknown"}
-      },
+    }  
     }
   ],
   "totalFeatures": "unknown",

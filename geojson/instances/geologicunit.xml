@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:FeatureCollection xmlns:wfs="http://www.opengis.net/wfs/2.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:gsmlp="https://forge.brgm.fr/svnrepository/epos/trunk/schemas"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" numberMatched="unknown" numberReturned="1" timeStamp="2021-04-05T18:33:37.380Z" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 https://epos.brgm-rec.fr/geoserver/schemas/wfs/2.0/wfs.xsd https://forge.brgm.fr/svnrepository/epos/trunk/schemas https://forge.brgm.fr/svnrepository/epos/trunk/schemas/epos-lite.xsd http://www.opengis.net/gml/3.2 https://epos.brgm-rec.fr/geoserver/schemas/gml/3.2.1/gml.xsd">
+    <wfs:member>
+        <gsmlp:GeologicUnitView gml:id="egdi_onegeologyeurope_diffusion.fid-55b657be_1783592d1c7_-39d8">
+            <gml:description>Description of the geologic unit</gml:description>
+            <gml:identifier codeSpace="http://www.ietf.org/rfc/rfc2616">GB-BGS.GLACI-XCSV</gml:identifier>
+            <gml:name>GLACI-XCSV</gml:name>
+            <gsmlp:identifier>GLACI-XCSV</gsmlp:identifier>
+            <gsmlp:geologicUnitType>unknown</gsmlp:geologicUnitType>
+            <gsmlp:rank>unknown</gsmlp:rank>
+            <gsmlp:lithology>Sediment in which at least 50 percent of the constituent particles were derived from erosion, weathering, or mass-wasting of pre-existing earth materials, and transported to the place of deposition by mechanical agents such as water, wind, ice and gravity.</gsmlp:lithology>
+            <gsmlp:geologicHistory>unknown</gsmlp:geologicHistory>
+            <gsmlp:observationMethod>unknown</gsmlp:observationMethod>
+            <gsmlp:positionalAccuracy>unknown</gsmlp:positionalAccuracy>
+            <gsmlp:source>unknown</gsmlp:source>
+            <gsmlp:geologicUnitType_uri>http://www.opengis.net/def/nil/OGC/0/unknown</gsmlp:geologicUnitType_uri>
+            <gsmlp:representativeLithology_uri>http://inspire.ec.europa.eu/codelist/LithologyValue/clasticSediment</gsmlp:representativeLithology_uri>
+            <gsmlp:representativeAge_uri>http://inspire.ec.europa.eu/codelist/GeochronologicEraValue/quaternary</gsmlp:representativeAge_uri>
+            <gsmlp:representativeOlderAge_uri>http://www.opengis.net/def/nil/OGC/0/unknown</gsmlp:representativeOlderAge_uri>
+            <gsmlp:representativeYoungerAge_uri>http://www.opengis.net/def/nil/OGC/0/unknown</gsmlp:representativeYoungerAge_uri>
+            <gsmlp:specification_uri>http://www.opengis.net/def/nil/OGC/0/unknown</gsmlp:specification_uri>
+            <gsmlp:metadata_uri>http://www.opengis.net/def/nil/OGC/0/unknown</gsmlp:metadata_uri>
+            <gsmlp:genericSymbolizer>unknown</gsmlp:genericSymbolizer>
+            <gsmlp:shape>
+                <gml:MultiSurface gml:id="gsmlp.shape.GB-BGS.GLACI-XCSV" srsDimension="2" srsName="urn:ogc:def:crs:EPSG::4326">
+                    <gml:surfaceMember>
+                        <gml:Polygon gml:id="gsmlp.shape.GB-BGS.GLACI-XCSV.1" srsDimension="2">
+                            <gml:exterior>
+                                <gml:LinearRing>
+                                    <gml:posList>18.0 -25.0 18.0 -26.0 17.0 -26.0 17.0 -25.0 18.0 -25.0</gml:posList>
+                                </gml:LinearRing>
+                            </gml:exterior>
+                        </gml:Polygon>
+                    </gml:surfaceMember>
+                </gml:MultiSurface>
+            </gsmlp:shape>
+        </gsmlp:GeologicUnitView>
+    </wfs:member>
+</wfs:FeatureCollection>

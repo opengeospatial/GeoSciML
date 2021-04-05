@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "egdi_onegeologyeurope_diffusion.fid-55b657be_1783592d1c7_-39d9",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-25.0,18.0], [-26.0,18.0],[-26.0,17.0],[-25.0,17.0],[-25.0,18.0]]]]
+      },
+      "properties": {
+        "@featureType": "GeologicUnitView",
+        "identifier": {
+          "value": "GLACI-XCSV",
+          "@codeSpace": "http://www.ietf.org/rfc/rfc2616"
+        },
+        "name": "GLACI-XCSV",
+        "description": "Description of the geologic unit",
+        "geologicUnitType": "unknown",
+        "geologicUnitType_uri": "http://www.opengis.net/def/nil/OGC/0/unknown",
+        "rank": "unknown",
+        "lithology": "Sediment in which at least 50 percent of the constituent particles were derived from erosion, weathering, or mass-wasting of pre-existing earth materials, and transported to the place of deposition by mechanical agents such as water, wind, ice and gravity.",
+        "representativeLithology_uri": "http://inspire.ec.europa.eu/codelist/LithologyValue/clasticSediment",
+        "geologicHistory": "unknown",
+        "representativeAge_uri": "http://inspire.ec.europa.eu/codelist/GeochronologicEraValue/quaternary",
+        "representativeOlderAge_uri": "http://www.opengis.net/def/nil/OGC/0/unknown",
+        "representativeYoungerAge_uri": "http://www.opengis.net/def/nil/OGC/0/unknown",
+        "observationMethod": "unknown",
+        "positionalAccuracy": "unknown",
+        "specification_uri": "http://www.opengis.net/def/nil/OGC/0/unknown",
+        "source": "unknown",
+        "metadata_uri": "http://www.opengis.net/def/nil/OGC/0/unknown",
+        "genericSymbolizer": "unknown"
+      }
+    }
+  ],
+  "totalFeatures": "unknown",
+  "numberReturned": 1,
+  "timeStamp": "2021-04-05T18:30:58.640Z",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  }
+}

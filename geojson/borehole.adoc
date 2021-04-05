@@ -1,5 +1,5 @@
 Borehole GeoJSON encoding
-==============================
+=========================
 Eric Boisvert <eric.boisvert2@canada.ca>
 v1.0, April 2021
 :toc:

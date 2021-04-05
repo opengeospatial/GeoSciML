@@ -1,0 +1,58 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "BSS001REWW",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 5.18713262971692,6.1909541655103]
+      },
+      "properties": {
+        "@featureType": "BoreholeView",
+        "identifier": {
+          "value": "http://ressource.brgm-rec.fr/data/BoreholeView/BSS001REWW",
+          "@codeSpace": "http://www.ietf.org/rfc/rfc2616"
+        },
+        "name": "Forage BSS001REWW",
+        "description": "Borehole description",
+       "gsmlp_identifier":"http://ressource.brgm-rec.fr/data/Borehole/BSS001REWW",
+		"purpose":"http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrogeologicalSurvey",
+		"status":"http://resource.europe-geology.eu/vocabs/BoreholeStatus/drillingCompleted",
+		"drillingMethod":"http://resource.europe-geology.eu/vocabs/DrillingMethod/hydraulic_rotary_drilling",
+		"operator":"BRGM (PIEZOMETRIE)",
+		"driller":"INTRAFOR-COFOR",
+		"drillEndDate":"1974-11-30Z",
+		"startPoint":"http://resource.europe-geology.eu/vocabs/StartPoint/naturalLandSurface",
+		"inclinationType":"http://resource.europe-geology.eu/vocabs/BoreholeInclinationType/vertical",
+		"boreholeMaterialCustodian":"unknown",
+		"boreholeLength_m": 23,
+		"elevation_m":223.87,
+		"elevation_srs":"http://www.opengis.net/def/crs/EPSG/0/5720",
+		"source":"http://ficheinfoterre.brgm.fr/InfoterreFiche/ficheBss.action?id=06512X0037/STREMY",
+		"metadata_uri":"http://www.geocatalogue.fr/Detail.do?fileIdentifier=BR_BSS_BAA",
+		"genericSymbolizer":"Not provided",
+	    "cored":"false",
+		"accessToPhysicalDrillCore":"false",
+		"boreholeUse": {"href":"http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/groundwaterLevelMonitoring","title":"surveillance du niveau de la nappe phréatique"},
+		"detailedDescription": {"href":"http://www.opengis.net/def/nil/OGC/0/template" ,"title":"template"},
+		"geophysicalLogs": {"href":"http://www.opengis.net/def/nil/OGC/0/unknown" ,"title":"unknown"},
+	    "geologicalDescription": {"href":"http://ressource.brgm-rec.fr/obs/RawGeologicLogs/BSS001REWW","title":"Borehole BSS001REWW geologic log available."},
+		"groundWaterLevel": {"href":"http://ressource.brgm-rec.fr/data/Piezometre/06512X0037/STREMY.2","title":"Description of Piezometer attached to BSS001REWW. Provides link to SensorObservationService offering"},
+		"groundWaterChemistry": {"href":"http://www.opengis.net/def/nil/OGC/0/unknown" ,"title":"unknown"},
+		"rockGeochemistry": {"href":"http://www.opengis.net/def/nil/OGC/0/unknown" ,"title":"unknown"},
+		"poreGasChemistry": {"href":"http://www.opengis.net/def/nil/OGC/0/inapplicable" ,"title":"inapplicable"},
+	    "geoTechnicalInfo": {"href":"http://www.opengis.net/def/nil/OGC/0/unknown" ,"title":"unknown"}
+    }  
+    }
+  ],
+  "totalFeatures": "unknown",
+  "numberReturned": 1,
+  "timeStamp": "2021-04-05T18:30:58.640Z",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  }
+}

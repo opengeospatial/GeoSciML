@@ -2,7 +2,7 @@ name: compile_doc
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,10 +11,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          path: master
+          path: main
       - name: Generate document
         run: |
-          cd master/standard
+          cd main/standard
           metanorma compile --agree-to-terms -t ogc -x xml,html,doc document.adoc
           git config --global user.name 'example'
           git config --global user.email 'example@example.com'

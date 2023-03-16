@@ -151,7 +151,7 @@
 <semantic__preface><semantic__abstract id="semantic___abstract"><semantic__title>Abstract</semantic__title><semantic__p id="semantic___4ec7e7b5-6ffa-6172-4ed6-d793bbb52a94">GeoSciML is a model of geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases.  The model was developed by the IUGS CGI (Commission for the Management and Application of Geoscience Information) and version 4.1 is the first version officially submitted as an OGC standard.  This specification describes a logical model and GML/XML encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses.  It includes a Lite model, used for simple map-based applications; a basic model, aligned on INSPIRE, for basic data exchange; and an extended model to address more complex scenarios.</semantic__p>
 
 <semantic__p id="semantic___8b18070e-89e5-1d17-0105-a1b2c34d0e2a">The specification also provides patterns, profiles (most notably of Observations and Measurements — ISO19156), and best practices to deal with common geoscience use cases.</semantic__p>
-</semantic__abstract><semantic__clause id="semantic___2025d500-ceeb-41e8-91be-6241e63e4ea8" type="keywords">
+</semantic__abstract><semantic__clause id="semantic___4f27c7c7-ef49-43bb-8236-56f6227be04d" type="keywords">
 <semantic__title>Keywords</semantic__title>
 <semantic__p>The following are keywords to be used by search engines and
     document catalogues.</semantic__p>
@@ -167,7 +167,7 @@
 </semantic__foreword><semantic__clause id="semantic___security_considerations" type="security" obligation="informative">
 <semantic__title>Security considerations</semantic__title>
 <semantic__p id="semantic___4bfc9ff4-0427-16f3-2dce-96ac965b7eae">No security considerations have been made for this Standard.</semantic__p>
-</semantic__clause><semantic__clause id="semantic___63bd00f6-7cf0-4ddd-91e3-4df3035bd17c" type="submitting_orgs">
+</semantic__clause><semantic__clause id="semantic___fe9c0b7a-a059-4efc-89fe-be2fc710154a" type="submitting_orgs">
 <semantic__title>Submitting Organizations</semantic__title>
 <semantic__p>The following organizations submitted this Document to the
    Open Geospatial Consortium (OGC):</semantic__p>
@@ -189,9 +189,15 @@
 <semantic__title>Submitters</semantic__title>
 <semantic__p id="semantic___60b1643b-76a7-f154-a489-757cf275f9ed">All questions regarding this submission should be directed to the editor or the submitters:</semantic__p>
 
-<semantic__table id="semantic___613bb3c2-a339-d9a3-49e0-1905d282e233" unnumbered="true"><semantic__tbody><semantic__tr><semantic__td valign="middle" align="left"><semantic__strong>Name</semantic__strong></semantic__td>
+<semantic__table id="semantic___5b95789a-6987-b1dd-faf3-759a50f92aa3" unnumbered="true"><semantic__tbody><semantic__tr><semantic__td valign="middle" align="left"><semantic__strong>Name</semantic__strong></semantic__td>
 <semantic__td valign="middle" align="left"><semantic__strong>Affiliation</semantic__strong></semantic__td>
-</semantic__tr><semantic__tr><semantic__td valign="middle" align="left"/><semantic__td valign="middle" align="left"/></semantic__tr></semantic__tbody>
+</semantic__tr><semantic__tr><semantic__td valign="middle" align="left">Eric Boisvert</semantic__td>
+<semantic__td valign="middle" align="left">Geological Survey of Canada (Natural Resources Canada)</semantic__td>
+</semantic__tr><semantic__tr><semantic__td valign="middle" align="left">Ollie Raymond</semantic__td>
+<semantic__td valign="middle" align="left">Geoscience Australia</semantic__td>
+</semantic__tr><semantic__tr><semantic__td valign="middle" align="left">Marcus Sen</semantic__td>
+<semantic__td valign="middle" align="left">British Geological Survey</semantic__td>
+</semantic__tr></semantic__tbody>
 </semantic__table>
 </semantic__submitters></semantic__preface><semantic__sections>
 
@@ -219,7 +225,7 @@
 <semantic__title>Contributors</semantic__title>
 <semantic__p id="semantic___e0cd848a-9756-7dd1-7335-ee74630adab2">Additional contributors to this Standard include the following:</semantic__p>
 
-<semantic__p id="semantic___0d24a6e2-9464-c41b-fe8b-7dc41f0e2b78">Individual name(s), Organization</semantic__p>
+<semantic__p id="semantic___c44c3266-121d-7596-05b8-bf60268ddd3f">Edward Lewis, British Geological Survey</semantic__p>
 </semantic__clause>
 
 <semantic__clause id="semantic___scope" type="scope" obligation="normative">
@@ -711,7 +717,7 @@ sourcecode .nt {
 <preface><abstract id="_abstract" displayorder="1"><title depth="1">I.<tab/>Abstract</title><p id="_4ec7e7b5-6ffa-6172-4ed6-d793bbb52a94">GeoSciML is a model of geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases.  The model was developed by the IUGS CGI (Commission for the Management and Application of Geoscience Information) and version 4.1 is the first version officially submitted as an OGC standard.  This specification describes a logical model and GML/XML encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses.  It includes a Lite model, used for simple map-based applications; a basic model, aligned on INSPIRE, for basic data exchange; and an extended model to address more complex scenarios.</p>
 
 <p id="_8b18070e-89e5-1d17-0105-a1b2c34d0e2a">The specification also provides patterns, profiles (most notably of Observations and Measurements — ISO19156), and best practices to deal with common geoscience use cases.</p>
-</abstract><clause id="_2025d500-ceeb-41e8-91be-6241e63e4ea8" type="keywords" displayorder="2">
+</abstract><clause id="_4f27c7c7-ef49-43bb-8236-56f6227be04d" type="keywords" displayorder="2">
 <title depth="1">II.<tab/>Keywords</title>
 <p>The following are keywords to be used by search engines and
     document catalogues.</p>
@@ -727,7 +733,7 @@ sourcecode .nt {
 </foreword><clause id="_security_considerations" type="security" obligation="informative" displayorder="4">
 <title depth="1">IV.<tab/>Security considerations</title>
 <p id="_4bfc9ff4-0427-16f3-2dce-96ac965b7eae">No security considerations have been made for this Standard.</p>
-</clause><clause id="_63bd00f6-7cf0-4ddd-91e3-4df3035bd17c" type="submitting_orgs" displayorder="5">
+</clause><clause id="_fe9c0b7a-a059-4efc-89fe-be2fc710154a" type="submitting_orgs" displayorder="5">
 <title depth="1">V.<tab/>Submitting Organizations</title>
 <p>The following organizations submitted this Document to the
    Open Geospatial Consortium (OGC):</p>
@@ -749,9 +755,15 @@ sourcecode .nt {
 <title depth="1">VI.<tab/>Submitters</title>
 <p id="_60b1643b-76a7-f154-a489-757cf275f9ed">All questions regarding this submission should be directed to the editor or the submitters:</p>
 
-<table id="_613bb3c2-a339-d9a3-49e0-1905d282e233" unnumbered="true"><tbody><tr><td valign="middle" align="left"><strong>Name</strong></td>
+<table id="_5b95789a-6987-b1dd-faf3-759a50f92aa3" unnumbered="true"><tbody><tr><td valign="middle" align="left"><strong>Name</strong></td>
 <td valign="middle" align="left"><strong>Affiliation</strong></td>
-</tr><tr><td valign="middle" align="left"/><td valign="middle" align="left"/></tr></tbody>
+</tr><tr><td valign="middle" align="left">Eric Boisvert</td>
+<td valign="middle" align="left">Geological Survey of Canada (Natural Resources Canada)</td>
+</tr><tr><td valign="middle" align="left">Ollie Raymond</td>
+<td valign="middle" align="left">Geoscience Australia</td>
+</tr><tr><td valign="middle" align="left">Marcus Sen</td>
+<td valign="middle" align="left">British Geological Survey</td>
+</tr></tbody>
 </table>
 </submitters></preface><sections>
 
@@ -779,7 +791,7 @@ sourcecode .nt {
 <title depth="1">7.<tab/>Contributors</title>
 <p id="_e0cd848a-9756-7dd1-7335-ee74630adab2">Additional contributors to this Standard include the following:</p>
 
-<p id="_0d24a6e2-9464-c41b-fe8b-7dc41f0e2b78">Individual name(s), Organization</p>
+<p id="_c44c3266-121d-7596-05b8-bf60268ddd3f">Edward Lewis, British Geological Survey</p>
 </clause>
 
 <clause id="_scope" type="scope" obligation="normative" displayorder="7">

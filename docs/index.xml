@@ -114,9 +114,15 @@
 <title>Submitters</title>
 <p id="_60b1643b-76a7-f154-a489-757cf275f9ed">All questions regarding this submission should be directed to the editor or the submitters:</p>
 
-<table id="_613bb3c2-a339-d9a3-49e0-1905d282e233" unnumbered="true"><tbody><tr><td valign="middle" align="left"><strong>Name</strong></td>
+<table id="_5b95789a-6987-b1dd-faf3-759a50f92aa3" unnumbered="true"><tbody><tr><td valign="middle" align="left"><strong>Name</strong></td>
 <td valign="middle" align="left"><strong>Affiliation</strong></td>
-</tr><tr><td valign="middle" align="left"/><td valign="middle" align="left"/></tr></tbody>
+</tr><tr><td valign="middle" align="left">Eric Boisvert</td>
+<td valign="middle" align="left">Geological Survey of Canada (Natural Resources Canada)</td>
+</tr><tr><td valign="middle" align="left">Ollie Raymond</td>
+<td valign="middle" align="left">Geoscience Australia</td>
+</tr><tr><td valign="middle" align="left">Marcus Sen</td>
+<td valign="middle" align="left">British Geological Survey</td>
+</tr></tbody>
 </table>
 </submitters></preface><sections>
 
@@ -144,7 +150,7 @@
 <title>Contributors</title>
 <p id="_e0cd848a-9756-7dd1-7335-ee74630adab2">Additional contributors to this Standard include the following:</p>
 
-<p id="_0d24a6e2-9464-c41b-fe8b-7dc41f0e2b78">Individual name(s), Organization</p>
+<p id="_c44c3266-121d-7596-05b8-bf60268ddd3f">Edward Lewis, British Geological Survey</p>
 </clause>
 
 <clause id="_scope" type="scope" obligation="normative">

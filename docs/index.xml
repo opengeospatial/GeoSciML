@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ogc-standard xmlns="https://www.metanorma.org/ns/ogc" type="semantic" version="2.3.6">
 <bibdata type="standard">
-<title language="en" format="text/plain">OGC Geoscience Markup Language</title>
-<uri type="xml">./document.xml</uri><uri type="pdf">./document.pdf</uri><uri type="doc">./document.doc</uri><docidentifier type="ogc-external">http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}</docidentifier><docidentifier type="ogc-internal">YY-999</docidentifier><docnumber>YY-999</docnumber><date type="published"><on>2029-03-30</on></date><date type="issued"><on>2029-03-30</on></date><date type="received"><on>2029-03-30</on></date><contributor><role type="author"/><organization>
-<name>Organization One</name>
+<title language="en" format="text/plain">OGC Geoscience Markup Language - GeoSciML</title>
+<uri type="xml">./index.xml</uri><uri type="pdf">./index.pdf</uri><uri type="doc">./index.doc</uri><docidentifier type="ogc-external">http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}</docidentifier><docidentifier type="ogc-internal">16-008</docidentifier><docnumber>16-008</docnumber><date type="published"><on>2017-01-31</on></date><date type="issued"><on>2016-11-29</on></date><date type="received"><on>2016-08-23</on></date><contributor><role type="author"/><organization>
+<name>Arizona Geological Survey (AzGS), Arizona, USA</name>
 </organization></contributor><contributor><role type="author"/><organization>
-<name>Organization Two</name>
+<name>British Geological Survey (NERC-BGS), UK</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Bureau de Recherches Géologiques et Minières (BRGM), France</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Geological Survey of Victoria (GSV), Australia</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Geological Survey of Finland (GTK), Finland</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Geological Survey of Italy (ISPRA), Italy</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Geological Survey of Sweden (SGU), Sweden</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Geoscience Australia (GA), Australia</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Institute of Geological and Nuclear Sciences (GNS), New Zealand</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Landcare Research, New Zealand</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Natural Resources Canada (NRCan), Canada</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>U.S. Geological Survey (USGS), United States of America</name>
 </organization></contributor><contributor><role type="editor"/><person>
-<name><completename>Edward Lewis</completename></name>
+<name><completename>GeoSciML Modeling Team</completename></name>
 </person></contributor><contributor><role type="editor"/><person>
-<name><completename>Editor Two</completename></name>
+<name><completename>Eric Boisvert</completename></name>
+</person></contributor><contributor><role type="editor"/><person>
+<name><completename>Marcus Sen</completename></name>
 </person></contributor><contributor><role type="publisher"/><organization>
 <name>Open Geospatial Consortium</name>
-</organization></contributor><edition>1.0</edition><version><draft>4.1.1</draft></version><language>en</language><script>Latn</script><abstract><p>&lt;Insert Abstract Text here&gt;</p>
+</organization></contributor><edition>4.1</edition><version><draft>4.1.1</draft></version><language>en</language><script>Latn</script><abstract><p>GeoSciML is a model of geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases.  The model was developed by the IUGS CGI (Commission for the Management and Application of Geoscience Information) and version 4.1 is the first version officially submitted as an OGC standard.  This specification describes a logical model and GML/XML encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses.  It includes a Lite model, used for simple map-based applications; a basic model, aligned on INSPIRE, for basic data exchange; and an extended model to address more complex scenarios.</p>
+
+<p>The specification also provides patterns, profiles (most notably of Observations and Measurements - ISO19156), and best practices to deal with common geoscience use cases.</p>
 </abstract><status><stage>draft</stage></status><copyright><from>2023</from><owner><organization>
 <name>Open Geospatial Consortium</name>
-</organization></owner></copyright><keyword>ogcdoc</keyword><keyword>OGC document</keyword><keyword>API</keyword><keyword>openapi</keyword><keyword>html</keyword><ext><doctype>standard</doctype><subdoctype>implementation</subdoctype><editorialgroup><committee>technical</committee></editorialgroup></ext></bibdata><metanorma-extension><presentation-metadata><name>TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>HTML TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>DOC TOC Heading Levels</name><value>2</value></presentation-metadata></metanorma-extension>
+</organization></owner></copyright><keyword>ogcdoc</keyword><keyword>OGC document</keyword><keyword>API</keyword><keyword>openapi</keyword><keyword>html</keyword><keyword>geology</keyword><keyword>geoscience</keyword><keyword>stratigraphy</keyword><keyword>borehole</keyword><keyword>geochemistry</keyword><keyword>geophysics</keyword><keyword>rock</keyword><keyword>fault</keyword><keyword>contact</keyword><keyword>fold</keyword><keyword>fossil</keyword><keyword>UML</keyword><keyword>GML</keyword><keyword>XML</keyword><ext><doctype>standard</doctype><subdoctype>implementation</subdoctype><editorialgroup><committee>technical</committee></editorialgroup></ext></bibdata><metanorma-extension><presentation-metadata><name>TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>HTML TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>DOC TOC Heading Levels</name><value>2</value></presentation-metadata></metanorma-extension>
 <boilerplate>
   <copyright-statement>
     <clause>
@@ -70,7 +96,9 @@
   
 </feedback-statement>
 </boilerplate>
-<preface><abstract id="_abstract"><title>Abstract</title><p id="_ea8b918b-259f-ad32-41cd-bf6720709423">&lt;Insert Abstract Text here&gt;</p>
+<preface><abstract id="_abstract"><title>Abstract</title><p id="_4ec7e7b5-6ffa-6172-4ed6-d793bbb52a94">GeoSciML is a model of geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases.  The model was developed by the IUGS CGI (Commission for the Management and Application of Geoscience Information) and version 4.1 is the first version officially submitted as an OGC standard.  This specification describes a logical model and GML/XML encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses.  It includes a Lite model, used for simple map-based applications; a basic model, aligned on INSPIRE, for basic data exchange; and an extended model to address more complex scenarios.</p>
+
+<p id="_8b18070e-89e5-1d17-0105-a1b2c34d0e2a">The specification also provides patterns, profiles (most notably of Observations and Measurements — ISO19156), and best practices to deal with common geoscience use cases.</p>
 </abstract><foreword id="_2fc7f941-8cac-e65f-3e51-3b9f18652ea3" obligation="informative">
 <title>Preface</title>
 <note id="_b54ab49b-0988-938f-ab2d-38e2ffda33ce"><p id="_103398dd-a446-704f-572a-9ee37f3e0510">Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work.</p>
@@ -98,10 +126,11 @@
 
 <foreword id="_preface" obligation="informative">
 <title>Preface</title>
-<note id="_9e41266c-94d0-3fa5-e540-76886dafc321"><p id="_eefcfc65-9ef0-b650-bbc8-6dec41a4167a">Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work. &gt;
-Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+<note id="_0adac64a-7d91-30e0-4ad7-d03a31ce6de6"><p id="_3b71c249-48d5-2254-a173-eb434386df81">The primary goal of this specification is to capture the semantics, schema, and encoding syntax of key elements described and portrayed in geological maps and databases, in order to enable information systems to interoperate with such data.</p>
 
-<p id="_94e5a2eb-2129-3e6f-5a3b-673a1371de22">Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p>
+<p id="_877b3f62-7c26-0552-1354-513ae1c752f5">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+
+<p id="_c3a34b43-efa7-069f-5dc4-dd1e63965d6a">Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p>
 </note>
 </foreword>
 

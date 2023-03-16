@@ -1,0 +1,63 @@
+= OGC Geoscience Markup Language - GeoSciML
+:doctype: standard
+:encoding: utf-8
+:lang: en
+:status: draft
+:committee: technical
+:draft: 4.1.1
+:external-id: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
+:docnumber: 16-008
+:received-date: 2016-08-23
+:issued-date: 2016-11-29
+:published-date: 2017-01-31
+:fullname: GeoSciML Modeling Team
+:fullname_2: Eric Boisvert
+:fullname_3: Ollie Raymond
+:fullname_3: Marcus Sen
+:docsubtype: Interface
+:keywords: ogcdoc, OGC document, API, openapi, html, geology, geoscience, stratigraphy, borehole, geochemistry, geophysics, rock, fault, contact, fold, fossil, UML, GML, XML
+:submitting-organizations: Arizona Geological Survey (AzGS), Arizona, USA; British Geological Survey (NERC-BGS), UK; Bureau de Recherches Géologiques et Minières (BRGM), France; Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia; Geological Survey of Victoria (GSV), Australia; Geological Survey of Finland (GTK), Finland; Geological Survey of Italy (ISPRA), Italy; Geological Survey of Sweden (SGU), Sweden; Geoscience Australia (GA), Australia; Institute of Geological and Nuclear Sciences (GNS), New Zealand; Landcare Research, New Zealand; Natural Resources Canada (NRCan), Canada; U.S. Geological Survey (USGS), United States of America
+:mn-document-class: ogc
+:mn-output-extensions: xml,html,doc,pdf
+:local-cache-only:
+:data-uri-image:
+:pdf-uri: ./index.pdf
+:xml-uri: ./index.xml
+:doc-uri: ./index.doc
+:edition: 4.1
+
+////
+Make sure to complete each included document
+////
+include::sections/clause_0_front_material.adoc[]
+
+include::sections/clause_1_scope.adoc[]
+
+include::sections/clause_2_conformance.adoc[]
+
+include::sections/clause_3_references.adoc[]
+
+include::sections/clause_4_terms_and_definitions.adoc[]
+
+include::sections/clause_5_conventions.adoc[]
+
+include::sections/clause_6_informative_text.adoc[]
+
+include::sections/clause_7_normative_text.adoc[]
+
+include::sections/clause_8_media_types.adoc[]
+
+////
+add or remove annexes after "A" as necessary
+////
+include::sections/annex-a.adoc[]
+
+include::sections/annex-n.adoc[]
+
+////
+Revision History should be the last annex before the Bibliography
+Bibliography should be the last annex
+////
+include::sections/annex-history.adoc[]
+
+include::sections/annex-bibliography.adoc[]

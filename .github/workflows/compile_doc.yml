@@ -14,12 +14,10 @@ jobs:
           path: main
       - name: Generate document
         run: |
-          cd main/standard
+          cd main/docs
           metanorma compile --agree-to-terms -t ogc -x xml,html,doc index.adoc
-
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: |
-            main/standard/index.**
+          git config --global user.name 'example'
+          git config --global user.email 'example@example.com'
+          git add --all
+          git commit -am "Compilation of HTML documents"
+          git push

@@ -72,7 +72,9 @@ All questions regarding this submission should be directed to the editor or the 
 
 |===
 |*Name* |*Affiliation*
-| |
+|Eric Boisvert |Geological Survey of Canada (Natural Resources Canada)
+|Ollie Raymond |Geoscience Australia
+|Marcus Sen | British Geological Survey
 |===
 
 == Contributors
@@ -81,4 +83,4 @@ All questions regarding this submission should be directed to the editor or the 
 
 Additional contributors to this Standard include the following:
 
-Individual name(s), Organization
+Edward Lewis, British Geological Survey

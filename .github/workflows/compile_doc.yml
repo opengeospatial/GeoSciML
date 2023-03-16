@@ -1,0 +1,23 @@
+name: compile_doc
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: metanorma/metanorma:latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          path: main
+      - name: Generate document
+        run: |
+          cd main
+          metanorma compile --agree-to-terms -t ogc -x xml,html,doc document.adoc
+          git config --global user.name 'example'
+          git config --global user.email 'example@example.com'
+          git add document.html
+          git commit -am "Compilation of HTML documents"
+          git push

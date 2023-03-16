@@ -15,7 +15,7 @@ jobs:
       - name: Generate document
         run: |
           cd main/docs
-          metanorma compile --agree-to-terms -t ogc -x xml,html,doc document.adoc
+          metanorma compile --agree-to-terms -t ogc -x xml,html,doc index.adoc
           git config --global user.name 'example'
           git config --global user.email 'example@example.com'
           git add index.html

@@ -21,4 +21,4 @@ jobs:
         with:
           name: dist
           path: |
-            docs
+            standard

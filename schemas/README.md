@@ -1,0 +1,1 @@
+# Folder for the JSON Schema files

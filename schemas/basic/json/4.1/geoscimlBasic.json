@@ -1,0 +1,1327 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json",
+  "description": "GeologyBasic is a package of classes representing fundamental geological map features and the relations between them.  GeoSciML describes a geologic dataset as a series of GeologicFeature occurrences, spatially represented as MappedFeature.  A map is a collection of MappedFeatures.  The term “map”, typically understood as a map sheet (a given area on the surface of the earth), is only one possible collection of MappedFeatures.  Other examples are cross-sections, block diagrams, and even borehole logs (a linear map).  MappedFeature can represent any features and GeologicFeatures are one of the kinds of features it can represent.  A MappedFeature identifies what it represents using its “specification” association.",
+  "$defs": {
+    "AbstractFeatureRelation": {
+      "$anchor": "AbstractFeatureRelation",
+      "description": "Association class placeholder to implement relation between geologic features",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "object",
+          "properties": {
+            "relatedFeature": {
+              "description": "A relatedFeature is a general structure used to define relationships between any features or objects within GeoSciML. Relationships are always binary and directional.  There is always a single source and a single target for a given FeatureRelation (which is abstract in GeoSciML Basic).  The relationship is always defined from the perspective of the Source and is generally an active verb.",
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "#GeologicFeature"
+                }
+              ]
+            }
+          },
+          "required": [
+            "relatedFeature"
+          ]
+        }
+      },
+      "required": [
+        "properties"
+      ]
+    },
+    "AnthropogenicGeomorphologicFeature": {
+      "$anchor": "AnthropogenicGeomorphologicFeature",
+      "description": "An anthropogenic geomorphologic feature is a geomorphologic feature (i.e., landform) which has been created by human activity.  For example, a dredged channel, midden, open pit or reclaimed land.",
+      "allOf": [
+        {
+          "$ref": "#GeomorphologicFeature"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "anthropogenicGeomorphologicFeatureType": {
+                  "description": "The anthropogenicGeomorphologicFeatureType: AnthropogenicGeomorphologicFeatureTypeTerm is a reference from a controlled vocabulary describing the type of geomorphologic feature.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#AnthropogenicGeomorphologicFeatureTypeTerm"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AnthropogenicGeomorphologicFeatureTypeTerm": {
+      "$anchor": "AnthropogenicGeomorphologicFeatureTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the type of anthropogenic geomorphologic feature",
+      "type": "string"
+    },
+    "CollectionTypeTerm": {
+      "$anchor": "CollectionTypeTerm",
+      "description": "Types of collections of geological and geophysical objects. Examples: \"borehole collection\", \"geological map\", \"geological model\", \"geophysical object collection\" (from INSPIRE)",
+      "type": "string"
+    },
+    "CompositionPart": {
+      "$anchor": "CompositionPart",
+      "description": "CompositionPart represents the composition of a geologic unit in terms of earth material constituents (CompoundMaterial).  It decomposes the material making of the unit into parts having distinct roles and proportions.",
+      "type": "object",
+      "properties": {
+        "role": {
+          "description": "The property role:CompositionPartRoleTerm defines the relationship of the CompoundMaterial constituent in the geologic unit, e.g. vein, interbedded constituent, layers, dominant constituent.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#CompositionPartRoleTerm"
+            }
+          ]
+        },
+        "material": {
+          "description": "The material:EarthMaterial property contains the material description of the composing part.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/SCLinkObject"
+            },
+            {
+              "$ref": "#CompoundMaterial"
+            }
+          ]
+        },
+        "proportion": {
+          "description": "The proportion property (SWE::QuantityRange) specifies the fraction of the geologic unit composed of the compound material.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+            }
+          ]
+        }
+      }
+    },
+    "CompositionPartRoleTerm": {
+      "$anchor": "CompositionPartRoleTerm",
+      "description": "This class is a blank placeholder for a vocabulary of terms to describe the role that a compositional part plays in a geologic unit.",
+      "type": "string"
+    },
+    "CompoundMaterial": {
+      "$anchor": "CompoundMaterial",
+      "description": "A CompoundMaterial is an EarthMaterial composed of particles made of EarthMaterials, possibly including other CompoundMaterials.  This class is provided primarily as an extensibility point for related domain models that wish to import and build on GeoSciML, and wish to define material types that are compound but are not rock or rock-like material. In the context of GeoSciML \"RockMaterial\" should be used to describe units made of rock.",
+      "allOf": [
+        {
+          "$ref": "#EarthMaterial"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "Contact": {
+      "$anchor": "Contact",
+      "description": "A contact is a general concept representing any kind of surface separating two geologic units, including primary boundaries such as depositional contacts, all kinds of unconformities, intrusive contacts, and gradational contacts, as well as faults that separate geologic units.",
+      "allOf": [
+        {
+          "$ref": "#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "contactType": {
+                  "description": "The property contactType:ContactTypeTerm classifies the contact (e.g. intrusive, unconformity, bedding surface, lithologic boundary, phase boundary) and is a term from a controlled vocabulary.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#ContactTypeTerm"
+                    }
+                  ]
+                },
+                "stContactDescription": {
+                  "description": "The property stContactDescription:ContactAbstractDescription provides a detailed contact description.  This is a stub property in GeoSciML Basic since ContactAbstractDescription is an abstract class with subtypes defined in GeoSciML Extension.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#ContactAbstractDescription"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ContactAbstractDescription": {
+      "$anchor": "ContactAbstractDescription",
+      "description": "An abstract class providing a link between classes in GeoSciMLBasic and GeoSciMLExtended application schemas.",
+      "type": "object"
+    },
+    "ContactTypeTerm": {
+      "$anchor": "ContactTypeTerm",
+      "description": "Refers to a vocabulary of terms describing types of geological contacts",
+      "type": "string"
+    },
+    "ConventionCode": {
+      "$anchor": "ConventionCode",
+      "description": "Suggested values: \"dip dip direction\", \"strike dip right hand rule\" (The strike and dip of planar data is listed according to the ‘right-hand rule’ or, as one looks along the strike direction, the surface dips to the right.)\r\n\r\nThis list is an indicative list only of terms used to describe the convention used for the orientation measurement.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
+      "type": "string"
+    },
+    "DescriptionPurpose": {
+      "$anchor": "DescriptionPurpose",
+      "description": "Codes used for the specification of the intended purpose/level of abstraction for a given feature or object instance, ie the reason for the existence of the GeologicFeature. \r\nValues: instance, typicalNorm, definingNorm.",
+      "type": "string"
+    },
+    "DeterminationMethodTerm": {
+      "$anchor": "DeterminationMethodTerm",
+      "description": "This class is an empty placeholder for a vocabulary of terms describing the method used to determine the measured orientation. Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
+      "type": "string"
+    },
+    "EarthMaterial": {
+      "$anchor": "EarthMaterial",
+      "description": "The EarthMaterial class holds a description of a naturally occurring substance in the Earth.  EarthMaterial represents material composition or substance, and is thus independent of quantity or location. Ideally, EarthMaterials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations enter into the description as well.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "object",
+          "properties": {
+            "color": {
+              "description": "The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes may be used.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "purpose": {
+              "description": "The purpose:DescriptionPurpose property provides a specification of the intended purpose or level of abstraction for the given EarthMaterial. The intent is the same a GeologicFeature’s purpose and it shares the same vocabulary (instance, typicalNorm, definingNorm).",
+              "$ref": "#DescriptionPurpose"
+            },
+            "gbEarthMaterialDescription": {
+              "description": "The property gbEarthMaterialDescription:EarthMaterialAbstractDescription provides a detailed earth material description of the part.  This property is a stub in GeoSciML Basic as EarthMaterialAbstractDescription is abstract with subtypes defined in GeoSciML Extension.",
+              "type": "array",
+              "items": {
+                "$ref": "#EarthMaterialAbstractDescription"
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "EarthMaterialAbstractDescription": {
+      "$anchor": "EarthMaterialAbstractDescription",
+      "description": "Abstract description class for earth material.  This class is a placeholder for further extension in Extension package",
+      "type": "object"
+    },
+    "EventProcessTerm": {
+      "$anchor": "EventProcessTerm",
+      "description": "Refers to a vocabulary of terms specifying the process or processes that occurred during an event. Examples include deposition, extrusion, intrusion, cooling.",
+      "type": "string"
+    },
+    "ExposureTerm": {
+      "$anchor": "ExposureTerm",
+      "description": "This class is a blank placeholder for a vocabulary of terms describing the nature of the expression of the mapped feature at the earth\u0027s surface (eg, exposed, concealed)",
+      "type": "string"
+    },
+    "FaultTypeTerm": {
+      "$anchor": "FaultTypeTerm",
+      "description": "A vocabulary of terms describing the type of shear displacement structure (eg; thrust fault, normal fault, wrench fault)",
+      "type": "string"
+    },
+    "Fold": {
+      "$anchor": "Fold",
+      "description": "A fold is formed by one or more systematically curved layers, surfaces, or lines in a rock body. A fold denotes a structure formed by the deformation of a geologic structure, such as a contact which the original undeformed geometry is presumed, to form a structure that may be described by the translation of an abstract line (the fold axis) parallel to itself along some curvilinear path (the fold profile). Folds have a hinge zone (zone of maximum curvature along the surface) and limbs (parts of the deformed surface not in the hinge zone).  Folds are described by an axial surface, hinge line, profile geometry, the solid angle between the limbs, and the relationships between adjacent folded surfaces if the folded structure is a Layering fabric.",
+      "allOf": [
+        {
+          "$ref": "#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "profileType": {
+                  "description": "The property profileType:FoldProfileTypeTerm contains a term from a controlled vocabulary specifying the concave/convex geometry of fold relative to earth surface, and relationship to younging direction in folded strata if known. (e.g., antiform, synform, neutral, anticline, syncline, monocline, ptygmatic).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#FoldProfileTypeTerm"
+                    }
+                  ]
+                },
+                "stFoldDescription": {
+                  "description": "The property stFoldDescription:FoldAbstractDescription provides a detailed fold description.  This is a stub property in GeoSciML Basic since FoldAbstractDescription is an abstract class with subtypes defined in GeoSciML Extension.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#FoldAbstractDescription"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FoldAbstractDescription": {
+      "$anchor": "FoldAbstractDescription",
+      "description": "An abstract class providing a link between classes in GeoSciMLBasic and GeoSciMLExtended application schemas.",
+      "type": "object"
+    },
+    "FoldProfileTypeTerm": {
+      "$anchor": "FoldProfileTypeTerm",
+      "description": "Refers to a vocabulary of terms specifying concave/convex geometry of fold relative to earth surface, and relationship to younging direction in folded strata if known. antiform, synform, neutral, anticline, syncline, monocline, ptygmatic",
+      "type": "string"
+    },
+    "Foliation": {
+      "$anchor": "Foliation",
+      "description": "A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team, penetrative planar foliation defined by layers \u003e 5 mm thick is considered Layering.",
+      "allOf": [
+        {
+          "$ref": "#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "foliationType": {
+                  "description": "The foliationType:FoliationTypeTerm property specifies the type of foliation from a controlled vocabulary. Examples include crenulation cleavage, slaty cleavage and schistosity.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#FoliationTypeTerm"
+                    }
+                  ]
+                },
+                "stFoliationDescription": {
+                  "description": "The foliationType:FoliationTypeTerm property specifies the type of foliation from a controlled vocabulary.  Examples include crenulation cleavage, slaty cleavage and schistosity.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#FoliationAbstractDescription"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FoliationAbstractDescription": {
+      "$anchor": "FoliationAbstractDescription",
+      "description": "An abstract class providing a link between classes in GeoSciMLBasic and GeoSciMLExtended application schemas.",
+      "type": "object"
+    },
+    "FoliationTypeTerm": {
+      "$anchor": "FoliationTypeTerm",
+      "description": "Refers to a vocabular of terms defining the type of foliation (eg, crenulation cleavage, gneissic layering, slaty cleavage, schistosity, etc)",
+      "type": "string"
+    },
+    "GSML_GeometricDescriptionValue": {
+      "$anchor": "GSML_GeometricDescriptionValue",
+      "description": "GSML_GeometricDescriptionValue is a special abstract data type for descriptions of planar or linear orientations of a geologic feature.   Different subtypes allow specifying direction by direction vector (e.g. dip/dip direction), compass point (e.g.  NE), or description (e.g. \"toward fold hinge\", \"below\u0027).",
+      "type": "object",
+      "properties": {
+        "determinationMethod": {
+          "description": "The determinationMethod:DeterminationMethodTerm property describes the way the orientation value was determined (e.g. measured, inferred from dip slope, etc.) using a reference to a controlled vocabulary.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#DeterminationMethodTerm"
+            }
+          ]
+        },
+        "descriptiveOrientation": {
+          "description": "The descriptionOrientation:Primitive::CharacterString contains a textual specification of orientation, possibly referencing some local geography (e.g. \"toward fold hinge\", \"below\").",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "GSML_LinearOrientation": {
+      "$anchor": "GSML_LinearOrientation",
+      "description": "A linear orientation is composed of a trend (the compass orientation of the line) and a plunge (the angle from the horizontal).  This vector may be oriented (pointing in a specific direction) or not.",
+      "allOf": [
+        {
+          "$ref": "#GSML_GeometricDescriptionValue"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "directed": {
+              "description": "The directed:LinearDirectedCode property indicates if the orientation represents a linear feature that is directed, e.g. clast imbrication, mylonitic lineation with sense of shear, slickenlines with displacement direction, rather than undirected (like a fold hinge line or intersection lineations).  A code list will indicate which is the directed end of the linear orientation.  The value of the property comes from a controlled vocabulary.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#LinearDirectedCode"
+                }
+              ]
+            },
+            "plunge": {
+              "description": "The property plunge (SWE::QuantityRange) reports the magnitude of the plunge as an angle from horizontal.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            },
+            "trend": {
+              "description": "The property trend (SWE::QuantityRange) reports the azimuth (compass bearing) value of the linear orientation.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "GSML_PlanarOrientation": {
+      "$anchor": "GSML_PlanarOrientation",
+      "description": "A planar orientation is composed of two values; the azimuth (a compass point) and a dip (the angle from the horizontal). Polarity of the plane indicates whether the planar orientation is associated with a directed feature that is overturned, upright, vertical, etc.  There are several conventions to encode a planar orientation and this specification does not impose one but provides a convention property to report it. It must be noted that allowance for different conventions makes manipulation of the data more difficult. Therefore it is recommended that user communities adopt a single measurement convention.",
+      "allOf": [
+        {
+          "$ref": "#GSML_GeometricDescriptionValue"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "convention": {
+              "description": "The property convention:ConventionCode contains the convention used for the measurement from a controlled vocabulary.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#ConventionCode"
+                }
+              ]
+            },
+            "azimuth": {
+              "description": "The azimuth (SWE::QuantityRange) property (compass point, bearing etc.) contains the value of the orientation. The convention property reports how azimuth is interpreted (if it is relative to a quadrant).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            },
+            "dip": {
+              "description": "The dip (SWE::QuantityRange) reports the angle that the structural surface (e.g. bedding, fault plane) makes with the horizontal measured perpendicular to the strike of the structure and in the vertical plane as a numeric value or term.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            },
+            "polarity": {
+              "description": "The polarity:PolarityCode indicates whether the planar orientation is associated with a directed feature that is overturned, upright, vertical etc., using a controlled vocabulary.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#PlanarPolarityCode"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "GSML_QuantityRange": {
+      "$anchor": "GSML_QuantityRange",
+      "description": "GSML_QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13)  where lower and upper values are made explicit. SWE::QuantityRange uses an array of values (RealPair, see Clause 7.2.1) where the lowest value is the first element and the highest the second.  This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrays1 (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).\r\n-------------------------\r\n1 SWE RealPair is encoded as space delimited lists (\u003cswe:value\u003e10 300\u003c/swe:value\u003e in XML) , which demands that clients parse the string to extract each token.  To build a WFS/FES query that tests the first element, it requires parsing the string either using string-before(swe:value,\u0027 \u0027)  or tokenize(swe:value,\u0027 \u0027).  This is cumbersome at best, or not even supported by the server at worst.  09-026r2 Clause 7.4.4 describes the minimal XPath supports and string parsing is not present.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "lowerValue": {
+                  "description": "The property lowerValue:Real contains the lower bound of the range. It shall be a copy of inherited SWE::QuantityRange::value[0].",
+                  "type": "number"
+                },
+                "upperValue": {
+                  "description": "The property upperValue:Real contains the upper bound of the range. It shall be a copy of inherited SWE::QuantityRange::value[1].",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "lowerValue",
+                "upperValue"
+              ]
+            }
+          },
+          "required": [
+            "properties"
+          ]
+        }
+      ]
+    },
+    "GSML_Vector": {
+      "$anchor": "GSML_Vector",
+      "description": "A GSML_Vector is a data type representing a linear orientation with a magnitude (a quantity assigned to this vector).   If the magnitude is unknown, a GSML_LinearOrientation shall be used.",
+      "allOf": [
+        {
+          "$ref": "#GSML_LinearOrientation"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "magnitude": {
+              "description": "The magnitude property (SWE::QuantityRange) reports the magnitude of the vector.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "GeochronologicEraTerm": {
+      "$anchor": "GeochronologicEraTerm",
+      "description": "Term from a Geochronological vocabulary",
+      "type": "string"
+    },
+    "GeologicEvent": {
+      "$anchor": "GeologicEvent",
+      "description": "A GeologicEvent is an identifiable event during which one or more geological processes act to modify geological entities. It may have a specified geologic age (numeric age or GeochologicEraTerm) and may have specified environments and processes. An example might be a cratonic uplift event during which erosion, sedimentation, and volcanism all take place.",
+      "allOf": [
+        {
+          "$ref": "#GeologicFeature"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "eventProcess": {
+                  "description": "The eventProcess:EventProcessTerm property provides a term from a controlled vocabulary specifying the process or processes that occurred during the event. Examples include deposition, extrusion, intrusion, cooling.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#EventProcessTerm"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "numericAge": {
+                  "description": "The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1st 1950 (although van der Plitch \u0026 Hogg , suggests this convention to be restricted to radiocarbon estimations).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#NumericAgeRange"
+                    }
+                  ]
+                },
+                "olderNamedAge": {
+                  "description": "The property olderNamedAge:GeochronologicalEraTerm defines the older boundary of age of an event expressed using a geochronologic era defined according to a geologic time scale as per the GeologicTime schema (eg, the International Commission on Stratigraphy Chronostratigraphic Chart - http://www.stratigraphy.org/index.php/ics-chart-timescale).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#GeochronologicEraTerm"
+                    }
+                  ]
+                },
+                "youngerNamedAge": {
+                  "description": "The property youngerNamedAge:GeochronologicalEraTerm defines the younger boundary of age of event expressed using a geochronologic era defined according to a geologic time scale per the GeologicTime schema. (eg, the International Commission on Stratigraphy Chronostratigraphic Chart - http://www.stratigraphy.org/index.php/ics-chart-timescale).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#GeochronologicEraTerm"
+                    }
+                  ]
+                },
+                "eventEnvironment": {
+                  "description": "The eventEnvironment property (SWE::Category) is a category from a controlled vocabulary identifying the physical setting within which a GeologicEvent takes place. Event environment is construed broadly to include physical settings on the Earth surface specified by climate, tectonics, physiography or geography, and settings in the Earth’s interior specified by pressure, temperature, chemical environment, or tectonics.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "gaEventDescription": {
+                  "description": "The property geEventDescription:GeologicEventAbstractDescription contains a detailed event description.  This is a stub property in GeoSciML Basic since GeologicEventAbstractDescription is abstract and with subtypes defined in GeoSciML Extension.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#GeologicEventAbstractDescription"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeologicEventAbstractDescription": {
+      "$anchor": "GeologicEventAbstractDescription",
+      "description": "Stub property class to allow extended event related properties.",
+      "type": "object"
+    },
+    "GeologicFeature": {
+      "$anchor": "GeologicFeature",
+      "description": "The abstract GeologicFeature class represents a conceptual feature that is hypothesized to exist coherently in the world. It corresponds with a \"legend item\" from a traditional geologic map and its instance acts as the \"description package\".  The description package is classified according to its intended purpose as a typicalNorm, definingNorm or instance.  GeologicFeature can be used outside the context of a map (it can lack a MappedFeature), for example when describing typical norms (describing expected property from a feature) or defining norms (describing properties required from a feature to be classifying in a group, such as given geologic unit).  A GeologicFeature appearing on a map is considered as an “instance”.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "observationMethod": {
+                  "description": "The GeologicFeature observationMethod (SWE::Category) specifies the approach to acquiring the collection of attribute values that constitute an individual feature instance (e.g. point count, brunton compass on site, air photo interpretation, field observation, hand specimen, laboratory, aerial photography, creative imagination). \r\nObservationMethod is a convenience property that provides a simple approach to observation metadata when data are reported using a feature view (as opposed to observation view).  This property corresponds (loosely) to ISO19115 Lineage.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "occurrence": {
+                  "description": "The occurrence property is an association that links a notional geologic feature with any number of mapped features (MappedFeature).  A geologic feature, such as a geologic unit may be linked to mapped features from a number of different maps.",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#MappedFeature"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                },
+                "purpose": {
+                  "description": "The property purpose:DescriptionPurpose specifies the intended purpose/level of abstraction for a given feature or object instance.  The possible values are: instance, typicalNorm, and definingNorm.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#DescriptionPurpose"
+                    }
+                  ]
+                },
+                "relatedFeature": {
+                  "description": "A relatedFeature is a general structure used to define relationships between any features or objects within GeoSciML. Relationships are always binary and directional.  There is always a single source and a single target for a given FeatureRelation (which is abstract in GeoSciML Basic).  The relationship is always defined from the perspective of the Source and is generally an active verb.",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#AbstractFeatureRelation"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                },
+                "classifier": {
+                  "description": "The classifier (SWE::Category) contains a standard description or definition of the feature type (e.g., the definition of a particular geologic unit in a stratigraphic lexicon).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "geologicHistory": {
+                  "description": "The geologicHistory is an association that relates one or more GeologicEvents to a GeologicFeature to describe their age or geologic history.  Normally, GeoSciML uses the generic relatedFeature::GeologicRelation to associate GeologicFeature with other GeologicFeatures, including GeologicEvent.  However, this design was deemed too complex for GeoSciML Basic and is therefore only available from the GeoSciML Extension package.",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#GeologicEvent"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeologicStructure": {
+      "$anchor": "GeologicStructure",
+      "description": "A geologic structure is a configuration of matter in the Earth based on describable inhomogeneity, pattern, or fracture in an earth material.  The identity of a GeologicStructure is independent of the material that is the substrate for the structure.  The general GeologicFeatureRelation (available in the Extension package) is used to associate penetrative GeologicStructures with GeologicUnits.  GeoSciML Basic only provides a limited set of core structures (Contact, Fold, ShearDisplacementStructure and Foliation) with a single property to categorise them.  Supplemental properties and geologic structure types are available from the Extension package.",
+      "allOf": [
+        {
+          "$ref": "#GeologicFeature"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "GeologicUnit": {
+      "$anchor": "GeologicUnit",
+      "description": "Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit, Stratigraphic unit in the sense of NACSN, or International Stratigraphic Code ), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like \u0027granitic rock\u0027 or \u0027alluvial deposit\u0027, surficial units like \u0027till\u0027 or \u0027old alluvium\u0027). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).",
+      "allOf": [
+        {
+          "$ref": "#GeologicFeature"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "geologicUnitType": {
+                  "description": "The property geologicUnitType:GeologicUnitTypeTerm provides a term from a controlled vocabulary defining the type of geologic unit. Logical constraints of definition of unit and valid property cardinalities should be contained in the definition. Use of the CGI Geologic Unit Type vocabulary (e.g., http://resource.geosciml.org/classifierscheme/cgi/201211/geologicunittype) is recommended.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#GeologicUnitTypeTerm"
+                    }
+                  ]
+                },
+                "rank": {
+                  "description": "The property rank:RankTerm contains a term that classifies the geologic unit in a generalization hierarchy from most local/smallest volume to most regional/largest.\r\nExamples: group, subgroup, formation, member, bed, intrusion, complex, batholith",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#RankTerm"
+                    }
+                  ]
+                },
+                "composition": {
+                  "description": "The property composition is an association that links a GeologicUnit with CompositionParts to describe the material composition of the GeologicUnit (e.g., a detailed, instance specific, lithologic description)",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#CompositionPart"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "hierarchyLink": {
+                  "description": "The property hierarchyLink is an association that links a GeologicUnit with a GeologicUnitHierarchy  to represent containment of a part GeologicUnit within another GeologicUnit. It indicates a subsidiary unit with its role and proportion with respect to the container unit.  For example, members are described as part of formations, or different facies can be described as parts of a GeologicUnit.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#GeologicUnitHierarchy"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "gbMaterialDescription": {
+                  "description": "The property gbMaterialDescription:EarthMaterialAbstractDescription is a placeholder that provides detailed material description.  This is a stub property in GeoSciML Basic as EarthMaterialAbstractDescription is abstract with subtypes defined in GeoSciML Extension.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#EarthMaterialAbstractDescription"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "gbUnitDescription": {
+                  "description": "The property gbUnitDescription:GeologicUnitAbstractDescriptio is a placeholder that provides detailed material description.  This is a stub property  in GeoSciML Basic as GeologicUnitAbstractDescription is abstract with subtypes defined in GeoSciML Extension.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#GeologicUnitAbstractDescription"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeologicUnitAbstractDescription": {
+      "$anchor": "GeologicUnitAbstractDescription",
+      "description": "Abstract description class for geologic units.  This class is a placeholder for further extension in Extension package",
+      "type": "object"
+    },
+    "GeologicUnitHierarchy": {
+      "$anchor": "GeologicUnitHierarchy",
+      "description": "GeologicUnitHierarchy associates a GeologicUnit with another GeologicUnit that is a proper part of that unit. Parts may be formal or notional. Formal parts refer to a specific body of rock, as in formal stratigraphic members. Notional parts refer to assemblages of particular EarthMaterials with particular internal structure, which may be repeated in various places within a unit (e.g. \u0027turbidite sequence\u0027, \u0027point bar assemblage\u0027, \u0027leucosome veins\u0027).",
+      "type": "object",
+      "properties": {
+        "role": {
+          "description": "The role:GeologicUnitHierarchyRoleTerm property provides a term describing the nature of the parts, e.g. facies, stratigraphic, interbeds, geographic, eastern facies.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#GeologicUnitHierarchyRoleTerm"
+            }
+          ]
+        },
+        "proportion": {
+          "description": "The proportion property (SWE::QuantityRange) provides a quantity that represents the fraction of the geologic unit formed by the part.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+            }
+          ]
+        },
+        "targetUnit": {
+          "description": "The property targetUnit is an association that specifies exactly one GeologicUnit that is a proper part of another GeologicUnit.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SCLinkObject"
+            },
+            {
+              "$ref": "#GeologicUnit"
+            }
+          ]
+        }
+      },
+      "required": [
+        "targetUnit"
+      ]
+    },
+    "GeologicUnitHierarchyRoleTerm": {
+      "$anchor": "GeologicUnitHierarchyRoleTerm",
+      "description": "Role of the unit in the hierarchy",
+      "type": "string"
+    },
+    "GeologicUnitPartRoleTerm": {
+      "$anchor": "GeologicUnitPartRoleTerm",
+      "description": "This class is a blank placeholder for a vocabulary of terms describing the nature of the parts of a geologic unit, e.g. facies, stratigraphic, interbeds, geographic, eastern facies,",
+      "type": "string"
+    },
+    "GeologicUnitTypeTerm": {
+      "$anchor": "GeologicUnitTypeTerm",
+      "description": "This class is an indicative placeholder only for a vocabulary of terms describing the type of geologic unit.  Users are encouraged to use the vocabulary of unit types provided by the CGI vocabularies working group.\r\n\r\nExample values:\r\nGeologicUnit\r\nAllostratigraphicUnit\r\nAlterationUnit\r\nArtificialGround\r\nBiostratigraphicUnit\r\nChronostratigraphicUnit\r\nDeformationUnit\r\nExcavationUnit\r\nGeophysicalUnit\r\nLithodemicUnit\r\nLithogeneticUnit\r\nLithologicUnit\r\nLithostratigraphicUnit\r\nLithotectonicUnit\r\nMagnetostratigraphicUnit\r\nMassMovementUnit\r\nPedoderm\r\nPedostratigraphicUnit\r\nPolarityChronostratigraphicUnit",
+      "type": "string"
+    },
+    "GeomorphologicFeature": {
+      "$anchor": "GeomorphologicFeature",
+      "description": "A geomorphologic feature is a kind of GeologicFeature describing the shape and nature of the Earth\u0027s land surface. These landforms may be created by natural Earth processes (e.g., river channel, beach, moraine or mountain) or through human (anthropogenic) activity (e.g., dredged channel, reclaimed land, mine waste dumps).  In GeoSciML, the geomorphologic feature is modelled as a feature related (through unitDescription property) to a GeologicUnit that composes the form.",
+      "allOf": [
+        {
+          "$ref": "#GeologicFeature"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "unitDescription": {
+                  "description": "The unitDescription property is an association that links the geomorphologic feature to a geologic description (e.g., related stratigraphic units and earth materials).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#GeologicUnit"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "gmFeatureDescription": {
+                  "description": "The property gmFeatureDescription:GeomorphologicUnitAbstractDescription provides a detailed morphologic description.  This is a stub property in GeoSciML Basic since GeomorphologicUnitAbstractDescription is an abstract class with no concrete subtype in GeoSciML Basic.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#GeomorphologicUnitAbstractDescription"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeomorphologicUnitAbstractDescription": {
+      "$anchor": "GeomorphologicUnitAbstractDescription",
+      "description": "Detailed geomorphologic unit description placeholder (stub class) for GeomorphologicUnit",
+      "type": "object"
+    },
+    "LinearDirectedCode": {
+      "$anchor": "LinearDirectedCode",
+      "description": "eg, \r\n\"directed\" (indicates that the orientation is directed)\r\n\"directed down\" (indicates that the linear orientation is directed below the horizon)\r\n\"directed up\" (indicates that the linear orientation is directed above the horizon)\r\n\r\nThis list is an indicative example list only of terms used to describe the values to use for terms related to directedness of linear orientations.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
+      "type": "string"
+    },
+    "LithologyTerm": {
+      "$anchor": "LithologyTerm",
+      "description": "Refers to a vocabulary of terms describing the lithology of the compound earth material (eg, granite, sandstone, schist)",
+      "type": "string"
+    },
+    "MappedFeature": {
+      "$anchor": "MappedFeature",
+      "description": "A MappedFeature is part of a geological interpretation. It provides a link between a notional feature (description package) and one spatial representation of it, or part of it (exposures, surface traces and intercepts, etc.).  The mapped features are the elements that compose a map, a cross-section, a borehole log, or any other representation.  The mappingFrame identifies the domain being mapped by the geometries.  For typical geological maps, the mapping frame is the surface of the earth (the 2.5D interface between the surface of the bedrock and whatever sits on it; atmosphere or overburden material for bedrock maps).  It can also be abstract frames, such as the arbitrary plane that forms a mine level or a cross-section, the 3D volume enclosing an ore body or the line that approximate the path of a borehole.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+                }
+              ]
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "observationMethod": {
+                  "description": "The observationMethod property (SWE::Category) contains an element in a list of categories (a controlled vocabulary) describing how the spatial extent of the mapped feature was determined.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "positionalAccuracy": {
+                  "description": "The positionalAccuracy property (SWE::Quantity) provides a quantitative value defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line). The property is equivalent to ISO19115 DQ_PositionalAccuracy.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+                    }
+                  ]
+                },
+                "resolutionRepresentativeFraction": {
+                  "description": "The property resolutionRepresentativeFraction:Integer is an integer value representing the denominator of the representative scale of the spatial feature.  (i.e., 10000 \u003d the spatial feature is intended to be represented at 1:10,000 scale).",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "mappingFrame": {
+                  "description": "The mappingFrame:MappingFrameTerm provides a term from a vocabulary indicating the geometric frame on which the MappedFeature is projected.  In most situations, mapped features are projected on the earth surface, but there are other contexts, such as a bedrock surface beneath surficial cover materials, a mine level, or a cross section.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#MappingFrameTerm"
+                    }
+                  ]
+                },
+                "exposure": {
+                  "description": "The exposure:ExposureTerm property provides a term for the nature of the expression of the mapped feature at the earth\u0027s surface (e.g., exposed, concealed).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#ExposureTerm"
+                    }
+                  ]
+                },
+                "specification": {
+                  "description": "The specification association links an instance of MappedFeature to the GFI_Feature being mapped. In a geological map, MappedFeatures are used to represent GeologicFeatures, but other features from other domains could be represented.",
+                  "$ref": "#/$defs/SCLinkObject"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "MappingFrameTerm": {
+      "$anchor": "MappingFrameTerm",
+      "description": "Spatial reference frame within which the MappedFeatures have been observed, such as a surface of mapping. (from INSPIRE)",
+      "type": "string"
+    },
+    "NaturalGeomorphologicFeature": {
+      "$anchor": "NaturalGeomorphologicFeature",
+      "description": "A natural geomorphologic feature is a geomorphologic feature (i.e., landform) that has been created by natural Earth processes. For example, river channel, beach ridge, caldera, canyon, moraine or mud flat.",
+      "allOf": [
+        {
+          "$ref": "#GeomorphologicFeature"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "naturalGeomorphologicFeatureType": {
+                  "description": "The property naturalGeomorphologicFeatureType: NaturalGeomorphologicFeatureTypeTerm is a reference from a controlled vocabulary describing the type of geomorphologic feature.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#NaturalGeomorphologicFeatureTypeTerm"
+                    }
+                  ]
+                },
+                "activity": {
+                  "description": "The activity property (SWE::Category) contains a category term from a controlled vocabulary describing the current activity status of the geomorphologic feature (e.g., currently active, dormant, inactive, reactivated, etc.).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NaturalGeomorphologicFeatureTypeTerm": {
+      "$anchor": "NaturalGeomorphologicFeatureTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the type of natural geomorphologic feature",
+      "type": "string"
+    },
+    "NumericAgeRange": {
+      "$anchor": "NumericAgeRange",
+      "description": "The NumericAgeRange class represents an absolute age assignment using numeric measurement results.",
+      "type": "object",
+      "properties": {
+        "reportingDate": {
+          "description": "The reportingDate (SWE::Quantity) property reports a single time coordinate value to report as representative for this NumericAge assignment.",
+          "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+        },
+        "olderBoundDate": {
+          "description": "The olderBoundDate (SWE::Quantity) property reports the older bounding time coordinate in an age range.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+            }
+          ]
+        },
+        "youngerBoundDate": {
+          "description": "The youngerBoundDate (SWE::Quantity) property reports the younger bounding time coordinate in an age range.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+            }
+          ]
+        }
+      }
+    },
+    "PlanarPolarityCode": {
+      "$anchor": "PlanarPolarityCode",
+      "description": "eg: \"upright\", \"overturned\", \"vertical\"\r\n\r\nThis list is an indicative list only of terms used to describe the values to use for expressing overturned or upright facing of planar orientation measurements. Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
+      "type": "string"
+    },
+    "RankTerm": {
+      "$anchor": "RankTerm",
+      "description": "This class is a blank placeholder for a vocabulary of terms describing the rank of a geologic unit (eg, Group, Formation, Member, etc)",
+      "type": "string"
+    },
+    "RockMaterial": {
+      "$anchor": "RockMaterial",
+      "description": "RockMaterial is a specialized CompoundMaterial that includes consolidated and unconsolidated materials (such as surficial sediments) as well as mixtures of consolidated and unconsolidated materials.  In GeoSciML Basic, Rock Material is essentially a link to a controlled vocabulary (lithology property) and a color (inherited from EarthMaterial).  Specific material properties (and CompoundMaterial nesting) are available in GeoSciML Extension.",
+      "allOf": [
+        {
+          "$ref": "#CompoundMaterial"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "lithology": {
+                  "description": "The lithology:LithologyTerm property provides a term identifying the lithology class from a controlled vocabulary.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#LithologyTerm"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "SCLinkObject": {
+      "title": "link object",
+      "description": "definition of a link object",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Supplies the URI to a remote resource (or resource fragment)."
+        },
+        "rel": {
+          "type": "string",
+          "description": "The type or semantics of the relation."
+        },
+        "type": {
+          "type": "string",
+          "description": "A hint indicating what the media type of the result of dereferencing the link should be."
+        },
+        "hreflang": {
+          "type": "string",
+          "description": "A hint indicating what the language of the result of dereferencing the link should be."
+        },
+        "title": {
+          "type": "string",
+          "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
+        },
+        "length": {
+          "type": "integer"
+        }
+      }
+    },
+    "ShearDisplacementStructure": {
+      "$anchor": "ShearDisplacementStructure",
+      "description": "A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single \u0027planar\u0027 brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package",
+      "allOf": [
+        {
+          "$ref": "#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "faultType": {
+                  "description": "The faultType:FaultTypeTerm property contains a term from a controlled vocabulary describing the type of shear displacement structure (e.g., thrust fault, normal fault or wrench fault).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#FaultTypeTerm"
+                    }
+                  ]
+                },
+                "stStructureDescription": {
+                  "description": "The property stStructureDescription:ShearDisplacementStructureAbstractDescription provides a detailed geologic structure description.  This is a stub property in GeoSciML Basic since ShearDisplacementStructureAbstractDescription is an abstract class with subtypes defined in GeoSciML Extension.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#ShearDisplacementStructureAbstractDescription"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ShearDisplacementStructureAbstractDescription": {
+      "$anchor": "ShearDisplacementStructureAbstractDescription",
+      "description": "An abstract class providing a link between classes in GeoSciMLBasic and GeoSciMLExtended application schemas.",
+      "type": "object"
+    }
+  }
+}

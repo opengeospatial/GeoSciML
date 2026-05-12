@@ -1,0 +1,727 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json",
+  "description": "The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model.",
+  "$defs": {
+    "AnalyticalInstrument": {
+      "$anchor": "AnalyticalInstrument",
+      "description": "The analytical instrument is the category of instrument used to perform an analytical measurement or observation.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+                }
+              ]
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "The property type:InstrumentTypeTerm reports a term from a controlled vocabulary that describes the category of instrument used in an analytical session (e.g., XRF, ICPMS, SHRIMP, etc.).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#InstrumentTypeTerm"
+                    }
+                  ]
+                },
+                "model": {
+                  "description": "The property mode:Primitive::CharacterString contains a string identifying the model of instrument used. (e.g., instrument type \u003d XRD, model \u003d Siemens Diffraktometer D500).",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "serialNumber": {
+                  "description": "The property serialNumber:Primitive::CharacterString contains a string that contains the serial number of the machine used in an analytical session.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "commissionDate": {
+                  "description": "The property commissionDate is an association between an AnalyticalInstrument and a TM_Instant corresponding to the date of the commissioning of an instrument.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/time.json#/$defs/timestamp"
+                    }
+                  ]
+                },
+                "usedIn": {
+                  "description": "The property usedIn is an association between an AnalyticalInstrument and an AnalyticalSession identifying an analytical sessions which used this instrument.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#AnalyticalSession"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AnalyticalMethod": {
+      "$anchor": "AnalyticalMethod",
+      "description": "The AnalyticalMethod provides the name, and published citation, of the analytical method used in an analytical session.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "methodName": {
+                  "description": "The property methodName:AnalyticalMethodTerm contains a term from a controlled vocabulary that describes an analytical method used in a session (e.g., XRF mass spectrometry, ICPMS, SHRIMP geochronology).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#AnalyticalMethodTerm"
+                    }
+                  ]
+                },
+                "citation": {
+                  "description": "The citation property is an association between an AnalyticalMethod and a CIT:CI_Citation describing a published description of a particular analytical method (e.g., a standard operating procedure document).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Citation"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AnalyticalMethodTerm": {
+      "$anchor": "AnalyticalMethodTerm",
+      "description": "Refers to a vocabulary of terms describing the analytical method used in an analytical session (eg; XRF mass spectrometry, ICPMS, SHRIMP geochronology)",
+      "type": "string",
+      "format": "uri"
+    },
+    "AnalyticalProcess": {
+      "$anchor": "AnalyticalProcess",
+      "description": "An analytical process is a concrete implementation of OM::OM_Process and describes the steps and methods used in an analytical session.  It links to an analytical session (data acquisition) or a computational process which produce analytical results.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "description": "The property method is an association that links an AnalyticalProcess to an AnalyticalMethod that describes the type of analytical method used to make an observation.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#AnalyticalMethod"
+                    }
+                  ]
+                },
+                "acquisition": {
+                  "description": "The property acquisition is an association that links an AnalyticalProcess to an AnalyticalSession that describes the analytical session (e.g., laboratory session) in which an observation was made and data acquired.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#AnalyticalSession"
+                    }
+                  ]
+                },
+                "computation": {
+                  "description": "The computation property is an association between an AnalyticalProcess and a CIT:ProcessStep that describes the computational process associated with the process.",
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AnalyticalSession": {
+      "$anchor": "AnalyticalSession",
+      "description": "This feature type describes the time and operator of a particular laboratory analytical session. AnalyticalSession also has associated links to the type of instrument and analytical method used, processing steps applied to data collected during a session, and instrument parameters unique to that session.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "time": {
+                  "description": "The property time is an association between an AnalyticalSession and a TM_Period describing the time period during which the analysis was performed.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/time.json#/$defs/interval"
+                    }
+                  ]
+                },
+                "operator": {
+                  "description": "The property operator is an association between an AnalyticalSession and a CIT:CI_Responsability describing the operator or organisation responsible for the analytical session.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+                    }
+                  ]
+                },
+                "parameter": {
+                  "description": "The property parameter (OM::NamedValue) contains a name/value pair to describe arbitrary environmental or instrument setting parameters that apply to an entire analytical session (e.g., voltage, current, temperature, vacuum). The \"name\" attribute of NamedValue is a term from a controlled vocabulary.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "instrument": {
+                  "description": "The property instrument is an association between an AnalyticalSession and an AnalyticalInstrument that describes the instrument used in the analytical session.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#AnalyticalInstrument"
+                    }
+                  ]
+                },
+                "referenceAnalyses": {
+                  "description": "The property referenceAnalysis is an association between an AnalyticalSession and a ReferenceSpecimen that describes a reference specimen (i.e., standards, blanks) used in the analytical session.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#ReferenceSpecimen"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeochronologicInterpretation": {
+      "$anchor": "GeochronologicInterpretation",
+      "description": "A GeochronologicInterpretation is an interpretation made by a geologist of the age of a specimen made by statistical analysis of a collection of observations.  A geologic specimen may have multiple geochronological interpretations made on it, each related to a different observation/result collection.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "interpretedAge": {
+                  "description": "The interpretedAge property is an association between a GeochronologicInterpretation and a GeologicEvent that describes the dated event, process and environment.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEvent"
+                    }
+                  ]
+                },
+                "isotopicEvent": {
+                  "description": "The isotopicEvent:IsotopicEventType contains a term from a controlled vocabulary that describes any isotopic events that are relevant to the interpretation. e.g., closure, isotopic mixing, Pb loss, etc.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#IsotopicEventType"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "isotopicSystem": {
+                  "description": "The property isotopicSystem:IsotopicSystemName contains a term from a controlled vocabulary that describes the isotopic system used to calculate geochronological age. A vocabulary would contain values such as: Ar-Ar, K-Ar, Nd-Sm, Pb-Pb, Rb-Sr, Re-Os, U-Pb, etc.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#IsotopicSystemName"
+                    }
+                  ]
+                },
+                "statisticalMethod": {
+                  "description": "The property statisticalMethod:StatisticalMethodTerm contains a term from a controlled vocabulary that describes the statistical method used to interpret the results.  (e.g., weighted mean, median, concordia, discordia, etc)",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#StatisticalMethodTerm"
+                    }
+                  ]
+                },
+                "interpretedBy": {
+                  "description": "The property interpretedBy is an association between a GeochronologicInterpretation and a CIT:CI_Responsability describing the party responsible for this interpretation.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+                    }
+                  ]
+                },
+                "citation": {
+                  "description": "The citation property is an association between a GeochronologicInterpretation and a CIT:CI_Citation that describes authors and other reference information for an interpreted age.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Citation"
+                    }
+                  ]
+                },
+                "preferredInterpretation": {
+                  "description": "The property preferredInterpretation:Primitive::Boolean indicates whether this interpretation is the preferred interpretation (i.e., the analytical data may be reinterpreted).",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "sourceCollection": {
+                  "description": "The property sourceCollection is an association between a GeochronologicInterpretation and an OM::SF_SamplingFeatureCollection that lists a collection of OM::SF_SamplingFeature (e.g., a collection of burn spots or craters from a SHRIMP analytical session).  When legacy published data for which the SamplingFeatureCollection is unknown, it may be delivered with SamplingFeatureCollection \u003d \u0027unknown\u0027.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/featurecollection.json"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeologicSamplingMethod": {
+      "$anchor": "GeologicSamplingMethod",
+      "description": "GeologicSamplingMethod is an implementation of OM::SF_Process to describe the method used to obtain a geologic specimen.\r\nExamples include: \r\n\t- diamond drilling\r\n\t- percussion drilling\r\n\t- piston core drilling\r\n\t- vibro core drilling\r\n\t- channel sampling\r\n\t- sea floor dredging\r\n\t- outcrop sampling",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "description": "The property method:GeologicSamplingMethodTerm is a term from a controlled vocabulary that describes the process used to obtain or create a geologic specimen. e.g., diamond drilling, percussion drilling, piston core drilling, vibro core drilling, channel sampling, sea floor dredging, crushing, mineral separation, melting, outcrop sampling.",
+                  "$ref": "#GeologicSamplingMethodTerm"
+                },
+                "parameter": {
+                  "description": "The property parameter (OM::NamedValue) contains a name/value pair to describe arbitrary parameters used in the sampling process.  The \"name\" attribute of NamedValue shall be a term from a controlled vocabulary.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeologicSamplingMethodTerm": {
+      "$anchor": "GeologicSamplingMethodTerm",
+      "description": "Refers to a vocabulary of terms describing the samplingProcess used to obtain or create the Specimen. eg:\r\ndiamond drilling\r\npercussion drilling\r\npiston core drilling\r\nvibro core drilling\r\nchannel sampling\r\nsea floor dredging\r\ncrushing\r\nmineral separation\r\nmelting\r\ngeological hammer",
+      "type": "string",
+      "format": "uri"
+    },
+    "GeologicSpecimenPreparation": {
+      "$anchor": "GeologicSpecimenPreparation",
+      "description": "GeologicSpecimenPreparation is an extension of ISO Specimen::preparationStep to allow details of preparation steps to be delivered (e.g., filtration and mesh size, chemical additives, crushing methods, drying parameters, etc.).",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "preparationMethod": {
+                  "description": "The preparationMethod:GeologicSpecimenPreparationTerm contains a term from a controlled vocabulary that describes the method employed for the preparation of a geologic specimen for further analysis.",
+                  "$ref": "#GeologicSpecimenPreparationTerm"
+                },
+                "parameter": {
+                  "description": "The property parameter (OM::NamedValue) contains name/value pair to describe arbitrary parameters used in this preparation step (e.g., mesh size in a sieving process, type of chemical additives, parameters in a mineral separation process). The \"name\" attribute of NamedValue shall be a term from a controlled vocabulary.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeologicSpecimenPreparationTerm": {
+      "$anchor": "GeologicSpecimenPreparationTerm",
+      "description": "Refers to a vocabulary of terms to describe sample preparation applied to geologic specimens, typically in preparation for analytical processes like geochemistry or microscopy. eg: \r\ncrush\r\nmineral separation\r\nthin section\r\ncut\r\npolish\r\nmount\r\nacid digestion",
+      "type": "string",
+      "format": "uri"
+    },
+    "Image": {
+      "$anchor": "Image",
+      "description": "The Image feature type is used to describe images of sampling features, for example, photographs of ion microprobe grain mounts.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "InstrumentTypeTerm": {
+      "$anchor": "InstrumentTypeTerm",
+      "description": "Refers to a vocabulary of Instrument types (eg; XRF, ICPMS, SHRIMP, etc)",
+      "type": "string",
+      "format": "uri"
+    },
+    "IsotopicEventType": {
+      "$anchor": "IsotopicEventType",
+      "description": "Refers to a vocabulary of terms to describe any isotopic processes relevant to the geochronologic interpretation. eg:closure, isotopic mixing, Pb loss, etc",
+      "type": "string",
+      "format": "uri"
+    },
+    "IsotopicSystemName": {
+      "$anchor": "IsotopicSystemName",
+      "description": "Refers to a vocabulary of isotopic systems such as Ar-Ar, K-Ar, Nd-Sm, U-Pb, Pb-Pb, Re-Os, etc",
+      "type": "string",
+      "format": "uri"
+    },
+    "ReferenceSpecimen": {
+      "$anchor": "ReferenceSpecimen",
+      "description": "A reference specimen is a specimen with known or accepted values of some property.  The citation property describes the location of a published description of these values. Reference specimens include analytical blanks. ReferenceSpecimens are used in quality control procedures to assess method reproducibility. \r\n\r\nAnalytical results from a reference specimen analysed during an AnalyticalSession are delivered in the same way as the results of other specimens analysed in that session.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "referenceDescription": {
+                  "description": "The property referenceDescription is an association between a ReferenceSpecimen and a CIT:CI_Citation that references a citation of published analytical results for this standard reference specimen.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Citation"
+                    }
+                  ]
+                },
+                "usedIn": {
+                  "description": "The property usedIn is an association between a ReferenceSpecimen and an AnalyticalSession in which the reference specimen was used.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#AnalyticalSession"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "SCLinkObject": {
+      "title": "link object",
+      "description": "definition of a link object",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Supplies the URI to a remote resource (or resource fragment)."
+        },
+        "rel": {
+          "type": "string",
+          "description": "The type or semantics of the relation."
+        },
+        "type": {
+          "type": "string",
+          "description": "A hint indicating what the media type of the result of dereferencing the link should be."
+        },
+        "hreflang": {
+          "type": "string",
+          "description": "A hint indicating what the language of the result of dereferencing the link should be."
+        },
+        "title": {
+          "type": "string",
+          "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
+        },
+        "length": {
+          "type": "integer"
+        }
+      }
+    },
+    "StatisticalMethodTerm": {
+      "$anchor": "StatisticalMethodTerm",
+      "description": "Refers to a vocabulary describing statistical methods used in interpret geochronologic data",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

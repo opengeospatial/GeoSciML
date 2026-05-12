@@ -1,0 +1,569 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geologicTime.json",
+  "description": "The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey), contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).",
+  "$defs": {
+    "GeochronologicBoundary": {
+      "$anchor": "GeochronologicBoundary",
+      "description": "A GeochronologicBoundary is a boundary between two geochronologic time periods.",
+      "allOf": [
+        {
+          "$ref": "#TimeOrdinalEraBoundary"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "stratotype": {
+                  "description": "The property stratotype is an association between a GeochronologicBoundary and a StratigraphicPoint that are associated with the boundary. A GeochronologicBoundary can be associated with more than one StratigraphicPoints, but only one may have GSSP ratified status. The others are proposed equivalents.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#StratigraphicPoint"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeochronologicEra": {
+      "$anchor": "GeochronologicEra",
+      "description": "A GeochronologicEra is a period of time between two GeochronologicBoundaries. The association of a GeochronologicEra with a stratotype is optional.  In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used.  Rather, the association of an era with geologic units and sections is indirect, via the association of an era with boundaries, which are in turn tied to stratotype points, which occur within host stratotype sections.",
+      "allOf": [
+        {
+          "$ref": "#TimeOrdinalEra"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "rank": {
+                  "description": "The property rank:GeochronologicEraRank contains a term from a vocabulary describing the rank of the time period (e.g., eon, era, period, stage).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#GeochronologicEraRank"
+                    }
+                  ]
+                },
+                "stratotype": {
+                  "description": "The property stratotype is an association between a GeochronologicEra and StratigraphicSection that describes a type section that names the physical location or outcrop of a particular reference exposure of a stratigraphic sequence or stratigraphic boundary. A unit stratotype is the agreed reference point for a particular stratigraphic unit and a boundary stratotype is the reference for a particular boundary between strata (Wikipedia).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#StratigraphicSection"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeochronologicEraRank": {
+      "$anchor": "GeochronologicEraRank",
+      "description": "This list is an indicative list only of terms used to describe the rank of time periods defined by the International Commission on Stratigraphy.  Users are encouraged to use vocabulary of terms owned by the ICS or CGI vocabularies working group and managed outside of this model.\r\n\r\nFor example:\r\neon\r\nera\r\nperiod\r\nepoch\r\nage",
+      "type": "string",
+      "format": "uri"
+    },
+    "GeologicTimescale": {
+      "$anchor": "GeologicTimescale",
+      "description": "The classic \"Geologic Timescale\" (http://www.stratigraphy.org/index.php/ics-chart-timescale) comprising an ordered, hierarchical set of named \"eras\" is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is, in principle, defined independently.",
+      "allOf": [
+        {
+          "$ref": "#TimeOrdinalReferenceSystem"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "GlobalStratotypePoint": {
+      "$anchor": "GlobalStratotypePoint",
+      "description": "A type of stratigraphic point used to define a globally agreed point in geologic time.  This class does not have any properties beyond those inherited from StratigraphicPoint.",
+      "allOf": [
+        {
+          "$ref": "#StratigraphicPoint"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "GlobalStratotypeSection": {
+      "$anchor": "GlobalStratotypeSection",
+      "description": "A type of stratigraphic section used to define a globally agreed standard period of geologic time",
+      "allOf": [
+        {
+          "$ref": "#StratigraphicSection"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "NumericEraBoundary": {
+      "$anchor": "NumericEraBoundary",
+      "description": "NumericEraBoundary is used for pre-Ediacaran and Pleistocene / Holocene boundaries in the standard timescale where boundaries are not defined by a material reference but as numerical values.",
+      "allOf": [
+        {
+          "$ref": "#TimeOrdinalEraBoundary"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "SCLinkObject": {
+      "title": "link object",
+      "description": "definition of a link object",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Supplies the URI to a remote resource (or resource fragment)."
+        },
+        "rel": {
+          "type": "string",
+          "description": "The type or semantics of the relation."
+        },
+        "type": {
+          "type": "string",
+          "description": "A hint indicating what the media type of the result of dereferencing the link should be."
+        },
+        "hreflang": {
+          "type": "string",
+          "description": "A hint indicating what the language of the result of dereferencing the link should be."
+        },
+        "title": {
+          "type": "string",
+          "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
+        },
+        "length": {
+          "type": "integer"
+        }
+      }
+    },
+    "StandardGlobalNumericalAge": {
+      "$anchor": "StandardGlobalNumericalAge",
+      "description": "A standard numeric age point (a numeric analogue to a \u0027golden spike\u0027) is applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary ( http://www.stratigraphy.org/index.php/ics-chart-timescale). The boundary is not defined from a physical stratotype, although it can be influence by some, but placed at a convenient numerical value.",
+      "allOf": [
+        {
+          "$ref": "#NumericEraBoundary"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "StratigraphicPoint": {
+      "$anchor": "StratigraphicPoint",
+      "description": "A point in the stratigraphic record used to define a geochronologic boundary or point in geologic time.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "primaryGuidingCriterion": {
+                  "description": "The property primaryGuidingCriterion:Primitive::CharacterString contains a description of the primary criterion used to establish the stratigraphic point.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "additionalCorrelationProperty": {
+                  "description": "The property additionnalCorrelationProperty:Primitive::CharacterString contains any additional criteria used to establish the stratigraphic point.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "status": {
+                  "description": "The property status:Primitive::CharacterString contains a description of the status of stratigraphic point (e.g., formally accepted, etc.).",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "StratigraphicSection": {
+      "$anchor": "StratigraphicSection",
+      "description": "A type of stratigraphic section used to define a globally agreed standard period of geologic time. This class does not have any properties beyond those inherited from StratigraphicSection.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "geologicSetting": {
+                  "description": "The property geologicSetting:Primitive::CharacterString contains a description of the geologic setting of the stratigraphic section.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "geologicDescription": {
+                  "description": "The geologicDescription:Primitive::CharacterString contains a description of the geology of the stratigraphic section (e.g., lithology, paleontology, paleogeography, etc.).",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "accessibility": {
+                  "description": "The property accessibility:Primitive::CharacterString contains a description of the ability to access the stratigraphic section.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "conservation": {
+                  "description": "The property conservation:Primitive::CharacterString contains a description of measures to conserve the stratigraphic section.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "TimeOrdinalEra": {
+      "$anchor": "TimeOrdinalEra",
+      "description": "The association of an era with a stratotype is optional.  In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used.  Rather, the association of an Era with geologic units and sections is indirect, via the association of an era with Boundaries, which are in turn tied to Stratotype Points, which occur within host Stratotype Sections. \r\nNote that the \"German School\" defines stratigraphic eras conceptually, without reference to stratotypes.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "description": "Older time boundary of an era",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#TimeOrdinalEraBoundary"
+                    }
+                  ]
+                },
+                "end": {
+                  "description": "Younger time boundary of an era",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#TimeOrdinalEraBoundary"
+                    }
+                  ]
+                },
+                "member": {
+                  "description": "Subdivisions of TimeOrdinalEra",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#TimeOrdinalEra"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "TimeOrdinalEraBoundary": {
+      "$anchor": "TimeOrdinalEraBoundary",
+      "description": "A point in Earth\u0027s history which bounds a TimeOrdinalEra.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "position": {
+                  "description": "A point in time corresponding to the era boundary",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/time.json#/$defs/timestamp"
+                    }
+                  ]
+                },
+                "observationalBasis": {
+                  "description": "Observation supporting the existence of the boundary (geochronology, paleontology, etc.)",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                },
+                "positionalUncertainty": {
+                  "description": "A measure of the uncertainty in the estimate of the point in time of the era boundary",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+                    }
+                  ]
+                },
+                "nextEra": {
+                  "description": "Succeeding era",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#TimeOrdinalEra"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "previousEra": {
+                  "description": "Preceding era",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#TimeOrdinalEra"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "TimeOrdinalReferenceSystem": {
+      "$anchor": "TimeOrdinalReferenceSystem",
+      "description": "A time reference system comprised of an ordered set of time periods (time ordinal eras).",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "component": {
+                  "description": "TimeOrdinalEra composing the TimeOrdinalReferenceSystem",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#TimeOrdinalEra"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "referencePoint": {
+                  "description": "Two reference points defining the extent of the system",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "minItems": 2,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#TimeOrdinalEraBoundary"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "referencePoint"
+              ]
+            }
+          },
+          "required": [
+            "properties"
+          ]
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

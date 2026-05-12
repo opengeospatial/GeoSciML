@@ -7,30 +7,48 @@
     "AbstractFeatureRelation": {
       "$anchor": "AbstractFeatureRelation",
       "description": "Association class placeholder to implement relation between geologic features",
-      "type": "object",
-      "properties": {
-        "properties": {
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
           "type": "object",
           "properties": {
-            "relatedFeature": {
-              "description": "A relatedFeature is a general structure used to define relationships between any features or objects within GeoSciML. Relationships are always binary and directional.  There is always a single source and a single target for a given FeatureRelation (which is abstract in GeoSciML Basic).  The relationship is always defined from the perspective of the Source and is generally an active verb.",
-              "oneOf": [
-                {
-                  "$ref": "#/$defs/SCLinkObject"
-                },
-                {
-                  "$ref": "#GeologicFeature"
+            "properties": {
+              "type": "object",
+              "properties": {
+                "relatedFeature": {
+                  "description": "A relatedFeature is a general structure used to define relationships between any features or objects within GeoSciML. Relationships are always binary and directional.  There is always a single source and a single target for a given FeatureRelation (which is abstract in GeoSciML Basic).  The relationship is always defined from the perspective of the Source and is generally an active verb.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#GeologicFeature"
+                    }
+                  ]
                 }
+              },
+              "required": [
+                "relatedFeature"
               ]
             }
           },
           "required": [
-            "relatedFeature"
+            "properties"
           ]
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
         }
-      },
-      "required": [
-        "properties"
       ]
     },
     "AnthropogenicGeomorphologicFeature": {
@@ -209,41 +227,59 @@
     "EarthMaterial": {
       "$anchor": "EarthMaterial",
       "description": "The EarthMaterial class holds a description of a naturally occurring substance in the Earth.  EarthMaterial represents material composition or substance, and is thus independent of quantity or location. Ideally, EarthMaterials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations enter into the description as well.",
-      "type": "object",
-      "properties": {
-        "properties": {
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
           "type": "object",
           "properties": {
-            "color": {
-              "description": "The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes may be used.",
-              "oneOf": [
-                {
-                  "type": "null"
+            "properties": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "description": "The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes may be used.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
                 },
-                {
+                "purpose": {
+                  "description": "The purpose:DescriptionPurpose property provides a specification of the intended purpose or level of abstraction for the given EarthMaterial. The intent is the same a GeologicFeature’s purpose and it shares the same vocabulary (instance, typicalNorm, definingNorm).",
+                  "$ref": "#DescriptionPurpose"
+                },
+                "gbEarthMaterialDescription": {
+                  "description": "The property gbEarthMaterialDescription:EarthMaterialAbstractDescription provides a detailed earth material description of the part.  This property is a stub in GeoSciML Basic as EarthMaterialAbstractDescription is abstract with subtypes defined in GeoSciML Extension.",
                   "type": "array",
                   "items": {
-                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                    "$ref": "#EarthMaterialAbstractDescription"
                   },
                   "uniqueItems": true
                 }
-              ]
-            },
-            "purpose": {
-              "description": "The purpose:DescriptionPurpose property provides a specification of the intended purpose or level of abstraction for the given EarthMaterial. The intent is the same a GeologicFeature’s purpose and it shares the same vocabulary (instance, typicalNorm, definingNorm).",
-              "$ref": "#DescriptionPurpose"
-            },
-            "gbEarthMaterialDescription": {
-              "description": "The property gbEarthMaterialDescription:EarthMaterialAbstractDescription provides a detailed earth material description of the part.  This property is a stub in GeoSciML Basic as EarthMaterialAbstractDescription is abstract with subtypes defined in GeoSciML Extension.",
-              "type": "array",
-              "items": {
-                "$ref": "#EarthMaterialAbstractDescription"
-              },
-              "uniqueItems": true
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
             }
           }
         }
-      }
+      ]
     },
     "EarthMaterialAbstractDescription": {
       "$anchor": "EarthMaterialAbstractDescription",

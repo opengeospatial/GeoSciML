@@ -1,0 +1,538 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/borehole.json",
+  "description": "The GeoSciML Borehole package contains an information model for boreholes and related artefacts. This is primarily through re-use of standard components from the Observations and Measurements (ISO19156).",
+  "$defs": {
+    "Borehole": {
+      "$anchor": "Borehole",
+      "description": "A Borehole is the generalized term for any narrow shaft drilled in the ground, either vertically, horizontally, or inclined.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "referenceLocation": {
+                  "description": "The property referenceLocation is an association between a Borehole and an OriginPosition corresponding to the start point of a borehole log.  This may correspond to the borehole collar location (e.g., kelly bush).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#OriginPosition"
+                    }
+                  ]
+                },
+                "indexData": {
+                  "description": "The property indexData:BoreholeDetails describes metadata about a borehole, such as the operator, the custodian, dates of drilling, etc.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#BoreholeDetails"
+                    }
+                  ]
+                },
+                "downholeDrillingDetails": {
+                  "description": "The property downholeDrillingDetails:DrillingDetails specifies the drilling method and borehole diameter for intervals down the borehole.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#DrillingDetails"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "logElement": {
+                  "description": "The property logElement is an association between a Borehole and a BoreholeInterval instance to describe measured downhole intervals and their observed features.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#BoreholeInterval"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "BoreholeDetails": {
+      "$anchor": "BoreholeDetails",
+      "description": "BoreholeDetails describes borehole-specific index data, often termed “header information”. It contains metadata about the parties involved in the drilling, the storage of drilled material and other information relevant to the borehole as a whole.  Properties that may vary along the borehole path are managed in DrillingDetails",
+      "type": "object",
+      "properties": {
+        "operator": {
+          "description": "The operator property is an association between a BoreholeDetails and a CIT:CI_ResponsibleParty describing the organisation responsible for commissioning the borehole (as opposed to actually drilling the borehole).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/SCLinkObject"
+            },
+            {
+              "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+            }
+          ]
+        },
+        "driller": {
+          "description": "The driller property is an association between a BoreholeDetails and a CIT:CI_ResponsibleParty describing of the organisation responsible for drilling the borehole (as opposed to commissioning the borehole).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/SCLinkObject"
+            },
+            {
+              "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+            }
+          ]
+        },
+        "dateOfDrilling": {
+          "description": "The property dateOfDrilling:TM_Period describes the time period during which drilling of the borehole occurred.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/SCLinkObject"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/json-fg/time.json#/$defs/interval"
+            }
+          ]
+        },
+        "startPoint": {
+          "description": "The property startPoint:BoreholeStartPointCode provides a term from a controlled vocabulary indicating the named position relative to ground surface where the borehole commenced. (e.g., natural ground surface, open pit floor, underground, offshore)",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#BoreholeStartPointCode"
+            }
+          ]
+        },
+        "inclinationType": {
+          "description": "The property inclinationType:BoreholeInclinationCode contains a term from a controlled vocabulary indicating the inclination type of the borehole. Appropriate terms would include vertical; inclined up; inclined down, horizontal.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#BoreholeInclinationCode"
+            }
+          ]
+        },
+        "boreholeMaterialCustodian": {
+          "description": "The property boreholeMaterialCustodian is an association between BoreholeDetails and a CIT:CI_ResponsibleParty describing the organisation that is custodian of the drilled material recovered from the borehole.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/SCLinkObject"
+                  },
+                  {
+                    "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+                  }
+                ]
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "purpose": {
+          "description": "The property purpose:BoreholePurposeCode contains a term from a controlled vocabulary describing the purpose for which the borehole was drilled. e.g., site investigation, mineral exploration, hydrocarbon exploration, water resources.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#BoreholePurposeCode"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "dataCustodian": {
+          "description": "The dataCustodian is an association between a BoreholeDetails and a CIT:CI_ResponsibleParty describing the custodian (person or organisation) that is the custodian of data pertaining to this borehole.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/SCLinkObject"
+                  },
+                  {
+                    "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+                  }
+                ]
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "boreholeLength": {
+          "description": "The property boreholeLength (SWE::Quantity) contains a measurement (a value and a unit of measurement) corresponding to the \"length\" of a borehole determined by the data provider (i.e., \"length\" can have different sources, like drillers measurement, loggers measurement, survey measurement, etc.).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+            }
+          ]
+        }
+      }
+    },
+    "BoreholeDrillingMethodCode": {
+      "$anchor": "BoreholeDrillingMethodCode",
+      "description": "This class is an indicative placeholder only for a vocabulary of terms describing the borehole drilling method.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group. (eg; auger, hand auger, air core, cable tool, diamond core, rotary air blast, etc)",
+      "type": "string",
+      "format": "uri"
+    },
+    "BoreholeInclinationCode": {
+      "$anchor": "BoreholeInclinationCode",
+      "description": "This class is an indicative placeholder only for a vocabulary of terms describing the general orientation of a borehole.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group.\r\n\r\nFor example:\r\nvertical\r\nhorizontal\r\ninclined up\r\ninclined down",
+      "type": "string",
+      "format": "uri"
+    },
+    "BoreholeInterval": {
+      "$anchor": "BoreholeInterval",
+      "description": "A BoreholeInterval is similar to a MappedFeature  whose shape is 1-D interval and uses the SRS of the containing borehole.  The \"mappedIntervalBegin\" and \"mappedIntervalEnd\" properties are alternative to the 1D geometry to overcome problems with the delivery and ease of queryability of 1D GML shapes.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "observationMethod": {
+                  "description": "The observationMethod property (SWE::Category) contains a term from a controlled vocabulary that describes the method used to observe the properties of the borehole.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "specification": {
+                  "description": "The specification property is an association between a BoreholeInterval and a GFI_Feature, a domain feature that is sampled by the interval (e.g., a GeologicUnit). It is semantically equivalent to O\u0026M ISO19156 \"sampledFeature\".",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+                    }
+                  ]
+                },
+                "mappedIntervalBegin": {
+                  "description": "The property mappedIntervalBegin (SWE::Quantity) is a measurement (a value and a unit of measurement) corresponding to the measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+                    }
+                  ]
+                },
+                "mappedIntervalEnd": {
+                  "description": "The mappedIntervalEnd property (SWE::Quantity) is a measurement (a value and a unit of measure) corresponding to the measured distance of the end of the mapped interval along the path of the borehole. The measured value must be greater than or equal to the mappedIntervalBegin value.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+                    }
+                  ]
+                },
+                "collectionIdentifier": {
+                  "description": "The collectionIdentifier:ScopedName is a string unique within a scope that identifies a collection which forms a set BoreholeIntervals. This allows description of multiple downhole logs for a single borehole. The name should identify a particular log observation event.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "shape": {
+                  "description": "The property shape:GM_Object is a 1-D interval (e.g., a \"from\" and \"to\", or \"top\" and \"base\" measurement) covering the same distance as mappedIntervalBegin and mappedIntervalEnd.  The geometry shall use a reference to the borehole as the CRS of the containing borehole.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+                    }
+                  ]
+                },
+                "parentBorehole": {
+                  "description": "The property parentBorehole is an association between a BoreholeInterval and a Borehole to which the interval belongs.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#Borehole"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "BoreholePurposeCode": {
+      "$anchor": "BoreholePurposeCode",
+      "description": "Place holder for a vocabulary containing terms describing the purpose for which the borehole was drilled.  eg, mineral exploration, water pumping, site evaluation, stratigraphic research, etc",
+      "type": "string",
+      "format": "uri"
+    },
+    "BoreholeStartPointCode": {
+      "$anchor": "BoreholeStartPointCode",
+      "description": "This class is an indicative placeholder only for a vocabulary of terms describing the location of the start of a borehole.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group.\r\n\r\nExamples may include:\r\nnatural ground surface - drilling started from a natural topographic surface\r\nopen pit floor or wall - drilling started from the wall of an open pit or quarry\r\nunderground - drilling started from an underground location, such as a driveway, chamber or open-stope\r\nfrom pre-existing hole - new drill hole spudded off the wall of an existing hole",
+      "type": "string",
+      "format": "uri"
+    },
+    "DrillingDetails": {
+      "$anchor": "DrillingDetails",
+      "description": "DrillingDetails is a class that captures the description of drilling methods and hole diameters down the drilling path. Properties that apply to the Borehole as a whole are managed in BoreholeDetails.",
+      "type": "object",
+      "properties": {
+        "drillingMethod": {
+          "description": "The drillingMethod:BoreholeDrillingMethodCode property contains a term from a controlled vocabulary indicating the drilling method used. Appropriate terms would include rotary air blast, auger, diamond core, air core, etc.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#BoreholeDrillingMethodCode"
+            }
+          ]
+        },
+        "boreholeDiameter": {
+          "description": "The boreholeDiameter property (SWE::Quantity) contains a measurement (a value and a unit of measure) corresponding to the diameter of the drilled hole.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+            }
+          ]
+        },
+        "intervalBegin": {
+          "description": "The intervalBegin property (SWE::Quantity) contains a measurement (a value and a unit of measurement) that corresponds to the measured distance of the start of the interval along the path of the borehole. The measured value must be less than or equal to the intervalEnd value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+            }
+          ]
+        },
+        "intervalEnd": {
+          "description": "The property intervalEnd (SWE::Quantity) contains a measurement (a value and a unit of measurement) of the measured distance of the end of the interval along the path of the borehole. The measured value must be greater than or equal to the intervalBegin value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+            }
+          ]
+        }
+      }
+    },
+    "OriginPosition": {
+      "$anchor": "OriginPosition",
+      "description": "A borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may correspond to the borehole collar location (e.g., kelly bush).",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point"
+                }
+              ]
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "elevation": {
+                  "description": "The elevation:DirectPosition property is a compromise approach to supply elevation explicitly for location; this is to allow for software that cannot process 3-D GM_Point. Null shall be used if elevation is unknown. A DirectPosition shall have a dimension of 1, and CRS will be a \"vertical\" CRS (e.g. EPSG CRSs in the range 5600-5799).",
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point"
+                    }
+                  ]
+                },
+                "relatedBorehole": {
+                  "description": "The hole that has this collar for its start point",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#Borehole"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "SCLinkObject": {
+      "title": "link object",
+      "description": "definition of a link object",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Supplies the URI to a remote resource (or resource fragment)."
+        },
+        "rel": {
+          "type": "string",
+          "description": "The type or semantics of the relation."
+        },
+        "type": {
+          "type": "string",
+          "description": "A hint indicating what the media type of the result of dereferencing the link should be."
+        },
+        "hreflang": {
+          "type": "string",
+          "description": "A hint indicating what the language of the result of dereferencing the link should be."
+        },
+        "title": {
+          "type": "string",
+          "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
+        },
+        "length": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

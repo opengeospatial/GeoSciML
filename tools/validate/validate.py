@@ -39,10 +39,17 @@ CACHE_DIR = ROOT / ".schema_cache"
 _BASE = "https://ext.iide.dev/schemas/geosciml/json/4.1"
 
 DIR_SCHEMA: dict[Path, str] = {
-    EXAMPLES_DIR / "basic":                    f"{_BASE}/geoscimlBasic.json",
-    EXAMPLES_DIR / "lite":                     f"{_BASE}/geoscimlLite.json",
-    EXAMPLES_DIR / "featurecollections/basic": f"{_BASE}/geosciml_basic_featurecollection.json",
-    EXAMPLES_DIR / "featurecollections/lite":  f"{_BASE}/geosciml_lite_featurecollection.json",
+    EXAMPLES_DIR / "basic":                                         f"{_BASE}/geoscimlBasic.json",
+    EXAMPLES_DIR / "lite":                                          f"{_BASE}/geoscimlLite.json",
+    EXAMPLES_DIR / "borehole":                                      f"{_BASE}/borehole.json",
+    EXAMPLES_DIR / "geologicTime":                                  f"{_BASE}/geologicTime.json",
+    EXAMPLES_DIR / "geoscimlExtension":                             f"{_BASE}/geoscimlExtension.json",
+    EXAMPLES_DIR / "laboratoryAnalysisSpecimen":                    f"{_BASE}/laboratoryAnalysisSpecimen.json",
+    EXAMPLES_DIR / "featurecollections/basic":                      f"{_BASE}/geosciml_basic_featurecollection.json",
+    EXAMPLES_DIR / "featurecollections/lite":                       f"{_BASE}/geosciml_lite_featurecollection.json",
+    EXAMPLES_DIR / "featurecollections/geologicTime":               f"{_BASE}/geosciml_geologictime_featurecollection.json",
+    EXAMPLES_DIR / "featurecollections/geoscimlExtension":          f"{_BASE}/geosciml_extension_featurecollection.json",
+    EXAMPLES_DIR / "featurecollections/laboratoryAnalysisSpecimen": f"{_BASE}/geosciml_laboratoryanalysisspecimen_featurecollection.json",
 }
 
 # ── ANSI colours ──────────────────────────────────────────────────────────────
@@ -59,7 +66,7 @@ def _bold(s: str) -> str:   return f"\033[1m{s}\033[0m"  if _USE_COLOUR else s
 def _load_local_schemas() -> list[tuple[str, referencing.Resource]]:
     resources = []
     for path in SCHEMA_DIR.glob("*.json"):
-        schema = json.loads(path.read_text())
+        schema = json.loads(path.read_text(encoding="utf-8"))
         sid = schema.get("$id")
         if sid:
             resources.append((sid, DRAFT202012.create_resource(schema)))
@@ -78,7 +85,7 @@ def _retrieve(uri: str) -> referencing.Resource:
     safe_name = uri.replace("://", "_").replace("/", "_").replace("?", "_")
     cache_file = CACHE_DIR / safe_name
     if cache_file.exists():
-        contents = json.loads(cache_file.read_text())
+        contents = json.loads(cache_file.read_text(encoding="utf-8"))
     else:
         try:
             with urllib.request.urlopen(uri, timeout=15) as resp:
@@ -124,7 +131,7 @@ def validate_file(
 ) -> list[str]:
     """Return validation error messages; empty list means valid."""
     try:
-        instance = json.loads(path.read_text())
+        instance = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         return [f"JSON parse error: {exc}"]
 

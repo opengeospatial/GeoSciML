@@ -75,6 +75,12 @@
       {
         "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
         "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-mudstone",
+          "geometry": null,
+          "place": null,
+          "time": null,
           "properties": {
             "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
           }
@@ -95,6 +101,12 @@
       {
         "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
         "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-sandstone",
+          "geometry": null,
+          "place": null,
+          "time": null,
           "properties": {
             "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
           }

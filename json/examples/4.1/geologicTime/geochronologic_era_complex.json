@@ -1,0 +1,45 @@
+{
+  "type": "Feature",
+  "featureType": "GeochronologicEra",
+  "id": "arizona-zappodachus-zone",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "rank": "http://resource.geosciml.org/classifier/ics/ischart/biozone",
+    "start": {
+      "href": "http://resource.geosciml.org/classifier/ics/ischart/BaseMesoproterozoic",
+      "title": "base of Mesoproterozoic"
+    },
+    "end": {
+      "type": "Feature",
+      "featureType": "GeochronologicBoundary",
+      "id": "beckers-butte-tuff-boundary",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "stratotype": {
+          "type": "Feature",
+          "featureType": "StratigraphicPoint",
+          "id": "beckers-butte-tuff-point",
+          "geometry": null,
+          "place": null,
+          "time": null,
+          "properties": {
+            "primaryGuidingCriterion": "eruption of Beckers Butte Tuff, a thin widespread marker assumed to be synchronously deposited across the region",
+            "status": "proposed"
+          }
+        }
+      }
+    },
+    "member": [
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Neoproterozoic", "title": "Neoproterozoic"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Mesoproterozoic", "title": "Mesoproterozoic"}
+    ],
+    "stratotype": {
+      "href": "http://resource.usgs.gov/stratigraphicSection/347378",
+      "title": "Theodore Roosevelt Dam Section, Arizona"
+    }
+  }
+}

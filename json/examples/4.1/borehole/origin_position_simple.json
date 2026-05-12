@@ -1,0 +1,14 @@
+{
+  "type": "Feature",
+  "featureType": "OriginPosition",
+  "id": "ga-eromanga-op-standalone",
+  "geometry": {"type": "Point", "coordinates": [132.334, -25.902]},
+  "place": null,
+  "time": null,
+  "properties": {
+    "elevation": {"href": "http://data.geoscience.gov.au/borehole/ga-eromanga-op/elevation", "title": "27.9 m AHD"},
+    "relatedBorehole": [
+      {"href": "http://data.geoscience.gov.au/borehole/ga-eromanga-1", "title": "BMR Eromanga 1"}
+    ]
+  }
+}

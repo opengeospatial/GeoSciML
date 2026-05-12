@@ -40,6 +40,12 @@
           {
             "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
             "material": {
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "hervey-group-fc-sandstone",
+              "geometry": null,
+              "place": null,
+              "time": null,
               "properties": {
                 "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
               }
@@ -60,6 +66,12 @@
           {
             "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
             "material": {
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "hervey-group-fc-mudstone",
+              "geometry": null,
+              "place": null,
+              "time": null,
               "properties": {
                 "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
               }
@@ -95,6 +107,12 @@
           {
             "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
             "material": {
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "boulton-formation-fc-conglomerate",
+              "geometry": null,
+              "place": null,
+              "time": null,
               "properties": {
                 "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/conglomerate"
               }

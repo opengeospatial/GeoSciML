@@ -1,0 +1,43 @@
+{
+  "type": "Feature",
+  "featureType": "NaturalGeomorphologicFeature",
+  "id": "moraine-complex",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [148.210, -36.445],
+        [148.290, -36.445],
+        [148.290, -36.510],
+        [148.210, -36.510],
+        [148.210, -36.445]
+      ]
+    ]
+  },
+  "place": null,
+  "time": null,
+  "properties": {
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifierScheme/cgi/featureobservationmethod",
+        "label": "remote sensing interpretation",
+        "value": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod/remote_sensing_interpretation"
+      }
+    ],
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "naturalGeomorphologicFeatureType": "http://resource.geosciml.org/classifier/cgi/geomorphologicfeaturetype/moraine",
+    "activity": {
+      "type": "Category",
+      "definition": "http://resource.geosciml.org/classifierScheme/cgi/geomorphologicactivity",
+      "label": "inactive",
+      "value": "http://resource.geosciml.org/classifier/cgi/geomorphologicactivity/inactive"
+    },
+    "unitDescription": [
+      {
+        "href": "http://data.geoscience.gov.au/feature/geologicunit/glacial-till-1",
+        "title": "Pleistocene glacial till"
+      }
+    ]
+  }
+}

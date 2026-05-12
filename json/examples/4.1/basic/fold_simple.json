@@ -1,0 +1,12 @@
+{
+  "type": "Feature",
+  "featureType": "Fold",
+  "id": "anticline-1",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "profileType": "http://resource.geosciml.org/classifier/cgi/foldprofiletype/antiform"
+  }
+}

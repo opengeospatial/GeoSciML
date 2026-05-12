@@ -1,0 +1,27 @@
+{
+  "type": "Feature",
+  "featureType": "MappedFeature",
+  "id": "mappedfeature-gu-1",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [149.12, -35.31],
+        [149.45, -35.31],
+        [149.45, -35.58],
+        [149.12, -35.58],
+        [149.12, -35.31]
+      ]
+    ]
+  },
+  "place": null,
+  "time": null,
+  "properties": {
+    "mappingFrame": "http://resource.geoscience.gov.au/vocabulary/mappingframe/top-of-bedrock",
+    "exposure": "http://resource.geosciml.org/classifier/cgi/exposure/exposed",
+    "specification": {
+      "href": "http://data.geoscience.gov.au/feature/geologicunit/hervey-group-1",
+      "title": "Hervey Group"
+    }
+  }
+}

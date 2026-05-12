@@ -1,0 +1,133 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnit",
+      "id": "hervey-group-1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/typicalNorm",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+        "composition": [
+          {
+            "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+            "material": {
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "MappedFeature",
+      "id": "mappedfeature-gu-1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [149.12, -35.31],
+            [149.45, -35.31],
+            [149.45, -35.58],
+            [149.12, -35.58],
+            [149.12, -35.31]
+          ]
+        ]
+      },
+      "place": null,
+      "time": null,
+      "properties": {
+        "resolutionRepresentativeFraction": 250000,
+        "mappingFrame": "http://resource.geoscience.gov.au/vocabulary/mappingframe/top-of-bedrock",
+        "exposure": "http://resource.geosciml.org/classifier/cgi/exposure/exposed",
+        "specification": {
+          "href": "http://data.geoscience.gov.au/feature/geologicunit/hervey-group-1",
+          "title": "Hervey Group"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "ShearDisplacementStructure",
+      "id": "lake-george-fault-1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "occurrence": [
+          {
+            "href": "http://data.geoscience.gov.au/mappedfeature/line/lake-george-fault-mf-1",
+            "title": "Lake George Fault trace"
+          }
+        ],
+        "geologicHistory": [
+          {
+            "type": "Feature",
+            "featureType": "GeologicEvent",
+            "id": "lake-george-fault-age",
+            "geometry": null,
+            "place": null,
+            "time": null,
+            "properties": {
+              "eventProcess": [
+                "http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"
+              ],
+              "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+              "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Carboniferous"
+            }
+          }
+        ],
+        "faultType": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "MappedFeature",
+      "id": "mappedfeature-fault-1",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [149.387, -35.124],
+          [149.412, -35.198],
+          [149.435, -35.271],
+          [149.461, -35.344]
+        ]
+      },
+      "place": null,
+      "time": null,
+      "properties": {
+        "positionalAccuracy": {
+          "type": "Quantity",
+          "uom": { "code": "m" },
+          "value": 250.0
+        },
+        "resolutionRepresentativeFraction": 250000,
+        "mappingFrame": "http://resource.geoscience.gov.au/vocabulary/mappingframe/earth-surface",
+        "exposure": "http://resource.geosciml.org/classifier/cgi/exposure/exposed",
+        "specification": {
+          "href": "http://data.geoscience.gov.au/feature/fault/lake-george-fault-1",
+          "title": "Lake George Fault"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "Contact",
+      "id": "contact-devonian-basement-1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/unconformity"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "Feature",
+  "featureType": "Borehole",
+  "id": "ga-eromanga-1",
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [132.334, -25.902, 27.9],
+      [132.334, -25.903, -215.6]
+    ]
+  },
+  "place": null,
+  "time": null,
+  "properties": {
+    "indexData": {
+      "inclinationType": "http://resource.geoscience.gov.au/classifier/ga/inclinationtype/vertical",
+      "purpose": [
+        "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geologicalSurvey"
+      ],
+      "boreholeLength": {
+        "type": "Quantity",
+        "definition": "http://www.opengis.net/def/property/OGC/0/SamplingDepth",
+        "label": "borehole length",
+        "uom": {"code": "m"},
+        "value": 243.5
+      }
+    }
+  }
+}

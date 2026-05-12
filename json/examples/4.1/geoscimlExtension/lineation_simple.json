@@ -1,0 +1,12 @@
+{
+  "type": "Feature",
+  "featureType": "Lineation",
+  "id": "lineation-simple-1",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "lineationType": "http://resource.geoscience.gov.au/classifier/cgi/lineationtype/mineral_lineation"
+  }
+}

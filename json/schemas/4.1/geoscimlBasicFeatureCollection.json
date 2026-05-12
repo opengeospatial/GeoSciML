@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasicFeatureCollection.json",
+  "description": "JSON-FG FeatureCollection whose features are GeoSciML Basic FeatureType instances. Each item in `features` is validated against the root `anyOf` of geoscimlBasic.json, which selects across every GeoSciML Basic FeatureType anchor.",
+  "allOf": [
+    {
+      "$ref": "https://schemas.opengis.net/json-fg/featurecollection.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "geoscimlBasic.json"
+          }
+        }
+      }
+    }
+  ]
+}

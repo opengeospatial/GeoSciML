@@ -1,0 +1,335 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geosciml_extension_featurecollection.json",
+  "$defs": {
+    "FeatureCollection": {
+      "$anchor": "FeatureCollection",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/featurecollection.json"
+        },
+        {
+          "if": {
+            "required": [
+              "featureType"
+            ]
+          },
+          "then": {
+            "allOf": [
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "DisplacementEvent"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#DisplacementEvent"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "FoldSystem"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#FoldSystem"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "Joint"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#Joint"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "Layering"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#Layering"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "Lineation"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#Lineation"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "NonDirectionalStructure"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#NonDirectionalStructure"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "not": {
+                    "required": [
+                      "featureType"
+                    ],
+                    "properties": {
+                      "featureType": {
+                        "enum": [
+                          "DisplacementEvent",
+                          "FoldSystem",
+                          "Joint",
+                          "Layering",
+                          "Lineation",
+                          "NonDirectionalStructure"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": false
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "required": [
+              "features"
+            ],
+            "properties": {
+              "features": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "DisplacementEvent"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#DisplacementEvent"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "FoldSystem"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#FoldSystem"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "Joint"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#Joint"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "Layering"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#Layering"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "Lineation"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#Lineation"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "NonDirectionalStructure"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json#NonDirectionalStructure"
+                      }
+                    },
+                    {
+                      "if": {
+                        "not": {
+                          "required": [
+                            "featureType"
+                          ],
+                          "properties": {
+                            "featureType": {
+                              "enum": [
+                                "DisplacementEvent",
+                                "FoldSystem",
+                                "Joint",
+                                "Layering",
+                                "Lineation",
+                                "NonDirectionalStructure"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "then": false
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$ref": "#FeatureCollection"
+}

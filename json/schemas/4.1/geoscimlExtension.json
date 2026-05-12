@@ -1,0 +1,1829 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlExtension.json",
+  "description": "The extension package provides classes to further the descriptions of basic classes by adding more properties and supplemental relations.  It extends abstract description stubs declared in basic package and introduces new GeologicStructure features.",
+  "$defs": {
+    "AlterationDescription": {
+      "$anchor": "AlterationDescription",
+      "description": "AlterationDescription describes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. It includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic. For example, a soil profile description would have to be constructed as a GeologicUnit (geologicUnitType \u003d PedologicUnit) with unit parts representing the various horizons in the profile.  Thickness of a weathering profile can be delivered as unitThickness of a GeologicUnit of geologicUnitType equal to \"AlterationUnit\"",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "alterationType": {
+              "description": "The property alterationType:AlterationTypeTerm contains a term from a controlled vocabulary of alteration types (e.g., potassic, argillic, advanced argillic).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#AlterationTypeTerm"
+                }
+              ]
+            },
+            "alterationProduct": {
+              "description": "The property alterationProduct is an association between the AlterationDescripton and EarthMaterial describing the material resulting from the alteration processes, e.g. alteration minerals, saprolite, ferricrete, clay, calcrete, skarn, etc. Materials observed in a soil profile could be identified using this property.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterial"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "alterationDistribution": {
+              "description": "The alterationDistribution (SWE::Category) property describes the spatial distribution or geometry of alteration zones using a term from a controlled vocabulary. e.g., patchy, spotted, banded, veins, vein breccia, pervasive, disseminated, etc.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "alterationDegree": {
+              "description": "The property alterationDegree (SWE::Category) contains a term from a controlled vocabulary to indicate the magnitude of observed alteration.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "alterationEvent": {
+              "description": "The property alterationEvent is an association between an AlterationDescription and a GeologicEvent describing the GeologicEvent associated with the alteration.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEvent"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AlterationTypeTerm": {
+      "$anchor": "AlterationTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the dominant alteration mineralogy or alteration type, in common usage. Examples include: argillic, phyllic, potassic, propylitic, calc-silicate, skarn, deuteric, greisen, serpenitisation,  weathering, etc.",
+      "type": "string",
+      "format": "uri"
+    },
+    "BeddingDescription": {
+      "$anchor": "BeddingDescription",
+      "description": "BeddingDescription provides a detailed description of the bedding characteristics of a geologic unit.",
+      "type": "object",
+      "properties": {
+        "beddingPattern": {
+          "description": "The property beddingPattern (SWE::Category) provides a term from a controlled vocabulary specifying patterns of bedding thickness or relationships between bedding packages. (e.g., thinning upward, thickening upward).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "beddingStyle": {
+          "description": "The property beddingStyle (SWE::Category) provides a term from a controlled vocabulary specifying the style of bedding in a stratified geologic unit (e.g. lenticular, irregular, planar, vague, and massive).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "beddingThickness": {
+          "description": "The property beddingThickness (SWE::Category) provides a term from a controlled vocabulary characterizing the thickness of bedding in the unit.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+              },
+              "uniqueItems": true
+            }
+          ]
+        }
+      }
+    },
+    "ChemicalComposition": {
+      "$anchor": "ChemicalComposition",
+      "description": "ChemicalComposition is a kind of EarthMaterialDescription that delivers the chemical composition of a geological unit or earth material, as a list of element or oxide concentrations.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "chemicalAnalysis": {
+              "description": "The chemicalAnalysis property (SWE:DataRecord) contains a collection of geochemical results in a form of a DataRecord (a collection of fields composed of description and values).",
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/DataRecord.json"
+            }
+          }
+        }
+      ]
+    },
+    "CompoundMaterialDescription": {
+      "$anchor": "CompoundMaterialDescription",
+      "description": "The CompoundMaterialDescription class is a kind of EarthMaterialDescription that provides an extended description of a compound earth material (i.e., rocks and unconsolidated solid earth materials).",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "compositionCategory": {
+              "description": "The compositionCategory property (SWE::Category) provides a term from a controlled vocabulary to specify the gross compositional character of a compound material. Composition as used here is loosely construed to include both chemical composition and petrographic composition, thus multiple values may be applied to a single rock, e.g. metaluminous and alkalic, undersaturated and basic, etc. Terms would typically include broad chemical classifications such as silicate, carbonate, ferromagnesian, oxide.  However, this attribute may have different terminology for different kinds of rocks - for example sandstone petrographic classification terms (e.g. feldspathic) might be placed here.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "geneticCategory": {
+              "description": "The property geneticCategory (SWE::Category) provides a term from a controlled vocabulary that represents a summary geologic history of the material. (i.e., a genetic process classifier term). Examples include igneous, sedimentary, metamorphic, shock metamorphic, volcanic, pyroclastic.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "constituent": {
+              "description": "The property constituent is an association between a CompoundMaterialDescription and a ConstituentPart that makes up part of the CompoundMaterial.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#ConstituentPart"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "particleGeometry": {
+              "description": "The particleGeometry:ParticleGeometryDescription contains an instance of ParticleGeometryDescription.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#ParticleGeometryDescription"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ConstituentPart": {
+      "$anchor": "ConstituentPart",
+      "description": "The ConstituentPart class describes how Earth materials may be made up of other Earth materials, including the proportion of the constituent part in the whole (e.g., 20%, minor, dominant); and the role that the constituent plays in the whole (e.g., matrix, groundmass, framework, phenocryst, xenolith, vein).",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "proportion": {
+                  "description": "The proportion property (SWE::QuantityRange) reports the fraction of the whole that is formed by a ConstituentPart in a part/whole relationship.  It is used for the ConstituentPart portion in a CompoundMaterial.  It specifies the fraction of the EarthMaterial formed by the part (e.g., 20%, minor, dominant).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                    }
+                  ]
+                },
+                "role": {
+                  "description": "The role:ConstituentPartRoleTerm property contains a term from a controlled vocabulary that describes the role a ConstituentPart plays in a CompoundMaterial aggregation. The same EarthMaterial may occur as different ConstituentParts playing different roles within one CompoundMaterial.  For example, feldspar may be present as groundmass (“groundmass” is a ConstituentPart::role) and as phenocrysts (“phenocryst” is another ConstituentPart::role) within a single igneous rock.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#ConstituentPartRoleTerm"
+                    }
+                  ]
+                },
+                "constituentParticleGeometry": {
+                  "description": "Description of geometry of individual subset of particles",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#ParticleGeometryDescription"
+                    }
+                  ]
+                },
+                "relatedMaterial": {
+                  "description": "Specifies the ConstituentPart that is playing the target role in the MaterialRelation",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#MaterialRelation"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                },
+                "constituentMaterial": {
+                  "description": "The constituentMaterial property is an association between a ConstituentPart and an EarthMaterial that specifies the EarthMaterial that is forming the ConstituentPart.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterial"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ConstituentPartRoleTerm": {
+      "$anchor": "ConstituentPartRoleTerm",
+      "description": "Refers to a vocabulary of terms describing the role played by a constituent part of a compound material (eg, matrix, phenocryst)",
+      "type": "string",
+      "format": "uri"
+    },
+    "ContactDescription": {
+      "$anchor": "ContactDescription",
+      "description": "The ContactDescription provides extended descriptive properties of a geologic contact.  If the contact type is ChronostratigraphicBoundary, it can be associated with a geochronologic (i.e., time zone) boundary that may correlate with it.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#ContactAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "contactCharacter": {
+              "description": "The contactCharacter (SWE::Category) contains a term from a controlled vocabulary that describes the character of the boundary (e.g. abrupt, gradational), as opposed to its type.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "orientation": {
+              "description": "The orientation:GSML_PlanarOrientation property reports the general orientation of the contact surface.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_PlanarOrientation"
+                }
+              ]
+            },
+            "correlatesWith": {
+              "description": "The correlatesWith property is an association between ContactDescription and a GeochronologicBoundary describing a geochronologic (i.e., time zone) boundary that may correlate with it.  Therefore, a contact correlation with a GeochronologicBoundary SHALL ONLY be allowed when the contactType is a ChronostratigraphicBoundary.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geologicTime.json#GeochronologicBoundary"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "DeformationStyleTerm": {
+      "$anchor": "DeformationStyleTerm",
+      "description": "A controlled vocabulary of terms describing the style of deformation (eg, brittle, ductile).",
+      "type": "string",
+      "format": "uri"
+    },
+    "DisplacementEvent": {
+      "$anchor": "DisplacementEvent",
+      "description": "A displacement event is a description of the age, environment and process of a shear displacement event.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEvent"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "incrementalDisplacement": {
+                  "description": "The incrementalDisplacement:DisplacementValue property contains a DisplacementValue reporting the parameters of the displacement.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#DisplacementValue"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "DisplacementValue": {
+      "$anchor": "DisplacementValue",
+      "description": "A displacement value expresses the displacement on a fault with respect to a planar approximation of its shape.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#ShearDisplacementStructureAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "hangingWallDirection": {
+              "description": "The property hangingWallDirection:GSML_LinearOrientation describes the direction of the hanging-wall side of the fault or fault-system where they are steep enough to define a hanging-wall on the map trace.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_LinearOrientation"
+                }
+              ]
+            },
+            "movementSense": {
+              "description": "The property movementSense:MovementSenseTerm contains a term from a controlled vocabulary that describes the movement sense of displacement along a geologic structure (e.g., dextral, sinistral).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#MovementSenseTerm"
+                }
+              ]
+            },
+            "movementType": {
+              "description": "The property movementType:MovementTypeTerm contains a term from a controlled vocabulary that defines the type of movement on a shear displacement structure (e.g. dip-slip, strike-slip).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#MovementTypeTerm"
+                }
+              ]
+            },
+            "displacementEvent": {
+              "description": "The property displacementEvent is an association between a Displacement and a GeologicEvent that contains a description of the age, environment and process of a shear displacement event.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#DisplacementEvent"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "FabricDescription": {
+      "$anchor": "FabricDescription",
+      "description": "The FabricDescription data type describes all types of fabrics associated with a CompoundMaterial (i.e., tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fabricType": {
+              "description": "The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#FabricTypeTerm"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "FabricTypeTerm": {
+      "$anchor": "FabricTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the type of fabric present",
+      "type": "string",
+      "format": "uri"
+    },
+    "FoldDescription": {
+      "$anchor": "FoldDescription",
+      "description": "FoldDescription is an extended descriptive property of a fold structure.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#FoldAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "amplitude": {
+              "description": "The amplitude property (SWE::QuantityRange) reports the length from line segment connecting inflection points on adjacent fold limbs to the intervening fold hinge.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            },
+            "axialSurfaceOrientation": {
+              "description": "The property axialSurfaceOrientation:GSML_PlanarOrientation is used to characterize the geometry of a fold. The axial surface of a particular fold may be located based on observations of the folded geologic structure, but in general it has no direct physical manifestations. As a geologic surface, it has geometric properties, including orientation, which may be specified by observations at one or more locations, or generalized using terminology (upright, inclined, reclined, recumbent, overturned). Dip and Dip Direction are one approach to specifying the value.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_PlanarOrientation"
+                }
+              ]
+            },
+            "geneticModel": {
+              "description": "The property geneticModel (SWE::Category) contains a term from a controlled vocabulary describing the specification of genetic model for fold, e.g. flexural slip, parallel.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "hingeLineCurvature": {
+              "description": "The hingeLineCurvature property (SWE::Category) contains a term from a controlled vocabulary that describes the variation in orientation of fold hinge along trend of fold, distinguishing sheath from cylindrical folds (e.g. sheath, dome, basin, cylindrical.).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "hingeLineOrientation": {
+              "description": "The property hingeLineOrientation:GSML_LinearOrientation reports the specification of the hinge line orientation for fold. GSML_LinearOrientation allows for a term value specification or a numeric specification of either or both the trend and plunge of hinge line.  Hinge plunge term examples: sub-vertical, steeply plunging, sub-horizontal, reclined and vertical for special cases in which hinge plunge is close to axial surface dip. 0..* cardinality allows for both a numeric specification and a term specification.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_LinearOrientation"
+                }
+              ]
+            },
+            "hingeShape": {
+              "description": "The property hingeShape (SWE::Category) reports a term from a controlled vocabulary describing the hinge shape, e.g. Rounded vs. angular hinge zones.  This property has to do with the proportion of the wavelength that is considered part of hinge.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "interLimbAngle": {
+              "description": "The property interLimbAngle (SWE::Category) contains a term from a controlled vocabulary describing the interlimb angle using a tightness term (e.g. gentle (120-180°), open (70-120°), close (30-70°), tight (10-30°), isoclinal (0-10°)).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "limbShape": {
+              "description": "The limbShape property (SWE::Category) contains a term from a controlled vocabulary describing the shape of the limb (e.g. straight vs curved limbs, kink, chevron, sinusoidal, box).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "span": {
+              "description": "The span property (SWE::QuantityRange) reports a value describing the linear distance between inflection points in a single fold.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            },
+            "symmetry": {
+              "description": "The symmetry property (SWE::Category) contains a term from a controlled vocabulary describing the concordance or discordance of bisecting surface and axial surface, or the ratio of length of limbs. The folded surface may have asymmetry defined by limb length ratio if inflection points are defined. The definition based on bisecting surface/axial surface angle depends on having multiple surfaces defined such that the axial surface may be identified (symmetric, asymmetric).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "system": {
+              "description": "The system property is an association between a FoldDescription and a FoldSystem that aggregates folds into a system.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "#FoldSystem"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "FoldSystem": {
+      "$anchor": "FoldSystem",
+      "description": "A FoldSystem is a collection of congruent folds (axis and axial surface are parallel) produced by the same tectonic event. It is sometimes referred to as a \"fold train\".",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "periodic": {
+                  "description": "The property periodic:Primitive::Boolean reports TRUE if the hinges in a train are regularly spaced, and FALSE otherwise.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "wavelength": {
+                  "description": "The property wavelength (SWE::QuantityRange) contains a quantitative description of the length between adjacent antiforms (or synforms) in a fold train.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                    }
+                  ]
+                },
+                "foldSystemMember": {
+                  "description": "The foldSystemMember is an association between a FoldSystem and the Folds that are members of that system.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Fold"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FoliationDescription": {
+      "$anchor": "FoliationDescription",
+      "description": "FoliationDescription provides extended descriptive properties for a foliation structure.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#FoliationAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "definingElement": {
+              "description": "The property definingElement (SWE::Category) contains a term from a controlled vocabulary describing the kinds of inhomogeneity in a rock body that may define a GeologicStructure.   Examples include discontinuity, shaped surface, oriented particle, material boundary, and layer.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "continuity": {
+              "description": "The continuity property (SWE::Category) reports a term from a controlled vocabulary to distinguish continuous vs. disjunct cleavages.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "intensity": {
+              "description": "The intensity property (SWE::Category) contains a term from a controlled vocabulary to describe how well the foliation is developed (e.g., weak, moderate, strong).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "mineralElement": {
+              "description": "The mineralElement property is an association between FoliationDescription and a Mineral that defines that foliation.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "#Mineral"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "orientation": {
+              "description": "The orientation:GSML_PlanarOrientation contains an estimate of the planar orientation of the foliation structure.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_PlanarOrientation"
+                }
+              ]
+            },
+            "spacing": {
+              "description": "The spacing property (SWE::QuantityRange) contains a linear dimension representing the thickness of foliation domains. It is also used for thickness of layers of a given composition.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Fracture": {
+      "$anchor": "Fracture",
+      "description": "Fractures are cracks in the earth surface. If there is no displacement it is a joint. If there is displacement and you are in the brittle zone it is a fault. In the ductile zone, a fracture with displacement with fracture is called a shear.  FaultSurface as a separate class is not considered necessary for GeoSciML 2.\r\nRecording observations on FaultSurface should be in observation and measurement. The observation needs to be able to distinguish the type of measurement made (PropertyType)",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicStructure"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "GeologicEventDescription": {
+      "$anchor": "GeologicEventDescription",
+      "description": "GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale schema.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEventAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "prototype": {
+              "description": "Reference stratigraphic point for stratigraphic events",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geologicTime.json#StratigraphicPoint"
+                }
+              ]
+            },
+            "olderGeochronologicEra": {
+              "description": "Link to description of the GeochronologicEra that corresponds to the older estimated age of a geologic feature.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geologicTime.json#GeochronologicEra"
+                }
+              ]
+            },
+            "youngerGeochronologicEra": {
+              "description": "Link to description of the GeochronologicEra that corresponds to the younger estimated age of a geologic feature.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geologicTime.json#GeochronologicEra"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "GeologicFeatureRelation": {
+      "$anchor": "GeologicFeatureRelation",
+      "description": "The GeologicFeatureRelation class defines the general structure used to define relationships between any GeoSciML feature types.  Relationships are always binary and directional.  There is always a single source and a single target.  The relationship is always defined from the perspective of the Source and is generally an active verb.  \r\nExample:  a Source may point to an intrusive igneous rock unit.  In this case, the Target would point to the appropriate host rock body and the relationship attribute would be \u0027intrudes\u0027.  Other appropriate relationship attributes might include: overlies, offsets, crosscuts, folds, etc.\r\nMany other types of relationships can also be accommodated via GeologicRelation, for example, topological relations could be described where they are geologically significant.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#AbstractFeatureRelation"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "relationship": {
+                  "description": "The relationship:GeologicRelationshipTerm property contains a term from a controlled vocabulary to describe the geologic relationship (e.g., stratigraphic relation, structural relation, intrusive relation).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#GeologicRelationshipTerm"
+                    }
+                  ]
+                },
+                "sourceRole": {
+                  "description": "The property sourceRole:RelationRoleProperty contains a term from a controlled vocabulary describing the role played by the source geologic feature or object (e.g., overlying unit, underlying unit).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#RelationRoleTerm"
+                    }
+                  ]
+                },
+                "targetRole": {
+                  "description": "The property targetRole:RelationRoleTerm contains a term from a controlled vocabulary describing the role played by the target geologic feature or object. (e.g., overlying unit, underlying unit)",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#RelationRoleTerm"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GeologicRelationshipTerm": {
+      "$anchor": "GeologicRelationshipTerm",
+      "description": "Refers to a vocabulary of terms describing a relationships between geologic features or objects",
+      "type": "string",
+      "format": "uri"
+    },
+    "GeologicUnitDescription": {
+      "$anchor": "GeologicUnitDescription",
+      "description": "GeologicUnitDescription provides for extended description of the characteristics of a geologic unit.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicUnitAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "bodyMorphology": {
+              "description": "The bodyMorphology property (SWE::Category) provides a term from a controlled vocabulary describing the geometry or form of a GeologicUnit.  Examples include: dike (dyke), cone, fan, sheet, etc. The morphology is independent of the substance (EarthMaterial) that composes the GeologicUnit or process that formed it.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "unitComposition": {
+              "description": "The unitComposition property (SWE::Category) provides a term from a composition-based classification that requires summarising the overall character of the unit.  It is not applicable at the rock material or specimen level. Examples are: alkalic, subaluminous, peraluminous, I-Type, carbonate, phosphate.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "outcropCharacter": {
+              "description": "The property outcropCharacter (SWE::Category) provides a term that describes the nature of outcrops formed by a geologic unit. Examples are: bouldery, cliff-forming, ledge-forming, slope-forming, poorly exposed.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "unitThickness": {
+              "description": "The property unitThickness (SWE::QuantityRange) provides a value that represents the typical thickness of the geologic unit. It is always reported as a range.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+                }
+              ]
+            },
+            "bedding": {
+              "description": "The bedding:BeddingDescription property reports a description of the bedding.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#BeddingDescription"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "InorganicFluid": {
+      "$anchor": "InorganicFluid",
+      "description": "The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterial"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "Joint": {
+      "$anchor": "Joint",
+      "description": "Fracture across which there is no displacement at the scale of interest.",
+      "allOf": [
+        {
+          "$ref": "#Fracture"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "Layering": {
+      "$anchor": "Layering",
+      "description": "A planar foliation is defined by a tabular succession of layers \u003e 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team.  The GeologicStructure characteristic of gneiss is layering.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Foliation"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "layerComposition": {
+                  "description": "The layerComposition property is an association between a Layering and a RockMaterial that describes the rock material that may define compositional layering.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#RockMaterial"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Lineation": {
+      "$anchor": "Lineation",
+      "description": "GeologicStructure defined by aligned elongate elements. Lineation connotes a pervasive linear structure. Includes: flow lines, scratches, striae, slickenlines, linear arrangements of\r\nelongate components in sediments, fold hinges (when abundant and closely spaced), elongate minerals, crinkles, and lines of intersection between penetrative planar structures.\r\n\r\nClass also includes discrete linear structures like boudin, channel axis, tool marks.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "lineationType": {
+                  "description": "Type of lineation.\r\nExamples include: flow lines, scratches, striae, slickenlines, linear arrangements of elongate components in sediments, elongate minerals, crinkles, and lines of intersection between penetrative planar structures.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#LineationTypeTerm"
+                    }
+                  ]
+                },
+                "definingElement": {
+                  "description": "Kinds of describable inhomogeneity in a rock body that may define a GeologicStructure.   Examples include Oriented Particle.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "intensity": {
+                  "description": "How well the lineation is developed. Terms such as weak, moderate, strong.",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                    }
+                  ]
+                },
+                "mineralElement": {
+                  "description": "Mineral that defines the lineation",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/SCLinkObject"
+                          },
+                          {
+                            "$ref": "#Mineral"
+                          }
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "orientation": {
+                  "description": "Orientation of the lineation",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_LinearOrientation"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "LineationTypeTerm": {
+      "$anchor": "LineationTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the type of lineation.  Examples include: flow lines, scratches, striae, slickenlines, linear arrangements of elongate components in sediments, elongate minerals, crinkles, and lines of intersection between penetrative planar structures.",
+      "type": "string",
+      "format": "uri"
+    },
+    "MaterialRelation": {
+      "$anchor": "MaterialRelation",
+      "description": "The MaterialRelation class describes the relationships between constituent parts in an EarthMaterial (e.g. A mineral overgrowth on a phenocryst within a granite).  \r\nExample:  Consider an overgrowth of albite on plagioclase in a granite. The Source would originate with the albite constituentPart description.  In this case, the Target would point to the plagioclase constituentPart description and the relationship attribute would be \u0027overgrowth\u0027 and the sourceRole is \u0027overgrows\u0027.  Other appropriate role attributes might include: crosscuts, replaces, etc. for crosscutting and replacement relationships.  Inverse relationships must be explicitly recorded.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "relationship": {
+                  "description": "The property relationship:GeologicRelationshipTerm contains a term from a controlled vocabulary to describe the geologic relationship (e.g., sedimentary relation, igneous relation).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#GeologicRelationshipTerm"
+                    }
+                  ]
+                },
+                "sourceRole": {
+                  "description": "The property sourceRole:RelationRoleTerm contains a term that describes the role played by the source earth material part (e.g., matrix, clast, overgrowth).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#RelationRoleTerm"
+                    }
+                  ]
+                },
+                "targetRole": {
+                  "description": "The property targetRole:RelationRoleTerm contains a term describing the role played by the target earth material part (e.g., matrix, clast, overgrowth).",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#RelationRoleTerm"
+                    }
+                  ]
+                },
+                "relatedMaterial": {
+                  "description": "Specifies the ConstituentPart that is playing the target role in the MaterialRelation",
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/SCLinkObject"
+                    },
+                    {
+                      "$ref": "#ConstituentPart"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "relatedMaterial"
+              ]
+            }
+          },
+          "required": [
+            "properties"
+          ]
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "MetamorphicDescription": {
+      "$anchor": "MetamorphicDescription",
+      "description": "The data type MetamorphicDescription describes the character of metamorphism applied to a CompoundMaterial or GeologicUnit using one or more properties including estimated intensity (grade; e.g. high grade, low grade), characteristic metamorphic mineral assemblages (facies; e.g., greenschist, amphibolite), peak P-T estimates, and protolith material if known.  A MetamorphicDescription provides a link to the GeologicEvent associated to the metamorphic event.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "metamorphicFacies": {
+              "description": "The metamorphicFacies property (SWE::Category) contains a term from a controlled vocabulary that describes a characteristic mineral assemblages indicative of certain metamorphic pressure and temperature conditions. Examples include Barrovian metasedimentary zones (e.g., biotite facies, kyanite facies) or assemblages developed in rocks of more mafic composition (e.g., greenschist facies, amphibolite facies).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "metamorphicGrade": {
+              "description": "The metamorphicGrade property (SWE::Category) contains a term from a controlled vocabulary that indicates the intensity or rank of metamorphism applied to an EarthMaterial (e.g., high metamorphic grade, low metamorphic grade).\r\nIt indicates in a general way the pressure-temperature (PT) environment in which the metamorphism took place. The determination of metamorphic grade is based on mineral assemblages (i.e., facies) present in a rock that are interpreted to have crystallized in equilibrium during a particular metamorphic event.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            },
+            "peakPressureValue": {
+              "description": "The peakPressureValue property (SWE::Quantity) reports a numerical value to indicate the estimated pressure at peak metamorphic conditions.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+                }
+              ]
+            },
+            "peakTemperatureValue": {
+              "description": "The peakTemperatureValue property (SWE::Quantity) reports a numerical value to indicate the estimated temperature at peak metamorphic conditions.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+                }
+              ]
+            },
+            "protolithLithology": {
+              "description": "The protolithLithology is an association between a MetamorphicDescription and an EarthMaterial that describes the pre-metamorphic lithology for a metamorphosed CompoundMaterial.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
+                      },
+                      {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterial"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "metamorphicEvent": {
+              "description": "The metamorphicEvent property is an association between a MetamorphicDescription and a GeologicEvent that denotes the age, environment and process associated with a particular metamorphic assemblage in a GeologicUnit.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/SCLinkObject"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEvent"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Mineral": {
+      "$anchor": "Mineral",
+      "description": "A naturally occurring inorganic element or compound having a periodically repeating arrangement of atoms and a characteristic chemical composition or range of compositions, resulting in distinctive physical properties.  Includes mercury as a general exception to the requirement of crystallinity.  Also includes crypto-crystalline materials such as chalcedony and amorphous silica.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterial"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "mineralName": {
+                  "description": "Name of the mineral (eg: orthoclase) or mineral family (eg: feldspar), approved by the International Mineralogical Association. (eg: http://www.mindat.org/mineralindex.php)",
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#MineralNameTerm"
+                      },
+                      "uniqueItems": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "MineralNameTerm": {
+      "$anchor": "MineralNameTerm",
+      "description": "Refers to a vocabulary of mineral names",
+      "type": "string",
+      "format": "uri"
+    },
+    "MovementSenseTerm": {
+      "$anchor": "MovementSenseTerm",
+      "description": "Refers to a vocabulary of terms describing the sense of movement on a shear displacement structure",
+      "type": "string",
+      "format": "uri"
+    },
+    "MovementTypeTerm": {
+      "$anchor": "MovementTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the type of movement  (eg, dip-slip, strike-slip)",
+      "type": "string",
+      "format": "uri"
+    },
+    "NetSlipValue": {
+      "$anchor": "NetSlipValue",
+      "description": "NetSlipValue is a kind of DisplacementValue that describes the total amount of slip displacement along a structure.",
+      "allOf": [
+        {
+          "$ref": "#DisplacementValue"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "netSlip": {
+              "description": "The property netSlip:GSML_Vector reports the value of the net slip, expressed as a vector.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_Vector"
+                }
+              ]
+            },
+            "slipComponent": {
+              "description": "The slipComponent:SlipComponents property associates the individual slip components with the net slip values.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#SlipComponents"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "NonDirectionalStructure": {
+      "$anchor": "NonDirectionalStructure",
+      "description": "Structures present in geology that do not have a preferred orientation\r\nIncludes small-scale structures that are characteristic of the geologic unit, e.g. herringbone crossbedding, mudcracks, graded bedding, planar lamination, miarolitic cavities, nebulitic structure, trace fossils, fossil molds",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicStructure"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {
+                "structureType": {
+                  "description": "The type of non oriented structure.  Examples include miarolitic cavity, flame structure, load cast, shatter cone, trace fossil, fossil mold",
+                  "$ref": "#NonDirectionalStructureTypeTerm"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NonDirectionalStructureTypeTerm": {
+      "$anchor": "NonDirectionalStructureTypeTerm",
+      "description": "Refers to a vocabulary of terms describing types of non-directional structures (eg, miarolitic cavity, flame structure, load cast, shatter cone, trace fossil, fossil mold, etc)",
+      "type": "string",
+      "format": "uri"
+    },
+    "OrganicMaterial": {
+      "$anchor": "OrganicMaterial",
+      "description": "OrganicMaterial is an EarthMaterial that belongs to the class of chemical compounds having a reduced carbon basis (as distinct from carbonates), and derived from living organisms. It includes high-carbon EarthMaterials such as bitumen, peat, and coal.  This class is an empty placeholder for extension at a later date, or by other domain models.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterial"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "Organism": {
+      "$anchor": "Organism",
+      "description": "Organism is a broad class to represent any living or once living things. This is the connection to taxonomy/biology for fossils.  This class is an empty placeholder for extension at a later date, or by other domain models.",
+      "type": "object"
+    },
+    "ParticleGeometryDescription": {
+      "$anchor": "ParticleGeometryDescription",
+      "description": "ParticleGeometryDescription describes particles in a CompoundMaterial independent of their relationship to each other or their orientation. It is distinguished from Fabric in that the ParticleGeometryDescription remains constant if the material is disaggregated into its constituent particles, whereas Fabric is lost if the material is disaggregated. Properties include the particle size (grainsize), particle sorting (size distribution, e.g., well sorted, poorly sorted, bimodal sorting), particle shape (surface rounding or crystal face development, e.g., well rounded, euhedral, anhedral), and particle aspect ratio (e.g., elongated, platy, bladed, compact, acicular).",
+      "type": "object",
+      "properties": {
+        "particleType": {
+          "description": "The particleType:ParticleTypeTerm provides a term from a controlled vocabulary to specify the nature of individual particles of each constituent in an EarthMaterial aggregation, based mostly on their genesis.  When applied on ParticleDescription for CompoundMaterial, it would characterise all particles in aggregate. Use this property on CompoundMaterial to distinguish rocks composed of crystals (crystalline rocks) from rocks composed of granular particles (clasts, fragments). Examples include ooliths, crystals, pore space. Constituent type is determined based on the nature of the particles, and ideally is independent of the relationship between particles in a compound material aggregation.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#ParticleTypeTerm"
+            }
+          ]
+        },
+        "aspectRatio": {
+          "description": "The aspectRatio property (SWE::Category) contains a term from a controlled vocabulary describing the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. It equates to sphericity in sedimentary rocks (i.e., the degree to which the shape of a particle approximates a sphere).  The formal definition is “A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape”. (e.g., prolate, slightly flattened, very bladed, equant, acicular, tabular).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "shape": {
+          "description": "The shape property (SWE::Category) describes, \r\n\t- the development of crystal faces bounding particles in crystalline compound materials, and \r\n\t- the surface rounding of grains in sedimentary rocks.\r\n\r\n Roundness is a measure of the sharpness of the edges between surfaces bounding a particle\r\n\r\nThe terms shall be a term from a controlled vocabulary and be appropriate for the kind of compound material (e.g., for crystalline rocks- euhedral, ideoblastic, subhedral, anhedral, xenoblastic; for sedimentary rocks - angular, rounded).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "size": {
+          "description": "The property size (SWE::QuantityRange) reports the size that specifies particle grainsize.  Values may be reported using absolute measurements (e.g., range, mean, median, mode, maximum).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
+            }
+          ]
+        },
+        "sorting": {
+          "description": "The sorting property (SWE::Category) contains a term from a vocabulary that specifies the size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk.  Example for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranular, seriate.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "sourceOrganism": {
+          "description": "The sourceOrganism property is an association between a ParticleGeometryDescription and an Organism that is the source of the fossil particles (sponge spicules, bivalve shells, etc.).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#Organism"
+              },
+              "uniqueItems": true
+            }
+          ]
+        }
+      }
+    },
+    "ParticleTypeTerm": {
+      "$anchor": "ParticleTypeTerm",
+      "description": "Refers to a vocabulary of terms describing the type of particle in the compound earth material (eg, bioclast, phenocryst, pyroclast)",
+      "type": "string",
+      "format": "uri"
+    },
+    "PhysicalDescription": {
+      "$anchor": "PhysicalDescription",
+      "description": "PhysicalDescription is a class that describes the numeric physical properties of a geologic unit (GeologicUnit) earth material (EarthMaterial ), or geologic structure (GeologicStructure) (e.g., density, porosity, magnetic susceptibility, remanent magnetism).  These properties are modelled here as scalar numeric values (SWE::Quantity).",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "propertyName": {
+              "description": "The property propertyName:PhysicalPropertyTerm contains a term from a controlled vocabulary of physical properties of rock materials (e.g., density, porosity, magnetic susceptibility, remnant magnetism, permeability, seismic velocity).",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#PhysicalPropertyTerm"
+                }
+              ]
+            },
+            "propertyMeasure": {
+              "description": "The propertyMeasure property (SWE::Quantity) is a scalar measurement of the physical property of a rock material, unit or structure.",
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      ]
+    },
+    "PhysicalPropertyTerm": {
+      "$anchor": "PhysicalPropertyTerm",
+      "description": "Refers to a vocabulary of physical property types (eg, density, porosity, magnetic susceptibility, magnetic remanence, conductivity, etc)",
+      "type": "string",
+      "format": "uri"
+    },
+    "RelationRoleTerm": {
+      "$anchor": "RelationRoleTerm",
+      "description": "Refers to a vocabulary of terms describing roles played by geologic features or objects in a geologic relationship",
+      "type": "string",
+      "format": "uri"
+    },
+    "RockMaterialDescription": {
+      "$anchor": "RockMaterialDescription",
+      "description": "RockMaterialDescription provides extended description of RockMaterial.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#EarthMaterialAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "consolidationDegree": {
+              "description": "The consolidationDegree property (SWE::Category) contains a term from a controlled vocabulary that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "SCLinkObject": {
+      "title": "link object",
+      "description": "definition of a link object",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Supplies the URI to a remote resource (or resource fragment)."
+        },
+        "rel": {
+          "type": "string",
+          "description": "The type or semantics of the relation."
+        },
+        "type": {
+          "type": "string",
+          "description": "A hint indicating what the media type of the result of dereferencing the link should be."
+        },
+        "hreflang": {
+          "type": "string",
+          "description": "A hint indicating what the language of the result of dereferencing the link should be."
+        },
+        "title": {
+          "type": "string",
+          "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
+        },
+        "length": {
+          "type": "integer"
+        }
+      }
+    },
+    "SeparationValue": {
+      "$anchor": "SeparationValue",
+      "description": "SeparationValue is a kind of DisplacementValue that describes the amount of separation displacement across a structure.",
+      "allOf": [
+        {
+          "$ref": "#DisplacementValue"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "separation": {
+              "description": "The property separation:GSML_Vector reports the apparent offset across a planar feature, reported as a vector.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_Vector"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ShearDisplacementStructureDescription": {
+      "$anchor": "ShearDisplacementStructureDescription",
+      "description": "ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) by extending the abstract property block ShearDisplacementStructureAbstractDescription.",
+      "allOf": [
+        {
+          "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#ShearDisplacementStructureAbstractDescription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "stPhysicalProperty": {
+              "description": "The property stPhysicalProperty:PhysicalDescription contains a value of generic physical properties  not addressed in this model.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#PhysicalDescription"
+                  },
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "deformationStyle": {
+              "description": "The deformationStyle:DeformationStyleTerm contains a term from a vocabulary to describe the style of deformation, i.e. brittle (fault, breccia), ductile (shear), brittle-ductile, unknown.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#DeformationStyleTerm"
+                }
+              ]
+            },
+            "planeOrientation": {
+              "description": "The property planeOrientation:GSML_PlanarOrientation contains a description of the orientation of a structure’s planar surface.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_PlanarOrientation"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "SlipComponents": {
+      "$anchor": "SlipComponents",
+      "description": "SlipComponents is a kind of DisplacementValue that is a representation of slip as a vector resolved into components within a reference frame in which horizontal axes are parallel and perpendicular to the strike of the fault.  At least one of heave, horizontalSlip, or throw must not be null.",
+      "allOf": [
+        {
+          "$ref": "#DisplacementValue"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "heave": {
+              "description": "The property heave:GSML_Vector contains a component of slip in the horizontal, and perpendicular to the strike of the fault.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_Vector"
+                }
+              ]
+            },
+            "horizontalSlip": {
+              "description": "The property horizontalSlip:GSML_Vector contains a slip component that is horizontal and parallel to strike of the fault.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_Vector"
+                }
+              ]
+            },
+            "throw": {
+              "description": "The property throw:GSML_Vector contains the vertical component of slip.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GSML_Vector"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

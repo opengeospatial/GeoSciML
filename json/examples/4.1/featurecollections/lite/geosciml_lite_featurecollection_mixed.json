@@ -9,15 +9,29 @@
         "type": "Polygon",
         "coordinates": [
           [
-            [149.12, -35.31],
-            [149.45, -35.31],
-            [149.45, -35.58],
-            [149.12, -35.58],
-            [149.12, -35.31]
+            [
+              149.12,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.31
+            ]
           ]
         ]
       },
-      "place": null,
       "time": null,
       "properties": {
         "name": "Hervey Group",
@@ -38,11 +52,16 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [149.387, -35.124],
-          [149.461, -35.344]
+          [
+            149.387,
+            -35.124
+          ],
+          [
+            149.461,
+            -35.344
+          ]
         ]
       },
-      "place": null,
       "time": null,
       "properties": {
         "name": "Lake George Fault",
@@ -61,11 +80,16 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [149.12, -35.31],
-          [149.45, -35.58]
+          [
+            149.12,
+            -35.31
+          ],
+          [
+            149.45,
+            -35.58
+          ]
         ]
       },
-      "place": null,
       "time": null,
       "properties": {
         "name": "Base of Devonian sequence",
@@ -80,9 +104,11 @@
       "id": "borehole-view-1",
       "geometry": {
         "type": "Point",
-        "coordinates": [149.252, -35.401]
+        "coordinates": [
+          149.252,
+          -35.401
+        ]
       },
-      "place": null,
       "time": null,
       "properties": {
         "name": "GRS-001",
@@ -100,13 +126,15 @@
       "id": "obs-view-1",
       "geometry": {
         "type": "Point",
-        "coordinates": [149.312, -35.475]
+        "coordinates": [
+          149.312,
+          -35.475
+        ]
       },
-      "place": null,
       "time": null,
       "properties": {
         "siteName": "field station FS-42",
-        "observedProperty": "planar orientation – strike and dip",
+        "observedProperty": "planar orientation \u2013 strike and dip",
         "observedValue": "045 / 32",
         "observedValueUom": "degrees",
         "propertyType_uri": "http://resource.geosciml.org/classifierScheme/cgi/observedproperty/planar_orientation",

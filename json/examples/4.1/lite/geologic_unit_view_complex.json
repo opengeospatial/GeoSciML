@@ -6,22 +6,36 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [149.12, -35.31],
-        [149.45, -35.31],
-        [149.45, -35.58],
-        [149.12, -35.58],
-        [149.12, -35.31]
+        [
+          149.12,
+          -35.31
+        ],
+        [
+          149.45,
+          -35.31
+        ],
+        [
+          149.45,
+          -35.58
+        ],
+        [
+          149.12,
+          -35.58
+        ],
+        [
+          149.12,
+          -35.31
+        ]
       ]
     ]
   },
-  "place": null,
   "time": null,
   "properties": {
     "name": "Hervey Group",
     "description": "Terrigenous to shallow marine, red to white and green, quartzose to lithic sandstone, siltstone, shale and conglomerate; sandstones commonly thick-bedded and massive to cross-stratified.",
     "geologicUnitType": "lithostratigraphic unit",
     "rank": "group",
-    "lithology": "sandstone, siltstone, shale and conglomerate (50–95% sandstone, 5–50% mudstone)",
+    "lithology": "sandstone, siltstone, shale and conglomerate (50\u201395% sandstone, 5\u201350% mudstone)",
     "geologicHistory": "Deposited during the Frasnian to Famennian (Late Devonian) in a fluvial to shallow marine environment; subsequently deformed during Tournaisian to Serpukhovian (Early Carboniferous) Kanimblan Orogeny.",
     "numericOlderAge": 382.7,
     "numericYoungerAge": 323.2,
@@ -36,5 +50,33 @@
     "specification_uri": "http://data.geoscience.gov.au/feature/geologicunit/hervey-group-1",
     "metadata_uri": "http://data.geoscience.gov.au/metadata/record/12345",
     "genericSymbolizer": "GU_DevSS"
+  },
+  "coordRefSys": "http://www.opengis.net/def/crs/EPSG/0/4283",
+  "place": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          149.12,
+          -35.31
+        ],
+        [
+          149.45,
+          -35.31
+        ],
+        [
+          149.45,
+          -35.58
+        ],
+        [
+          149.12,
+          -35.58
+        ],
+        [
+          149.12,
+          -35.31
+        ]
+      ]
+    ]
   }
 }

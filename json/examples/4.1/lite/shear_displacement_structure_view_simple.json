@@ -5,11 +5,16 @@
   "geometry": {
     "type": "LineString",
     "coordinates": [
-      [149.387, -35.124],
-      [149.461, -35.344]
+      [
+        149.387,
+        -35.124
+      ],
+      [
+        149.461,
+        -35.344
+      ]
     ]
   },
-  "place": null,
   "time": null,
   "properties": {
     "name": "Lake George Fault",

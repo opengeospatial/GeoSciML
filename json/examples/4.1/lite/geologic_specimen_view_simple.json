@@ -4,9 +4,11 @@
   "id": "specimen-view-1",
   "geometry": {
     "type": "Point",
-    "coordinates": [149.312, -35.475]
+    "coordinates": [
+      149.312,
+      -35.475
+    ]
   },
-  "place": null,
   "time": null,
   "properties": {
     "label": "GRS-2019-042",

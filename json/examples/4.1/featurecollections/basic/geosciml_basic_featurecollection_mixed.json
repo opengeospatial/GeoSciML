@@ -32,11 +32,26 @@
         "type": "Polygon",
         "coordinates": [
           [
-            [149.12, -35.31],
-            [149.45, -35.31],
-            [149.45, -35.58],
-            [149.12, -35.58],
-            [149.12, -35.31]
+            [
+              149.12,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.31
+            ]
           ]
         ]
       },
@@ -94,10 +109,22 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [149.387, -35.124],
-          [149.412, -35.198],
-          [149.435, -35.271],
-          [149.461, -35.344]
+          [
+            149.387,
+            -35.124
+          ],
+          [
+            149.412,
+            -35.198
+          ],
+          [
+            149.435,
+            -35.271
+          ],
+          [
+            149.461,
+            -35.344
+          ]
         ]
       },
       "place": null,
@@ -105,8 +132,12 @@
       "properties": {
         "positionalAccuracy": {
           "type": "Quantity",
-          "uom": { "code": "m" },
-          "value": 250.0
+          "uom": {
+            "code": "m"
+          },
+          "value": 250.0,
+          "definition": "http://www.opengis.net/def/property/OGC/0/PositionalAccuracy",
+          "label": "positional accuracy"
         },
         "resolutionRepresentativeFraction": 250000,
         "mappingFrame": "http://resource.geoscience.gov.au/vocabulary/mappingframe/earth-surface",

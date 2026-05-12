@@ -5,12 +5,20 @@
   "geometry": {
     "type": "LineString",
     "coordinates": [
-      [149.12, -35.31],
-      [149.28, -35.44],
-      [149.45, -35.58]
+      [
+        149.12,
+        -35.31
+      ],
+      [
+        149.28,
+        -35.44
+      ],
+      [
+        149.45,
+        -35.58
+      ]
     ]
   },
-  "place": null,
   "time": null,
   "properties": {
     "name": "Unconformity between Hervey Group and Lachlan Fold Belt basement",

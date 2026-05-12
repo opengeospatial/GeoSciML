@@ -81,12 +81,15 @@
         },
         "proportion": {
           "type": "QuantityRange",
-          "uom": { "code": "%" },
-          "value": [5.0, 50.0],
-          "properties": {
-            "lowerValue": 5.0,
-            "upperValue": 50.0
-          }
+          "uom": {
+            "code": "%"
+          },
+          "value": [
+            5.0,
+            50.0
+          ],
+          "definition": "http://resource.geosciml.org/property/proportion",
+          "label": "proportion"
         }
       },
       {
@@ -98,12 +101,15 @@
         },
         "proportion": {
           "type": "QuantityRange",
-          "uom": { "code": "%" },
-          "value": [50.0, 95.0],
-          "properties": {
-            "lowerValue": 50.0,
-            "upperValue": 95.0
-          }
+          "uom": {
+            "code": "%"
+          },
+          "value": [
+            50.0,
+            95.0
+          ],
+          "definition": "http://resource.geosciml.org/property/proportion",
+          "label": "proportion"
         }
       }
     ],

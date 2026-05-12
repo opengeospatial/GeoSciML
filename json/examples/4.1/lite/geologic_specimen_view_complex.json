@@ -4,9 +4,11 @@
   "id": "specimen-view-complex",
   "geometry": {
     "type": "Point",
-    "coordinates": [149.312, -35.475]
+    "coordinates": [
+      149.312,
+      -35.475
+    ]
   },
-  "place": null,
   "time": null,
   "properties": {
     "label": "GRS-2019-042",
@@ -15,7 +17,7 @@
     "materialClass": "rock",
     "positionalAccuracy": "5 m",
     "samplingTime": "2019-03-15",
-    "samplingMethod": "field mapping survey – hand specimen from outcrop",
+    "samplingMethod": "field mapping survey \u2013 hand specimen from outcrop",
     "currentLocation": "Geoscience Australia Sample Repository, Canberra (drawer G-2019-3)",
     "source": "Smith, J. (2019). Goulburn mapping campaign field samples.",
     "specimenType_uri": "http://resource.geosciml.org/classifier/cgi/specimentype/hand_specimen",

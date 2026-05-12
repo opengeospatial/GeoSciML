@@ -4,12 +4,9 @@ basic  →  geoscimlBasic.json
   OK    examples/json/4.1/basic/contact_simple.json
   OK    examples/json/4.1/basic/fold_complex.json
   OK    examples/json/4.1/basic/fold_simple.json
-  FAIL  examples/json/4.1/basic/geologic_unit_complex.json
-         properties/composition → [{'role': 'http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole', 'material': {'properties': {'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'}}, 'proportion': {'type': 'QuantityRange', 'uom': {'code': '%'}, 'value': [5.0, 50.0], 'properties': {'lowerValue': 5.0, 'upperValue': 50.0}}}, {'role': 'http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole', 'material': {'properties': {'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone'}}, 'proportion': {'type': 'QuantityRange', 'uom': {'code': '%'}, 'value': [50.0, 95.0], 'properties': {'lowerValue': 50.0, 'upperValue': 95.0}}}] is not valid under any of the given schemas
+  OK    examples/json/4.1/basic/geologic_unit_complex.json
   OK    examples/json/4.1/basic/geologic_unit_simple.json
-  FAIL  examples/json/4.1/basic/mapped_feature_complex.json
-         place → {'type': 'LineString', 'coordRefSys': 'http://www.opengis.net/def/crs/EPSG/0/4283', 'coordinates': [[149.387, -35.124], [149.412, -35.198], [149.435, -35.271], [149.461, -35.344]]} should not be valid under {'type': 'object', 'properties': {'coordRefSys': {}}, 'required': ['coordRefSys']}
-         properties/positionalAccuracy → {'type': 'Quantity', 'uom': {'code': 'm'}, 'value': 250.0} is not valid under any of the given schemas
+  OK    examples/json/4.1/basic/mapped_feature_complex.json
   OK    examples/json/4.1/basic/mapped_feature_simple.json
   OK    examples/json/4.1/basic/natural_geomorphologic_feature_complex.json
   OK    examples/json/4.1/basic/natural_geomorphologic_feature_simple.json
@@ -17,49 +14,26 @@ basic  →  geoscimlBasic.json
   OK    examples/json/4.1/basic/shear_displacement_structure_simple.json
 
 featurecollections/basic  →  geosciml_basic_featurecollection.json
-  FAIL  examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_geologicunit.json
-         features/0/properties/composition → [{'role': 'http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole', 'material': {'properties': {'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone'}}, 'proportion': {'type': 'QuantityRange', 'uom': {'code': '%'}, 'value': [50.0, 95.0], 'properties': {'lowerValue': 50.0, 'upperValue': 95.0}}}, {'role': 'http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole', 'material': {'properties': {'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'}}, 'proportion': {'type': 'QuantityRange', 'uom': {'code': '%'}, 'value': [5.0, 50.0], 'properties': {'lowerValue': 5.0, 'upperValue': 50.0}}}] is not valid under any of the given schemas
-  FAIL  examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_mixed.json
-         features/3/properties/positionalAccuracy → {'type': 'Quantity', 'uom': {'code': 'm'}, 'value': 250.0} is not valid under any of the given schemas
+  OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_geologicunit.json
+  OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_mixed.json
 
 featurecollections/lite  →  geosciml_lite_featurecollection.json
-  FAIL  examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_geologicunitview.json
-         features/0/place → None is not valid under any of the given schemas
-         features/1/place → None is not valid under any of the given schemas
-         features/2/place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_mixed.json
-         features/0/place → None is not valid under any of the given schemas
-         features/1/place → None is not valid under any of the given schemas
-         features/2/place → None is not valid under any of the given schemas
-         features/3/place → None is not valid under any of the given schemas
-         features/4/place → None is not valid under any of the given schemas
+  OK    examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_geologicunitview.json
+  OK    examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_mixed.json
 
 lite  →  geoscimlLite.json
-  FAIL  examples/json/4.1/lite/borehole_view_complex.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/borehole_view_simple.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/contact_view_complex.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/contact_view_simple.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/geologic_specimen_view_complex.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/geologic_specimen_view_simple.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/geologic_unit_view_complex.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/geologic_unit_view_simple.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/geomorphologic_unit_view_simple.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/shear_displacement_structure_view_complex.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/shear_displacement_structure_view_simple.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/site_observation_view_complex.json
-         place → None is not valid under any of the given schemas
-  FAIL  examples/json/4.1/lite/site_observation_view_simple.json
-         place → None is not valid under any of the given schemas
+  OK    examples/json/4.1/lite/borehole_view_complex.json
+  OK    examples/json/4.1/lite/borehole_view_simple.json
+  OK    examples/json/4.1/lite/contact_view_complex.json
+  OK    examples/json/4.1/lite/contact_view_simple.json
+  OK    examples/json/4.1/lite/geologic_specimen_view_complex.json
+  OK    examples/json/4.1/lite/geologic_specimen_view_simple.json
+  OK    examples/json/4.1/lite/geologic_unit_view_complex.json
+  OK    examples/json/4.1/lite/geologic_unit_view_simple.json
+  OK    examples/json/4.1/lite/geomorphologic_unit_view_simple.json
+  OK    examples/json/4.1/lite/shear_displacement_structure_view_complex.json
+  OK    examples/json/4.1/lite/shear_displacement_structure_view_simple.json
+  OK    examples/json/4.1/lite/site_observation_view_complex.json
+  OK    examples/json/4.1/lite/site_observation_view_simple.json
 
-Results:  10 passed, 19 failed, 0 skipped  (29 total)
+Results:  29 passed, 0 failed, 0 skipped  (29 total)

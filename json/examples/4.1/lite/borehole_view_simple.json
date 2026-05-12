@@ -4,9 +4,11 @@
   "id": "borehole-view-1",
   "geometry": {
     "type": "Point",
-    "coordinates": [149.252, -35.401]
+    "coordinates": [
+      149.252,
+      -35.401
+    ]
   },
-  "place": null,
   "time": null,
   "properties": {
     "name": "GRS-001",

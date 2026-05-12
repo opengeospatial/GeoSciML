@@ -59,7 +59,13 @@ _USE_COLOUR = sys.stdout.isatty()
 def _green(s: str) -> str:  return f"\033[32m{s}\033[0m" if _USE_COLOUR else s
 def _red(s: str) -> str:    return f"\033[31m{s}\033[0m" if _USE_COLOUR else s
 def _yellow(s: str) -> str: return f"\033[33m{s}\033[0m" if _USE_COLOUR else s
+def _cyan(s: str) -> str:   return f"\033[36m{s}\033[0m" if _USE_COLOUR else s
 def _bold(s: str) -> str:   return f"\033[1m{s}\033[0m"  if _USE_COLOUR else s
+
+
+def _is_expected_invalid(path: Path) -> bool:
+    stem = path.stem.upper()
+    return stem.endswith("_INVALID") or stem.endswith("_FAIL")
 
 # ── schema registry ───────────────────────────────────────────────────────────
 
@@ -150,7 +156,7 @@ def validate_file(
 def main() -> int:
     registry = build_registry()
 
-    passed = failed = skipped = 0
+    passed = failed = skipped = expected_invalid = 0
 
     for example_dir, schema_id in sorted(DIR_SCHEMA.items(), key=lambda kv: str(kv[0])):
         if not example_dir.exists():
@@ -174,19 +180,28 @@ def main() -> int:
                 skipped += 1
                 continue
 
-            if errors:
-                print(f"  {_red('FAIL')}  {label}")
-                for msg in errors:
-                    print(f"         {msg}")
-                failed += 1
+            if _is_expected_invalid(path):
+                if errors:
+                    print(f"  {_cyan('OK*')}   {label}  (invalid as expected)")
+                    expected_invalid += 1
+                else:
+                    print(f"  {_red('FAIL')}  {label}  (expected invalid but schema accepted it)")
+                    failed += 1
             else:
-                print(f"  {_green('OK')}    {label}")
-                passed += 1
+                if errors:
+                    print(f"  {_red('FAIL')}  {label}")
+                    for msg in errors:
+                        print(f"         {msg}")
+                    failed += 1
+                else:
+                    print(f"  {_green('OK')}    {label}")
+                    passed += 1
 
-    total = passed + failed + skipped
+    total = passed + failed + skipped + expected_invalid
     print(
         f"\n{_bold('Results:')}  "
         f"{_green(str(passed))} passed, "
+        f"{_cyan(str(expected_invalid))} expected-invalid, "
         f"{_red(str(failed))} failed, "
         f"{_yellow(str(skipped))} skipped  "
         f"({total} total)"

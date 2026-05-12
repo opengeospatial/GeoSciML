@@ -3,56 +3,6 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json",
   "description": "GeologyBasic is a package of classes representing fundamental geological map features and the relations between them.  GeoSciML describes a geologic dataset as a series of GeologicFeature occurrences, spatially represented as MappedFeature.  A map is a collection of MappedFeatures.  The term “map”, typically understood as a map sheet (a given area on the surface of the earth), is only one possible collection of MappedFeatures.  Other examples are cross-sections, block diagrams, and even borehole logs (a linear map).  MappedFeature can represent any features and GeologicFeatures are one of the kinds of features it can represent.  A MappedFeature identifies what it represents using its “specification” association.",
-  "anyOf": [
-    {
-      "$ref": "#AbstractFeatureRelation"
-    },
-    {
-      "$ref": "#AnthropogenicGeomorphologicFeature"
-    },
-    {
-      "$ref": "#CompoundMaterial"
-    },
-    {
-      "$ref": "#Contact"
-    },
-    {
-      "$ref": "#EarthMaterial"
-    },
-    {
-      "$ref": "#Fold"
-    },
-    {
-      "$ref": "#Foliation"
-    },
-    {
-      "$ref": "#GeologicEvent"
-    },
-    {
-      "$ref": "#GeologicFeature"
-    },
-    {
-      "$ref": "#GeologicStructure"
-    },
-    {
-      "$ref": "#GeologicUnit"
-    },
-    {
-      "$ref": "#GeomorphologicFeature"
-    },
-    {
-      "$ref": "#MappedFeature"
-    },
-    {
-      "$ref": "#NaturalGeomorphologicFeature"
-    },
-    {
-      "$ref": "#RockMaterial"
-    },
-    {
-      "$ref": "#ShearDisplacementStructure"
-    }
-  ],
   "$defs": {
     "AbstractFeatureRelation": {
       "$anchor": "AbstractFeatureRelation",

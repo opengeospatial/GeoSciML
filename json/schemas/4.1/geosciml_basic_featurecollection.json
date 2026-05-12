@@ -1,7 +1,7 @@
 {
   "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geosciml_basic_featurecollection.json",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geosciml_basic_featurecollection.json",
   "$defs": {
     "FeatureCollection": {
       "$anchor": "FeatureCollection",
@@ -36,7 +36,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#AnthropogenicGeomorphologicFeature"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#AnthropogenicGeomorphologicFeature"
                       }
                     }
                   }
@@ -61,7 +61,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#Contact"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Contact"
                       }
                     }
                   }
@@ -86,7 +86,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#Fold"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Fold"
                       }
                     }
                   }
@@ -111,7 +111,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#Foliation"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Foliation"
                       }
                     }
                   }
@@ -136,7 +136,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#GeologicEvent"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEvent"
                       }
                     }
                   }
@@ -161,7 +161,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#GeologicUnit"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicUnit"
                       }
                     }
                   }
@@ -186,7 +186,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#MappedFeature"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#MappedFeature"
                       }
                     }
                   }
@@ -211,7 +211,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#NaturalGeomorphologicFeature"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#NaturalGeomorphologicFeature"
                       }
                     }
                   }
@@ -236,7 +236,7 @@
                     "features": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#ShearDisplacementStructure"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#ShearDisplacementStructure"
                       }
                     }
                   }
@@ -300,7 +300,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#AnthropogenicGeomorphologicFeature"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#AnthropogenicGeomorphologicFeature"
                       }
                     },
                     {
@@ -315,7 +315,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#Contact"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Contact"
                       }
                     },
                     {
@@ -330,7 +330,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#Fold"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Fold"
                       }
                     },
                     {
@@ -345,7 +345,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#Foliation"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#Foliation"
                       }
                     },
                     {
@@ -360,7 +360,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#GeologicEvent"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicEvent"
                       }
                     },
                     {
@@ -375,7 +375,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#GeologicUnit"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#GeologicUnit"
                       }
                     },
                     {
@@ -390,7 +390,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#MappedFeature"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#MappedFeature"
                       }
                     },
                     {
@@ -405,7 +405,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#NaturalGeomorphologicFeature"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#NaturalGeomorphologicFeature"
                       }
                     },
                     {
@@ -420,7 +420,7 @@
                         }
                       },
                       "then": {
-                        "$ref": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json#ShearDisplacementStructure"
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json#ShearDisplacementStructure"
                       }
                     },
                     {

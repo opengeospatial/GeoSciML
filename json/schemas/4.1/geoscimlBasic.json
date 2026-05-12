@@ -1,7 +1,7 @@
 {
   "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geoscimlBasic.json",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json",
   "description": "GeologyBasic is a package of classes representing fundamental geological map features and the relations between them.  GeoSciML describes a geologic dataset as a series of GeologicFeature occurrences, spatially represented as MappedFeature.  A map is a collection of MappedFeatures.  The term “map”, typically understood as a map sheet (a given area on the surface of the earth), is only one possible collection of MappedFeatures.  Other examples are cross-sections, block diagrams, and even borehole logs (a linear map).  MappedFeature can represent any features and GeologicFeatures are one of the kinds of features it can represent.  A MappedFeature identifies what it represents using its “specification” association.",
   "$defs": {
     "AbstractFeatureRelation": {
@@ -66,12 +66,14 @@
     "AnthropogenicGeomorphologicFeatureTypeTerm": {
       "$anchor": "AnthropogenicGeomorphologicFeatureTypeTerm",
       "description": "Refers to a vocabulary of terms describing the type of anthropogenic geomorphologic feature",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "CollectionTypeTerm": {
       "$anchor": "CollectionTypeTerm",
       "description": "Types of collections of geological and geophysical objects. Examples: \"borehole collection\", \"geological map\", \"geological model\", \"geophysical object collection\" (from INSPIRE)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "CompositionPart": {
       "$anchor": "CompositionPart",
@@ -119,7 +121,8 @@
     "CompositionPartRoleTerm": {
       "$anchor": "CompositionPartRoleTerm",
       "description": "This class is a blank placeholder for a vocabulary of terms to describe the role that a compositional part plays in a geologic unit.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "CompoundMaterial": {
       "$anchor": "CompoundMaterial",
@@ -182,22 +185,26 @@
     "ContactTypeTerm": {
       "$anchor": "ContactTypeTerm",
       "description": "Refers to a vocabulary of terms describing types of geological contacts",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "ConventionCode": {
       "$anchor": "ConventionCode",
       "description": "Suggested values: \"dip dip direction\", \"strike dip right hand rule\" (The strike and dip of planar data is listed according to the ‘right-hand rule’ or, as one looks along the strike direction, the surface dips to the right.)\r\n\r\nThis list is an indicative list only of terms used to describe the convention used for the orientation measurement.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "DescriptionPurpose": {
       "$anchor": "DescriptionPurpose",
       "description": "Codes used for the specification of the intended purpose/level of abstraction for a given feature or object instance, ie the reason for the existence of the GeologicFeature. \r\nValues: instance, typicalNorm, definingNorm.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "DeterminationMethodTerm": {
       "$anchor": "DeterminationMethodTerm",
       "description": "This class is an empty placeholder for a vocabulary of terms describing the method used to determine the measured orientation. Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "EarthMaterial": {
       "$anchor": "EarthMaterial",
@@ -246,17 +253,20 @@
     "EventProcessTerm": {
       "$anchor": "EventProcessTerm",
       "description": "Refers to a vocabulary of terms specifying the process or processes that occurred during an event. Examples include deposition, extrusion, intrusion, cooling.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "ExposureTerm": {
       "$anchor": "ExposureTerm",
       "description": "This class is a blank placeholder for a vocabulary of terms describing the nature of the expression of the mapped feature at the earth\u0027s surface (eg, exposed, concealed)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "FaultTypeTerm": {
       "$anchor": "FaultTypeTerm",
       "description": "A vocabulary of terms describing the type of shear displacement structure (eg; thrust fault, normal fault, wrench fault)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "Fold": {
       "$anchor": "Fold",
@@ -307,7 +317,8 @@
     "FoldProfileTypeTerm": {
       "$anchor": "FoldProfileTypeTerm",
       "description": "Refers to a vocabulary of terms specifying concave/convex geometry of fold relative to earth surface, and relationship to younging direction in folded strata if known. antiform, synform, neutral, anticline, syncline, monocline, ptygmatic",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "Foliation": {
       "$anchor": "Foliation",
@@ -358,7 +369,8 @@
     "FoliationTypeTerm": {
       "$anchor": "FoliationTypeTerm",
       "description": "Refers to a vocabular of terms defining the type of foliation (eg, crenulation cleavage, gneissic layering, slaty cleavage, schistosity, etc)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "GSML_GeometricDescriptionValue": {
       "$anchor": "GSML_GeometricDescriptionValue",
@@ -552,7 +564,8 @@
     "GeochronologicEraTerm": {
       "$anchor": "GeochronologicEraTerm",
       "description": "Term from a Geochronological vocabulary",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "GeologicEvent": {
       "$anchor": "GeologicEvent",
@@ -761,6 +774,7 @@
         },
         {
           "required": [
+            "featureType",
             "id"
           ],
           "properties": {
@@ -935,17 +949,20 @@
     "GeologicUnitHierarchyRoleTerm": {
       "$anchor": "GeologicUnitHierarchyRoleTerm",
       "description": "Role of the unit in the hierarchy",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "GeologicUnitPartRoleTerm": {
       "$anchor": "GeologicUnitPartRoleTerm",
       "description": "This class is a blank placeholder for a vocabulary of terms describing the nature of the parts of a geologic unit, e.g. facies, stratigraphic, interbeds, geographic, eastern facies,",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "GeologicUnitTypeTerm": {
       "$anchor": "GeologicUnitTypeTerm",
       "description": "This class is an indicative placeholder only for a vocabulary of terms describing the type of geologic unit.  Users are encouraged to use the vocabulary of unit types provided by the CGI vocabularies working group.\r\n\r\nExample values:\r\nGeologicUnit\r\nAllostratigraphicUnit\r\nAlterationUnit\r\nArtificialGround\r\nBiostratigraphicUnit\r\nChronostratigraphicUnit\r\nDeformationUnit\r\nExcavationUnit\r\nGeophysicalUnit\r\nLithodemicUnit\r\nLithogeneticUnit\r\nLithologicUnit\r\nLithostratigraphicUnit\r\nLithotectonicUnit\r\nMagnetostratigraphicUnit\r\nMassMovementUnit\r\nPedoderm\r\nPedostratigraphicUnit\r\nPolarityChronostratigraphicUnit",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "GeomorphologicFeature": {
       "$anchor": "GeomorphologicFeature",
@@ -1011,12 +1028,14 @@
     "LinearDirectedCode": {
       "$anchor": "LinearDirectedCode",
       "description": "eg, \r\n\"directed\" (indicates that the orientation is directed)\r\n\"directed down\" (indicates that the linear orientation is directed below the horizon)\r\n\"directed up\" (indicates that the linear orientation is directed above the horizon)\r\n\r\nThis list is an indicative example list only of terms used to describe the values to use for terms related to directedness of linear orientations.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "LithologyTerm": {
       "$anchor": "LithologyTerm",
       "description": "Refers to a vocabulary of terms describing the lithology of the compound earth material (eg, granite, sandstone, schist)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "MappedFeature": {
       "$anchor": "MappedFeature",
@@ -1106,6 +1125,7 @@
         },
         {
           "required": [
+            "featureType",
             "id"
           ],
           "properties": {
@@ -1119,7 +1139,8 @@
     "MappingFrameTerm": {
       "$anchor": "MappingFrameTerm",
       "description": "Spatial reference frame within which the MappedFeatures have been observed, such as a surface of mapping. (from INSPIRE)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "NaturalGeomorphologicFeature": {
       "$anchor": "NaturalGeomorphologicFeature",
@@ -1165,7 +1186,8 @@
     "NaturalGeomorphologicFeatureTypeTerm": {
       "$anchor": "NaturalGeomorphologicFeatureTypeTerm",
       "description": "Refers to a vocabulary of terms describing the type of natural geomorphologic feature",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "NumericAgeRange": {
       "$anchor": "NumericAgeRange",
@@ -1203,12 +1225,14 @@
     "PlanarPolarityCode": {
       "$anchor": "PlanarPolarityCode",
       "description": "eg: \"upright\", \"overturned\", \"vertical\"\r\n\r\nThis list is an indicative list only of terms used to describe the values to use for expressing overturned or upright facing of planar orientation measurements. Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group outside of this model.",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "RankTerm": {
       "$anchor": "RankTerm",
       "description": "This class is a blank placeholder for a vocabulary of terms describing the rank of a geologic unit (eg, Group, Formation, Member, etc)",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "RockMaterial": {
       "$anchor": "RockMaterial",

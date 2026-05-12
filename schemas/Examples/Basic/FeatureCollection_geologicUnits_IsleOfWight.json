@@ -1,0 +1,445 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleIsleOfWightStrat-pm1-v2.ttl — a subset of the BGS Isle of Wight stratigraphy showing the Solent Group (SOLT) with two constituent formations (BEL, BOUL) and one basal member (BMBG of BOUL). Demonstrates Group→Formation→Member hierarchy plus stratigraphic `overlies` relationships. Homogeneous FeatureCollection (collection-level featureType=\"GeologicUnit\"). Validates against schemas/json/4.1/geosciml_basic_featurecollection.json#FeatureCollection (then-branch dispatch). Qualitative proportions from the TTL (Dominant_Proportion / Subordinate_Proportion) are translated to approximate QuantityRange % values. Thickness measurements from the TTL are kept only as prose in `description` since Basic GeologicUnit has no thickness slot (that lives in GeoSciML Extension's GeologicUnitDescription).",
+  "type": "FeatureCollection",
+  "featureType": "GeologicUnit",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geosciml_basic_featurecollection.json"
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "SOLT",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Solent Group",
+        "description": "Interbedded silty clays, calcareous clays and limestone; predominantly non-marine, freshwater to brackish water, fluvial/terrestrial; locally fully marine. Regional Isle of Wight thickness 0–200 m (not proved in PM1 borehole). BGS Lexicon: https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/SOLT. Sources: Hooker et al. (2009) doi:10.1130/2009.2452(12); BGS Geology of England and Wales Cookbook doi:10.1144/GOEWP; ISBN 9780751837773; ISBN 9780852727720.",
+        "purpose": "instance",
+        "classifier": [
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "label": "BGS Lexicon NamedRockUnit — Solent Group (SOLT)",
+            "codeSpace": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "value": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/SOLT"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for dominant constituent — silty mudstone (SLMDST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/SLMDST"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for subordinate constituent — limestone (LMST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/LMST"
+          }
+        ],
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+        "composition": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/dominant",
+              "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [50, 95]
+            }
+          },
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/subordinate",
+              "label": "qualitative — subordinate proportion; numeric range 5–25 % is a placeholder. Source TTL records only the qualitative term gsoc:Subordinate_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [5, 25]
+            }
+          }
+        ],
+        "hierarchyLink": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+            "targetUnit": {
+              "href": "#BEL",
+              "title": "Bembridge Limestone Formation (BEL)",
+              "rel": "containsFormation"
+            }
+          },
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+            "targetUnit": {
+              "href": "#BOUL",
+              "title": "Bouldnor Formation (BOUL)",
+              "rel": "containsFormation"
+            }
+          }
+        ],
+        "relatedFeature": [
+          {
+            "href": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BA",
+            "title": "Barton Group (BA) — Solent Group overlies",
+            "rel": "overlies"
+          }
+        ],
+        "geologicHistory": [
+          {
+            "type": "Feature",
+            "id": "SOLT.deposition",
+            "featureType": "GeologicEvent",
+            "geometry": null,
+            "properties": {
+              "name": "Deposition during Priabonian",
+              "eventProcess": [
+                "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+              ],
+              "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Priabonian",
+              "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Priabonian",
+              "eventEnvironment": [
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "lacustrine setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/lacustrine"
+                },
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "fluvial / river plain setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/river-plain"
+                },
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "marine setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/marine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BEL",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Bembridge Limestone Formation, Solent Group",
+        "description": "Shallow freshwater & subaerial; shelly limestone with interbedded mudstone. Regional IOW thickness 0–85 m (not proved in PM1). BGS Lexicon: https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BEL. Sources: Hooker et al. (2009) doi:10.1130/2009.2452(12); BGS Geology of England and Wales Cookbook doi:10.1144/GOEWP; ISBN 9780751837773; ISBN 9780852727720.",
+        "purpose": "instance",
+        "classifier": [
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "label": "BGS Lexicon NamedRockUnit — Bembridge Limestone Formation (BEL)",
+            "codeSpace": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "value": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BEL"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for dominant constituent — limestone (LMST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/LMST"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for subordinate constituent — silty mudstone (SLMDST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/SLMDST"
+          }
+        ],
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "composition": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/dominant",
+              "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [50, 95]
+            }
+          },
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/subordinate",
+              "label": "qualitative — subordinate proportion; numeric range 5–25 % is a placeholder. Source TTL records only the qualitative term gsoc:Subordinate_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [5, 25]
+            }
+          }
+        ],
+        "relatedFeature": [
+          {
+            "href": "#SOLT",
+            "title": "Solent Group — BEL is a constituent formation",
+            "rel": "isPartOf"
+          },
+          {
+            "href": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/HEHI",
+            "title": "Headon Hill Formation (HEHI) — BEL overlies",
+            "rel": "overlies"
+          }
+        ],
+        "geologicHistory": [
+          {
+            "type": "Feature",
+            "id": "BEL.deposition",
+            "featureType": "GeologicEvent",
+            "geometry": null,
+            "properties": {
+              "name": "Deposition during Priabonian (BEL)",
+              "eventProcess": [
+                "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+              ],
+              "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Priabonian",
+              "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Priabonian",
+              "eventEnvironment": [
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "lacustrine setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/lacustrine"
+                },
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "subaerial setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/subaerial"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BOUL",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Bouldnor Formation, Solent Group",
+        "description": "Brackish/freshwater with pedogenized clays; interbedded clay and silt with organic beds. Swamp/marsh depositional setting. Regional IOW thickness 0–11 m (not proved in PM1). BGS Lexicon: https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BOUL. Sources: Hooker et al. (2009) doi:10.1130/2009.2452(12); BGS Geology of England and Wales Cookbook doi:10.1144/GOEWP; ISBN 9780751837773; ISBN 9780852727720.",
+        "purpose": "instance",
+        "classifier": [
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "label": "BGS Lexicon NamedRockUnit — Bouldnor Formation (BOUL)",
+            "codeSpace": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "value": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BOUL"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for main body constituent — silty mudstone (SLMDST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/SLMDST"
+          }
+        ],
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "composition": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/main_body",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/dominant",
+              "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [50, 95]
+            }
+          }
+        ],
+        "hierarchyLink": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+            "targetUnit": {
+              "href": "#BMBG",
+              "title": "Bembridge Marls Member (BMBG)",
+              "rel": "containsMember"
+            }
+          }
+        ],
+        "relatedFeature": [
+          {
+            "href": "#SOLT",
+            "title": "Solent Group — BOUL is a constituent formation",
+            "rel": "isPartOf"
+          },
+          {
+            "href": "#BEL",
+            "title": "Bembridge Limestone Formation — BOUL overlies",
+            "rel": "overlies"
+          }
+        ],
+        "geologicHistory": [
+          {
+            "type": "Feature",
+            "id": "BOUL.deposition",
+            "featureType": "GeologicEvent",
+            "geometry": null,
+            "properties": {
+              "name": "Deposition during Rupelian (BOUL)",
+              "eventProcess": [
+                "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+              ],
+              "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Rupelian",
+              "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Rupelian",
+              "eventEnvironment": [
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "swamp or marsh setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/swamp-or-marsh"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BMBG",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Bembridge Marls Member of Bouldnor Formation, Solent Group",
+        "description": "Mudstone-dominated with subordinate limestone interbeds; includes sands and is shelly. Marginal-marine to non-marine, shoreline setting. Regional IOW thickness 0–34 m (not proved in PM1). BGS Lexicon: https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BMBG. Sources: Hooker et al. (2009) doi:10.1130/2009.2452(12); BGS Geology of England and Wales Cookbook doi:10.1144/GOEWP; ISBN 9780751837773; ISBN 9780852727720.",
+        "purpose": "instance",
+        "classifier": [
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "label": "BGS Lexicon NamedRockUnit — Bembridge Marls Member (BMBG)",
+            "codeSpace": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit",
+            "value": "https://data.bgs.ac.uk/id/Lexicon/NamedRockUnit/BMBG"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for dominant constituent — silty mudstone (SLMDST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/SLMDST"
+          },
+          {
+            "type": "Category",
+            "definition": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "label": "BGS earth material class for subordinate constituent — limestone (LMST)",
+            "codeSpace": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName",
+            "value": "https://data.bgs.ac.uk/id/EarthMaterialClass/RockName/LMST"
+          }
+        ],
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/member",
+        "composition": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/dominant",
+              "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [50, 95]
+            }
+          },
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "definition": "http://resource.geosciml.org/concept/proportion/subordinate",
+              "label": "qualitative — subordinate proportion; numeric range 5–25 % is a placeholder. Source TTL records only the qualitative term gsoc:Subordinate_Proportion, with no measured percentage.",
+              "uom": { "code": "%" },
+              "value": [5, 25]
+            }
+          }
+        ],
+        "relatedFeature": [
+          {
+            "href": "#BOUL",
+            "title": "Bouldnor Formation — BMBG is a constituent member (basal)",
+            "rel": "isPartOf"
+          },
+          {
+            "href": "#BEL",
+            "title": "Bembridge Limestone Formation — BMBG overlies",
+            "rel": "overlies"
+          }
+        ],
+        "geologicHistory": [
+          {
+            "type": "Feature",
+            "id": "BMBG.deposition",
+            "featureType": "GeologicEvent",
+            "geometry": null,
+            "properties": {
+              "name": "Deposition during Priabonian (BMBG)",
+              "eventProcess": [
+                "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+              ],
+              "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Priabonian",
+              "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Priabonian",
+              "eventEnvironment": [
+                {
+                  "type": "Category",
+                  "definition": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "label": "shoreline setting",
+                  "codeSpace": "http://resource.geosciml.org/classifier/cgi/eventenvironment",
+                  "value": "http://resource.geosciml.org/classifier/cgi/eventenvironment/shoreline"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

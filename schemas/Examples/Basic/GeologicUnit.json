@@ -1,0 +1,114 @@
+{
+  "$comment": "Translated from https://geosciml.org/schemas/geosciml/4.0/examples/GSML4-GeologicUnit.xml — Hervey Group, an Australian lithostratigraphic unit composed of mudstone (5–50 %) and sandstone (50–95 %), with Frasnian–Famennian depositional age and Tournaisian–Serpukhovian deformation history. Validates against schemas/json/4.1/geoscimlBasic.json#GeologicUnit.",
+  "type": "Feature",
+  "id": "HerveyGroup.1",
+  "featureType": "GeologicUnit",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json"
+  ],
+  "geometry": null,
+  "properties": {
+    "name": "Hervey Group",
+    "description": "Terrigenous to shallow marine, red to white and green, quartzose to lithic sandstone, siltstone, shale and conglomerate; sandstones commonly thick-bedded and massive to cross-stratified.",
+    "purpose": "typicalNorm",
+    "occurrence": [
+      {
+        "href": "http://data.geoscience.gov.xx/mappedfeature/polygon/6735427298",
+        "title": "Hervey Group mapped polygon",
+        "rel": "occurrence"
+      }
+    ],
+    "relatedFeature": [
+      {
+        "href": "http://data.geoscience.gov.xx/feature/geologicprovince/Lachlan_Orogen",
+        "title": "Lachlan Orogen",
+        "rel": "partOf"
+      }
+    ],
+    "classifier": [
+      {
+        "type": "Category",
+        "definition": "http://data.bgs.ac.uk/ref/EngineeringGeologyTheme",
+        "label": "Engineering Geology theme: Strong Sandstone",
+        "codeSpace": "http://data.bgs.ac.uk/ref/EngineeringGeologyTheme",
+        "value": "http://data.bgs.ac.uk/ref/EngineeringGeologyTheme/strongSandstone"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "id": "HerveyGroup.depositionalAge",
+        "featureType": "GeologicEvent",
+        "geometry": null,
+        "properties": {
+          "name": "Hervey Group depositional age",
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Frasnian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Famennian"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "HerveyGroup.deformationAge",
+        "featureType": "GeologicEvent",
+        "geometry": null,
+        "properties": {
+          "name": "Hervey Group deformation age",
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/deformation"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Tournaisian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Serpukhovian"
+        }
+      }
+    ],
+    "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+    "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+    "composition": [
+      {
+        "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/unspecifiedPartRole",
+        "material": {
+          "properties": {
+            "purpose": "instance"
+          },
+          "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+        },
+        "proportion": {
+          "type": "QuantityRange",
+          "definition": "http://resource.geosciml.org/concept/proportion/range",
+          "label": "mudstone proportion (5–50 %)",
+          "uom": { "code": "%" },
+          "value": [5.0, 50.0]
+        }
+      },
+      {
+        "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/unspecifiedPartRole",
+        "material": {
+          "properties": {
+            "purpose": "instance"
+          },
+          "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+        },
+        "proportion": {
+          "type": "QuantityRange",
+          "definition": "http://resource.geosciml.org/concept/proportion/range",
+          "label": "sandstone proportion (50–95 %)",
+          "uom": { "code": "%" },
+          "value": [50.0, 95.0]
+        }
+      }
+    ],
+    "hierarchyLink": [
+      {
+        "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+        "targetUnit": {
+          "href": "http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/33410",
+          "title": "Boulton Formation",
+          "rel": "constituent_unit"
+        }
+      }
+    ]
+  }
+}

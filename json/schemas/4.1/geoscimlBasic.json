@@ -294,7 +294,7 @@
     },
     "ExposureTerm": {
       "$anchor": "ExposureTerm",
-      "description": "This class is a blank placeholder for a vocabulary of terms describing the nature of the expression of the mapped feature at the earth\u0027s surface (eg, exposed, concealed)",
+      "description": "This class is a blank placeholder for a vocabulary of terms describing the nature of the expression of the mapped feature at the earth's surface (eg, exposed, concealed)",
       "type": "string",
       "format": "uri"
     },
@@ -358,7 +358,7 @@
     },
     "Foliation": {
       "$anchor": "Foliation",
-      "description": "A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team, penetrative planar foliation defined by layers \u003e 5 mm thick is considered Layering.",
+      "description": "A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team, penetrative planar foliation defined by layers > 5 mm thick is considered Layering.",
       "allOf": [
         {
           "$ref": "#GeologicStructure"
@@ -410,7 +410,7 @@
     },
     "GSML_GeometricDescriptionValue": {
       "$anchor": "GSML_GeometricDescriptionValue",
-      "description": "GSML_GeometricDescriptionValue is a special abstract data type for descriptions of planar or linear orientations of a geologic feature.   Different subtypes allow specifying direction by direction vector (e.g. dip/dip direction), compass point (e.g.  NE), or description (e.g. \"toward fold hinge\", \"below\u0027).",
+      "description": "GSML_GeometricDescriptionValue is a special abstract data type for descriptions of planar or linear orientations of a geologic feature.   Different subtypes allow specifying direction by direction vector (e.g. dip/dip direction), compass point (e.g.  NE), or description (e.g. \"toward fold hinge\", \"below').",
       "type": "object",
       "properties": {
         "determinationMethod": {
@@ -540,7 +540,7 @@
     },
     "GSML_QuantityRange": {
       "$anchor": "GSML_QuantityRange",
-      "description": "GSML_QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13)  where lower and upper values are made explicit. SWE::QuantityRange uses an array of values (RealPair, see Clause 7.2.1) where the lowest value is the first element and the highest the second.  This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrays1 (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).\r\n-------------------------\r\n1 SWE RealPair is encoded as space delimited lists (\u003cswe:value\u003e10 300\u003c/swe:value\u003e in XML) , which demands that clients parse the string to extract each token.  To build a WFS/FES query that tests the first element, it requires parsing the string either using string-before(swe:value,\u0027 \u0027)  or tokenize(swe:value,\u0027 \u0027).  This is cumbersome at best, or not even supported by the server at worst.  09-026r2 Clause 7.4.4 describes the minimal XPath supports and string parsing is not present.",
+      "description": "GSML_QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13)  where lower and upper values are made explicit. SWE::QuantityRange uses an array of values (RealPair, see Clause 7.2.1) where the lowest value is the first element and the highest the second.  This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrays1 (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).\r\n-------------------------\r\n1 SWE RealPair is encoded as space delimited lists (<swe:value>10 300</swe:value> in XML) , which demands that clients parse the string to extract each token.  To build a WFS/FES query that tests the first element, it requires parsing the string either using string-before(swe:value,' ')  or tokenize(swe:value,' ').  This is cumbersome at best, or not even supported by the server at worst.  09-026r2 Clause 7.4.4 describes the minimal XPath supports and string parsing is not present.",
       "allOf": [
         {
           "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"
@@ -632,7 +632,7 @@
                   ]
                 },
                 "numericAge": {
-                  "description": "The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1st 1950 (although van der Plitch \u0026 Hogg , suggests this convention to be restricted to radiocarbon estimations).",
+                  "description": "The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1st 1950 (although van der Plitch & Hogg , suggests this convention to be restricted to radiocarbon estimations).",
                   "oneOf": [
                     {
                       "type": "null"
@@ -835,7 +835,7 @@
     },
     "GeologicUnit": {
       "$anchor": "GeologicUnit",
-      "description": "Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit, Stratigraphic unit in the sense of NACSN, or International Stratigraphic Code ), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like \u0027granitic rock\u0027 or \u0027alluvial deposit\u0027, surficial units like \u0027till\u0027 or \u0027old alluvium\u0027). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).",
+      "description": "Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit, Stratigraphic unit in the sense of NACSN, or International Stratigraphic Code ), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like 'granitic rock' or 'alluvial deposit', surficial units like 'till' or 'old alluvium'). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).",
       "allOf": [
         {
           "$ref": "#GeologicFeature"
@@ -941,7 +941,7 @@
     },
     "GeologicUnitHierarchy": {
       "$anchor": "GeologicUnitHierarchy",
-      "description": "GeologicUnitHierarchy associates a GeologicUnit with another GeologicUnit that is a proper part of that unit. Parts may be formal or notional. Formal parts refer to a specific body of rock, as in formal stratigraphic members. Notional parts refer to assemblages of particular EarthMaterials with particular internal structure, which may be repeated in various places within a unit (e.g. \u0027turbidite sequence\u0027, \u0027point bar assemblage\u0027, \u0027leucosome veins\u0027).",
+      "description": "GeologicUnitHierarchy associates a GeologicUnit with another GeologicUnit that is a proper part of that unit. Parts may be formal or notional. Formal parts refer to a specific body of rock, as in formal stratigraphic members. Notional parts refer to assemblages of particular EarthMaterials with particular internal structure, which may be repeated in various places within a unit (e.g. 'turbidite sequence', 'point bar assemblage', 'leucosome veins').",
       "type": "object",
       "properties": {
         "role": {
@@ -1002,7 +1002,7 @@
     },
     "GeomorphologicFeature": {
       "$anchor": "GeomorphologicFeature",
-      "description": "A geomorphologic feature is a kind of GeologicFeature describing the shape and nature of the Earth\u0027s land surface. These landforms may be created by natural Earth processes (e.g., river channel, beach, moraine or mountain) or through human (anthropogenic) activity (e.g., dredged channel, reclaimed land, mine waste dumps).  In GeoSciML, the geomorphologic feature is modelled as a feature related (through unitDescription property) to a GeologicUnit that composes the form.",
+      "description": "A geomorphologic feature is a kind of GeologicFeature describing the shape and nature of the Earth's land surface. These landforms may be created by natural Earth processes (e.g., river channel, beach, moraine or mountain) or through human (anthropogenic) activity (e.g., dredged channel, reclaimed land, mine waste dumps).  In GeoSciML, the geomorphologic feature is modelled as a feature related (through unitDescription property) to a GeologicUnit that composes the form.",
       "allOf": [
         {
           "$ref": "#GeologicFeature"
@@ -1123,7 +1123,7 @@
                   ]
                 },
                 "resolutionRepresentativeFraction": {
-                  "description": "The property resolutionRepresentativeFraction:Integer is an integer value representing the denominator of the representative scale of the spatial feature.  (i.e., 10000 \u003d the spatial feature is intended to be represented at 1:10,000 scale).",
+                  "description": "The property resolutionRepresentativeFraction:Integer is an integer value representing the denominator of the representative scale of the spatial feature.  (i.e., 10000 = the spatial feature is intended to be represented at 1:10,000 scale).",
                   "type": [
                     "integer",
                     "null"
@@ -1141,7 +1141,7 @@
                   ]
                 },
                 "exposure": {
-                  "description": "The exposure:ExposureTerm property provides a term for the nature of the expression of the mapped feature at the earth\u0027s surface (e.g., exposed, concealed).",
+                  "description": "The exposure:ExposureTerm property provides a term for the nature of the expression of the mapped feature at the earth's surface (e.g., exposed, concealed).",
                   "oneOf": [
                     {
                       "type": "null"
@@ -1335,7 +1335,7 @@
     },
     "ShearDisplacementStructure": {
       "$anchor": "ShearDisplacementStructure",
-      "description": "A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single \u0027planar\u0027 brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package",
+      "description": "A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single 'planar' brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package",
       "allOf": [
         {
           "$ref": "#GeologicStructure"

@@ -1,0 +1,195 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleBritishColumbiaStrat-v2.ttl — the Lardeau Group of the Kootenay Terrane (southeastern British Columbia), with its three known constituent formations (Akolkolex, Index, Jowett). The Lardeau Group is a Lower Paleozoic metasedimentary–metavolcanic assemblage that has been deformed and metamorphosed to greenschist facies. The source TTL is structurally simpler than the Isle of Wight TTL — it records unit type, label, list of constituent lithologies, and parent–child relationships, but not thickness, depositional setting, age, or bibliographic sources. The FeatureCollection therefore omits those slots. Constituent proportions are not recorded in the TTL (no qualitative Dominant/Subordinate terms either), so `proportion` is left null on every CompositionPart. Homogeneous FeatureCollection (collection-level featureType=\"GeologicUnit\"). Validates against schemas/json/4.1/geosciml_basic_featurecollection.json#FeatureCollection (then-branch dispatch).",
+  "type": "FeatureCollection",
+  "featureType": "GeologicUnit",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geosciml_basic_featurecollection.json"
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "LardeauGroup",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Lardeau Group",
+        "description": "A Lower Paleozoic metasedimentary–metavolcanic group of the Kootenay Terrane, southeastern British Columbia. Includes the Akolkolex, Index and Jowett Formations. Source: GSO Example British Columbia Stratigraphy v2 (Loop3D-GSO).",
+        "purpose": "instance",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+        "hierarchyLink": [
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+            "targetUnit": { "href": "#AkolkolexFormation", "title": "Akolkolex Formation", "rel": "containsFormation" }
+          },
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+            "targetUnit": { "href": "#IndexFormation",     "title": "Index Formation",     "rel": "containsFormation" }
+          },
+          {
+            "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
+            "targetUnit": { "href": "#JowettFormation",    "title": "Jowett Formation",    "rel": "containsFormation" }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AkolkolexFormation",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Akolkolex Formation",
+        "description": "Constituent formation of the Lardeau Group. Quartzose clastic metasediments — arenite and quartzite lithologies. Source: GSO Example British Columbia Stratigraphy v2 (Loop3D-GSO).",
+        "purpose": "instance",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "composition": [
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/arenite"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite"
+            },
+            "proportion": null
+          }
+        ],
+        "relatedFeature": [
+          { "href": "#LardeauGroup", "title": "Lardeau Group — Akolkolex is a constituent formation", "rel": "isPartOf" }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IndexFormation",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Index Formation",
+        "description": "Constituent formation of the Lardeau Group. Heterolithic metasedimentary unit with arenite, chemical sedimentary material, chlorite–actinolite–epidote metamorphic rock, limestone, marble, undifferentiated metamorphic rock, metasomatic rock, phyllite, quartzite and schist. The breadth of lithologies reflects greenschist-facies metamorphism of a mixed sedimentary–volcaniclastic protolith. Source: GSO Example British Columbia Stratigraphy v2 (Loop3D-GSO).",
+        "purpose": "instance",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "composition": [
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/arenite"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/chemical_sedimentary_material"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/marble"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metamorphic_rock"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/phyllite"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/schist"
+            },
+            "proportion": null
+          }
+        ],
+        "relatedFeature": [
+          { "href": "#LardeauGroup", "title": "Lardeau Group — Index is a constituent formation", "rel": "isPartOf" }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "JowettFormation",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Jowett Formation",
+        "description": "Constituent formation of the Lardeau Group. Metamorphosed pelitic and metasomatic rocks — schist and metasomatic rock lithologies. Source: GSO Example British Columbia Stratigraphy v2 (Loop3D-GSO).",
+        "purpose": "instance",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "composition": [
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock"
+            },
+            "proportion": null
+          },
+          {
+            "role": null,
+            "material": {
+              "properties": { "purpose": "typicalNorm" },
+              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/schist"
+            },
+            "proportion": null
+          }
+        ],
+        "relatedFeature": [
+          { "href": "#LardeauGroup", "title": "Lardeau Group — Jowett is a constituent formation", "rel": "isPartOf" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "type": "Feature",
+  "featureType": "Contact",
+  "id": "contact-disconformity-xy",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "classifier": [
+      {
+        "type": "Category",
+        "definition": "http://some.org/classifier/contactType",
+        "label": "erosional contact",
+        "value": "http://some.org/contactType/erosional-contact"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "featureType": "GeologicEvent",
+        "id": "non-deposition-xy",
+        "geometry": null,
+        "place": null,
+        "time": null,
+        "properties": {
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/non-deposition"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Cambrian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Ordovician"
+        }
+      }
+    ],
+    "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/disconformity"
+  }
+}

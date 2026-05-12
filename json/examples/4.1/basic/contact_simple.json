@@ -1,0 +1,12 @@
+{
+  "type": "Feature",
+  "featureType": "Contact",
+  "id": "contact-unconformity-1",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/unconformity"
+  }
+}

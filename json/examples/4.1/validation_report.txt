@@ -1,0 +1,39 @@
+
+basic  →  geoscimlBasic.json
+  OK    examples/json/4.1/basic/contact_complex.json
+  OK    examples/json/4.1/basic/contact_simple.json
+  OK    examples/json/4.1/basic/fold_complex.json
+  OK    examples/json/4.1/basic/fold_simple.json
+  OK    examples/json/4.1/basic/geologic_unit_complex.json
+  OK    examples/json/4.1/basic/geologic_unit_simple.json
+  OK    examples/json/4.1/basic/mapped_feature_complex.json
+  OK    examples/json/4.1/basic/mapped_feature_simple.json
+  OK    examples/json/4.1/basic/natural_geomorphologic_feature_complex.json
+  OK    examples/json/4.1/basic/natural_geomorphologic_feature_simple.json
+  OK    examples/json/4.1/basic/shear_displacement_structure_complex.json
+  OK    examples/json/4.1/basic/shear_displacement_structure_simple.json
+
+featurecollections/basic  →  geosciml_basic_featurecollection.json
+  OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_geologicunit.json
+  OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_mixed.json
+
+featurecollections/lite  →  geosciml_lite_featurecollection.json
+  OK    examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_geologicunitview.json
+  OK    examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_mixed.json
+
+lite  →  geoscimlLite.json
+  OK    examples/json/4.1/lite/borehole_view_complex.json
+  OK    examples/json/4.1/lite/borehole_view_simple.json
+  OK    examples/json/4.1/lite/contact_view_complex.json
+  OK    examples/json/4.1/lite/contact_view_simple.json
+  OK    examples/json/4.1/lite/geologic_specimen_view_complex.json
+  OK    examples/json/4.1/lite/geologic_specimen_view_simple.json
+  OK    examples/json/4.1/lite/geologic_unit_view_complex.json
+  OK    examples/json/4.1/lite/geologic_unit_view_simple.json
+  OK    examples/json/4.1/lite/geomorphologic_unit_view_simple.json
+  OK    examples/json/4.1/lite/shear_displacement_structure_view_complex.json
+  OK    examples/json/4.1/lite/shear_displacement_structure_view_simple.json
+  OK    examples/json/4.1/lite/site_observation_view_complex.json
+  OK    examples/json/4.1/lite/site_observation_view_simple.json
+
+Results:  29 passed, 0 failed, 0 skipped  (29 total)

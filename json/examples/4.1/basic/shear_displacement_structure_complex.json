@@ -1,0 +1,43 @@
+{
+  "type": "Feature",
+  "featureType": "ShearDisplacementStructure",
+  "id": "lake-george-fault-complex",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifierScheme/cgi/featureobservationmethod",
+        "label": "synthesis from multiple sources",
+        "value": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_from_multiple_sources"
+      }
+    ],
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "occurrence": [
+      {
+        "href": "http://data.geoscience.gov.au/mappedfeature/line/lake-george-fault-mf-1",
+        "title": "Lake George Fault trace at 1:250000 scale"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "featureType": "GeologicEvent",
+        "id": "lake-george-fault-age",
+        "geometry": null,
+        "place": null,
+        "time": null,
+        "properties": {
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Carboniferous"
+        }
+      }
+    ],
+    "faultType": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault"
+  }
+}

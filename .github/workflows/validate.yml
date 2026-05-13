@@ -38,4 +38,6 @@ jobs:
 
       - name: Fail if validation failed
         if: env.VALIDATION_EXIT != '0'
-        run: exit 1
+        run: |
+          echo "::error::Validation failed — see examples/json/4.1/validation_report.txt for details"
+          exit 1

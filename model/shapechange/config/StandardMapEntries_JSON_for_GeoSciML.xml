@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapEntries xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
+        
+        <!-- Mappings for ISO 19103 -->
+        <MapEntry type="CharacterString" rule="*" targetType="string" param=""/>
+        <MapEntry type="Character" rule="*" targetType="string" param="keywords{minLength=1;maxLength=1}"/>
+        <MapEntry type="URI" rule="*" targetType="string" param="keywords{format=uri}"/>
+        <MapEntry type="URL" rule="*" targetType="string" param="keywords{format=uri}"/>
+        <MapEntry type="Boolean" rule="*" targetType="boolean" param=""/>
+        <MapEntry type="Integer" rule="*" targetType="integer" param=""/>
+        <MapEntry type="Decimal" rule="*" targetType="number" param=""/>
+        <MapEntry type="Number" rule="*" targetType="number" param=""/>
+        <MapEntry type="Real" rule="*" targetType="number" param=""/>
+        <MapEntry type="Measure" rule="*" targetType="number" param="measure"/>
+        <MapEntry type="Length" rule="*" targetType="number" param="measure"/>
+        <MapEntry type="Date" rule="*" targetType="string" param="keywords{format=date}"/>
+        <MapEntry type="DateTime" rule="*" targetType="string" param="keywords{format=date-time}"/>
+        <MapEntry type="Time" rule="*" targetType="string" param="keywords{format=time}"/>
+        
+        <!-- TBD -->
+        <MapEntry type="ScopedName" rule="*" targetType="string" param=""/>
+        
+        <!-- Mappings for ISO 19107 -->
+        <MapEntry type="GM_Object" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json" param="geometry"/>
+        <MapEntry type="GM_Curve" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" param="geometry"/>
+        <MapEntry type="GM_MultiCurve" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/MultiLineString" param="geometry"/>
+        <MapEntry type="GM_MultiPoint" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/MultiPoint" param="geometry"/>
+        <MapEntry type="GM_MultiSurface" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/MultiPolygon" param="geometry"/>
+        <MapEntry type="GM_Point" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point" param="geometry"/>
+        <MapEntry type="GM_Surface" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" param="geometry"/>
+        
+        <!-- TBD -->
+        <MapEntry type="DirectPosition" rule="*" targetType="https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point" param="geometry"/>
+        
+        
+        <!-- Mappings for ISO 19108 -->
+        <!-- all TBD -->
+        <MapEntry type="TM_Instant" rule="*" targetType="https://schemas.opengis.net/json-fg/time.json#/$defs/timestamp"/>
+        <MapEntry type="TM_Period" rule="*" targetType="https://schemas.opengis.net/json-fg/time.json#/$defs/interval"/>
+        <MapEntry type="TM_ReferenceSystem" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>    
+        
+        <!-- Mappings for ISO 19115 -->
+        <!-- see JSON (schema) files at https://schemas.isotc211.org/19115/-4/ -->
+        <!-- all TBD -->
+        <MapEntry type="CI_Citation" rule="*" targetType="https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Citation"/>        
+        <MapEntry type="CI_Responsibility" rule="*" targetType="https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"/>
+        <MapEntry type="LI_ProcessStep" rule="*" targetType="object"/>
+        
+        <!-- Mappings for SWE Common -->
+        <MapEntry type="Category" rule="*" targetType="https://schemas.opengis.net/sweCommon/3.0/json/Category.json"/>
+        <MapEntry type="DataRecord" rule="*" targetType="https://schemas.opengis.net/sweCommon/3.0/json/DataRecord.json"/>
+        <MapEntry type="Quantity" rule="*" targetType="https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"/>  
+        <MapEntry type="QuantityRange" rule="*" targetType="https://schemas.opengis.net/sweCommon/3.0/json/QuantityRange.json"/> 
+        
+        <!-- Mappings for O&M -->
+        <!-- all TBD -->
+        <MapEntry type="OM_Observation" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>
+        <MapEntry type="OM_Process" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>
+        <MapEntry type="GFI_Feature" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>
+        <MapEntry type="SF_SamplingFeature" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>
+        <MapEntry type="SF_SamplingPoint" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>    
+        <MapEntry type="SF_SamplingCurve" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>    
+        <MapEntry type="SF_SamplingFeatureCollection" rule="*" targetType="https://schemas.opengis.net/json-fg/featurecollection.json"/>    
+        <MapEntry type="SF_Process" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>  
+        <MapEntry type="SF_Specimen" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>  
+        <MapEntry type="PreparationStep" rule="*" targetType="https://schemas.opengis.net/json-fg/feature.json" param="encodingInfos{entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberRequired=false;idMemberTypes=integer,string}"/>  
+        <MapEntry type="NamedValue" rule="*" targetType="object"/>
+</mapEntries>

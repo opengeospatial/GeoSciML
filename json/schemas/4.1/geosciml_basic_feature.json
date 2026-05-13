@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geosciml_basic_feature.json",
+  "description": "Wrapper for a single GeoSciML Basic Feature instance. Uses an if/then chain on the instance's `featureType` value to dispatch validation to the matching $anchor in geoscimlBasic.json. Standards-compliant alternative to the runtime $anchor-fragment trick used by validate.py; works with any JSON Schema 2020-12 validator (Oxygen, ajv, etc.). Recognised featureType values: AnthropogenicGeomorphologicFeature, Contact, Fold, Foliation, GeologicEvent, GeologicUnit, MappedFeature, NaturalGeomorphologicFeature, ShearDisplacementStructure.",
+  "allOf": [
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "AnthropogenicGeomorphologicFeature" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#AnthropogenicGeomorphologicFeature" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "Contact" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#Contact" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "Fold" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#Fold" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "Foliation" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#Foliation" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "GeologicEvent" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#GeologicEvent" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "GeologicUnit" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#GeologicUnit" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "MappedFeature" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#MappedFeature" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "NaturalGeomorphologicFeature" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#NaturalGeomorphologicFeature" }
+    },
+    {
+      "if": {
+        "required": ["featureType"],
+        "properties": { "featureType": { "const": "ShearDisplacementStructure" } }
+      },
+      "then": { "$ref": "geoscimlBasic.json#ShearDisplacementStructure" }
+    },
+    {
+      "if": {
+        "not": {
+          "required": ["featureType"],
+          "properties": {
+            "featureType": {
+              "enum": [
+                "AnthropogenicGeomorphologicFeature",
+                "Contact",
+                "Fold",
+                "Foliation",
+                "GeologicEvent",
+                "GeologicUnit",
+                "MappedFeature",
+                "NaturalGeomorphologicFeature",
+                "ShearDisplacementStructure"
+              ]
+            }
+          }
+        }
+      },
+      "then": false
+    }
+  ]
+}

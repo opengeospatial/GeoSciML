@@ -1,0 +1,75 @@
+{
+  "$comment": "Homogeneous FeatureCollection example — collection declares featureType=\"GeologicEvent\" at the top level, so every member must be a GeologicEvent. Validates against schemas/json/4.1/geosciml_basic_featurecollection.json#FeatureCollection (then-branch dispatch).",
+  "type": "FeatureCollection",
+  "featureType": "GeologicEvent",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geosciml_basic_featurecollection.json"
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "event.1",
+      "featureType": "GeologicEvent",
+      "geometry": null,
+      "properties": {
+        "name": "Kanimblan Orogeny",
+        "eventProcess": [
+          "http://resource.geosciml.org/classifier/cgi/eventprocess/deformation"
+        ],
+        "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Tournaisian",
+        "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Serpukhovian",
+        "numericAge": {
+          "reportingDate": {
+            "type": "Quantity",
+            "definition": "http://resource.geosciml.org/concept/numericage/representativeAge",
+            "label": "representative age",
+            "uom": { "code": "Ma" },
+            "value": 335
+          },
+          "olderBoundDate": {
+            "type": "Quantity",
+            "definition": "http://resource.geosciml.org/concept/numericage/olderBound",
+            "label": "older bound",
+            "uom": { "code": "Ma" },
+            "value": 350
+          },
+          "youngerBoundDate": {
+            "type": "Quantity",
+            "definition": "http://resource.geosciml.org/concept/numericage/youngerBound",
+            "label": "younger bound",
+            "uom": { "code": "Ma" },
+            "value": 325
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "HerveyGroup.depositionalAge",
+      "featureType": "GeologicEvent",
+      "geometry": null,
+      "properties": {
+        "name": "Hervey Group depositional age",
+        "eventProcess": [
+          "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+        ],
+        "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Frasnian",
+        "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Famennian"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "fault.1.age",
+      "featureType": "GeologicEvent",
+      "geometry": null,
+      "properties": {
+        "name": "Lake George Fault movement age",
+        "eventProcess": [
+          "http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"
+        ],
+        "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+        "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Carboniferous"
+      }
+    }
+  ]
+}

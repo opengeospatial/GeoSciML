@@ -1,0 +1,54 @@
+{
+  "$comment": "Translated from https://geosciml.org/schemas/geosciml/4.0/examples/GSML4-NaturalGeomorphologicFeature.xml — an unnamed glacial outwash channel mapped by the British Geological Survey at 1:625,000, formed during the Devensian Glaciation (Late Pleistocene) by water erosion in a glacial outwash plain setting. Validates against schemas/json/4.1/geoscimlBasic.json#NaturalGeomorphologicFeature.",
+  "type": "Feature",
+  "id": "GEOMORPH_1",
+  "featureType": "NaturalGeomorphologicFeature",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json"
+  ],
+  "geometry": null,
+  "properties": {
+    "name": "UNNAMED GLACIAL OUTWASH CHANNEL",
+    "purpose": "instance",
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "id": "EVENT_4",
+        "featureType": "GeologicEvent",
+        "geometry": null,
+        "properties": {
+          "name": "Devensian Glaciation",
+          "eventProcess": [
+            "http://inspire.ec.europa.eu/codelist/EventProcessValue/waterErosion"
+          ],
+          "olderNamedAge": "http://inspire.ec.europa.eu/codelist/GeochronologicEraValue/latePleistocene",
+          "youngerNamedAge": "http://inspire.ec.europa.eu/codelist/GeochronologicEraValue/latePleistocene",
+          "eventEnvironment": [
+            {
+              "type": "Category",
+              "definition": "http://inspire.ec.europa.eu/codelist/EventEnvironmentValue",
+              "label": "glacial outwash plain setting",
+              "codeSpace": "http://inspire.ec.europa.eu/codelist/EventEnvironmentValue",
+              "value": "http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/glacialOutwashPlainSetting"
+            }
+          ]
+        }
+      }
+    ],
+    "unitDescription": [
+      {
+        "href": "https://example.org/units/testGeolUnit",
+        "title": "associated geologic unit",
+        "rel": "describes"
+      }
+    ],
+    "naturalGeomorphologicFeatureType": "http://inspire.ec.europa.eu/codelist/NaturalGeomorphologicFeatureTypeValue/glacial",
+    "activity": {
+      "type": "Category",
+      "definition": "http://inspire.ec.europa.eu/codelist/GeomorphologicActivityValue",
+      "label": "inactive",
+      "codeSpace": "http://inspire.ec.europa.eu/codelist/GeomorphologicActivityValue",
+      "value": "http://inspire.ec.europa.eu/codelist/GeomorphologicActivityValue/inactive"
+    }
+  }
+}

@@ -23,7 +23,10 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Run validator and refresh report
-        run: python validate.py > examples/json/4.1/validation_report.txt
+        run: |
+          python validate.py > examples/json/4.1/validation_report.txt
+          echo "VALIDATION_EXIT=$?" >> "$GITHUB_ENV"
+        shell: bash {0}
 
       - name: Commit updated report
         run: |
@@ -32,3 +35,7 @@ jobs:
           git add examples/json/4.1/validation_report.txt
           git diff --cached --quiet || git commit -m "chore: refresh validation report [skip ci]"
           git push
+
+      - name: Fail if validation failed
+        if: env.VALIDATION_EXIT != '0'
+        run: exit 1

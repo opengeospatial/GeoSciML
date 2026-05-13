@@ -94,13 +94,13 @@ To fully support the concept in the JSON schema, voidable properties would all n
 
 NOTE: The GeoSciMLLite application schema does not make use of the 'voidable' concept.
 
-### GeoSciMLLite attributes 
+#### GeoSciMLLite attributes 
 
 Attributes 'any' in GeoSciMLLite are not encoded, because the JSON schema definition for feature types allows additional properties. Thus, there is no need for an extension mechanism like the one introduced for the XML encoding of GeoSciML. Extensions can simply add the JSON members they need, and JSON Schema validation against the schema definition for a particular GeoSciML feature type would just ignore these additions (because no JSON Schema constraints are declared for the additional JSON members in that schema definition).
 
 The 'identifier' property in GeoSciMLLite is also not encoded, because it is mapped to the 'id' member of a GeoJSON feature. In other words, the value of the identifier property shall be encoded in the id member.
 
-### GeoSciMLBasic types
+#### GeoSciMLBasic types
 
 Feature type GSML, as well as the union GSMLitem, are not encoded. They serve as containers for collections of GeoSciML features. That purpose can also be fulfilled by a [JSON-FG feature collection](https://schemas.opengis.net/json-fg/featurecollection.json). 
 

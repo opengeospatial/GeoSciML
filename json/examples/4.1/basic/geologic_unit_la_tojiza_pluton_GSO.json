@@ -1,0 +1,24 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleLaTojizaPluton.ttl. The source describes the La Tojiza Pluton (intrusive geologic body) with a Cambrian boundary (toj:cambrianBoundaryLaTojiza_2) decomposed into 4 segments. The intruding rock material composition references plutonic constituents; relations to surrounding rocks (gsrl:* properties in TTL) are not encoded here for brevity. Validates as a GeologicUnit feature; lives in gsmGeologicUnitExtension to illustrate Extension-content usage.",
+  "type": "Feature",
+  "featureType": "GeologicUnit",
+  "id": "https://w3id.org/gso/1.0/ex-plutontojiza#LaTojiza_Pluton",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "name": "La Tojiza Pluton",
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithodemic_unit",
+    "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/intrusion",
+    "composition": [
+      {
+        "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/dominantConstituent",
+        "material": {
+          "href": "#material-pluton-granitic",
+          "title": "Plutonic granitic rock material (Cambrian intrusion)"
+        }
+      }
+    ]
+  }
+}

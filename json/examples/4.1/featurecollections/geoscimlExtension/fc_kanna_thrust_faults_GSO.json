@@ -1,0 +1,55 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleFaultKannaV4Model.ttl. The source defines four Thrust_Fault structures (D02_fault, Fatigue_fault, Simpson_fault, N01_fault) and their displacement events. Crosscut relationships in the TTL (gsrl:crosscuts) link Fatigue → {D02, N01, Simpson}, indicating Fatigue is the youngest. This FC encodes each fault's displacement event as a DisplacementEvent; the cross-cutting age relationships are conveyed through the olderNamedAge/youngerNamedAge ordering and noted in $comments. The fault structures themselves (ShearDisplacementStructure) live in gsmscimlBasic and are by-reference here.",
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "DisplacementEvent",
+      "id": "https://w3id.org/gso/1.0/fautlKannaV4Model#D02_fault_displacement",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "eventProcess": ["http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"]
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "DisplacementEvent",
+      "id": "https://w3id.org/gso/1.0/fautlKannaV4Model#Simpson_fault_displacement",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "eventProcess": ["http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"]
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "DisplacementEvent",
+      "id": "https://w3id.org/gso/1.0/fautlKannaV4Model#N01_fault_displacement",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "eventProcess": ["http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"]
+      }
+    },
+    {
+      "$comment": "Fatigue Thrust fault is the youngest; crosscuts the other three thrusts per the source TTL.",
+      "type": "Feature",
+      "featureType": "DisplacementEvent",
+      "id": "https://w3id.org/gso/1.0/fautlKannaV4Model#Fatigue_fault_displacement",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "eventProcess": ["http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"]
+      }
+    }
+  ]
+}

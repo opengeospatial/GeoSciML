@@ -21,9 +21,6 @@
                   "description": "The property stratotype is an association between a GeochronologicBoundary and a StratigraphicPoint that are associated with the boundary. A GeochronologicBoundary can be associated with more than one StratigraphicPoints, but only one may have GSSP ratified status. The others are proposed equivalents.",
                   "oneOf": [
                     {
-                      "type": "null"
-                    },
-                    {
                       "$ref": "#/$defs/SCLinkObject"
                     },
                     {
@@ -52,21 +49,11 @@
               "properties": {
                 "rank": {
                   "description": "The property rank:GeochronologicEraRank contains a term from a vocabulary describing the rank of the time period (e.g., eon, era, period, stage).",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "$ref": "#GeochronologicEraRank"
-                    }
-                  ]
+                  "$ref": "#GeochronologicEraRank"
                 },
                 "stratotype": {
                   "description": "The property stratotype is an association between a GeochronologicEra and StratigraphicSection that describes a type section that names the physical location or outcrop of a particular reference exposure of a stratigraphic sequence or stratigraphic boundary. A unit stratotype is the agreed reference point for a particular stratigraphic unit and a boundary stratotype is the reference for a particular boundary between strata (Wikipedia).",
                   "oneOf": [
-                    {
-                      "type": "null"
-                    },
                     {
                       "$ref": "#/$defs/SCLinkObject"
                     },
@@ -195,32 +182,19 @@
               "properties": {
                 "primaryGuidingCriterion": {
                   "description": "The property primaryGuidingCriterion:Primitive::CharacterString contains a description of the primary criterion used to establish the stratigraphic point.",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 },
                 "additionalCorrelationProperty": {
                   "description": "The property additionnalCorrelationProperty:Primitive::CharacterString contains any additional criteria used to establish the stratigraphic point.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      },
-                      "uniqueItems": true
-                    }
-                  ]
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
                 },
                 "status": {
                   "description": "The property status:Primitive::CharacterString contains a description of the status of stratigraphic point (e.g., formally accepted, etc.).",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 }
               }
             }
@@ -254,31 +228,19 @@
               "properties": {
                 "geologicSetting": {
                   "description": "The property geologicSetting:Primitive::CharacterString contains a description of the geologic setting of the stratigraphic section.",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 },
                 "geologicDescription": {
                   "description": "The geologicDescription:Primitive::CharacterString contains a description of the geology of the stratigraphic section (e.g., lithology, paleontology, paleogeography, etc.).",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 },
                 "accessibility": {
                   "description": "The property accessibility:Primitive::CharacterString contains a description of the ability to access the stratigraphic section.",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 },
                 "conservation": {
                   "description": "The property conservation:Primitive::CharacterString contains a description of measures to conserve the stratigraphic section.",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 }
               }
             }
@@ -314,9 +276,6 @@
                   "description": "Older time boundary of an era",
                   "oneOf": [
                     {
-                      "type": "null"
-                    },
-                    {
                       "$ref": "#/$defs/SCLinkObject"
                     },
                     {
@@ -327,9 +286,6 @@
                 "end": {
                   "description": "Younger time boundary of an era",
                   "oneOf": [
-                    {
-                      "type": "null"
-                    },
                     {
                       "$ref": "#/$defs/SCLinkObject"
                     },
@@ -387,9 +343,6 @@
                   "description": "A point in time corresponding to the era boundary",
                   "oneOf": [
                     {
-                      "type": "null"
-                    },
-                    {
                       "$ref": "#/$defs/SCLinkObject"
                     },
                     {
@@ -414,58 +367,37 @@
                 },
                 "positionalUncertainty": {
                   "description": "A measure of the uncertainty in the estimate of the point in time of the era boundary",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-                    }
-                  ]
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
                 },
                 "nextEra": {
                   "description": "Succeeding era",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/$defs/SCLinkObject"
-                          },
-                          {
-                            "$ref": "#TimeOrdinalEra"
-                          }
-                        ]
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
                       },
-                      "uniqueItems": true
-                    }
-                  ]
+                      {
+                        "$ref": "#TimeOrdinalEra"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
                 },
                 "previousEra": {
                   "description": "Preceding era",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/$defs/SCLinkObject"
-                          },
-                          {
-                            "$ref": "#TimeOrdinalEra"
-                          }
-                        ]
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
                       },
-                      "uniqueItems": true
-                    }
-                  ]
+                      {
+                        "$ref": "#TimeOrdinalEra"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
                 }
               }
             }
@@ -499,48 +431,34 @@
               "properties": {
                 "component": {
                   "description": "TimeOrdinalEra composing the TimeOrdinalReferenceSystem",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/$defs/SCLinkObject"
-                          },
-                          {
-                            "$ref": "#TimeOrdinalEra"
-                          }
-                        ]
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
                       },
-                      "uniqueItems": true
-                    }
-                  ]
+                      {
+                        "$ref": "#TimeOrdinalEra"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
                 },
                 "referencePoint": {
                   "description": "Two reference points defining the extent of the system",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "minItems": 2,
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/$defs/SCLinkObject"
-                          },
-                          {
-                            "$ref": "#TimeOrdinalEraBoundary"
-                          }
-                        ]
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
                       },
-                      "uniqueItems": true
-                    }
-                  ]
+                      {
+                        "$ref": "#TimeOrdinalEraBoundary"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
                 }
               },
               "required": [

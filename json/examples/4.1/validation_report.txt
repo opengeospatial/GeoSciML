@@ -4,14 +4,19 @@ basic  →  geoscimlBasic.json
   OK    examples/json/4.1/basic/contact_complex.json
   OK*   examples/json/4.1/basic/contact_contacttype_null_INVALID.json  (invalid as expected)
   OK    examples/json/4.1/basic/contact_simple.json
+  OK    examples/json/4.1/basic/examplegsmscimlBasicMinimal.json
   OK    examples/json/4.1/basic/fold.json
   OK    examples/json/4.1/basic/fold_complex.json
   OK*   examples/json/4.1/basic/fold_profiletype_null_INVALID.json  (invalid as expected)
   OK    examples/json/4.1/basic/fold_simple.json
   OK    examples/json/4.1/basic/geologic_event.json
+  OK    examples/json/4.1/basic/geologic_event_from_GSO.json
   OK    examples/json/4.1/basic/geologic_unit.json
   OK    examples/json/4.1/basic/geologic_unit_complex.json
   OK*   examples/json/4.1/basic/geologic_unit_composition_null_role_INVALID.json  (invalid as expected)
+  OK    examples/json/4.1/basic/geologic_unit_la_tojiza_pluton_GSO.json
+  OK    examples/json/4.1/basic/geologic_unit_lake_holmes_coal_measures_GSO.json
+  OK    examples/json/4.1/basic/geologic_unit_lardeau_group_GSO.json
   OK    examples/json/4.1/basic/geologic_unit_simple.json
   OK    examples/json/4.1/basic/mapped_feature.json
   OK    examples/json/4.1/basic/mapped_feature_complex.json
@@ -27,10 +32,13 @@ basic  →  geoscimlBasic.json
 borehole  →  borehole.json
   OK    examples/json/4.1/borehole/borehole_complex.json
   OK    examples/json/4.1/borehole/borehole_simple.json
+  OK    examples/json/4.1/borehole/examplegsmBoreholeMinimal.json
   OK    examples/json/4.1/borehole/origin_position_simple.json
 
 featurecollections/basic  →  geosciml_basic_featurecollection.json
   OK    examples/json/4.1/featurecollections/basic/contacts_complex_scenario.json
+  OK    examples/json/4.1/featurecollections/basic/fc_extended_minimal.json
+  OK    examples/json/4.1/featurecollections/basic/fc_hammersley_fault_traces_GSO.json
   OK    examples/json/4.1/featurecollections/basic/geologic_units_british_columbia.json
   OK    examples/json/4.1/featurecollections/basic/geologic_units_isle_of_wight.json
   OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_geologicunit.json
@@ -38,7 +46,10 @@ featurecollections/basic  →  geosciml_basic_featurecollection.json
   OK    examples/json/4.1/featurecollections/basic/heterogeneous.json
   OK    examples/json/4.1/featurecollections/basic/homogeneous.json
   skip  examples/json/4.1/featurecollections/geologicTime  (directory not found)
-  skip  examples/json/4.1/featurecollections/geoscimlExtension  (directory not found)
+
+featurecollections/geoscimlExtension  →  geosciml_extension_featurecollection.json
+  OK    examples/json/4.1/featurecollections/geoscimlExtension/fc_fault_displacement_events_GSO.json
+  OK    examples/json/4.1/featurecollections/geoscimlExtension/fc_kanna_thrust_faults_GSO.json
   skip  examples/json/4.1/featurecollections/laboratoryAnalysisSpecimen  (directory not found)
 
 featurecollections/lite  →  geosciml_lite_featurecollection.json
@@ -47,11 +58,14 @@ featurecollections/lite  →  geosciml_lite_featurecollection.json
   OK*   examples/json/4.1/featurecollections/lite/geosciml_lite_featurecollection_mixed_INVALID.json  (invalid as expected)
 
 geologicTime  →  geologicTime.json
+  OK    examples/json/4.1/geologicTime/examplegsmGeologicTimeMinimal.json
   OK    examples/json/4.1/geologicTime/geochronologic_boundary_simple.json
   OK    examples/json/4.1/geologicTime/geochronologic_era_complex.json
+  OK    examples/json/4.1/geologicTime/geochronologic_era_lower_jurassic_GSO.json
   OK    examples/json/4.1/geologicTime/geochronologic_era_simple.json
 
 geoscimlExtension  →  geoscimlExtension.json
+  OK    examples/json/4.1/geoscimlExtension/examplegsmGeologicStructureExtensionMinimal.json
   OK    examples/json/4.1/geoscimlExtension/fold_system_simple.json
   OK    examples/json/4.1/geoscimlExtension/lineation_complex.json
   OK    examples/json/4.1/geoscimlExtension/lineation_simple.json
@@ -67,6 +81,7 @@ lite  →  geoscimlLite.json
   OK    examples/json/4.1/lite/borehole_view_simple.json
   OK    examples/json/4.1/lite/contact_view_complex.json
   OK    examples/json/4.1/lite/contact_view_simple.json
+  OK    examples/json/4.1/lite/examplegsmscimlLiteMinimal.json
   OK    examples/json/4.1/lite/geologic_specimen_view_complex.json
   OK    examples/json/4.1/lite/geologic_specimen_view_simple.json
   OK    examples/json/4.1/lite/geologic_unit_view_complex.json
@@ -77,4 +92,4 @@ lite  →  geoscimlLite.json
   OK    examples/json/4.1/lite/site_observation_view_complex.json
   OK    examples/json/4.1/lite/site_observation_view_simple.json
 
-Results:  53 passed, 6 expected-invalid, 0 failed, 0 skipped  (59 total)
+Results:  67 passed, 6 expected-invalid, 0 failed, 0 skipped  (73 total)

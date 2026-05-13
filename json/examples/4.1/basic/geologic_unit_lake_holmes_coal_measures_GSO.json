@@ -1,0 +1,24 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleGeosciAustraliaStratUnit.ttl. The source models Geoscience Australia's Lake Holmes Coal Measures as a gsgu:Formation with a Time_Interval finishing at 27.23 MaY (Late Oligocene). Note: this example file lives in gsmGeologicUnitExtension to illustrate Extension-content usage of GeologicUnit features; the actual validation target is gsmExtendedGeologyCollection (which dispatches featureType=GeologicUnit and requires extension descriptions) or gsmscimlBasic's library schema.",
+  "type": "Feature",
+  "featureType": "GeologicUnit",
+  "id": "http://pid.geoscience.gov.au/feature/asc/gsml/geologicalunit/10056",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "name": "Lake Holmes Coal Measures",
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/typicalNorm",
+    "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+    "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+    "composition": [
+      {
+        "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+        "material": {
+          "href": "#material-lacustrine-mixed-clastics",
+          "title": "Lacustrine red brown and green sand, silt and clay with minor gravel, calcrete and gypsum"
+        }
+      }
+    ]
+  }
+}

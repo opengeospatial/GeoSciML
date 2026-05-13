@@ -1,0 +1,71 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleHammerslyData.ttl (Hamersley region, Western Australia). The source TTL distinguishes between fault STRUCTURES (Moona Fault, fault_A1, fault_A2, fault_3496 — typed as gsfa:High_Angle_Fault) and fault TRACES on the earth surface (faulttrace_11445, faulttrace_15546, faulttrace_3496, faulttrace_7439 — typed as gsfa:Fault and hosted by gsoc:earthsurface, isPartOf the parent fault structure). The traces correspond well to MappedFeature instances representing the surface expression of a buried/subsurface ShearDisplacementStructure. This FC encodes the four fault traces as MappedFeature features and notes the spatial-relationship attributes (gsrl:spatiallyTouches, gsrl:spatiallyTruncates) in comments. The Extended profile's MappedFeature branch is pass-through (no extension description slot), so this validates against the same dispatcher as the Basic profile would.",
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "MappedFeature",
+      "id": "https://w3id.org/gso/ex-hammersly#faulttrace_11445",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "name": "Fault trace 11445 (surface expression of Fault A1)",
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "specification": {
+          "href": "https://w3id.org/gso/ex-hammersly#fault_A1",
+          "title": "Fault A1 (High_Angle_Fault) — buried structure this trace expresses"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "MappedFeature",
+      "id": "https://w3id.org/gso/ex-hammersly#faulttrace_15546",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "name": "Fault trace 15546 (surface expression of Fault A2)",
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "specification": {
+          "href": "https://w3id.org/gso/ex-hammersly#fault_A2",
+          "title": "Fault A2 (High_Angle_Fault)"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "MappedFeature",
+      "id": "https://w3id.org/gso/ex-hammersly#faulttrace_3496",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "name": "Fault or shear zone trace 3496",
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "specification": {
+          "href": "https://w3id.org/gso/ex-hammersly#fault_3496",
+          "title": "Fault 3496 (High_Angle_Fault)"
+        }
+      }
+    },
+    {
+      "$comment": "Moona Fault trace; per the source TTL it spatiallyTouches faulttrace_7439 (relationship not encoded here) and spatiallyTruncates faulttrace_11445 and faulttrace_15546.",
+      "type": "Feature",
+      "featureType": "MappedFeature",
+      "id": "https://w3id.org/gso/ex-hammersly#faulttrace_7439",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "name": "Fault trace 7439 (Moona Fault surface expression)",
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+        "specification": {
+          "href": "https://w3id.org/gso/ex-hammersly#MoonaFault",
+          "title": "Moona Fault (High_Angle_Fault) — truncates A1 and A2 traces per source"
+        }
+      }
+    }
+  ]
+}

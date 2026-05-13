@@ -1,0 +1,12 @@
+{
+  "type": "Feature",
+  "featureType": "ShearDisplacementStructure",
+  "id": "fault-null-faulttype-invalid",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "faultType": null
+  }
+}

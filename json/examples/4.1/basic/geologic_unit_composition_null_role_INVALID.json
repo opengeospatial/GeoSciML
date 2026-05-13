@@ -1,0 +1,28 @@
+{
+  "type": "Feature",
+  "featureType": "GeologicUnit",
+  "id": "geologic-unit-null-composition-role-invalid",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+    "composition": [
+      {
+        "role": null,
+        "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "rm-sandstone-1",
+          "geometry": null,
+          "place": null,
+          "time": null,
+          "properties": {
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+          }
+        }
+      }
+    ]
+  }
+}

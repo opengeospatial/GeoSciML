@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShapeChangeConfiguration xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1" xmlns:sc="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 ./schema/ShapeChangeConfiguration.xsd">
+  <!-- 
+      
+  -->
+  <input id="INPUT">
+    <parameter name="inputModelType" value="EA7"/>
+    <parameter name="inputFile" value="../document/UML/GeoSciML4.1_unversioned.qea"/>
+    <parameter name="appSchemaNameRegex" value="^GeologicTime$"/>
+    <parameter name="checkingConstraints" value="disabled"/>
+    <parameter name="addTaggedValues" value="*"/>
+    <xi:include href="./config/StandardAliases.xml"/>
+  </input>
+  <log>
+    <parameter name="reportLevel" value="INFO"/>
+    <parameter name="logFile" value="./scresults/geosciml/geologictime-log.xml"/>
+  </log>
+  <transformers>
+    <Transformer class="de.interactive_instruments.shapechange.core.transformation.identity.IdentityTransform" id="JSON" input="INPUT" mode="enabled">
+      <taggedValues>
+        <TaggedValue name="jsonDirectory" value="4.1" modelElementName="GeologicTime"/>
+        <TaggedValue name="jsonDocument" value="geologicTime.json" modelElementName="GeologicTime"/>
+        <TaggedValue name="jsonPrimaryPlace" value="true" modelElementName="shape" modelElementType="Attribute"/>
+        
+        <TaggedValue name="inlineOrByReference" value="inline" propertyValueTypeName="^(Quantity|QuantityRange|Category|DataRecord)$" modelElementType="Attribute"/>
+        
+        <TaggedValue name="jsonEncodingRule" value="notEncoded" modelElementName="^(GSML|GSMLitem)$"/>
+      </taggedValues>
+    </Transformer>
+    <Transformer id="TRF_END" input="JSON" class="de.interactive_instruments.shapechange.core.transformation.flattening.AssociationClassMapper"/>
+  </transformers>
+  <targets>
+    <Target class="de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget" mode="enabled" inputs="TRF_END">
+      <advancedProcessConfigurations>
+        <JsonSchemaAnnotations>
+          <annotations>
+            <SimpleAnnotation annotation="title" descriptorOrTaggedValue="description" noValueBehavior="ignore"/>
+            <SimpleAnnotation annotation="description" descriptorOrTaggedValue="definition" noValueBehavior="ignore"/>
+          </annotations>
+        </JsonSchemaAnnotations>
+      </advancedProcessConfigurations>
+      <targetParameter name="outputDirectory" value="./scresults/geosciml/geologictime/json"/>
+      <targetParameter name="sortedOutput" value="true"/>
+      <targetParameter name="writeMapEntries" value="true" /> 
+      
+      <targetParameter name="jsonSchemaVersion" value="2020-12"/>
+      <targetParameter name="jsonBaseUri" value="https://ext.iide.dev/schemas/geosciml/json"/>
+      <targetParameter name="linkObjectUri" value="https://schemas.opengis.net/json-fg/link.json"/>
+      <targetParameter name="byReferenceJsonSchemaDefinition" value="https://schemas.opengis.net/json-fg/link.json"/>
+      <targetParameter name="inlineOrByReferenceDefault" value="inlineOrByReference"/>
+      <!-- <targetParameter name="useAnchorsInLinksToGeneratedSchemaDefinitions" value="false"/> -->
+      
+      <targetParameter name="collectionSchemaFileName" value="geosciml_geologictime_featurecollection.json"/>
+      <targetParameter name="featureCollectionOnly" value="true"/>
+      
+      <targetParameter name="featureRefProfiles" value="rel-as-link"/>
+      
+      <targetParameter name="baseJsonSchemaDefinitionForCollections" value="https://schemas.opengis.net/json-fg/featurecollection.json"/>
+      <targetParameter name="preventUnknownTypesInFeatureCollection" value="true"/>
+      <targetParameter name="baseJsonSchemaDefinitionForFeatureTypes" value="https://schemas.opengis.net/json-fg/feature.json"/>
+      <targetParameter name="baseJsonSchemaDefinitionForFeatureTypes_encodingInfos"
+        value="entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberTypes=string,number;idMemberRequired=false"/>
+      <targetParameter name="baseJsonSchemaDefinitionForObjectTypes" value="https://schemas.opengis.net/json-fg/feature.json"/>
+      <targetParameter name="baseJsonSchemaDefinitionForObjectTypes_encodingInfos"
+        value="entityTypeMemberPath=featureType;entityTypeMemberRequired=false;idMemberPath=id;idMemberTypes=string,number;idMemberRequired=false"/>
+      <targetParameter name="idMemberEncodingRestrictions" value="typeRestriction=string;memberRequired"/>
+      
+      <targetParameter name="defaultEncodingRule" value="geoscimlJsonFG"/>
+      <rules>
+        <EncodingRule name="geoscimlJsonFG">
+          <rule name="rule-json-all-documentation"/>
+          <rule name="rule-json-all-featureRefs"/>
+          
+          <rule name="rule-json-cls-ignoreIdentifier"/>
+          <rule name="rule-json-cls-name-as-anchor"/>
+          <rule name="rule-json-cls-nestedProperties"/>
+          <rule name="rule-json-cls-virtualGeneralization"/>
+          <rule name="rule-json-cls-collectionsBasedOnEntityType"/>
+          <rule name="rule-json-cls-collectionsWithTopLevelEntityType"/>
+          <rule name="rule-json-cls-codelist-uri-format"/>
+          <rule name="rule-json-cls-restrictExternalIdentifierMember"/>          
+          <rule name="rule-json-cls-restrictExternalEntityTypeMember"/>
+          <!-- not needed because the schema does not contain a union <rule name="rule-json-cls-union-typeDiscriminator"/> -->
+          <rule name="rule-json-cls-primaryPlace"/>
+          <rule name="rule-json-cls-jsonFgGeometry"/>
+          
+          <rule name="rule-json-prop-derivedAsReadOnly"/>
+          <rule name="rule-json-prop-initialValueAsDefault"/>
+          <rule name="rule-json-prop-readOnly"/>
+          <!-- The following rule was excluded, because the 'voidable' concept creates a level of complexity that was deemed to be undesired for the Code Sprint. -->
+          <!-- <rule name="rule-json-prop-voidable"/> -->
+          
+        </EncodingRule>
+      </rules>
+      <xi:include href="./config/StandardRules.xml"/>
+      <xi:include href="./config/StandardMapEntries_JSON_for_GeoSciML.xml"/>
+    </Target>
+  </targets>
+</ShapeChangeConfiguration>

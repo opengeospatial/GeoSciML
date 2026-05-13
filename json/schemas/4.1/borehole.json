@@ -21,9 +21,6 @@
                   "description": "The property referenceLocation is an association between a Borehole and an OriginPosition corresponding to the start point of a borehole log.  This may correspond to the borehole collar location (e.g., kelly bush).",
                   "oneOf": [
                     {
-                      "type": "null"
-                    },
-                    {
                       "$ref": "#/$defs/SCLinkObject"
                     },
                     {
@@ -33,51 +30,30 @@
                 },
                 "indexData": {
                   "description": "The property indexData:BoreholeDetails describes metadata about a borehole, such as the operator, the custodian, dates of drilling, etc.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "$ref": "#BoreholeDetails"
-                    }
-                  ]
+                  "$ref": "#BoreholeDetails"
                 },
                 "downholeDrillingDetails": {
                   "description": "The property downholeDrillingDetails:DrillingDetails specifies the drilling method and borehole diameter for intervals down the borehole.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#DrillingDetails"
-                      },
-                      "uniqueItems": true
-                    }
-                  ]
+                  "type": "array",
+                  "items": {
+                    "$ref": "#DrillingDetails"
+                  },
+                  "uniqueItems": true
                 },
                 "logElement": {
                   "description": "The property logElement is an association between a Borehole and a BoreholeInterval instance to describe measured downhole intervals and their observed features.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/$defs/SCLinkObject"
-                          },
-                          {
-                            "$ref": "#BoreholeInterval"
-                          }
-                        ]
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
                       },
-                      "uniqueItems": true
-                    }
-                  ]
+                      {
+                        "$ref": "#BoreholeInterval"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
                 }
               }
             }
@@ -105,9 +81,6 @@
           "description": "The operator property is an association between a BoreholeDetails and a CIT:CI_ResponsibleParty describing the organisation responsible for commissioning the borehole (as opposed to actually drilling the borehole).",
           "oneOf": [
             {
-              "type": "null"
-            },
-            {
               "$ref": "#/$defs/SCLinkObject"
             },
             {
@@ -118,9 +91,6 @@
         "driller": {
           "description": "The driller property is an association between a BoreholeDetails and a CIT:CI_ResponsibleParty describing of the organisation responsible for drilling the borehole (as opposed to commissioning the borehole).",
           "oneOf": [
-            {
-              "type": "null"
-            },
             {
               "$ref": "#/$defs/SCLinkObject"
             },
@@ -133,9 +103,6 @@
           "description": "The property dateOfDrilling:TM_Period describes the time period during which drilling of the borehole occurred.",
           "oneOf": [
             {
-              "type": "null"
-            },
-            {
               "$ref": "#/$defs/SCLinkObject"
             },
             {
@@ -145,95 +112,53 @@
         },
         "startPoint": {
           "description": "The property startPoint:BoreholeStartPointCode provides a term from a controlled vocabulary indicating the named position relative to ground surface where the borehole commenced. (e.g., natural ground surface, open pit floor, underground, offshore)",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#BoreholeStartPointCode"
-            }
-          ]
+          "$ref": "#BoreholeStartPointCode"
         },
         "inclinationType": {
           "description": "The property inclinationType:BoreholeInclinationCode contains a term from a controlled vocabulary indicating the inclination type of the borehole. Appropriate terms would include vertical; inclined up; inclined down, horizontal.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#BoreholeInclinationCode"
-            }
-          ]
+          "$ref": "#BoreholeInclinationCode"
         },
         "boreholeMaterialCustodian": {
           "description": "The property boreholeMaterialCustodian is an association between BoreholeDetails and a CIT:CI_ResponsibleParty describing the organisation that is custodian of the drilled material recovered from the borehole.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "array",
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/SCLinkObject"
-                  },
-                  {
-                    "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
-                  }
-                ]
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/SCLinkObject"
               },
-              "uniqueItems": true
-            }
-          ]
+              {
+                "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+              }
+            ]
+          },
+          "uniqueItems": true
         },
         "purpose": {
           "description": "The property purpose:BoreholePurposeCode contains a term from a controlled vocabulary describing the purpose for which the borehole was drilled. e.g., site investigation, mineral exploration, hydrocarbon exploration, water resources.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#BoreholePurposeCode"
-              },
-              "uniqueItems": true
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#BoreholePurposeCode"
+          },
+          "uniqueItems": true
         },
         "dataCustodian": {
           "description": "The dataCustodian is an association between a BoreholeDetails and a CIT:CI_ResponsibleParty describing the custodian (person or organisation) that is the custodian of data pertaining to this borehole.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "array",
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/SCLinkObject"
-                  },
-                  {
-                    "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
-                  }
-                ]
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/SCLinkObject"
               },
-              "uniqueItems": true
-            }
-          ]
+              {
+                "$ref": "https://schemas.isotc211.org/json/19115/-4/mdj/1.0.0/mdj.json#/$defs/CI_Responsibility"
+              }
+            ]
+          },
+          "uniqueItems": true
         },
         "boreholeLength": {
           "description": "The property boreholeLength (SWE::Quantity) contains a measurement (a value and a unit of measurement) corresponding to the \"length\" of a borehole determined by the data provider (i.e., \"length\" can have different sources, like drillers measurement, loggers measurement, survey measurement, etc.).",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-            }
-          ]
+          "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
         }
       }
     },
@@ -264,25 +189,15 @@
               "properties": {
                 "observationMethod": {
                   "description": "The observationMethod property (SWE::Category) contains a term from a controlled vocabulary that describes the method used to observe the properties of the borehole.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
-                      },
-                      "uniqueItems": true
-                    }
-                  ]
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Category.json"
+                  },
+                  "uniqueItems": true
                 },
                 "specification": {
                   "description": "The specification property is an association between a BoreholeInterval and a GFI_Feature, a domain feature that is sampled by the interval (e.g., a GeologicUnit). It is semantically equivalent to O\u0026M ISO19156 \"sampledFeature\".",
                   "oneOf": [
-                    {
-                      "type": "null"
-                    },
                     {
                       "$ref": "#/$defs/SCLinkObject"
                     },
@@ -293,39 +208,19 @@
                 },
                 "mappedIntervalBegin": {
                   "description": "The property mappedIntervalBegin (SWE::Quantity) is a measurement (a value and a unit of measurement) corresponding to the measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-                    }
-                  ]
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
                 },
                 "mappedIntervalEnd": {
                   "description": "The mappedIntervalEnd property (SWE::Quantity) is a measurement (a value and a unit of measure) corresponding to the measured distance of the end of the mapped interval along the path of the borehole. The measured value must be greater than or equal to the mappedIntervalBegin value.",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-                    }
-                  ]
+                  "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
                 },
                 "collectionIdentifier": {
                   "description": "The collectionIdentifier:ScopedName is a string unique within a scope that identifies a collection which forms a set BoreholeIntervals. This allows description of multiple downhole logs for a single borehole. The name should identify a particular log observation event.",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": "string"
                 },
                 "shape": {
                   "description": "The property shape:GM_Object is a 1-D interval (e.g., a \"from\" and \"to\", or \"top\" and \"base\" measurement) covering the same distance as mappedIntervalBegin and mappedIntervalEnd.  The geometry shall use a reference to the borehole as the CRS of the containing borehole.",
                   "oneOf": [
-                    {
-                      "type": "null"
-                    },
                     {
                       "$ref": "#/$defs/SCLinkObject"
                     },
@@ -337,9 +232,6 @@
                 "parentBorehole": {
                   "description": "The property parentBorehole is an association between a BoreholeInterval and a Borehole to which the interval belongs.",
                   "oneOf": [
-                    {
-                      "type": "null"
-                    },
                     {
                       "$ref": "#/$defs/SCLinkObject"
                     },
@@ -384,47 +276,19 @@
       "properties": {
         "drillingMethod": {
           "description": "The drillingMethod:BoreholeDrillingMethodCode property contains a term from a controlled vocabulary indicating the drilling method used. Appropriate terms would include rotary air blast, auger, diamond core, air core, etc.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#BoreholeDrillingMethodCode"
-            }
-          ]
+          "$ref": "#BoreholeDrillingMethodCode"
         },
         "boreholeDiameter": {
           "description": "The boreholeDiameter property (SWE::Quantity) contains a measurement (a value and a unit of measure) corresponding to the diameter of the drilled hole.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-            }
-          ]
+          "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
         },
         "intervalBegin": {
           "description": "The intervalBegin property (SWE::Quantity) contains a measurement (a value and a unit of measurement) that corresponds to the measured distance of the start of the interval along the path of the borehole. The measured value must be less than or equal to the intervalEnd value.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-            }
-          ]
+          "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
         },
         "intervalEnd": {
           "description": "The property intervalEnd (SWE::Quantity) contains a measurement (a value and a unit of measurement) of the measured distance of the end of the interval along the path of the borehole. The measured value must be greater than or equal to the intervalBegin value.",
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
-            }
-          ]
+          "$ref": "https://schemas.opengis.net/sweCommon/3.0/json/Quantity.json"
         }
       }
     },
@@ -464,25 +328,18 @@
                 },
                 "relatedBorehole": {
                   "description": "The hole that has this collar for its start point",
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/$defs/SCLinkObject"
-                          },
-                          {
-                            "$ref": "#Borehole"
-                          }
-                        ]
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SCLinkObject"
                       },
-                      "uniqueItems": true
-                    }
-                  ]
+                      {
+                        "$ref": "#Borehole"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
                 }
               }
             }

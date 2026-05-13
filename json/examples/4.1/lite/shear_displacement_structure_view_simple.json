@@ -1,0 +1,25 @@
+{
+  "type": "Feature",
+  "featureType": "ShearDisplacementStructureView",
+  "id": "fault-view-1",
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        149.387,
+        -35.124
+      ],
+      [
+        149.461,
+        -35.344
+      ]
+    ]
+  },
+  "time": null,
+  "properties": {
+    "name": "Lake George Fault",
+    "faultType": "normal fault",
+    "faultType_uri": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault",
+    "specification_uri": "http://data.geoscience.gov.au/feature/fault/lake-george-fault-1"
+  }
+}

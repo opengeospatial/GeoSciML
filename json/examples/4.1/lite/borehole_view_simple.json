@@ -1,0 +1,20 @@
+{
+  "type": "Feature",
+  "featureType": "BoreholeView",
+  "id": "borehole-view-1",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      149.252,
+      -35.401
+    ]
+  },
+  "time": null,
+  "properties": {
+    "name": "GRS-001",
+    "purpose": "mineral exploration",
+    "status": "completed",
+    "drillingMethod": "diamond core drilling",
+    "boreholeLength_m": 312.5
+  }
+}

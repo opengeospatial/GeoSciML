@@ -1,0 +1,28 @@
+{
+  "type": "Feature",
+  "featureType": "GeologicSpecimenView",
+  "id": "specimen-view-complex",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      149.312,
+      -35.475
+    ]
+  },
+  "time": null,
+  "properties": {
+    "label": "GRS-2019-042",
+    "description": "Medium to coarse-grained, well-sorted, sub-angular quartz arenite. White to pale yellow, friable. Collected from outcrop of Hervey Group sandstone on roadcut.",
+    "specimenType": "hand specimen",
+    "materialClass": "rock",
+    "positionalAccuracy": "5 m",
+    "samplingTime": "2019-03-15",
+    "samplingMethod": "field mapping survey \u2013 hand specimen from outcrop",
+    "currentLocation": "Geoscience Australia Sample Repository, Canberra (drawer G-2019-3)",
+    "source": "Smith, J. (2019). Goulburn mapping campaign field samples.",
+    "specimenType_uri": "http://resource.geosciml.org/classifier/cgi/specimentype/hand_specimen",
+    "materialClass_uri": "http://resource.geosciml.org/classifier/cgi/materialclass/rock",
+    "metadata_uri": "http://data.geoscience.gov.au/metadata/specimen/GRS-2019-042",
+    "genericSymbolizer": "SP_HandSpecimen"
+  }
+}

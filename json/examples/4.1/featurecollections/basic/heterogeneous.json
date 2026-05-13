@@ -1,0 +1,72 @@
+{
+  "$comment": "Heterogeneous FeatureCollection example — collection has NO top-level featureType; each feature carries its own. Validates against schemas/json/4.1/geosciml_basic_featurecollection.json#FeatureCollection (else-branch dispatch). Members are the 5 single-feature examples in this directory, condensed inline.",
+  "type": "FeatureCollection",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/basic/4.1/json/features.json/4.1/geosciml_basic_featurecollection.json"
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "event.1",
+      "featureType": "GeologicEvent",
+      "geometry": null,
+      "properties": {
+        "name": "Kanimblan Orogeny",
+        "eventProcess": [
+          "http://resource.geosciml.org/classifier/cgi/eventprocess/deformation"
+        ],
+        "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Tournaisian",
+        "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Serpukhovian"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "HerveyGroup.1",
+      "featureType": "GeologicUnit",
+      "geometry": null,
+      "properties": {
+        "name": "Hervey Group",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mappedfeature.1",
+      "featureType": "MappedFeature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[132.334, -25.9020], [132.43, -25.9025], [132.67, -25.9030]]
+      },
+      "properties": {
+        "resolutionRepresentativeFraction": 250000,
+        "mappingFrame": "http://resource.geosciml.org/classifier/cgi/mappingframe/top-of-bedrock",
+        "exposure": "http://resource.geosciml.org/classifier/cgi/exposure/concealed",
+        "specification": {
+          "href": "https://example.org/geosci-json/fold.1",
+          "title": "Inferred fold structure"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "GEOMORPH_1",
+      "featureType": "NaturalGeomorphologicFeature",
+      "geometry": null,
+      "properties": {
+        "name": "UNNAMED GLACIAL OUTWASH CHANNEL",
+        "naturalGeomorphologicFeatureType": "http://inspire.ec.europa.eu/codelist/NaturalGeomorphologicFeatureTypeValue/glacial"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "fault.1",
+      "featureType": "ShearDisplacementStructure",
+      "geometry": null,
+      "properties": {
+        "name": "Lake George Fault",
+        "faultType": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault"
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnitView",
+      "id": "gu-view-1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              149.12,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.31
+            ]
+          ]
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "Hervey Group",
+        "geologicUnitType": "lithostratigraphic unit",
+        "rank": "group",
+        "lithology": "sandstone, siltstone and conglomerate",
+        "geologicHistory": "Late Devonian fluvial to shallow marine deposition",
+        "geologicUnitType_uri": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "representativeLithology_uri": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone",
+        "representativeAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+        "specification_uri": "http://data.geoscience.gov.au/feature/geologicunit/hervey-group-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "ShearDisplacementStructureView",
+      "id": "fault-view-1",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            149.387,
+            -35.124
+          ],
+          [
+            149.461,
+            -35.344
+          ]
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "Lake George Fault",
+        "faultType": "normal fault",
+        "movementType": "dip-slip",
+        "geologicHistory": "Devonian to Carboniferous",
+        "faultType_uri": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault",
+        "representativeAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+        "specification_uri": "http://data.geoscience.gov.au/feature/fault/lake-george-fault-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "ContactView",
+      "id": "contact-view-1",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            149.12,
+            -35.31
+          ],
+          [
+            149.45,
+            -35.58
+          ]
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "Base of Devonian sequence",
+        "contactType": "unconformity",
+        "contactType_uri": "http://resource.geosciml.org/classifier/cgi/contacttype/unconformity",
+        "specification_uri": "http://data.geoscience.gov.au/feature/contact/base-devonian-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "BoreholeView",
+      "id": "borehole-view-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.252,
+          -35.401
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "GRS-001",
+        "purpose": "mineral exploration",
+        "status": "completed",
+        "drillingMethod": "diamond core drilling",
+        "boreholeLength_m": 312.5,
+        "elevation_m": 672.3,
+        "elevation_srs": "http://www.opengis.net/def/crs/EPSG/0/5711"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "SiteObservationView",
+      "id": "obs-view-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.312,
+          -35.475
+        ]
+      },
+      "time": null,
+      "properties": {
+        "siteName": "field station FS-42",
+        "observedProperty": "planar orientation \u2013 strike and dip",
+        "observedValue": "045 / 32",
+        "observedValueUom": "degrees",
+        "propertyType_uri": "http://resource.geosciml.org/classifierScheme/cgi/observedproperty/planar_orientation",
+        "symbolRotation": 45
+      }
+    }
+  ]
+}

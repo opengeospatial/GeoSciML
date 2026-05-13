@@ -1,0 +1,21 @@
+{
+  "type": "Feature",
+  "featureType": "SiteObservationView",
+  "id": "obs-view-1",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      149.312,
+      -35.475
+    ]
+  },
+  "time": null,
+  "properties": {
+    "siteName": "field station FS-42",
+    "observationName": "bedding orientation measurement",
+    "observedProperty": "planar orientation \u2013 strike and dip",
+    "observedValue": "045 / 32",
+    "observedValueUom": "degrees",
+    "symbolRotation": 45
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "type": "Feature",
+  "featureType": "SiteObservationView",
+  "id": "obs-view-complex",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      149.312,
+      -35.475
+    ]
+  },
+  "time": null,
+  "properties": {
+    "siteName": "field station FS-42",
+    "observationName": "bedding orientation at FS-42",
+    "label": "045/32",
+    "description": "Strike and dip of bedding in Hervey Group sandstone, measured using Brunton compass. Bedding is moderately inclined to the SE.",
+    "featureOfInterest": "bedding in Hervey Group sandstone",
+    "observedProperty": "planar orientation \u2013 strike and dip (right-hand rule)",
+    "observedValue": "045 / 32",
+    "observedValueUom": "degrees",
+    "observationMethod": "Brunton compass measurement",
+    "positionalAccuracy": "5 m",
+    "source": "Smith, J. (2019). Field notes, Goulburn mapping campaign, day 3.",
+    "featureOfInterest_uri": "http://data.geoscience.gov.au/feature/geologicunit/hervey-group-1",
+    "propertyType_uri": "http://resource.geosciml.org/classifierScheme/cgi/observedproperty/planar_orientation",
+    "metadata_uri": "http://data.geoscience.gov.au/metadata/fieldcampaign/goulburn-2019",
+    "genericSymbolizer": "SD_StrikeDip",
+    "symbolRotation": 45
+  },
+  "coordRefSys": "http://www.opengis.net/def/crs/EPSG/0/4283",
+  "place": {
+    "type": "Point",
+    "coordinates": [
+      149.312,
+      -35.475
+    ]
+  }
+}

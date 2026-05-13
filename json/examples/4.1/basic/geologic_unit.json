@@ -70,10 +70,13 @@
       {
         "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/unspecifiedPartRole",
         "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-mudstone",
+          "geometry": null,
           "properties": {
-            "purpose": "instance"
-          },
-          "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+          }
         },
         "proportion": {
           "type": "QuantityRange",
@@ -86,10 +89,13 @@
       {
         "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/unspecifiedPartRole",
         "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-sandstone",
+          "geometry": null,
           "properties": {
-            "purpose": "instance"
-          },
-          "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+          }
         },
         "proportion": {
           "type": "QuantityRange",

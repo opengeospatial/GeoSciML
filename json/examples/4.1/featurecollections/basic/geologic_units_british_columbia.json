@@ -20,15 +20,27 @@
         "hierarchyLink": [
           {
             "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
-            "targetUnit": { "href": "#AkolkolexFormation", "title": "Akolkolex Formation", "rel": "containsFormation" }
+            "targetUnit": {
+              "href": "#AkolkolexFormation",
+              "title": "Akolkolex Formation",
+              "rel": "containsFormation"
+            }
           },
           {
             "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
-            "targetUnit": { "href": "#IndexFormation",     "title": "Index Formation",     "rel": "containsFormation" }
+            "targetUnit": {
+              "href": "#IndexFormation",
+              "title": "Index Formation",
+              "rel": "containsFormation"
+            }
           },
           {
             "role": "http://resource.geosciml.org/classifier/cgi/geologicunitpartrole/constituent_unit",
-            "targetUnit": { "href": "#JowettFormation",    "title": "Jowett Formation",    "rel": "containsFormation" }
+            "targetUnit": {
+              "href": "#JowettFormation",
+              "title": "Jowett Formation",
+              "rel": "containsFormation"
+            }
           }
         ]
       }
@@ -46,24 +58,34 @@
         "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
         "composition": [
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/arenite"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "AkolkolexFormation-arenite",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/arenite"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "AkolkolexFormation-quartzite",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite"
+              }
+            }
           }
         ],
         "relatedFeature": [
-          { "href": "#LardeauGroup", "title": "Lardeau Group — Akolkolex is a constituent formation", "rel": "isPartOf" }
+          {
+            "href": "#LardeauGroup",
+            "title": "Lardeau Group — Akolkolex is a constituent formation",
+            "rel": "isPartOf"
+          }
         ]
       }
     },
@@ -80,80 +102,111 @@
         "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
         "composition": [
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/arenite"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-arenite",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/arenite"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/chemical_sedimentary_material"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-chemical_sedimentary_material",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/chemical_sedimentary_material"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-limestone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/marble"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-marble",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/marble"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metamorphic_rock"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-metamorphic_rock",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metamorphic_rock"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-metasomatic_rock",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/phyllite"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-phyllite",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/phyllite"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-quartzite",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/schist"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "IndexFormation-schist",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/schist"
+              }
+            }
           }
         ],
         "relatedFeature": [
-          { "href": "#LardeauGroup", "title": "Lardeau Group — Index is a constituent formation", "rel": "isPartOf" }
+          {
+            "href": "#LardeauGroup",
+            "title": "Lardeau Group — Index is a constituent formation",
+            "rel": "isPartOf"
+          }
         ]
       }
     },
@@ -170,24 +223,34 @@
         "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
         "composition": [
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "JowettFormation-metasomatic_rock",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock"
+              }
+            }
           },
           {
-            "role": null,
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/schist"
-            },
-            "proportion": null
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "JowettFormation-schist",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/schist"
+              }
+            }
           }
         ],
         "relatedFeature": [
-          { "href": "#LardeauGroup", "title": "Lardeau Group — Jowett is a constituent formation", "rel": "isPartOf" }
+          {
+            "href": "#LardeauGroup",
+            "title": "Lardeau Group — Jowett is a constituent formation",
+            "rel": "isPartOf"
+          }
         ]
       }
     }

@@ -62,7 +62,6 @@
         "rel": "olderHost"
       }
     ],
-    "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity",
-    "stContactDescription": null
+    "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity"
   }
 }

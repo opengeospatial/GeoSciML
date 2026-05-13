@@ -47,8 +47,7 @@
           { "href": "https://example.org/loop3d/JsFormation", "title": "Js Formation (Jurassic) — younger host", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/OsFormation", "title": "Os Formation (Ordovician) — older host", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/angular_unconformity",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/angular_unconformity"
       }
     },
     {
@@ -78,8 +77,7 @@
           { "href": "https://example.org/loop3d/JsFormation", "title": "Js Formation (Jurassic) — younger host", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/SsFormation", "title": "Ss Formation (Silurian) — older host", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/angular_unconformity",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/angular_unconformity"
       }
     },
     {
@@ -109,8 +107,7 @@
           { "href": "https://example.org/loop3d/JsFormation", "title": "Js Formation (Jurassic) — younger host", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/XmRockBody", "title": "Xm Rock Body (Early Proterozoic gneiss) — older host", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity"
       }
     },
     {
@@ -142,8 +139,7 @@
           { "href": "https://example.org/loop3d/KdDike",      "title": "Kd Mafic Dike (Cretaceous) — younger host (intrusive)", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/JsFormation", "title": "Js Formation (Jurassic) — older host (country rock)", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/igneous_intrusive_contact",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/igneous_intrusive_contact"
       }
     },
     {
@@ -175,8 +171,7 @@
           { "href": "https://example.org/loop3d/KgGranite",   "title": "Kg Granite (Cretaceous) — younger host (intrusive)", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/JsFormation", "title": "Js Formation (Jurassic) — older host (country rock)", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/igneous_intrusive_contact",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/igneous_intrusive_contact"
       }
     },
     {
@@ -220,8 +215,7 @@
           { "href": "https://example.org/loop3d/MsFormation", "title": "Ms Formation (Late Miocene) — younger host", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/JsFormation", "title": "Js Formation (Jurassic) — older host", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/disconformity",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/disconformity"
       }
     },
     {
@@ -265,8 +259,7 @@
           { "href": "https://example.org/loop3d/MsFormation", "title": "Ms Formation (Late Miocene) — younger host", "rel": "youngerHost" },
           { "href": "https://example.org/loop3d/KgGranite",   "title": "Kg Granite (Cretaceous) — older host", "rel": "olderHost" }
         ],
-        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity",
-        "stContactDescription": null
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity"
       }
     }
   ]

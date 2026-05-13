@@ -44,29 +44,49 @@
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "SOLT-mudstone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/dominant",
               "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [50, 95]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                50,
+                95
+              ]
             }
           },
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "SOLT-limestone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/subordinate",
               "label": "qualitative — subordinate proportion; numeric range 5–25 % is a placeholder. Source TTL records only the qualitative term gsoc:Subordinate_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [5, 25]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                5,
+                25
+              ]
             }
           }
         ],
@@ -174,29 +194,49 @@
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "BEL-limestone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/dominant",
               "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [50, 95]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                50,
+                95
+              ]
             }
           },
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "BEL-mudstone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/subordinate",
               "label": "qualitative — subordinate proportion; numeric range 5–25 % is a placeholder. Source TTL records only the qualitative term gsoc:Subordinate_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [5, 25]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                5,
+                25
+              ]
             }
           }
         ],
@@ -277,15 +317,25 @@
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/main_body",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "BOUL-mudstone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/dominant",
               "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [50, 95]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                50,
+                95
+              ]
             }
           }
         ],
@@ -376,29 +426,49 @@
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "BMBG-mudstone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/dominant",
               "label": "qualitative — dominant proportion; numeric range 50–95 % is a placeholder. Source TTL records only the qualitative term gsoc:Dominant_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [50, 95]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                50,
+                95
+              ]
             }
           },
           {
             "role": "http://resource.geosciml.org/classifier/cgi/compoundmaterialconstituentpartrole/interbedded_part",
             "material": {
-              "properties": { "purpose": "typicalNorm" },
-              "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "BMBG-limestone",
+              "geometry": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/limestone"
+              }
             },
             "proportion": {
               "type": "QuantityRange",
               "definition": "http://resource.geosciml.org/concept/proportion/subordinate",
               "label": "qualitative — subordinate proportion; numeric range 5–25 % is a placeholder. Source TTL records only the qualitative term gsoc:Subordinate_Proportion, with no measured percentage.",
-              "uom": { "code": "%" },
-              "value": [5, 25]
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                5,
+                25
+              ]
             }
           }
         ],

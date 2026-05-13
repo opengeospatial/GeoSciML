@@ -1,16 +1,31 @@
 
 basic  →  geoscimlBasic.json
+  FAIL  examples/json/4.1/basic/contact.json
+         properties/stContactDescription → None is not of type 'object'
   OK    examples/json/4.1/basic/contact_complex.json
+  OK*   examples/json/4.1/basic/contact_contacttype_null_INVALID.json  (invalid as expected)
   OK    examples/json/4.1/basic/contact_simple.json
+  FAIL  examples/json/4.1/basic/fold.json
+         properties/stFoldDescription → None is not of type 'object'
   OK    examples/json/4.1/basic/fold_complex.json
+  OK*   examples/json/4.1/basic/fold_profiletype_null_INVALID.json  (invalid as expected)
   OK    examples/json/4.1/basic/fold_simple.json
+  OK    examples/json/4.1/basic/geologic_event.json
+  FAIL  examples/json/4.1/basic/geologic_unit.json
+         properties/composition/0/material → {'properties': {'purpose': 'instance'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'} is not valid under any of the given schemas
+         properties/composition/1/material → {'properties': {'purpose': 'instance'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone'} is not valid under any of the given schemas
   OK    examples/json/4.1/basic/geologic_unit_complex.json
+  OK*   examples/json/4.1/basic/geologic_unit_composition_null_role_INVALID.json  (invalid as expected)
   OK    examples/json/4.1/basic/geologic_unit_simple.json
+  OK    examples/json/4.1/basic/mapped_feature.json
   OK    examples/json/4.1/basic/mapped_feature_complex.json
   OK    examples/json/4.1/basic/mapped_feature_simple.json
+  OK    examples/json/4.1/basic/natural_geomorphologic_feature.json
   OK    examples/json/4.1/basic/natural_geomorphologic_feature_complex.json
   OK    examples/json/4.1/basic/natural_geomorphologic_feature_simple.json
+  OK    examples/json/4.1/basic/shear_displacement_structure.json
   OK    examples/json/4.1/basic/shear_displacement_structure_complex.json
+  OK*   examples/json/4.1/basic/shear_displacement_structure_faulttype_null_INVALID.json  (invalid as expected)
   OK    examples/json/4.1/basic/shear_displacement_structure_simple.json
 
 borehole  →  borehole.json
@@ -19,8 +34,118 @@ borehole  →  borehole.json
   OK    examples/json/4.1/borehole/origin_position_simple.json
 
 featurecollections/basic  →  geosciml_basic_featurecollection.json
+  FAIL  examples/json/4.1/featurecollections/basic/contacts_complex_scenario.json
+         features/0/properties/stContactDescription → None is not of type 'object'
+         features/1/properties/stContactDescription → None is not of type 'object'
+         features/2/properties/stContactDescription → None is not of type 'object'
+         features/3/properties/stContactDescription → None is not of type 'object'
+         features/4/properties/stContactDescription → None is not of type 'object'
+         features/5/properties/stContactDescription → None is not of type 'object'
+         features/6/properties/stContactDescription → None is not of type 'object'
+  FAIL  examples/json/4.1/featurecollections/basic/geologic_units_british_columbia.json
+         features/1/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/arenite'} is not valid under any of the given schemas
+         features/1/properties/composition/0/proportion → None is not of type 'object'
+         features/1/properties/composition/0/proportion → None is not of type 'object'
+         features/1/properties/composition/0/proportion → None is not of type 'object'
+         features/1/properties/composition/0/proportion → None is not of type 'object'
+         features/1/properties/composition/0/proportion → None is not of type 'object'
+         features/1/properties/composition/0/role → None is not of type 'string'
+         features/1/properties/composition/1/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite'} is not valid under any of the given schemas
+         features/1/properties/composition/1/proportion → None is not of type 'object'
+         features/1/properties/composition/1/proportion → None is not of type 'object'
+         features/1/properties/composition/1/proportion → None is not of type 'object'
+         features/1/properties/composition/1/proportion → None is not of type 'object'
+         features/1/properties/composition/1/proportion → None is not of type 'object'
+         features/1/properties/composition/1/role → None is not of type 'string'
+         features/2/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/arenite'} is not valid under any of the given schemas
+         features/2/properties/composition/0/proportion → None is not of type 'object'
+         features/2/properties/composition/0/proportion → None is not of type 'object'
+         features/2/properties/composition/0/proportion → None is not of type 'object'
+         features/2/properties/composition/0/proportion → None is not of type 'object'
+         features/2/properties/composition/0/proportion → None is not of type 'object'
+         features/2/properties/composition/0/role → None is not of type 'string'
+         features/2/properties/composition/1/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/chemical_sedimentary_material'} is not valid under any of the given schemas
+         features/2/properties/composition/1/proportion → None is not of type 'object'
+         features/2/properties/composition/1/proportion → None is not of type 'object'
+         features/2/properties/composition/1/proportion → None is not of type 'object'
+         features/2/properties/composition/1/proportion → None is not of type 'object'
+         features/2/properties/composition/1/proportion → None is not of type 'object'
+         features/2/properties/composition/1/role → None is not of type 'string'
+         features/2/properties/composition/2/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/limestone'} is not valid under any of the given schemas
+         features/2/properties/composition/2/proportion → None is not of type 'object'
+         features/2/properties/composition/2/proportion → None is not of type 'object'
+         features/2/properties/composition/2/proportion → None is not of type 'object'
+         features/2/properties/composition/2/proportion → None is not of type 'object'
+         features/2/properties/composition/2/proportion → None is not of type 'object'
+         features/2/properties/composition/2/role → None is not of type 'string'
+         features/2/properties/composition/3/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/marble'} is not valid under any of the given schemas
+         features/2/properties/composition/3/proportion → None is not of type 'object'
+         features/2/properties/composition/3/proportion → None is not of type 'object'
+         features/2/properties/composition/3/proportion → None is not of type 'object'
+         features/2/properties/composition/3/proportion → None is not of type 'object'
+         features/2/properties/composition/3/proportion → None is not of type 'object'
+         features/2/properties/composition/3/role → None is not of type 'string'
+         features/2/properties/composition/4/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/metamorphic_rock'} is not valid under any of the given schemas
+         features/2/properties/composition/4/proportion → None is not of type 'object'
+         features/2/properties/composition/4/proportion → None is not of type 'object'
+         features/2/properties/composition/4/proportion → None is not of type 'object'
+         features/2/properties/composition/4/proportion → None is not of type 'object'
+         features/2/properties/composition/4/proportion → None is not of type 'object'
+         features/2/properties/composition/4/role → None is not of type 'string'
+         features/2/properties/composition/5/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock'} is not valid under any of the given schemas
+         features/2/properties/composition/5/proportion → None is not of type 'object'
+         features/2/properties/composition/5/proportion → None is not of type 'object'
+         features/2/properties/composition/5/proportion → None is not of type 'object'
+         features/2/properties/composition/5/proportion → None is not of type 'object'
+         features/2/properties/composition/5/proportion → None is not of type 'object'
+         features/2/properties/composition/5/role → None is not of type 'string'
+         features/2/properties/composition/6/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/phyllite'} is not valid under any of the given schemas
+         features/2/properties/composition/6/proportion → None is not of type 'object'
+         features/2/properties/composition/6/proportion → None is not of type 'object'
+         features/2/properties/composition/6/proportion → None is not of type 'object'
+         features/2/properties/composition/6/proportion → None is not of type 'object'
+         features/2/properties/composition/6/proportion → None is not of type 'object'
+         features/2/properties/composition/6/role → None is not of type 'string'
+         features/2/properties/composition/7/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/quartzite'} is not valid under any of the given schemas
+         features/2/properties/composition/7/proportion → None is not of type 'object'
+         features/2/properties/composition/7/proportion → None is not of type 'object'
+         features/2/properties/composition/7/proportion → None is not of type 'object'
+         features/2/properties/composition/7/proportion → None is not of type 'object'
+         features/2/properties/composition/7/proportion → None is not of type 'object'
+         features/2/properties/composition/7/role → None is not of type 'string'
+         features/2/properties/composition/8/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/schist'} is not valid under any of the given schemas
+         features/2/properties/composition/8/proportion → None is not of type 'object'
+         features/2/properties/composition/8/proportion → None is not of type 'object'
+         features/2/properties/composition/8/proportion → None is not of type 'object'
+         features/2/properties/composition/8/proportion → None is not of type 'object'
+         features/2/properties/composition/8/proportion → None is not of type 'object'
+         features/2/properties/composition/8/role → None is not of type 'string'
+         features/3/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/metasomatic_rock'} is not valid under any of the given schemas
+         features/3/properties/composition/0/proportion → None is not of type 'object'
+         features/3/properties/composition/0/proportion → None is not of type 'object'
+         features/3/properties/composition/0/proportion → None is not of type 'object'
+         features/3/properties/composition/0/proportion → None is not of type 'object'
+         features/3/properties/composition/0/proportion → None is not of type 'object'
+         features/3/properties/composition/0/role → None is not of type 'string'
+         features/3/properties/composition/1/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/schist'} is not valid under any of the given schemas
+         features/3/properties/composition/1/proportion → None is not of type 'object'
+         features/3/properties/composition/1/proportion → None is not of type 'object'
+         features/3/properties/composition/1/proportion → None is not of type 'object'
+         features/3/properties/composition/1/proportion → None is not of type 'object'
+         features/3/properties/composition/1/proportion → None is not of type 'object'
+         features/3/properties/composition/1/role → None is not of type 'string'
+  FAIL  examples/json/4.1/featurecollections/basic/geologic_units_isle_of_wight.json
+         features/0/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'} is not valid under any of the given schemas
+         features/0/properties/composition/1/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/limestone'} is not valid under any of the given schemas
+         features/1/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/limestone'} is not valid under any of the given schemas
+         features/1/properties/composition/1/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'} is not valid under any of the given schemas
+         features/2/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'} is not valid under any of the given schemas
+         features/3/properties/composition/0/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone'} is not valid under any of the given schemas
+         features/3/properties/composition/1/material → {'properties': {'purpose': 'typicalNorm'}, 'lithology': 'http://resource.geosciml.org/classifier/cgi/simplelithology/limestone'} is not valid under any of the given schemas
   OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_geologicunit.json
   OK    examples/json/4.1/featurecollections/basic/geosciml_basic_featurecollection_mixed.json
+  OK    examples/json/4.1/featurecollections/basic/heterogeneous.json
+  OK    examples/json/4.1/featurecollections/basic/homogeneous.json
   skip  examples/json/4.1/featurecollections/geologicTime  (directory not found)
   skip  examples/json/4.1/featurecollections/geoscimlExtension  (directory not found)
   skip  examples/json/4.1/featurecollections/laboratoryAnalysisSpecimen  (directory not found)
@@ -61,4 +186,4 @@ lite  →  geoscimlLite.json
   OK    examples/json/4.1/lite/site_observation_view_complex.json
   OK    examples/json/4.1/lite/site_observation_view_simple.json
 
-Results:  41 passed, 2 expected-invalid, 0 failed, 0 skipped  (43 total)
+Results:  47 passed, 6 expected-invalid, 6 failed, 0 skipped  (59 total)

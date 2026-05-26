@@ -37,7 +37,9 @@ The definition (everything from the Notes field of a model element in Enterprise
 
 The GeoSciML application schemas depend upon a number of other schemas, primarily ISO schemas. The mappings for external types used in the GeoSciML schemas is defined in the ShapeChange configuration file [StandardMapEntries_JSON_for_GeoSciML.xml](https://github.com/opengeospatial/geosciml-json-code-sprint/blob/main/shapechange/config/StandardMapEntries_JSON_for_GeoSciML.xml).
 
-NOTE: For several external types (marked with `TBD` in the configuration file), a direct mapping to a standardized JSON Schema implementation was not found. For the code sprint, mappings were used that tried to suit the intent. However, finding and developing appropriate mappings requires future work. This is a limitation (documented further below).
+For several external types (marked with `TBD` in the configuration file), a direct mapping to a standardized JSON Schema implementation was not found. For the code sprint, mappings were used that tried to suit the intent. However, finding and developing appropriate mappings requires future work. This is a limitation (documented further below).
+
+NOTE: ISO 19107 geometry types are mapped to simple feature geometries. JSON-FG supports additional (non-simple) geometry types.
 
 
 ### Object identifier
@@ -122,6 +124,7 @@ By reference encoding uses link objects. That supports the "rel-as-link" profile
 * JSON Schema files have been created for all of the GeoSciML application schemas, and added to the [git repository for the GeoSciML JSON code sprint](https://github.com/opengeospatial/geosciml-json-code-sprint). However, note that limitations have been identified.
 * ShapeChange configurations for automatically deriving the JSON Schema files are available in the repository.
 * A number of examples with JSON encoded GeoSciML features and also feature collections have been created. A python script for validating the examples against the schemas, as well as automated GitHub actions to do so, were created.
+  * Note that the examples contain the `conformsTo`-member, but without identifiers of JSON-FG conformance classes. That should be rectified in the future. 
 
 ## Limitations
 
@@ -163,7 +166,7 @@ This git repository has a validate.py script, with which examples are automatica
 
 For validating a JSON instance yourself, other JSON Schema validators can be used. An example is the online tool at https://www.jsonschemavalidator.net/.
 
-Here is an example of a JSON Schema fragment for validating against the schema definition for feature type BoreholeView from GeoSciMLLite, with the schema file published (for the code sprint) on https://ext.iide.dev:
+Here is an example of a JSON Schema fragment for validating against the schema definition for feature type BoreholeView from GeoSciMLLite, with the schema file published (for the code sprint) on `https://ext.iide.dev` (note that interactive instruments will keep the files there at least until July 31, 2026 - they may be removed any time thereafter):
 
 ```json
 {
@@ -171,5 +174,3 @@ Here is an example of a JSON Schema fragment for validating against the schema d
   "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#/$defs/BoreholeView"
 }
 ```
-
-

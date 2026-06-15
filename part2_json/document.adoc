@@ -1,4 +1,4 @@
-= OGC (add title text)
+= DRAFT OGC Geoscience Markup Language (GeoSciML) - Part 2: JSON Encoding
 :doctype: standard
 :encoding: utf-8
 :lang: en

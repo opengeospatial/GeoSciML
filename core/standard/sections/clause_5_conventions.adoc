@@ -1,0 +1,107 @@
+== Conventions
+
+This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+
+=== Requirement class
+
+Each normative statement (requirement or recommendation) in this specification is a member of a requirements class. Each requirements class is described in a discrete clause or sub-clause, and summarized using the following template:
+
+[width="100%",cols="46%,54%",options="header",]
+|===
+|*Requirements class* |*/req/++{++classM}*
+|*Target type* |++[++artefact or technology type++]++
+|*Dependency* |++[++identifier for another requirements class++]++
+|*Requirement* |/req/++{++classM}/++{++reqN}
+|*Recommendation* |/req/++{++classM}/++{++recO}
+|*Requirement* |/req/++{++classM}/++{++reqP}
+|*Requirement /Recommendation* |++[++repeat as necessary++]++
+|===
+
+All requirements in a requirements class must be satisfied. Hence, the requirements class is the unit of re-use and dependency, and the value of a dependency requirement is another requirements class. All requirements in a dependency must also be satisfied by a conforming implementation. A requirements class may consist only of dependencies and introduce no new requirements.
+
+=== Requirement and Recommendation
+
+All requirements and recommendations are normative, and each is presented using the following template:
+
+[width="100%",cols="100%",options="header",]
+|===
+|*Requirement /req/++[++classM++]++/++[++reqN++]++*
+|++[++Normative statement++]++
+|===
+
+ 
+
+where /req/++[++classM++]++/++[++reqN++]++ identifies the requirement or recommendation. The use of this layout convention allows the normative provisions of this specification to be easily located by implementers.
+
+=== Conformance class
+
+Conformance to this specification is possible at a number of levels, specified by conformance classes (Annex A). Each conformance class is summarized using the following template:
+
+[width="100%",cols="29%,71%",options="header",]
+|===
+|*Conformance class* |
+|/conf/++{++classM} |
+|*Dependency* |++[++identifier for another conformance class++]++
+|*Requirements* |/req/++{++classA}
+|*Tests* |++[++reference to clause(s) containing tests++]++
+|===
+
+All tests in a class must be passed. Each conformance class tests conformance to a set of requirements packaged in a requirements class.
+
+W3C Schema (XSD) and ISO Schematron (SCH) files are considered as part of this specification, although available online only, due to concerns about document size. Many requirements are expressed in a single XSD or SCH file, although tests are listed individually in the conformance annex (one test for XSD and one test for SCH). 
+
+Schematron files explicitly specify which requirements are being tested in the title of the schematron pattern.
+
+[source,xml]
+----
+<pattern id="unit-of-measure">
+    <title>Test requirement: /req/gsml4xsd/unit-of-measure</title>
+    <rule context="SWE::Quantity">
+        <assert test="SWE::Quantity">Quantity must have a UOM</assert>
+    </rule>
+</pattern>
+----
+
+=== Identifiers
+
+The normative provisions in this specification are denoted by a URI constructed using this pattern:
+
+http://www.opengis.net/spec/++{++standard}/++{++m.n}
+
+All requirements and conformance tests that appear in this document are denoted by a partial URI which is relative to this base. The identifier supports cross-referencing of class membership, dependencies, and links from each conformance test to the requirements tested. In this specification identifiers are expressed as partial URIs or paths, which can be appended to a base URI that identifies the specification as a whole in order to construct a complete URI for identification in an external context.
+
+The URI for each requirements class has the form:
+
+http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++.
+
+The URI for each requirement or recommendation has the form:
+
+http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++/++[++reqN++]++.
+
+The URI for each conformance class has the form:
+
+http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++.
+
+The URI for each conformance test has the form:
+
+http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++/++[++testN++]++.
+
+=== Classifiers
+
+This document contains a large number of references to classifiers that might sometimes be ambiguous.  Classes and packages are simply referred by their name formed using “CamelCase” name in mono space type.  Duplicate names do exist and the scope (the package of a class or the class a property belongs to) must be made explicit. 
+
+OCL syntax will be used to identify a logical model classifier from the UML model.
+
+Package::++{++…}Package::Classifier::Property:Type
+
+Package names are not formal in UML and can change from one implementation to another.  The reference model used by GeoSciML, and several other domain models, is HollowWorld.  For example, a complete path for a SF++_++SamplingPoint in HollowWorld (from HollowWorld root) is
+
+ISO TC211::ISO 19156 All::ISO 19156:2011 Observations and Measurements::Sampling Features::samplingPoint::SF++_++SamplingPoint
+
+For the sake of readability, and also because some HollowWorld package names do not have OCL friendly names (e.g. some package names contain ‘:’, as shown in the previous example), this document will use shortcuts to identify packages.  For example, for OM::SF++_++SamplingPoint, OM acts as a shortcut for (ISO TC211::ISO 19156 All::ISO 19156:2011 Observations and Measurements::++*++) that includes all classifiers in all sub packages and avoids creating a shortcut for all sub packages.  The list of shortcuts is provided in Section https://docs.ogc.org/is/16-008/16-008.html#19[[.underline]#8.1.2#].  GeoSciML also uses the recently published ISO19115-3 model which has numerous classifier name overlaps with ISO19115 from HollowWorld.
+
+W3C XPath will be used in XML instances.  XML entities will be identified using their full qualified name (namespace, identified by its prefix, and entity name).
+
+* `gsmlb:GeologicUnit` refers to an instance of GeologicUnit, from namespace `xmlns:gsmlb="http://www.opengis.net/gsml/4.1/GeoSciML-Basic"`
+* `gsmlb:GeologicUnit/gml:name` refers to the name property of GeologicUnit
+* `gsmlb:GeologicUnit/gml:name/@codeName` refers to the codeName attribute of the name property of GeologicUnit

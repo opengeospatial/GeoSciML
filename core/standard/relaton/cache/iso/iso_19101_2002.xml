@@ -1,0 +1,73 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-06-15</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Reference model</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Geographic information - Reference model</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Information géographique</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Modèle de référence</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Information géographique - Modèle de référence</title>
+  <uri type="src">https://www.iso.org/standard/26002.html</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/02/60/26002.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO 19101:2002</docidentifier>
+  <docidentifier type="iso-reference">ISO 19101:2002(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:19101:stage-95.99</docidentifier>
+  <docnumber>19101</docnumber>
+  <date type="published">
+    <on>2002-07</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>1</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">This International Standard defines the framework for standardization in the field of geographic information and sets forth the basic principles by which this standardization takes place.
+This framework identifies the scope of the standardization activity being undertaken and the context in which it takes place. The framework provides the method by which what is to be standardized can be determined and describes how the contents of the standards are related.
+Although structured in the context of information technology and information technology standards, this International Standard is independent of any application development method or technology implementation approach.</abstract>
+  <abstract format="text/plain" language="fr" script="Latn">This International Standard defines the framework for standardization in the field of geographic information and sets forth the basic principles by which this standardization takes place.
+This framework identifies the scope of the standardization activity being undertaken and the context in which it takes place. The framework provides the method by which what is to be standardized can be determined and describes how the contents of the standards are related.
+Although structured in the context of information technology and information technology standards, this International Standard is independent of any application development method or technology implementation approach.</abstract>
+  <status>
+    <stage>95</stage>
+    <substage>99</substage>
+  </status>
+  <copyright>
+    <from>2002</from>
+    <owner>
+      <organization>
+        <name>ISO</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="updates">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 19101-1:2014</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 19101-1:2014</docidentifier>
+      <date type="circulated">
+        <on>2014-11-12</on>
+      </date>
+    </bibitem>
+  </relation>
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="211" type="TC" identifier="ISO/TC 211">Geographic information/Geomatics</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.70</code>
+      <text>IT applications in science</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>26002</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

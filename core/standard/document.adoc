@@ -1,0 +1,61 @@
+= DRAFT OGC Geoscience Markup Language (GeoSciML) - Part 1: Core
+:doctype: standard
+:encoding: utf-8
+:lang: en
+:status: draft
+:committee: technical
+:draft: 3.0
+:external-id: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
+:docnumber: YY-999
+:received-date: 2029-03-30
+:issued-date: 2029-03-30
+:published-date: 2029-03-30
+:fullname: Editor One
+:fullname_2: Editor Two
+:docsubtype: Interface
+:keywords: ogcdoc, OGC document, API, openapi, html
+:submitting-organizations: Arizona Geological Survey (AzGS), Arizona, USA; British Geological Survey (NERC-BGS), UK; Bureau de Recherches Géologiques et Minières (BRGM), France; Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia; Geological Survey of Victoria (GSV), Australia; Geological Survey of Finland (GTK), Finland; Geological Survey of Italy (ISPRA), Italy; Geological Survey of Sweden (SGU), Sweden; Geoscience Australia (GA), Australia; Institute of Geological and Nuclear Sciences (GNS), New Zealand; Landcare Research, New Zealand; Natural Resources Canada (NRCan), Canada; U.S. Geological Survey (USGS), United States of America
+:mn-document-class: ogc
+:mn-output-extensions: xml,html,doc,pdf
+:local-cache-only:
+:data-uri-image:
+:pdf-uri: ./document.pdf
+:xml-uri: ./document.xml
+:doc-uri: ./document.doc
+:edition: 1.0
+
+////
+Make sure to complete each included document
+////
+include::sections/clause_0_front_material.adoc[]
+
+include::sections/clause_1_scope.adoc[]
+
+include::sections/clause_2_conformance.adoc[]
+
+include::sections/clause_3_references.adoc[]
+
+include::sections/clause_4_terms_and_definitions.adoc[]
+
+include::sections/clause_5_conventions.adoc[]
+
+include::sections/clause_6_geosciml_models.adoc[]
+
+include::sections/clause_7_conceptual_model.adoc[]
+
+include::sections/clause_8_logical_model.adoc[]
+
+////
+add or remove annexes after "A" as necessary
+////
+include::sections/annex-a.adoc[]
+
+include::sections/annex-abbreviations.adoc[]
+
+////
+Revision History should be the last annex before the Bibliography
+Bibliography should be the last annex
+////
+include::sections/annex-history.adoc[]
+
+include::sections/annex-bibliography.adoc[]

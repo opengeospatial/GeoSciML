@@ -1,10 +1,91 @@
 [obligation=informative]
 == GeoSciML Models
 
-Paragraph
+=== GeoSciML Models
 
-=== Clauses not containing normative material sub-clause 1
+The GeoSciML 4.1 is an ISO General Feature Model (ISO19101, ISO19109) implementation of portions of the North American Data Model ++[++12++]++ and CSIRO’s XMML model.  GeoSciML also provides models for concepts at the immediate periphery of geological mapping, such as boreholes, geologic specimens and laboratory analysis, modelled as SF++_++SamplingFeatures and OM++_++Observations (OGC 10-004r3). 
 
-Paragraph
+.Model lineage. Geological entities are logical implementations of NADM while sampling and observations entities are implementations of O&M (ISO19156).
+image::images/image1.png[width=601,height=520]
 
-=== Clauses not containing normative material sub-clause 2
+
+GeoSciML has been through 4 major releases and a few minor releases since 2005.  Each version brought a different interpretation of what is essentially the same conceptual model.  The reader looking at all iterations will see, with few exceptions, the same concepts, the same associations and the same properties, but packaged differently.  GeoSciML increasingly adopted other domain models as it evolved; it replaced XMML (eXploration and Mining Markup Languages, developed by CSIRO) by Observations and Measurements (ISO19156), custom data types for ranges and categories by SWE Common, and removed custom vocabularies to use web resources.
+
+This fourth iteration is essentially a repackaging of the previous version 3.2 from 13 packages organised by themes into 6 packages organised by use cases (Figure 2):
+
+* *GeoSciML Basic*: a set of core geologic features, aligned to the INSPIRE Data Specification on Geology.
+* *GeoSciML Extension*: an extension providing detailed description of basic features which adds additional properties and associations.
+* *GeoSciML Geologic Age*: a model for the representation of geologic time using procedures adopted by the International Stratigraphic Commission.
+* *GeoSciML Borehole*: a model for boreholes, including geologic logs and drilling details and other engineering information.
+* *GeoSciML Laboratory and Analysis*: a model for laboratory analytical metadata, geological sampling and specimens, and isotopic age observation results.
+* *GeoSciML Lite*: previously known as “GeoSciML Portrayal” in version 3.2; a simplified alternate implementation of the conceptual model for layer based applications.
+
+.GeoSciML 4.1 packages
+image::images/image2.png[width=601,height=525]
+
+ Each application package is the subject of at least one requirements class (to conform to the modular specification) per target implementation (this specification has three targets; logical model, encoding and data instance).  More target implementations might be published as separate documents.
+
+=== GeoSciML Basic and Extension
+
+GeoSciML describes geological features from the mapping perspective, articulated around the concept of a MappedFeature – the cartographic element shown on a map, and the GeologicFeature it represents.  All geologic concepts that can be represented on a map are subtypes of GeologicFeature.
+
+.High-level model
+image::images/image3.png[width=562,height=330]
+
+GeologicFeature is an abstract class materialised into four concrete classes (Figure 4) - GeologicEvent, GeologicStructure, GeologicUnit and GeomorphologicFeature.   The other main features of the GeoSciML model are not geologic features themselves, but features related to the activity of sampling and observing geology (such as Borehole or GeologicSpecimen) and are therefore modelled as SF++_++SamplingFeature (O&M) subtypes.
+
+.Core feature model for GeoSciML
+image::images/image4.png[width=601,height=333]
+
+GeologicFeature can share arbitrary relationships through a relation class (AbstractRelation), subtyped into different kind of relationships, providing distinct properties and constraints.
+
+In order to provide a simple entry level model for data providers, but also to align to INSPIRE, only a minimal set of properties are supported by the _basic_ package.  When more properties are required, the data provider can use the _extension_ package.  To split properties between _basic_ and _extension_, a modelling pattern has been adopted to overcome the limitations of classical object oriented subtyping imposed by UML and XSD.
+
+==== AbstractDescription classes
+
+The technique to add extended properties to an existing class is normally to create a subtype to carry the new properties (Figure 5).
+
+.Adding properties by extension
+image::images/image5.png[width=601,height=892]
+
+But this only works when properties need to be added to a leaf class.  Properties added by subtyping a class higher up in the chain of inheritance will create a new branch, and new properties won’t propagate to existing subtypes in the main branch. GeoSciML 4 adopts an extension pattern using abstract property blocks or ‘AbstractDescription’ classes (Figure 6).  Blocks of extended properties are organized in their own Datatype, subtyping AbstractDescription.
+
+.Extension pattern using a property block (AbstractDescription class)
+image::images/image6.png[width=601,height=300]
+
+This pattern has two main advantages:
+
+* It does not require the creation of a new feature type to add properties to core features.
+* Extra properties can be defined and used by other user communities (e.g., properties added by a geophysical application could be reused by groundwater applications).
+
+GeoSciML Basic contains nine stub AbstractDescription classes ultimately materialised in GeoSciML Extension (Table 1).
+
+[width="100%",cols="^50%,^50%",options="header",]
+|===
+|*Table 1: GeoSciML Basic stub AbstractDescription classes.* |
+|*Class* |*Description*
+|*AbstractFeatureRelation* |Association class placeholder to describe relations between geologic features.
+|*EarthMaterialAbstractDescription* |Detailed earth material description placeholder for GeologicUnit and EarthMaterial.
+|*GeologicUnitAbstractDescription* |Detailed description placeholder for GeologicUnit.
+|*GeologicEventAbstractDescription* |Detailed description placeholder for GeologicEvent.
+|*ContactAbstractDescription* |Detailed description placeholder for Contact.
+|*FoliationAbstractDescription* |Detailed description placeholder for Foliation.
+|*FoldAbstractDescription* |Detailed description placeholder for Fold.
+|*ShearDisplacementStructureAbstractDescription* |Detailed description placeholder for ShearDisplacementStructure.
+|*GeomorphologicUnitAbstractDescription* |Detailed description placeholder for GeomorphologicUnit.
+|===
+
+Since those classes are abstract in GeoSciML Basic, data providers need to implement GeoSciML Extension, or any third party extension to get concrete classes.
+
+This modelling pattern is also used by other standards communities (e.g., ISO 19115-3).
+
+=== GeoSciML Lite
+
+GeoSciML Lite is a denormalised view, or a transformation, of key geological and sampling features, designed as a simple entry-level model to publish datasets, particularly adapted to geographic visualization with key reporting properties.  The use case for GeoSciML Lite is a simple layer-based application; such as web map application or GIS where the key functionality is to display a map layer and perform simple identify or query operations.  The classes are modelled to be easily implementable in any GIS or web mapping application.  One feature type maps to one table composed of optional, single-occurrence properties – consistent with the structure of denormalised RDBMS tables.  The XML implementation (clause 9.8) is conformant with GML Simple Feature (OGC 10-100r3).
+
+Each property of GeoSciML Lite classes is derived from a subset of the properties available in the full GeoSciML model, with the exception of “genericSymbolizer”, which is a convenience property providing a cartographic symbol or code. The property is a shortcut to symbolisation that would otherwise be provided by an SLD (Styled Layer Descriptor).
+
+Some fields are external references, in the form of HTTP URI, to provide hyperlinks for applications to access linked data definitions to externally governed vocabulary terms and/or complex representations of the features when required.
+
+.Example of linkage between a GeoSciML Lite feature and other GeoSciML packages and vocabulary term URI’s.  An instance of GeologicUnitView matches an instance of MappedFeature
+image::images/image7.png[width=571,height=413]

@@ -1,38 +1,19 @@
 == Logical Model
 
-Paragraph
+include::./clause_8_logical_model_1_uml_model.adoc[]
 
-=== Requirement Class A or Requirement A Example
+include::./clause_8_logical_model_2_geosciml_core_rc.adoc[]
 
-Paragraph – intro text for the requirement class.
+include::./clause_8_logical_model_3_linked_open_data_rc.adoc[]
 
-Use the following table for Requirements Classes.
+include::./clause_8_logical_model_4_geosciml_basic_rc.adoc[]
 
-include::../requirements/requirements_class.adoc[]
+include::./clause_8_logical_model_5_geosciml_extension_rc.adoc[]
 
-==== Requirement 1
+include::./clause_8_logical_model_6_geosciml_geologic_time_rc.adoc[]
 
-Paragraph - intro text for the requirement.
+include::./clause_8_logical_model_7_geosciml_borehole_rc.adoc[]
 
-Use the following table for Requirements, number sequentially.
+include::./clause_8_logical_model_8_geosciml_lab_analysis_rc.adoc[]
 
-include::../requirements/requirement001.adoc[]
-
-Dictionary tables for requirements can be added as necessary. Modify the following example as needed.
-
-[width="90%",options="header"]
-|===
-|Names |Definition |Data types and values |Multiplicity and use
-|name 1 |definition of name 1 |float |One or more (mandatory)
-|name 2 |definition of name 2 |character string type, not empty |Zero or one (optional)
-|name 3 |definition of name 3 |GML:: Point PropertyType |One (mandatory)
-|===
-
-
-==== Requirement 2
-
-Paragraph - intro text for the requirement.
-
-Use the following table for Requirements, number sequentially.
-
-include::../requirements/requirement002.adoc[]
+include::./clause_8_logical_model_9_geosciml_lite_rc.adoc[]

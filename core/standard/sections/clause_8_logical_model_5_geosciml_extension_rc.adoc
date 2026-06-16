@@ -1,7 +1,633 @@
-=== Logical Model
+=== GeoSciML Extension Requirements Class (Normative)
 
-Paragraph
+[width="100%",cols="10%,90%",options="header",]
+|===
+|*Requirements Class* |
+|/req/gsml4-extension |
+|*Target type* |Encoding
+|*Dependency* |/req/gsml4-basic
+|*Dependency* |/req/gsml4-geologictime
+|*Requirement* a|
+*/req/gsml4-extension/geologicfeature-history*
 
-==== Requirement Class A or Requirement A Example
+A GeologicFeatureRelation SHALL not be used to associate a GeologicFeature to a GeologicEvent if GeologicFeature::geologicHistory can provide the same information.
 
-TBA
+|*Requirement* a|
+*/req/gsml4-extension/contact-chronoboundary*
+
+correlatesWith association to a GeochronologicBondary SHALL be allowed only when contactType = ChronostratigraphicBoundary.
+
+|*Requirement* a|
+/req/gsml4-extension/slipComponents-slip
+
+SlipComponents SHALL have at least one of heave, horizontalSlip or throw as a non-null value.
+
+|===
+
+The extension package provides classes to further the descriptions of basic classes by adding more properties and supplemental relations.  It extends abstract description stubs declared in basic package and introduces new GeologicStructure features.
+
+image::images/image34.png[GeoSciML extension package dependencies.,width=601,height=609]Figure: 32: GeoSciML extension package dependencies.
+
+==== GeologicRelation
+
+image::images/image35.png[Summary diagram of GeologicFeatureRelation as a concrete subtype of AbstractFeatureRelation stub class,width=532,height=617]Figure: 33: Summary diagram of GeologicFeatureRelation as a concrete subtype of AbstractFeatureRelation stub class
+
+===== GeologicHistory
+
+GeoSciML uses the generic relatedFeature:GeologicFeatureRelation to associate GeologicFeature with other GeologicFeatures, which includes GeologicEvents.  However, this functionality is only available from the Extension package because it adds extra complexity that Basic hopes to avoid. 
+
+To allow geologic age description in GeoSciML Basic without GeologicFeatureRelation, GeologicFeature has an explicit geologicHistory property to associate GeologicFeature with a GeologicEvent.  The consequence for someone using GeoSciML Extension is the presence of two different ways to link a GeologicFeature and GeologicEvent:
+
+[arabic]
+. A direct association through geologicHistory
+. A generic GeologicFeatureRelation.
+
+To prevent confusion and promote consistency, especially in query scenarios, association between GeologicFeature and GeologicEvent, for the purpose of describing geologic history, and therefore geologic age, shall use the geologicHistory property.  A GeologicFeatureRelation can be used in any other circumstances.
+
+[width="100%",cols="100%",options="header",]
+|===
+|*Requirement /req/gsml4-extension/geologicfeature-history*
+|A GeologicFeatureRelation SHALL not be used between a GeologicFeature and GeologicEvent if GeologicFeature::geologicHistory can provide the same information.
+|===
+
+===== GeologicFeatureRelation
+
+The GeologicFeatureRelation class defines the general structure used to define relationships between any GeoSciML feature types.  Relationships are always binary and directional.  There is always a single source and a single target.  The relationship is always defined from the perspective of the Source and is generally an active verb. 
+
+Example:  a Source may point to an intrusive igneous rock unit.  In this case, the Target would point to the appropriate host rock body and the relationship attribute would be ‘intrudes’.  Other appropriate relationship attributes might include: overlies, offsets, crosscuts, folds, etc.
+
+Many other types of relationships can also be accommodated via GeologicRelation, for example, topological relations could be described where they are geologically significant.
+
+image::images/image36.png[Generic geologic feature relation,width=546,height=385]Figure: 34: Generic geologic feature relation
+
+====== relationship
+
+The relationship:GeologicRelationshipTerm property contains a term from a controlled vocabulary to describe the geologic relationship (e.g., stratigraphic relation, structural relation, intrusive relation).
+
+====== sourceRole
+
+The property sourceRole:RelationRoleProperty contains a term from a controlled vocabulary describing the role played by the source geologic feature or object (e.g., overlying unit, underlying unit).
+
+====== targetRole
+
+The property targetRole:RelationRoleTerm contains a term from a controlled vocabulary describing the role played by the target geologic feature or object. (e.g., overlying unit, underlying unit)
+
+===== MaterialRelation
+
+The MaterialRelation class describes the relationships between constituent parts in an EarthMaterial (e.g. A mineral overgrowth on a phenocryst within a granite). 
+
+Example:  Consider an overgrowth of albite on plagioclase in a granite. The Source would originate with the albite constituentPart description.  In this case, the Target would point to the plagioclase constituentPart description and the relationship attribute would be ‘overgrowth’ and the sourceRole is ‘overgrows’.  Other appropriate role attributes might include: crosscuts, replaces, etc. for crosscutting and replacement relationships.  Inverse relationships must be explicitly recorded.
+
+image::images/image37.png[Material relation context diagram.,width=531,height=544]Figure: 35: Material relation context diagram.
+
+====== relationship
+
+The property relationship:GeologicRelationshipTerm contains a term from a controlled vocabulary to describe the geologic relationship (e.g., sedimentary relation, igneous relation).
+
+====== sourceRole
+
+The property sourceRole:RelationRoleTerm contains a term that describes the role played by the source earth material part (e.g., matrix, clast, overgrowth).
+
+====== targetRole
+
+The property targetRole:RelationRoleTerm contains a term describing the role played by the target earth material part (e.g., matrix, clast, overgrowth).
+
+==== EarthMaterialDetails
+
+EarthMaterialDescription abstract class is materialised into a series of concrete classes to address various aspects of EarthMaterial descriptions:
+
+* CompositionDescription
+* FabricDescription
+* RockMaterialDescription
+* AlterationDescription
+* PhysicalDescription
+* MetamorphicDescription
+* CompoundMaterialDescription
+
+image::images/image38.png[Overview of earth material description.,width=601,height=427]Figure: 36: Overview of earth material description.
+
+===== AlterationDescription
+
+image::images/image39.png[Alteration description context diagram.,width=531,height=570]Figure: 37: Alteration description context diagram.
+
+AlterationDescription describes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. It includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic. For example, a soil profile description would have to be constructed as a GeologicUnit (geologicUnitType = PedologicUnit) with unit parts representing the various horizons in the profile.  Thickness of a weathering profile can be delivered as unitThickness of a GeologicUnit of geologicUnitType equal to “AlterationUnit” (Figure 38).
+
+ 
+
+image::images/image40.png[Example of a weathering profile.,width=486,height=143]Figure: 38: Example of a weathering profile.
+
+An example encoding of an altered geologic unit from Drewes ++[++3++]++ is shown in Figure 39.
+
+image::images/image41.png[Example of describing alteration halo from Drewes ++[++3++]++.,width=601,height=390]Figure: 39: Example of describing alteration halo from Drewes ++[++3++]++.
+
+====== alterationType
+
+The property alterationType:AlterationTypeTerm contains a term from a controlled vocabulary of alteration types (e.g., potassic, argillic, advanced argillic).
+
+====== alterationProduct
+
+The property alterationProduct is an association between the AlterationDescripton and EarthMaterial describing the material resulting from the alteration processes, e.g. alteration minerals, saprolite, ferricrete, clay, calcrete, skarn, etc. Materials observed in a soil profile could be identified using this property.
+
+====== alterationDistribution
+
+The alterationDistribution (SWE::Category) property describes the spatial distribution or geometry of alteration zones using a term from a controlled vocabulary. e.g., patchy, spotted, banded, veins, vein breccia, pervasive, disseminated, etc.
+
+====== alterationDegree
+
+The property alterationDegree (SWE::Category) contains a term from a controlled vocabulary to indicate the magnitude of observed alteration.
+
+====== alterationEvent
+
+The property alterationEvent is an association between an AlterationDescription and a GeologicEvent describing the GeologicEvent associated with the alteration.
+
+===== ChemicalComposition
+
+ChemicalComposition is a kind of EarthMaterialDescription that delivers the chemical composition of a geological unit or earth material, as a list of element or oxide concentrations.
+
+image::images/image42.png[Chemical composition context diagram.,width=525,height=339]Figure: 40: Chemical composition context diagram.
+
+====== chemicalAnalysis
+
+The chemicalAnalysis property (SWE:DataRecord) contains a collection of geochemical results in a form of a DataRecord (a collection of fields composed of description and values).
+
+===== CompoundMaterialDescription
+
+The CompoundMaterialDescription class is a kind of EarthMaterialDescription that provides an extended description of a compound earth material (i.e., rocks and unconsolidated solid earth materials).
+
+image::images/image43.png[Compound material description context diagram.,width=601,height=533]Figure: 41: Compound material description context diagram.
+
+====== compositionCategory
+
+The compositionCategory property (SWE::Category) provides a term from a controlled vocabulary to specify the gross compositional character of a compound material. Composition as used here is loosely construed to include both chemical composition and petrographic composition, thus multiple values may be applied to a single rock, e.g. metaluminous and alkalic, undersaturated and basic, etc. Terms would typically include broad chemical classifications such as silicate, carbonate, ferromagnesian, oxide.  However, this attribute may have different terminology for different kinds of rocks - for example sandstone petrographic classification terms (e.g. feldspathic) might be placed here.
+
+====== geneticCategory
+
+The property geneticCategory (SWE::Category) provides a term from a controlled vocabulary that represents a summary geologic history of the material. (i.e., a genetic process classifier term). Examples include igneous, sedimentary, metamorphic, shock metamorphic, volcanic, pyroclastic.
+
+====== particleGeometry
+
+The particleGeometry:ParticleGeometryDescription contains an instance of ParticleGeometryDescription.
+
+====== constituent
+
+The property constituent is an association between a CompoundMaterialDescription and a ConstituentPart that makes up part of the CompoundMaterial.
+
+===== ParticleGeometryDescription
+
+ParticleGeometryDescription describes particles in a CompoundMaterial independent of their relationship to each other or their orientation. It is distinguished from Fabric in that the ParticleGeometryDescription remains constant if the material is disaggregated into its constituent particles, whereas Fabric is lost if the material is disaggregated.  Properties include the particle size (grainsize), particle sorting (size distribution, e.g., well sorted, poorly sorted, bimodal sorting), particle shape (surface rounding or crystal face development, e.g., well rounded, euhedral, anhedral), and particle aspect ratio (e.g., elongated, platy, bladed, compact, acicular).
+
+image::images/image44.png[ParticleGeometry context diagram.,width=273,height=453]Figure: 42: ParticleGeometry context diagram.
+
+====== particleType
+
+The particleType:ParticleTypeTerm provides a term from a controlled vocabulary to specify the nature of individual particles of each constituent in an EarthMaterial aggregation, based mostly on their genesis.  When applied on ParticleDescription for CompoundMaterial, it would characterise all particles in aggregate. Use this property on CompoundMaterial to distinguish rocks composed of crystals (crystalline rocks) from rocks composed of granular particles (clasts, fragments). Examples include ooliths, crystals, pore space. Constituent type is determined based on the nature of the particles, and ideally is independent of the relationship between particles in a compound material aggregation.
+
+====== aspectRatio
+
+The aspectRatio property (SWE::Category) contains a term from a controlled vocabulary describing the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. It equates to sphericity in sedimentary rocks (i.e., the degree to which the shape of a particle approximates a sphere).  The formal definition is “_A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape_” ++[++16++]++ ++[++24++]++. (e.g., prolate, slightly flattened, very bladed, equant, acicular, tabular).
+
+====== shape
+
+The shape property (SWE::Category) describes,
+
+[loweralpha]
+.  the development of crystal faces bounding particles in crystalline compound materials, and
+.  the surface rounding of grains in sedimentary rocks. Roundness is a measure of the sharpness of the edges between surfaces bounding a particle ++[++10++]++ ++[++22++]++.
+
+The terms shall be a term from a controlled vocabulary and be appropriate for the kind of compound material (e.g., for crystalline rocks- euhedral, ideoblastic, subhedral, anhedral, xenoblastic; for sedimentary rocks - angular, rounded).
+
+====== size
+
+The property size (SWE::QuantityRange) reports the size that specifies particle grainsize.  Values may be reported using absolute measurements (e.g., range, mean, median, mode, maximum).
+
+====== sorting
+
+The sorting property (SWE::Category) contains a term from a vocabulary that specifies the size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk ++[++5++]++ ++[++6++]++.  Example for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranular, seriate.
+
+====== sourceOrganism
+
+The sourceOrganism property is an association between a ParticleGeometryDescription and an Organism that is the source of the fossil particles (sponge spicules, bivalve shells, etc.).
+
+===== ConstituentPart
+
+image::images/image45.png[ConstituentPart context diagram.,width=601,height=691]Figure: 43: ConstituentPart context diagram.
+
+The ConstituentPart class describes how Earth materials may be made up of other Earth materials, including the proportion of the constituent part in the whole (e.g., 20%, minor, dominant); and the role that the constituent plays in the whole (e.g., matrix, groundmass, framework, phenocryst, xenolith, vein).
+
+The distinction between "role" and "particleType" is subtle.  An operational test is that particleType may be determined independent of relationship between particles in the aggregation, whereas role requires consideration of the relationship to other particles. A particle may be identified as a clast, independent of its material composition, and independent of its relationship to other grains in a rock. The term ‘floating clast’ is a role, because it is dependent on the relationship ‘not in contact with other clasts’. Readers should consider Dunham’s textural classification of carbonate rocks (wackestone, packstone, grainstone, etc.) in the description of carbonate rocks ++[++4++]++. The description is predicated on identification of two kinds of intraclasts (grains) and matrix (carbonate mud), and then uses this distinction to establish relationships–mud supported vs. grain supported – that define roles for the two types of constituents (framework, matrix…).
+
+====== role
+
+The role:ConstituentPartRoleTerm property contains a term from a controlled vocabulary that describes the role a ConstituentPart plays in a CompoundMaterial aggregation. The same EarthMaterial may occur as different ConstituentParts playing different roles within one CompoundMaterial.  For example, feldspar may be present as groundmass (“groundmass” is a ConstituentPart::role) and as phenocrysts (“phenocryst” is another ConstituentPart::role) within a single igneous rock.
+
+====== proportion
+
+The proportion property (SWE::QuantityRange) reports the fraction of the whole that is formed by a ConstituentPart in a part/whole relationship.  It is used for the ConstituentPart portion in a CompoundMaterial.  It specifies the fraction of the EarthMaterial formed by the part (e.g., 20%, minor, dominant).
+
+====== constituentMaterial
+
+The constituentMaterial property is an association between a ConstituentPart and an EarthMaterial that specifies the EarthMaterial that is forming the ConstituentPart.
+
+===== FabricDescription
+
+The FabricDescription data type describes all types of fabrics associated with a CompoundMaterial (i.e., tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale.  FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++15++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly (++[++19++]++ p. 21-24; ++[++7++]++ p. 73; ++[++10++]++,++[++15++]++).
+
+FabricDescription is distinguished from ParticleGeometry based on the criteria that particle geometry is preserved if a CompoundMaterial is disaggregated, while FabricDescription is not defined if the material is disaggregated.
+
+image::images/image46.png[Fabric description context diagram.,width=456,height=347]Figure: 44: Fabric description context diagram.
+
+====== fabricType
+
+The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++15++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.
+
+===== InorganicFluid
+
+An inorganic fluid is a non-crystalline EarthMaterial (solid, liquid, or gas) that tends to flow or conform to the shape of its container (examples: water, brine, glass)..  By convention liquid mercury is considered a mineral.   This class is an empty placeholder for extension at a later date, or by other domain models.
+
+image::images/image47.png[Inorganic fluid context diagram.,width=308,height=363]Figure: 45: Inorganic fluid context diagram.
+
+===== MetamorphicDescription
+
+The data type MetamorphicDescription describes the character of metamorphism applied to a CompoundMaterial or GeologicUnit using one or more properties including estimated intensity (grade; e.g. high grade, low grade), characteristic metamorphic mineral assemblages (facies; e.g., greenschist, amphibolite), peak P-T estimates, and protolith material if known.  A MetamorphicDescription provides a link to the GeologicEvent associated to the metamorphic event.
+
+image::images/image48.png[Metamorphic description context diagram.,width=601,height=639]Figure: 46: Metamorphic description context diagram.
+
+====== metamorphicFacies
+
+The metamorphicFacies property (SWE::Category) contains a term from a controlled vocabulary that describes a characteristic mineral assemblage indicative of certain metamorphic pressure and temperature conditions. Examples include Barrovian metasedimentary zones (e.g., biotite facies, kyanite facies) or assemblages developed in rocks of more mafic composition (e.g., greenschist facies, amphibolite facies).
+
+====== metamorphicGrade
+
+The metamorphicGrade property (SWE::Category) contains a term from a controlled vocabulary that indicates the intensity or rank of metamorphism applied to an EarthMaterial (e.g., high metamorphic grade, low metamorphic grade).
+
+It indicates in a general way the pressure-temperature (PT) environment in which the metamorphism took place. The determination of metamorphic grade is based on mineral assemblages (i.e., facies) present in a rock that are interpreted to have crystallized in equilibrium during a particular metamorphic event.
+
+====== peakPressureValue
+
+The peakPressureValue property (SWE::Quantity) reports a numerical value to indicate the estimated pressure at peak metamorphic conditions.
+
+====== peakTemperatureValue
+
+The peakTemperatureValue property (SWE::Quantity) reports a numerical value to indicate the estimated temperature at peak metamorphic conditions.
+
+====== protolithLithology
+
+The protolithLithology is an association between a MetamorphicDescription and an EarthMaterial that describes the pre-metamorphic lithology for a metamorphosed CompoundMaterial.
+
+====== metamorphicEvent
+
+The metamorphicEvent property is an association between a MetamorphicDescription and a GeologicEvent that denotes the age, environment and process associated with a particular metamorphic assemblage in a GeologicUnit.
+
+===== OrganicMaterial
+
+OrganicMaterial is an EarthMaterial that belongs to the class of chemical compounds having a reduced carbon basis (as distinct from carbonates), and derived from living organisms. It includes high-carbon EarthMaterials such as bitumen, peat, and coal.  This class is an empty placeholder for extension at a later date, or by other domain models.
+
+image::images/image49.png[Organic material context diagram.,width=311,height=352]Figure: 47: Organic material context diagram.
+
+===== Organism
+
+Organism is a broad class to represent any living or once living things. This is the connection to taxonomy/biology for fossils.  This class is an empty placeholder for extension at a later date, or by other domain models.
+
+image::images/image50.png[Organism context diagram.,width=276,height=456]Figure: 48: Organism context diagram.
+
+===== PhysicalDescription
+
+PhysicalDescription is a class that describes the numeric physical properties of a geologic unit (GeologicUnit 8.4.1.3), earth material (EarthMaterial 8.4.1.6), or geologic structure (GeologicStructure 8.4.3.1). (e.g., density, porosity, magnetic susceptibility, remanent magnetism).  These properties are modelled here as scalar numeric values (SWE::Quantity).
+
+Vector and tensor physical properties are considered to be more applicable to located observations and should be delivered as OM++_++Observations with associated geologic unit or geologic structure features.  Since PhysicalProperty can be an arbitrary property, it satisfies the requirements of clause 7.2.2.8 or OGC 10-004r3 that states that “_The observed property shall be a phenomenon associated with the feature-of-interest._”, and hence any GeologicUnit, GeologicStructure are valid features of interest for any OM++_++Observation.
+
+image::images/image51.png[Physical description context diagram.,width=553,height=540]Figure: 49: Physical description context diagram.
+
+====== propertyName
+
+The property propertyName:PhysicalPropertyTerm contains a term from a controlled vocabulary of physical properties of rock materials (e.g., density, porosity, magnetic susceptibility, remnant magnetism, permeability, seismic velocity).
+
+====== propertyMeasure
+
+The propertyMeasure property (SWE::Quantity) is a scalar measurement of the physical property of a rock material, unit or structure.
+
+===== RockMaterialDescription
+
+RockMaterialDescription provides extended description of RockMaterial.
+
+image::images/image52.png[Rock material description context diagram.,width=271,height=730]Figure: 50: Rock material description context diagram.
+
+====== consolidationDegree
+
+The consolidationDegree property (SWE::Category) contains a term from a controlled vocabulary that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration ++[++13++]++.
+
+==== GeologicAgeDetails
+
+GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model.  GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see 8.6).
+
+image::images/image53.png[GeologicAgeDetails summary diagram.,width=548,height=726]Figure: 51: GeologicAgeDetails summary diagram.
+
+===== olderGeochronologicEra
+
+The olderGeochronologicalEra property is an association between a GeologicEventDescription and a GeochronologicEra that corresponds to the older estimated age of a geologic feature.
+
+===== youngerGeochronologicEra
+
+The youngerGeochronologicEra property is an association between a GeologicEventDescription and a GeochronologicEra that corresponds to the younger estimated age of a geologic feature.
+
+==== GeologicStructureDetails
+
+The Geologic Structure Details package provides for extended descriptions of geologic structures. 
+
+image::images/image54.png[Summary diagram for GeologicStructureDetails.,width=601,height=471]Figure: 52: Summary diagram for GeologicStructureDetails.
+
+===== ContactDescription
+
+The ContactDescription provides extended descriptive properties of a geologic contact.  If the contact type is ChronostratigraphicBoundary, it can be associated with a geochronologic (i.e., time zone) boundary that may correlate with it.
+
+image::images/image55.png[ContactDescription context diagram.,width=601,height=543]Figure: 53: ContactDescription context diagram.
+
+====== contactCharacter
+
+The contactCharacter (SWE::Category) contains a term from a controlled vocabulary that describes the character of the boundary (e.g. abrupt, gradational), as opposed to its type.
+
+====== orientation
+
+The orientation:GSML++_++PlanarOrientation property reports the general orientation of the contact surface.
+
+====== correlatesWith
+
+The correlatesWith property is an association between ContactDescription and a GeochronologicBoundary describing a geochronologic (i.e., time zone) boundary that may correlate with it.  Therefore, a contact correlation with a GeochronologicBoundary SHALL ONLY be allowed when the contactType is a ChronostratigraphicBoundary.
+
+[width="100%",cols="100%",options="header",]
+|===
+|*Requirement /req/gsml4-extension/contact-chronoboundary*
+|correlatesWith association to a GeochronologicBondary SHALL be allowed only when contactType = ChronostratigraphicBoundary.
+|===
+
+===== DisplacementEvent
+
+A displacement event is a description of the age, environment and process of a shear displacement event.
+
+image::images/image56.png[DisplacementEvent context diagram,width=391,height=575]Figure: 54: DisplacementEvent context diagram
+
+====== incrementalDisplacement
+
+The incrementalDisplacement:DisplacementValue property contains a DisplacementValue (8.5.4.4) reporting the parameters of the displacement.
+
+===== Layering
+
+A planar foliation is defined by a tabular succession of layers ++>++ 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team ++[++13++]++.  The GeologicStructure characteristic of gneiss is layering.
+
+image::images/image57.png[Layering context diagram,width=552,height=440]Figure: 55: Layering context diagram
+
+====== layerComposition
+
+The layerComposition property is an association between a Layering and a RockMaterial that describes the rock material that may define compositional layering.
+
+====== DisplacementValue
+
+A displacement value expresses the displacement on a fault with respect to a planar approximation of its shape.
+
+image::images/image58.png[Displacement value subtypes context diagram.,width=601,height=545]Figure: 56: Displacement value subtypes context diagram.
+
+====== hangingWallDirection
+
+The property hangingWallDirection:GSML++_++LinearOrientation describes the direction of the hanging-wall side of the fault or fault-system where they are steep enough to define a hanging-wall on the map trace. 
+
+====== movementSense
+
+The property movementSense:MovementSenseTerm contains a term from a controlled vocabulary that describes the movement sense of displacement along a geologic structure (e.g., dextral, sinistral).
+
+====== movementType
+
+The property movementType:MovementTypeTerm contains a term from a controlled vocabulary that defines the type of movement on a shear displacement structure (e.g. dip-slip, strike-slip).
+
+====== displacementEvent
+
+The property displacementEvent is an association between a Displacement and a GeologicEvent that contains a description of the age, environment and process of a shear displacement event.
+
+===== SeparationValue
+
+SeparationValue is a kind of DisplacementValue that describes the amount of separation displacement across a structure.
+
+====== separation
+
+The property separation:GSML++_++Vector reports the apparent offset across a planar feature, reported as a vector.
+
+===== NetSlipValue
+
+NetSlipValue is a kind of DisplacementValue that describes the total amount of slip displacement along a structure.
+
+====== netSlip
+
+The property netSlip:GSML++_++Vector reports the value of the net slip, expressed as a vector.
+
+====== slipComponent
+
+The slipComponent:SlipComponents property associates the individual slip components with the net slip values.
+
+===== SlipComponents
+
+SlipComponents is a kind of DisplacementValue that is a representation of slip as a vector resolved into components within a reference frame in which horizontal axes are parallel and perpendicular to the strike of the fault.  At least one of heave, horizontalSlip, or throw must not be null.
+
+[width="100%",cols="100%",options="header",]
+|===
+|*Requirement /req/gsml4-extension/slipComponents-slip*
+|
+|SlipComponents SHALL have at least one of heave, horizontalSlip or throw be a non-null value.
+|===
+
+====== heave
+
+The property heave:GSML++_++Vector contains a component of slip in the horizontal, and perpendicular to the strike of the fault.
+
+====== horizontalSlip*
+
+The property horizontalSlip:GSML++_++Vector contains a slip component that is horizontal and parallel to strike of the fault.
+
+====== throw
+
+The property throw:GSML++_++Vector contains the vertical component of slip.
+
+===== FoldDescription
+
+FoldDescription is an extended descriptive property of a fold structure.
+
+image::images/image59.png[FoldDescription context diagram.,width=601,height=557]Figure: 57: FoldDescription context diagram.
+
+====== amplitude
+
+The amplitude property (SWE::QuantityRange) reports the length from line segment connecting inflection points on adjacent fold limbs to the intervening fold hinge.
+
+====== axialSurfaceOrientation
+
+The property axialSurfaceOrientation:GSML++_++PlanarOrientation is used to characterize the geometry of a fold. The axial surface of a particular fold may be located based on observations of the folded geologic structure, but in general it has no direct physical manifestations. As a geologic surface, it has geometric properties, including orientation, which may be specified by observations at one or more locations, or generalized using terminology (upright, inclined, reclined, recumbent, overturned). Dip and Dip Direction are one approach to specifying the value.
+
+====== geneticModel
+
+The property geneticModel (SWE::Category) contains a term from a controlled vocabulary describing the specification of genetic model for fold, e.g. flexural slip, parallel.
+
+====== hingeLineCurvature
+
+The hingeLineCurvature property (SWE::Category) contains a term from a controlled vocabulary that describes the variation in orientation of fold hinge along trend of fold, distinguishing sheath from cylindrical folds (e.g. sheath, dome, basin, cylindrical.).
+
+====== hingeLineOrientation
+
+The property hingeLineOrientation:GSML++_++LinearOrientation reports the specification of the hinge line orientation for fold.  GSML++_++LinearOrientation allows for a term value specification or a numeric specification of either or both the trend and plunge of hinge line.  Hinge plunge term examples: sub-vertical, steeply plunging, sub-horizontal, reclined and vertical for special cases in which hinge plunge is close to axial surface dip. 0..++*++ cardinality allows for both a numeric specification and a term specification.
+
+====== hingeShape
+
+The property hingeShape (SWE::Category) reports a term from a controlled vocabulary describing the hinge shape, e.g. Rounded vs. angular hinge zones.  This property has to do with the proportion of the wavelength that is considered part of hinge.
+
+====== interLimbAngle
+
+The property interLimbAngle (SWE::Category) contains a term from a controlled vocabulary describing the interlimb angle using a tightness term (e.g. gentle (120-180°), open (70-120°), close (30-70°), tight (10-30°), isoclinal (0-10°)).
+
+====== limbShape
+
+The limbShape property (SWE::Category) contains a term from a controlled vocabulary describing the shape of the limb (e.g. straight vs curved limbs, kink, chevron, sinusoidal, box).
+
+====== span
+
+The span property (SWE::QuantityRange) reports a value describing the linear distance between inflection points in a single fold.
+
+====== symmetry
+
+The symmetry property (SWE::Category) contains a term from a controlled vocabulary describing the concordance or discordance of bisecting surface and axial surface, or the ratio of length of limbs. The folded surface may have asymmetry defined by limb length ratio if inflection points are defined. The definition based on bisecting surface/axial surface angle depends on having multiple surfaces defined such that the axial surface may be identified (symmetric, asymmetric).
+
+====== system
+
+The system property is an association between a FoldDescription and a FoldSystem that aggregates folds into a system.
+
+===== FoldSystem
+
+A FoldSystem is a collection of congruent folds (axis and axial surface are parallel) produced by the same tectonic event. It is sometimes referred to as a “fold train”.
+
+image::images/image60.png[FoldSystem context diagram.,width=601,height=611]Figure: 58: FoldSystem context diagram.
+
+====== periodic
+
+The property periodic:Primitive::Boolean reports TRUE if the hinges in a train are regularly spaced, and FALSE otherwise.
+
+====== wavelength
+
+The property wavelength (SWE::QuantityRange) contains a quantitative description of the length between adjacent antiforms (or synforms) in a fold train.
+
+====== foldSystemMember
+
+The foldSystemMember is an association between a FoldSystem and the Folds that are members of that system.
+
+===== FoliationDescription
+
+FoliationDescription provides extended descriptive properties for a foliation structure.
+
+image::images/image61.png[FoliationDescription context diagram.,width=601,height=644]Figure: 59: FoliationDescription context diagram.
+
+======  definingElement
+
+The property definingElement (SWE::Category) contains a term from a controlled vocabulary describing the kinds of inhomogeneity in a rock body that may define a GeologicStructure.   Examples include discontinuity, shaped surface, oriented particle, material boundary, and layer.
+
+====== continuity
+
+The continuity property (SWE::Category) reports a term from a controlled vocabulary to distinguish continuous vs. disjunct cleavages.
+
+====== intensity
+
+The intensity property (SWE::Category) contains a term from a controlled vocabulary to describe how well the foliation is developed (e.g., weak, moderate, strong).
+
+====== mineralElement
+
+The mineralElement property is an association between FoliationDescription and a Mineral that defines that foliation.
+
+====== orientation
+
+The orientation:GSML++_++PlanarOrientation contains an estimate of the planar orientation of the foliation structure.
+
+====== spacing
+
+The spacing property (SWE::QuantityRange) contains a linear dimension representing the thickness of foliation domains. It is also used for thickness of layers of a given composition.
+
+===== ShearDisplacementStructureDescription
+
+ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in 8.4.3.5 by extending the abstract property block ShearDisplacementStructureAbstractDescription.
+
+image::images/image62.png[ShearDisplacementStructureDescription context diagram.,width=601,height=447]Figure: 60: ShearDisplacementStructureDescription context diagram.
+
+====== deformationStyle
+
+The deformationStyle:DeformationStyleTerm contains a term from a vocabulary to describe the style of deformation, i.e. brittle (fault, breccia), ductile (shear), brittle-ductile, unknown.
+
+====== planeOrientation
+
+The property planeOrientation:GSML++_++PlanarOrientation contains a description of the orientation of a structure’s planar surface.
+
+====== stPhysicalProperty
+
+The property stPhysicalProperty:PhysicalDescription contains a value of generic physical properties (8.5.2.11) not addressed in this specification.
+
+==== GeologicUnitDetails
+
+The GeologicUnitDetails package provides for extended description of geologic unit features (8.4.1.3).
+
+image::images/image63.png[GeologicUnitDetails,width=338,height=726]Figure: 61: GeologicUnitDetails
+
+===== GeologicUnitDescription
+
+GeologicUnitDescription provides for extended description of the characteristics of a geologic unit (8.4.1.3).
+
+====== bodyMorphology
+
+The bodyMorphology property (SWE::Category) provides a term from a controlled vocabulary describing the geometry or form of a GeologicUnit.  Examples include: dike (dyke), cone, fan, sheet, etc. The morphology is independent of the substance (EarthMaterial) that composes the GeologicUnit or process that formed it.
+
+====== unitComposition
+
+The unitComposition property (SWE::Category) provides a term from a composition-based classification that requires summarising the overall character of the unit.  It is not applicable at the rock material or specimen level. Examples are: alkalic, subaluminous, peraluminous, I-Type, carbonate, phosphate.
+
+====== outcropCharacter
+
+The property outcropCharacter (SWE::Category) provides a term that describes the nature of outcrops formed by a geologic unit. Examples are: bouldery, cliff-forming, ledge-forming, slope-forming, poorly exposed.
+
+====== unitThickness
+
+The property unitThickness (SWE::QuantityRange) provides a value that represents the typical thickness of the geologic unit. It is always reported as a range.
+
+====== bedding
+
+The bedding:BeddingDescription property reports a description of the bedding (see 8.5.5.2).
+
+===== BeddingDescription*
+
+BeddingDescription provides a detailed description of the bedding characteristics of a geologic unit.
+
+====== beddingPattern
+
+The property beddingPattern (SWE::Category) provides a term from a controlled vocabulary specifying patterns of bedding thickness or relationships between bedding packages. (e.g., thinning upward, thickening upward).
+
+====== beddingStyle
+
+The property beddingStyle (SWE::Category) provides a term from a controlled vocabulary specifying the style of bedding in a stratified geologic unit (e.g. lenticular, irregular, planar, vague, and massive).
+
+====== beddingThickness
+
+The property beddingThickness (SWE::Category) provides a term from a controlled vocabulary characterizing the thickness of bedding in the unit.
+
+==== GeoSciML Extension vocabularies
+
+Vocabularies used in GeoSciML Extension are listed in Table 5  - GeoSciML Extension vocabularies.
+
+[width="100%",cols="^37%,^63%",options="header",]
+|===
+|*Table 5: GeoSciML Extension vocabularies.* |
+|*Vocabulary* |*Description*
+|*GeologicRelationshipTerm* |Refers to a vocabulary of terms describing a relationship between geologic features or objects.
+|*RelationRoleTerm* |Refers to a vocabulary of terms describing roles played by geologic features or objects in a geologic relationship.
+|*AlterationTypeTerm* |Refers to a vocabulary of terms describing the dominant alteration mineralogy or alteration type, in common usage. Examples include: argillic, phyllic, potassic, propylitic, calc-silicate, skarn, deuteric, greisen, serpentinisation, weathering, etc.
+|*ConstituentPartRoleTerm* |Refers to a vocabulary of terms describing the role played by a constituent part of a compound material (e.g., matrix, phenocryst).
+|*FabricTypeTerm* |Refers to a vocabulary of terms describing the type of fabric present.
+|*MineralNameTerm* |Refers to a vocabulary of mineral names.
+|*ParticleTypeTerm* |Refers to a vocabulary of terms describing the type of particle in the compound earth material (e.g., bioclast, phenocryst, pyroclast).
+|*PhysicalPropertyTerm* |Refers to a vocabulary of physical property types (e.g., density, porosity, magnetic susceptibility, magnetic remanence, conductivity, etc.).
+|*DeformationStyleTerm* |A controlled vocabulary of terms describing the style of deformation (e.g., brittle, ductile).
+|*LineationTypeTerm* |Refers to a vocabulary of terms describing the type of lineation.  Examples include: flow lines, scratches, striae, slickenlines, linear arrangements of elongate components in sediments, elongate minerals, crinkles, and lines of intersection between penetrative planar structures.
+|*MovementSenseTerm* |Refers to a vocabulary of terms describing the sense of movement on a shear displacement structure.
+|*MovementTypeTerm* |Refers to a vocabulary of terms describing the type of movement (e.g., dip-slip, strike-slip).
+|*NonDirectionalStructureTypeTerm* |Refers to a vocabulary of terms describing types of non-directional structures (e.g., miarolitic cavity, flame structure, load cast, shatter cone, trace fossil, fossil mold, etc.).
+|===
+
+

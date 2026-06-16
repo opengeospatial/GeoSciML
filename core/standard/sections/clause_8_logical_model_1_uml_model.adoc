@@ -1,7 +1,37 @@
-=== Logical Model
+=== UML Model
 
-Paragraph
+The UML model provides name, structure and cardinality for data elements composing various potential physical implementations of GeoSciML.  There are formal mappings between UML and GML (ISO-19136), UML and RDF (ISO-19150) and best practices exist for mapping UML to RDBMS.  Although it is assumed that UML is technologically neutral, in reality UML models always end up addressing some of the encoding specification details.  The current GeoSciML UML model has been designed as a GML application according to ISO 19109 and borrows some of artefacts of GML. Several design decisions were guided by limitations of UML (e.g. single inheritance) and XSD (package dependencies artefacts) and some constraints of GML delivery using ISO19142 WFS (for instance, some XSD encodings are not queryable easily with ISO19143 FES).  However, the UML model is detailed enough to constrain the main elements of any encoding; the names of entities and the cardinality of properties, the associations between entities and to some extent property types.  On the other hand, some UML features do not have equivalences in certain encoding (for instance, JSON does not have a native support for namespaces or even schema).
 
-==== Requirement Class A or Requirement A Example
+<<img_logical_model_req_dep>> shows requirements class dependencies:
 
-TBA
+[[img_logical_model_req_dep]]
+.Logical Model Requirements classes dependencies (external dependencies not shown)
+image::images/image8.png[width=601,height=357]
+
+This section defines the minimum UML mapping requirements that shall be met by any target claiming compliance to this specification.
+
+==== Property cardinality
+
+All properties that could feasibly be made optional are optional in GeoSciML 4.1.  This is a reversal of the pattern used in GeoSciML version 3.2 where all properties were made mandatory, forcing the data provider to document why the property was missing using nillable properties.  This design attracted a lot of criticism (not only for GeoSciML but for other communities confronted with the same pattern) from application developers and data providers that consider filling the instance with nil properties is “unnecessarily verbose” and a waste of bandwidth.  It has been argued that nillable properties are just verbose absent values.  This issue is a real concern for mobile applications where payload has an impact on user experience.
+
+Nillable properties actually carry useful or even required information in certain use cases, such as legally bounded data exchange scenarios.  Some communities using GeoSciML may still want to force usage of nillable properties and the SWG recognised that different communities might want to enforce the use of some properties for their particular needs.  To meet this requirement and to offer flexibility to various communities wanting to use (or extend) GeoSciML, properties are optional, but can still be nilled.  A data provider is offered two options when a value is missing:
+
+* Omit the property
+* Deliver a nilled property with relevant justification.
+
+Which option is most useful for a community is left to that community to decide.  Their decision can be enforced using Schematron.  The editors foresee the use of a) the GeoSciML data model as defined by this specification providing naming and structure and b) a series of community-defined rules to enforce the presence of certain properties relevant to their use cases.  For an XML implementation, this translates into a set of common XSD and SCH to govern conformance to GeoSciML, and community-specific SCH to enforce specific use cases, such as the INSPIRE geology specification ++[++8++]++.
+
+===== Package shortcuts
+
+The following shortcuts are used to refer to external (non GeoSciML) classifiers.
+
+[width="100%",cols="16%,84%",options="header",]
+|===
+|*Shortcut* |*Full path (HollowWorld)*
+|*OM* |ISO TC211/ISO 19156 All/ISO 19156:2011 Observations and Measurements
+|*SWE* |OGC/Sensor Web Enablement 2.0/SWE Common Data Model 2.0
+|*GEO* |ISO TC211/ISO 19107 All/ISO 19107:2003 Spatial Schema
+|*Primitive* |ISO TC211/ISO 19103 All/ISO 19103:2005 Conceptual schema language
+|*Temporal* |ISO TC211/ISO 19108 All/ISO 19108:2006 Temporal Schema
+|*GML* |ISO TC211/ISO 19136:2007 GML
+|===

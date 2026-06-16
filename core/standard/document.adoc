@@ -1,4 +1,4 @@
-= DRAFT OGC Geoscience Markup Language (GeoSciML) - Part 1: Core
+= Draft OGC Geoscience Markup Language (GeoSciML) - Part 1: Core
 :doctype: standard
 :encoding: utf-8
 :lang: en
@@ -22,7 +22,7 @@
 :pdf-uri: ./document.pdf
 :xml-uri: ./document.xml
 :doc-uri: ./document.doc
-:edition: 1.0
+:edition: 5.0-draft
 
 ////
 Make sure to complete each included document

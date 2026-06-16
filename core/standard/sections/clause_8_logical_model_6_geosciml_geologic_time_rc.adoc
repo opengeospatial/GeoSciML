@@ -1,7 +1,211 @@
-=== Logical Model
+=== GeoSciML GeologicTime Requirements Class (Normative)
 
-Paragraph
+[width="100%",cols="19%,81%",options="header",]
+|===
+|*Requirements Class* |
+|/req/gsml4-geologictime |
+|*Target type* |Encoding
+|*Dependency* |ISO 19108 Temporal Schema
+|*Dependency* |SWE Common 2.0 08-094r1 Clause 7
+|*Dependency* |ISO-19156 Observations and Measurements (Topic 20)
+|*Requirement* a|
+*/req/gsml4-timescale/start*
 
-==== Requirement Class A or Requirement A Example
+The start TimeOrdinalEraBoundary SHALL refer to the oldest boundary
 
-TBA
+|===
+
+The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) ++[++1++]++, contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
+
+image::images/image64.png[GeologicTime dependencies.,width=488,height=548]Figure: 62: GeologicTime dependencies.
+
+image::images/image65.png[Geologic Time summary diagram.,width=601,height=521]Figure: 63: Geologic Time summary diagram.
+
+==== Global Boundary Stratotype Sections and Points (GSSP)
+
+The GSSP model describes “Global Boundary Stratotype Sections and Points” as defined by the IUGS International Commission on Stratigraphy.
+
+image::images/image66.png[Global Boundary Stratotype Sections and Points.,width=601,height=457]Figure: 64: Global Boundary Stratotype Sections and Points.
+
+===== StratigraphicPoint
+
+A point in the stratigraphic record used to define a geochronologic boundary or point in geologic time.
+
+image::images/image67.png[Stratigraphic points context diagram,width=346,height=526]Figure: 65: Stratigraphic points context diagram
+
+====== primaryGuidingCriterion
+
+The property primaryGuidingCriterion:Primitive::CharacterString contains a description of the primary criterion used to establish the stratigraphic point.
+
+====== additionalCorrelationProperty
+
+The property additionnalCorrelationProperty:Primitive::CharacterString contains any additional criteria used to establish the stratigraphic point.
+
+====== status
+
+The property status:Primitive::CharacterString contains a description of the status of stratigraphic point (e.g., formally accepted, etc.).
+
+===== GlobalStratotypePoint
+
+A type of stratigraphic point used to define a globally agreed point in geologic time.  This class does not have any properties beyond those inherited from StratigraphicPoint.
+
+===== StratigraphicSection
+
+A sampled section of the stratigraphic record used to define a period in geologic time.
+
+image::images/image68.png[Stratigraphic sections context diagram.,width=531,height=574]Figure: 66: Stratigraphic sections context diagram.
+
+====== geologicSetting
+
+The property geologicSetting:Primitive::CharacterString contains a description of the geologic setting of the stratigraphic section.
+
+====== geologicDescription
+
+The geologicDescription:Primitive::CharacterString contains a description of the geology of the stratigraphic section (e.g., lithology, paleontology, paleogeography, etc.).
+
+====== accessibility
+
+The property accessibility:Primitive::CharacterString contains a description of the ability to access the stratigraphic section.
+
+====== conservation
+
+The property conservation:Primitive::CharacterString contains a description of measures to conserve the stratigraphic section.
+
+==== TemporalReferenceSystem
+
+This package is an extension of ISO19108 Temporal Schema and describes geologic eras and the relationships between them.
+
+image::images/image69.png[Temporal Reference System summary diagram.,width=601,height=710]Figure: 67: Temporal Reference System summary diagram.
+
+===== TimeOrdinalReferenceSystem
+
+TimeOrdinalReferenceSystem is a time reference system comprised of an ordered set of time periods (time ordinal eras).
+
+====== referencePoint
+
+The property referencePoint is an association between a TimeOrdinalReferenceSystem and a TimeOrdinalEraBoundary.  A TimeOrdinalReferenceSystem refers to two reference points defining the extent of the system.
+
+====== component
+
+The property component is an association to a TimeOrdinalEra that is part of the TimeOrdinalReferenceSystem.  A TimeOrdinalReferenceSystem is composed of a collection of TimeOrdinalEras.
+
+===== TimeOrdinalEra
+
+TimeOrdinalEra is a period of time between two time boundaries.  The association of an era with a stratotype is optional.  In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used.  Rather, the association of an era with geologic units and sections is indirect, via the association of an era with boundaries, which are in turn tied to stratotype points, which occur within host stratotype sections.  TimeOrdinalEra can be composed of other eras and organized into an arbitrarily nested tree.
+
+====== member
+
+The property member is an association between a TimeOrdinalEra and another TimeOrdinalEra which is hierarchically below.  The referred TimeOrdinalEras are subdivision the current TimeOrdinalEra. Note that nesting shall not be cyclic.  A TimeOrdinalEra can’t be a member of itself or any intermediate member (we can consider that member is a transitive property). This is not a model issue but a data coherence issue.
+
+====== group
+
+The group property is an association to a (single) parent TimeOrdinalEra. The group associations shall not produce a cyclic graph.  A TimeOrdinalEra group shall point to its immediate parent TimeOrdinalEra.   
+
+By convention, the “start” of the TimeOrdinalEra is the oldest boundary because it is when the era “started” to exist in time.  The “end” is therefore the youngest boundary.
+
+====== start
+
+The start property is an association to a TimeOrdinalEraBoundary that defines the start (the oldest) boundary of the era.
+
+[width="100%",cols="100%",options="header",]
+|===
+|*Requirement /req/gsml4-timescale/start*
+|The start TimeOrdinalEraBoundary SHALL refer to the oldest boundary
+|===
+
+====== end
+
+The end property is an association to a TimeOrdinalEraBoundary that defines the end (the youngest) boundary of the era.
+
+===== TimeOrdinalEraBoundary
+
+A TimeOrdinalEraBoundary is a point in Earth’s history which bounds a TimeOrdinalEra.
+
+====== position
+
+The position:TM++_++Instant property describes a point in time corresponding to the era boundary.
+
+====== positionalUncertainty
+
+The property positionalUncertainty (SWE::Quantity) contains a measure of the uncertainty in the estimate of the point in time of the era boundary.
+
+====== previousEra
+
+The property previousEra is an association between a TimeOrdinalEraBoundary and a TimeOrdinalEra to reference the preceding (oldest) era.
+
+====== nextEra
+
+The property nextEra is an association between a TimeOrdinalEraBoundary and a TimeOrdinalEra to reference the succeeding era.
+
+====== observationalBasis
+
+The property observationalBasis is be an association between a TimeOrdinalEraBoundary and an OM::OM++_++Observation in support of the existence of the boundary defined by geochronology, paleontology, or other evidence.
+
+==== Timescale
+
+The Timescale package describes geologic time periods (geochronologic eras) and the boundaries between them.
+
+image::images/image70.png[Time scale summary diagram.,width=601,height=515]Figure: 68: Time scale summary diagram.
+
+===== GeologicTimeScale
+
+The classic “Geologic Timescale” (http://www.stratigraphy.org/index.php/ics-chart-timescale[[.underline]#http://www.stratigraphy.org/index.php/ics-chart-timescale#]) comprising an ordered, hierarchical set of named “eras” is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is, in principle, defined independently.
+
+===== GeochronologicEra
+
+A GeochronologicEra is a period of time between two GeochronologicBoundaries. The association of a GeochronologicEra with a stratotype is optional.  In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used.  Rather, the association of an era with geologic units and sections is indirect, via the association of an era with boundaries, which are in turn tied to stratotype points, which occur within host stratotype sections.
+
+image::images/image71.png[GeochronologicEra context diagram.,width=601,height=546]Figure: 69: GeochronologicEra context diagram.
+
+====== rank
+
+The property rank:GeochronologicEraRank contains a term from a vocabulary describing the rank of the time period (e.g., eon, era, period, stage).
+
+====== stratotype
+
+The property stratotype is an association between a GeochronologicEra and StratigraphicSection that describes a type section that names the physical location or outcrop of a particular reference exposure of a stratigraphic sequence or stratigraphic boundary. A unit stratotype is the agreed reference point for a particular stratigraphic unit and a boundary stratotype is the reference for a particular boundary between strata (Wikipedia).
+
+===== GeochronologicBoundary
+
+A GeochronologicBoundary is a boundary between two geochronologic time periods.
+
+image::images/image72.png[GeochronologicBoundary context diagram.,width=601,height=658]Figure: 70: GeochronologicBoundary context diagram.
+
+====== stratotype
+
+The property stratotype is an association between a GeochronologicBoundary and a StratigraphicPoint that are associated with the boundary. A GeochronologicBoundary can be associated with more than one StratigraphicPoints, but only one may have GSSP ratified status. The others are proposed equivalents.
+
+Example:
+
+image::images/image73.png[Partial encoding of Miocene instance diagram.,width=601,height=317]Figure: 71: Partial encoding of Miocene instance diagram.
+
+===== NumericEraBoundary
+
+NumericEraBoundary is used for pre-Ediacaran and Pleistocene / Holocene boundaries in the standard timescale where boundaries are not defined by a material reference but as numerical values.
+
+image::images/image74.png[NumericEraBoundary context diagram.,width=400,height=466]Figure: 72: NumericEraBoundary context diagram.
+
+===== StandardGlobalNumericalAge
+
+A standard numeric age point (a numeric analogue to a ‘golden spike’) is applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary (++[++23++]++; http://www.stratigraphy.org/index.php/ics-chart-timescale[[.underline]#http://www.stratigraphy.org/index.php/ics-chart-timescale#]).  The boundary is not defined from a physical stratotype, although it can be influence by some, but placed at a convenient numerical value.
+
+==== GeoSciML GeologicTime vocabularies
+
+The GeologicTime package has only one vocabulary (Table 6).
+
+[width="100%",cols="^27%,^73%",options="header",]
+|===
+|*Table 6: Geologic time vocabulary.* |
+|*Vocabulary* |*Description*
+|*GeochronologicEraRank* a|
+This list is an indicative list only of terms used to describe the rank of time periods defined by the International Commission on Stratigraphy.  Users are encouraged to use vocabulary of terms owned by the ICS or CGI vocabularies working group and managed outside of this model.
+
+For example:
+
+* eon
+* era
+* period
+* epoch
+* age
+
+|===

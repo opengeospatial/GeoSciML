@@ -1,0 +1,15 @@
+[[req_class_gsml4-lob]]
+
+[requirements_class]
+.Requirements Class 'Linked Open Data'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lob
+subject:: Encoding
+requirement:: /req/gsml-lod/codelistURI
+requirement:: /req/gsml-lod/identifier
+requirement:: /req/gsml-lod/gsml-representation
+requirement:: /req/gsml-lod/byref
+====
+
+

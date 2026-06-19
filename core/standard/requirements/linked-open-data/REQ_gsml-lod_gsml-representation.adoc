@@ -1,0 +1,8 @@
+[[req_gsml-lod_gsml-representation]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lod/gsml-representation
+part:: Dereferenceable HTTP URI used as identifiers SHOULD provide GeoSciML 5.0 as one of its representations.
+====

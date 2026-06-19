@@ -1,0 +1,8 @@
+[[req_gsml-core_quantities-uom]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/quantities-uom
+part:: Quantities and measurements SHALL have explicit units of measure from a governed ontology.
+====

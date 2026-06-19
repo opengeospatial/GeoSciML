@@ -1,0 +1,8 @@
+[[req_gsml-core_uml-entity-name]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/uml-entity-name
+part:: When the target implementation allows it, the exact name of the classifier SHALL be used.
+====

@@ -1,103 +1,41 @@
 === GeoSciML Core Abstract Requirements Class (Normative)
 
-[width="100%",cols="10%,90%",options="header",]
-|===
-|*Abstract Requirements Class* |
-|/req/gsml4-core |
-|*Target type* |Encoding
-|*Dependency* |ISO19103:2005 Conceptual Schema Language
-|*Dependency* |ISO19107:2003 Spatial Schema
-|*Dependency* |ISO19109:2015 Rules for application schemas
-|*Dependency* |RFC 3986 Uniform Resource Identifier (URI): Generic Syntax
-|*Dependency* |ISO19115-3 Metadata
-|*Requirement* a|
-*/req/gsml4-core/uml-entity-name*
+include::/requirements/requirements_class_geosciml_core.adoc[]
 
-When the target implementation allows it, the exact name of the classifier SHALL be used.
-
-|*Requirement* a|
-*/req/gsml4-core/uml-cardinality*
-
-If the target implementation allows it, it SHALL implement the same cardinality of properties and associations as defined in the UML.
-
-|*Requirement* a|
-*/req/gsml4-core/uml-abstract*
-
-Abstract classes SHALL NOT be materialised.
-
-|*Requirement* a|
-*/req/gsml4-core/uml-polymorphism*
-
-A target implementation SHALL implement type substitutions inferred from the UML model.
-
-|*Requirement* a|
-*/req/gsml4-core/quantities-uom*
-
-Quantities and measurements SHALL have explicit units of measure from a governed ontology.
-
-|*Requirement* a|
-*/req/gsml4-core/quantities-single-range*
-
-QuantityRange properties that must report a single value SHALL assign both lower and upper value as equal to that single value.
-
-|*Requirement* a|
-/req/gsml4-core/codelist
-
-Empty classes with stereotype ++<<++CodeList++>>++ SHALL be implemented as externally governed vocabularies which terms are encoded as URI (RFC 3986).
-
-|===
 
 This section presents requirements to which all target encodings must conform in to order to claim compliance to GeoSciML 4.1.
 
 ==== Naming of entities
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/uml-entity-name*
-|When the target implementation allows it, the exact name of the classifier SHALL be used.
-|===
+include::/requirements/core/REQ_gsml-core_uml-entity-name.adoc[]
 
 If a target implementation is capable of encoding all the artefacts (classes and properties) using the same names used in UML, it shall do so.  Some target implementations might prevent it; for example, dBase (DBF files) column names are restricted to 10 characters or some RDBMS limits the use of camel case names.  But if the target allows it, the exact names shall be used.
 
 ==== Cardinality
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/uml-cardinality*
-|If the target implementation allows it, it SHALL implement the same cardinality of properties and associations as defined in the UML.
-|===
+
+include::/requirements/core/REQ_gsml-core_uml-cardinality.adoc[]
 
 Cardinality shall be the same as defined in UML model.  Since essentially all properties are optional, this clause addresses the upper bounds of cardinality: “1” or “many” in almost all cases.  Therefore, if the UML model limits a property’s maximum cardinality to “1”, then the target implementation cardinality cannot be “many”.
 
 ==== Abstract classes
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/uml-abstract*
-|Abstract classes SHALL NOT be materialised.
-|===
 
- 
+include::/requirements/core/REQ_gsml-core_uml-abstract.adoc[]
 
 Not all physical implementations support the concept of an abstract class, or even inheritance and polymorphism.  XSD does support that concept and all its implications, but JSON does not – although JavaScript can somewhat.  This requirement specifies that the encoding specification shall not allow materialisation of an instance of a class stereotyped as abstract.
 
 ==== Polymorphism
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/uml-polymorphism*
-|A target implementation SHALL implement type substitutions inferred from the UML model.
-|===
+
+include::/requirements/core/REQ_gsml-core_uml-polymorphism.adoc[]
 
 The type hierarchy of the UML model implies type substitutions for property values.  For instance, a property value of type GeologicEvent can be substituted by a value of type DisplacementEvent because DisplacementEvent is a subtype of GeologicEvent.  Many property types are abstract types and only a concrete subtype may be materialised (as per /req/gsml4-core/uml-abstract).  A target implementation shall consider type substitutions using mechanisms available for this implementation.
 
 ==== Quantities
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/quantities-uom*
-|Quantities and measurements SHALL have explicit units of measure from a governed ontology.
-|===
+
+include::/requirements/core/REQ_gsml-core_quantities-uom.adoc[]
 
 The quantities and measurements units of measure shall be taken from a standard vocabulary governed by an appropriate community, for example the Unified Code for Units of Measure (UCUM).
 
@@ -105,26 +43,20 @@ The quantities and measurements units of measure shall be taken from a standard 
 
 A QuantityRange is a quantity formed of a lower and upper value forming a range of values.  If a single value needs to be represented as a QuantityRange, where the single value is assigned to both lower and upper properties.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/quantities-single-range*
-|
-|QuantityRange properties that must report a single value SHALL assign both lower and upper value as equal to that single value.
-|===
+
+include::/requirements/core/REQ_gsml-core_quantities-single-range.adoc[]
 
 ==== Code lists
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-core/codelist*
-|Empty classes with stereotype ++<<++CodeList++>>++ SHALL be implemented as externally governed vocabularies which terms are encoded as URI (RFC 3986).
-|===
 
-All properties that require formal vocabularies are modelled in the UML as classes having the stereotype ++<<++CodeList++>>++.  The list of valid terms is either prescribed by this specification, with a list of possible entries (Figure 9) or open (i.e., without any terms).
+include::/requirements/core/REQ_gsml-core_codelist.adoc[]
 
+All properties that require formal vocabularies are modelled in the UML as classes having the stereotype ++<<++CodeList++>>++.  The list of valid terms is either prescribed by this specification, with a list of possible entries (<<img_example_codelists>>) or open (i.e., without any terms).
+
+[[img_example_codelists]]
 .Example CodeLists, with a) a prescribed list of terms (DescriptionPurpose) and b) 'open' with no prescribed terms (GeologicUnitHierarchyRoleTerm)
 image::images/image9.png[width=118,height=96] 
 
-When the list is open, the vocabulary is managed externally over the web where each vocabulary term should be encoded as a resource.  Vocabulary term identifiers are URIs representing concepts from a standard vocabulary governed by an appropriate community - for example, the IUGS CGI Geoscience Terminology Working Group (http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html[[.underline]#http://www.cgi-iugs.org/tech++_++collaboration/geoscience++_++terminology++_++working++_++group.html#] and http://resource.geosciml.org/[[.underline]#http://resource.geosciml.org#]) or INSPIRE ++[++8++]++.
+When the list is open, the vocabulary is managed externally over the web where each vocabulary term should be encoded as a resource.  Vocabulary term identifiers are URIs representing concepts from a standard vocabulary governed by an appropriate community - for example, the IUGS CGI Geoscience Terminology Working Group (http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html[http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html] and http://resource.geosciml.org/[http://resource.geosciml.org/]) or INSPIRE ++[++8++]++.
 
 This requirement does not require that URIs be actually dereferenceable, but just that a vocabulary term is associated with a syntactically correct URI.

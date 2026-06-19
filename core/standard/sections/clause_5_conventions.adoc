@@ -6,6 +6,7 @@ This sections provides details and examples for any conventions used in the docu
 
 Each normative statement (requirement or recommendation) in this specification is a member of a requirements class. Each requirements class is described in a discrete clause or sub-clause, and summarized using the following template:
 
+[%unnumbered%]
 [width="100%",cols="46%,54%",options="header",]
 |===
 |*Requirements class* |*/req/++{++classM}*
@@ -23,6 +24,7 @@ All requirements in a requirements class must be satisfied. Hence, the requireme
 
 All requirements and recommendations are normative, and each is presented using the following template:
 
+[%unnumbered%]
 [width="100%",cols="100%",options="header",]
 |===
 |*Requirement /req/++[++classM++]++/++[++reqN++]++*
@@ -37,6 +39,7 @@ where /req/++[++classM++]++/++[++reqN++]++ identifies the requirement or recomme
 
 Conformance to this specification is possible at a number of levels, specified by conformance classes (Annex A). Each conformance class is summarized using the following template:
 
+[%unnumbered%]
 [width="100%",cols="29%,71%",options="header",]
 |===
 |*Conformance class* |
@@ -52,6 +55,7 @@ W3C Schema (XSD) and ISO Schematron (SCH) files are considered as part of this s
 
 Schematron files explicitly specify which requirements are being tested in the title of the schematron pattern.
 
+[%unnumbered%]
 [source,xml]
 ----
 <pattern id="unit-of-measure">
@@ -66,25 +70,28 @@ Schematron files explicitly specify which requirements are being tested in the t
 
 The normative provisions in this specification are denoted by a URI constructed using this pattern:
 
-http://www.opengis.net/spec/++{++standard}/++{++m.n}
+http://www.opengis.net/spec/++{++standard}/++{++m.n}[\http://www.opengis.net/spec/++{++standard}/++{++m.n}]
 
 All requirements and conformance tests that appear in this document are denoted by a partial URI which is relative to this base. The identifier supports cross-referencing of class membership, dependencies, and links from each conformance test to the requirements tested. In this specification identifiers are expressed as partial URIs or paths, which can be appended to a base URI that identifies the specification as a whole in order to construct a complete URI for identification in an external context.
 
 The URI for each requirements class has the form:
 
-http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++.
+http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++[\http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++]
 
 The URI for each requirement or recommendation has the form:
 
-http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++/++[++reqN++]++.
+http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++/++[++reqN++]++[\http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]/++[++reqN++]]
+
 
 The URI for each conformance class has the form:
 
-http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++.
+http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++[\http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++]
+
 
 The URI for each conformance test has the form:
 
-http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++/++[++testN++]++.
+http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++/++[++testN++]++[\http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]/++[++testN++]]
+
 
 === Classifiers
 
@@ -102,6 +109,6 @@ For the sake of readability, and also because some HollowWorld package names do 
 
 W3C XPath will be used in XML instances.  XML entities will be identified using their full qualified name (namespace, identified by its prefix, and entity name).
 
-* `gsmlb:GeologicUnit` refers to an instance of GeologicUnit, from namespace `xmlns:gsmlb="http://www.opengis.net/gsml/4.1/GeoSciML-Basic"`
+* `gsmlb:GeologicUnit` refers to an instance of GeologicUnit, from namespace xmlns:gsmlb="\http://www.opengis.net/gsml/4.1/GeoSciML-Basic"
 * `gsmlb:GeologicUnit/gml:name` refers to the name property of GeologicUnit
 * `gsmlb:GeologicUnit/gml:name/@codeName` refers to the codeName attribute of the name property of GeologicUnit

@@ -1,0 +1,8 @@
+[[req_gsml-basic_linear-trend-plunge-not-null]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-basic/linear-trend-plunge-not-null
+part:: At least one of plunge or trend SHALL not be null.
+====

@@ -6,6 +6,8 @@
 [%metadata]
 identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lob
 subject:: Encoding
+inherit:: URI
+inherit:: HTTP
 requirement:: /req/gsml-lod/codelistURI
 requirement:: /req/gsml-lod/identifier
 requirement:: /req/gsml-lod/gsml-representation

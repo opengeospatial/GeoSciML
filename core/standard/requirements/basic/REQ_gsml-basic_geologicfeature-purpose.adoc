@@ -1,0 +1,8 @@
+[[req_gsml-basic_geologicfeature-purpose]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-basic/geologicfeature-purpose
+part:: Purpose SHALL be a value from Table 2 of clause 8.4.1.1.2.
+====

@@ -1,0 +1,8 @@
+[[req_gsml-basic_geologicevent-non-null]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-basic/geologicevent-non-null
+part:: Either (olderNamedAge + youngerNamedAge) or numericAge SHALL not be null.
+====

@@ -1,36 +1,17 @@
 === GeoSciML Extension Requirements Class (Normative)
 
-[width="100%",cols="10%,90%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4-extension |
-|*Target type* |Encoding
-|*Dependency* |/req/gsml4-basic
-|*Dependency* |/req/gsml4-geologictime
-|*Requirement* a|
-*/req/gsml4-extension/geologicfeature-history*
 
-A GeologicFeatureRelation SHALL not be used to associate a GeologicFeature to a GeologicEvent if GeologicFeature::geologicHistory can provide the same information.
-
-|*Requirement* a|
-*/req/gsml4-extension/contact-chronoboundary*
-
-correlatesWith association to a GeochronologicBondary SHALL be allowed only when contactType = ChronostratigraphicBoundary.
-
-|*Requirement* a|
-/req/gsml4-extension/slipComponents-slip
-
-SlipComponents SHALL have at least one of heave, horizontalSlip or throw as a non-null value.
-
-|===
+include::/requirements/requirements_class_extension.adoc[]
 
 The extension package provides classes to further the descriptions of basic classes by adding more properties and supplemental relations.  It extends abstract description stubs declared in basic package and introduces new GeologicStructure features.
 
-image::images/image34.png[GeoSciML extension package dependencies.,width=601,height=609]Figure: 32: GeoSciML extension package dependencies.
+.GeoSciML extension package dependencies
+image::images/image34.png[GeoSciML extension package dependencies.,width=601,height=609]
 
 ==== GeologicRelation
 
-image::images/image35.png[Summary diagram of GeologicFeatureRelation as a concrete subtype of AbstractFeatureRelation stub class,width=532,height=617]Figure: 33: Summary diagram of GeologicFeatureRelation as a concrete subtype of AbstractFeatureRelation stub class
+.Summary diagram of GeologicFeatureRelation as a concrete subtype of AbstractFeatureRelation stub class
+image::images/image35.png[width=532,height=617]
 
 ===== GeologicHistory
 
@@ -44,11 +25,8 @@ To allow geologic age description in GeoSciML Basic without GeologicFeatureRelat
 
 To prevent confusion and promote consistency, especially in query scenarios, association between GeologicFeature and GeologicEvent, for the purpose of describing geologic history, and therefore geologic age, shall use the geologicHistory property.  A GeologicFeatureRelation can be used in any other circumstances.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-extension/geologicfeature-history*
-|A GeologicFeatureRelation SHALL not be used between a GeologicFeature and GeologicEvent if GeologicFeature::geologicHistory can provide the same information.
-|===
+
+include::/requirements/extension/REQ_gsml-extension_geologicfeature-history.adoc[]
 
 ===== GeologicFeatureRelation
 
@@ -58,7 +36,8 @@ Example:  a Source may point to an intrusive igneous rock unit.  In this case,
 
 Many other types of relationships can also be accommodated via GeologicRelation, for example, topological relations could be described where they are geologically significant.
 
-image::images/image36.png[Generic geologic feature relation,width=546,height=385]Figure: 34: Generic geologic feature relation
+.Generic geologic feature relation
+image::images/image36.png[Generic geologic feature relation,width=546,height=385]
 
 ====== relationship
 
@@ -78,7 +57,8 @@ The MaterialRelation class describes the relationships between constituent parts
 
 Example:  Consider an overgrowth of albite on plagioclase in a granite. The Source would originate with the albite constituentPart description.  In this case, the Target would point to the plagioclase constituentPart description and the relationship attribute would be ‘overgrowth’ and the sourceRole is ‘overgrows’.  Other appropriate role attributes might include: crosscuts, replaces, etc. for crosscutting and replacement relationships.  Inverse relationships must be explicitly recorded.
 
-image::images/image37.png[Material relation context diagram.,width=531,height=544]Figure: 35: Material relation context diagram.
+.Material relation context diagram
+image::images/image37.png[Material relation context diagram.,width=531,height=544]
 
 ====== relationship
 
@@ -104,17 +84,20 @@ EarthMaterialDescription abstract class is materialised into a series of concret
 * MetamorphicDescription
 * CompoundMaterialDescription
 
-image::images/image38.png[Overview of earth material description.,width=601,height=427]Figure: 36: Overview of earth material description.
+Overview of earth material description
+image::images/image38.png[Overview of earth material description.,width=601,height=427]
 
 ===== AlterationDescription
 
-image::images/image39.png[Alteration description context diagram.,width=531,height=570]Figure: 37: Alteration description context diagram.
+.Alteration description context diagram
+image::images/image39.png[Alteration description context diagram.,width=531,height=570]
 
-AlterationDescription describes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. It includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic. For example, a soil profile description would have to be constructed as a GeologicUnit (geologicUnitType = PedologicUnit) with unit parts representing the various horizons in the profile.  Thickness of a weathering profile can be delivered as unitThickness of a GeologicUnit of geologicUnitType equal to “AlterationUnit” (Figure 38).
+AlterationDescription describes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. It includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic. For example, a soil profile description would have to be constructed as a GeologicUnit (geologicUnitType = PedologicUnit) with unit parts representing the various horizons in the profile.  Thickness of a weathering profile can be delivered as unitThickness of a GeologicUnit of geologicUnitType equal to “AlterationUnit” (<<img_example_of_a_weathering_profile>>).
 
  
-
-image::images/image40.png[Example of a weathering profile.,width=486,height=143]Figure: 38: Example of a weathering profile.
+[[img_example_of_a_weathering_profile]]
+.Example of a weathering profile
+image::images/image40.png[Example of a weathering profile.,width=486,height=143]
 
 An example encoding of an altered geologic unit from Drewes ++[++3++]++ is shown in Figure 39.
 
@@ -354,11 +337,8 @@ The orientation:GSML++_++PlanarOrientation property reports the general orientat
 
 The correlatesWith property is an association between ContactDescription and a GeochronologicBoundary describing a geochronologic (i.e., time zone) boundary that may correlate with it.  Therefore, a contact correlation with a GeochronologicBoundary SHALL ONLY be allowed when the contactType is a ChronostratigraphicBoundary.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-extension/contact-chronoboundary*
-|correlatesWith association to a GeochronologicBondary SHALL be allowed only when contactType = ChronostratigraphicBoundary.
-|===
+
+include::/requirements/extension/REQ_gsml-extension_contact-chronoboundary.adoc[]
 
 ===== DisplacementEvent
 
@@ -426,12 +406,8 @@ The slipComponent:SlipComponents property associates the individual slip compone
 
 SlipComponents is a kind of DisplacementValue that is a representation of slip as a vector resolved into components within a reference frame in which horizontal axes are parallel and perpendicular to the strike of the fault.  At least one of heave, horizontalSlip, or throw must not be null.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-extension/slipComponents-slip*
-|
-|SlipComponents SHALL have at least one of heave, horizontalSlip or throw be a non-null value.
-|===
+
+include::/requirements/extension/REQ_gsml-extension_slipComponents-slip.adoc[]
 
 ====== heave
 
@@ -449,7 +425,8 @@ The property throw:GSML++_++Vector contains the vertical component of slip.
 
 FoldDescription is an extended descriptive property of a fold structure.
 
-image::images/image59.png[FoldDescription context diagram.,width=601,height=557]Figure: 57: FoldDescription context diagram.
+.FoldDescription context diagram.
+image::images/image59.png[FoldDescription context diagram.,width=601,height=557]
 
 ====== amplitude
 
@@ -499,7 +476,8 @@ The system property is an association between a FoldDescription and a FoldSystem
 
 A FoldSystem is a collection of congruent folds (axis and axial surface are parallel) produced by the same tectonic event. It is sometimes referred to as a “fold train”.
 
-image::images/image60.png[FoldSystem context diagram.,width=601,height=611]Figure: 58: FoldSystem context diagram.
+.FoldSystem context diagram
+image::images/image60.png[FoldSystem context diagram.,width=601,height=611]
 
 ====== periodic
 
@@ -517,7 +495,8 @@ The foldSystemMember is an association between a FoldSystem and the Folds that a
 
 FoliationDescription provides extended descriptive properties for a foliation structure.
 
-image::images/image61.png[FoliationDescription context diagram.,width=601,height=644]Figure: 59: FoliationDescription context diagram.
+.FoliationDescription context diagram
+image::images/image61.png[FoliationDescription context diagram.,width=601,height=644]
 
 ======  definingElement
 
@@ -565,7 +544,8 @@ The property stPhysicalProperty:PhysicalDescription contains a value of generic 
 
 The GeologicUnitDetails package provides for extended description of geologic unit features (8.4.1.3).
 
-image::images/image63.png[GeologicUnitDetails,width=338,height=726]Figure: 61: GeologicUnitDetails
+.GeologicUnitDetails
+image::images/image63.png[GeologicUnitDetails,width=338,height=726]
 
 ===== GeologicUnitDescription
 
@@ -609,11 +589,12 @@ The property beddingThickness (SWE::Category) provides a term from a controlled 
 
 ==== GeoSciML Extension vocabularies
 
-Vocabularies used in GeoSciML Extension are listed in Table 5  - GeoSciML Extension vocabularies.
+Vocabularies used in GeoSciML Extension are listed in <<tbl_geosciml_extension>>  - GeoSciML Extension vocabularies.
 
+[[tbl_geosciml_extension]]
+.GeoSciML Extension vocabularies
 [width="100%",cols="^37%,^63%",options="header",]
 |===
-|*Table 5: GeoSciML Extension vocabularies.* |
 |*Vocabulary* |*Description*
 |*GeologicRelationshipTerm* |Refers to a vocabulary of terms describing a relationship between geologic features or objects.
 |*RelationRoleTerm* |Refers to a vocabulary of terms describing roles played by geologic features or objects in a geologic relationship.

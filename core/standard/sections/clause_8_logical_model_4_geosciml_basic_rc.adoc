@@ -1,69 +1,33 @@
 === GeoSciML Basic Requirements Class (Normative)
 
-[width="100%",cols="11%,89%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4-basic |
-|*Target type* |Encoding
-|*Dependency* |/req/gsml4-core
-|*Dependency* |Spatial Schema ISO19107
-|*Dependency* |Conceptual schema language ISO19103
-|*Requirement* a|
-*/req/gsml4-basic/geologicfeature-purpose*
 
-Purpose SHALL be a value from Table 2 of clause 8.4.1.1.2.
-
-|*Requirement* a|
-*/req/gsml4-basic/geologicevent-single*
-
-An individual GeologicEvent SHALL only apply to one of DisplacementEvent, AlterationDescription or MetamorphicDescription.
-
-|*Requirement* a|
-*/req/gsml4-basic/geologicevent-non-null*
-
-Either (olderNamedAge {plus} youngerNamedAge) or numericAge SHALL not be null.
-
-|*Requirement* a|
-/req/gsml4-basic/plane-pol-dip-az-not-null
-
-At least one of polarity, azimuth or dip SHALL not be null.
-
-|*Requirement* a|
-/req/gsml4-basic/linear-trend-plunge-not-null
-
-At least one of plunge or trend SHALL not be null.
-
-|*Requirement* a|
-/req/gsml4-basic/quantity-range-order
-
-The QuantityRange lowerValue SHALL be less than or equal to the upperValue.
-
-|*Requirement* a|
-/req/gsml4-basic/quantity-range-repeat
-
-The QuantityRange’s value++[++0++]++ SHALL provide the same value as lowerValue and value++[++1++]++ SHALL provide the same value as upperValue.
-
-|===
+include::/requirements/requirements_class_geosciml_basic.adoc[]
 
  
 
 Basic package provides a collection of classes representing fundamental geological and geomorphological features (units, structures, and events), earth materials, geologic time, and the relations between them.  It limits the number of descriptive properties to match important common use cases, including the INSPIRE geological theme specification ++[++8++]++.
 
-image::images/image10.png[GeoSciML Basic dependencies.,width=601,height=455]Figure: 10: GeoSciML Basic dependencies.
+[img_geosciml_basic_dependencies]
+.GeoSciML Basic dependencies
+image::images/image10.png[GeoSciML Basic dependencies.,width=601,height=455]
 
 ==== Geology Basic
 
 GeologyBasic is a package of classes representing fundamental geological map features and the relations between them.  GeoSciML describes a geologic dataset as a series of GeologicFeature occurrences, spatially represented as MappedFeature.  A map is a collection of MappedFeatures.  The term “map”, typically understood as a map sheet (a given area on the surface of the earth), is only one of the possible collection of MappedFeatures.  Other examples are cross-sections, block diagrams, and even borehole logs (a linear map).  MappedFeature can represent any features and GeologicFeatures are one of the kinds of features it can represent.  A MappedFeature identifies what it represents using its “specification” association. 
 
-Figure 11 shows the fundamental relationships between a MappedFeature and the GeologicFeature.  GeologicFeature is further subtyped into GeologicUnit, GeologicStructure, GeomorphologicFeature and GeologicEvent.
+<<img_geologic_feature_and_mappedfeature>> shows the fundamental relationships between a MappedFeature and the GeologicFeature.  GeologicFeature is further subtyped into GeologicUnit, GeologicStructure, GeomorphologicFeature and GeologicEvent.
 
-image::images/image11.png[Geologic Feature and MappedFeature.,width=601,height=366]Figure: 11: Geologic Feature and MappedFeature.
+[[img_geologic_feature_and_mappedfeature]]
+.Geologic Feature and MappedFeature
+image::images/image11.png[Geologic Feature and MappedFeature.,width=601,height=366]
 
 ===== GeologicFeature
 
 The abstract GeologicFeature class represents a conceptual feature that is hypothesized to exist coherently in the world.  It corresponds with a “legend item” from a traditional geologic map and its instance acts as the “description package”.  The description package is classified according to its intended purpose as a _typicalNorm_, _definingNorm or instance_.  GeologicFeature can be used outside the context of a map (it can lack a MappedFeature), for example when describing typical norms (describing expected property from a feature) or defining norms (describing properties required from a feature to be classifying in a group, such as given geologic unit).  A GeologicFeature appearing on a map is considered as an “instance”.
 
-image::images/image12.png[Geologic Feature context diagram,width=601,height=332]Figure: 12: Geologic Feature context diagram
+[[img_geologic_feature_context_diagram]]
+.Geologic Feature context diagram
+image::images/image12.png[width=601,height=332]
 
 ====== observationMethod
 
@@ -73,19 +37,17 @@ ObservationMethod is a convenience property that provides a simple approach to o
 
 ====== purpose
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/geologicfeature-purpose*
-|Purpose SHALL be a value from Table 2 of clause 8.4.1.1.2 .
-|===
+
+include::/requirements/basic/REQ_gsml-basic_geologicfeature-purpose.adoc[]
 
  
 
 The property purpose:DescriptionPurpose specifies the intended purpose/level of abstraction for a given feature or object instance.  The possible values are: *instance*, *typicalNorm*, and *definingNorm*.
 
+[[valid_purpose_values]]
+.Valid “purpose” values
 [width="100%",cols="^17%,^83%",options="header",]
 |===
-|*Table 2: Valid “purpose” values* |
 |*Purpose* |*Description*
 |*instance* |And instance is a description that is specific to a particular observed occurrence. This is 'raw data', and its classification may start out as very general. There are kinds of narrowly defined ControlledConcepts that might not allow 'instances' that are different from the DefiningNorm. It might be worth considering a different relationship between MappedFeature and an Instance GeologicEntity, with the GeologicEntity role being 'description'.
 |*typicalNorm* |A typicalNorm is a description that specifies properties to be expected of some occurrence associated with the GeologicEntity. This description may include many properties that are not part of the DefiningNorm. For example, the fact that granite is typically light-colored is not a defining property, but is certainly a useful typical property. These kinds of descriptions would be used to address queries like 'This area is within a polygon classified as Podunk Formation; what sort of lithology am I most likely to encounter when I start digging?' The Podunk Formation may be defined by the presence of a certain ammonite... TypicalNorm description would be constructed as a summary over many Instance descriptions.
@@ -148,7 +110,9 @@ The specification association links an instance of MappedFeature to the GFI++_++
 
 Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit ++[++12++]++, Stratigraphic unit in the sense of NACSN ++[++14++]++, or International Stratigraphic Code ++[++9++]++), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like ‘granitic rock’ or ‘alluvial deposit’, surficial units like ‘till’ or ‘old alluvium’). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).
 
-image::images/image13.png[GeologicUnit context diagram.,width=601,height=367]Figure: 13: GeologicUnit context diagram.
+[[img_geologicunit_context_diagram]]
+.GeologicUnit context diagram
+image::images/image13.png[GeologicUnit context diagram.,width=601,height=367]
 
 Operationally, a GeologicUnit is a container used to associate geologic properties with some mapped occurrence (through the GeologicFeature::occurrence::MappedFeature link), or with a geologic unit via a vocabulary (through the GeologicUnit::classifier).
 
@@ -216,7 +180,9 @@ The material:EarthMaterial property contains the material description (8.4.1.6) 
 
 The EarthMaterial class holds a description of a naturally occurring substance in the Earth.  EarthMaterial represents material composition or substance, and is thus independent of quantity or location. Ideally, EarthMaterials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations enter into the description as well.  
 
-image::images/image14.png[EarthMaterial and related classes.,width=516,height=238]Figure: 14: EarthMaterial and related classes.
+[[img_earthmaterial_and_related_classes]]
+.EarthMaterial and related classes
+image::images/image14.png[EarthMaterial and related classes.,width=516,height=238]
 
 ====== color
 
@@ -234,7 +200,9 @@ The property gbEarthMaterialDescription:EarthMaterialAbstractDescription provide
 
 A CompoundMaterial is an EarthMaterial composed of particles made of EarthMaterials, possibly including other CompoundMaterials.  This class is provided primarily as an extensibility point for related domain models that wish to import and build on GeoSciML, and wish to define material types that are compound but are not rock or rock-like material. In the context of GeoSciML "RockMaterial" should be used to describe units made of rock. 
 
-image::images/image15.png[Context diagram for CompoundMaterial,width=601,height=469]Figure: 15: Context diagram for CompoundMaterial
+[[img_context_diagram_for_compoundmaterial]]
+.Context diagram for CompoundMaterial
+image::images/image15.png[Context diagram for CompoundMaterial,width=601,height=469]
 
 ===== RockMaterial
 
@@ -254,9 +222,9 @@ The age attributes are representations of a particular geological event or featu
 
 Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages specified by geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or “contains inclusions of” (a.k.a, Steno laws ++[++17++]++).
 
- 
-
-image::images/image16.png[ Geologic Event summary diagram.,width=601,height=511]Figure: 16: Geologic Event summary diagram.
+[[img_geologic_event_summary_diagram]]
+.Geologic Event summary diagram
+image::images/image16.png[ Geologic Event summary diagram.,width=601,height=511]
 
 ===== GeologicEvent
 
@@ -266,19 +234,11 @@ Because associated processes are incompatible, a single event cannot be shared b
 
  
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/geologicevent-single*
-|An individual event GeologicEvent SHALL only apply to one of DisplacementEvent, AlterationDescription or MetamorphicDescription.
-|===
+include::/requirements/basic/REQ_gsml-basic_geologicevent-single.adoc[]
 
 A geologic event must at least have one age representation, either numerical or named. 
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/geologicevent-non-null*
-|Either (olderNamedAge {plus} youngerNamedAge) or numericAge SHALL not be null.
-|===
+include::/requirements/basic/REQ_gsml-basic_geologicevent-non-null.adoc[]
 
 ====== eventProcess
 
@@ -328,9 +288,9 @@ GeologicStructure is grounded in relationships between parts of a rock or rock b
 
 A disaggregated heap of particles does not have structure, and can only be described in terms of the mineralogy and geometrical character of the constituent particles.  Geologic structures are more likely to be found in, and are more persistent in, consolidated materials than in unconsolidated materials. Properties like “clast-supported”, “matrix-supported”, and “graded bed” that do not involve orientation are considered kinds of GeologicStructure because they depend on the configuration of parts of a rock body.
 
- 
-
-image::images/image17.png[Summary diagram of Geologic structures.,width=601,height=366]Figure: 17: Summary diagram of Geologic structures.
+[[img_summary_diagram_of_geologic_structures]]
+.Summary diagram of Geologic structures
+image::images/image17.png[Summary diagram of Geologic structures.,width=601,height=366]
 
 ===== GeologicStructure
 
@@ -340,7 +300,9 @@ A geologic structure is a configuration of matter in the Earth based on describa
 
 A contact is a general concept representing any kind of surface separating two geologic units, including primary boundaries such as depositional contacts, all kinds of unconformities, intrusive contacts, and gradational contacts, as well as faults that separate geologic units.
 
-image::images/image18.png[Contact context diagram,width=601,height=648]Figure: 18: Contact context diagram
+[[img_contact_context_diagram]]
+.Contact context diagram
+image::images/image18.png[Contact context diagram,width=601,height=648]
 
 ====== contactType
 
@@ -354,7 +316,9 @@ The property stContactDescription:ContactAbstractDescription provides a detailed
 
 A fold is formed by one or more systematically curved layers, surfaces, or lines in a rock body. A fold denotes a structure formed by the deformation of a geologic structure, such as a contact which the original undeformed geometry is presumed, to form a structure that may be described by the translation of an abstract line (the fold axis) parallel to itself along some curvilinear path (the fold profile). Folds have a hinge zone (zone of maximum curvature along the surface) and limbs (parts of the deformed surface not in the hinge zone).  Folds are described by an axial surface, hinge line, profile geometry, the solid angle between the limbs, and the relationships between adjacent folded surfaces if the folded structure is a Layering fabric. 
 
-image::images/image19.png[Fold context diagram.,width=601,height=637]Figure: 19: Fold context diagram.
+[[img_fold_context_diagram]]
+.Fold context diagram
+image::images/image19.png[Fold context diagram.,width=601,height=637]
 
 ====== profileType
 
@@ -370,7 +334,9 @@ A foliation is a planar arrangement of textural or structural features in any ty
 
 Bedding is a fabric representing the average orientation of paleodepositional surface and should be encoded through the foliationType property.  It might apply to bedding that is layering or a foliation without layering (e.g. clast alignment in amalgamated beds).
 
-image::images/image20.png[Foliation context diagram,width=601,height=635]Figure: 20: Foliation context diagram
+[[img_foliation_context_diagram]]
+.Foliation context diagram
+image::images/image20.png[Foliation context diagram,width=601,height=635]
 
 ====== foliationType
 
@@ -384,7 +350,9 @@ The property stFoliationDescription:FoliationAbstractDescription provides a deta
 
 A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single ‘planar’ brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package (8.5.1.2).
 
-image::images/image21.png[ShearDisplacementStructure context diagram,width=601,height=654]Figure: 21: ShearDisplacementStructure context diagram
+[[img_ShearDisplacementStructure_context_diagram]]
+.ShearDisplacementStructure context diagram
+image::images/image21.png[ShearDisplacementStructure context diagram,width=601,height=654]
 
 ====== faultType
 
@@ -398,15 +366,19 @@ The property stStructureDescription:ShearDisplacementStructureAbstractDescriptio
 
 The Geomorphology sub-package describes features that comprise the shape and nature of the Earth’s land surface (i.e., landforms).  These landforms may be created by natural or anthropogenic processes.
 
-image::images/image22.png[Geomorphologic feature summary diagram,width=601,height=417]Figure: 22: Geomorphologic feature summary diagram
+[[img_Geomorphologic_feature_summary_diagram]]
+.Geomorphologic feature summary diagram
+image::images/image22.png[Geomorphologic feature summary diagram,width=601,height=417]
 
 ===== GeomorphologicFeature
 
 A geomorphologic feature is a kind of GeologicFeature describing the shape and nature of the Earth’s land surface.  These landforms may be created by natural Earth processes (e.g., river channel, beach, moraine or mountain) or through human (anthropogenic) activity (e.g., dredged channel, reclaimed land, mine waste dumps).  In GeoSciML, the geomorphologic feature is modelled as a feature related (through unitDescription property) to a GeologicUnit that composes the form.
 
-image::images/image23.png[Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009),width=601,height=279]Figure: 23: Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009)
+[[img_partial_encoding_of_landform]]
+.Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009)
+image::images/image23.png[width=601,height=279]
 
-Figure 23 shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from ++[++2++]++) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
+<<img_partial_encoding_of_landform>> shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from ++[++2++]++) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
 
 ====== unitDescription
 
@@ -440,7 +412,9 @@ The anthropogenicGeomorphologicFeatureType: AnthropogenicGeomorphologicFeatureTy
 
 A GeoSciML collection is a convenience class to manage sets of features or type instances.  A collection contains classes that facilitate the structuring of WFS response documents and other application uses.  
 
-image::images/image24.png[GSML collection summary diagram.,width=601,height=538]Figure: 24: GSML collection summary diagram.
+[[img_GSML_collection_summary_diagram]]
+.GSML collection summary diagram
+image::images/image24.png[GSML collection summary diagram.,width=601,height=538]
 
 ===== GSML
 
@@ -456,21 +430,24 @@ The collectionType:CollectionTypeTerm property contains a term from a controlled
 
 ===== GSMLItem
 
-GSMLItem (Figure 24) constrains the collection members to instances of EarthMaterial, GeologicFeature, GM++_++Object, MappedFeature, AbstractFeatureRelation and OM::SF++_++SamplingFeature.  GSMLItem has the stereotype ++<<++Union++>>++ and according to ISO19103 (Clause 6.8.2), only one of the properties can be materialized at the time. It is important to note that the ++<<++Union++>>++ stereotype can be encoded in two distinct ways.
+GSMLItem (<<img_GSML_collection_summary_diagram>>) constrains the collection members to instances of EarthMaterial, GeologicFeature, GM++_++Object, MappedFeature, AbstractFeatureRelation and OM::SF++_++SamplingFeature.  GSMLItem has the stereotype ++<<++Union++>>++ and according to ISO19103 (Clause 6.8.2), only one of the properties can be materialized at the time. It is important to note that the ++<<++Union++>>++ stereotype can be encoded in two distinct ways.
 
-a)     by materializing the GSMLItem  (as prescribed by ISO 19136) +
- +
-image::images/image25.png[extracted-media/media/image25,width=486,height=62]
+a)     by materializing the GSMLItem  (as prescribed by ISO 19136)
+
+[%unnumbered%]
+image::images/image25.png[width=486,height=62]
 
 b)    using GSMLItem as a validation constraint
 
-image::images/image26.png[extracted-media/media/image26,width=292,height=70]
+[%unnumbered%]
+image::images/image26.png[width=292,height=70]
 
 This requirements class does not impose any encoding style for Union stereotype, although in the XML encoding requirements class (see 9.3) we chose the second option.
 
+[[tbl_types_of_GSMLItem_members]]
+.Types of GSMLItem members
 [width="100%",cols="^24%,^76%",options="header",]
 |===
-|*Table 3: Types of GSMLItem members.* |
 |*Property* |*Description*
 |*earthMaterialItem* |The earthMaterialItem attribute is a placeholder for the EarthMaterial class that is included as a member of a GSML Collection.
 |*featureItem* |The featureItem attribute is a placeholder for the GeologicFeature class that is included as a member of a GSML Collection.
@@ -484,7 +461,10 @@ This requirements class does not impose any encoding style for Union stereotype,
 
 GeoSciML Data is a package of data types that describes the planar or linear orientation of a geologic feature using conventions used in geology. They allow specifying direction by a numerical direction vector (e.g., dip/dip direction), or as a description (e.g., compass point (NE), or other text - “toward fold hinge”, “below”).  An additional GSML++_++QuantityRange class extends SWE::QuantityRange to allow upper and lower values in a numerical range to be delivered as two separate attributes. This is to facilitate query operations on upper and lower values by providing explicit names for these values (which are otherwise encoded as anonymous members of an array in SWE common).
 
-image::images/image27.png[Summary diagram of specialised GeoSciML data types,width=601,height=685]Figure: 25: Summary diagram of specialised GeoSciML data types
+
+[[img_Summary_diagram_of_specialised_GeoSciML_data_types]]
+.Summary diagram of specialised GeoSciML data types
+image::images/image27.png[Summary diagram of specialised GeoSciML data types,width=601,height=685]
 
 ===== GSML++_++GeometricDescriptionValue
 
@@ -502,11 +482,8 @@ The descriptionOrientation:Primitive::CharacterString contains a textual specifi
 
 A planar orientation is composed of two values; the azimuth (a compass point) and a dip (the angle from the horizontal).  Polarity of the plane indicates whether the planar orientation is associated with a directed feature that is overturned, upright, vertical, etc.  There are several conventions to encode a planar orientation and this specification does not impose one but provides a convention property to report it. It must be noted that allowance for different conventions makes manipulation of the data more difficult. Therefore it is recommended that user communities adopt a single measurement convention.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/plane-pol-dip-az-not-null*
-|At least one of polarity, azimuth or dip SHALL not be null.
-|===
+
+include::/requirements/basic/REQ_gsml-basic_plane-pol-dip-az-not-null.adoc[]
 
 To have any meaningful value, the planar orientation shall have at least a value for polarity, azimuth or dip.
 
@@ -532,15 +509,8 @@ The polarity:PolarityCode indicates whether the planar orientation is associated
 
 A linear orientation is composed of a trend (the compass orientation of the line) and a plunge (the angle from the horizontal).  This vector may be oriented (pointing in a specific direction) or not.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/linear-trend-plunge-not-null*
-a|
-At least one of plunge or trend SHALL NOT be null.
 
- 
-
-|===
+include::/requirements/basic/REQ_gsml-basic_linear-trend-plunge-not-null.adoc[]
 
 To have any meaningful value, an instance of GSML++_++LinearOrientation shall at least have a trend or a plunge value.
 
@@ -568,23 +538,19 @@ The magnitude property (SWE::QuantityRange) reports the magnitude of the vector.
 
 GSML++_++QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13)  where lower and upper values are made explicit.  SWE::QuantityRange uses an array of values (RealPair, see Clause OGC 08-094r1,7.2.1) where the lowest value is the first element and the highest the second.  This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrayshttps://docs.ogc.org/is/16-008/16-008.html#_ftnref3[[.underline]#++[++3++]++#] (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).
 
-image::images/image28.png[Context diagram for QuantityRange making lower and upper values explicit,width=260,height=635]Figure: 26: Context diagram for QuantityRange making lower and upper values explicit
+[[img_Context_diagram_for_QuantityRange]]
+.Context diagram for QuantityRange making lower and upper values explicit
+image::images/image28.png[Context diagram for QuantityRange making lower and upper values explicit,width=260,height=635]
 
 The lowerValue shall be less than or equal to the upperValue.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/quantity-range-order*
-|The QuantityRange lowerValue SHALL be less than or equal to the upperValue.  
-|===
+
+include::/requirements/basic/REQ_gsml-basic_quantity-range-order.adoc[]
 
 The values reported in lowerValue and upperValue shall be the same as the pair of values in inherited values property.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-basic/quantity-range-repeat*
-|The QuantityRange’s value++[++0++]++ SHALL provide the same value as lowerValue and value++[++1++]++ SHALL provide the same value as upperValue.
-|===
+
+include::/requirements/basic/REQ_gsml-basic_quantity-range-repeat.adoc[]
 
 ====== lowerValue
 
@@ -596,15 +562,16 @@ The property upperValue:Real contains the upper bound of the range. It shall be 
 
 Example:
 
-image::images/image29.png[Encoding of a quantity range of ++[++15.6,26.7++]++.  Note that the value is encoded in both lowerValue, upperValue and in value as an array.,width=166,height=126]Figure: 27: Encoding of a quantity range of ++[++15.6,26.7++]++.  Note that the value is encoded in both lowerValue, upperValue and in value as an array.
+.Encoding of a quantity range of ++[++15.6,26.7++]++.  Note that the value is encoded in both lowerValue, upperValue and in value as an array.
+image::images/image29.png[width=166,height=126]
 
 ==== GeoSciML Basic vocabularies
 
 Geology is a descriptive science and uses vocabularies extensively.  Table 4 lists the vocabularies used in GeoSciML Basic.  Each of those vocabularies shall be implemented using externally managed vocabularies as specified in clause 8.2.7
 
+.Vocabularies used in GeoSciML Basic
 [width="100%",cols="^34%,^66%",options="header",]
 |===
-|*Table 4: Vocabularies used in GeoSciML Basic.* |
 |*Vocabulary* |*Description*
 |CompositionPartRoleTerm |This class is a blank placeholder for a vocabulary of terms to describe the role that a compositional part plays in a geologic unit.
 |DescriptionPurpose a|
@@ -690,14 +657,22 @@ e.g., "upright", "overturned", "vertical"
 
 ==== Instance examples
 
-The following figure shows a partial encoding of an existing map from Drewes ++[++3++]++.  This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/[[.underline]#http://ngmdb.usgs.gov/www-nadm/dmdt/#]).  Figure 28 shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA.  The original legend description is shown in Figure 29.
+The following figure shows a partial encoding of an existing map from Drewes ++[++3++]++.  This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/[http://ngmdb.usgs.gov/www-nadm/dmdt/]).  <<img_excerpt_from_drewes_map>> shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA.  The original legend description is shown in <<img_original_description_from_drewes_map>>.
 
-image::images/image30.png[Excerpt from Drewes map ++[++3++]++ with a Dacitic vent breccia unit highlighted (Ttv),width=601,height=455]Figure: 28: Excerpt from Drewes map ++[++3++]++ with a Dacitic vent breccia unit highlighted (Ttv)
+[[img_excerpt_from_drewes_map]]
+.Excerpt from Drewes map ++[++3++]++ with a Dacitic vent breccia unit highlighted (Ttv)
+image::images/image30.png[width=601,height=455]
 
-image::images/image31.png[Original description from Drewes map ++[++3++]++ legend.  This legend item is represented as a GeologicFeature (specifically, a GeologicUnit),width=601,height=254]Figure: 29: Original description from Drewes map ++[++3++]++ legend.  This legend item is represented as a GeologicFeature (specifically, a GeologicUnit)
+[[img_original_description_from_drewes_map]]
+.Original description from Drewes map ++[++3++]++ legend.  This legend item is represented as a GeologicFeature (specifically, a GeologicUnit)
+image::images/image31.png[width=601,height=254]
 
-The map also has a cross section through the same Ttv unit (Figure 30) showing an example of a non-map mapping frame.
+The map also has a cross section through the same Ttv unit (<<img_same_dacitic_vent_breccia_unit>>) showing an example of a non-map mapping frame.
 
-image::images/image32.png[The same Dacitic vent breccia unit, shown in a cross section (a different MappingFrame),width=601,height=209]Figure: 30: The same Dacitic vent breccia unit, shown in a cross section (a different MappingFrame)
+[[img_same_dacitic_vent_breccia_unit]]
+.The same Dacitic vent breccia unit, shown in a cross section (a different MappingFrame)
+image::images/image32.png[The same Dacitic vent breccia unit, shown in a cross section (a different MappingFrame),width=601,height=209]
 
-image::images/image33.png[Partial encoding of the Dacitic vent breccia unit from Drewes’ map ++[++3++]++ partitioned into GeoSciML instances.,width=601,height=484]Figure: 31: Partial encoding of the Dacitic vent breccia unit from Drewes’ map ++[++3++]++ partitioned into GeoSciML instances.
+[[img_partial_encoding_of_the_dacitic_vent]]
+.Partial encoding of the Dacitic vent breccia unit from Drewes’ map ++[++3++]++ partitioned into GeoSciML instances
+image::images/image33.png[width=601,height=484]

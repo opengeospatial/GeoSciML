@@ -1,0 +1,20 @@
+[[req_class_gsml-basic]]
+
+[requirements_class]
+.Requirements Class 'GeoSciML Basic'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-basic
+subject:: Encoding
+inherit:: Spatial Schema ISO19107
+inherit:: Conceptual schema language ISO19103
+requirement:: /req/gsml-basic/geologicfeature-purpose
+requirement:: /req/gsml-basic/geologicevent-single
+requirement:: /req/gsml-basic/geologicevent-non-null
+requirement:: /req/gsml-basic/plane-pol-dip-az-not-null
+requirement:: /req/gsml-basic/linear-trend-plunge-not-null
+requirement:: /req/gsml-basic/quantity-range-order
+requirement:: /req/gsml-basic/quantity-range-repeat
+====
+
+

@@ -516,9 +516,9 @@ A data provider may add an arbitrary number of extra properties, as long as the 
 
 BoreholeView is a simplified view of a GeoSciML Borehole. In GeoSciML terms, this will be an instance of a Borehole feature with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
- 
+
 .BoreholeView feature type
-image::images/image103.png[BoreholeView feature type.,width=294,height=410]
+image::images/image103.png[width=294,height=410]
 
 ===== Mapping
 

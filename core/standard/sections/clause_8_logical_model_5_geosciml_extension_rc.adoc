@@ -99,9 +99,11 @@ AlterationDescription describes aspects of a geologic unit or earth material tha
 .Example of a weathering profile
 image::images/image40.png[Example of a weathering profile.,width=486,height=143]
 
-An example encoding of an altered geologic unit from Drewes ++[++3++]++ is shown in Figure 39.
+An example encoding of an altered geologic unit from Drewes ++[++3++]++ is shown in <<img_example_of_describing_alteration>>.
 
-image::images/image41.png[Example of describing alteration halo from Drewes ++[++3++]++.,width=601,height=390]Figure: 39: Example of describing alteration halo from Drewes ++[++3++]++.
+[[img_example_of_describing_alteration]]
+.Example of describing alteration halo from Drewes ++[++3++]++.
+image::images/image41.png[width=601,height=390]
 
 ====== alterationType
 
@@ -127,7 +129,9 @@ The property alterationEvent is an association between an AlterationDescription 
 
 ChemicalComposition is a kind of EarthMaterialDescription that delivers the chemical composition of a geological unit or earth material, as a list of element or oxide concentrations.
 
-image::images/image42.png[Chemical composition context diagram.,width=525,height=339]Figure: 40: Chemical composition context diagram.
+
+.Chemical composition context diagram
+image::images/image42.png[Chemical composition context diagram.,width=525,height=339]
 
 ====== chemicalAnalysis
 
@@ -137,7 +141,8 @@ The chemicalAnalysis property (SWE:DataRecord) contains a collection of geochemi
 
 The CompoundMaterialDescription class is a kind of EarthMaterialDescription that provides an extended description of a compound earth material (i.e., rocks and unconsolidated solid earth materials).
 
-image::images/image43.png[Compound material description context diagram.,width=601,height=533]Figure: 41: Compound material description context diagram.
+.Compound material description context diagram
+image::images/image43.png[Compound material description context diagram.,width=601,height=533]
 
 ====== compositionCategory
 
@@ -159,7 +164,8 @@ The property constituent is an association between a CompoundMaterialDescription
 
 ParticleGeometryDescription describes particles in a CompoundMaterial independent of their relationship to each other or their orientation. It is distinguished from Fabric in that the ParticleGeometryDescription remains constant if the material is disaggregated into its constituent particles, whereas Fabric is lost if the material is disaggregated.  Properties include the particle size (grainsize), particle sorting (size distribution, e.g., well sorted, poorly sorted, bimodal sorting), particle shape (surface rounding or crystal face development, e.g., well rounded, euhedral, anhedral), and particle aspect ratio (e.g., elongated, platy, bladed, compact, acicular).
 
-image::images/image44.png[ParticleGeometry context diagram.,width=273,height=453]Figure: 42: ParticleGeometry context diagram.
+.ParticleGeometry context diagram
+image::images/image44.png[width=273,height=453]
 
 ====== particleType
 
@@ -193,7 +199,8 @@ The sourceOrganism property is an association between a ParticleGeometryDescript
 
 ===== ConstituentPart
 
-image::images/image45.png[ConstituentPart context diagram.,width=601,height=691]Figure: 43: ConstituentPart context diagram.
+.ConstituentPart context diagram
+image::images/image45.png[ConstituentPart context diagram.,width=601,height=691]
 
 The ConstituentPart class describes how Earth materials may be made up of other Earth materials, including the proportion of the constituent part in the whole (e.g., 20%, minor, dominant); and the role that the constituent plays in the whole (e.g., matrix, groundmass, framework, phenocryst, xenolith, vein).
 
@@ -217,7 +224,9 @@ The FabricDescription data type describes all types of fabrics associated with a
 
 FabricDescription is distinguished from ParticleGeometry based on the criteria that particle geometry is preserved if a CompoundMaterial is disaggregated, while FabricDescription is not defined if the material is disaggregated.
 
-image::images/image46.png[Fabric description context diagram.,width=456,height=347]Figure: 44: Fabric description context diagram.
+
+.Fabric description context diagram
+image::images/image46.png[Fabric description context diagram.,width=456,height=347]
 
 ====== fabricType
 
@@ -227,13 +236,15 @@ The fabricType:FabricTypeTerm property contains a term from a controlled vocabul
 
 An inorganic fluid is a non-crystalline EarthMaterial (solid, liquid, or gas) that tends to flow or conform to the shape of its container (examples: water, brine, glass)..  By convention liquid mercury is considered a mineral.   This class is an empty placeholder for extension at a later date, or by other domain models.
 
-image::images/image47.png[Inorganic fluid context diagram.,width=308,height=363]Figure: 45: Inorganic fluid context diagram.
+.Inorganic fluid context diagram
+image::images/image47.png[Inorganic fluid context diagram.,width=308,height=363]
 
 ===== MetamorphicDescription
 
 The data type MetamorphicDescription describes the character of metamorphism applied to a CompoundMaterial or GeologicUnit using one or more properties including estimated intensity (grade; e.g. high grade, low grade), characteristic metamorphic mineral assemblages (facies; e.g., greenschist, amphibolite), peak P-T estimates, and protolith material if known.  A MetamorphicDescription provides a link to the GeologicEvent associated to the metamorphic event.
 
-image::images/image48.png[Metamorphic description context diagram.,width=601,height=639]Figure: 46: Metamorphic description context diagram.
+.Metamorphic description context diagram
+image::images/image48.png[Metamorphic description context diagram.,width=601,height=639]
 
 ====== metamorphicFacies
 
@@ -265,13 +276,15 @@ The metamorphicEvent property is an association between a MetamorphicDescription
 
 OrganicMaterial is an EarthMaterial that belongs to the class of chemical compounds having a reduced carbon basis (as distinct from carbonates), and derived from living organisms. It includes high-carbon EarthMaterials such as bitumen, peat, and coal.  This class is an empty placeholder for extension at a later date, or by other domain models.
 
-image::images/image49.png[Organic material context diagram.,width=311,height=352]Figure: 47: Organic material context diagram.
+.Organic material context diagram
+image::images/image49.png[Organic material context diagram.,width=311,height=352]
 
 ===== Organism
 
 Organism is a broad class to represent any living or once living things. This is the connection to taxonomy/biology for fossils.  This class is an empty placeholder for extension at a later date, or by other domain models.
 
-image::images/image50.png[Organism context diagram.,width=276,height=456]Figure: 48: Organism context diagram.
+.Organism context diagram
+image::images/image50.png[Organism context diagram.,width=276,height=456]
 
 ===== PhysicalDescription
 
@@ -279,7 +292,8 @@ PhysicalDescription is a class that describes the numeric physical properties of
 
 Vector and tensor physical properties are considered to be more applicable to located observations and should be delivered as OM++_++Observations with associated geologic unit or geologic structure features.  Since PhysicalProperty can be an arbitrary property, it satisfies the requirements of clause 7.2.2.8 or OGC 10-004r3 that states that “_The observed property shall be a phenomenon associated with the feature-of-interest._”, and hence any GeologicUnit, GeologicStructure are valid features of interest for any OM++_++Observation.
 
-image::images/image51.png[Physical description context diagram.,width=553,height=540]Figure: 49: Physical description context diagram.
+.Physical description context diagram
+image::images/image51.png[Physical description context diagram.,width=553,height=540]
 
 ====== propertyName
 
@@ -293,7 +307,8 @@ The propertyMeasure property (SWE::Quantity) is a scalar measurement of the phys
 
 RockMaterialDescription provides extended description of RockMaterial.
 
-image::images/image52.png[Rock material description context diagram.,width=271,height=730]Figure: 50: Rock material description context diagram.
+.Rock material description context diagram
+image::images/image52.png[Rock material description context diagram.,width=271,height=730]
 
 ====== consolidationDegree
 
@@ -303,7 +318,8 @@ The consolidationDegree property (SWE::Category) contains a term from a controll
 
 GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model.  GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see 8.6).
 
-image::images/image53.png[GeologicAgeDetails summary diagram.,width=548,height=726]Figure: 51: GeologicAgeDetails summary diagram.
+.GeologicAgeDetails summary diagram
+image::images/image53.png[GeologicAgeDetails summary diagram.,width=548,height=726]
 
 ===== olderGeochronologicEra
 
@@ -317,13 +333,15 @@ The youngerGeochronologicEra property is an association between a GeologicEventD
 
 The Geologic Structure Details package provides for extended descriptions of geologic structures. 
 
-image::images/image54.png[Summary diagram for GeologicStructureDetails.,width=601,height=471]Figure: 52: Summary diagram for GeologicStructureDetails.
+.Summary diagram for GeologicStructureDetails
+image::images/image54.png[Summary diagram for GeologicStructureDetails.,width=601,height=471]
 
 ===== ContactDescription
 
 The ContactDescription provides extended descriptive properties of a geologic contact.  If the contact type is ChronostratigraphicBoundary, it can be associated with a geochronologic (i.e., time zone) boundary that may correlate with it.
 
-image::images/image55.png[ContactDescription context diagram.,width=601,height=543]Figure: 53: ContactDescription context diagram.
+.ContactDescription context diagram
+image::images/image55.png[ContactDescription context diagram.,width=601,height=543]
 
 ====== contactCharacter
 
@@ -344,7 +362,8 @@ include::/requirements/extension/REQ_gsml-extension_contact-chronoboundary.adoc[
 
 A displacement event is a description of the age, environment and process of a shear displacement event.
 
-image::images/image56.png[DisplacementEvent context diagram,width=391,height=575]Figure: 54: DisplacementEvent context diagram
+.DisplacementEvent context diagram
+image::images/image56.png[DisplacementEvent context diagram,width=391,height=575]
 
 ====== incrementalDisplacement
 
@@ -354,7 +373,8 @@ The incrementalDisplacement:DisplacementValue property contains a DisplacementVa
 
 A planar foliation is defined by a tabular succession of layers ++>++ 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team ++[++13++]++.  The GeologicStructure characteristic of gneiss is layering.
 
-image::images/image57.png[Layering context diagram,width=552,height=440]Figure: 55: Layering context diagram
+.Layering context diagram
+image::images/image57.png[Layering context diagram,width=552,height=440]
 
 ====== layerComposition
 
@@ -364,7 +384,8 @@ The layerComposition property is an association between a Layering and a RockMat
 
 A displacement value expresses the displacement on a fault with respect to a planar approximation of its shape.
 
-image::images/image58.png[Displacement value subtypes context diagram.,width=601,height=545]Figure: 56: Displacement value subtypes context diagram.
+.Displacement value subtypes context diagram
+image::images/image58.png[Displacement value subtypes context diagram.,width=601,height=545]
 
 ====== hangingWallDirection
 
@@ -526,7 +547,8 @@ The spacing property (SWE::QuantityRange) contains a linear dimension representi
 
 ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in 8.4.3.5 by extending the abstract property block ShearDisplacementStructureAbstractDescription.
 
-image::images/image62.png[ShearDisplacementStructureDescription context diagram.,width=601,height=447]Figure: 60: ShearDisplacementStructureDescription context diagram.
+.ShearDisplacementStructureDescription context diagram
+image::images/image62.png[ShearDisplacementStructureDescription context diagram.,width=601,height=447]
 
 ====== deformationStyle
 

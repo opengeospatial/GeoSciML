@@ -44,9 +44,12 @@ Observations at outcrop SHOULD be encoded using the pattern described at clause 
 
 |===
 
+include::/requirements/requirements_class_lab-analysis.adoc[]
+
 The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model ++[++21++]++. 
 
-image::images/image84.png[LaboratoryAnalysis and Specimen dependencies.,width=601,height=506]Figure: 82: LaboratoryAnalysis and Specimen dependencies.
+.LaboratoryAnalysis and Specimen dependencies
+image::images/image84.png[LaboratoryAnalysis and Specimen dependencies.,width=601,height=506]
 
 ==== LaboratoryAnalysis
 
@@ -62,19 +65,24 @@ The "sampledFeature" association links the OM::SF++_++SamplingFeature to the fea
 |OM::SF++_++SamplingFeature::sampledFeature SHALL not be an instance of OM::SF++_++SamplingFeature.
 |===
 
+include::/requirements/lab-analysis/REQ_gsml-lab-analysis_sampledFeature.adoc[]
+
 ===== OM++_++Observation::resultQuality
 
 OM::OM++_++Observation::resultQuality::DQ++_++QuantitativeAttributeAccuracy attribute shall be used to represent analytical errors and detection limits for each analytical measurement.
 
 At least "nameOfMeasure" and "result" shall be used when delivering om:resultQuality. 
 
-image::images/image85.png[DQ++_++Element from ISO19115:2003.,width=415,height=188]Figure: 83: DQ++_++Element from ISO19115:2003.
+.DQ++_++Element from ISO19115:2003
+image::images/image85.png[DQ++_++Element from ISO19115:2003.,width=415,height=188]
 
 [width="100%",cols="100%",options="header",]
 |===
 |*Requirement /req/gsml4-lab-analysis/accuracy-measure*
 |For analytical error and detection limits, both DQ++_++QuantitativeAttributeAccuracy::nameOfMeasure and DQ++_++QuantitativeAttributeAccuracy::result SHALL NOT be null.
 |===
+
+include::/requirements/lab-analysis/REQ_gsml-lab-analysis_accuracy-measure.adoc[]
 
 The CharacterString in "nameOfMeasure" should be a term from a controlled vocabulary.
 
@@ -84,17 +92,21 @@ The CharacterString in "nameOfMeasure" should be a term from a controlled vocabu
 |The value of DQ++_++Element::nameOfMeasure SHOULD be a term from a controlled vocabulary.
 |===
 
+include::/requirements/lab-analysis/REQ_gsml-lab-analysis_accuracy-vocabulary.adoc[]
+
 ===== OM++_++Observation::parameter
 
 Analytical methods are very varied and a single model cannot capture all the intricacies of all methods used in geoscience.  Communities that need to report specific parameters that are not covered by this specification can use NamedParameter.
 
-image::images/image86.png[Laboratory analysis summary diagram.,width=601,height=314]Figure: 84: Laboratory analysis summary diagram.
+.Laboratory analysis summary diagram
+image::images/image86.png[Laboratory analysis summary diagram.,width=601,height=314]
 
 ===== AnalyticalInstrument
 
 The analytical instrument is the category of instrument used to perform an analytical measurement or observation.
 
-image::images/image87.png[Analytical instrument context diagram.,width=601,height=321]Figure: 85: Analytical instrument context diagram.
+.Analytical instrument context diagram
+image::images/image87.png[Analytical instrument context diagram.,width=601,height=321]
 
 ====== type
 
@@ -124,7 +136,8 @@ The property usedIn is an association between an AnalyticalInstrument and an Ana
 
 This feature type describes the time and operator of a particular laboratory analytical session. AnalyticalSession also has associated links to the type of instrument and analytical method used, processing steps applied to data collected during a session, and instrument parameters unique to that session.
 
-image::images/image88.png[Analytical session context diagram.,width=601,height=475]Figure: 86: Analytical session context diagram.
+.Analytical session context diagram
+image::images/image88.png[Analytical session context diagram.,width=601,height=475]
 
 ====== time
 
@@ -150,7 +163,8 @@ The property referenceAnalysis is an association between an AnalyticalSession an
 
 An analytical process is a concrete implementation of OM::OM++_++Process and describes the steps and methods used in an analytical session.  It links to an analytical session (data acquisition) or a computational process which produce analytical results.
 
-image::images/image89.png[Analytical process,width=601,height=558]Figure: 87: Analytical process
+.Analytical process
+image::images/image89.png[Analytical process,width=601,height=558]
 
 ====== method
 
@@ -168,7 +182,8 @@ The computation property is an association between an AnalyticalProcess and a CI
 
 The AnalyticalMethod provides the name, and published citation, of the analytical method used in an analytical session.
 
-image::images/image90.png[Analytical method,width=526,height=352]Figure: 88: Analytical method
+.Analytical method
+image::images/image90.png[Analytical method,width=526,height=352]
 
 ====== methodName
 
@@ -182,7 +197,8 @@ The citation property is an association between an AnalyticalMethod and a CIT:CI
 
 The Image feature type is used to describe images of sampling features, for example, photographs of ion microprobe grain mounts.
 
-image::images/image91.png[Image,width=305,height=353]Figure: 89: Image
+.Image
+image::images/image91.png[Image,width=305,height=353]
 
 When the image is available online, the identifier of the image, a HTTP URI, should point to one or more representation of that image.
 
@@ -192,6 +208,8 @@ When the image is available online, the identifier of the image, a HTTP URI, sho
 |The identifier of the image SHOULD be a HTTP URI referring to a representation of the image.
 |===
 
+include::/recommendations/lab-analysis/REC_gsml-lab-analysis_image-url.adoc[]
+
 The samplingMethod (inherited from OM::SF++_++SamplingFeature) value for an image should be an identifier for a camera.
 
 [width="100%",cols="100%",options="header",]
@@ -199,6 +217,8 @@ The samplingMethod (inherited from OM::SF++_++SamplingFeature) value for an imag
 |*Requirement /req/gsml4-lab-analysis/image-process*
 |The image om:procedure SHOULD make reference to a camera.
 |===
+
+include::/recommendations/lab-analysis/REC_gsml-lab-analysis_image-process.adoc[]
 
 ==== Geochronology
 
@@ -211,13 +231,15 @@ The Geochronology model allows the delivery of geochronological interpretations 
 
 Each member of the sampling collection has a related OM++_++Observation/result(s).
 
-image::images/image92.png[Summary diagram of geochronology.,width=601,height=365]Figure: 90: Summary diagram of geochronology.
+.Summary diagram of geochronology
+image::images/image92.png[Summary diagram of geochronology.,width=601,height=365]
 
 ===== GeochronologicInterpretation
 
 A GeochronologicInterpretation is an interpretation made by a geologist of the age of a specimen made by statistical analysis of a collection of observations.  A geologic specimen may have multiple geochronological interpretations made on it, each related to a different observation/result collection.
 
-image::images/image93.png[Geochronologic interpretation context diagram.,width=596,height=556]Figure: 91: Geochronologic interpretation context diagram.
+.Geochronologic interpretation context diagram
+image::images/image93.png[Geochronologic interpretation context diagram.,width=596,height=556]
 
 ====== interpretedAge
 
@@ -261,7 +283,8 @@ The property sourceCollection is an association between a GeochronologicInterpre
 
 The GeologicSpecimen package extends the ISO19156 O&M model, and describes processes relevant to the sampling, preparation, and analysis of geologic specimens.
 
-image::images/image94.png[Geologic specimen summary diagram.,width=601,height=534]Figure: 92: Geologic specimen summary diagram.
+.Geologic specimen summary diagram
+image::images/image94.png[Geologic specimen summary diagram.,width=601,height=534]
 
 ===== ReferenceSpecimen
 
@@ -269,7 +292,8 @@ A reference specimen is a specimen with known or accepted values of some propert
 
 Analytical results from a reference specimen analysed during an AnalyticalSession are delivered in the same way as the results of other specimens analysed in that session.
 
-image::images/image95.png[Reference specimen context diagram.,width=326,height=497]Figure: 93: Reference specimen context diagram.
+.Reference specimen context diagram
+image::images/image95.png[Reference specimen context diagram.,width=326,height=497]
 
 ====== referenceDescription
 
@@ -283,7 +307,8 @@ The property usedIn is an association between a ReferenceSpecimen and an Analyti
 
 GeologicSpecimenPreparation is an extension of ISO Specimen::preparationStep to allow details of preparation steps to be delivered (e.g., filtration and mesh size, chemical additives, crushing methods, drying parameters, etc.).
 
-image::images/image96.png[Geologic specimen preparation context diagram.,width=601,height=497]Figure: 94: Geologic specimen preparation context diagram.
+.Geologic specimen preparation context diagram
+image::images/image96.png[Geologic specimen preparation context diagram.,width=601,height=497]
 
 ====== preparationMethod
 
@@ -307,7 +332,8 @@ Examples include:
 * sea floor dredging
 * outcrop sampling
 
-image::images/image97.png[Geologic sampling method,width=524,height=484]Figure: 95: Geologic sampling method
+.Geologic sampling method
+image::images/image97.png[Geologic sampling method,width=524,height=484]
 
 ====== method
 
@@ -319,11 +345,12 @@ The property parameter (OM::NamedValue) contains a name/value pair to describe a
 
 ==== GeoSciML LaboratoryAnalysis-Specimen vocabularies
 
-Vocabularies used in the LaboratoryAnalysis-Specimen package are listed Table 8:
+Vocabularies used in the LaboratoryAnalysis-Specimen package are listed <<tbl_lab_analysis_and_specimen_vocabularies>>:
 
+[[tbl_lab_analysis_and_specimen_vocabularies]]
+.Laboratory analysis and specimen vocabularies
 [width="100%",cols="^38%,^62%",options="header",]
 |===
-|*Table 8: Laboratory analysis and specimen vocabularies.* |
 |*Vocabulary* |*Description*
 |*AnalyticalMethodTerm* |Refers to a vocabulary of terms describing the analytical method used in an analytical session (e.g., XRF mass spectrometry, ICPMS, SHRIMP geochronology).
 |*InstrumentTypeTerm* |Refers to a vocabulary of Instrument types (e.g., XRF, ICPMS, SHRIMP, etc.).
@@ -338,7 +365,8 @@ Vocabularies used in the LaboratoryAnalysis-Specimen package are listed Table 8:
 
 It is suggested to use SamplingFeatureCollection for representing geological field data collected at an outcrop, (i.e., an outcrop is modelled as a collection of sampling points).  At each point at an outcrop, observations may be made on a single geologic feature (sampledFeature), such as a geologic unit description, a fault description, a contact description, or structural measurements on a foliation.  If more than one geologic feature is observed at an outcrop, it is delivered as a separate sampling point.
 
-image::images/image98.png[Outcrop encoding pattern using ISO19156.,width=601,height=391]Figure: 96: Outcrop encoding pattern using ISO19156.
+.Outcrop encoding pattern using ISO19156
+image::images/image98.png[Outcrop encoding pattern using ISO19156.,width=601,height=391]
 
 SamplingFeatureCollection might also be used to represent dredge hauls, measured sections, and other sorts of sampling features with multiple kinds of associated observations.
 
@@ -347,3 +375,5 @@ SamplingFeatureCollection might also be used to represent dredge hauls, measured
 |*Requirement /req/gsml4-lab-analysis/outcrop-pattern*
 |Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5
 |===
+
+include::/recommendations/lab-analysis/REC_gsml-lab-analysis_outcrop-pattern.adoc[]

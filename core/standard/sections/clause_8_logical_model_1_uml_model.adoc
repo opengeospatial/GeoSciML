@@ -25,6 +25,7 @@ Which option is most useful for a community is left to that community to decide.
 
 The following shortcuts are used to refer to external (non GeoSciML) classifiers.
 
+[%unnumbered%]
 [width="100%",cols="16%,84%",options="header",]
 |===
 |*Shortcut* |*Full path (HollowWorld)*

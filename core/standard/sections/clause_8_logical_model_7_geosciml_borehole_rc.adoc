@@ -16,7 +16,7 @@
 /req/gsml4-borehole/value-intervalBegin
 
 The value of intervalBegin SHALL be less or equal to the value of intervalEnd.
-
+ 
 |*Requirement* a|
 /req/gsml4-borehole/drill-interval-1D
 
@@ -64,17 +64,22 @@ Origin elevation srsName identifier SHALL be a vertical CRS having a EPSG in the
 
 |===
 
+include::/requirements/requirements_class_borehole.adoc[]
+
 The GeoSciML Borehole package contains an information model for boreholes and related artefacts. This is primarily through re-use of standard components from the Observations and Measurements (ISO19156).
 
-image::images/image75.png[Borehole dependency diagram.,width=601,height=559]Figure: 73: Borehole dependency diagram.
+.Borehole dependency diagram
+image::images/image75.png[Borehole dependency diagram.,width=601,height=559]
 
-image::images/image76.png[Borehole summary diagram.,width=601,height=498]Figure: 74: Borehole summary diagram.
+.Borehole summary diagram
+image::images/image76.png[Borehole summary diagram.,width=601,height=498]
 
 ==== Borehole
 
 This requirements class describes Borehole and BoreholeInterval and related data types.  This package describes a borehole as a means to sample geologic units underground and thus provide a linear map of the geology.
 
-image::images/image77.png[Borehole context diagram.,width=601,height=331]Figure: 75: Borehole context diagram.
+.Borehole context diagram
+image::images/image77.png[Borehole context diagram.,width=601,height=331]
 
 ===== Borehole
 
@@ -107,7 +112,8 @@ Borehole inherits sampledFeature from OM::SF++_++SamplingFeature, which links th
 
 DrillingDetails is a class that captures the description of drilling methods and hole diameters down the drilling path.  Properties that apply to the Borehole as a whole are managed in BoreholeDetails (8.7.1.4).
 
-image::images/image78.png[Drilling details,width=601,height=387]Figure 76: Drilling details
+.Drilling details
+image::images/image78.png[Drilling details,width=601,height=387]
 
 ====== drillingMethod
 
@@ -127,6 +133,8 @@ The intervalBegin property (SWE::Quantity) contains a measurement (a value and a
 |The value of intervalBegin SHALL be less or equal to the value of intervalEnd.
 |===
 
+include:/requirements/borehole/REQ_gsml-borehole_value-intervalBegin.adoc[]
+
 ====== intervalEnd
 
 The property intervalEnd (SWE::Quantity) contains a measurement (a value and a unit of measurement) of the measured distance of the end of the interval along the path of the borehole. The measured value must be greater than or equal to the intervalBegin value.
@@ -141,6 +149,7 @@ The property interval:GM++_++Object is a shape that is a 1-D interval (e.g., a �
 |Interval SHALL be encoded with GM++_++LineString with two 1D points.
 |===
 
+include::/requirements/borehole/REQ_gsml-borehole_drill-interval-1D.adoc[]
  
 
 [width="100%",cols="100%",options="header",]
@@ -149,13 +158,17 @@ The property interval:GM++_++Object is a shape that is a 1-D interval (e.g., a �
 |Coordinate Reference System shall be a reference to the borehole geometry.
 |===
 
+include::/requirements/borehole/REQ_gsml-borehole_drill-interval-1D-CRS.adoc[]
+
 Encoding of the drilled interval using GEO::GM++_++LineString shall consist of two 1D points only (the start and end point of the interval, measured as distance from the borehole collar), with a 1-D CRS referencing the borehole shape.
 
 ===== BoreholeInterval
 
 A BoreholeInterval is similar to a MappedFeature (8.4.1.2) whose shape is 1-D interval and uses the SRS of the containing borehole.  The "mappedIntervalBegin" and "mappedIntervalEnd" properties are alternative to the 1D geometry to overcome problems with the delivery and ease of queryability of 1D GML shapes.
 
-image::images/image79.png[Borehole interval context diagram.,width=601,height=439]Figure: 77: Borehole interval context diagram.
+
+.Borehole interval context diagram
+image::images/image79.png[Borehole interval context diagram.,width=601,height=439]
 
 ====== observationMethod
 
@@ -174,6 +187,8 @@ The property mappedIntervalBegin (SWE::Quantity) is a measurement (a value and a
 |*Requirement /req/gsml4-borehole/value-mappedIntervalBegin*
 |The value of mappedIntervalBegin SHALL be less than or equal to the value of mappedIntervalEnd.
 |===
+
+include::/requirements/borehole/REQ_gsml-borehole_value-mappedIntervalBegin.adoc[]
 
 ====== mappedIntervalEnd
 
@@ -199,7 +214,7 @@ Encoding of an interval within the borehole using GEO::GM++_++LineString shall c
 |Interval SHALL be encoded with GM++_++LineString with two 1D points.
 |===
 
- 
+include::/requirements/borehole/REQ_gsml-borehole_interval-1D.adoc[]
 
 [width="100%",cols="100%",options="header",]
 |===
@@ -207,21 +222,26 @@ Encoding of an interval within the borehole using GEO::GM++_++LineString shall c
 |Coordinate Reference System of interval geometries SHALL use the borehole geometry.
 |===
 
- 
+include::/requirements/borehole/REQ_gsml-borehole_interval-1D-CRS.adoc[]
 
 Instance example for Klčovo and Lastomir Formation adapted from Túnyi ++[++18++]++:
 
-image::images/image80.png[Top part of Figure 2 from Túnyi ++[++18++]++,width=426,height=549]Figure: 78: Top part of Figure 2 from Túnyi ++[++18++]++
+[[img_top__part_tunyi]]
+.Top part of Figure 2 from Túnyi ++[++18++]++
+image::images/image80.png[width=426,height=549]
 
-Figure 79 shows an encoding of the first lithostratigraphic and magnetostratigraphic units from Figure 78 showing how the collection identifiers group BoreholeIntervals into two groups.
+<<img_encoding_of_a_borehole_with_two_logs>> shows an encoding of the first lithostratigraphic and magnetostratigraphic units from <<img_top__part_tunyi>> showing how the collection identifiers group BoreholeIntervals into two groups.
 
-image::images/image81.png[Encoding of a borehole with two distinct logs (collectionIdentifier).,width=601,height=398]Figure: 79: Encoding of a borehole with two distinct logs (collectionIdentifier).
+[[img_encoding_of_a_borehole_with_two_logs]]
+.Encoding of a borehole with two distinct logs (collectionIdentifier).
+image::images/image81.png[width=601,height=398]
 
 ===== BoreholeDetails
 
 BoreholeDetails describes borehole-specific index data, often termed “header information”. It contains metadata about the parties involved in the drilling, the storage of drilled material and other information relevant to the borehole as a whole.  Properties that may vary along the borehole path are managed in DrillingDetails (8.7.1.2).
 
-image::images/image82.png[Borehole details context diagram.,width=601,height=570]Figure: 80: Borehole details context diagram.
+.Borehole details context diagram
+image::images/image82.png[Borehole details context diagram.,width=601,height=570]
 
 ====== operator
 
@@ -263,7 +283,8 @@ The property boreholeLength (SWE::Quantity) contains a measurement (a value and 
 
 A borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may correspond to the borehole collar location (e.g., kelly bush).
 
-image::images/image83.png[Origin position context diagram.,width=518,height=456]Figure: 81: Origin position context diagram.
+.Origin position context diagram
+image::images/image83.png[Origin position context diagram.,width=518,height=456]
 
 If a text description of the location is available, it should be reported in the description property, inherited from GM:GFI++_++Feature. 
 
@@ -279,6 +300,8 @@ If no GEO::GM++_++Point is available, an OGC nil value shall be used.
 |If no GM++_++Point is available, an OGC nil value SHALL be used.
 |===
 
+include::/requirements/borehole/REQ_gsml-borehole_borehole-position-null.adoc[]
+
 In situations where the origin position changes over the life of the borehole (e.g., due to subsidence or destruction of the original collar), the origin position should be updated to the new location.
 
 ====== elevation
@@ -291,6 +314,8 @@ Implementers delivering 3-D origin locations should provide an elevation to impr
 |Implementers delivering 3-D origin locations SHOULD provide an elevation.
 |===
 
+include::/requirements/borehole/REQ_gsml-borehole_borehole-3d.adoc[]
+
 The elevation:DirectPosition property is a compromise approach to supply elevation explicitly for location; this is to allow for software that cannot process 3-D GM++_++Point. Null shall be used if elevation is unknown. A DirectPosition shall have a dimension of 1, and CRS will be a “vertical” CRS (e.g. EPSG CRSs in the range 5600-5799).
 
 [width="100%",cols="100%",options="header",]
@@ -299,7 +324,7 @@ The elevation:DirectPosition property is a compromise approach to supply elevati
 |Origin elevation SHALL be a geometry with a dimension of 1.
 |===
 
- 
+include::/requirements/borehole/REQ_gsml-borehole_borehole-elevation-dim.adoc[]
 
 [width="100%",cols="100%",options="header",]
 |===
@@ -307,13 +332,16 @@ The elevation:DirectPosition property is a compromise approach to supply elevati
 |Origin elevation srsName identifier SHALL be a vertical CRS having an EPSG in the range 5600-5799.
 |===
 
+include::/requirements/borehole/REQ_gsml-borehole_borehole-elevation-CRS.adoc[]
+
 ==== GeoSciML Borehole vocabularies
 
-Vocabularies used in Borehole package are listed in Table 7.
+Vocabularies used in Borehole package are listed in <<tbl_geosciml_borehole_vocabularies>>.
 
+[[tbl_geosciml_borehole_vocabularies]]
+.GeoSciML Borehole vocabularies
 [width="100%",cols="^32%,^68%",options="header",]
 |===
-|*Table 7: GeoSciML Borehole vocabularies.* |
 |*Vocabulary* |*Description*
 |*BoreholeDrillingMethodCode* |This class is an indicative placeholder only for a vocabulary of terms describing the borehole drilling method.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group. (e.g., auger, hand auger, air core, cable tool, diamond core, rotary air blast, etc.).
 |*BoreholeInclinationCode* a|

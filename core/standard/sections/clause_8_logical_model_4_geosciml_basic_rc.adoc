@@ -567,8 +567,9 @@ image::images/image29.png[width=166,height=126]
 
 ==== GeoSciML Basic vocabularies
 
-Geology is a descriptive science and uses vocabularies extensively.  Table 4 lists the vocabularies used in GeoSciML Basic.  Each of those vocabularies shall be implemented using externally managed vocabularies as specified in clause 8.2.7
+Geology is a descriptive science and uses vocabularies extensively.  <<tbl_vocabularies_used_in_geosciml_basic>> lists the vocabularies used in GeoSciML Basic.  Each of those vocabularies shall be implemented using externally managed vocabularies as specified in clause 8.2.7
 
+[[tbl_vocabularies_used_in_geosciml_basic]]
 .Vocabularies used in GeoSciML Basic
 [width="100%",cols="^34%,^66%",options="header",]
 |===

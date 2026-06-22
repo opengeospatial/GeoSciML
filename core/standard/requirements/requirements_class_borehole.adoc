@@ -1,0 +1,27 @@
+[[req_class_gsml-borehole]]
+
+[requirements_class]
+.Requirements Class 'GeoSciML Borehole'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-borehole
+subject:: Encoding
+inherit:: /req/gsml4-core
+inherit:: ISO 19103 Conceptual Model Language
+inherit:: ISO 19107 Spatial Schema
+inherit:: ISO-19156 Observations and Measurements (OGC Topic 20)
+inherit:: SWE Common 2.0 08-094r1 Clause 7
+inherit:: ISO 19108 Temporal Schema
+inherit:: ISO 19115-3 Citation
+requirement:: /req/req-class-a/req-name-1
+requirement:: /req/req-class-a/req-name-2
+requirement:: /req/req-class-a/req-name-2
+requirement:: /req/req-class-a/req-name-1
+requirement:: /req/req-class-a/req-name-2
+requirement:: /req/req-class-a/req-name-2
+requirement:: /req/req-class-a/req-name-1
+requirement:: /req/req-class-a/req-name-2
+requirement:: /req/req-class-a/req-name-2
+====
+
+

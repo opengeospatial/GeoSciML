@@ -593,7 +593,7 @@ The property unitThickness (SWE::QuantityRange) provides a value that represents
 
 The bedding:BeddingDescription property reports a description of the bedding (see 8.5.5.2).
 
-===== BeddingDescription*
+===== BeddingDescription
 
 BeddingDescription provides a detailed description of the bedding characteristics of a geologic unit.
 

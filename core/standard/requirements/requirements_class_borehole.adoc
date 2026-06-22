@@ -6,22 +6,22 @@
 [%metadata]
 identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-borehole
 subject:: Encoding
-inherit:: /req/gsml4-core
+inherit:: /req/gsml-core
 inherit:: ISO 19103 Conceptual Model Language
 inherit:: ISO 19107 Spatial Schema
 inherit:: ISO-19156 Observations and Measurements (OGC Topic 20)
 inherit:: SWE Common 2.0 08-094r1 Clause 7
 inherit:: ISO 19108 Temporal Schema
 inherit:: ISO 19115-3 Citation
-requirement:: /req/req-class-a/req-name-1
-requirement:: /req/req-class-a/req-name-2
-requirement:: /req/req-class-a/req-name-2
-requirement:: /req/req-class-a/req-name-1
-requirement:: /req/req-class-a/req-name-2
-requirement:: /req/req-class-a/req-name-2
-requirement:: /req/req-class-a/req-name-1
-requirement:: /req/req-class-a/req-name-2
-requirement:: /req/req-class-a/req-name-2
+requirement:: /req/gsml-borehole/value-intervalBegin
+requirement:: /req/gsml-borehole/drill-interval-1D
+requirement:: /req/gsml-borehole/drill-interval-1D-CRS
+requirement:: /req/gsml-borehole/value-mappedIntervalBegin
+requirement:: /req/gsml-borehole/interval-1D
+requirement:: /req/gsml-borehole/interval-1D-CRS
+requirement:: /req/gsml-borehole/borehole-3d
+requirement:: /req/gsml-borehole/borehole-elevation-dim
+requirement:: /req/gsml-borehole/borehole-elevation-CRS
 ====
 
 

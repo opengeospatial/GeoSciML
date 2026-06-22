@@ -1,69 +1,5 @@
 === GeoSciML Borehole Requirements Class (Normative)
 
-[width="100%",cols="18%,82%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4-borehole |
-|*Target type* |Encoding
-|*Dependency* |/req/gsml4-core
-|*Dependency* |ISO 19103 Conceptual Model Language
-|*Dependency* |ISO 19107 Spatial Schema
-|*Dependency* |ISO-19156 Observations and Measurements (OGC Topic 20)
-|*Dependency* |SWE Common 2.0 08-094r1 Clause 7
-|*Dependency* |ISO 19108 Temporal Schema
-|*Dependency* |ISO 19115-3 Citation
-|*Requirement* a|
-/req/gsml4-borehole/value-intervalBegin
-
-The value of intervalBegin SHALL be less or equal to the value of intervalEnd.
- 
-|*Requirement* a|
-/req/gsml4-borehole/drill-interval-1D
-
-Interval SHALL be encoded with GM++_++LineString with two 1D points.
-
-|*Requirement* a|
-/req/gsml4-borehole/drill-interval-1D-CRS
-
-Coordinate Reference System shall be a reference to the borehole geometry.
-
-|*Requirement* a|
-/req/gsml4-borehole/value-mappedIntervalBegin
-
-The value of mappedIntervalBegin SHALL be less or equal to the value of mappedIntervalEnd.
-
-|*Requirement* a|
-/req/gsml4-borehole/interval-1D
-
-Interval SHALL be encoded with GM++_++LineString with two 1D points.
-
-|*Requirement* a|
-/req/gsml4-borehole/interval-1D-CRS
-
-Coordinate Reference System of interval geometries SHALL use the borehole geometry.
-
-|*Requirement* a|
-/req/gsml4-borehole/borehole-position-null
-
-If no GM++_++Point is available, an OGC nil value SHALL be used.
-
-|*Recommendation* a|
-/req/gsml4-borehole/borehole-3d
-
-Implementers delivering 3-D origin locations SHOULD provide an elevation.
-
-|*Requirement* a|
-/req/gsml4-borehole/borehole-elevation-dim
-
-Origin elevation SHALL be a geometry with a dimension of 1.
-
-|*Requirement* a|
-/req/gsml4-borehole/borehole-elevation-CRS
-
-Origin elevation srsName identifier SHALL be a vertical CRS having a EPSG in the range 5600-5799
-
-|===
-
 include::/requirements/requirements_class_borehole.adoc[]
 
 The GeoSciML Borehole package contains an information model for boreholes and related artefacts. This is primarily through re-use of standard components from the Observations and Measurements (ISO19156).
@@ -127,13 +63,8 @@ The boreholeDiameter property (SWE::Quantity) contains a measurement (a value an
 
 The intervalBegin property (SWE::Quantity) contains a measurement (a value and a unit of measurement) that corresponds to the measured distance of the start of the interval along the path of the borehole. The measured value must be less than or equal to the intervalEnd value.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/value-intervalBegin*
-|The value of intervalBegin SHALL be less or equal to the value of intervalEnd.
-|===
 
-include:/requirements/borehole/REQ_gsml-borehole_value-intervalBegin.adoc[]
+include::/requirements/borehole/REQ_gsml-borehole_value-intervalBegin.adoc[]
 
 ====== intervalEnd
 
@@ -143,20 +74,10 @@ The property intervalEnd (SWE::Quantity) contains a measurement (a value and a u
 
 The property interval:GM++_++Object is a shape that is a 1-D interval (e.g., a “from” and “to”, or “top” and “base” measurements) that is equivalent (represents the same distance) as the one represented by intervalBegin and intervalEnd.  The geometry shall use a reference to the borehole geometry as its CRS.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/drill-interval-1D*
-|Interval SHALL be encoded with GM++_++LineString with two 1D points.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_drill-interval-1D.adoc[]
  
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/drill-interval-1D-CRS*
-|Coordinate Reference System shall be a reference to the borehole geometry.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_drill-interval-1D-CRS.adoc[]
 
@@ -182,11 +103,6 @@ The specification property is an association between a BoreholeInterval and a GF
 
 The property mappedIntervalBegin (SWE::Quantity) is a measurement (a value and a unit of measurement) corresponding to the measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/value-mappedIntervalBegin*
-|The value of mappedIntervalBegin SHALL be less than or equal to the value of mappedIntervalEnd.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_value-mappedIntervalBegin.adoc[]
 
@@ -208,19 +124,9 @@ The property shape:GM++_++Object is a 1-D interval (e.g., a “from” and “to
 
 Encoding of an interval within the borehole using GEO::GM++_++LineString shall consist of two 1D points only (the start and end point of the interval, measured as distance from the borehole collar), with CRS corresponding to the borehole shape.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/interval-1D*
-|Interval SHALL be encoded with GM++_++LineString with two 1D points.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_interval-1D.adoc[]
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/interval-1D-CRS*
-|Coordinate Reference System of interval geometries SHALL use the borehole geometry.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_interval-1D-CRS.adoc[]
 
@@ -294,11 +200,6 @@ The property location contains a geometry corresponding to the location of the b
 
 If no GEO::GM++_++Point is available, an OGC nil value shall be used.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/borehole-position-null*
-|If no GM++_++Point is available, an OGC nil value SHALL be used.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_borehole-position-null.adoc[]
 
@@ -308,29 +209,14 @@ In situations where the origin position changes over the life of the borehole (e
 
 Implementers delivering 3-D origin locations should provide an elevation to improve interoperability.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/borehole-3d*
-|Implementers delivering 3-D origin locations SHOULD provide an elevation.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_borehole-3d.adoc[]
 
 The elevation:DirectPosition property is a compromise approach to supply elevation explicitly for location; this is to allow for software that cannot process 3-D GM++_++Point. Null shall be used if elevation is unknown. A DirectPosition shall have a dimension of 1, and CRS will be a “vertical” CRS (e.g. EPSG CRSs in the range 5600-5799).
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/borehole-elevation-dim*
-|Origin elevation SHALL be a geometry with a dimension of 1.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_borehole-elevation-dim.adoc[]
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-borehole/borehole-elevation-CRS*
-|Origin elevation srsName identifier SHALL be a vertical CRS having an EPSG in the range 5600-5799.
-|===
 
 include::/requirements/borehole/REQ_gsml-borehole_borehole-elevation-CRS.adoc[]
 

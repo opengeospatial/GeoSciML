@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[req_gsml-borehole-borehole-elevation-dim]]
 
 [requirement]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /req/gsml-borehole/borehole-elevation-dim
+part:: Origin elevation SHALL be a geometry with a dimension of 1.
 ====

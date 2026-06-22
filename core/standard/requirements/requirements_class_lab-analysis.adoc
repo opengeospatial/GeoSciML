@@ -1,13 +1,21 @@
-[[req_class_a]]
+[[req_class_gsml-lab-analysis]]
 
 [requirements_class]
-.Requirements Class 'A'
+.Requirements Class 'GeoSciML LaboratoryAnalysis-Specimen'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/ABCD/m.n/req/req-class-a
-subject:: Web API
-requirement:: /req/req-class-a/req-name-1
-requirement:: /req/req-class-a/req-name-2
+identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lab-analysis
+subject:: Encoding
+inherit:: ISO 19103 Conceptual Model Language
+inherit:: ISO 19107 Spatial Schema
+inherit:: ISO-19156 Observations and Measurements (OGC Topic 20)
+inherit:: SWE Common 2.0 08-094r1 Clause 7
+inherit:: ISO 19108 Temporal Schema
+inherit:: ISO 19115-3 Citation
+requirement:: /req/gsml-lab-analysis/sampledFeature
+requirement:: /req/gsml-lab-analysis/accuracy-measure
+requirement:: /req/gsml-lab-analysis/accuracy-vocabulary
+recommendation:: /rec/gsml-lab-analysis/image-url
+recommendation:: /rec/gsml-lab-analysis/image-process
+recommendation:: /rec/gsml-lab-analysis/outcrop-pattern
 ====
-
-

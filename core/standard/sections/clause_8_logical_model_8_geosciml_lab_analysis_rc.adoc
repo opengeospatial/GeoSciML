@@ -1,49 +1,5 @@
 === GeoSciML LaboratoryAnalysis-Specimen Requirements Class (Normative)
 
-[width="100%",cols="12%,88%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4-lab-analysis |
-|*Target type* |Encoding
-|*Dependency* |/req/gsml4-core
-|*Dependency* |ISO 19103 Conceptual Model Language
-|*Dependency* |ISO 19107 Spatial Schema
-|*Dependency* |ISO-19156 Observations and Measurements (OGC Topic 20)
-|*Dependency* |SWE Common 2.0 08-094r1 Clause 7
-|*Dependency* |ISO 19108 Temporal Schema
-|*Dependency* |ISO 19115-3 Citation
-|*Requirement* a|
-*/req/gsml4-lab-analysis/sampledFeature*
-
-OM::SF++_++SamplingFeature::sampledFeature SHALL not be an instance of OM::SF++_++SamplingFeature.
-
-|*Requirement* a|
-/req/gsml4-lab-analysis/accuracy-measure
-
-For analytical error and detection limits, both DQ++_++QuantitativeAttributeAccuracy::nameOfMeasure and DQ++_++QuantitativeAttributeAccuracy::result SHALL NOT be null.
-
-|*Requirement* a|
-/req/gsml4-lab-analysis/accuracy-vocabulary
-
-The value of DQ++_++Element:nameOfMeasure SHOULD be a term from a controlled vocabulary.
-
-|*Recommendation* a|
-/req/gsml4-lab-analysis/image-url
-
-The identifier of the image should be a HTTP URI referring to a representation of the image.
-
-|*Recommendation* a|
-/req/gsml4-lab-analysis/image-process
-
-The image om:procedure SHOULD make reference to a camera.
-
-|*Recommendation* a|
-/req/gsml4-lab-analysis/outcrop-pattern
-
-Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5
-
-|===
-
 include::/requirements/requirements_class_lab-analysis.adoc[]
 
 The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model ++[++21++]++. 
@@ -59,11 +15,6 @@ The LaboratoryAnalysis leaf package describes processes, instruments and result 
 
 The "sampledFeature" association links the OM::SF++_++SamplingFeature to the feature which the sampling feature was designed to sample. The target of this association shall not be a sampling feature. It is shall a real-world feature from an application domain.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-lab-analysis/sampledFeature*
-|OM::SF++_++SamplingFeature::sampledFeature SHALL not be an instance of OM::SF++_++SamplingFeature.
-|===
 
 include::/requirements/lab-analysis/REQ_gsml-lab-analysis_sampledFeature.adoc[]
 
@@ -76,21 +27,11 @@ At least "nameOfMeasure" and "result" shall be used when delivering om:resultQua
 .DQ++_++Element from ISO19115:2003
 image::images/image85.png[DQ++_++Element from ISO19115:2003.,width=415,height=188]
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-lab-analysis/accuracy-measure*
-|For analytical error and detection limits, both DQ++_++QuantitativeAttributeAccuracy::nameOfMeasure and DQ++_++QuantitativeAttributeAccuracy::result SHALL NOT be null.
-|===
 
 include::/requirements/lab-analysis/REQ_gsml-lab-analysis_accuracy-measure.adoc[]
 
 The CharacterString in "nameOfMeasure" should be a term from a controlled vocabulary.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-lab-analysis/accuracy-vocabulary*
-|The value of DQ++_++Element::nameOfMeasure SHOULD be a term from a controlled vocabulary.
-|===
 
 include::/requirements/lab-analysis/REQ_gsml-lab-analysis_accuracy-vocabulary.adoc[]
 
@@ -202,21 +143,11 @@ image::images/image91.png[Image,width=305,height=353]
 
 When the image is available online, the identifier of the image, a HTTP URI, should point to one or more representation of that image.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-lab-analysis/image-url*
-|The identifier of the image SHOULD be a HTTP URI referring to a representation of the image.
-|===
 
 include::/recommendations/lab-analysis/REC_gsml-lab-analysis_image-url.adoc[]
 
 The samplingMethod (inherited from OM::SF++_++SamplingFeature) value for an image should be an identifier for a camera.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-lab-analysis/image-process*
-|The image om:procedure SHOULD make reference to a camera.
-|===
 
 include::/recommendations/lab-analysis/REC_gsml-lab-analysis_image-process.adoc[]
 
@@ -369,11 +300,5 @@ It is suggested to use SamplingFeatureCollection for representing geological fie
 image::images/image98.png[Outcrop encoding pattern using ISO19156.,width=601,height=391]
 
 SamplingFeatureCollection might also be used to represent dredge hauls, measured sections, and other sorts of sampling features with multiple kinds of associated observations.
-
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4-lab-analysis/outcrop-pattern*
-|Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5
-|===
 
 include::/recommendations/lab-analysis/REC_gsml-lab-analysis_outcrop-pattern.adoc[]

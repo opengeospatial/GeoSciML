@@ -84,7 +84,8 @@ EarthMaterialDescription abstract class is materialised into a series of concret
 * MetamorphicDescription
 * CompoundMaterialDescription
 
-Overview of earth material description
+[[img_overview_of_earth_material_description]]
+.Overview of earth material description
 image::images/image38.png[Overview of earth material description.,width=601,height=427]
 
 ===== AlterationDescription

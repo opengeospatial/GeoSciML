@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[rec_gsml-lab-analysis_image-process]]
 
-[requirement]
+[recommendation]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /rec/gsml-lab-analysis/image-process
+part:: The image om:procedure SHOULD make reference to a camera.
 ====

@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[req_gsml-lab-analysis_accuracy-measure]]
 
 [requirement]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /req/gsml-lab-analysis/accuracy-measure
+part:: For analytical error and detection limits, both DQ_QuantitativeAttributeAccuracy::nameOfMeasure and DQ_QuantitativeAttributeAccuracy::result SHALL NOT be null.
 ====

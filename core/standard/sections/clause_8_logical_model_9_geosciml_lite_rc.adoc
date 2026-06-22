@@ -138,7 +138,8 @@ Use of standard vocabularies enables map display using a shared legend (symboliz
 
 By linking the simple feature WMS with a GeoSciML WFS, clients can acquire geologic feature descriptions that can be used in web-mapping applications to construct custom legends. Linking to full GeoSciML features allows the Lite schema to be used in a map browsing and query interface to identify and select features for further processing that can be acquired as highly structured, information-rich GML features.
 
-image::images/image99.png[Package dependency for GeoSciML Lite.,width=524,height=498]Figure: 97: Package dependency for GeoSciML Lite.
+.Package dependency for GeoSciML Lite
+image::images/image99.png[Package dependency for GeoSciML Lite.,width=524,height=498]
 
 GeoSciML Lite conforms to the Level 0 of the Simple Features Profile for GML (OGC 10-100r, OGC 06-049). The simple features profile supports only a limited subset of possible GML geometry types that may be used to describe feature geographic location and shape. For the purposes of GeoSciML simple features, these include GEO::Point, GEO::LineString, GEO::Curve, GEO::Polygon, GEO::Surface, GEO::MultiPoint, GEO::MultiCurve, GEO::MultiSurface and multi-geometry types consisting of collections of these base types.
 
@@ -166,9 +167,11 @@ For each GeoSciML Lite view, a table provides the mapping between Lite and GeoSc
 
 For example:
 
-image::images/image100.png[Mapping of key GeologicUnitView properties to GeoSciML,width=601,height=375]Figure: 98: Mapping of key GeologicUnitView properties to GeoSciML
+[[img_Mapping_of_key_GeologicUnitView_props]]
+.Mapping of key GeologicUnitView properties to GeoSciML
+image::images/image100.png[Mapping of key GeologicUnitView properties to GeoSciML,width=601,height=375]
 
-Figure 98 shows mapping for some GeologicUnitView properties.  Number 3 on this figure maps GeologicUnitView::lithology to RockMaterial, which requires a traverse from the base type (MappedFeature) to GeologicUnit, CompositionPart and then RockMaterial.
+<<img_Mapping_of_key_GeologicUnitView_props>> shows mapping for some GeologicUnitView properties.  Number 3 on this figure maps GeologicUnitView::lithology to RockMaterial, which requires a traverse from the base type (MappedFeature) to GeologicUnit, CompositionPart and then RockMaterial.
 
  
 
@@ -273,9 +276,11 @@ Properties containing a URI should, unless stated otherwise, resolve following L
 
 Although many vocabulary terms are defined as URI, not all URIs are actually supported by a formal Linked Open Data infrastructure.   URIs are just a convenient mechanism to build unique vocabulary identifiers.  Note that in some situations, some “++_++uri” properties might require that the URI SHALL resolve to some valid content.  Those cases will be explicitly stated. Some community might create a profile of this requirements class and add more constraints, such as mandatory resolution of the URI to one or more resources and impose mandatory mime-types (GeoSciML/XML or GeoSciML/GeoJSON).
 
-image::images/image101.png[GeoSciML Lite feature types.,width=601,height=453]Figure: 99: GeoSciML Lite feature types.
+[[img_lite_feature_types]]
+.GeoSciML Lite feature types
+image::images/image101.png[GeoSciML Lite feature types.,width=601,height=453]
 
-Figure 99 shows the seven Lite feature types specified by GeoSciML 4.1.  Each feature type is equivalent to a layer in a GIS or a Web Map Service. 
+<<img_lite_feature_types>> shows the seven Lite feature types specified by GeoSciML 4.1.  Each feature type is equivalent to a layer in a GIS or a Web Map Service. 
 
 ===== User defined properties
 
@@ -309,7 +314,8 @@ Identifiers shall be formatted as URI according to RFC 3986.  This URI could be
 
 ==== GeologicUnitView
 
-image::images/image102.png[GeologicUnitView feature type.,width=302,height=382]Figure: 100: GeologicUnitView feature type.
+.GeologicUnitView feature type
+image::images/image102.png[GeologicUnitView feature type.,width=302,height=382]
 
 GeologicUnitView is a simplified view of a GeoSciML MappedFeature feature with key property values from an associated GeologicUnit.   The GeologicUnitView property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
@@ -511,14 +517,14 @@ A data provider may add an arbitrary number of extra properties, as long as the 
 BoreholeView is a simplified view of a GeoSciML Borehole. In GeoSciML terms, this will be an instance of a Borehole feature with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
  
-
-image::images/image103.png[BoreholeView feature type.,width=294,height=410]Figure: 101: BoreholeView feature type.
+.BoreholeView feature type
+image::images/image103.png[BoreholeView feature type.,width=294,height=410]
 
 ===== Mapping
 
+.Mapping of BoreholeView properties to the GeoSciML Borehole data model
 [width="100%",cols="^25%,^75%",options="header",]
 |===
-|*Table 10: Mapping of BoreholeView properties to the GeoSciML Borehole data model.* |
 |*Property* |*Mapping from Borehole*
 |*identifier* |identifier
 |*Name* |name ^1^
@@ -674,7 +680,8 @@ A data provider may add an arbitrary number of extra properties, as long as the 
 
 ==== ContactView
 
-image::images/image104.png[ContactView feature type.,width=287,height=258]Figure: 102: ContactView feature type.
+.ContactView feature type
+image::images/image104.png[ContactView feature type.,width=287,height=258]
 
 ContactView is a simplified view of a GeoSciML MappedFeature with key property values from an associated Contact feature.  These properties are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
@@ -770,7 +777,8 @@ A data provider can add an arbitrary number of extra properties, as long as the 
 
 ==== GeologicSpecimenView
 
-image::images/image105.png[GeologicSpecimenView feature type.,width=287,height=303]Figure: 103: GeologicSpecimenView feature type.
+.GeologicSpecimenView feature type
+image::images/image105.png[GeologicSpecimenView feature type.,width=287,height=303]
 
 GeologicSpecimenView is a simplified view of a point-located specimen from GeoSciML GeologicSpecimen (an extension of Observations & Measurements - ISO19156) with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
@@ -886,7 +894,8 @@ A data provider can add an arbitrary number of extra properties, as long as the 
 
 ==== GeomorphologicUnitView*
 
-image::images/image106.png[GeomorphologicUnitView feature type.,width=318,height=397]Figure: 104: GeomorphologicUnitView feature type.
+.GeomorphologicUnitView feature type
+image::images/image106.png[GeomorphologicUnitView feature type.,width=318,height=397]
 
 GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In GeoSciML terms this will be in instance of a MappedFeature with key property values from the associated GeomorphologicUnit feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
@@ -1047,7 +1056,8 @@ A data provider can add an arbitrary number of extra properties, as long as the 
 
 ==== ShearDisplacementStructureView
 
-image::images/image107.png[ShearDisplacementStructureView feature type.,width=303,height=407]Figure: 105: ShearDisplacementStructureView feature type.
+.ShearDisplacementStructureView feature type
+image::images/image107.png[ShearDisplacementStructureView feature type.,width=303,height=407]
 
 ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacementStructure. In GeoSciML terms this will be an instance of a MappedFeature with key property values from the associated ShearDisplacementStructure feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 
@@ -1198,7 +1208,8 @@ A data provider can add an arbitrary number of extra properties, as long as the 
 
 ==== SiteObservationView
 
-image::images/image108.png[SiteObservationView feature type.,width=287,height=349]Figure: 106: SiteObservationView feature type.
+.SiteObservationView feature type
+image::images/image108.png[SiteObservationView feature type.,width=287,height=349]
 
 SiteObservationView is a simplified view of a generally point-located geological observation, like a structural measurement. This is a simplified instance of a sampling geometry from Observations & Measurements (ISO19156) with an associated geological observation. Each tuple should represent a single observation. Key property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
 

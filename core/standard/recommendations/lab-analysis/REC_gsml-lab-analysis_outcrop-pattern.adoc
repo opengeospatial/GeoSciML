@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[rec_gsml-lab-analysis_outcrop-pattern]]
 
-[requirement]
+[recommendation]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /rec/gsml-lab-analysis/outcrop-pattern
+part:: Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5
 ====

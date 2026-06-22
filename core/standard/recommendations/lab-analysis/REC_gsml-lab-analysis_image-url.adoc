@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[rec_gsml-lab-analysis_image-url]]
 
-[requirement]
+[recommendation]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /rec/gsml-lab-analysis/image-url
+part:: The identifier of the image should be a HTTP URI referring to a representation of the image.
 ====

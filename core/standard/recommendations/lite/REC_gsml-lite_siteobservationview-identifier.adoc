@@ -1,0 +1,8 @@
+[[rec_gsml-lite_siteobservationview-identifier]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lite/siteobservationview-identifier
+part:: identifier SHOULD correspond to a representation of OM::OM_Observation.
+====

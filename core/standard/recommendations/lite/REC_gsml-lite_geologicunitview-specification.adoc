@@ -1,0 +1,8 @@
+[[rec_gsml-lite_geologicunitview-specification]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lite/geologicunitview-specification
+part:: specification_uri value SHOULD refer the GeoSciML GeologicUnit feature that describes the instance in detail.
+====

@@ -1,4 +1,4 @@
-[[req_gsml-basic/quantity-range-order]]
+[[req_gsml-basic_quantity-range-order]]
 
 [requirement]
 ====

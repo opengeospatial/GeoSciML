@@ -1,0 +1,8 @@
+[[req_gsml-lite_string]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/string
+part:: Properties of type “CharacterString” SHALL contain human readable text.
+====

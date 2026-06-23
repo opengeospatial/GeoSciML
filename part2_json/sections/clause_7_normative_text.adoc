@@ -20,7 +20,7 @@ include::../requirements/requirement001.adoc[]
 
 Dictionary tables for requirements can be added as necessary. Modify the following example as needed.
 
-[width="90%",options="header"]
+[width="90%",options="header",align="left"]
 |===
 |Names |Definition |Data types and values |Multiplicity and use
 |name 1 |definition of name 1 |float |One or more (mandatory)

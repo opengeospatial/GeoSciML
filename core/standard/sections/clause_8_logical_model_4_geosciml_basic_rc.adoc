@@ -46,7 +46,7 @@ The property purpose:DescriptionPurpose specifies the intended purpose/level of 
 
 [[valid_purpose_values]]
 .Valid “purpose” values
-[width="100%",cols="^17%,^83%",options="header",]
+[width="100%",cols="^17%,^83%",options="header",align="left"]
 |===
 |*Purpose* |*Description*
 |*instance* |And instance is a description that is specific to a particular observed occurrence. This is 'raw data', and its classification may start out as very general. There are kinds of narrowly defined ControlledConcepts that might not allow 'instances' that are different from the DefiningNorm. It might be worth considering a different relationship between MappedFeature and an Instance GeologicEntity, with the GeologicEntity role being 'description'.
@@ -446,7 +446,7 @@ This requirements class does not impose any encoding style for Union stereotype,
 
 [[tbl_types_of_GSMLItem_members]]
 .Types of GSMLItem members
-[width="100%",cols="^24%,^76%",options="header",]
+[width="100%",cols="^24%,^76%",options="header",align="left"]
 |===
 |*Property* |*Description*
 |*earthMaterialItem* |The earthMaterialItem attribute is a placeholder for the EarthMaterial class that is included as a member of a GSML Collection.
@@ -571,7 +571,7 @@ Geology is a descriptive science and uses vocabularies extensively.  <<tbl_voca
 
 [[tbl_vocabularies_used_in_geosciml_basic]]
 .Vocabularies used in GeoSciML Basic
-[width="100%",cols="^34%,^66%",options="header",]
+[width="100%",cols="^34%,^66%",options="header",align="left"]
 |===
 |*Vocabulary* |*Description*
 |CompositionPartRoleTerm |This class is a blank placeholder for a vocabulary of terms to describe the role that a compositional part plays in a geologic unit.

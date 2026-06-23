@@ -22,10 +22,6 @@ In addition, some features include an (optional) identifier for a specification 
 
 Lite properties are mapped to existing GeoSciML or O&M properties.  Values from GeoSciML and O&M complex properties are converted into GML SF-0 valid basic types (OGC 10-100r2, Clause 8.4.4.1). Different transformations scenarios are possible:
 
-____
- 
-____
-
 * The GeoSciML property is already a basic type and the value is used as-is
 * A representative element of the complex type is used. For example; only SWE::Category::value.
 * The value is constructed from several fields merged into a single string.
@@ -44,33 +40,20 @@ image::images/image100.png[Mapping of key GeologicUnitView properties to GeoSciM
 
 <<img_Mapping_of_key_GeologicUnitView_props>> shows mapping for some GeologicUnitView properties.  Number 3 on this figure maps GeologicUnitView::lithology to RockMaterial, which requires a traverse from the base type (MappedFeature) to GeologicUnit, CompositionPart and then RockMaterial.
 
- 
-
 In OCL,
 
-specification:GeomorphologicUnit::unitDescription++[++1++]++:GeologicUnit::compos
-
-ition++[++1++]++:CompositionPart::material:RockMaterial::lithology
+specification:GeomorphologicUnit::unitDescription++[++1++]++:GeologicUnit::composition++[++1++]++:CompositionPart::material:RockMaterial::lithology
 
 The base type (MappedFeature) is not included as it is the context type.  Package names are not shown to keep the path readable.
 
- 
 
 A W3C XPath equivalent (using prefixes proposed in 9.1)
 
- 
-
-gsmlb:Specification/gsmlb:GeomorphologicUnit/gsmlb:unitDescription++[++1++]++/gsm
-
-lb:GeologicUnit/gsmlb:composition++[++1++]++/gsmlb:CompositionPart/gsmlb:material
+gsmlb:Specification/gsmlb:GeomorphologicUnit/gsmlb:unitDescription++[++1++]++/gsmlb:GeologicUnit/gsmlb:composition++[++1++]++/gsmlb:CompositionPart/gsmlb:material
 
 /gsmlb:RockMaterial/gsmlb:lithology
 
 An exact path is provided when possible (e.g., see 8.9.3.1), for instance to a property of compatible types.  But there are cases where the type cannot be expressed directly in OCL.
-
-____
- 
-____
 
 * Part of the model, such as classifiers with ++<<++CodeList++>>++ don’t have specific model.  XML implement them as external references (xlink:href), other encoding might implement them otherwise. 
 * Any property modelled as part as metadata (MD++_++Metadata) as there are no explicit requirements on how GML metaDataProperty should be implemented.
@@ -164,7 +147,7 @@ GeologicUnitView is a simplified view of a GeoSciML MappedFeature feature with k
 ===== Mapping
 
 .Mapping of GeologicUnitView properties to the GeoSciML data model
-[width="100%",cols="^35%,^65%",options="header",]
+[width="100%",cols="^35%,^65%",options="header",align="left"]
 |===
 |*Property* |*Mapping from MappedFeature*
 |*identifier* |identifier
@@ -220,15 +203,14 @@ GeologicEvent::olderNamedAge ^3^
 |*metadata++_++uri* |specification:GeologicUnit::metaDataProperty ^3^
 |*genericSymbolizer* |
 |*shape* |shape
-a|
+|===
+
 **^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
 
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
-|
-|===
 
 ===== identifier
 
@@ -347,7 +329,7 @@ image::images/image103.png[width=294,height=410]
 ===== Mapping
 
 .Mapping of BoreholeView properties to the GeoSciML Borehole data model
-[width="100%",cols="^25%,^75%",options="header",]
+[width="100%",cols="^25%,^75%",options="header",align="left"]
 |===
 |*Property* |*Mapping from Borehole*
 |*identifier* |identifier
@@ -372,15 +354,14 @@ image::images/image103.png[width=294,height=410]
 |*metadata++_++uri* |metaDataProperty:MD++_++Metadata ^3^
 |*genericSymbolizer* |
 |*shape* |shape
-a|
+|===
+
 **^1^ In cases where multiple values are delivered for these elements in GeoSciML,  data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
 
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
-|
-|===
 
 ===== identifier
 
@@ -499,7 +480,7 @@ ContactView is a simplified view of a GeoSciML MappedFeature with key property v
 ===== Mapping
 
 .Mapping of ContactView properties to the GeoSciML data model
-[width="100%",cols="^27%,^73%",options="header",]
+[width="100%",cols="^27%,^73%",options="header",align="left"]
 |===
 |*Property* |*Mapping from MappedFeature*
 |*identifier* |specification:Contact::identifier
@@ -514,15 +495,15 @@ ContactView is a simplified view of a GeoSciML MappedFeature with key property v
 |*metadata++_++uri* |specification::Contact::metaDataProperty ^3^
 |*genericSymbolizer* |
 |*Shape* |shape
-a|
+
+|===
+
 **^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
 
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
-|
-|===
 
 ===== identifier
 
@@ -591,7 +572,7 @@ GeologicSpecimenView is a simplified view of a point-located specimen from GeoSc
 ===== Mapping
 
 .Mapping of GeologicSpecimenView properties to Observations and Measurements
-[width="100%",cols="^21%,^79%",options="header",]
+[width="100%",cols="^21%,^79%",options="header",align="left"]
 |===
 |*Property* |*Mapping from OM::SF++_++Specimen*
 |*identifier* |identifier
@@ -609,15 +590,14 @@ GeologicSpecimenView is a simplified view of a point-located specimen from GeoSc
 |*metadata++_++uri* |metadataProperty ^3^
 |*genericSymbolizer* |
 |*shape* |samplingLocation
-a|
+|===
+
 **^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
 
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
-|
-|===
 
 ===== identifier
 
@@ -705,7 +685,7 @@ GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In
 ===== Mapping*
 
 .Mapping of GeomporphologicUnitView properties to GeoSciML
-[width="100%",cols="^23%,^77%",options="header",]
+[width="100%",cols="^23%,^77%",options="header",align="left"]
 |===
 |*Property* |*Mapping from GeomorphologicUnit*
 |*identifier* |identifier
@@ -747,15 +727,14 @@ GeologicEvent:NumericAge ^1^
 |*metadata++_++uri* |specification:GeologicUnit:metaDataProperty ^3^
 |*genericSymbolizer* |
 |*shape* |shape
-a|
+|===
+
 **^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
 
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
-|
-|===
 
 ===== identifier*
 
@@ -860,7 +839,7 @@ ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacem
 ===== Mapping
 
 .Mapping of ShearDisplacementStructureView properties to GeoSciML
-[width="100%",cols="^21%,^79%",options="header",]
+[width="100%",cols="^21%,^79%",options="header",align="left"]
 |===
 |*Property* |*Mapping from MappedFeature*
 |*identifier* |identifier
@@ -886,17 +865,14 @@ ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacem
 |*metadata++_++uri* |metadataProperty ^3^
 |*genericSymbolizer* |
 |*shape* |shape
-a|
+|===
+
 **^1^ In case where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
 
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
-|
-|===
-
- 
 
 ===== identifier
 
@@ -1009,7 +985,7 @@ SiteObservationView is a simplified view of a generally point-located geological
 ===== Mapping
 
 .Mapping of SiteObservationView properties to Observations & Measurements
-[width="100%",cols="^34%,^66%",options="header",]
+[width="100%",cols="^34%,^66%",options="header",align="left"]
 |===
 |*Property* |*Mapping from OM::OM++_++Observation*
 |*identifier* |identifier
@@ -1030,7 +1006,8 @@ SiteObservationView is a simplified view of a generally point-located geological
 |*genericSymbolizer* |
 |*symbolRotation* |
 |*shape* |featureOfInterest:(…):GM++_++Object
-a|
+|===
+
 **^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
 
 **^2^ Use an appropriate **human readable label** for the vocabulary**
@@ -1041,8 +1018,6 @@ a|
 
 *5 OM++_++Measurement::value type is any type and might or might not have a unit of measurement.  The property carrying depend of the result type.*
 
-|
-|===
 
 ===== identifier
 

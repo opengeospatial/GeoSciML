@@ -26,7 +26,7 @@ Which option is most useful for a community is left to that community to decide.
 The following shortcuts are used to refer to external (non GeoSciML) classifiers.
 
 [%unnumbered%]
-[width="100%",cols="16%,84%",options="header",]
+[width="100%",cols="16%,84%",options="header",align="left"]
 |===
 |*Shortcut* |*Full path (HollowWorld)*
 |*OM* |ISO TC211/ISO 19156 All/ISO 19156:2011 Observations and Measurements

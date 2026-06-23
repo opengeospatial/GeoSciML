@@ -616,7 +616,7 @@ Vocabularies used in GeoSciML Extension are listed in <<tbl_geosciml_extension>>
 
 [[tbl_geosciml_extension]]
 .GeoSciML Extension vocabularies
-[width="100%",cols="^37%,^63%",options="header",]
+[width="100%",cols="^37%,^63%",options="header",align="left"]
 |===
 |*Vocabulary* |*Description*
 |*GeologicRelationshipTerm* |Refers to a vocabulary of terms describing a relationship between geologic features or objects.

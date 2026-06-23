@@ -280,7 +280,7 @@ Vocabularies used in the LaboratoryAnalysis-Specimen package are listed <<tbl_la
 
 [[tbl_lab_analysis_and_specimen_vocabularies]]
 .Laboratory analysis and specimen vocabularies
-[width="100%",cols="^38%,^62%",options="header",]
+[width="100%",cols="^38%,^62%",options="header",align="left"]
 |===
 |*Vocabulary* |*Description*
 |*AnalyticalMethodTerm* |Refers to a vocabulary of terms describing the analytical method used in an analytical session (e.g., XRF mass spectrometry, ICPMS, SHRIMP geochronology).

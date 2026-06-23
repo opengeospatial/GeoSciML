@@ -226,7 +226,7 @@ Vocabularies used in Borehole package are listed in <<tbl_geosciml_borehole_voca
 
 [[tbl_geosciml_borehole_vocabularies]]
 .GeoSciML Borehole vocabularies
-[width="100%",cols="^32%,^68%",options="header",]
+[width="100%",cols="^32%,^68%",options="header",align="left"]
 |===
 |*Vocabulary* |*Description*
 |*BoreholeDrillingMethodCode* |This class is an indicative placeholder only for a vocabulary of terms describing the borehole drilling method.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group. (e.g., auger, hand auger, air core, cable tool, diamond core, rotary air blast, etc.).

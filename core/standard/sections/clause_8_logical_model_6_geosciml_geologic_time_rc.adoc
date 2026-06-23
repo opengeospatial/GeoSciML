@@ -191,7 +191,7 @@ The GeologicTime package has only one vocabulary (<<tbl_geologic_time_vocabulary
 
 [[tbl_geologic_time_vocabulary]]
 .Geologic time vocabulary
-[width="100%",cols="^27%,^73%",options="header",]
+[width="100%",cols="^27%,^73%",options="header",align="left"]
 |===
 |*Vocabulary* |*Description*
 |*GeochronologicEraRank* a|

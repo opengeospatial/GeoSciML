@@ -67,7 +67,7 @@ GeoSciML Basic contains nine stub AbstractDescription classes ultimately materia
 
 [[tbl_stub_abstract_description_classes]]
 .GeoSciML Basic stub AbstractDescription classes.
-[width="100%",cols="^50%,^50%",options="header",]
+[width="100%",cols="^50%,^50%",options="header",align="left"]
 |===
 |*Class* |*Description*
 |*AbstractFeatureRelation* |Association class placeholder to describe relations between geologic features.

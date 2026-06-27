@@ -15,6 +15,17 @@ abstract-test:: */conf/gsml-conceptual/similarity*
 
 ====
 
+[[conf_gsml-conceptual_similarity]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-conceptual/similarity
+target:: /req/gsml-conceptual/similarity
+test-purpose:: Ensure that the target logical model is compatible with the conceptual model.
+test-method:: Determine semantic similarity between the logical model and conceptual model using an established method such as: (i) visual comparison of the UML diagrams, (ii) comparison of logical and conceptual components expressed in a common knowledge representation language such as first order logic, or (iii) comparison after mapping to a reference ontology.
+====
+
+
 === GeoSciML Core Abstract
 
 [[conf_gsml-core,/conf/gsml-core]]
@@ -43,6 +54,69 @@ abstract-test:: */conf/gsml-core/codelist*
 
 ====
 
+
+[[conf_gsml-core_uml-entity-name]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-core/uml-entity-name
+target:: /req/gsml-core/uml-entity-name
+test-purpose:: Ensure that the names used in the target implementation matches the names in the logical model
+test-method:: Visual inspection that, when possible, name used in the target implementation matches the names in the logical model.
+====
+
+[[conf_gsml-core_uml-cardinality]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-core/uml-cardinality
+target:: /req/gsml-core/uml-cardinality
+test-purpose:: Ensure that the cardinalities of the properties are the same as the logical model
+test-method:: Visually inspect the target implementation and validate that all properties have the same cardinality as the one expressed in the logical model.
+====
+
+[[conf_gsml-core_uml-abstract]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-core/uml-abstract
+target:: /req/gsml-core/uml-abstract
+test-purpose:: Ensure that target implementation does not allow materialisation of abstract classes
+test-method:: Visually inspect the target implementation and validate that no classifiers (Feature, Type or Datatype) marked as abstract can be materialised.
+====
+
+[[conf_gsml-core_uml-polymorphism]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-core/uml-polymorphism
+target:: /req/gsml-core/uml-polymorphism
+test-purpose:: Ensure that target implementation has mechanisms to allow type substitutions for property values.
+test-method:: Visually check the target implementation accept all substitutable types for property values
+====
+
+[[conf_gsml-core_quantities-uom]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-core/quantities-uom
+target:: /req/gsml-core/quantities-uom
+test-purpose:: Ensure that quantities have a governed unit of measure
+test-method:: Visually check that the target implementation has a mechanism to enforce a unit of measure from a governed source.
+====
+
+[[conf_gsml-core_codelist]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-core/codelist
+target:: /req/gsml-core/codelist
+test-purpose:: Ensure that vocabulary terms are encode as URI according to RFC3986
+test-method:: Visually check that the target implementation has a mechanism to enforce a unit of measure from a governed source.
+====
+
+
+
 === GeoSciML Linked Open Data
 
 [[conf_gsml-lod,/conf/gsml-lod]]
@@ -62,6 +136,37 @@ abstract-test:: */conf/gsml-lod/identifier*
 abstract-test:: */conf/gsml-lod/byref* 
 
 ====
+
+[[conf_gsml-lod_codelistURI]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lod/codelistURI
+target:: /req/gsml-lod/codelistURI
+test-purpose:: Ensure that the implementation check that vocabulary terms are dereferenceable URI
+test-method:: Visual inspection of the target implementation and check that it provides a mechanism to verify that URI are dereferenceable
+====
+
+[[conf_gsml-lod_identifier]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lod/identifier
+target:: /req/gsml-lod/identifier
+test-purpose:: Ensure that the URI identifier can be dereferenced.
+test-method:: Visually inspect the target implementation and check that it provides a mechanism to verify that the identifier can be dereferenced and return a representation of the resource assigned to the identifier
+====
+
+[[conf_gsml-lod_byref]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lod/byref
+target:: /req/gsml-lod/byref
+test-purpose:: Ensure that for properties that reference an external resource using a HTTP URI identifier, this URI is dereferenceable.
+test-method:: Visual inspection of the target implementation and check that it provides a mechanism to verify that URI are dereferenceable
+====
+
 
 === GeoSciML Basic Logical Model
 
@@ -89,6 +194,67 @@ abstract-test:: /conf/gsml-basic/quantity-range-repeat
 
 ====
 
+[[conf_gsml-basic_geologicfeature-purpose]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-basic/geologicfeature-purpose
+target:: /req/gsml-basic/geologicfeature-purpose
+test-purpose:: Ensure that the target implementation enforces the purpose property to be restricted to the values provided in Table 2 (instance, typicalNorm, definingNorm) of 8.4.1.1.2
+test-method:: Visual inspection that the target implementation has a mechanism to limit the property value to those provided in Table 2
+====
+
+[[conf_gsml-basic_geologicevent-non-null]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-basic/geologicevent-non-null
+target:: /req/gsml-basic/geologicevent-non-null
+test-purpose:: Ensure that a GeologicEvent instance has either a olderNamedAge or youngerNamedAge as a non-null value
+test-method:: Visual inspection that the target implementation has a mechanism to prevent a GeologicEvent to have both olderNamedAge or youngerNamedAge equals to null.
+====
+
+[[conf_gsml-basic_plane-pol-dip-az-not-null]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-basic/plane-pol-dip-az-not-null
+target:: /req/gsml-basic/plane-pol-dip-az-not-null
+test-purpose:: Ensure that a GSML++_++PlanarOrientation instance has either polarity, azimuth or dip as a non-null value
+test-method:: Visual inspection that the target implementation has a mechanism to prevent a GSML++_++PlanarOrientation to have all polarity, azimuth or dip equal to null.
+====
+
+[[conf_gsml-basic_linear-trend-plunge-not-null]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-basic/linear-trend-plunge-not-null
+target:: /req/gsml-basic/linear-trend-plunge-not-null
+test-purpose:: Ensure that a GSML++_++LinearOrientation instance has either trend or plunge as a non-null value
+test-method:: Visual inspection that the target implementation has a mechanism to prevent a GSML++_++LinearOrientation to have both trend and plunge equals to null.
+====
+
+[[conf_gsml-basic_quantity-range-order]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-basic/quantity-range-order
+target:: /req/gsml-basic/quantity-range-order
+test-purpose:: Ensure that a GSML++_++QuantityRange lowerValue is less or equal to upperValue
+test-method:: Visual inspection that the target implementation has a mechanism to constrain lowerValue to be less or equal to upperValue.
+====
+
+[[conf_gsml-basic_quantity-range-repeat]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-basic/quantity-range-repeat
+target:: /req/gsml-basic/quantity-range-repeat
+test-purpose:: Ensure that a GSML++_++QuantityRange lowerValue and upperValue matches the quantities in the “value” property
+test-method:: Visual inspection that the target implementation has a mechanism to constrain lowerValue to match value++[++0++]++ and upperValue to match value++[++1++]++
+====
+
+
 === GeoSciML Extension Logical Model
 
 [[conf_gsml-extension,/conf/gsml-extension]]
@@ -109,6 +275,37 @@ abstract-test:: /conf/gsml-extension/slipComponents-slip
 
 ====
 
+[[conf_gsml-extension_geologicfeature-history]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-extension/geologicfeature-history
+target:: /req/gsml-extension/geologicfeature-history
+test-purpose:: Ensure that the target implementation restricts GeologicEvent describing the age of GeologicUnit to geologicHistory property
+test-method:: Visual inspection that the target implementation has a mechanism to limit GeologicEvent describing age of GeologicFeature to geologicHistory.
+====
+
+[[conf_gsml-extension_contact-chronoboundary]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-extension/contact-chronoboundary
+target:: /req/gsml-extension/contact-chronoboundary
+test-purpose:: Ensure that the target implementation restricts ContactDescription::correlatesWith value to an instance of GeochronologicBondary only when ContactDescription::contactType is ChronostratigraphicBoundary
+test-method:: Visual inspection that the target implementation has a mechanism to constrain the value of correlatesWith
+====
+
+[[conf_gsml-extension_slipComponents-slip]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-extension/slipComponents-slip
+target:: /req/gsml-extension/slipComponents-slip
+test-purpose:: Ensure that a slipComponent has at least one of heave, horizontalSlip or throw as a non-null
+test-method:: Visual inspection that the target implementation has a mechanism to constrain on of heave, horizontalSlip or throw to be non-null
+====
+
+
 === GeoSciML Timescale Logical Model
 
 [[conf_gsml-timescale,/conf/gsml-timescale]]
@@ -124,6 +321,17 @@ inherit:: /conf/gsml-basic
 abstract-test:: /conf/gsml-timescale/start 
 
 ====
+
+[[conf_gsml-timescale_start]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-timescale/start
+target:: /req/gsml-timescale/start
+test-purpose:: Ensure that the start TimeOrdinalEraBoundary is older that the end TimeOrdinalBoundaryEra
+test-method:: Visual inspection that the target implementation has a mechanism to check that the age of the start TimeOrdinalEraBoundary is older than the age of the “end” TimeOrdinalEraBoundary
+====
+
 
 === GeoSciML Borehole Logical Model
 
@@ -159,6 +367,97 @@ abstract-test:: /conf/gsml-borehole/borehole-elevation-CRS
 
 ====
 
+[[conf_gsml-borehole_value-intervalBegin]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/value-intervalBegin
+target:: /req/gsml-borehole/value-intervalBegin
+test-purpose:: Ensure that the target implementation enforces the DillingDetails::intervalBegin value is less or equal to DillingDetails::intervalEnd
+test-method:: Visual inspection that the target implementation has a mechanism to ensure that DillingDetails::intervalBegin is less or equal to . DillingDetails::intervalEnd
+====
+
+[[conf_gsml-borehole_drill-interval-1D]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/drill-interval-1D
+target:: /req/gsml-borehole/drill-interval-1D
+test-purpose:: Ensure that the target implementation enforces the presence a 1D geometry for DrillingDetails::interval
+test-method:: Visual inspection that the target implementation has a mechanism to ensure DrillingDetails::interval is a 1D geometry
+====
+
+[[conf_gsml-borehole_drill-interval-1D-CRS]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/drill-interval-1D-CRS
+target:: /req/gsml-borehole/drill-interval-1D-CRS
+test-purpose:: Ensure that the target implementation enforces DillingDetails::intervalEnd geometries CRS to be a valid vertical datum
+test-method:: Visual inspection that the target implementation has a mechanism to ensure that DillingDetails::intervalEnd datum is a valid vertical datum.
+====
+
+[[conf_gsml-borehole_value-mappedIntervalBegin]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/value-mappedIntervalBegin
+target:: /req/gsml-borehole/value-mappedIntervalBegin
+test-purpose:: Ensure that the target implementation enforces the BoreholeInterval::mappedIntervalBegin value is less or equal to BoreholeInterval::mappedIntervalEnd
+test-method:: Visual inspection that the target implementation has a mechanism to ensure that BoreholeInterval::mappedIntervalBegin is less or equal to  BoreholeInterval::mappedIntervalEnd
+====
+
+[[conf_gsml-borehole_interval-1D]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/interval-1D
+target:: /req/gsml-borehole/interval-1D
+test-purpose:: Ensure that the target implementation enforces the presence a GM++_++LineString geometry composed of  a pair of 1D coordinates for BoreholeInterval::shape
+test-method:: Visual inspection that the target implementation has a mechanism to ensure BoreholeInterval::shape is a GM++_++LineString composed of a pair of 1D coordinates.
+====
+
+[[conf_gsml-borehole_interval-1D-CRS]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/interval-1D-CRS
+target:: /req/gsml-borehole/interval-1D-CRS
+test-purpose:: Ensure that the target implementation constrain the CRS to a relevant vertical datum
+test-method:: Visual inspection to check that the target implementation has a mechanism to constrain the CRS to a 1D vertical datum.
+====
+
+[[conf_gsml-borehole_borehole-position-null]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/borehole-position-null
+target:: /req/gsml-borehole/borehole-position-null
+test-purpose:: Ensure that the target implementation enforce a OGC nil when there are no GM++_++Point available
+test-method:: Visual inspection to check that the target implementation has a mechanism to constrain either a GM++_++Point or a OGC nil marker.
+====
+
+[[conf_gsml-borehole_borehole-elevation-dim]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/borehole-elevation-dim
+target:: /req/gsml-borehole/borehole-elevation-dim
+test-purpose:: Ensure that the target implementation enforces that the OriginPosition::elevation has a dimension of 1
+test-method:: Visual inspection to check that the target implementation has a mechanism to constrain OriginPosition::elevation coordinate to have a single dimension
+====
+
+[[conf_gsml-borehole_borehole-elevation-CRS]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-borehole/borehole-elevation-CRS
+target:: /req/gsml-borehole/borehole-elevation-CRS
+test-purpose:: Ensure that the target implementation enforces the Origin::elevation geometry CRS to be a valid 1D vertical datum
+test-method:: Visual inspection to check that the target implementation has a mechanism to constrain OriginPosition::elevation CRS to a value in the range EPSG:5600 to EPSG:5799
+====
+
+
 === GeoSciML LaboratoryAnalysis-Specimen Logical Model
 
 [[conf_gsml-lab-analysis,/conf/gsml-lab-analysis]]
@@ -180,6 +479,38 @@ abstract-test:: /conf/ gsml-lab-analysis/accuracy-measure
 abstract-test:: /conf/gsml-lab-analysis/accuracy-vocabulary 
 
 ====
+
+
+[[conf_gsml-lab-analysis_sampledFeature]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lab-analysis/sampledFeature
+target:: /req/gsml-lab-analysis/sampledFeature
+test-purpose:: Ensure that the SF++_++SamplingFeature::sampledFeature is not an instance of SF++_++SamplingFeature
+test-method:: Verify that the target implementation has a mechanism to prevent sampledFeature target to be an instance of SF++_++SamplingFeature or any of its subtypes.
+====
+
+[[conf_gsml-lab-analysis_accuracy-measure]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lab-analysis/accuracy-measure
+target:: /req/gsml-lab-analysis/accuracy-measure
+test-purpose:: Ensure that DQ++_++Element::nameOfMeasure and ::result are not null
+test-method:: Verify that the target implementation has a mechanism to enforce a non-null value for DQ++_++Element::nameOfMeasure and DQ++_++Element::result
+====
+
+[[conf_gsml-lab-analysis_accuracy-vocabulary]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lab-analysis/accuracy-vocabulary
+target:: /req/gsml-lab-analysis/accuracy-vocabulary
+test-purpose:: Ensure that nameOfMeasure is a term from a controlled vocabulary
+test-method:: Visually check target implementation for the presence of the mechanism that verifies that the nameOfMeasure is a term from a controlled vocabulary
+====
+
 
 === GeoSciML Lite Logical
 
@@ -221,4 +552,145 @@ abstract-test:: **/conf/gsml-lite/**contactview-contacttype
 
 abstract-test:: **/conf/gsml-lite/**siteobservationview-symbolRotation 
 
+====
+
+
+[[conf_gsml-lite_geomtype]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/geomtype
+target:: /req/gsml-lite/geomtype
+test-purpose:: Ensure that the target implementation only allow a single geometry per instance
+test-method:: Visual inspection that the target implementation has a mechanism to limit a single geometry per instance
+====
+
+[[conf_gsml-lite_string]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/string
+target:: /req/gsml-lite/string
+test-purpose:: Ensure that human readable strings are allowed in all properties of type CharacterString
+test-method:: Visual inspection that the target implementation does not prevent human readable string (by ensuring that property data types are used)
+====
+
+[[conf_gsml-lite_datetime]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/datetime
+target:: /req/gsml-lite/datetime
+test-purpose:: Ensure that all representation of date and time uses ISO8601
+test-method:: Visual inspection that the target implementation has mechanism or rules to enforce the usage of ISO8601 date and time
+====
+
+[[conf_gsml-lite_uri]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/uri
+target:: /req/gsml-lite/uri
+test-purpose:: Ensure that all properties ending in URI contain a URI
+test-method:: Check that the target implementation enforces the content to RFC 3986
+====
+
+[[conf_gsml-lite_user-defined]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/user-defined
+target:: /req/gsml-lite/user-defined
+test-purpose:: Ensure that user defined properties conform to GML Simple Feature Level 0
+test-method:: Check that the target implementation enforces user defined properties to be conform to GML Simple Feature Level 0
+====
+
+[[conf_gsml-lite_identifier-unique]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/identifier-unique
+target:: /req/gsml-lite/identifier-unique
+test-purpose:: Ensure that the identifier is unique for the dataset
+test-method:: Check that the target implementation implement a unique key constrain or mechanism to ensure that identifier property is unique.
+====
+
+[[conf_gsml-lite_identifier-uri]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/identifier-uri
+target:: /req/gsml-lite/identifier-uri
+test-purpose:: Ensure that the identifier field is formatted as a URI
+test-method:: Check that the target implementation implement a formatting constraint on the identifier field that check its compliance to RFC3986
+====
+
+[[conf_gsml-lite_geologicunitview-representativeLithology]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/geologicunitview-representativeLithology
+target:: /req/gsml-lite/geologicunitview-representativeLithology
+test-purpose:: Ensure that the geologic unit view representative lithology come from a controlled vocabulary
+test-method:: Check that the target implementation implements a mechanism to ensure that the term comes from a controlled vocabulary
+====
+
+[[conf_gsml-lite_geologicunitview-representativeAge]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/geologicunitview-representativeAge
+target:: /req/gsml-lite/geologicunitview-representativeAge
+test-purpose:: Ensure that the geologic unit view representative age come from a controlled vocabulary
+test-method:: Check that the target implementation implements a mechanism to ensure that the term comes from a controlled vocabulary
+====
+
+[[conf_gsml-lite_geologicunitview-representativeOlderAge]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/geologicunitview-representativeOlderAge
+target:: /req/gsml-lite/geologicunitview-representativeOlderAge
+test-purpose:: Ensure that the geologic unit view representative older age come from a controlled vocabulary
+test-method:: Check that the target implementation implements a mechanism to ensure that the term comes from a controlled vocabulary
+====
+
+[[conf_gsml-lite_geologicunitview-representativeYoungerAge]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/geologicunitview-representativeYoungerAge
+target:: /req/gsml-lite/geologicunitview-representativeYoungerAge
+test-purpose:: Ensure that the geologic unit view representative older age come from a controlled vocabulary
+test-method:: Check that the target implementation implements a mechanism to ensure that the term comes from a controlled vocabulary
+====
+
+[[conf_gsml-lite_boreholeview-elevation-srs]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/boreholeview-elevation-srs
+target:: /req/gsml-lite/boreholeview-elevation-srs
+test-purpose:: Ensure that the elevation is using a valid SRS
+test-method:: Check that the target implementation implements a proper CRS reference to a EPSG vertical datum
+====
+
+[[conf_gsml-lite_contactview-contacttype]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/contactview-contacttype
+target:: /req/gsml-lite/contactview-contacttype
+test-purpose:: Ensure that the contact’s contact type come from a controlled vocabulary
+test-method:: Check that the target implementation implements mechanism to ensure that the term comes from a controlled vocabulary.
+====
+
+[[conf_gsml-lite_siteobservationview-symbolRotation]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsml-lite/siteobservationview-symbolRotation
+target:: /req/gsml-lite/siteobservationview-symbolRotation
+test-purpose:: Ensure that the symbol rotation is the range ++[++0,360++]++
+test-method:: Check that the target implementation implements mechanism to ensure that the rotation is in the range ++[++0,360++]++
 ====

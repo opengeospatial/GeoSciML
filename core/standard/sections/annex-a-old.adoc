@@ -327,8 +327,8 @@
 | |*Test type* |
 |*Test* |**/conf/gsml4-lite/**siteobservationview-symbolRotation |
 | |*Requirement* |/req/gsml4-lite/siteobservationview-symbolRotation
-| |*Test purpose* |Ensure that the symbol rotation is the range ++[++0,360++[++
-| |*Test method* |Check that the target implementation implements mechanism to ensure that the rotation is in the range ++[++0,360++[++
+| |*Test purpose* |Ensure that the symbol rotation is the range ++[++0,360++]++
+| |*Test method* |Check that the target implementation implements mechanism to ensure that the rotation is in the range ++[++0,360++]++
 | |*Test type* |
 |===
 

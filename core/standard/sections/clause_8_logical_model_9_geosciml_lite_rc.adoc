@@ -1,0 +1,1108 @@
+=== GeoSciML Lite Requirements Class (Normative)
+
+
+include::/requirements/requirements_class_lite.adoc[]
+
+GeoSciML Lite is a simplification of parts of GeoSciML and Observations and Measurements (ISO 19156) for map-based applications.  It was developed to provide a simple schema to deliver geologic map unit, contact, borehole, located sample, geomorphologic unit and shear displacement structure (fault and ductile shear zone) descriptions in web map services. The intention is to support interoperable map services, for which interoperability is based on a shared data schema and the use of standard vocabulary terms for basic type classification of contacts and faults, age of geologic units and faults, and lithology of geologic units.
+
+Use of standard vocabularies enables map display using a shared legend (symbolization scheme) to achieve visual harmonization of maps provided by different services. In addition, the GeoSciML Lite data structure includes text fields with information for human users browsing a geologic map, a link to a full GeoSciML feature element if available, and a symbol identifier field to enable a user-defined symbolization scheme in each map service.
+
+By linking the simple feature WMS with a GeoSciML WFS, clients can acquire geologic feature descriptions that can be used in web-mapping applications to construct custom legends. Linking to full GeoSciML features allows the Lite schema to be used in a map browsing and query interface to identify and select features for further processing that can be acquired as highly structured, information-rich GML features.
+
+.Package dependency for GeoSciML Lite
+image::images/image99.png[Package dependency for GeoSciML Lite.,width=524,height=498]
+
+GeoSciML Lite conforms to the Level 0 of the Simple Features Profile for GML (OGC 10-100r, OGC 06-049). The simple features profile supports only a limited subset of possible GML geometry types that may be used to describe feature geographic location and shape. For the purposes of GeoSciML simple features, these include GEO::Point, GEO::LineString, GEO::Curve, GEO::Polygon, GEO::Surface, GEO::MultiPoint, GEO::MultiCurve, GEO::MultiSurface and multi-geometry types consisting of collections of these base types.
+
+GeoSciML Lite features are analogous to GeoSciML MappedFeatures and O&M sampling features, with additional text attributes for human consumption, a flatted-relation view of the age, and assignment to a single lithology. The Lite schema consists of ‘free-text’ fields and identifier fields.  Best practice is that free text fields will, where possible, contain well-structured summaries of data in a format suitable for reading by the intended users.  For instance, an agreed common format like comma-delimited values should be adopted by user communities. Identifier fields should contain identifiers for concepts from a controlled vocabulary (for example http://resource.geosciml.org/classifier/cgi/lithology/[[.underline]#CGI Simple Lithology#] (http://resource.geosciml.org/classifier/cgi/lithology/)) that specify representative thematic properties for a feature. Inclusion of these standardized identifiers enables interoperability across services. Ideally the identifiers should be URIs that can be resolved to obtain machine-processable or human-readable representations of the identified concepts.
+
+In addition, some features include an (optional) identifier for a specification (specification++_++uri), which is a resource containing a description of that particular feature. In many cases, these descriptions will be the same for all geometries assigned to the same map unit or classified as the same kind of contact or structure. If more complete information is available, different specification descriptions may be associated within subsets of mapped features of the same type that are portrayed with the same symbol. In the most extreme case, each mapped feature occurrence might have a unique description that captures the full spatial variability of a geologic unit or structure. Following the standard patterns of web architecture, the specification++_++uri should be resolvable to obtain one or more representations of that description. For maximum interoperability, one of these representations should be a GeoSciML encoded description of the feature, but other encodings might also be available, for example HTML web pages, other XML schema, or JSON. For those familiar with the GeoSciML Basic package, the specification++_++uri property is equivalent to the specification association from MappedFeature to GeologicFeature.
+
+==== Property mapping
+
+Lite properties are mapped to existing GeoSciML or O&M properties.  Values from GeoSciML and O&M complex properties are converted into GML SF-0 valid basic types (OGC 10-100r2, Clause 8.4.4.1). Different transformations scenarios are possible:
+
+* The GeoSciML property is already a basic type and the value is used as-is
+* A representative element of the complex type is used. For example; only SWE::Category::value.
+* The value is constructed from several fields merged into a single string.
+
+Lite properties cardinalities are limited to 0..1, while GeoSciML properties are often multiple.  The data provider must then either a) choose one representative value or b) aggregate from the collection of values a new value.  Strings will generally be concatenated while numerical values might be averaged or processed in some way to produce a significant value.  Some Lite properties are designed to represent explicitly one particular occurrence, such as GeologicUnitView::representativeOlderAge++_++uri, which is the oldest age.  Others are more suggestive and require the judgement of the data provider, such as GeologicUnitView::representativeLithology++_++uri.  When values are concatenated, they shall be human readable and using simple separators (e.g., commas).
+
+Properties ending with “++_++uri” shall not have concatenated values.  Those properties are designed to fulfill specific query and rendering use cases.
+
+For each GeoSciML Lite view, a table provides the mapping between Lite and GeoSciML properties.  The mapping is expressed in OCL syntax as a path from the base type of the view to the property where the value resides in GeoSciML.
+
+For example:
+
+[[img_Mapping_of_key_GeologicUnitView_props]]
+.Mapping of key GeologicUnitView properties to GeoSciML
+image::images/image100.png[Mapping of key GeologicUnitView properties to GeoSciML,width=601,height=375]
+
+<<img_Mapping_of_key_GeologicUnitView_props>> shows mapping for some GeologicUnitView properties.  Number 3 on this figure maps GeologicUnitView::lithology to RockMaterial, which requires a traverse from the base type (MappedFeature) to GeologicUnit, CompositionPart and then RockMaterial.
+
+In OCL,
+
+specification:GeomorphologicUnit::unitDescription++[++1++]++:GeologicUnit::composition++[++1++]++:CompositionPart::material:RockMaterial::lithology
+
+The base type (MappedFeature) is not included as it is the context type.  Package names are not shown to keep the path readable.
+
+
+A W3C XPath equivalent (using prefixes proposed in 9.1)
+
+gsmlb:Specification/gsmlb:GeomorphologicUnit/gsmlb:unitDescription++[++1++]++/gsmlb:GeologicUnit/gsmlb:composition++[++1++]++/gsmlb:CompositionPart/gsmlb:material
+
+/gsmlb:RockMaterial/gsmlb:lithology
+
+An exact path is provided when possible (e.g., see 8.9.3.1), for instance to a property of compatible types.  But there are cases where the type cannot be expressed directly in OCL.
+
+* Part of the model, such as classifiers with ++<<++CodeList++>>++ don’t have specific model.  XML implement them as external references (xlink:href), other encoding might implement them otherwise. 
+* Any property modelled as part as metadata (MD++_++Metadata) as there are no explicit requirements on how GML metaDataProperty should be implemented.
+* Some values will either come from one “representative” instance, or be an aggregation.
+* Some values are not present in GeoSciML
+
+In such cases, guidance will be provided.
+
+==== GeoSciML Lite views
+
+===== Geometry type
+
+
+include::/requirements/lite/REQ_gsml-lite_geomtype.adoc[]
+
+A dataset (for example, a GML document or a GeoJSON instance or an ESRI shapefile) SHALL use a single geometry type. Most GIS applications and software which render a dataset containing geometry do not expect mixed geometries.
+
+===== String properties
+
+
+include::/requirements/lite/REQ_gsml-lite_string.adoc[]
+
+String properties SHALL provide information easily readable by human.  The intent of string field is to display, not to query. The string properties can be translated according to the language of the user as needed while URI properties should not.
+
+===== Formal Syntax
+
+
+include::/recommendations/lite/REC_gsml-lite_formal-syntax.adoc[]
+
+Some string properties can be constructed using formal syntax, such as comma delimited list or any other text based structure (JSON for example).  Where possible, this syntax SHOULD be formalised in a profile of this specification.
+
+===== Date and Time formatting
+
+
+include::/requirements/lite/REQ_gsml-lite_datetime.adoc[]
+
+All dates and times, excluding geological ages, shall be formatted using ISO 8601 format (YYYY-MM-DD).  When a time must be specified, time zone shall be provided.
+
+Examples:
+
+* 2016-01-05 (simple date)
+* 2016-01-05T08:40:15-05 (time expressed for time zone GMT -5)
+* 2016-01-05T13:40:15Z (same as above, but expressed in UTC a.k.a Zulu)
+
+===== URI
+
+Properties which names end with “++_++uri” shall contain a *single* absolute URI conformant to RFC 3986.
+
+
+include::/requirements/lite/REQ_gsml-lite_uri.adoc[]
+
+Properties containing a URI should, unless stated otherwise, resolve following Linked Open Data principles.
+
+
+include::/recommendations/lite/REC_gsml-lite_resolvable-uri.adoc[]
+
+Although many vocabulary terms are defined as URI, not all URIs are actually supported by a formal Linked Open Data infrastructure.   URIs are just a convenient mechanism to build unique vocabulary identifiers.  Note that in some situations, some “++_++uri” properties might require that the URI SHALL resolve to some valid content.  Those cases will be explicitly stated. Some community might create a profile of this requirements class and add more constraints, such as mandatory resolution of the URI to one or more resources and impose mandatory mime-types (GeoSciML/XML or GeoSciML/GeoJSON).
+
+[[img_lite_feature_types]]
+.GeoSciML Lite feature types
+image::images/image101.png[GeoSciML Lite feature types.,width=601,height=453]
+
+<<img_lite_feature_types>> shows the seven Lite feature types specified by GeoSciML 4.1.  Each feature type is equivalent to a layer in a GIS or a Web Map Service. 
+
+===== User defined properties
+
+
+include::/requirements/lite/REQ_gsml-lite_user-defined.adoc[]
+
+New properties added by the data provider shall keep the feature conformant to GML Simple Feature Level 0.  For example, no duplicate property names, nor extra geometry properties.
+
+===== identifier
+
+Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset.
+
+
+include::/requirements/lite/REQ_gsml-lite_identifier-unique.adoc[]
+
+Identifiers shall be formatted as URI according to RFC 3986.  This URI could be used to access more detailed, such as a GeoSciML Basic, representation of the feature.
+
+
+include::/requirements/lite/REQ_gsml-lite_identifier-uri.adoc[]
+
+==== GeologicUnitView
+
+.GeologicUnitView feature type
+image::images/image102.png[GeologicUnitView feature type.,width=302,height=382]
+
+GeologicUnitView is a simplified view of a GeoSciML MappedFeature feature with key property values from an associated GeologicUnit.   The GeologicUnitView property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+===== Mapping
+
+.Mapping of GeologicUnitView properties to the GeoSciML data model
+[width="100%",cols="^35%,^65%",options="header",align="left"]
+|===
+|*Property* |*Mapping from MappedFeature*
+|*identifier* |identifier
+|*name* |specification:GeologicUnit::name ^1^
+|*description* |specification:GeologicUnit::description
+|*geologicUnitType* |specification:GeologicUnit::geologicUnitType ^2^
+|*rank* |specification:GeologicUnit::rank ^2^
+|*lithology* a|
+specification:GeologicUnit::composition:
+
+CompositionPart::material:RockMaterial::lithology ^1,2^
+
+|*geologicHistory* a|
+specification:GeologicUnit::geologicHistory:
+
+GeologicEvent/description 1
+
+|*numericOlderAge* a|
+specification:GeologicUnit::geologicHistory:
+
+GeologicEvent:NumericAge::olderBoundAge:Quantity::value ^1^
+
+|*numericYoungerAge* a|
+specification:GeologicUnit::geologicHistory:
+
+GeologicEvent:NumericAge::youngerBoundAge:Quantity::value ^1^
+
+|*observationMethod* |specification:GeologicUnit::observationMethod:Category::value ^1,2^
+|*positionalAccuracy* |positionalAccuracy:Quantity::value
+|*source* |specification:GeologicUnit::metaDataProperty(…):CI++_++Citation ^1^
+|*geologicUnitType++_++uri* |specification:GeologicUnit::geologicUnitType 3
+|*representativeLithology++_++uri* a|
+specification:GeologicUnit::composition:
+
+CompositionPart::material:RockMaterial::lithology ^3^
+
+|*representativeAge++_++uri* a|
+specification:GeologicUnit::geologicHistory:
+
+GeologicEvent ^3^
+
+|*representativeOlderAge++_++uri* a|
+specification:GeologicUnit::geologicHistory:
+
+GeologicEvent::youngerNamedAge ^3^
+
+|*representativeYoungerAge++_++uri* a|
+specification:GeologicUnit::geologicHistory:
+
+GeologicEvent::olderNamedAge ^3^
+
+|*specification++_++uri* |specification ^3^
+|*metadata++_++uri* |specification:GeologicUnit::metaDataProperty ^3^
+|*genericSymbolizer* |
+|*shape* |shape
+|===
+
+**^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+
+===== identifier
+
+The identifier should have the same value as the corresponding GeoSciML MappedFeature identifier, if available.
+
+
+include::/recommendations/lite/REC_gsml-lite_geologicunitview-identifier.adoc[]
+
+===== name
+
+If present, the property name:Primitive::CharacterString is a display name for the GeologicUnit.
+
+===== description
+
+If present, the property description:Primitive::CharacterString is a description of the GeologicUnit, typically taken from an entry on a geological map legend.
+
+===== geologicUnitType
+
+If present, the property geologicUnitType (Primitive::CharacterString) contains the type of GeologicUnit (as defined in GeoSciML). To report an identifier from a controlled vocabulary, geologicUnitType++_++uri shall be used.
+
+===== rank
+
+If present, the property rank:Primitive::CharacterString contain the rank of GeologicUnit (as defined by ISC. e.g., group, formation, member). 
+
+===== lithology
+
+If present, lithology contains a human readable description as Primitive::CharacterString of the GeologicUnit’s lithology, possibly formatted with formal syntax (see 8.9.2.3).  The description can be language-dependent.  To report an identifier from a controlled vocabulary, representativeLithology++_++uri shall be used.
+
+===== geologicHistory
+
+If present, contains a human readable description in Primitive::CharacterString, possibly formatted with formal syntax (see 8.9.2.3), of the age of the GeologicUnit (where age is a sequence of events and may include process and environment information). To report an identifier from a controlled vocabulary, representativeAge++_++uri, representativeOlderAge++_++uri, representativeYoungerAge++_++uri shall be used.
+
+===== numericOlderAge
+
+If present, the property numericOlderAge age is a numerical representation (Primitive::Number) of the unit’s older age in million years (Ma).
+
+===== numericYoungerAge
+
+If present, the property numericYoungerAge is a numerical representation (Primitive::Number) of the unit’s younger age in million years (Ma).
+
+===== observationMethod
+
+If present, the property observationMethod:Primitive::CharacterString is a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a simple approach to observation metadata when data are reported using a feature view (as opposed to observation view).
+
+===== positionalAccuracy
+
+If present, the property positionalAccuracy:Primitive::CharacterString is a quantitative value (a numerical value and a unit of length) defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).
+
+===== source
+
+If present, the property source:Primitive::CharacterString is human readable text describing feature-specific details and citations to source materials, and if available provides URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata++_++uri.
+
+===== geologicUnitType++_++uri
+
+The property geologicUnitType++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the GeologicUnit types.
+
+===== representativeLithology++_++uri
+
+The property representativeLithology++_++uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit.
+
+
+include::/requirements/lite/REQ_gsml-lite_geologicunitview-representativeLithology.adoc[]
+
+===== representativeAge++_++uri
+
+The property representativeAge++_++uri:Primitive::CharacterString shall  contain a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising the all or part of the feature’s history.
+
+
+include::/requirements/lite/REQ_gsml-lite_geologicunitview-representativeAge.adoc[]
+
+===== representativeOlderAge++_++uri
+
+The property representativeOlderAge++_++uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative older value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising the all or part of the feature’s history.
+
+
+include::/requirements/lite/REQ_gsml-lite_geologicunitview-representativeOlderAge.adoc[]
+
+===== representativeYoungerAge++_++uri
+
+The property representativeYoungerAge++_++uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative younger value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising the all or part of the feature’s history.
+
+
+include::/requirements/lite/REQ_gsml-lite_geologicunitview-representativeYoungerAge.adoc[]
+
+===== specification++_++uri
+
+If present, the property specification++_++uri:Primitive::CharacterString shall contain a URI referring the GeoSciML GeologicUnit feature that describes the instance in detail.
+
+
+include::/recommendations/lite/REC_gsml-lite_geologicunitview-specification.adoc[]
+
+===== metadata++_++uri
+
+If present, the property metadata++_++uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.
+
+===== genericSymbolizer
+
+If present, the property genericSymbolizer:CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
+
+===== shape
+
+The property shape:GEO::GM++_++Object contains a geometry defining the extent of the feature of interest. 
+
+===== any
+
+A data provider may add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
+
+==== BoreholeView
+
+BoreholeView is a simplified view of a GeoSciML Borehole. In GeoSciML terms, this will be an instance of a Borehole feature with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+
+.BoreholeView feature type
+image::images/image103.png[width=294,height=410]
+
+===== Mapping
+
+.Mapping of BoreholeView properties to the GeoSciML Borehole data model
+[width="100%",cols="^25%,^75%",options="header",align="left"]
+|===
+|*Property* |*Mapping from Borehole*
+|*identifier* |identifier
+|*Name* |name ^1^
+|*description* |description
+|*purpose* |indexData:BoreholeDetails::purpose ^1,2^
+|*status* |
+|*drillingMethod* |downholeDrillingDetails:DrillingDetails::drillingMethod ^1 2^
+|*operator* |indexData:BoreholeDetails::operator:CI++_++Responsibility::party:CI++_++Party::name
+|*driller* |indexData:BoreholeDetails::driller:CI++_++Responsibility::party:CI++_++Party::name
+|*drillStartDate* |indexData:BoreholeDetails::dateOfDrilling:TM++_++Period::begin:TM++_++Instant::position 1
+|*drillEndDate* |indexData:BoreholeDetails::dateOfDrilling:TM++_++Period::end:TM++_++Instant::position ^1^
+|*startPoint* |indexData:BoreholeDetails::startPoint
+|*inclinationType* |indexData:BoreholeDetails::inclinationType ^2^
+|*boreholeMaterialCustodian* |indexData:BoreholeDetails::boreholeMaterialCustodian:CI++_++Responsibility::party:CI++_++Party::name ^1^
+|*boreholeLength++_++m* |indexData:BoreholeDetails::boreholeLength:Quantity::value
+|*elevation++_++m* |referenceLocation:OriginPosition::elevationDirectPosition:::coordinate
+|*elevation++_++srs* |referenceLocation:OriginPosition::elevation:srsName
+|*positionalAccuracy* |metaDataProperty(…):DQ++_++PositionalAccuracy ^1^
+|*source* |metaDataProperty:(…):CI++_++Citation ^1^
+|*parentBorehole++_++uri* |relatedSamplingFeature:SamplingFeatureComplex::relatedSamplingFeature:Borehole::identifier ^3^
+|*metadata++_++uri* |metaDataProperty:MD++_++Metadata ^3^
+|*genericSymbolizer* |
+|*shape* |shape
+|===
+
+**^1^ In cases where multiple values are delivered for these elements in GeoSciML,  data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+
+===== identifier
+
+The identifier:Primitive::CharacterString property shall contain a unique identifier for this borehole and be should formatted as an absolute URI conformant to RFC 3986.
+
+
+include::/recommendations/lite/REC_gsml-lite_boreholeview-identifier.adoc[]
+
+===== name
+
+If present, the property name:Primitive::CharacterString contains a human-readable display name for the borehole.
+
+===== description
+
+If present, the property description:Primitive::CharacterString contains a human-readable description for the borehole. 
+
+===== purpose
+
+If present, the purpose:Primitive::CharacterString property reports the purpose or purposes for which the borehole was drilled. (e.g., mineral exploration, hydrocarbon exploration, hydrocarbon production, groundwater monitoring, geothermal), possibly formatted with formal syntax (see 8.9.2.3).
+
+===== status
+
+If present, the property status:Primitive::CharacterString reports the current status of the borehole (e.g., abandoned, completed, proposed, suspended).
+
+===== drillingMethod
+
+If present, the property drillingMethod:Primitive::CharacterString indicates the drilling method, or methods, used for this borehole (e.g., RAB, auger, diamond core drilling, air core drilling, piston), possibly formatted with formal syntax (see 8.9.2.3).
+
+===== operator
+
+If present, the property operator:Primitive::CharacterString reports the organisation or agency responsible for commissioning of the borehole (as opposed to the agency which drilled the borehole).
+
+===== driller
+
+If present, the property driller:Primitive::CharacterString reports the organisation responsible for drilling the borehole (as opposed to commissioning the borehole).
+
+===== drillStartDate
+
+If present, the property drillStartDate:Primitive::CharacterString reports the date of the start of drilling formatted according to ISO8601 (e.g., 2012-03-17).
+
+===== drillEndDate
+
+If present, the property drillEndData:Primitive::CharacterString reports the date of the end of drilling formatted according to ISO8601 (e.g., 2012-03-28).
+
+===== startPoint
+
+If present, the property startPoint:Primitive::CharacterString indicates the position relative to the ground surface where the borehole commenced (e.g., open pit floor or wall, underground, natural land surface, sea floor).
+
+===== inclinationType
+
+If present, the property inclinationType:Primitive::CharacterString indicates the type of inclination of the borehole (e.g., vertical, inclined up, inclined down, horizontal).
+
+===== boreholeMaterialCustodian
+
+If present, the property boreholeMaterialCustodian:Primitive::CharacterString reports the organisation that is the custodian of the material recovered from the borehole.
+
+===== boreholeLength++_++m
+
+If present, the property boreholeLength++_++m:Primitive::Number reports the length of a borehole, in metres, as determined by the data provider. Length may have different sources (e.g., driller’s measurement, logger’s measurement, survey measurement).
+
+===== elevation++_++m
+
+If present, the property elevation++_++m:Primitive::Number reports the elevation data, in metres, for the borehole (i.e., wellbore) start point. This is a compromise approach to allow for delivery of legacy 2D data without elevation data, and for software that cannot process a 3D GM++_++Point.
+
+===== elevation++_++srs
+
+If present, the property elevation++_++srs:Primitive::CharacterString is a URI of a spatial reference system of the elevation value. (e.g., mean sea level). Mandatory if elevation++_++m is populated. The SRS shall be a one dimensional vertical SRS (i.e., EPSG code in the range 5600-5799).
+
+
+include::/requirements/lite/REQ_gsml-lite_boreholeview-elevation-crs.adoc[]
+
+Example: https://epsg.org/crs/gml/id/5711
+
+===== positionalAccuracy
+
+If present, the property positionalAccuracy:Primitive::CharacterString reports an estimate of the accuracy of the location of the borehole collar location.  Ideally, this would be a quantitative estimate of accuracy (e.g., 20 metres).
+
+===== source
+
+If present, the source:Primitive::CharacterString property describes details and citations to source materials for the borehole and, if available, providing URLs to reference material and publications describing the borehole. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata++_++uri.
+
+ 
+
+===== parentBorehole++_++uri
+
+When present, the parentBorehole++_++uri:Primitive::CharacterString contains a URI referring to one or more representations of a parent borehole (e.g., a parent well of a sidetrack wellbore).
+
+
+include::/recommendations/lite/REC_gsml-lite_boreholeview-parentBorehole-uri.adoc[]
+
+If the borehole does not have any parent, this field shall be empty.
+
+===== metadata++_++uri
+
+If present, the property metadata++_++uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.
+
+===== genericSymbolizer
+
+If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
+
+===== shape
+
+The property shape:GM++_++Object contains a Geometry defining the extent of the borehole start point.
+
+===== any
+
+A data provider may add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
+
+==== ContactView
+
+.ContactView feature type
+image::images/image104.png[ContactView feature type.,width=287,height=258]
+
+ContactView is a simplified view of a GeoSciML MappedFeature with key property values from an associated Contact feature.  These properties are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+===== Mapping
+
+.Mapping of ContactView properties to the GeoSciML data model
+[width="100%",cols="^27%,^73%",options="header",align="left"]
+|===
+|*Property* |*Mapping from MappedFeature*
+|*identifier* |specification:Contact::identifier
+|*name* |specification:Contact::name ^1^
+|*description* |specification:Contact::description
+|*contactType* |specification:Contact::contactType ^2^
+|*observationMethod* |observationMethod ^1,2^
+|*positionalAccuracy* |positionalAccuracy ^2^
+|*source* |specification:GeologicUnit::metaDataProperty:(…):CI++_++Citation
+|*contactType++_++uri* |specification::Contact:contactType ^3^
+|*specification++_++uri* |specification ^3^
+|*metadata++_++uri* |specification::Contact::metaDataProperty ^3^
+|*genericSymbolizer* |
+|*Shape* |shape
+
+|===
+
+**^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+
+===== identifier
+
+Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+
+include::/recommendations/lite/REC_gsml-lite_contactview-identifier.adoc[]
+
+It should have the same value as the corresponding GeoSciML MappedFeature identifier if available.
+
+===== name
+
+If present, the property name:Primitive::CharacterString reports the display name for the Contact.
+
+===== description
+
+If present, the property description:Primitive::CharacterString reports the description of the Contact, typically taken from an entry on a geological map legend.
+
+===== contactType
+
+If present, the property contactType:Primitive::CharacterString reports the type of Contact (as defined in GeoSciML) as a human readable label.  To report an identifier from a controlled vocabulary, contactType++_++uri shall be used.
+
+===== observationMethod
+
+If present, the property observationMethod:Primitive::CharacterString reports a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and simple approach to observation metadata when data are reported using a feature view (as opposed to observation view).
+
+===== positionalAccuracy
+
+If present, the property positionalAccuracy:Primitive::CharacterString reports quantitative values defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).
+
+===== source
+
+If present, the property source:Primitive::CharacterString contains a text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the contact feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata++_++uri.
+
+===== contactType++_++uri
+
+The property contactType++_++uri:Primitive::CharacterString reports a URI referring to a controlled concept from a vocabulary defining the Contact types.
+
+===== specification++_++uri
+
+If present, the property specification++_++uri:Primitive::CharacterString reports a URI referring the GeoSciML Contact feature that describes the instance in detail. 
+
+===== metadata++_++uri
+
+If present, the property metadata++_++uri:Primitive::CharacterString reports a URI referring to a metadata record describing the provenance of data.
+
+===== genericSymbolizer
+
+If present, the genericSymbolizer:Primitive::CharacterString property contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
+
+===== shape
+
+The property shape:GM++_++Object contains a geometry defining the extent of the contact feature.
+
+===== any
+
+A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
+
+==== GeologicSpecimenView
+
+.GeologicSpecimenView feature type
+image::images/image105.png[GeologicSpecimenView feature type.,width=287,height=303]
+
+GeologicSpecimenView is a simplified view of a point-located specimen from GeoSciML GeologicSpecimen (an extension of Observations & Measurements - ISO19156) with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+===== Mapping
+
+.Mapping of GeologicSpecimenView properties to Observations and Measurements
+[width="100%",cols="^21%,^79%",options="header",align="left"]
+|===
+|*Property* |*Mapping from OM::SF++_++Specimen*
+|*identifier* |identifier
+|*label* |name ^1^
+|*description* |description
+|*specimenType* |specimenType ^2^
+|*materialClass* |materialClass ^2^
+|*positionalAccuracy* |metadataProperty:(…):DQ++_++PositionalAccuracy ^1^
+|*samplingTime* |samplingTime:TM++_++Instant::position
+|*samplingMethod* |samplingMethod ^1,2^
+|*currentLocation* |currentLocation:EX++_++GeographicDescription::geographicIdentifier:MD++_++Identifier::code
+|*source* |specification:GeologicUnit::metaDataProperty:(…):CI++_++Citation
+|*specimenType++_++uri* |specimenType ^3^
+|*materialClass++_++uri* |materialClass ^3^
+|*metadata++_++uri* |metadataProperty ^3^
+|*genericSymbolizer* |
+|*shape* |samplingLocation
+|===
+
+**^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+
+===== identifier
+
+Globally unique identifier:Primitive::CharacterString uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+
+include::/recommendations/lite/REC_gsml-lite_geologicspecimenview-identifier.adoc[]
+
+If present, the URI should resolve to a representation that corresponds to an instance of GeoSciML GeologicSpecimen.
+
+===== label*
+
+If present, the property label:Primitive::CharacterString contains a short label for map display. (e.g., a sample number).
+
+===== description*
+
+If present, the property description:Primitive::CharacterString contains a detailed description of the specimen.
+
+===== specimenType*
+
+If present, the property specimentType:Primitive::CharacterString contains a human readable description of the specimen type (e.g., hand specimen, thin section, drill core).  To report an identifier from a controlled vocabulary, specimenType++_++uri shall be used.
+
+===== materialClass*
+
+If present, the property materialClass:Primitive::CharacterString reports the classification of the material that comprises the specimen (e.g., rock, sediment, etc.).  To report an identifier from a controlled vocabulary, materialClass++_++uri shall be used.
+
+===== positionalAccuracy*
+
+If present, the property positionalAccuracy:Primitive::CharacterString contains a description of the positional accuracy of the sampling location. (e.g., 50 metres).
+
+===== samplingTime*
+
+If present, the property samplingTime:Primitive::CharacterString reports a date or a date with time of when the specimen was collected formatted according to ISO 8601.
+
+Examples:
+
+* 2012-03-28
+* 2008-02-28T14:15:23-05
+
+*8.9.6.9    samplingMethod*
+
+If present, the property samplingMethod:Primitive::CharacterString reports the method used to collect the specimen (e.g., diamond drilling, field mapping survey).
+
+===== currentLocation*
+
+If present, the property currentLocation:Primitive::CharacterString reports the current location of the specimen (e.g., a warehouse or other repository location).
+
+===== source*
+
+If present, the property source:Primitive::CharacterString reports the citation of the source of the data (e.g., a publication, map, etc.).
+
+===== specimenType++_++uri*
+
+The property specimentType++_++uri:Primitive::CharacterString contains a URI link for a specimen type identifier from a controlled vocabulary.
+
+===== materialClass++_++uri*
+
+The property materialClass++_++uri:Primitive::CharacterString contains a URI link for a class of material drawn from a controlled vocabulary.
+
+===== metadata++_++uri*
+
+If present, the property metadata++_++uri:Primitive::CharacterString contains a URI link to a metadata document.
+
+===== genericSymbolizer*
+
+If present, the genericSymbolizer:Primitive::CharacterString property contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
+
+===== shape*
+
+The property shape:GM++_++Object contains a geometry of the specimen (generally a point).
+
+===== any*
+
+A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
+
+==== GeomorphologicUnitView*
+
+.GeomorphologicUnitView feature type
+image::images/image106.png[GeomorphologicUnitView feature type.,width=318,height=397]
+
+GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In GeoSciML terms this will be in instance of a MappedFeature with key property values from the associated GeomorphologicUnit feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+ 
+
+===== Mapping*
+
+.Mapping of GeomporphologicUnitView properties to GeoSciML
+[width="100%",cols="^23%,^77%",options="header",align="left"]
+|===
+|*Property* |*Mapping from GeomorphologicUnit*
+|*identifier* |identifier
+|*name* |specification:NaturalGeomorphologicFeature::name ^1^
+|*description* |specification:NaturalGeomorphologicFeature::description
+|*activity* |specification:NaturalGeomorphologicFeature:activity ^2^
+|*unitType* a|
+specification:NaturalGeomorphologicFeature::naturalGeomorphologicFeatureType ^2^
+
+ 
+
+or
+
+ 
+
+specification:AnthropogenicGeomorphologicUnit::anthropogenicGeomorphologicFeatureType ^2^
+
+|*lithology* |specification:GeomorphologicUnit::unitDescription:GeologicUnit::composition:CompositionPart::material:RockMaterial::lithology ^1^
+|*geologicHistory* |specification:GeomorphologicUnit::unitDescription:GeologicUnit::geologicHistory:GeologicEvent::description ^1^
+|*observationMethod* |specification:GeomorphologicUnit::observationMethod:Category::value ^1^
+|*positionalAccuracy* |positionalAccuracy::value
+|*source* |specification:GeologicUnit::metaDataProperty:(…):CI++_++Citation
+|*activity++_++uri* |specification:NaturalGeomorphologicFeature::activity
+|*geomorphologicFeatureType* |typeOf(specification/++*++)::name()
+|*geomorphologicFeatureType++_++uri* |typeOf(specification/++*++)::typeName()
+|*unitType++_++uri* |specification:GeomorphologicUnit::geologicUnitType ^3^
+|*representativeLithology++_++uri* |specification:GeomorphologicUnit::unitDescription:GeologicUnit::composition:CompositionPart::material:RockMaterial::lithology 3
+|*representativeAge++_++uri* a|
+specification:GeomorphologicUnit::geologicHistory:
+
+GeologicEvent ^3^
+
+|*representativeNumericAge* a|
+specification: GeomorphologicUnit::geologicHistory:
+
+GeologicEvent:NumericAge ^1^
+
+|*specification++_++uri* |specification ^3^
+|*metadata++_++uri* |specification:GeologicUnit:metaDataProperty ^3^
+|*genericSymbolizer* |
+|*shape* |shape
+|===
+
+**^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+
+===== identifier*
+
+Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+
+include::/recommendations/lite/REC_gsml-lite_geomorphologicunitview-identifier.adoc[]
+
+If present, the URI should resolve to a representation that corresponds to an instance of GeoSciML MappedFeature.
+
+===== name
+
+If present, the property name:Primitive::CharacterString contains a display name for the GeomorphologicUnit.
+
+===== description
+
+If present, the property description:Primitive::CharacterString contains human readable text description of the GeomorphologicUnit, typically taken from an entry on a map legend.
+
+===== activity
+
+If present, the property activity:Primitive::CharacterString contains a human readable term to specify if the feature is changing and how fast. E.g. active, dormant, stable.  To report an identifier from a controlled vocabulary, activity++_++uri shall be used.
+
+===== geomorphologicFeatureType
+
+If present, the property geomorphologicFeatureType:Primitive::CharacterString contains a human readable term to specify a broad classification of landform. (e.g., anthropogenic, natural).  To report an identifier from a controlled vocabulary, geomorphologicFeatureType++_++uri shall be used.
+
+===== unitType
+
+If present, the property unitType:Primitive::CharacterString contains a human readable term for the type of GeomorphologicUnit (e.g., hill, crater, moraine, plain).  To report an identifier from a controlled vocabulary, unitType++_++uri shall be used.
+
+===== lithology
+
+If present, the property lithology:Primitive::CharacterString contains a text, possibly formatted with formal syntax (see 8.9.2.3), for the description of the GeomorphologicUnit’s lithological composition.  To report an identifier from a controlled vocabulary, representativeLithology++_++uri shall be used.
+
+===== geologicHistory
+
+If present, the property geologicHistory:Primitive::CharacterString contains text, possibly formatted with formal syntax (see 8.9.2.3), for the description of the age of the GeomorphologicUnit (where age is a sequence of events and may include process and environment information).  To report identifier from a controlled vocabulary, representativeAge++_++uri shall be used.
+
+===== representativeNumericAge
+
+If present, the property representativeNumericAge:Primitive::Number contains a numerical value of the representative age in million years (Ma).
+
+===== observationMethod
+
+If present, the property observationMethod:Primitive::CharacterString contains a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick approach to observation metadata when data are reported using a feature view (as opposed to observation view).
+
+===== positionalAccuracy
+
+If present, the property positionAccuracy:Primitive::CharacterString contains quantitative values defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).
+
+===== source
+
+If present, the source:Primitive::CharacterString property contains text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata++_++uri.
+
+===== activity++_++uri
+
+If present, the activity++_++uri:Primitive::CharacterString property reports a URI identifier of activity term drawn from a controlled vocabulary.
+
+===== geomorphologicFeatureType++_++uri
+
+If present, the property geomorphologicFeatureType++_++uri:Primitive::CharacterString reports a URI identifier of landform term drawn from a controlled vocabulary.
+
+===== unitType++_++uri
+
+If present, the property unitType++_++uri:Primitive::CharacterString reports a URI referring to a controlled concept from a vocabulary defining the GeomorphologicUnit types.
+
+===== representativeLithology++_++uri
+
+The property representativeLithology++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeomorphologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit.
+
+===== representativeAge++_++uri
+
+The property representativeAge++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeomorphologicUnit. This will be defined entirely at the discretion of the data provider. Typically geomorphic units are not assigned age ranges.
+
+===== specification++_++uri
+
+If present, the property specification++_++uri:Primitive::CharacterString contains a URI referring the GeoSciML GeomorphologicUnit feature that describes the instance in detail.
+
+===== metadata++_++uri
+
+If present, the property metadata++_++uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.
+
+===== genericSymbolizer
+
+If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
+
+===== shape
+
+The property shape:GM++_++Object contains a geometry defining the extent of the feature of interest. 
+
+===== any
+
+A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
+
+==== ShearDisplacementStructureView
+
+.ShearDisplacementStructureView feature type
+image::images/image107.png[ShearDisplacementStructureView feature type.,width=303,height=407]
+
+ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacementStructure. In GeoSciML terms this will be an instance of a MappedFeature with key property values from the associated ShearDisplacementStructure feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+===== Mapping
+
+.Mapping of ShearDisplacementStructureView properties to GeoSciML
+[width="100%",cols="^21%,^79%",options="header",align="left"]
+|===
+|*Property* |*Mapping from MappedFeature*
+|*identifier* |identifier
+|*name* |specification:ShearDisplacementStructure::name ^1^
+|*description* |specification:ShearDisplacementStructure::description
+|*faultType* |specification:ShearDisplacementStructure::faultType ^2^
+|*movementType* |specification:ShearDisplacementStructure::stStructureDescription:DisplacementValue::movementType ^2^
+|*deformationStyle* |specification:ShearDisplacementStructure::stStructureDescription:ShearDisplacementStructureDescription::deformationStyle ^2^
+|*displacement* |specification:ShearDisplacementStructure::stStructureDescription:DisplacementValue ^1^
+|*geologicHistory* |specification:ShearDisplacementStructure::geologicHistory:GeologicEvent::description ^1^
+|*observationMethod* |specification:ShearDisplacementStructure::observationMethod:Category::value ^1^
+|*positionalAccuracy* |positionalAccuracy:Quantity::value
+|*source* |specification:GeologicUnit::metaDataProperty:(…):CI++_++Citation
+|*faultType++_++uri* |specification:ShearDisplacementStructure::faultType ^3^
+|*movementType++_++uri* |specification:ShearDisplacementStructure::stStructureDescription:DisplacementValue::movementType ^3^
+|*deformationStyle++_++uri* |specification:ShearDisplacementStructure::stStructureDescription:ShearDisplacementStructureDescription::deformationStyle ^3^
+|*representativeAge++_++uri* |specification:ShearDisplacementStructure::geologicHistory:GeologicEvent ^3^
+|*representativeOlderAge++_++uri* |specification:ShearDisplacementStructure::geologicHistory:GeologicEvent::olderNamedAge ^3^
+|*representativeYoungerAge++_++uri* |specification:ShearDisplacementStructure::geologicHistory:GeologicEvent:youngerNamedAge ^3^
+|*numericOlderAge* |specification:ShearDisplacementStructure::geologicHistory:GeologicEvent::numericAge:NumericAgeRange::olderBoundAge:Quantity::value ^1^
+|*numericYoungerAge* |specification:ShearDisplacementStructure::geologicHistory:GeologicEvent::numericAge:NumericAgeRange::youngerBoundAge:Quantity::value ^1^
+|*specification++_++uri* |specification ^3^
+|*metadata++_++uri* |metadataProperty ^3^
+|*genericSymbolizer* |
+|*shape* |shape
+|===
+
+**^1^ In case where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+
+===== identifier
+
+Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+
+include::/recommendations/lite/REC_gsml-lite_sheardisplacemenstructureview-identifier.adoc[]
+
+It should have the same value as the corresponding GeoSciML MappedFeature identifier if available.
+
+===== name
+
+If present, the property name:Primitive::CharacterString contains a display name for the ShearDisplacementStructure.
+
+===== description
+
+If present, the property description:Primitive::CharacterString contains a human readable text description of the ShearDisplacementStructure, typically taken from an entry on a geological map legend.
+
+===== faultType
+
+If present, the property faultType:Primitive::CharacterString contains a human readable description of the type of ShearDisplacementStructure (as defined in GeoSciML).  To report an identifier from a controlled vocabulary, faultType++_++uri shall be used.
+
+===== movementType
+
+If present, the property movementType:Primitive::CharacterString contains a human readable summary of the type of movement (e.g. dip-slip, strike-slip) on the ShearDisplacementStructure.  To report an identifier from a controlled vocabulary, movementType++_++uri shall be used.
+
+===== deformationStyle
+
+If present, the property deformationStyle:Primitive::CharacterString contain a human readable description of the style of deformation (e.g. brittle, ductile etc.) for the ShearDisplacementStructure.  To report an identifier from a controlled vocabulary, deformationStyle++_++uri shall be used.
+
+===== displacement
+
+If present, the property displacement:Primitive::CharacterString contains a text summarising the displacement across the ShearDisplacementStructure.
+
+===== geologicHistory
+
+If present, the property geologicHistory:Primitive::CharacterString contains a text, possibly formatted with formal syntax (see 8.9.2.3), describing the age of the ShearDisplacementStructure (where age is a sequence of events and may include process and environment information).  To report identifiers from a controlled vocabulary, representativeAge++_++uri, representativeOlderAge++_++uri and representativeYoungerAge++_++uri shall be used.
+
+===== numericOlderAge
+
+If present, the property numericOlderAge:Primitive::Number reports the older age of the fault/shear structure, represented million years (Ma).
+
+===== numericYoungerAge
+
+If present, the property numericYoungerAge:Primitive::Number reports the younger age of the fault/shear structure, represented million years (Ma).
+
+===== observationMethod
+
+If present, the property observationMethod:Primitive::CharacterString contains a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and dirty approach to observation metadata when data are reported using a feature view (as opposed to observation view).
+
+===== positionalAccuracy
+
+If present, the property positionAccuracy:Primitive::CharacterString contains quantitative representation defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).
+
+===== source
+
+If present, the property source:Primitive::CharacterString contains a text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata++_++uri.
+
+===== faultType++_++uri
+
+The property faultType++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the fault (ShearDisplacementStructure) type.
+
+===== movementType++_++uri
+
+The property movementType++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the ShearDisplacementStructure movement type.
+
+===== deformationStyle++_++uri
+
+The property deformationStyle++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the ShearDisplacementStructure deformation style.
+
+===== representativeAge++_++uri
+
+The property representativeAge++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising all or part of the feature’s history.
+
+===== representativeOlderAge++_++uri
+
+The property representativeOlderAge++_++uri:Primitive:CharacterString contains a URI referring to a controlled concept specifying the most representative lower value in a range of stratigraphic age intervals for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising all or part of the feature’s history.
+
+===== representativeYoungerAge++_++uri
+
+The property representativeYoungerAge++_++uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the most representative upper value in a range of stratigraphic age intervals for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising all or part of the feature’s history.
+
+===== specification++_++uri
+
+If present, the property specification++_++uri:Primitive::CharacterString contains a URI referring the GeoSciML ShearDisplacementStructure feature that describes the instance in detail.  
+
+===== metadata++_++uri
+
+If present, the property metadata++_++uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.
+
+===== genericSymbolizer
+
+If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
+
+===== shape
+
+The property shape:GM++_++Object contains a geometry defining the extent of the feature of interest. 
+
+===== any
+
+A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
+
+==== SiteObservationView
+
+.SiteObservationView feature type
+image::images/image108.png[SiteObservationView feature type.,width=287,height=349]
+
+SiteObservationView is a simplified view of a generally point-located geological observation, like a structural measurement. This is a simplified instance of a sampling geometry from Observations & Measurements (ISO19156) with an associated geological observation. Each tuple should represent a single observation. Key property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “++_++uri” and will contain URIs referring to controlled concepts in published vocabularies.
+
+===== Mapping
+
+.Mapping of SiteObservationView properties to Observations & Measurements
+[width="100%",cols="^34%,^66%",options="header",align="left"]
+|===
+|*Property* |*Mapping from OM::OM++_++Observation*
+|*identifier* |identifier
+|*siteName* |SF++_++SamplingFeature::name ^1,4^
+|*observationName* |name ^1^
+|*label* |name ^1^
+|*description* |description
+|*featureOfInterest* |featureOfInterest:(…)::name ^1^
+|*observedProperty* |observedProperty ^2^
+|*observedValue* |Result ^1^
+|*observedValueUom* |result ^5^
+|*observationMethod* |Procedure ^1^
+|*positionalAccuracy* |metadataProperty:(…):DQ++_++PositionalAccuracy
+|*source* |metaDataProperty:(…):CI++_++Citation
+|*featureOfInterest++_++uri* |featureOfInterest ^3^
+|*propertyType++_++uri* |observedProperty ^3^
+|*metadata++_++uri* |metaDataProperty ^3^
+|*genericSymbolizer* |
+|*symbolRotation* |
+|*shape* |featureOfInterest:(…):GM++_++Object
+|===
+
+**^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should **choose** one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite**
+
+**^2^ Use an appropriate **human readable label** for the vocabulary**
+
+**^3^ Use a **reference** or an identifier that can be used to reach a representation.**
+
+*^4^ Observations associated to a SF++_++SamplingFeature can report it although SF++_++SamplingFeature::relatedObservation:OM++_++Observation is not traversable in reverse, unless it is also the featureOfInterest*
+
+*5 OM++_++Measurement::value type is any type and might or might not have a unit of measurement.  The property carrying depend of the result type.*
+
+
+===== identifier
+
+Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+
+include::/recommendations/lite/REC_gsml-lite_siteobservationview-identifier.adoc[]
+
+The URI should resolve to an instance of OM++_++Observation.
+
+===== siteName
+
+If present, the property siteName:Primitive::CharacterString contains the name of the sampling feature at this location (e.g. a station number, a borehole).
+
+===== observationName
+
+If present, the property observationName:Primitive::CharacterString contains a text identifying the observation.
+
+===== label
+
+If present, the property label:Primitive::CharacterString contains a short text string to associate with a symbol in a visualization/portrayal.
+
+===== description
+
+If present, the property description:Primitive::CharacterString contains a text string providing descriptive information about the observation.
+
+===== featureOfInterest
+
+If present, the property featureOfInterest:Primitive::CharacterString contains a description of the geologic feature that the observation is intended to characterize, e.g. foliation (observed property= orientation), a geologic unit (observed property = age, magnetic susceptibility, density, uranium content).  The property is equivalent to O&M OM++_++Observation::featureOfInterest. To report a URI of the feature of interest, featureOfInterest++_++uri shall be used.
+
+===== observedProperty
+
+If present, the property observedProperty:Primitive::CharacterString contains a description of the property reported in this record. (E.g. orientation, age, density, gold content) as a human readable text. To report an identifier of the observedProperty from a controlled vocabulary, propertyType++_++uri shall be used.
+
+===== observedValue
+
+If present, the property observedValue:Primitive::CharacterString contains the result of the observation. This field is implemented as a character string to allow reporting various type of values, the value may be numeric (e.g., 235) or textual (e.g., red).  Units of measure shall be reported in observedValueUom.
+
+===== observedValueUom
+
+If relevant, the property observedValueUom:Primitive::CharacterString contains the unit of measure for a numerical value of an observation or measurement, preferably from a controlled vocabulary.
+
+===== observationMethod
+
+If present, the observationMethod:Primitive::CharacterString property contains a method description, preferably a term from a controlled vocabulary, to categorize the observation method. Further details on procedure can be put in the source field.
+
+===== positionalAccuracy
+
+If present, the property positionalAccuracy:Primitive::CharacterString provides an estimate of the position uncertainty for the site location. For numerical measurements, include a unit of measure in the description. (e.g., 50 metres, poor, good).
+
+===== source
+
+If present, the property source:Primitive::CharacterString contains a text description of measurement procedure, processing, and provenance of data.
+
+===== featureOfInterest++_++uri
+
+The property featureOfInterest:Primitive::CharacterString is functionally equivalent to OM++_++Observation::featureOfInterest of IS19156.  It contains a URI link to a representation of the feature of interest (e.g., a GeoSciML geologic unit or structure).
+
+===== propertyType++_++uri
+
+The property propertyType++_++uri:Primitive:CharacterString is functionally equivalent to OM++_++Observation::observedProperty.  It contains a URI to a term from a controlled vocabulary of observed property types.
+
+ 
+
+A property type shall identify a “_phenomenon associated with the feature-of-interest._” (OGC 10-004r3, clause 7.2.2.8).  The Observations and Measurements specification (op. cit.) explains that a property type “_may be, but need not be, modelled as a property (in the sense of the General Feature Model) in a formal application schema that defines the type of the feature-of-interest_” or “_Property-type definitions may be organized into a hierarchy or ontology and managed in a register and catalogued to support discovery functions.”_
+
+===== metadata++_++uri
+
+If present, the property metadata++_++uri:Primitive::CharacterString contains a URI link to metadata document.
+
+===== genericSymbolizer
+
+If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol to portray this observation. Conventions for symbol identifiers can be adopted within information exchange communities.
+
+===== symbolRotation
+
+If present, the symbolRotation:Integer property contains an integer value between 0 and 359 to specify rotation of symbol at this location, e.g. rotation of a geologic strike and dip symbol to reflect the strike azimuth.  The angular convention shall be geographic angle (clockwise with 0 at geographic north pole, therefore 90 degree is east).
+
+
+include::/requirements/lite/REQ_gsml-lite_siteobservationview-symbolRotation.adoc[]
+
+===== shape
+
+The property shape:GM++_++Object contains the geometry of the observation site.
+
+===== any
+
+A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.

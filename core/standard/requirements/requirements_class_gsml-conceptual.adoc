@@ -1,0 +1,16 @@
+[[req_class_geosciml_conceptual_model]]
+
+[requirements_class]
+.Requirements Class 'GeoSciML conceptual model'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-conceptual
+subject:: Logical Model
+inherit:: ISO19101:2002 Reference Model Clause 7
+inherit:: ISO19103 2015 Conceptual Model Language
+inherit:: ISO19104:2008
+inherit:: Unified Modeling Language (UML). Version 2.3. May 2010
+requirement:: /req/gsml-conceptual/similarity
+====
+
+

@@ -1,0 +1,14 @@
+[obligation=informative]
+== Conceptual Model
+
+The strictly geological portion of GeoSciML, as opposed to the parts dealing with sampling (e.g., boreholes) and laboratory metadata, is largely an implementation of the North American Data Model ++[++12++]++.  NADM is a technologically neutral conceptual model that addresses geoscience concepts and the relationships between them.  GeoSciML 4 does not implement NADM Geologic Portrayal (a model of cartographic elements composing a geological map, such as legends, symbols, insets, etc.) nor Geologic Vocabulary (although older versions of GeoSciML did).
+
+GeoSciML is an ISO Feature Model implementation of NADM and this created subtle differences between NADM and GeoSciML as the logical model deals with ISO Feature Model idiosyncrasies.  For instance, NADM multiple inheritances used in Fossil could not be implemented in the ISO world that forbids such constructs.  There were also conceptual changes, especially regarding EarthMaterial that is not considered as a GeologicFeature (hence an ISO FeatureType) in GeoSciML, but as a Type.
+
+Sampling and analytical metadata features (Borehole and GeologicSpecimen in particular) are extensions of Observations and Measurements (10-004r3) and as such implement the underlying Observations and Measurements conceptual model.  Borehole introduces engineering concepts known to the industry without a formal conceptual model.  It has been recognised that Boreholes are features that are common outside the geological mapping realms (like the energy and mineral resources industries, hydrogeology, civil engineering, etc) and more formal work could be carried by those interested parties.  Therefore, Borehole in GeoSciML is a essentially placeholder waiting to be replaced by a more formal Borehole model that is applicable across more domains than geology. It is expected that the Laboratory Analysis model could also be formalised by parties interested in (geo)chemical analysis. 
+ 
+include::/requirements/requirements_class_gsml-conceptual.adoc[]
+
+Target logical models that are compliant with the conceptual model shall implement components of the conceptual model respecting their semantics, i.e. their definition and intent. In other words, the logical model must be highly semantically similar to components of the conceptual model. Semantic similarity can be tested in multiple ways, including but not limited to: (i) direct comparison of UML components, (ii) comparison after mapping components to a common expressive knowledge representation language, such as first order logic or common logic, or (iii) comparison after mapping components to a reference ontology. The target can reuse and adapt existing logical models.
+
+include::/requirements/conceptual/REQ_gsml-conceptual_similarity.adoc[]

@@ -1,0 +1,8 @@
+[[req_gsml-core_uml-cardinality]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/uml-cardinality
+part:: If the target implementation allows it, it SHALL implement the same cardinality of properties and associations as defined in the UML.
+====

@@ -1,0 +1,8 @@
+[[req_gsml-lite_boreholeview-elevation-crs]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/boreholeview-elevation-crs
+part:: If present, elevation_srs SHALL resolve to a valid EPSG vertical datum in the range EPSG:5600 to EPSG:5799
+====

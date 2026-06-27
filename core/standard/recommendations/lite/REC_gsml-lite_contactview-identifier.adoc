@@ -1,0 +1,8 @@
+[[rec_gsml-lite_contactview-identifier]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lite/contactview-identifier
+part:: identifier SHOULD correspond to an instance of GeoSciML MappedFeature.
+====

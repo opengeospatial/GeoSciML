@@ -1,0 +1,8 @@
+[[req_gsml-lab-analysis_sampledFeature]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lab-analysis/sampledFeature
+part:: OM::SF_SamplingFeature::sampledFeature SHALL not be an instance of OM::SF_SamplingFeature.
+====

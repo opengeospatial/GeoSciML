@@ -1,0 +1,8 @@
+[[req_gsml-borehole_interval-1D]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/interval-1D
+part:: Interval SHALL be encoded with GM_LineString with two 1D points.
+====

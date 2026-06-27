@@ -1,0 +1,254 @@
+=== GeoSciML Borehole Requirements Class (Normative)
+
+include::/requirements/requirements_class_borehole.adoc[]
+
+The GeoSciML Borehole package contains an information model for boreholes and related artefacts. This is primarily through re-use of standard components from the Observations and Measurements (ISO19156).
+
+.Borehole dependency diagram
+image::images/image75.png[Borehole dependency diagram.,width=601,height=559]
+
+.Borehole summary diagram
+image::images/image76.png[Borehole summary diagram.,width=601,height=498]
+
+==== Borehole
+
+This requirements class describes Borehole and BoreholeInterval and related data types.  This package describes a borehole as a means to sample geologic units underground and thus provide a linear map of the geology.
+
+.Borehole context diagram
+image::images/image77.png[Borehole context diagram.,width=601,height=331]
+
+===== Borehole
+
+A Borehole is the generalized term for any narrow shaft drilled in the ground, either vertically, horizontally, or inclined.
+
+====== indexData
+
+The property indexData:BoreholeDetails describes metadata about a borehole, such as the operator, the custodian, dates of drilling, etc.
+
+====== downholeDrillingDetails
+
+The property downholeDrillingDetails:DrillingDetails specifies the drilling method and borehole diameter for intervals down the borehole.
+
+====== logElement
+
+The property logElement is an association between a Borehole and a BoreholeInterval instance to describe measured downhole intervals and their observed features.
+
+====== referenceLocation
+
+The property referenceLocation is an association between a Borehole and an OriginPosition corresponding to the start point of a borehole log.  This may correspond to the borehole collar location (e.g., kelly bush).
+
+====== OM:sampledFeature
+
+Borehole inherits sampledFeature from OM::SF++_++SamplingFeature, which links the sampling feature to the real world feature it is designed to sample (19156:2011, clause 9.2.2.4). In the context of GeoSciML, this will typically be a GeologicFeature, such as a geologic unit. Where a SamplingFeature samples multiple features (e.g. borehole, traverse)
+
+* if it is a sequence of units, then the part:GeologicUnitPart mechanisms may be used,
+* else if it is an informal collection that exists only because of the sampling, then multiple sampledFeature roles should be used
+
+===== DrillingDetails
+
+DrillingDetails is a class that captures the description of drilling methods and hole diameters down the drilling path.  Properties that apply to the Borehole as a whole are managed in BoreholeDetails (8.7.1.4).
+
+.Drilling details
+image::images/image78.png[Drilling details,width=601,height=387]
+
+====== drillingMethod
+
+The drillingMethod:BoreholeDrillingMethodCode property contains a term from a controlled vocabulary indicating the drilling method used. Appropriate terms would include rotary air blast, auger, diamond core, air core, etc.
+
+====== boreholeDiameter
+
+The boreholeDiameter property (SWE::Quantity) contains a measurement (a value and a unit of measure) corresponding to the diameter of the drilled hole.
+
+====== intervalBegin
+
+The intervalBegin property (SWE::Quantity) contains a measurement (a value and a unit of measurement) that corresponds to the measured distance of the start of the interval along the path of the borehole. The measured value must be less than or equal to the intervalEnd value.
+
+
+include::/requirements/borehole/REQ_gsml-borehole_value-intervalBegin.adoc[]
+
+====== intervalEnd
+
+The property intervalEnd (SWE::Quantity) contains a measurement (a value and a unit of measurement) of the measured distance of the end of the interval along the path of the borehole. The measured value must be greater than or equal to the intervalBegin value.
+
+====== interval
+
+The property interval:GM++_++Object is a shape that is a 1-D interval (e.g., a “from” and “to”, or “top” and “base” measurements) that is equivalent (represents the same distance) as the one represented by intervalBegin and intervalEnd.  The geometry shall use a reference to the borehole geometry as its CRS.
+
+
+include::/requirements/borehole/REQ_gsml-borehole_drill-interval-1D.adoc[]
+ 
+
+
+include::/requirements/borehole/REQ_gsml-borehole_drill-interval-1D-CRS.adoc[]
+
+Encoding of the drilled interval using GEO::GM++_++LineString shall consist of two 1D points only (the start and end point of the interval, measured as distance from the borehole collar), with a 1-D CRS referencing the borehole shape.
+
+===== BoreholeInterval
+
+A BoreholeInterval is similar to a MappedFeature (8.4.1.2) whose shape is 1-D interval and uses the SRS of the containing borehole.  The "mappedIntervalBegin" and "mappedIntervalEnd" properties are alternative to the 1D geometry to overcome problems with the delivery and ease of queryability of 1D GML shapes.
+
+
+.Borehole interval context diagram
+image::images/image79.png[Borehole interval context diagram.,width=601,height=439]
+
+====== observationMethod
+
+The observationMethod property (SWE::Category) contains a term from a controlled vocabulary that describes the method used to observe the properties of the borehole.
+
+====== specification
+
+The specification property is an association between a BoreholeInterval and a GFI++_++Feature, a domain feature that is sampled by the interval (e.g., a GeologicUnit). It is semantically equivalent to O&M ISO19156 "sampledFeature".
+
+====== mappedIntervalBegin
+
+The property mappedIntervalBegin (SWE::Quantity) is a measurement (a value and a unit of measurement) corresponding to the measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.
+
+
+include::/requirements/borehole/REQ_gsml-borehole_value-mappedIntervalBegin.adoc[]
+
+====== mappedIntervalEnd
+
+The mappedIntervalEnd property (SWE::Quantity) is a measurement (a value and a unit of measure) corresponding to the measured distance of the end of the mapped interval along the path of the borehole. The measured value must be greater than or equal to the mappedIntervalBegin value.
+
+====== collectionIdentifier
+
+The collectionIdentifier:ScopedName is a string unique within a scope that identifies a collection which forms a set BoreholeIntervals. This allows description of multiple downhole logs for a single borehole. The name should identify a particular log observation event.
+
+====== parentBorehole
+
+The property parentBorehole is an association between a BoreholeInterval and a Borehole to which the interval belongs.
+
+====== shape
+
+The property shape:GM++_++Object is a 1-D interval (e.g., a “from” and “to”, or “top” and “base” measurement) covering the same distance as mappedIntervalBegin and mappedIntervalEnd.  The geometry shall use a reference to the borehole as the CRS of the containing borehole.
+
+Encoding of an interval within the borehole using GEO::GM++_++LineString shall consist of two 1D points only (the start and end point of the interval, measured as distance from the borehole collar), with CRS corresponding to the borehole shape.
+
+
+include::/requirements/borehole/REQ_gsml-borehole_interval-1D.adoc[]
+
+
+include::/requirements/borehole/REQ_gsml-borehole_interval-1D-CRS.adoc[]
+
+Instance example for Klčovo and Lastomir Formation adapted from Túnyi ++[++18++]++:
+
+[[img_top__part_tunyi]]
+.Top part of Figure 2 from Túnyi ++[++18++]++
+image::images/image80.png[width=426,height=549]
+
+<<img_encoding_of_a_borehole_with_two_logs>> shows an encoding of the first lithostratigraphic and magnetostratigraphic units from <<img_top__part_tunyi>> showing how the collection identifiers group BoreholeIntervals into two groups.
+
+[[img_encoding_of_a_borehole_with_two_logs]]
+.Encoding of a borehole with two distinct logs (collectionIdentifier).
+image::images/image81.png[width=601,height=398]
+
+===== BoreholeDetails
+
+BoreholeDetails describes borehole-specific index data, often termed “header information”. It contains metadata about the parties involved in the drilling, the storage of drilled material and other information relevant to the borehole as a whole.  Properties that may vary along the borehole path are managed in DrillingDetails (8.7.1.2).
+
+.Borehole details context diagram
+image::images/image82.png[Borehole details context diagram.,width=601,height=570]
+
+====== operator
+
+The operator property is an association between a BoreholeDetails and a CIT:CI++_++ResponsibleParty describing the organisation responsible for commissioning the borehole (as opposed to actually drilling the borehole).
+
+====== driller
+
+The driller property is an association between a BoreholeDetails and a CIT:CI++_++ResponsibleParty describing of the organisation responsible for drilling the borehole (as opposed to commissioning the borehole).
+
+====== dateOfDrilling
+
+The property dateOfDrilling:TM++_++Period describes the time period during which drilling of the borehole occurred.
+
+====== startPoint
+
+The property startPoint:BoreholeStartPointCode provides a term from a controlled vocabulary indicating the named position relative to ground surface where the borehole commenced. (e.g., natural ground surface, open pit floor, underground, offshore)
+
+====== inclinationType
+
+The property inclinationType:BoreholeInclinationCode contains a term from a controlled vocabulary indicating the inclination type of the borehole. Appropriate terms would include vertical; inclined up; inclined down, horizontal.
+
+====== boreholeMaterialCustodian
+
+The property boreholeMaterialCustodian is an association between BoreholeDetails and a CIT:CI++_++ResponsibleParty describing the organisation that is custodian of the drilled material recovered from the borehole.
+
+====== purpose
+
+The property purpose:BoreholePurposeCode contains a term from a controlled vocabulary describing the purpose for which the borehole was drilled. e.g., site investigation, mineral exploration, hydrocarbon exploration, water resources.
+
+====== dataCustodian
+
+The dataCustodian is an association between a BoreholeDetails and a CIT:CI++_++ResponsibleParty describing the custodian (person or organisation) that is the custodian of data pertaining to this borehole.
+
+====== boreholeLength
+
+The property boreholeLength (SWE::Quantity) contains a measurement (a value and a unit of measurement) corresponding to the “length” of a borehole determined by the data provider (i.e., “length” can have different sources, like drillers measurement, loggers measurement, survey measurement, etc.).
+
+===== OriginPosition
+
+A borehole OriginPosition is a feature corresponding to the start point of a borehole log.  This may correspond to the borehole collar location (e.g., kelly bush).
+
+.Origin position context diagram
+image::images/image83.png[Origin position context diagram.,width=518,height=456]
+
+If a text description of the location is available, it should be reported in the description property, inherited from GM:GFI++_++Feature. 
+
+====== location
+
+The property location contains a geometry corresponding to the location of the borehole collar.
+
+If no GEO::GM++_++Point is available, an OGC nil value shall be used.
+
+
+include::/requirements/borehole/REQ_gsml-borehole_borehole-position-null.adoc[]
+
+In situations where the origin position changes over the life of the borehole (e.g., due to subsidence or destruction of the original collar), the origin position should be updated to the new location.
+
+====== elevation
+
+Implementers delivering 3-D origin locations should provide an elevation to improve interoperability.
+
+
+include::/requirements/borehole/REQ_gsml-borehole_borehole-3d.adoc[]
+
+The elevation:DirectPosition property is a compromise approach to supply elevation explicitly for location; this is to allow for software that cannot process 3-D GM++_++Point. Null shall be used if elevation is unknown. A DirectPosition shall have a dimension of 1, and CRS will be a “vertical” CRS (e.g. EPSG CRSs in the range 5600-5799).
+
+
+include::/requirements/borehole/REQ_gsml-borehole_borehole-elevation-dim.adoc[]
+
+
+include::/requirements/borehole/REQ_gsml-borehole_borehole-elevation-CRS.adoc[]
+
+==== GeoSciML Borehole vocabularies
+
+Vocabularies used in Borehole package are listed in <<tbl_geosciml_borehole_vocabularies>>.
+
+[[tbl_geosciml_borehole_vocabularies]]
+.GeoSciML Borehole vocabularies
+[width="100%",cols="^32%,^68%",options="header",align="left"]
+|===
+|*Vocabulary* |*Description*
+|*BoreholeDrillingMethodCode* |This class is an indicative placeholder only for a vocabulary of terms describing the borehole drilling method.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group. (e.g., auger, hand auger, air core, cable tool, diamond core, rotary air blast, etc.).
+|*BoreholeInclinationCode* a|
+This class is an indicative placeholder only for a vocabulary of terms describing the general orientation of a borehole.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group.
+
+For example:
+
+* vertical
+* horizontal
+* inclined up
+* inclined down
+
+|*BoreholePurposeCode* |Place holder for a vocabulary containing terms describing the purpose for which the borehole was drilled.  e.g., mineral exploration, water pumping, site evaluation, stratigraphic research, etc.
+|*BoreholeStartPointCode* a|
+This class is an indicative placeholder only for a vocabulary of terms describing the location of the start of a borehole.  Users are encouraged to use a vocabulary of terms managed by the CGI vocabularies working group.
+
+Examples may include:
+
+* natural ground surface - drilling started from a natural topographic surface
+* open pit floor or wall - drilling started from the wall of an open pit or quarry
+* underground - drilling started from an underground location, such as a driveway, chamber or open-stope
+* from pre-existing hole - new drill hole spudded off the wall of an existing hole
+
+|===

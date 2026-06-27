@@ -1,0 +1,8 @@
+[[req_gsml-lite_geologicunitview-representativeLithology]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/geologicunitview-representativeLithology
+part:: representativeLithology_uri value SHALL refer to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit.
+====

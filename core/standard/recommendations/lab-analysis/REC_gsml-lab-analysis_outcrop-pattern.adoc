@@ -1,0 +1,8 @@
+[[rec_gsml-lab-analysis_outcrop-pattern]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lab-analysis/outcrop-pattern
+part:: Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5
+====

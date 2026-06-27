@@ -1,0 +1,8 @@
+[[req_gsml-core_uml-polymorphism]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/uml-polymorphism
+part:: A target implementation SHALL implement type substitutions inferred from the UML model.
+====

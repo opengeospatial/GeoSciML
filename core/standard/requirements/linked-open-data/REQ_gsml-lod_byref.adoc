@@ -1,0 +1,8 @@
+[[req_gsml-lod_byref]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lod/byref
+part:: External references to an entity conforming to [/req/gsml-lod/identifier] shall be expressed using this entity identifier.
+====

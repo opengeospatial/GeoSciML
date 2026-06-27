@@ -1,0 +1,8 @@
+[[req_gsml-lite_geomtype]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/geomtype
+part:: A dataset SHALL use a single geometry type (Point, Line, Polygon, etc.).
+====

@@ -1,0 +1,8 @@
+[[req_gsml-core_quantities-single-range]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/quantities-single-range
+part:: QuantityRange properties that must report a single value SHALL assign both lower and upper value as equal to that single value.
+====

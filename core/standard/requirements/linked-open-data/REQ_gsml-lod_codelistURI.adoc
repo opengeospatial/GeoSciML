@@ -1,0 +1,8 @@
+[[req_gsml-lod_codelistURI]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lod/codelistURI
+part:: URI used for vocabulary terms SHALL be dereferenceable to one or more representations of the vocabulary term.
+====

@@ -1,0 +1,8 @@
+[[req_gsml-borehole_borehole-position-null]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/borehole-position-null
+part:: If no GM_Point is available, an OGC nil value SHALL be used.
+====

@@ -1,0 +1,8 @@
+[[req_gsml-lite_uri]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/uri
+part:: Properties which name end with “_uri” SHALL contain a string conformant to URI format as specified in RFC 3986.
+====

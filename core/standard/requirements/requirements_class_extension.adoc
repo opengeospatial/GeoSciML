@@ -1,0 +1,16 @@
+[[req_class_gsml-extension]]
+
+[requirements_class]
+.Requirements Class 'GeoSciML Extension'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-extension
+subject:: Encoding
+inherit:: /req/gsml-basic
+inherit:: /req/gsml-geologictime
+requirement:: /req/gsml-extension/geologicfeature-history
+requirement:: /req/gsml-extension/contact-chronoboundary
+requirement:: /req/gsml-extension/slipComponents-slip
+====
+
+

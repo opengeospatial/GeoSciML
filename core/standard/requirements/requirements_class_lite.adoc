@@ -1,0 +1,40 @@
+[[req_class_gsml-lite]]
+
+[requirements_class]
+.Requirements Class 'GeoSciML Lite'
+====
+[%metadata]
+identifier::  http://www.opengis.net/spec/geosciml/5.0/req/gsml-lite
+subject:: Encoding
+inherit:: /req/gsml-conceptual
+inherit:: GML Simple Feature SF-0 OGC 10-100r3
+inherit:: ISO 8601 (Date and Time format)
+inherit:: Linked Open Data
+inherit:: RFC 3986 (HTTP URI)
+requirement:: /req/gsml-lite/geomtype
+requirement:: /req/gsml-lite/string
+recommendation:: /rec/gsml-lite/formal-syntax
+requirement:: /req/gsml-lite/datetime
+requirement:: /req/gsml-lite/uri
+recommendation:: /rec/gsml-lite/resolvable-uri
+requirement:: /req/gsml-lite/user-defined
+requirement:: /req/gsml-lite/identifier-unique
+requirement:: /req/gsml-lite/identifier-uri
+recommendation:: /rec/gsml-lite/geologicunitview-identifier
+requirement:: /req/gsml-lite/geologicunitview-representativeLithology
+requirement:: /req/gsml-lite/geologicunitview-representativeAge
+requirement:: /req/gsml-lite/geologicunitview-representativeOlderAge
+requirement:: /req/gsml-lite/geologicunitview-representativeYoungerAge
+recommendation:: /rec/gsml-lite/geologicunitview-specification
+recommendation:: /rec/gsml-lite/boreholeview-identifier
+requirement:: /req/gsml-lite/boreholeview-elevation-crs
+recommendation:: /rec/gsml-lite/boreholeview-parentBorehole-uri
+recommendation:: /rec/gsml-lite/contactview-identifier
+recommendation:: /rec/gsml-lite/geologicspecimenview-identifier
+recommendation:: /rec/gsml-lite/geomorphologicunitview-identifier
+recommendation:: /rec/gsml-lite/sheardisplacemenstructureview-identifier
+recommendation:: /rec/gsml-lite/siteobservationview-identifier
+requirement:: /req/gsml-lite/siteobservationview-symbolRotation
+====
+
+

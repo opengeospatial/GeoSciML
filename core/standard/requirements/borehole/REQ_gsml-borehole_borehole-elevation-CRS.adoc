@@ -1,0 +1,8 @@
+[[req_gsml-borehole_borehole-elevation-CRS]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/borehole-elevation-CRS
+part:: Origin elevation srsName identifier SHALL be a vertical CRS having a EPSG in the range 5600-5799
+====

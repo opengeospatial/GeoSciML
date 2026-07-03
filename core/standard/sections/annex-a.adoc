@@ -474,7 +474,7 @@ inherit:: ISO 19156 Annex A
 
 abstract-test:: /conf/gsml-lab-analysis/sampledFeature 
 
-abstract-test:: /conf/ gsml-lab-analysis/accuracy-measure 
+abstract-test:: /conf/gsml-lab-analysis/accuracy-measure 
 
 abstract-test:: /conf/gsml-lab-analysis/accuracy-vocabulary 
 

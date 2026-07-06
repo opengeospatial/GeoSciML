@@ -291,75 +291,23 @@ include::/requirements/borehole-xml/REQ_borehole_sch.adoc[]
 include::/requirements/requirements_class_gsmlxsd-lab.adoc[]
 
 
-[width="100%",cols="10%,90%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4xsd-lab |
-|*Target type* |Data instance
-|*Dependency* |/req/gsml4-lab
-|*Dependency* |/req/gsml4xsd-core
-|*Requirement* a|
-/req/gsml4xsd-lab/xsd
-
-An XML instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd
-
-|*Requirement* a|
-/req/gsml4xsd-lab/sch
-
-An XML instance document SHALL pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch
-
-|===
-
 All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd#].
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lab/xsd*
-|An XML instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd.
-|===
+
+
+include::/requirements/lab-xml/REQ_lab_xsd.adoc[]
 
 All the elements from the GeoSciML Laboratory Analysis & Specimen package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch#].
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lab/sch*
-|XML instance document SHALL pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch.
-|===
+
+
+include::/requirements/lab-xml/REQ_lab_sch.adoc[]
 
 === Abstract GeoSciML Lite XML Requirements Class (Normative)
 
 include::/requirements/requirements_class_gsmlxsd-lite.adoc[]
 
 
-[width="100%",cols="19%,81%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4xsd-lite |
-|*Target type* |Data instance
-|*Dependency* |/req/gsml4-lite
-|*Dependency* |/req/gsml4xsd
-|*Dependency* |GML Simple Feature OGC 10-100r3 SF-0
-|*Requirement* a|
-/req/gsml4xsd-lite/SF-0
-
-An XML instance document SHALL be compliant to GML Simple Feature Level 0.
-
-|*Recommendation* a|
-/req/gsml4xsd-lite/SF-0-simpletype
-
-User defined elements SHOULD be XSD simpleType.
-
-|*Recommendation* a|
-/req/gsml4xsd-lite/user-xsd
-
-An XSD schema SHOULD be provided by data provider to validate user defined properties.
-
-|*Recommendation* a|
-/req/gsml4xsd-lite/user-ns
-
-User properties SHOULD be defined in a namespace unique to a community or a data provider.
-
-|===
 
 The abstract GeoSciML Lite encoding sets general encoding rules for XML targets, regardless of version of GML.
 
@@ -373,7 +321,7 @@ GeoSciML Lite schemas are meant to deliver simple content, consistent with simpl
 |An XML instance document SHALL be compliant to GML Simple Feature Level 0.
 |===
 
- 
+include::/requirements/lite-xml/REQ_lite_SF0.adoc[]
 
 Simple Feature defines 3 compliance levels summarized in Table17.
 
@@ -418,11 +366,9 @@ a|
 
 SF-0 allows the definition of complex content (Clause 9.3.2 of OGC 10-100r3). To be consistent with the most common scenario encountered in GIS which is a direct mapping from a database table to XML, this specification recommends that user defined content be restricted to simple type.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lite/SF-0-simpletype*
-|User defined elements SHOULD be XSD simpleType.
-|===
+
+
+include::/recommendations/lite-xml/REC_lite_SF0_simpletype.adoc[]
 
 GeoSciML Lite allows user defined properties to be appended at the end of the list of feature properties using xsd:any
 
@@ -440,57 +386,30 @@ GeoSciML Lite allows user defined properties to be appended at the end of the li
 
 Process content is set to “lax”, which means the validator will attempt to validate user defined property only if a schema is.  To help client applications and developers to validate instance containing user defined properties, a XSD schema should be provided in the instance’s schemaLocation attribute.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lite/user-xsd*
-|An XSD schema SHOULD be provided by data provider to validate user defined properties.
-|===
+
+include::/recommendations/lite-xml/REC_lite_user_xsd.adoc[]
 
 ==== User Defined Namespaces
 
 This specification does not prescribe if the user types are to be defined in GeoSciML Lite namespace or using a different namespace.  It is understood that this might be constrained by the technology used to generate the instance.  But to avoid potential conflict with future minor changes to GeoSciML Lite, or name conflicts when aggregating results from many sources, it is recommended that the data providers, or the community, use different namespaces, if possible.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lite/user-ns*
-|User properties SHOULD be defined in a namespace unique to a community or a data provider.
-|===
+
+include::/recommendations/lite-xml/REC_lite_user_ns.adoc[]
 
 === GeoSciML Lite GML 3.1 profile (Normative)
 
-[width="100%",cols="11%,89%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4xsd-lite-31 |
-|*Target type* |Data instance
-|*Dependency* |/req/gsml4-lite
-|*Dependency* |/req/gsml4xsd-lite
-|*Requirement* a|
-/req/gsml4xsd-lite-31/xsd
+include::/requirements/requirements_class_gsmlxsd-lite31.adoc[]
 
-An XML instance document shall validate with schema located at   http://schemas.opengis.net/gsml/4.1/geosciml-lite.xsd.
-
-|*Requirement* a|
-/req/gsml4xsd-lite-31/sch
-
-An XML instance document shall pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch.
-
-|===
 
 Because of the limited availability of WFS 2.0 compliant servers and clients, GeoSciML SWG officially supports WFS 1.1.0 and GML 3.1.1 for delivery of Lite features. 
 
 All the elements from the GeoSciML Lite package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geosciml-lite.xsd.
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lite-31/xsd*
-|An XML instance document shall validate with schema located at   http://schemas.opengis.net/gsml/4.1/geosciml-portrayal.xsd.
-|===
+
+
+include::/requirements/lite31-xml/REQ_lite31_xsd.adoc[]
 
 All the elements from the GeoSciML Lite package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch#].
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lite-31/sch*
-|An XML instance document shall pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch.
-|===
+
+include::/requirements/lite31-xml/REQ_lite31_sch.adoc[]

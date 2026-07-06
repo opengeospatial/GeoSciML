@@ -1,0 +1,9 @@
+[[rec_gsmlxsd_lite_user_xsd]]
+
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsmlxsd-lite/user-xsd
+part:: An XSD schema SHOULD be provided by data provider to validate user defined properties.
+====

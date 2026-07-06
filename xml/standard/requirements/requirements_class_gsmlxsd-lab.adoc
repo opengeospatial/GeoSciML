@@ -1,13 +1,16 @@
-[[req_class_gsmlxsd-lab]]
+[[req_class_gsmlxsd_lab]]
+
 
 [requirements_class]
-.Requirements Class 'A'
+.Requirements Class 'GeoSciML LaboratoryAnalysis-Specimen XML'
 ====
 [%metadata]
 identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-lab
-subject:: Web API
-requirement:: /req/req-class-a/req-name-1
-requirement:: /req/req-class-a/req-name-2
+subject:: Data instance
+inherit:: /req/gsml-lab
+inherit:: /req/gsmlxsd-core
+requirement:: /req/gsmlxsd-lab/xsd
+requirement:: /req/gsmlxsd-lab/sch
 ====
 
 

@@ -1,8 +1,9 @@
-[[req_class_a_name_1]]
+[[req_gsmlxsd_lite_31_sch]]
+
 
 [requirement]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /req/gsmlxsd-lite-31/sch
+part:: An XML instance document shall pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch.
 ====

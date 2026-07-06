@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[req_gsmlxsd_lab_sch]]
 
 [requirement]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /req/gsmlxsd-lab/sch
+part:: XML instance document SHALL pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch.
 ====

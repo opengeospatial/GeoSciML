@@ -1,13 +1,19 @@
 [[req_class_gsmlxsd-lite]]
 
+
 [requirements_class]
-.Requirements Class 'A'
+.Requirements Class 'Abstract GeoSciML Lite XML'
 ====
 [%metadata]
 identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-lite
-subject:: Web API
-requirement:: /req/req-class-a/req-name-1
-requirement:: /req/req-class-a/req-name-2
+subject:: Data instance
+inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lite
+inherit:: /req/gsmlxsd-core
+inherit:: GML Simple Feature OGC 10-100r3 SF-0
+requirement:: /req/gsmlxsd-lite/SF-0
+recommendation:: /rec/gsmlxsd-lite/SF-0-simpletype
+recommendation:: /rec/gsmlxsd-lite/user-xsd
+recommendation:: /rec/gsmlxsd-lite/user-ns
 ====
 
 

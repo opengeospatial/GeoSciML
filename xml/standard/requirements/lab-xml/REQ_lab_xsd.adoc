@@ -1,8 +1,8 @@
-[[req_class_a_name_1]]
+[[req_gsmlxsd_lab_xsd]]
 
 [requirement]
 ====
 [%metadata]
-identifier:: /req/req-class-a/req-name-1
-part:: Requirement 'shall' statement
+identifier:: /req/gsmlxsd-lab/xsd
+part:: An XML instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd.
 ====

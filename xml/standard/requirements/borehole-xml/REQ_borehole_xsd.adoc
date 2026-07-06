@@ -1,0 +1,8 @@
+[[req_gsmlxsd_borehole_xsd]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmlxsd-borehole/xsd
+part:: An XML instance document shall validate with schema located at   http://schemas.opengis.net/gsml/4.1/borehole.xsd.
+====

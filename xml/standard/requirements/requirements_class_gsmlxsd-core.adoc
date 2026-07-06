@@ -1,0 +1,27 @@
+[[req_class_gsmlxsd_core]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML Core XML'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-core
+subject:: Data instance
+inherit:: Web API
+inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-core
+inherit:: W3C XML Schema Definition Language 1.1
+inherit:: ISO19118 Encoding
+inherit:: ISO 19136:2007 Geography Markup Language (GML)
+inherit:: ISO19136-2:2015 Geography Markup Language (GML)  Part 2: Extended schemas and encoding rules
+inherit:: OMXML http://www.opengis.net/doc/IS/OMXML/2.0
+inherit:: SWE Common 2.0 08-094r1 Clause 8
+inherit:: ISO19115-3 encoding (preliminary)
+requirement:: /req/gsmlxsd/xsd
+requirement:: /req/gsmlxsd/sch
+requirement:: /req/gsmlxsd/codelist
+requirement:: /req/gsmlxsd/time-zone
+recommendation:: /rec/gsmlxsd/identifier-uri
+recommendation:: /rec/gsmlxsd/iso8601-time
+====
+
+

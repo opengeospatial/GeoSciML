@@ -1,0 +1,13 @@
+[[req_class_gsmlxsd-lite]]
+
+[requirements_class]
+.Requirements Class 'A'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-lite
+subject:: Web API
+requirement:: /req/req-class-a/req-name-1
+requirement:: /req/req-class-a/req-name-2
+====
+
+

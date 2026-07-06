@@ -1,0 +1,8 @@
+[[req_gsmlxsd_sch]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmlxsd/sch
+part:: An XML instance SHALL pass schematron rules.
+====

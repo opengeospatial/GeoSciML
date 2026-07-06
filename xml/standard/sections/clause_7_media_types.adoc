@@ -1,0 +1,5 @@
+== Media Types for any data encoding(s)
+
+GeoSciML 4.1 data conforming to clause 8 is encoded in GML-conformant XML documents.  The standard MIME-type and sub-type for GML data should be used to indicate the encoding in internet exchange, as specified in _MIME Media Types for GML,_ namely
+
+`application/gml+xml`

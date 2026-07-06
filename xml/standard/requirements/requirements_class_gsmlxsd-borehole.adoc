@@ -1,0 +1,16 @@
+[[req_class_gsmlxsd-borehole]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML Borehole XML'
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-borehole
+subject:: Data instance
+inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-borehole
+inherit:: /req/gsmlxsd-core
+requirement:: /req/gsmlxsd-borehole/xsd
+requirement:: /req/gsmlxsd-borehole/sch
+====
+
+

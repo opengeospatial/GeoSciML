@@ -175,45 +175,15 @@ Time Zone (example is Newfoundland time zone -3:30)
 === GeoSciML Basic XML Requirements Class (Normative)
 
 
-
-[width="100%",cols="11%,89%",options="header",]
-|===
-|*Requirements Class* |
-|/req/gsml4xsd-basic |
-|*Target type* |Data instance
-|*Dependency* |/req/gsml4-basic
-|*Dependency* |/req/gsml4xsd-core
-|*Requirement* a|
-/req/gsml4xsd-basic/xsd
-
-An XML instance document shall validate with schema located at   http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd
-
-|*Requirement* a|
-/req/gsml4xsd-basic/sch
-
-An XML instance document shall pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch.
-
-|===
-
 include::/requirements/requirements_class_gsmlxsd-basic.adoc[]
 
 All the elements from the basic package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd#]
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-basic/xsd*
-|An XML instance document SHALL validate with schema located at  http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd.
-|===
 
 include::/requirements/basic-xml/REQ_basic_xsd.adoc[]
 
 All the elements from basic package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch#].
 
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-basic/sch*
-|An XML instance document SHALL pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch.
-|===
 
 include::/requirements/basic-xml/REQ_basic_sch.adoc[]
 

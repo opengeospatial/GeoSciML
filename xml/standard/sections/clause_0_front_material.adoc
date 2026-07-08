@@ -16,11 +16,11 @@ Attention is drawn to the possibility that some of the elements of this document
 [abstract]
 == Abstract
 
-<Insert Abstract Text here>
+GeoSciML is a Standard for representing geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases. The Standard is composed of multiple parts. Part 1 describes a logical model. Part 2 (this document) describes GML/XML encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses. It includes a Lite model, used for simple map-based applications; a basic model, aligned on INSPIRE, for basic data exchange; and an extended model to address more complex scenarios.  
 
 == Preface
 
-<Insert Preface Text here>
+The primary goal of this specification is to capture the schema, and encoding syntax of key elements described and portrayed in geological maps and databases, in order to enable information systems to interoperate with such data.
 
 == Security considerations
 
@@ -41,10 +41,17 @@ NOTE: The security measures discussed in the following sections only provide var
 
 All questions regarding this submission should be directed to the editor or the submitters:
 
+[%unnumbered%]
+[width="100%",cols="30%,70%",options="header",]
 |===
-|*Name* |*Affiliation*
-| |
+|*Name* |*Affiliation* 
+|Eric Boisvert |Geological Survey of Canada (Natural Resources Canada) 
+|Ollie Raymond |Geoscience Australia 
+|Marcus Sen |British Geological Survey
+|Edd Lewis |British Geological Survey
+|Mark Rattenbury |Earth Sciences New Zealand
 |===
+
 
 == Contributors
 

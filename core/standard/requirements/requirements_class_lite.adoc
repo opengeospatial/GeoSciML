@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML Lite'
 ====
 [%metadata]
-identifier::  http://www.opengis.net/spec/geosciml/5.0/req/gsml-lite
+identifier::  {spec-part1-uri}/req/gsml-lite
 subject:: Encoding
 inherit:: /req/gsml-conceptual
 inherit:: GML Simple Feature SF-0 OGC 10-100r3

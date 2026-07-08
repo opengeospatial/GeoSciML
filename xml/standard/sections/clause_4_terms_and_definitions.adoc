@@ -1,17 +1,155 @@
 == Terms and definitions
 
-This document uses the terms defined in OGC Policy Directive 49, which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word "`shall`" (not "`must`") is the verb form used to indicate a requirement to be strictly followed to conform to this standard.
 
-For the purposes of this document, the following additional terms and definitions apply.
 
-=== example term
+=== classifier
 
-term used for exemplary purposes
+A classifier is an abstract UML metaclass which describes (classifies) a set of instances having common features (not to be confused with the “Feature” stereotype from the OGC Feature Model). A feature declares a structural or behavioral characteristic of instances of classifiers. (http://www.uml-diagrams.org/classifier.html). Classes, Interfaces, Association, and Types are kinds of classifiers.
+
+
+=== domain feature
+
+Feature of a type defined within a particular application domain.
 
 [.source]
-<<ISO19101-1>>
+<<ISO19156:2011>>
 
-NOTE: An example note.
+NOTE: This may be contrasted with observations and sampling features, which are features of types defined for cross-domain purposes.
+
+
+=== element ++<++XML++>++
+
+Basic information item of an XML document containing child elements, attributes and character data.
+
+
+[.source]
+<<OGC07-036>>
+
+=== feature
+
+Abstraction of a real-world phenomenon.
+
+[.source]
+<<ISO19101:2002>>
+
+
+=== GML application schema
+
+Application schema written in XML Schema in accordance with the rules specified in OGC GML 3.3
+
+[.source]
+<<OGC07-036>>
+
+
+=== GML document
+
+XML document with a root element that is one of the elements AbstractFeature, Dictionary or TopoComplex, specified in the GML schema or any element of a substitution group of any of these elements.
+
+
+[.source]
+<<OGC07-036>>
+
+
+=== GML schema
+
+Schema components in the XML namespace ― as specified in OGC GML 3.3
+
+[.source]
+<<OGC07-036>>
+
+
+
+=== measurement
+
+Set of operations having the objective of determining the value of a quantity.
+
+[.source]
+<<ISO/TS19101-2:2008>>
+
+
+
+=== observation
+
+Act of observing a property.
+
+[.source]
+<<ISO 19156:2011>>
+
+NOTE: The goal of an observation may be to measure or otherwise determine the value of a property.
+
+
+
+=== observation procedure
+
+Method, algorithm or instrument, or system which may be used in making an observation.
+
+[.source]
+<<ISO19156:2011>>
+
+
+
+
+=== observation result
+
+Estimate of the value of a property determined through a known procedure.
+
+[.source]
+<<ISO19156:2011>>
+
+
+
+=== property ++<++General Feature Model++>++
+
+Facet or attribute of an object referenced by a name.
+
+
 
 [example]
-Here's an example of an example term.
+Abby’s car has the color red, where “color red” is a property of the car instance.
+
+
+
+=== sampled feature
+
+The real-world domain feature of interest, such as a geological unit or structure which is observed.
+
+[.source]
+<<ISO19156:2011>>
+
+
+
+=== sampling feature
+
+Feature, such as a station, outcrop, borehole, section or specimen, which is involved in making observations of a domain feature.
+
+[.source]
+<<ISO19156:2011>>
+
+NOTE: A sampling feature is purely an artefact of the observational strategy, and has no significance independent of the observational campaign.
+
+
+
+
+=== schema ++<++XML Schema++>++
+
+XML document containing a collection of schema component definitions and declarations within the same target namespace.
+
+Example Schema components of W3C XML Schema are types, elements, attributes, groups, etc.
+
+
+[.source]
+<<OGC07-036>>
+
+NOTE: The W3C XML Schema provides an XML interchange format for schema information. A single schema document provides descriptions of components associated with a single XML namespace, but several documents may describe components in the same schema, i.e. the same target namespace.
+
+
+
+
+
+
+
+
+
+
+
+

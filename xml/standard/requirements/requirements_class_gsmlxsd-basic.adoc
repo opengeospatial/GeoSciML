@@ -5,9 +5,9 @@
 .Requirements Class 'GeoSciML Basic XML'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-basic
+identifier:: {spec-part2-uri}/req/gsmlxsd-basic
 subject:: Data instance
-inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-basic
+inherit:: {spec-part1-uri}/req/gsml-basic
 inherit:: /req/gsmlxsd-core
 requirement:: /req/gsmlxsd-basic/xsd
 requirement:: /req/gsmlxsd-basic/sch

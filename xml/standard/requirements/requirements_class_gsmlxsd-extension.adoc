@@ -5,9 +5,9 @@
 .Requirements Class 'GeoSciML Extension XML'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-extension
+identifier:: {spec-part2-uri}/req/gsmlxsd-extension
 subject:: Data instance
-inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-extension
+inherit:: {spec-part1-uri}/req/gsml-extension
 inherit:: /req/gsmlxsd-basic
 inherit:: /req/gsmlxsd-geologictime
 requirement:: /req/gsmlxsd-extension/xsd

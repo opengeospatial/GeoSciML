@@ -4,9 +4,9 @@
 .Requirements Class 'GeoSciML Lite GML 3.1 profile'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-lite-31
+identifier:: {spec-part2-uri}/req/gsmlxsd-lite-31
 subject:: Data instance
-inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lite
+inherit:: {spec-part1-uri}/req/gsml-lite
 inherit:: /req/gsmlxsd-lite
 requirement:: /req/gsmlxsd-lite-31/xsd
 requirement:: /req/gsmlxsd-lite-31/sch

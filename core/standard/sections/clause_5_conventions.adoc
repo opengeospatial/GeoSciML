@@ -76,21 +76,21 @@ All requirements and conformance tests that appear in this document are denoted 
 
 The URI for each requirements class has the form:
 
-http://www.opengis.net/spec/geosciml%2F4.1%2Freq%2F%5BclassM%5D[\http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]++]
+http://www.opengis.net/spec/geosciml-part1%2F5.0%2Freq%2F%5BclassM%5D[\http://www.opengis.net/spec/geosciml-part1/5.0/req/++[++classM++]++]
 
 The URI for each requirement or recommendation has the form:
 
-http://www.opengis.net/spec/geosciml%2F4.1%2Freq%2F%5BclassM%5D%2F%5BreqN%5D[\http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]/++[++reqN++]]
+http://www.opengis.net/spec/geosciml-part1%2F5.0%2Freq%2F%5BclassM%5D%2F%5BreqN%5D[\http://www.opengis.net/spec/geosciml-part1/5.0/req/++[++classM++]/++[++reqN++]]
 
 
 The URI for each conformance class has the form:
 
-http://www.opengis.net/spec/geosciml%2F4.1%2Fconf%2F%2B%2B%5B%2B%2BclassM%2B%2B%5D%2B%2B[\http://www.opengis.net/spec/geosciml/4.1/conf/++[++classM++]++]
+http://www.opengis.net/spec/geosciml-part1%2F5.0%2Fconf%2F%2B%2B%5B%2B%2BclassM%2B%2B%5D%2B%2B[\http://www.opengis.net/spec/geosciml-part1/5.0/conf/++[++classM++]++]
 
 
 The URI for each conformance test has the form:
 
-http://www.opengis.net/spec/geosciml%2F4.1%2Fconf%2F%2B%2B%5B%2B%2BclassM%2B%2B%5D%2B%2B%2F%2B%2B%5B%2B%2BtestN%2B%2B%5D%2B%2B[\http://www.opengis.net/spec/geosciml/4.1/req/++[++classM++]/++[++testN++]]
+http://www.opengis.net/spec/geosciml-part1%2F5.0%2Fconf%2F%2B%2B%5B%2B%2BclassM%2B%2B%5D%2B%2B%2F%2B%2B%5B%2B%2BtestN%2B%2B%5D%2B%2B[\http://www.opengis.net/spec/geosciml-part1/5.0/req/++[++classM++]/++[++testN++]]
 
 
 === Classifiers
@@ -109,6 +109,6 @@ For the sake of readability, and also because some HollowWorld package names do 
 
 W3C XPath will be used in XML instances.  XML entities will be identified using their full qualified name (namespace, identified by its prefix, and entity name).
 
-* `gsmlb:GeologicUnit` refers to an instance of GeologicUnit, from namespace xmlns:gsmlb="\http://www.opengis.net/gsml/4.1/GeoSciML-Basic"
+* `gsmlb:GeologicUnit` refers to an instance of GeologicUnit, from namespace xmlns:gsmlb="\http://www.opengis.net/gsml/5.0/GeoSciML-Basic"
 * `gsmlb:GeologicUnit/gml:name` refers to the name property of GeologicUnit
 * `gsmlb:GeologicUnit/gml:name/@codeName` refers to the codeName attribute of the name property of GeologicUnit

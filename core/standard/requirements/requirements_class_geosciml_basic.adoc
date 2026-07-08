@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML Basic'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-basic
+identifier:: {spec-part1-uri}/req/gsml-basic
 subject:: Encoding
 inherit:: Spatial Schema ISO19107
 inherit:: Conceptual schema language ISO19103

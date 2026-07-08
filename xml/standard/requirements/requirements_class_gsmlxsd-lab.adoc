@@ -5,7 +5,7 @@
 .Requirements Class 'GeoSciML LaboratoryAnalysis-Specimen XML'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-lab
+identifier:: {spec-part2-uri}/req/gsmlxsd-lab
 subject:: Data instance
 inherit:: /req/gsml-lab
 inherit:: /req/gsmlxsd-core

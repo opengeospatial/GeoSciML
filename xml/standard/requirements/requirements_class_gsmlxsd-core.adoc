@@ -5,10 +5,10 @@
 .Requirements Class 'GeoSciML Core XML'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-core
+identifier:: {spec-part2-uri}/req/gsmlxsd-core
 subject:: Data instance
 inherit:: Web API
-inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-core
+inherit:: {spec-part1-uri}/req/gsml-core
 inherit:: W3C XML Schema Definition Language 1.1
 inherit:: ISO19118 Encoding
 inherit:: ISO 19136:2007 Geography Markup Language (GML)

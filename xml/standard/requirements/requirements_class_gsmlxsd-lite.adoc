@@ -5,9 +5,9 @@
 .Requirements Class 'Abstract GeoSciML Lite XML'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml-part2/5.0/req/gsmlxsd-lite
+identifier:: {spec-part2-uri}/req/gsmlxsd-lite
 subject:: Data instance
-inherit:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lite
+inherit:: {spec-part1-uri}/req/gsml-lite
 inherit:: /req/gsmlxsd-core
 inherit:: GML Simple Feature OGC 10-100r3 SF-0
 requirement:: /req/gsmlxsd-lite/SF-0

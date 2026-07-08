@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML Borehole'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-borehole
+identifier:: {spec-part1-uri}/req/gsml-borehole
 subject:: Encoding
 inherit:: /req/gsml-core
 inherit:: ISO 19103 Conceptual Model Language

@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML LaboratoryAnalysis-Specimen'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-lab-analysis
+identifier:: {spec-part1-uri}/req/gsml-lab-analysis
 subject:: Encoding
 inherit:: ISO 19103 Conceptual Model Language
 inherit:: ISO 19107 Spatial Schema

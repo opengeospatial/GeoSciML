@@ -16,12 +16,12 @@ inherit:: ISO19136-2:2015 Geography Markup Language (GML)  Part 2: Extended sch
 inherit:: OMXML http://www.opengis.net/doc/IS/OMXML/2.0
 inherit:: SWE Common 2.0 08-094r1 Clause 8
 inherit:: ISO19115-3 encoding (preliminary)
-requirement:: /req/gsmlxsd/xsd
-requirement:: /req/gsmlxsd/sch
-requirement:: /req/gsmlxsd/codelist
-requirement:: /req/gsmlxsd/time-zone
-recommendation:: /rec/gsmlxsd/identifier-uri
-recommendation:: /rec/gsmlxsd/iso8601-time
+requirement:: /req/gsmlxsd-core/xsd
+requirement:: /req/gsmlxsd-core/sch
+requirement:: /req/gsmlxsd-core/codelist
+requirement:: /req/gsmlxsd-core/time-zone
+recommendation:: /rec/gsmlxsd-core/identifier-uri
+recommendation:: /rec/gsmlxsd-core/iso8601-time
 ====
 
 

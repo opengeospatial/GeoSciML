@@ -1,0 +1,5 @@
+== Media Types for any data encoding(s)
+
+GeoSciML 5.0 data conforming to the logical model defined in Part 1 of GeoSciML can be encoded in documents conforming to JSON-FG.  The standard MIME-type and sub-type for JSON-FG data should be used to indicate the encoding in internet exchange, as specified in https://docs.ogc.org/is/21-045r1/21-045r1.html#media-types[OGC 21-045r1],_ namely
+
+`application/geo+json`

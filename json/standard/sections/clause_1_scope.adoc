@@ -1,5 +1,3 @@
 == Scope
-[NOTE]
-====
-Insert Scope text here. Give the subject of the document and the aspects of that scope covered by the document.
-====
+
+Part 3 of GeoSciML covers the representation in JSON of features from the domain of geology (earth materials, geological units and stratigraphy, geological time, geological structures, geomorphology, geochemistry) and sampling features common to the practice of geoscience, such as boreholes and geological specimens.  

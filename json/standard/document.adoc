@@ -1,4 +1,4 @@
-= DRAFT OGC Geoscience Markup Language (GeoSciML) - Part 2: JSON Encoding
+= DRAFT OGC Geoscience Markup Language (GeoSciML) - Part 3: JSON Encoding
 :doctype: standard
 :encoding: utf-8
 :lang: en
@@ -24,6 +24,9 @@
 :doc-uri: ./document.doc
 :edition: 1.0
 
+:spec-part1-uri: https://www.opengis.net/spec/geosciml-part1/5.0
+:spec-part3-uri: https://www.opengis.net/spec/geosciml-part3/5.0
+
 ////
 Make sure to complete each included document
 ////
@@ -39,11 +42,9 @@ include::sections/clause_4_terms_and_definitions.adoc[]
 
 include::sections/clause_5_conventions.adoc[]
 
-include::sections/clause_6_informative_text.adoc[]
+include::sections/clause_6_normative_text.adoc[]
 
-include::sections/clause_7_normative_text.adoc[]
-
-include::sections/clause_8_media_types.adoc[]
+include::sections/clause_7_media_types.adoc[]
 
 ////
 add or remove annexes after "A" as necessary

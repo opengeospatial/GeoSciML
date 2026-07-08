@@ -1,0 +1,29 @@
+== Conventions
+
+This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+
+=== Identifiers
+
+The normative provisions in this specification are denoted by a URI constructed using this pattern:
+
+http://www.opengis.net/spec/++{++standard}/++{++m.n}[\http://www.opengis.net/spec/++{++standard}/++{++m.n}]
+
+All requirements and conformance tests that appear in this document are denoted by a partial URI which is relative to this base. The identifier supports cross-referencing of class membership, dependencies, and links from each conformance test to the requirements tested. In this specification identifiers are expressed as partial URIs or paths, which can be appended to a base URI that identifies the specification as a whole in order to construct a complete URI for identification in an external context.
+
+The URI for each requirements class has the form:
+
+http://www.opengis.net/spec/geosciml-part2%2F5.0%2Freq%2F%5BclassM%5D[\http://www.opengis.net/spec/geosciml-part2/5.0/req/++[++classM++]++]
+
+The URI for each requirement or recommendation has the form:
+
+http://www.opengis.net/spec/geosciml-part2%2F5.0%2Freq%2F%5BclassM%5D%2F%5BreqN%5D[\http://www.opengis.net/spec/geosciml-part2/5.0/req/++[++classM++]/++[++reqN++]]
+
+
+The URI for each conformance class has the form:
+
+http://www.opengis.net/spec/geosciml-part2%2F5.0%2Fconf%2F%2B%2B%5B%2B%2BclassM%2B%2B%5D%2B%2B[\http://www.opengis.net/spec/geosciml-part2/5.0/conf/++[++classM++]++]
+
+
+The URI for each conformance test has the form:
+
+http://www.opengis.net/spec/geosciml-part2%2F5.0%2Fconf%2F%2B%2B%5B%2B%2BclassM%2B%2B%5D%2B%2B%2F%2B%2B%5B%2B%2BtestN%2B%2B%5D%2B%2B[\http://www.opengis.net/spec/geosciml-part2/5.0/req/++[++classM++]/++[++testN++]]

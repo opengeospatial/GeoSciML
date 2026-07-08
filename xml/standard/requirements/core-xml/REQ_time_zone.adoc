@@ -1,0 +1,12 @@
+[[req_gsmlxsd_core_time_zone]]
+
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmlxsd-core/time-zone
+part:: The value of each time element SHALL include a time zone definition using a signed 4 digit character or a ‘Z’ to represent Zulu or Greenwich Mean Time (GMT). This is defined by the following regular expression:
++
+(Z{vbar}++[++{plus}-++]++HH:MM).
+
+====

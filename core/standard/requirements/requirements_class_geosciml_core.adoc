@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML Core'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-core
+identifier:: {spec-part1-uri}/req/gsml-core
 subject:: Encoding
 requirement:: /req/gsml-core/uml-entity-name
 requirement:: /req/gsml-core/uml-cardinality

@@ -24,6 +24,10 @@
 :doc-uri: ./document.doc
 :edition: 5.0-draft
 
+
+:spec-part1-uri: https://www.opengis.net/spec/geosciml-part1/5.0
+:spec-part2-uri: https://www.opengis.net/spec/geosciml-part2/5.0
+
 ////
 Make sure to complete each included document
 ////

@@ -1,0 +1,16 @@
+[[req_class_gsmlxsd-geologictime]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML GeologicTime XML'
+====
+[%metadata]
+identifier:: {spec-part2-uri}/req/gsmlxsd-geologictime
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-geologictime
+inherit:: /req/gsmlxsd-core
+requirement:: /req/gsmlxsd-geologictime/xsd
+requirement:: /req/gsmlxsd-geologictime/sch
+====
+
+

@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML GeologicTime'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-geologictime
+identifier:: {spec-part1-uri}/req/gsml-geologictime
 subject:: Encoding
 inherit:: ISO 19108 Temporal Schema
 inherit:: SWE Common 2.0 08-094r1 Clause 7

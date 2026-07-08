@@ -1,0 +1,180 @@
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.10.        Conformance class: GeoSciML XML Encoding Abstract Core* | |
+|/conf/gsml4xsd | |
+|*Requirements* |/req/gsml4xsd |
+|*Dependency* |OGC 10-025r1 OMXML   Observations and Measurements - XML Implementation |
+|*Test* |/conf/gsml4xsd/xsd |
+| |*Requirement* |/req/gsml4xsd/xsd
+| |*Test purpose* |Ensure that GeoSciML XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd/sch |
+| |*Requirement* |/req/gsml4xsd/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd/codelist |
+| |*Requirement* |/req/gsml4xsd/codelist
+| |*Test purpose* |Ensure that vocabulary xlink:href contain an absolute http URI and this URL resolves to relevant content
+| |*Test method* |Test the URI on the web.  If the URI does not resolve or return a 4xx error, the test fails. 
+| |*Test type* |
+|*Test* |/conf/gsml4xsd/time-zone |
+| |*Requirement* |/req/gsml4xsd/time-zone
+| |*Test purpose* |Ensure that time zones are expressed explicitly
+| |*Test method* |Visually inspect instance to validate the presence of time zone indicators.
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.11.        Conformance class: GeoSciML Basic XML Encoding* | |
+|/conf/gsml4xsd-basic | |
+|*Requirements* |/req/gsml4xsd-basic |
+|*Dependency* |/conf/gsml4xsd/core |
+|*Test* |/conf/gsml4xsd-basic/xsd |
+| |*Requirement* |/req/gsml4xsd-basic/xsd
+| |*Test purpose* |Ensure that GeoSciML Basic XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd-basic/sch |
+| |*Requirement* |/req/gsml4xsd-basic/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.12.        Conformance class: GeoSciML Extension XML Encoding* | |
+|/conf/gsml4xsd-extension | |
+|*Requirements* |/req/gsml4xsd-extension |
+|*Dependency* |/conf/gsml4xsd/basic |
+|*Test* |/conf/gsml4xsd-extension/xsd |
+| |*Requirement* |/req/gsml4xsd-extension/xsd
+| |*Test purpose* |Ensure that GeoSciML Extension XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd-extension/sch |
+| |*Requirement* |/req/gsml4xsd-extension/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.13.        Conformance class: GeoSciML GeologicTime XML Encoding* | |
+|/conf/gsml4xsd-geologictime | |
+|*Requirements* |/req/gsml4xsd-geologictime |
+|*Dependency* |/conf/gsml4xsd/core |
+|*Test* |/conf/gsml4xsd-geologictime/xsd |
+| |*Requirement* |/req/gsml4xsd-geologictime/xsd
+| |*Test purpose* |Ensure that GeoSciML Geologic Time XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd-geologictime/sch |
+| |*Requirement* |/req/gsml4xsd-geologictime/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.14.        Conformance class: GeoSciML Borehole XML Encoding* | |
+|/conf/gsml4xsd-borehole | |
+|*Requirements* |/req/gsml4xsd-borehole |
+|*Dependency* |/conf/gsml4xsd/core |
+|*Dependency* |OGC 10-025r1  OMXML |
+|*Test* |/conf/gsml4xsd-borehole/xsd |
+| |*Requirement* |/req/gsml4xsd-borehole/xsd
+| |*Test purpose* |Ensure that GeoSciML Borehole XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd-borehole/sch |
+| |*Requirement* |/req/gsml4xsd-borehole/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.15.        Conformance class: GeoSciML LaboratoryAnalysis-Specimen XML Encoding* | |
+|/conf/gsml4xsd-lab | |
+|*Requirements* |/req/gsml4xsd-lab |
+|*Dependency* |/conf/gsml4xsd/core |
+|*Dependency* |OGC 10-025r1  OMXML |
+|*Test* |/conf/gsml4xsd-lab/xsd |
+| |*Requirement* |/req/gsml4xsd-lab/xsd
+| |*Test purpose* |Ensure that GeoSciML Laboratory and Analysis XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd-lab/sch |
+| |*Requirement* |/req/gsml4xsd-lab/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="18%,15%,67%",options="header",]
+|===
+|*A.16.        Conformance class: GeoSciML Lite XML Abstract Encoding* | |
+|/conf/gsml4xsd-lite | |
+|*Requirements* |/req/gsml4xsd-lite |
+|*Dependency* |OGC 05-033r9: Annex A |
+|*Test* |/conf/gsml4xsd-lite/SF-0 |
+| |*Requirement* |/req/gsml4xsd-lite/SF-0
+| |*Test purpose* |Ensure that XML instance is compliant to OGC Simple Feature SF-0
+| |*Test method* |Perform the test in OGC 05-033r9 Annex A
+| |*Test type* |
+|===
+
+ 
+
+ 
+
+[width="100%",cols="13%,10%,77%",options="header",]
+|===
+|*A.17.        Conformance class: GeoSciML Lite XML Encoding for GML* | |
+|/conf/gsml4xsd-lite-31 | |
+|*Requirements* |/req/gsml4xsd-lite-31 |
+|*Dependency* |/req/gsml4xsd-lite |
+|*Test* |/conf/gsml4xsd-lite-31/xsd |
+| |*Requirement* |/req/gsml4xsd-lite-31/xsd
+| |*Test purpose* |Ensure that GeoSciML Portrayal XML documents are valid
+| |*Test method* |Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+| |*Test type* |
+|*Test* |/conf/gsml4xsd-lite-31/sch |
+| |*Requirement* |/req/gsml4xsd-lite-31/sch
+| |*Test purpose* |Ensure that encoding rules defined in the specification are met
+| |*Test method* |Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+| |*Test type* |
+|===
+

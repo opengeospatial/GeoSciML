@@ -1,0 +1,62 @@
+
+////
+NOTE: Uncomment ISO section if necessary
+
+*ISO Declaration*
+
+ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies). The work of preparing International Standards is normally carried out through ISO technical committees. Each member body interested in a subject for which a technical committee has been established has the right to be represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also take part in the work. ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of electrotechnical standardization.
+
+International Standards are drafted in accordance with the rules given in the ISO/IEC Directives, Part 2.
+
+The main task of technical committees is to prepare International Standards. Draft International Standards adopted by the technical committees are circulated to the member bodies for voting. Publication as an International Standard requires approval by at least 75 % of the member bodies casting a vote.
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
+////
+
+[abstract]
+== Abstract
+
+GeoSciML (Geoscience Markup Language) is a Standard for representing geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases. The Standard is composed of multiple parts. Part 1 describes a logical model. Part 2 (this document) describes encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses. The encoding rules define an application of Geography Markup Language (GML), which is itself an application of the Extensible Markup Language (XML). 
+
+== Preface
+
+The primary goal of this specification is to capture the schema, and encoding syntax of key elements described and portrayed in geological maps and databases, in order to enable information systems to interoperate with such data.
+
+== Security considerations
+
+//If no security considerations have been made for this Standard, use the following text.
+
+No security considerations have been made for this Standard.
+
+////
+If security considerations have been made for this Standard, follow the examples found in IANA or IETF documents. Please see the following example.
+“VRRP is designed for a range of internetworking environments that may employ different security policies. The protocol includes several authentication methods ranging from no authentication, simple clear text passwords, and strong authentication using IP Authentication with MD5 HMAC. The details on each approach including possible attacks and recommended environments follows.
+Independent of any authentication type VRRP includes a mechanism (setting TTL=255, checking on receipt) that protects against VRRP packets being injected from another remote network. This limits most vulnerabilities to local attacks.
+NOTE: The security measures discussed in the following sections only provide various kinds of authentication. No confidentiality is provided at all. This should be explicitly described as outside the scope....”
+////
+
+
+
+== Submitters
+
+All questions regarding this submission should be directed to the editor or the submitters:
+
+[%unnumbered%]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|*Name* |*Affiliation* 
+|Eric Boisvert |Geological Survey of Canada (Natural Resources Canada) 
+|Ollie Raymond |Geoscience Australia 
+|Marcus Sen |British Geological Survey
+|Edd Lewis |British Geological Survey
+|Mark Rattenbury |Earth Sciences New Zealand
+|===
+
+
+== Contributors
+
+//This clause is optional.
+
+Additional contributors to this Standard include the following:
+
+Individual name(s), Organization

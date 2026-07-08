@@ -1,0 +1,342 @@
+[appendix]
+== Conformance Class Abstract Test Suite (Normative)
+
+=== GeoSciML XML Encoding Abstract Core
+
+[[conf_gsmlxsd_core,/conf/gsmlxsd-core]]
+.GeoSciML XML Encoding Abstract Core
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-core  
+target:: /req/gsmlxsd-core 
+
+inherit:: OGC 10-025r1 OMXML   Observations and Measurements - XML Implementation 
+
+abstract-test:: /conf/gsmlxsd-core/xsd 
+
+abstract-test:: /conf/gsmlxsd-core/sch 
+
+abstract-test:: /conf/gsmlxsd-core/codelist 
+
+abstract-test:: /conf/gsmlxsd-core/time-zone 
+
+====
+
+
+[[conf_gsmlxsd-core_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-core/xsd
+target:: /req/gsmlxsd-core/xsd
+test-purpose:: Ensure that GeoSciML XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-core_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-core/sch
+target:: /req/gsmlxsd-core/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====
+
+[[conf_gsmlxsd-core_codelist]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-core/codelist
+target:: /req/gsmlxsd-core/codelist
+test-purpose:: Ensure that vocabulary xlink:href contain an absolute http URI and this URL resolves to relevant content
+test-method:: Test the URI on the web.  If the URI does not resolve or return a 4xx error, the test fails.
+====
+
+[[conf_gsmlxsd-core_time-zone]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-core/time-zone
+target:: /req/gsmlxsd-core/time-zone
+test-purpose:: Ensure that time zones are expressed explicitly
+test-method:: Visually inspect instance to validate the presence of time zone indicators.
+====
+
+
+=== GeoSciML Basic XML Encoding
+
+[[conf_gsmlxsd-basic,/conf/gsmlxsd-basic]]
+.GeoSciML Basic XML Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-basic  
+target:: /req/gsmlxsd-basic 
+
+inherit:: /conf/gsmlxsd-core/core 
+
+abstract-test:: /conf/gsmlxsd-basic/xsd 
+
+abstract-test:: /conf/gsmlxsd-basic/sch 
+
+====
+
+
+
+[[conf_gsmlxsd-basic_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-basic/xsd
+target:: /req/gsmlxsd-basic/xsd
+test-purpose:: Ensure that GeoSciML Basic XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-basic_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-basic/sch
+target:: /req/gsmlxsd-basic/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====
+
+=== GeoSciML Extension XML Encoding
+
+[[conf_gsmlxsd-extension,/conf/gsmlxsd-extension]]
+.GeoSciML Extension XML Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-extension  
+target:: /req/gsmlxsd-extension 
+
+inherit:: /conf/gsmlxsd-core/basic 
+
+abstract-test:: /conf/gsmlxsd-extension/xsd 
+
+abstract-test:: /conf/gsmlxsd-extension/sch 
+
+====
+
+
+[[conf_gsmlxsd-extension_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-extension/xsd
+target:: /req/gsmlxsd-extension/xsd
+test-purpose:: Ensure that GeoSciML Extension XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-extension_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-extension/sch
+target:: /req/gsmlxsd-extension/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====
+
+
+=== GeoSciML GeologicTime XML Encoding
+
+[[conf_gsmlxsd-geologictime,/conf/gsmlxsd-geologictime]]
+.GeoSciML GeologicTime XML Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-geologictime  
+target:: /req/gsmlxsd-geologictime 
+
+inherit:: /conf/gsmlxsd-core/core 
+
+abstract-test:: /conf/gsmlxsd-geologictime/xsd 
+
+abstract-test:: /conf/gsmlxsd-geologictime/sch 
+
+====
+
+
+
+[[conf_gsmlxsd-geologictime_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-geologictime/xsd
+target:: /req/gsmlxsd-geologictime/xsd
+test-purpose:: Ensure that GeoSciML Geologic Time XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-geologictime_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-geologictime/sch
+target:: /req/gsmlxsd-geologictime/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====
+
+
+=== GeoSciML Borehole XML Encoding
+
+[[conf_gsmlxsd-borehole,/conf/gsmlxsd-borehole]]
+.GeoSciML Borehole XML Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-borehole  
+target:: /req/gsmlxsd-borehole 
+
+inherit:: /conf/gsmlxsd-core/core 
+
+inherit:: OGC 10-025r1  OMXML 
+
+abstract-test:: /conf/gsmlxsd-borehole/xsd 
+
+abstract-test:: /conf/gsmlxsd-borehole/sch 
+
+====
+
+
+
+[[conf_gsmlxsd-borehole_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-borehole/xsd
+target:: /req/gsmlxsd-borehole/xsd
+test-purpose:: Ensure that GeoSciML Borehole XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-borehole_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-borehole/sch
+target:: /req/gsmlxsd-borehole/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====
+
+
+=== GeoSciML LaboratoryAnalysis-Specimen XML Encoding
+
+[[conf_gsmlxsd-lab,/conf/gsmlxsd-lab]]
+.GeoSciML LaboratoryAnalysis-Specimen XML Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lab  
+target:: /req/gsmlxsd-lab 
+
+inherit:: /conf/gsmlxsd-core/core 
+
+inherit:: OGC 10-025r1  OMXML 
+
+abstract-test:: /conf/gsmlxsd-lab/xsd 
+
+abstract-test:: /conf/gsmlxsd-lab/sch 
+
+====
+
+
+
+[[conf_gsmlxsd-lab_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lab/xsd
+target:: /req/gsmlxsd-lab/xsd
+test-purpose:: Ensure that GeoSciML Laboratory and Analysis XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-lab_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lab/sch
+target:: /req/gsmlxsd-lab/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====
+
+
+=== GeoSciML Lite XML Abstract Encoding
+
+[[conf_gsmlxsd-lite,/conf/gsmlxsd-lite]]
+.GeoSciML Lite XML Abstract Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lite  
+target:: /req/gsmlxsd-lite 
+
+inherit:: OGC 05-033r9: Annex A 
+
+abstract-test:: /conf/gsmlxsd-lite/SF-0 
+
+====
+
+
+[[conf_gsmlxsd-lite_SF-0]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lite/SF-0
+target:: /req/gsmlxsd-lite/SF-0
+test-purpose:: Ensure that XML instance is compliant to OGC Simple Feature SF-0
+test-method:: Perform the test in OGC 05-033r9 Annex A
+====
+
+
+=== GeoSciML Lite XML Encoding for GML
+
+[[conf_gsmlxsd-lite-31,/conf/gsmlxsd-lite-31]]
+.GeoSciML Lite XML Encoding for GML
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lite-31  
+target:: /req/gsmlxsd-lite-31 
+
+inherit:: /req/gsmlxsd-lite 
+
+abstract-test:: /conf/gsmlxsd-lite-31/xsd 
+
+abstract-test:: /conf/gsmlxsd-lite-31/sch 
+
+====
+
+
+
+
+[[conf_gsmlxsd-lite-31_xsd]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lite-31/xsd
+target:: /req/gsmlxsd-lite-31/xsd
+test-purpose:: Ensure that GeoSciML Portrayal XML documents are valid
+test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
+====
+
+[[conf_gsmlxsd-lite-31_sch]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmlxsd-lite-31/sch
+target:: /req/gsmlxsd-lite-31/sch
+test-purpose:: Ensure that encoding rules defined in the specification are met
+test-method:: Perform a schematron validation on the XML instance.  Test succeeds if the validation does not report any failed rules.
+====

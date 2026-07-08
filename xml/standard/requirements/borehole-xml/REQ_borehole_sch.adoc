@@ -1,0 +1,8 @@
+[[req_gsmlxsd_borehole_sch]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmlxsd-borehole/sch
+part:: An XML instance document shall pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/borehole.sch.
+====

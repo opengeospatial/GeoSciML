@@ -4,7 +4,7 @@
 .Requirements Class 'GeoSciML conceptual model'
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/geosciml/5.0/req/gsml-conceptual
+identifier:: {spec-part1-uri}/req/gsml-conceptual
 subject:: Logical Model
 inherit:: ISO19101:2002 Reference Model Clause 7
 inherit:: ISO19103 2015 Conceptual Model Language

@@ -1,0 +1,98 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-08</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Metadata</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Geographic information - Metadata</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Information géographique</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Métadonnées</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Information géographique - Métadonnées</title>
+  <uri type="src">https://www.iso.org/standard/26020.html</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/02/60/26020.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO 19115:2003</docidentifier>
+  <docidentifier type="iso-reference">ISO 19115:2003(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:19115:stage-95.99</docidentifier>
+  <docnumber>19115</docnumber>
+  <date type="published">
+    <on>2003-05</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>1</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">ISO 19115:2003 defines the schema required for describing geographic information and services. It provides information about the identification, the extent, the quality, the spatial and temporal schema, spatial reference, and distribution of digital geographic data.
+ISO 19115:2003 is applicable to:
+- the cataloguing of datasets, clearinghouse activities, and the full description of datasets;
+- geographic datasets, dataset series, and individual geographic features and feature properties.
+ISO 19115:2003 defines:
+- mandatory and conditional metadata sections, metadata entities, and metadata elements;
+- the minimum set of metadata required to serve the full range of metadata applications (data discovery, determining data fitness for use, data access, data transfer, and use of digital data);
+- optional metadata elements - to allow for a more extensive standard description of geographic data, if required;
+- a method for extending metadata to fit specialized needs.
+Though ISO 19115:2003 is applicable to digital data, its principles can be extended to many other forms of geographic data such as maps, charts, and textual documents as well as non-geographic data.
+NOTE Certain mandatory metadata elements may not apply to these other forms of data.</abstract>
+  <abstract format="text/plain" language="fr" script="Latn">ISO 19115:2003 defines the schema required for describing geographic information and services. It provides information about the identification, the extent, the quality, the spatial and temporal schema, spatial reference, and distribution of digital geographic data.
+ISO 19115:2003 is applicable to:
+- the cataloguing of datasets, clearinghouse activities, and the full description of datasets;
+- geographic datasets, dataset series, and individual geographic features and feature properties.
+ISO 19115:2003 defines:
+- mandatory and conditional metadata sections, metadata entities, and metadata elements;
+- the minimum set of metadata required to serve the full range of metadata applications (data discovery, determining data fitness for use, data access, data transfer, and use of digital data);
+- optional metadata elements - to allow for a more extensive standard description of geographic data, if required;
+- a method for extending metadata to fit specialized needs.
+Though ISO 19115:2003 is applicable to digital data, its principles can be extended to many other forms of geographic data such as maps, charts, and textual documents as well as non-geographic data.
+NOTE Certain mandatory metadata elements may not apply to these other forms of data.</abstract>
+  <status>
+    <stage>95</stage>
+    <substage>99</substage>
+  </status>
+  <copyright>
+    <from>2003</from>
+    <owner>
+      <organization>
+        <name>ISO</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="updates">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 19115-1:2014</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 19115-1:2014</docidentifier>
+      <date type="circulated">
+        <on>2014-03-19</on>
+      </date>
+    </bibitem>
+  </relation>
+  <relation type="updates">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 19115:2003/Cor 1:2006</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 19115:2003/Cor 1:2006</docidentifier>
+      <date type="circulated">
+        <on>2014-03-19</on>
+      </date>
+    </bibitem>
+  </relation>
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="211" type="TC" identifier="ISO/TC 211">Geographic information/Geomatics</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.70</code>
+      <text>IT applications in science</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>26020</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

@@ -435,7 +435,7 @@ include::/requirements/extension/REQ_gsml-extension_slipComponents-slip.adoc[]
 
 The property heave:GSML++_++Vector contains a component of slip in the horizontal, and perpendicular to the strike of the fault.
 
-====== horizontalSlip*
+====== horizontalSlip
 
 The property horizontalSlip:GSML++_++Vector contains a slip component that is horizontal and parallel to strike of the fault.
 

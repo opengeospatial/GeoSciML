@@ -64,7 +64,7 @@ include::/requirements/requirements_class_gsmlxsd-core.adoc[]
 This requirements class is shared by all GML/XML GeoSciML instances.
 
 
-==== XML document validation*
+==== XML document validation
 
 An XML instance shall validate to both the XSD and schematron rules provided by this specification for each of the XML requirements classes.
 

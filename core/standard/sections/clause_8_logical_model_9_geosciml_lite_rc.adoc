@@ -608,27 +608,27 @@ include::/recommendations/lite/REC_gsml-lite_geologicspecimenview-identifier.ado
 
 If present, the URI should resolve to a representation that corresponds to an instance of GeoSciML GeologicSpecimen.
 
-===== label*
+===== label
 
 If present, the property label:Primitive::CharacterString contains a short label for map display. (e.g., a sample number).
 
-===== description*
+===== description
 
 If present, the property description:Primitive::CharacterString contains a detailed description of the specimen.
 
-===== specimenType*
+===== specimenType
 
 If present, the property specimentType:Primitive::CharacterString contains a human readable description of the specimen type (e.g., hand specimen, thin section, drill core).  To report an identifier from a controlled vocabulary, specimenType++_++uri shall be used.
 
-===== materialClass*
+===== materialClass
 
 If present, the property materialClass:Primitive::CharacterString reports the classification of the material that comprises the specimen (e.g., rock, sediment, etc.).  To report an identifier from a controlled vocabulary, materialClass++_++uri shall be used.
 
-===== positionalAccuracy*
+===== positionalAccuracy
 
 If present, the property positionalAccuracy:Primitive::CharacterString contains a description of the positional accuracy of the sampling location. (e.g., 50 metres).
 
-===== samplingTime*
+===== samplingTime
 
 If present, the property samplingTime:Primitive::CharacterString reports a date or a date with time of when the specimen was collected formatted according to ISO 8601.
 
@@ -637,43 +637,43 @@ Examples:
 * 2012-03-28
 * 2008-02-28T14:15:23-05
 
-*8.9.6.9    samplingMethod*
+===== samplingMethod
 
 If present, the property samplingMethod:Primitive::CharacterString reports the method used to collect the specimen (e.g., diamond drilling, field mapping survey).
 
-===== currentLocation*
+===== currentLocation
 
 If present, the property currentLocation:Primitive::CharacterString reports the current location of the specimen (e.g., a warehouse or other repository location).
 
-===== source*
+===== source
 
 If present, the property source:Primitive::CharacterString reports the citation of the source of the data (e.g., a publication, map, etc.).
 
-===== specimenType++_++uri*
+===== specimenType++_++uri
 
 The property specimentType++_++uri:Primitive::CharacterString contains a URI link for a specimen type identifier from a controlled vocabulary.
 
-===== materialClass++_++uri*
+===== materialClass++_++uri
 
 The property materialClass++_++uri:Primitive::CharacterString contains a URI link for a class of material drawn from a controlled vocabulary.
 
-===== metadata++_++uri*
+===== metadata++_++uri
 
 If present, the property metadata++_++uri:Primitive::CharacterString contains a URI link to a metadata document.
 
-===== genericSymbolizer*
+===== genericSymbolizer
 
 If present, the genericSymbolizer:Primitive::CharacterString property contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.
 
-===== shape*
+===== shape
 
 The property shape:GM++_++Object contains a geometry of the specimen (generally a point).
 
-===== any*
+===== any
 
 A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
 
-==== GeomorphologicUnitView*
+==== GeomorphologicUnitView
 
 .GeomorphologicUnitView feature type
 image::images/image106.png[GeomorphologicUnitView feature type.,width=318,height=397]
@@ -682,7 +682,7 @@ GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In
 
  
 
-===== Mapping*
+===== Mapping
 
 .Mapping of GeomporphologicUnitView properties to GeoSciML
 [width="100%",cols="^23%,^77%",options="header",align="left"]
@@ -736,7 +736,7 @@ GeologicEvent:NumericAge ^1^
 **^3^ Use a **reference** or an identifier that can be used to reach a representation.**
 
 
-===== identifier*
+===== identifier
 
 Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
 

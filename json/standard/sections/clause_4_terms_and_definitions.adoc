@@ -3,50 +3,79 @@
 
 
 [[feature-definition]]
-=== *feature*
 
 include::./glossaries/iso_tc211/168_feature.adoc[]
 
 [[feature-collection-definition]]
-=== *feature collection*
 
 include::./glossaries/iso_tc211/2500_feature_collection.adoc[]
 
 
-feature schema
-schema that describes the properties of a feature type
 
-feature type
-class of features having common characteristics [ISO 19156:2023]
+=== JSON document
 
-JSON document
 an information resource (series of octets) described by the "application/json" media type [JSON Schema 2020-12]
 
-Note
-The terms "JSON document," "JSON text," and "JSON value" are interchangeable.
-JSON object
+NOTE: The terms "JSON document," "JSON text," and "JSON value" are interchangeable.
+
+[.source]
+<<OGC21-045r1>>
+
+
+=== JSON object
+
 an unordered set of name/value pairs mapping the name to a JSON value [JSON Schema 2020-12, modified]
 
-JSON-FG document
+=== JSON-FG document
+
 a JSON document that contains a JSON-FG root object
 
-JSON-FG feature
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG feature
+
 a JSON object that validates against the JSON-FG feature schema
 
-JSON-FG feature collection
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG feature collection
+
 a JSON object that validates against the JSON-FG feature collection schema
 
-JSON-FG geometry
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG geometry
+
 a JSON object that validates against the JSON-FG geometry schema
 
-JSON-FG object
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG object
+
 a JSON object that is either a JSON-FG feature, a JSON-FG feature collection, or a JSON-FG geometry
 
-JSON-FG root object
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG root object
+
 a JSON-FG object that is not a direct children of another JSON-FG object
 
-<JSON> key
+[.source]
+<<OGC21-045r1>>
+
+=== <JSON> key
 the name of a member
 
-<JSON> member
+[.source]
+<<OGC21-045r1>>
+
+=== <JSON> member
 a name/value pair in a JSON object
+
+[.source]
+<<OGC21-045r1>>

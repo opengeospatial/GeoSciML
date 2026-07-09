@@ -27,3 +27,9 @@
 * [[[OMGUML,OMGUML]]], OMG: Unified Modeling Language (UML). Version 2.3
 
 * [[[INSPIRE]]], INSPIRE Thematic Woring Group Geology: _INSPIRE Data Specification for the spatial data theme Geology Version 3.0. European Commission Joint Research Centre (2013)_
+
+
+* [[[OGC21-045r1,OGC 21-045r1]]],
+
+* [[[ISO19101-1:2014,ISO 19101-1:2014]]],
+

@@ -58,7 +58,7 @@ include::/requirements/core-json/REQ_json.adoc[]
 
 ==== CodeList
 
-Open code lists (see 8.2.7) are encoded as gml:ReferenceType which is a sequence of gml:OwnershipAttributeGroup and gml:AssociationAttributeGroup, providing a series of xml attributes from W3C XLINK (http://www.w3.org/TR/xlink11/[[.underline]#http://www.w3.org/TR/xlink11/#]).  A vocabulary term reference has mandatory xlink:href and xlink:title attributes.
+Open code lists (see 8.2.7) are encoded as gml:ReferenceType which is a sequence of gml:OwnershipAttributeGroup and gml:AssociationAttributeGroup, providing a series of xml attributes from W3C XLINK (http://www.w3.org/TR/xlink11/[http://www.w3.org/TR/xlink11/]).  A vocabulary term reference has mandatory xlink:href and xlink:title attributes.
 
 [%unnumbered%]
 [source,xml]
@@ -89,7 +89,7 @@ include::/recommendations/core-json/REC_identifier_uri.adoc[]
 ----
 
 
-Resolving http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947[[.underline]#http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947#] shall return:
+Resolving http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947[http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947] shall return:
 
 
 [%unnumbered%]
@@ -111,7 +111,7 @@ Resolving http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947[
 A nillable property (identified as “voidable” in the UML model) is a property than can document the reason that a value is not provided.  There are two ways to identify a nil value.
 
 * Using XSD xsi:nil=”true” and nilReason.  Where available, this encoding method should be used to indicate nilled property values.
-* Using a HTTP URI identifier defined by a community as representing a null value.  OGC uses http://www.opengis.net/def/nil/OGC/0/%7bnilReason%7d[[.underline]#http://www.opengis.net/def/nil/OGC/0/++{++nilReason}#] (OGC 12-110).
+* Using a HTTP URI identifier defined by a community as representing a null value.  OGC uses http://www.opengis.net/def/nil/OGC/0/%7bnilReason%7d[http://www.opengis.net/def/nil/OGC/0/++{++nilReason}] (OGC 12-110).
 
 ==== Date encoding
 
@@ -158,12 +158,12 @@ Time Zone (example is Newfoundland time zone -3:30)
 
 include::/requirements/requirements_class_gsmljson-basic.adoc[]
 
-All the elements from the basic package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd#]
+All the elements from the basic package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd[http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd]
 
 
 include::/requirements/basic-json/REQ_basic_json.adoc[]
 
-All the elements from basic package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch#].
+All the elements from basic package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch[http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch].
 
 
 Some properties links to stub property blocks (see 5.1) whose values are empty abstract classes in the GeoSciML Basic package.  Since abstract description classes are DataType, the property is inline only and therefore an empty property is not schema valid.
@@ -195,12 +195,12 @@ In GeoSciML Basic, relatedFeature is byReference only.  AbstractFeatureRelation
 
 include::/requirements/requirements_class_gsmljson-extension.adoc[]
 
-All the elements from the GeoSciML Extension package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd#].
+All the elements from the GeoSciML Extension package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd[http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd].
 
 
 include::/requirements/extension-json/REQ_extension_json.adoc[]
 
-All the elements from the GeoSciML Extension package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch#].
+All the elements from the GeoSciML Extension package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch[http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch].
 
 
 === GeoSciML GeologicTime JSON Requirements Class (Normative)
@@ -209,24 +209,24 @@ include::/requirements/requirements_class_gsmljson-geologictime.adoc[]
 
 
 
-All the elements from the GeoSciML Geologic Time package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geologicTime.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/geologicTime.xsd#].
+All the elements from the GeoSciML Geologic Time package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geologicTime.xsd[http://schemas.opengis.net/gsml/4.1/geologicTime.xsd].
 
 
 include::/requirements/geologictime-json/REQ_geologictime_json.adoc[]
 
-All the elements from the GeoSciML Geologic Time package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geologictime.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/geologictime.sch#].
+All the elements from the GeoSciML Geologic Time package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geologictime.sch[http://schemas.opengis.net/gsml/4.1/geologictime.sch].
 
 
 === GeoSciML Borehole JSON Requirements Class (Normative)
 
 include::/requirements/requirements_class_gsmljson-borehole.adoc[]
 
-All the elements from the Borehole package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/borehole.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/borehole.xsd#].
+All the elements from the Borehole package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/borehole.xsd[http://schemas.opengis.net/gsml/4.1/borehole.xsd].
 
 
 include::/requirements/borehole-json/REQ_borehole_json.adoc[]
 
-All the elements from the Borehole package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/borehole.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/borehole.sch#].
+All the elements from the Borehole package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/borehole.sch[http://schemas.opengis.net/gsml/4.1/borehole.sch].
 
 
 === GeoSciML LaboratoryAnalysis-Specimen JSON Requirements Class (Normative)
@@ -234,13 +234,13 @@ All the elements from the Borehole package must pass the schematron rule defined
 include::/requirements/requirements_class_gsmljson-lab.adoc[]
 
 
-All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd[[.underline]#http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd#].
+All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd[http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd].
 
 
 
 include::/requirements/lab-json/REQ_lab_json.adoc[]
 
-All the elements from the GeoSciML Laboratory Analysis & Specimen package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch[[.underline]#http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch#].
+All the elements from the GeoSciML Laboratory Analysis & Specimen package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch[http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch].
 
 
 

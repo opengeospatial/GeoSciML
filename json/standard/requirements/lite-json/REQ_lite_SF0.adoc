@@ -1,0 +1,8 @@
+[[req_gsmljson_lite_SF0]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-lite/SF-0
+part:: A JSON instance document SHALL be compliant to GML Simple Feature Level 0.
+====

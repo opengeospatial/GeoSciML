@@ -1,0 +1,8 @@
+[[req_gsmljson_lite_31_json]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-lite-31/json
+part:: A JSON instance document shall validate with schema located at   http://schemas.opengis.net/gsml/4.1/geosciml-portrayal.xsd.
+====

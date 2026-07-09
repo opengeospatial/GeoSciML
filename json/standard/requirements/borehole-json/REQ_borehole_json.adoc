@@ -1,0 +1,8 @@
+[[req_gsmljson_borehole_json]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-borehole/json
+part:: A JSON instance document shall validate with schema located at   http://schemas.opengis.net/gsml/4.1/borehole.xsd.
+====

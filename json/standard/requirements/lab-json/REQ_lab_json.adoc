@@ -1,0 +1,8 @@
+[[req_gsmljson_lab_json]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-lab/json
+part:: A JSON instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd.
+====

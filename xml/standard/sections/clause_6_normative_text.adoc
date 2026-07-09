@@ -92,7 +92,7 @@ include::/requirements/core-xml/REQ_codelist.adoc[]
 
 ==== Identifiers
 
-The GeoSciML community has developed a best practice of using http://www.ietf.org/rfc/rfc2616[[.underline]#http://www.ietf.org/rfc/rfc2616#] as a codespace for string with authority to designate string that are resolvable HTTP URI.
+The GeoSciML community has developed a best practice of using http://www.ietf.org/rfc/rfc2616[http://www.ietf.org/rfc/rfc2616#] as a codespace for string with authority to designate string that are resolvable HTTP URI.
 
 gml:identifier’s flagged with the specific codeSpace “http://www.ietf.org/rfc/rfc2616” should be resolvable HTTP URI that return an instance of itself.
 
@@ -284,12 +284,6 @@ The abstract GeoSciML Lite encoding sets general encoding rules for XML targets,
 ==== Simple Feature
 
 GeoSciML Lite schemas are meant to deliver simple content, consistent with simple scenarios described in GML Simple Feature Level 0 (OGC 10-100r3).  User defined properties must respect the same constrains as defined in SF-0 specification.
-
-[width="100%",cols="100%",options="header",]
-|===
-|*Requirement /req/gsml4xsd-lite/SF-0*
-|An XML instance document SHALL be compliant to GML Simple Feature Level 0.
-|===
 
 include::/requirements/lite-xml/REQ_lite_SF0.adoc[]
 

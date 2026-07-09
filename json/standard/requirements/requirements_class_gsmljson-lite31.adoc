@@ -1,0 +1,14 @@
+[[req_class_gsmljson-lite31]]
+
+[requirements_class]
+.Requirements Class 'GeoSciML Lite GML 3.1 profile'
+====
+[%metadata]
+identifier:: {spec-part3-uri}/req/gsmljson-lite-31
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-lite
+inherit:: /req/gsmljson-lite
+requirement:: /req/gsmljson-lite-31/json
+====
+
+

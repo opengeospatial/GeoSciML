@@ -1,0 +1,19 @@
+[[req_class_gsmljson-lite]]
+
+
+[requirements_class]
+.Requirements Class 'Abstract GeoSciML Lite JSON'
+====
+[%metadata]
+identifier:: {spec-part3-uri}/req/gsmljson-lite
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-lite
+inherit:: /req/gsmljson-core
+inherit:: GML Simple Feature OGC 10-100r3 SF-0
+requirement:: /req/gsmljson-lite/SF-0
+recommendation:: /rec/gsmljson-lite/SF-0-simpletype
+recommendation:: /rec/gsmljson-lite/user-json
+recommendation:: /rec/gsmljson-lite/user-ns
+====
+
+

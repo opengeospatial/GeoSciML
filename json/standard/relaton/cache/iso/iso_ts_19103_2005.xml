@@ -1,0 +1,71 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-09</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Conceptual schema language</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Geographic information - Conceptual schema language</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Information géographique</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Langage de schéma conceptuel</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Information géographique - Langage de schéma conceptuel</title>
+  <uri type="src">https://www.iso.org/standard/37800.html</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/03/78/37800.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO/TS 19103:2005</docidentifier>
+  <docidentifier type="iso-reference">ISO/TS 19103:2005(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:ts:19103:stage-95.99</docidentifier>
+  <docnumber>19103</docnumber>
+  <date type="published">
+    <on>2005-07</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>1</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">ISO TS 19103:2005 provides rules and guidelines for the use of a conceptual schema language within the ISO geographic information standards. The chosen conceptual schema language is the Unified Modeling Language (UML).
+ISO TS 19103:2005 provides a profile of UML for use with geographic information. In addition, it provides guidelines on how UML should be used to create standardized geographic information and service models.</abstract>
+  <abstract format="text/plain" language="fr" script="Latn">ISO TS 19103:2005 provides rules and guidelines for the use of a conceptual schema language within the ISO geographic information standards. The chosen conceptual schema language is the Unified Modeling Language (UML).
+ISO TS 19103:2005 provides a profile of UML for use with geographic information. In addition, it provides guidelines on how UML should be used to create standardized geographic information and service models.</abstract>
+  <status>
+    <stage>95</stage>
+    <substage>99</substage>
+  </status>
+  <copyright>
+    <from>2005</from>
+    <owner>
+      <organization>
+        <name>ISO/TS</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="updates">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 19103:2015</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 19103:2015</docidentifier>
+      <date type="circulated">
+        <on>2015-12-02</on>
+      </date>
+    </bibitem>
+  </relation>
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.0.3">
+    <doctype>technical-specification</doctype>
+    <editorialgroup>
+      <technical-committee number="211" type="TC" identifier="ISO/TC 211">Geographic information/Geomatics</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.70</code>
+      <text>IT applications in science</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>37800</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

@@ -839,7 +839,7 @@ ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacem
 ===== Mapping
 
 .Mapping of ShearDisplacementStructureView properties to GeoSciML
-[width="100%",cols="^21%,^79%",options="header",align="left"]
+[width="100%",cols=",",options="header",align="left"]
 |===
 |*Property* |*Mapping from MappedFeature*
 |*identifier* |identifier

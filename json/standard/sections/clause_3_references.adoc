@@ -2,8 +2,6 @@
 == References
 
 
-* [[[OGC06-121r9,OGC 06-121r9]]], _OGC® Web Services Common Standard (2010)_
-
 * [[[ISO19103:2005,ISO/TS 19103:2005]]], _Conceptual Schema Language (2005)_
 
 * [[[ISO19107:2003,ISO 19107:2003]]], _Spatial Schema (2003)_
@@ -14,8 +12,6 @@
 
 * [[[ISO/TS19101-2:2008,ISO/TS 19101-2:2008]]],
 
-* [[[ISO19136:2007,ISO 19136:2007]]],
-
 * [[[ISO19156:2011,ISO 19156:2011]]], 
 
 * [[[ISO19111:2007,ISO 19111:2007]]],
@@ -24,30 +20,10 @@
 
 * [[[ISO19101:2002,ISO 19101:2002]]],
 
-* [[[OGC07-036,OGC 07-036]]],
-
 * [[[OGC10-025r1,OGC 10-025r1]]],
-
-* [[[OGC08-094r1,OGC 08-094r1]]],
 
 * [[[RFC3986,RFC 3986]]],
 
-* [[[ISOIEC19757-3,ISO/IEC 19757-3]]],
-
-* [[[OGC08-131r3,OGC 08-131r3]]],
-
 * [[[OMGUML,OMGUML]]], OMG: Unified Modeling Language (UML). Version 2.3
 
-* [[[UCUM201,UCUM]]], Schadow, G. and McDonald, C. J.: Unified Code for Units of Measure (UCUM) - Version 2.0.1
-
-* [[[MurphySalvador1994]]], Murphy, M. A. and Salvador, A.: _International Stratigraphic Guide – an abridged version accessed online at URL (http://www.stratigraphy.org/index.php/ics-stratigraphicguide (1994)_
-
-* [[[W3CXML, XML]]], W3C: _Extensible Markup Language (XML) - Version 1.0 (Fourth Edition) (2006)_
-
-* [[[W3CXSD, XSD]]], W3C: _XML Schema - Version 1.0 (Second Edition) (2004)_
-
 * [[[INSPIRE]]], INSPIRE Thematic Woring Group Geology: _INSPIRE Data Specification for the spatial data theme Geology Version 3.0. European Commission Joint Research Centre (2013)_
-
-* [[[NAGMDM_SC]]], North American Geologic Map Data Model Steering Committee: _NADM Conceptual Model 1.0—A conceptual model for geologic map information. U.S. Geological Survey Open-File Report 2004-1334, 58 p., accessed online at URL http://pubs.usgs.gov/of/2004/1334[[.underline]#http://pubs.usgs.gov/of/2004/1334#] (2004)_
-
-* [[[NAGMDM_Science]]],North American Geologic Map Data Model science language products _(http://ngmdb.usgs.gov/www-nadm/sltt/products.html)_

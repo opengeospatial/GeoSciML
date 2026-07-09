@@ -2,154 +2,51 @@
 
 
 
-=== classifier
+[[feature-definition]]
+=== *feature*
 
-A classifier is an abstract UML metaclass which describes (classifies) a set of instances having common features (not to be confused with the “Feature” stereotype from the OGC Feature Model). A feature declares a structural or behavioral characteristic of instances of classifiers. (http://www.uml-diagrams.org/classifier.html). Classes, Interfaces, Association, and Types are kinds of classifiers.
+include::./glossaries/iso_tc211/168_feature.adoc[]
 
+[[feature-collection-definition]]
+=== *feature collection*
 
-=== domain feature
+include::./glossaries/iso_tc211/2500_feature_collection.adoc[]
 
-Feature of a type defined within a particular application domain.
 
-[.source]
-<<ISO19156:2011>>
+feature schema
+schema that describes the properties of a feature type
 
-NOTE: This may be contrasted with observations and sampling features, which are features of types defined for cross-domain purposes.
+feature type
+class of features having common characteristics [ISO 19156:2023]
 
+JSON document
+an information resource (series of octets) described by the "application/json" media type [JSON Schema 2020-12]
 
-=== element ++<++XML++>++
+Note
+The terms "JSON document," "JSON text," and "JSON value" are interchangeable.
+JSON object
+an unordered set of name/value pairs mapping the name to a JSON value [JSON Schema 2020-12, modified]
 
-Basic information item of an XML document containing child elements, attributes and character data.
+JSON-FG document
+a JSON document that contains a JSON-FG root object
 
+JSON-FG feature
+a JSON object that validates against the JSON-FG feature schema
 
-[.source]
-<<OGC07-036>>
+JSON-FG feature collection
+a JSON object that validates against the JSON-FG feature collection schema
 
-=== feature
+JSON-FG geometry
+a JSON object that validates against the JSON-FG geometry schema
 
-Abstraction of a real-world phenomenon.
+JSON-FG object
+a JSON object that is either a JSON-FG feature, a JSON-FG feature collection, or a JSON-FG geometry
 
-[.source]
-<<ISO19101:2002>>
+JSON-FG root object
+a JSON-FG object that is not a direct children of another JSON-FG object
 
+<JSON> key
+the name of a member
 
-=== GML application schema
-
-Application schema written in XML Schema in accordance with the rules specified in OGC GML 3.3
-
-[.source]
-<<OGC07-036>>
-
-
-=== GML document
-
-XML document with a root element that is one of the elements AbstractFeature, Dictionary or TopoComplex, specified in the GML schema or any element of a substitution group of any of these elements.
-
-
-[.source]
-<<OGC07-036>>
-
-
-=== GML schema
-
-Schema components in the XML namespace ― as specified in OGC GML 3.3
-
-[.source]
-<<OGC07-036>>
-
-
-
-=== measurement
-
-Set of operations having the objective of determining the value of a quantity.
-
-[.source]
-<<ISO/TS19101-2:2008>>
-
-
-
-=== observation
-
-Act of observing a property.
-
-[.source]
-<<ISO 19156:2011>>
-
-NOTE: The goal of an observation may be to measure or otherwise determine the value of a property.
-
-
-
-=== observation procedure
-
-Method, algorithm or instrument, or system which may be used in making an observation.
-
-[.source]
-<<ISO19156:2011>>
-
-
-
-
-=== observation result
-
-Estimate of the value of a property determined through a known procedure.
-
-[.source]
-<<ISO19156:2011>>
-
-
-
-=== property ++<++General Feature Model++>++
-
-Facet or attribute of an object referenced by a name.
-
-
-
-[example]
-Abby’s car has the color red, where “color red” is a property of the car instance.
-
-
-
-=== sampled feature
-
-The real-world domain feature of interest, such as a geological unit or structure which is observed.
-
-[.source]
-<<ISO19156:2011>>
-
-
-
-=== sampling feature
-
-Feature, such as a station, outcrop, borehole, section or specimen, which is involved in making observations of a domain feature.
-
-[.source]
-<<ISO19156:2011>>
-
-NOTE: A sampling feature is purely an artefact of the observational strategy, and has no significance independent of the observational campaign.
-
-
-
-
-=== schema ++<++XML Schema++>++
-
-XML document containing a collection of schema component definitions and declarations within the same target namespace.
-
-Example Schema components of W3C XML Schema are types, elements, attributes, groups, etc.
-
-
-[.source]
-<<OGC07-036>>
-
-NOTE: The W3C XML Schema provides an XML interchange format for schema information. A single schema document provides descriptions of components associated with a single XML namespace, but several documents may describe components in the same schema, i.e. the same target namespace.
-
-
-
-
-
-
-
-
-
-
-
-
+<JSON> member
+a name/value pair in a JSON object

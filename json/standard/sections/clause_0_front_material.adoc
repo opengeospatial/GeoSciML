@@ -52,4 +52,13 @@ All questions regarding this submission should be directed to the editor or the 
 
 Additional contributors to this Standard include the following:
 
-Individual name(s), Organization
+|===
+|*Name* |*Affiliation*
+| Johannes Echterhoff | Interactive Instruments
+| Clemens Portele | Interactive Instruments
+| Add Name |
+| Add Name |
+| Add Name |
+| Add Name |
+|===
+

@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /rec/gsmljson-core/identifier-uri
-part:: Feature identifiers (unique name) provided in gml:identifier and @codeSpace = “http://www.ietf.org/rfc/rfc2616” SHOULD be URI of resource using Linked Open Data principles.
+part:: Feature identifiers (unique name) provided in the 'id' property of a feature SHOULD be URI of resource using Linked Open Data principles.
 ====

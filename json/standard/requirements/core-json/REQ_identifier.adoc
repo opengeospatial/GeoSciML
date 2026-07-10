@@ -1,0 +1,8 @@
+[[req_gsmljson_core_identifier]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-core/identifier
+part:: The `id` member of a GeoJSON feature shall be used to encode the identifier of a GeoSciML feature.
+====

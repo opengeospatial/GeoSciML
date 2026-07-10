@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /req/gsmljson-core/codelist
-part:: Vocabulary term SHALL be encoded with HTTP URI in xlink:href and provide a human readable description in xlink:title.
+part:: Vocabulary term SHALL be encoded with an HTTP/HTTPS URI that is resolvable to the definition of that term.
 ====

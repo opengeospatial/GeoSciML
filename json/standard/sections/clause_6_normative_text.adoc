@@ -58,51 +58,47 @@ include::/requirements/core-json/REQ_json.adoc[]
 
 ==== CodeList
 
-Open code lists (see 8.2.7) are encoded as gml:ReferenceType which is a sequence of gml:OwnershipAttributeGroup and gml:AssociationAttributeGroup, providing a series of xml attributes from W3C XLINK (http://www.w3.org/TR/xlink11/[http://www.w3.org/TR/xlink11/]).  A vocabulary term reference has mandatory xlink:href and xlink:title attributes.
+Open code lists (see 8.2.7) are encoded simply as an HTTP URI (or HTTPS URI). See the following example that references the 'mudstone' term from a code list.
 
 [%unnumbered%]
-[source,xml]
-----
-<gsmlb:lithology link:href="http://resource.geosciml.org/ classifier/cgi/lithology/granite" xlink:title="granite"/>
+[source,json]
 ----
 
-The xlink:href contains an absolute HTTP URI that should resolve to a resource representation (often a SKOS document).  The resource can have multiple representations and it is not guaranteed that an XML parsable document can be obtained from the vocabulary service.
+        "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-mudstone",
+          "geometry": null,
+          "properties": {
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+          }
+        }
+
+----
+
+The URI should resolve to a resource representation (often a SKOS document in Turtle or JSON-LD).  The resource can have multiple representations and it is not guaranteed that a JSON-LD parsable document can be obtained from the vocabulary service.
 
 
 include::/requirements/core-json/REQ_codelist.adoc[]
 
 ==== Identifiers
 
-The GeoSciML community has developed a best practice of using http://www.ietf.org/rfc/rfc2616[http://www.ietf.org/rfc/rfc2616#] as a codespace for string with authority to designate string that are resolvable HTTP URI.
+To enable consistent handling of identifiers in GeoJSON and JSON-FG applications, the `id` member of a GeoJSON feature is used to encode the identifier of a GeoSciML feature.
 
-gml:identifier’s flagged with the specific codeSpace “http://www.ietf.org/rfc/rfc2616” should be resolvable HTTP URI that return an instance of itself.
-
+include::/requirements/core-json/REQ_identifier.adoc[]
 
 include::/recommendations/core-json/REC_identifier_uri.adoc[]
 
 [%unnumbered%]
-[source,xml]
+[source,json]
 ----
-<gml:identifier 
-    codeSpace="http://www.ietf.org/rfc/rfc2616/">
-       http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947</gml:identifier>
-----
-
-
-Resolving http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947[http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947] shall return:
-
-
-[%unnumbered%]
-[source,xml]
-----
-<gsmlb:GeologicUnit gml:id=“G1”>
-(…)
-<gml:identifier codeSpace="  
-    http://www.ietf.org/rfc/rfc2616/">
-       http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947</gml:identifier>
-(…)
-</gsmlb:GeologicUnit>
-
+{
+  "type": "Feature",
+  "id": "http://example.org/feature/asc/geologicunit/stratno/25947",
+  "featureType": "GeologicUnit",
+  "geometry": null,
+  ...    
+}
 ----
 
 
@@ -250,7 +246,7 @@ include::/requirements/requirements_class_gsmljson-lite.adoc[]
 
 
 
-The abstract GeoSciML Lite encoding sets general encoding rules for XML targets, regardless of version of GML.
+The abstract GeoSciML Lite encoding sets general encoding rules for JSON targets, regardless of version of JSON-FG.
 
 ==== Simple Feature
 

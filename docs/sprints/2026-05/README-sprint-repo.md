@@ -4,13 +4,13 @@ This repository is for the development of a JSON encoding for the Geoscience Mar
 
 The repository was initially created in support of the May 2026 OGC Builder Days Code Sprint, but will continue to be used for GeoSciML activities in future code sprints.
 
-## Candidate Specifications
+## Candidate Standard
 
-[Part 1](https://opengeospatial.github.io/geosciml-json-code-sprint/part1/)
+[Draft OGC Geoscience Markup Language (GeoSciML) - Part 1: Core](https://opengeospatial.github.io/geosciml-json-code-sprint/part1/)
 
-[Part 2](https://opengeospatial.github.io/geosciml-json-code-sprint/part2/)
+[Draft OGC Geoscience Markup Language (GeoSciML) - Part 2: XML Encoding](https://opengeospatial.github.io/geosciml-json-code-sprint/part2/)
 
-[Part 3](https://opengeospatial.github.io/geosciml-json-code-sprint/part3/)
+[DRAFT OGC Geoscience Markup Language (GeoSciML) - Part 3: JSON Encoding](https://opengeospatial.github.io/geosciml-json-code-sprint/part3/)
 
 ## Building the specification documents
 

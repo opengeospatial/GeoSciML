@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /req/gsmlxsd-extension/xsd
-part:: An XML instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/ geoSciMLExtension.xsd.
+part:: An XML instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd.
 ====

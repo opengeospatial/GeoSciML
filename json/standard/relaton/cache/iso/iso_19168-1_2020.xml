@@ -1,0 +1,75 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-09</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Geospatial API for features</title>
+  <title type="title-part" format="text/plain" language="en" script="Latn">Part 1: Core</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Geographic information - Geospatial API for features - Part 1: Core</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Information géographique</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">API géospatiale pour les entités</title>
+  <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 1: Profil minimal</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Information géographique - API géospatiale pour les entités - Partie 1: Profil minimal</title>
+  <uri type="src">https://www.iso.org/standard/32586.html</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/03/25/32586.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO 19168-1:2020</docidentifier>
+  <docidentifier type="iso-reference">ISO 19168-1:2020(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:19168:-1:stage-95.99</docidentifier>
+  <docnumber>19168</docnumber>
+  <date type="published">
+    <on>2020-09</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>1</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">This document specifies the behaviour of Web APIs that provide access to features in a dataset in a manner independent of the underlying data store. This document defines discovery and query operations.
+Discovery operations enable clients to interrogate the API, including the API definition and metadata about the feature collections provided by the API, to determine the capabilities of the API and retrieve information about available distributions of the dataset.
+Query operations enable clients to retrieve features from the underlying data store based upon simple selection criteria, defined by the client.</abstract>
+  <abstract format="text/plain" language="fr" script="Latn">Le présent document spécifie le comportement des API Web donnant accès aux entités d'un jeu de données indépendamment du système sous-jacent de stockage de données. Le présent document définit les opérations de découverte et d'interrogation.
+Les opérations de découverte permettent aux clients d'interroger l'API, y compris la définition et les métadonnées de l'API concernant les collections d'entités fournies par l'API, pour déterminer les capacités de l'API et extraire des informations relatives aux distributions disponibles de jeux de données.
+Les opérations d'interrogation permettent aux clients d'extraire des entités du système sous-jacent de stockage de données sur la base de critères de sélection simples définis par le client.</abstract>
+  <status>
+    <stage>95</stage>
+    <substage>99</substage>
+  </status>
+  <copyright>
+    <from>2020</from>
+    <owner>
+      <organization>
+        <name>ISO</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="updates">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 19168-1:2025</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 19168-1:2025</docidentifier>
+      <date type="circulated">
+        <on>2025-01-10</on>
+      </date>
+    </bibitem>
+  </relation>
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="211" type="TC" identifier="ISO/TC 211">Geographic information/Geomatics</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.70</code>
+      <text>IT applications in science</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>32586</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

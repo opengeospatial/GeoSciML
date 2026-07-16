@@ -1,0 +1,8 @@
+[[req_gsmljson_core_json]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-core/json
+part:: An JSON instance document SHALL validate against the JSON Schema files provided in this Standard.
+====

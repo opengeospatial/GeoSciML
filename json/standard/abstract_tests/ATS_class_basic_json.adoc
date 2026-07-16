@@ -1,0 +1,13 @@
+[[conf_gsmljson-basic,/conf/gsmljson-basic]]
+.GeoSciML Basic JSON Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-basic  
+target:: /req/gsmljson-basic 
+
+inherit:: /conf/gsmljson-core
+
+abstract-test:: /conf/gsmljson-basic/json
+
+====

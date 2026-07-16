@@ -1,0 +1,49 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-09</fetched>
+  <title type="title-main" format="text/plain" language="en" script="Latn">OGC Features and Geometries JSON</title>
+  <title type="title-part" format="text/plain" language="en" script="Latn">Part 1: Core</title>
+  <title type="main" format="text/plain" language="en" script="Latn">OGC Features and Geometries JSON - Part 1: Core</title>
+  <uri type="src">http://www.opengis.net/doc/IS/json-fg-1/1.0</uri>
+  <uri type="html">https://docs.ogc.org/is/21-045r1/21-045r1.html</uri>
+  <docidentifier type="OGC" primary="true">21-045r1</docidentifier>
+  <date type="published">
+    <on>2026-04-30</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Clemens Portele</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Panagiotis (Peter) A. Vretanos</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Open Geospatial Consortium</name>
+    </organization>
+  </contributor>
+  <edition>1</edition>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">GeoJSON is a very popular exchange format for feature data. GeoJSON is widely supported, including in most implementations of the OGC API - Features - Part 1: Core Standard. However, GeoJSON has intentional restrictions that prevent or limit its use in certain geospatial application contexts. For example, GeoJSON is restricted to using only WGS 84 coordinates in Longitude Latitude axis order, supports only the original Simple Features geometry types, and has no concept of classifying features according to their type.
+
+The OGC Features and Geometries JSON (JSON-FG) Standard specifies GeoJSON extensions that provide standard ways to support these and other additional requirements. The JSON-FG Standardization goal is to focus on capabilities that may require some geospatial expertise, but that are useful in many applications. Edge cases are considered out-of-scope of JSON-FG.
+
+Since JSON-FG specifies extensions to the GeoJSON RFC that still conform to the GeoJSON rules, valid JSON-FG features or feature collections are also valid GeoJSON features or feature collections.</abstract>
+  <ext schema-version="v1.0.1">
+    <doctype>standard</doctype>
+    <subdoctype>implementation</subdoctype>
+    <editorialgroup>
+      <committee>technical</committee>
+    </editorialgroup>
+  </ext>
+</bibdata>

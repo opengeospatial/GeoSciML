@@ -1,17 +1,81 @@
 == Terms and definitions
 
-This document uses the terms defined in OGC Policy Directive 49, which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word "`shall`" (not "`must`") is the verb form used to indicate a requirement to be strictly followed to conform to this standard.
 
-For the purposes of this document, the following additional terms and definitions apply.
 
-=== example term
+[[feature-definition]]
 
-term used for exemplary purposes
+include::./glossaries/iso_tc211/168_feature.adoc[]
+
+[[feature-collection-definition]]
+
+include::./glossaries/iso_tc211/2500_feature_collection.adoc[]
+
+
+
+=== JSON document
+
+an information resource (series of octets) described by the "application/json" media type [JSON Schema 2020-12]
+
+NOTE: The terms "JSON document," "JSON text," and "JSON value" are interchangeable.
 
 [.source]
-<<ISO19101-1>>
+<<OGC21-045r1>>
 
-NOTE: An example note.
 
-[example]
-Here's an example of an example term.
+=== JSON object
+
+an unordered set of name/value pairs mapping the name to a JSON value [JSON Schema 2020-12, modified]
+
+=== JSON-FG document
+
+a JSON document that contains a JSON-FG root object
+
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG feature
+
+a JSON object that validates against the JSON-FG feature schema
+
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG feature collection
+
+a JSON object that validates against the JSON-FG feature collection schema
+
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG geometry
+
+a JSON object that validates against the JSON-FG geometry schema
+
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG object
+
+a JSON object that is either a JSON-FG feature, a JSON-FG feature collection, or a JSON-FG geometry
+
+[.source]
+<<OGC21-045r1>>
+
+=== JSON-FG root object
+
+a JSON-FG object that is not a direct children of another JSON-FG object
+
+[.source]
+<<OGC21-045r1>>
+
+=== <JSON> key
+the name of a member
+
+[.source]
+<<OGC21-045r1>>
+
+=== <JSON> member
+a name/value pair in a JSON object
+
+[.source]
+<<OGC21-045r1>>

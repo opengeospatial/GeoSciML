@@ -1,0 +1,8 @@
+[[req_gsmljson_lite_json]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-lite/json
+part:: A JSON instance document shall validate with schema located at {json-schema-repo}/geoscimlLite.json
+====

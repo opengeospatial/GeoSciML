@@ -16,11 +16,11 @@ Attention is drawn to the possibility that some of the elements of this document
 [abstract]
 == Abstract
 
-<Insert Abstract Text here>
+GeoSciML (Geoscience Markup Language) is a Standard for representing geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases. The Standard is composed of multiple parts. Part 1 describes a logical model. Part 3 (this document) describes encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses. The encoding rules define an application of Features and Geometry JSON, also known as JSON-FG. 
 
 == Preface
 
-<Insert Preface Text here>
+The primary goal of this specification is to capture the schema, and encoding syntax of key elements described and portrayed in geological maps and databases, in order to enable information systems to interoperate with such data.
 
 == Security considerations
 
@@ -52,4 +52,17 @@ All questions regarding this submission should be directed to the editor or the 
 
 Additional contributors to this Standard include the following:
 
-Individual name(s), Organization
+|===
+|*Name* |*Affiliation*
+| Johannes Echterhoff | Interactive Instruments
+| Clemens Portele | Interactive Instruments
+| Edd Lewis  | British Geological Survey
+| Mark Rattenbury | Earth Sciences New Zealand
+| Add Name |
+| Add Name |
+| Add Name |
+| Add Name |
+| Add Name |
+| Add Name |
+|===
+

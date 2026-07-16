@@ -1,0 +1,262 @@
+== JSON Encoding Requirement classes (Normative)
+
+JSON Schema files were derived from the UML model following the https://docs.ogc.org/bp/24-017r1.html[OGC Best Practice for UML to JSON Encoding Rules (OGC 24-017r1)].
+
+NOTE: The SWG should replace this with a diagram from Enterprise Architect
+
+.JSON Encoding requirements classes dependencies (external dependencies not shown)
+[plantuml]
+....
+@startuml
+package "Core JSON" {
+}
+package "Portrayal" {
+}
+package "Laboratory and Specimen" {
+}
+package "GeologicAge" {
+}
+package "Basic" {
+}
+package "Borehole" {
+}
+package "Extension" {
+}
+
+
+[Portrayal] -[dashed]-> [Core JSON] : depends on
+[Laboratory and Specimen] -[dashed]-> [Core JSON] : depends on
+[GeologicAge] -[dashed]-> [Core JSON] : depends on
+[Basic] -[dashed]-> [Core JSON] : depends on
+[Borehole] -[dashed]-> [Core JSON] : depends on
+[Extension] -[dashed]-> [GeologicAge] : depends on
+[Extension] -[dashed]-> [Basic] : depends on
+
+@enduml
+....
+
+
+
+
+
+=== GeoSciML Core JSON Abstract Requirements Class (Normative)
+
+
+include::/requirements/requirements_class_gsmljson-core.adoc[]
+
+This requirements class is shared by all JSON GeoSciML instances.
+
+
+==== JSON document validation
+
+A JSON instance shall validate to JSON encoding rules provided by this specification for each of the JSON requirements classes.
+
+
+include::/requirements/core-json/REQ_json.adoc[]
+ 
+
+
+==== CodeList
+
+Open code lists (see 8.2.7) are encoded simply as an HTTP URI (or HTTPS URI). See the following example that references the 'mudstone' term from a code list.
+
+[%unnumbered%]
+[source,json]
+----
+
+        "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-mudstone",
+          "geometry": null,
+          "properties": {
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+          }
+        }
+
+----
+
+The URI should resolve to a resource representation (often a SKOS document in Turtle or JSON-LD).  The resource can have multiple representations and it is not guaranteed that a JSON-LD parsable document can be obtained from the vocabulary service.
+
+
+include::/requirements/core-json/REQ_codelist.adoc[]
+
+==== Identifiers
+
+To enable consistent handling of identifiers in GeoJSON and JSON-FG applications, the `id` member of a GeoJSON feature is used to encode the identifier of a GeoSciML feature.
+
+include::/requirements/core-json/REQ_identifier.adoc[]
+
+include::/recommendations/core-json/REC_identifier_uri.adoc[]
+
+[%unnumbered%]
+[source,json]
+----
+{
+  "type": "Feature",
+  "id": "http://example.org/feature/asc/geologicunit/stratno/25947",
+  "featureType": "GeologicUnit",
+  "geometry": null,
+  ...    
+}
+----
+
+
+==== Date encoding
+
+The date-time values shall conform to ISO 8601 standards.  Although this is already supported by JSON-FG, this format should also be used in any string that should contain a date, or date and time.
+
+
+include::/recommendations/core-json/REC_iso8601_time.adoc[]
+
+Note that this precludes the use of time-coordinate systems such as UNIX time. This is specified in order to be maximally consistent with TimeSeriesML requirements.
+
+The time zone shall be included in the time element.
+
+
+include::/requirements/core-json/REQ_time_zone.adoc[]
+
+Greenwich Mean Time (GMT or Zulu)
+
+
+[%unnumbered%]
+[source,json]
+----
+"properties": {
+    "time": ["2025-07-10T08:00:00Z", "2025-07-10T18:00:00Z"],
+}
+----
+
+Time Zone (example is Newfoundland time zone -3:30)
+
+[%unnumbered%]
+[source,json]
+----
+"properties": {
+    "time": ["2026-07-10T08:00:00-03:30", "2026-07-10T18:00:00-03:30"],
+}
+----
+
+
+=== GeoSciML Basic JSON Requirements Class (Normative)
+
+
+include::/requirements/requirements_class_gsmljson-basic.adoc[]
+
+All the elements from the basic package must be schema valid according to the JSON schema provided at {json-schema-repo}/geoscimlBasic.json
+
+
+include::/requirements/basic-json/REQ_basic_json.adoc[]
+
+
+==== relatedFeature
+
+In GeoSciML Basic, relatedFeature is byReference only.  AbstractFeatureRelation subtypes are materialized in the Extension package.
+
+===  GeoSciML Extension JSON Requirements Class (Normative)
+
+include::/requirements/requirements_class_gsmljson-extension.adoc[]
+
+All the elements from the GeoSciML Extension package must be schema valid according to the JSON schema provided at {json-schema-repo}/geoscimlExtension.json
+
+
+include::/requirements/extension-json/REQ_extension_json.adoc[]
+
+
+
+=== GeoSciML GeologicTime JSON Requirements Class (Normative)
+
+include::/requirements/requirements_class_gsmljson-geologictime.adoc[]
+
+
+
+All the elements from the GeoSciML Geologic Time package must be schema valid according to the JSON schema provided at {json-schema-repo}/geologicTime.json
+
+
+include::/requirements/geologictime-json/REQ_geologictime_json.adoc[]
+
+
+
+=== GeoSciML Borehole JSON Requirements Class (Normative)
+
+include::/requirements/requirements_class_gsmljson-borehole.adoc[]
+
+All the elements from the Borehole package must be schema valid according to the JSON schema provided at {json-schema-repo}/borehole.json
+
+
+include::/requirements/borehole-json/REQ_borehole_json.adoc[]
+
+
+
+=== GeoSciML LaboratoryAnalysis-Specimen JSON Requirements Class (Normative)
+
+include::/requirements/requirements_class_gsmljson-lab.adoc[]
+
+
+All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the JSON schema provided at {json-schema-repo}/laboratoryAnalysisSpecimen.json
+
+
+
+include::/requirements/lab-json/REQ_lab_json.adoc[]
+
+
+
+=== Abstract GeoSciML Lite JSON Requirements Class (Normative)
+
+include::/requirements/requirements_class_gsmljson-lite.adoc[]
+
+
+
+The abstract GeoSciML Lite encoding sets general encoding rules for JSON targets, regardless of version of JSON-FG.
+
+==== Simple Feature
+
+GeoSciML Lite schemas are meant to deliver simple content, consistent with simple scenarios described in GML Simple Feature Level 0 (OGC 10-100r3).  User defined properties must respect the same constrains as defined in SF-0 specification.
+
+The GML Simple Features profile defines 3 compliance levels summarized in <<tbl_sf_compliance_levels>>.
+
+//Table 17 in the original
+
+[[tbl_sf_compliance_levels]]
+.Reproduction of Table 1 of 10-100r3 (Clause 2.1)
+[width="100%",cols="^36%,^18%,^23%,^23%",options="header",]
+|===
+|* * |*Level SF-0* |*Level SF-1* |*Level SF-2*
+a|
+restricted set of built-in nonspatial
+
+property types
+
+|Yes^1^ |Yes^1^ |No
+|Restricted set of property-types |Yes^2^ |Yes^2^ |Yes^2^
+|user-defined property types |No |Yes |Yes
+|use of nillable and xsi:nil |No |Yes |Yes
+|cardinality of properties |0..1 |0..unbounded |0..unbounded
+a|
+non-spatial property values
+
+references
+
+|Yes^3^ |Yes^3^ |Yes
+a|
+spatial property values
+
+references
+
+|Yes^3^ |Yes^3^ |Yes
+|===
+
+Notes:
+
+[arabic]
+. string, integer, measurement, date, real, binary, boolean, URI
+. Point, Curve (LineString), Surface (Polygon), Geometry, MultiPoint, MultiCurve (MultiLineString), MultiSurface (MultiPolygon), MultiGeometry (GeometryCollection)
+. By reference encoding uses link objects through support for the "rel-as-link" profile from OGC API - Features - Part 5 / OGC API - Common - Part 3: Schemas.
+
+All the elements from the GeoSciML Lite package must be schema valid according to the JSON schema provided at {json-schema-repo}/geoscimlLite.json
+
+
+
+include::/requirements/lite-json/REQ_lite_json.adoc[]
+
+

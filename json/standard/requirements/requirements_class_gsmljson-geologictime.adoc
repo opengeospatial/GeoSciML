@@ -1,0 +1,15 @@
+[[req_class_gsmljson-geologictime]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML GeologicTime JSON'
+====
+[%metadata]
+identifier:: {spec-part3-uri}/req/gsmljson-geologictime
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-geologictime
+inherit:: /req/gsmljson-core
+requirement:: /req/gsmljson-geologictime/json
+====
+
+

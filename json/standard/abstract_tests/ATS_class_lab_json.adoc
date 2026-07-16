@@ -1,0 +1,15 @@
+[[conf_gsmljson-lab,/conf/gsmljson-lab]]
+.GeoSciML LaboratoryAnalysis-Specimen JSON Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-lab  
+target:: /req/gsmljson-lab 
+
+inherit:: /conf/gsmljson-core 
+
+inherit:: OGC 10-025r1  OMXML 
+
+abstract-test:: /conf/gsmljson-lab/json
+
+====

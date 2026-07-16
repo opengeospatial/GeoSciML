@@ -1,0 +1,25 @@
+[[req_class_gsmljson_core]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML Core JSON'
+====
+[%metadata]
+identifier:: {spec-part3-uri}/req/gsmljson-core
+subject:: Data instance
+inherit:: Web API
+inherit:: {spec-part1-uri}/req/gsml-core
+inherit:: JSON Schema
+inherit:: ISO 19118:2011 Geographic information — Encoding
+inherit:: OGC Features and Geometries JSON - Part 1: Core v1.0.0
+inherit:: OGC Abstract Specification Topic 20: Observations, measurements and samples v3.0.0
+inherit:: OGC SWE Common Data Model Encoding Standard v3.0.0, Clause 9
+requirement:: /req/gsmljson-core/json
+requirement:: /req/gsmljson-core/codelist
+requirement:: /req/gsmljson-core/identifier
+requirement:: /req/gsmljson-core/time-zone
+recommendation:: /rec/gsmljson-core/identifier-uri
+recommendation:: /rec/gsmljson-core/iso8601-time
+====
+
+

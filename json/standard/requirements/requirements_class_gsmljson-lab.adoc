@@ -1,0 +1,15 @@
+[[req_class_gsmljson_lab]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML LaboratoryAnalysis-Specimen JSON'
+====
+[%metadata]
+identifier:: {spec-part3-uri}/req/gsmljson-lab
+subject:: Data instance
+inherit:: /req/gsml-lab
+inherit:: /req/gsmljson-core
+requirement:: /req/gsmljson-lab/json
+====
+
+

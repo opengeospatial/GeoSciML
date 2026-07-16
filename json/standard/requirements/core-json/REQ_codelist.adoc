@@ -1,0 +1,8 @@
+[[req_gsmljson_core_codelist]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-core/codelist
+part:: Vocabulary term SHALL be encoded with an HTTP/HTTPS URI that is resolvable to the definition of that term.
+====

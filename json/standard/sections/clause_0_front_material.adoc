@@ -56,6 +56,10 @@ Additional contributors to this Standard include the following:
 |*Name* |*Affiliation*
 | Johannes Echterhoff | Interactive Instruments
 | Clemens Portele | Interactive Instruments
+| Edd Lewis  | British Geological Survey
+| Mark Rattenbury | Earth Sciences New Zealand
+| Add Name |
+| Add Name |
 | Add Name |
 | Add Name |
 | Add Name |

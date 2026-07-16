@@ -102,16 +102,9 @@ include::/recommendations/core-json/REC_identifier_uri.adoc[]
 ----
 
 
-==== Nillables or Voidables
-
-A nillable property (identified as “voidable” in the UML model) is a property than can document the reason that a value is not provided.  There are two ways to identify a nil value.
-
-* Using XSD xsi:nil=”true” and nilReason.  Where available, this encoding method should be used to indicate nilled property values.
-* Using a HTTP URI identifier defined by a community as representing a null value.  OGC uses http://www.opengis.net/def/nil/OGC/0/%7bnilReason%7d[http://www.opengis.net/def/nil/OGC/0/++{++nilReason}] (OGC 12-110).
-
 ==== Date encoding
 
-The date-time values shall conform to ISO 8601 standards.  Although this is already a GML 3.2 encoding rule (clause 14.2.2.7), this format should also be used in any string that should contain a date, or date and time.
+The date-time values shall conform to ISO 8601 standards.  Although this is already supported by JSON-FG, this format should also be used in any string that should contain a date, or date and time.
 
 
 include::/recommendations/core-json/REC_iso8601_time.adoc[]
@@ -127,26 +120,22 @@ Greenwich Mean Time (GMT or Zulu)
 
 
 [%unnumbered%]
-[source,xml]
----
-<om:phenomenonTime>
-  <gml:TimeInstant gml:id="ti.1">
-         <gml:timePosition>1981-09-12T00:00:00Z</gml:timePosition>
-  </gml:TimeInstant>
-</om:phenomenonTime>
----
+[source,json]
+----
+"properties": {
+    "time": ["2025-07-10T08:00:00Z", "2025-07-10T18:00:00Z"],
+}
+----
 
 Time Zone (example is Newfoundland time zone -3:30)
 
 [%unnumbered%]
-[source,xml]
----
-<om:phenomenonTime>
-  <gml:TimeInstant gml:id="ti.2">
-         <gml:timePosition>1981-09-12T00:00:00-03:30</gml:timePosition>
-  </gml:TimeInstant>
-</om:phenomenonTime>
----
+[source,json]
+----
+"properties": {
+    "time": ["2026-07-10T08:00:00-03:30", "2026-07-10T18:00:00-03:30"],
+}
+----
 
 
 === GeoSciML Basic JSON Requirements Class (Normative)
@@ -154,49 +143,25 @@ Time Zone (example is Newfoundland time zone -3:30)
 
 include::/requirements/requirements_class_gsmljson-basic.adoc[]
 
-All the elements from the basic package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd[http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd]
+All the elements from the basic package must be schema valid according to the JSON schema provided at {json-schema-repo}/geoscimlBasic.json
 
 
 include::/requirements/basic-json/REQ_basic_json.adoc[]
 
-All the elements from basic package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch[http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch].
-
-
-Some properties links to stub property blocks (see 5.1) whose values are empty abstract classes in the GeoSciML Basic package.  Since abstract description classes are DataType, the property is inline only and therefore an empty property is not schema valid.
-
- 
-
-This instance is *not* XSD valid:
-
-[%unnumbered%]
-[source,xml]
-----
-<?xml version=“1.0” encoding=“UTF-8”?>
-<GeologicUnit xmlns="http://www.opengis.net/gsml/4.1/GeoSciML-Basic"
-     xmlns:gml="http://www.opengis.net/gml/3.2" gml:id="x1"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.geosciml.org/GeoSciML-Basic/4.1
-     http://schemas.geosciml.org/geosciml/4.1/geoSciMLBasic.xsd">
-…
-         <gbMaterialDescription></gbMaterialDescription>
-      …
-</GeologicUnit>
-----
 
 ==== relatedFeature
 
-In GeoSciML Basic, relatedFeature is byReference only.  AbstractFeatureRelation subtypes are materialized in Extension package.
+In GeoSciML Basic, relatedFeature is byReference only.  AbstractFeatureRelation subtypes are materialized in the Extension package.
 
 ===  GeoSciML Extension JSON Requirements Class (Normative)
 
 include::/requirements/requirements_class_gsmljson-extension.adoc[]
 
-All the elements from the GeoSciML Extension package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd[http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd].
+All the elements from the GeoSciML Extension package must be schema valid according to the JSON schema provided at {json-schema-repo}/geoscimlExtension.json
 
 
 include::/requirements/extension-json/REQ_extension_json.adoc[]
 
-All the elements from the GeoSciML Extension package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch[http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch].
 
 
 === GeoSciML GeologicTime JSON Requirements Class (Normative)
@@ -205,24 +170,22 @@ include::/requirements/requirements_class_gsmljson-geologictime.adoc[]
 
 
 
-All the elements from the GeoSciML Geologic Time package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geologicTime.xsd[http://schemas.opengis.net/gsml/4.1/geologicTime.xsd].
+All the elements from the GeoSciML Geologic Time package must be schema valid according to the JSON schema provided at {json-schema-repo}/geologicTime.json
 
 
 include::/requirements/geologictime-json/REQ_geologictime_json.adoc[]
 
-All the elements from the GeoSciML Geologic Time package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geologictime.sch[http://schemas.opengis.net/gsml/4.1/geologictime.sch].
 
 
 === GeoSciML Borehole JSON Requirements Class (Normative)
 
 include::/requirements/requirements_class_gsmljson-borehole.adoc[]
 
-All the elements from the Borehole package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/borehole.xsd[http://schemas.opengis.net/gsml/4.1/borehole.xsd].
+All the elements from the Borehole package must be schema valid according to the JSON schema provided at {json-schema-repo}/borehole.json
 
 
 include::/requirements/borehole-json/REQ_borehole_json.adoc[]
 
-All the elements from the Borehole package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/borehole.sch[http://schemas.opengis.net/gsml/4.1/borehole.sch].
 
 
 === GeoSciML LaboratoryAnalysis-Specimen JSON Requirements Class (Normative)
@@ -230,13 +193,11 @@ All the elements from the Borehole package must pass the schematron rule defined
 include::/requirements/requirements_class_gsmljson-lab.adoc[]
 
 
-All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd[http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd].
+All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the JSON schema provided at {json-schema-repo}/laboratoryAnalysisSpecimen.json
 
 
 
 include::/requirements/lab-json/REQ_lab_json.adoc[]
-
-All the elements from the GeoSciML Laboratory Analysis & Specimen package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch[http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch].
 
 
 
@@ -252,12 +213,11 @@ The abstract GeoSciML Lite encoding sets general encoding rules for JSON targets
 
 GeoSciML Lite schemas are meant to deliver simple content, consistent with simple scenarios described in GML Simple Feature Level 0 (OGC 10-100r3).  User defined properties must respect the same constrains as defined in SF-0 specification.
 
-include::/requirements/lite-json/REQ_lite_SF0.adoc[]
-
-Simple Feature defines 3 compliance levels summarized in Table17.
+The GML Simple Features profile defines 3 compliance levels summarized in <<tbl_sf_compliance_levels>>.
 
 //Table 17 in the original
 
+[[tbl_sf_compliance_levels]]
 .Reproduction of Table 1 of 10-100r3 (Clause 2.1)
 [width="100%",cols="^36%,^18%,^23%,^23%",options="header",]
 |===
@@ -284,27 +244,19 @@ spatial property values
 references
 
 |Yes^3^ |Yes^3^ |Yes
-a|
-[arabic]
-. string, integer, me**a**surement, date, real, binary, boolean, URI
-. Point, Curve (LineString), Surface (Polygon), Geometry, MultiPoint, MultiCurve, MultiSurface, MultiGeometry
-. In levels 0 and 1, remote values for properties are supported **only **through the use of the type gml:ReferenceType. The more generalized GML property-type pattern allowing mixed inline and byReference encoded property values within the same instance document is disallowed.
-
-| | |
 |===
 
+Notes:
 
-=== GeoSciML Lite GML 3.1 profile (Normative)
+[arabic]
+. string, integer, measurement, date, real, binary, boolean, URI
+. Point, Curve (LineString), Surface (Polygon), Geometry, MultiPoint, MultiCurve (MultiLineString), MultiSurface (MultiPolygon), MultiGeometry (GeometryCollection)
+. By reference encoding uses link objects through support for the "rel-as-link" profile from OGC API - Features - Part 5 / OGC API - Common - Part 3: Schemas.
 
-include::/requirements/requirements_class_gsmljson-lite31.adoc[]
-
-
-Because of the limited availability of WFS 2.0 compliant servers and clients, GeoSciML SWG officially supports WFS 1.1.0 and GML 3.1.1 for delivery of Lite features. 
-
-All the elements from the GeoSciML Lite package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geosciml-lite.xsd.
-
+All the elements from the GeoSciML Lite package must be schema valid according to the JSON schema provided at {json-schema-repo}/geoscimlLite.json
 
 
-include::/requirements/lite-json/REQ_lite31_json.adoc[]
+
+include::/requirements/lite-json/REQ_lite_json.adoc[]
 
 

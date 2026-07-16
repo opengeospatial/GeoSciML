@@ -13,7 +13,7 @@
 :fullname: Editor One
 :fullname_2: Editor Two
 :docsubtype: Interface
-:keywords: ogcdoc, OGC document, API, openapi, html
+:keywords: ogcdoc, OGC document, JSON, JSON-FG, schema, GeoSciML, geology, geoscience
 :submitting-organizations: Organization One; Organization Two
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf
@@ -26,6 +26,7 @@
 
 :spec-part1-uri: https://www.opengis.net/spec/geosciml-part1/5.0
 :spec-part3-uri: https://www.opengis.net/spec/geosciml-part3/5.0
+:json-schema-repo: https://raw.githubusercontent.com/opengeospatial/geosciml-json-code-sprint/refs/heads/main/schemas/json/4.1
 
 ////
 Make sure to complete each included document

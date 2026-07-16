@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /req/gsmljson-geologictime/json
-part:: A JSON instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/geologicTime.xsd.
+part:: A JSON instance document SHALL validate with schema located at {json-schema-repo}/geologicTime.json
 ====

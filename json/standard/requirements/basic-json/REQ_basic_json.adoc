@@ -4,5 +4,7 @@
 ====
 [%metadata]
 identifier:: /req/gsmljson-basic/json
-part:: A JSON instance document SHALL validate with schema located at  http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd.
+part:: A JSON instance document SHALL validate with schema located at {json-schema-repo}/geoscimlBasic.json
 ====
+
+//ORIGINAL A GeoSciML instance document SHALL validate with schema located at  http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd.

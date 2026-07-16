@@ -287,10 +287,11 @@ GeoSciML Lite schemas are meant to deliver simple content, consistent with simpl
 
 include::/requirements/lite-xml/REQ_lite_SF0.adoc[]
 
-Simple Feature defines 3 compliance levels summarized in Table17.
+Simple Feature defines 3 compliance levels summarized in <<tbl_sf_compliance_levels>>.
 
 //Table 17 in the original
 
+[[tbl_sf_compliance_levels]]
 .Reproduction of Table 1 of 10-100r3 (Clause 2.1)
 [width="100%",cols="^36%,^18%,^23%,^23%",options="header",]
 |===

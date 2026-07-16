@@ -1,0 +1,13 @@
+[[conf_gsmljson-borehole,/conf/gsmljson-borehole]]
+.GeoSciML Borehole JSON Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-borehole  
+target:: /req/gsmljson-borehole 
+
+inherit:: /conf/gsmljson-core
+
+abstract-test:: /conf/gsmljson-borehole/json 
+
+====

@@ -1,0 +1,13 @@
+[[conf_gsmljson-geologictime,/conf/gsmljson-geologictime]]
+.GeoSciML GeologicTime JSON Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-geologictime  
+target:: /req/gsmljson-geologictime 
+
+inherit:: /conf/gsmljson-core
+
+abstract-test:: /conf/gsmljson-geologictime/json 
+
+====

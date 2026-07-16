@@ -1,9 +1,70 @@
 [appendix]
 == Conformance Class Abstract Test Suite (Normative)
 
-[NOTE]
-Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
+=== GeoSciML JSON Encoding Abstract Core
 
-=== Conformance Class A
+include::/abstract_tests/ATS_class_core_json.adoc[]
 
-include::../abstract_tests/ATS_class_example1.adoc[]
+include::/abstract_tests/core-json/TEST_json.adoc[]
+
+include::/abstract_tests/core-json/TEST_codelist.adoc[]
+
+include::/abstract_tests/core-json/TEST_identifier.adoc[]
+
+include::/abstract_tests/core-json/TEST_time_zone.adoc[]
+
+
+
+=== GeoSciML Basic JSON Encoding
+
+include::/abstract_tests/ATS_class_basic_json.adoc[]
+
+include::/abstract_tests/basic-json/TEST_basic_json.adoc[]
+
+
+=== GeoSciML Extension JSON Encoding
+
+
+include::/abstract_tests/ATS_class_extension_json.adoc[]
+
+include::/abstract_tests/extension-json/TEST_extension_json.adoc[]
+
+
+
+=== GeoSciML GeologicTime JSON Encoding
+
+
+include::/abstract_tests/ATS_class_geologic_time_json.adoc[]
+
+include::/abstract_tests/geologictime-json/TEST_geologictime_json.adoc[]
+
+
+
+
+
+=== GeoSciML Borehole JSON Encoding
+
+
+include::/abstract_tests/ATS_class_borehole_json.adoc[]
+
+include::/abstract_tests/borehole-json/TEST_borehole_json.adoc[]
+
+
+
+
+
+=== GeoSciML LaboratoryAnalysis-Specimen JSON Encoding
+
+
+include::/abstract_tests/ATS_class_lab_json.adoc[]
+
+include::/abstract_tests/lab-json/TEST_lab_json.adoc[]
+
+
+=== GeoSciML Lite JSON Encoding
+
+include::/abstract_tests/ATS_class_lite_json.adoc[]
+
+include::/abstract_tests/lite-json/TEST_lite_json.adoc[]
+
+

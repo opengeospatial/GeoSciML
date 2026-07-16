@@ -75,7 +75,7 @@ test-method:: Visually inspect instance to validate the presence of time zone in
 identifier:: /conf/gsmlxsd-basic  
 target:: /req/gsmlxsd-basic 
 
-inherit:: /conf/gsmlxsd-core/core 
+inherit:: /conf/gsmlxsd-core
 
 abstract-test:: /conf/gsmlxsd-basic/xsd 
 
@@ -155,7 +155,7 @@ test-method:: Perform a schematron validation on the XML instance.  Test succee
 identifier:: /conf/gsmlxsd-geologictime  
 target:: /req/gsmlxsd-geologictime 
 
-inherit:: /conf/gsmlxsd-core/core 
+inherit:: /conf/gsmlxsd-core
 
 abstract-test:: /conf/gsmlxsd-geologictime/xsd 
 
@@ -196,7 +196,7 @@ test-method:: Perform a schematron validation on the XML instance.  Test succee
 identifier:: /conf/gsmlxsd-borehole  
 target:: /req/gsmlxsd-borehole 
 
-inherit:: /conf/gsmlxsd-core/core 
+inherit:: /conf/gsmlxsd-core
 
 inherit:: OGC 10-025r1  OMXML 
 
@@ -239,7 +239,7 @@ test-method:: Perform a schematron validation on the XML instance.  Test succee
 identifier:: /conf/gsmlxsd-lab  
 target:: /req/gsmlxsd-lab 
 
-inherit:: /conf/gsmlxsd-core/core 
+inherit:: /conf/gsmlxsd-core
 
 inherit:: OGC 10-025r1  OMXML 
 

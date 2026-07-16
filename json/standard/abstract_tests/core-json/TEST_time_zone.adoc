@@ -1,0 +1,9 @@
+[[conf_gsmljson-core_time-zone]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmljson-core/time-zone
+target:: /req/gsmljson-core/time-zone
+test-purpose:: Ensure that time zones are expressed explicitly
+test-method:: Visually inspect instance to validate the presence of time zone indicators.
+====

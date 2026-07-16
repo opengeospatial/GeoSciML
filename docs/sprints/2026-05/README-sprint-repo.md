@@ -19,6 +19,17 @@ If using metanorma through docker, then use this command instead:
 docker run -v "$(pwd)":/metanorma -v ${HOME}/.fontist/fonts/:/config/fonts  metanorma/metanorma  metanorma compile --agree-to-terms -t ogc -x html,pdf document.adoc
 ```
 
+## Updating GitHub Pages
+
+Enter the folder containing document.adoc, and then run the following commands.
+
+For part 3, for example:
+
+```
+cp ./document.pdf ../docs/part3
+cp ./document.html ../docs/part3/index.html
+```
+
 
 ## Notes from the May 2026 Code Sprint
 

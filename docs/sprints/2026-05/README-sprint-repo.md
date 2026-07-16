@@ -3,3 +3,23 @@
 This repository is for the development of a JSON encoding for the Geoscience Markup Language (GeoSciML).
 
 The repository was initially created in support of the May 2026 OGC Builder Days Code Sprint, but will continue to be used for GeoSciML activities in future code sprints.
+
+## Building the specification documents
+
+The source files of the specification documents are in the folders part1_core, part2_xml, and part3_json.
+
+To build the documents using metanorma, enter the folder containing document.adoc, and then run the following command.
+
+```
+metanorma compile --agree-to-terms -t ogc -x html document.adoc
+```
+If using metanorma through docker, then use this command instead:
+
+```
+docker run -v "$(pwd)":/metanorma -v ${HOME}/.fontist/fonts/:/config/fonts  metanorma/metanorma  metanorma compile --agree-to-terms -t ogc -x html,pdf document.adoc
+```
+
+
+## Notes from the May 2026 Code Sprint
+
+The notes from the code sprint, as well as instructions for running ShapeChange can be found in [Findings_from_Code_Sprint_May26.md](Findings_from_Code_Sprint_May26.md)

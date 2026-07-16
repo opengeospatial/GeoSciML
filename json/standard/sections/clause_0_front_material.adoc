@@ -58,7 +58,8 @@ Additional contributors to this Standard include the following:
 | Clemens Portele | Interactive Instruments
 | Edd Lewis  | British Geological Survey
 | Mark Rattenbury | Earth Sciences New Zealand
-| Add Name |
+| Alejandro Villar | Open Geospatial Consortium
+| Gobe Hobona | Open Geospatial Consortium
 | Add Name |
 | Add Name |
 | Add Name |

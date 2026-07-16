@@ -327,7 +327,7 @@ abstract-test:: /conf/gsmlxsd-lite-31/sch
 [%metadata]
 identifier:: /conf/gsmlxsd-lite-31/xsd
 target:: /req/gsmlxsd-lite-31/xsd
-test-purpose:: Ensure that GeoSciML Portrayal XML documents are valid
+test-purpose:: Ensure that GeoSciML Lite XML documents are valid
 test-method:: Perform a XSD validation on a XML instance document.  Test succeeds if the validation does not report any error.
 ====
 

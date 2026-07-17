@@ -183,7 +183,7 @@ image::images/image74.png[NumericEraBoundary context diagram.,width=400,height=4
 
 ===== StandardGlobalNumericalAge
 
-A standard numeric age point (a numeric analogue to a ‘golden spike’) is applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary (++[++23++]++; http://www.stratigraphy.org/index.php/ics-chart-timescale[[.underline]#http://www.stratigraphy.org/index.php/ics-chart-timescale#]).  The boundary is not defined from a physical stratotype, although it can be influence by some, but placed at a convenient numerical value.
+A standard numeric age point (a numeric analogue to a ‘golden spike’) is applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary (++[++<<B23,23>>++]++; http://www.stratigraphy.org/index.php/ics-chart-timescale[http://www.stratigraphy.org/index.php/ics-chart-timescale]).  The boundary is not defined from a physical stratotype, although it can be influence by some, but placed at a convenient numerical value.
 
 ==== GeoSciML GeologicTime vocabularies
 

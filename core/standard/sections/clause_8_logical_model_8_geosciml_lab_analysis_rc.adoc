@@ -2,7 +2,7 @@
 
 include::/requirements/requirements_class_lab-analysis.adoc[]
 
-The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model ++[++21++]++. 
+The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model ++[++<<B21,21>>++]++. 
 
 .LaboratoryAnalysis and Specimen dependencies
 image::images/image84.png[LaboratoryAnalysis and Specimen dependencies.,width=601,height=506]

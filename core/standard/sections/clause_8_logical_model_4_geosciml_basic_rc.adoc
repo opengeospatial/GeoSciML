@@ -108,7 +108,7 @@ The specification association links an instance of MappedFeature to the GFI++_++
 
 ===== GeologicUnit
 
-Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit ++[++12++]++, Stratigraphic unit in the sense of NACSN ++[++14++]++, or International Stratigraphic Code ++[++9++]++), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like ‘granitic rock’ or ‘alluvial deposit’, surficial units like ‘till’ or ‘old alluvium’). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).
+Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit ++[++<<B12,12>>++]++, Stratigraphic unit in the sense of NACSN ++[++<<B14,14>>++]++, or International Stratigraphic Code ++[++<<B9,9>>++]++), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like ‘granitic rock’ or ‘alluvial deposit’, surficial units like ‘till’ or ‘old alluvium’). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).
 
 [[img_geologicunit_context_diagram]]
 .GeologicUnit context diagram
@@ -186,7 +186,7 @@ image::images/image14.png[EarthMaterial and related classes.,width=516,height=23
 
 ====== color
 
-The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes ++[++11++]++ may be used.
+The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes ++[++<<B11,11>>++]++ may be used.
 
 ====== purpose
 
@@ -220,7 +220,7 @@ GeologicalHistory is an ordered aggregation of GeologicalEvent objects, each of 
 
 The age attributes are representations of a particular geological event or feature expressed as absolute age in terms of years (numericAge) before present or named time periods in the geological time scale (youngerNamedAge and olderNamedAge), or by comparison with other geological events or features (relative age).  An event age can represent an instant in time, an interval of time, or any combination of multiple instants or intervals.
 
-Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages specified by geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or “contains inclusions of” (a.k.a, Steno laws ++[++17++]++).
+Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages specified by geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or “contains inclusions of” (a.k.a, Steno laws ++[++<<B17,17>>++]++).
 
 [[img_geologic_event_summary_diagram]]
 .Geologic Event summary diagram
@@ -246,7 +246,7 @@ The eventProcess:EventProcessTerm property provides a term from a controlled voc
 
 ====== numericAge
 
-The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1^st^ 1950 (although van der Plitch & Hogg ++[++20++]++, suggests this convention to be restricted to radiocarbon estimations).
+The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1^st^ 1950 (although van der Plitch & Hogg ++[++<<B20,20>>++]++, suggests this convention to be restricted to radiocarbon estimations).
 
 ====== olderNamedAge
 
@@ -330,7 +330,7 @@ The property stFoldDescription:FoldAbstractDescription provides a detailed fold 
 
 ===== Foliation
 
-A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team ++[++12++]++, penetrative planar foliation defined by layers ++>++ 5 mm thick is considered Layering.
+A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team ++[++<<B12,12>>++]++, penetrative planar foliation defined by layers ++>++ 5 mm thick is considered Layering.
 
 Bedding is a fabric representing the average orientation of paleodepositional surface and should be encoded through the foliationType property.  It might apply to bedding that is layering or a foliation without layering (e.g. clast alignment in amalgamated beds).
 

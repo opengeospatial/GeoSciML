@@ -19,7 +19,7 @@ Nillable properties actually carry useful or even required information in certai
 * Omit the property
 * Deliver a nilled property with relevant justification.
 
-Which option is most useful for a community is left to that community to decide.  Their decision can be enforced using Schematron.  The editors foresee the use of a) the GeoSciML data model as defined by this specification providing naming and structure and b) a series of community-defined rules to enforce the presence of certain properties relevant to their use cases.  For an XML implementation, this translates into a set of common XSD and SCH to govern conformance to GeoSciML, and community-specific SCH to enforce specific use cases, such as the INSPIRE geology specification ++[++8++]++.
+Which option is most useful for a community is left to that community to decide.  Their decision can be enforced using Schematron.  The editors foresee the use of a) the GeoSciML data model as defined by this specification providing naming and structure and b) a series of community-defined rules to enforce the presence of certain properties relevant to their use cases.  For an XML implementation, this translates into a set of common XSD and SCH to govern conformance to GeoSciML, and community-specific SCH to enforce specific use cases, such as the INSPIRE geology specification ++[++<<B8,8>>++]++.
 
 ===== Package shortcuts
 

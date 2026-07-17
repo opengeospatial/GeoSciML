@@ -1,7 +1,7 @@
 [obligation=informative]
 == Conceptual Model
 
-The strictly geological portion of GeoSciML, as opposed to the parts dealing with sampling (e.g., boreholes) and laboratory metadata, is largely an implementation of the North American Data Model ++[++12++]++.  NADM is a technologically neutral conceptual model that addresses geoscience concepts and the relationships between them.  GeoSciML 4 does not implement NADM Geologic Portrayal (a model of cartographic elements composing a geological map, such as legends, symbols, insets, etc.) nor Geologic Vocabulary (although older versions of GeoSciML did).
+The strictly geological portion of GeoSciML, as opposed to the parts dealing with sampling (e.g., boreholes) and laboratory metadata, is largely an implementation of the North American Data Model ++[++<<B12,12>>++]++.  NADM is a technologically neutral conceptual model that addresses geoscience concepts and the relationships between them.  GeoSciML 4 does not implement NADM Geologic Portrayal (a model of cartographic elements composing a geological map, such as legends, symbols, insets, etc.) nor Geologic Vocabulary (although older versions of GeoSciML did).
 
 GeoSciML is an ISO Feature Model implementation of NADM and this created subtle differences between NADM and GeoSciML as the logical model deals with ISO Feature Model idiosyncrasies.  For instance, NADM multiple inheritances used in Fossil could not be implemented in the ISO world that forbids such constructs.  There were also conceptual changes, especially regarding EarthMaterial that is not considered as a GeologicFeature (hence an ISO FeatureType) in GeoSciML, but as a Type.
 

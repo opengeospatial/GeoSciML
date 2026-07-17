@@ -174,7 +174,7 @@ The particleType:ParticleTypeTerm provides a term from a controlled vocabulary t
 
 ====== aspectRatio
 
-The aspectRatio property (SWE::Category) contains a term from a controlled vocabulary describing the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. It equates to sphericity in sedimentary rocks (i.e., the degree to which the shape of a particle approximates a sphere).  The formal definition is “_A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape_” ++[++16++]++ ++[++24++]++. (e.g., prolate, slightly flattened, very bladed, equant, acicular, tabular).
+The aspectRatio property (SWE::Category) contains a term from a controlled vocabulary describing the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. It equates to sphericity in sedimentary rocks (i.e., the degree to which the shape of a particle approximates a sphere).  The formal definition is “_A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape_” ++[++<<B16,16>>++]++ ++[++<<B24,24>>++]++. (e.g., prolate, slightly flattened, very bladed, equant, acicular, tabular).
 
 ====== shape
 
@@ -182,7 +182,7 @@ The shape property (SWE::Category) describes,
 
 [loweralpha]
 .  the development of crystal faces bounding particles in crystalline compound materials, and
-.  the surface rounding of grains in sedimentary rocks. Roundness is a measure of the sharpness of the edges between surfaces bounding a particle ++[++10++]++ ++[++22++]++.
+.  the surface rounding of grains in sedimentary rocks. Roundness is a measure of the sharpness of the edges between surfaces bounding a particle ++[++<<B10,10>>++]++ ++[++<<B22,22>>++]++.
 
 The terms shall be a term from a controlled vocabulary and be appropriate for the kind of compound material (e.g., for crystalline rocks- euhedral, ideoblastic, subhedral, anhedral, xenoblastic; for sedimentary rocks - angular, rounded).
 
@@ -221,7 +221,7 @@ The constituentMaterial property is an association between a ConstituentPart and
 
 ===== FabricDescription
 
-The FabricDescription data type describes all types of fabrics associated with a CompoundMaterial (i.e., tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale.  FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++15++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly (++[++19++]++ p. 21-24; ++[++7++]++ p. 73; ++[++10++]++,++[++15++]++).
+The FabricDescription data type describes all types of fabrics associated with a CompoundMaterial (i.e., tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale.  FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++<<B15,15>>++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly (++[++<<B19,19>>++]++ p. 21-24; ++[++<<B7,7>>++]++ p. 73; ++[++<<B10,10>>++]++,++[++15++]++).
 
 FabricDescription is distinguished from ParticleGeometry based on the criteria that particle geometry is preserved if a CompoundMaterial is disaggregated, while FabricDescription is not defined if the material is disaggregated.
 
@@ -231,7 +231,7 @@ image::images/image46.png[Fabric description context diagram.,width=456,height=3
 
 ====== fabricType
 
-The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++15++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.
+The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++<<B15,15>>++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.
 
 ===== InorganicFluid
 
@@ -313,7 +313,7 @@ image::images/image52.png[Rock material description context diagram.,width=271,h
 
 ====== consolidationDegree
 
-The consolidationDegree property (SWE::Category) contains a term from a controlled vocabulary that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration ++[++13++]++.
+The consolidationDegree property (SWE::Category) contains a term from a controlled vocabulary that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration ++[++<<B13,13>>++]++.
 
 ==== GeologicAgeDetails
 
@@ -372,7 +372,7 @@ The incrementalDisplacement:DisplacementValue property contains a DisplacementVa
 
 ===== Layering
 
-A planar foliation is defined by a tabular succession of layers ++>++ 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team ++[++13++]++.  The GeologicStructure characteristic of gneiss is layering.
+A planar foliation is defined by a tabular succession of layers ++>++ 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team ++[++<<B13,13>>++]++.  The GeologicStructure characteristic of gneiss is layering.
 
 .Layering context diagram
 image::images/image57.png[Layering context diagram,width=552,height=440]

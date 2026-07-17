@@ -2,21 +2,87 @@
 [[Bibliography]]
 == Bibliography
 
-[NOTE]
-.Example Bibliography (Delete this note).
-===============================================
-The TC has approved Springer LNCS as the official document citation type.
+//1
+* [[[B1]]], Cox, S. J. D., S. M. Richard, S.M.: A formal model for the geologic time scale and global stratotype section and point, compatible with geospatial information transfer standards. Geosphere, 1, 119 (2005). http://www.chronos.org/pdfs/publications/geosphere2005.pdf
 
-Springer LNCS is widely used in technical and computer science journals and other publications
+//2
+* [[[B2]]], D’Orefice, M., Graciotti, R., Eds.: Carte Geomorfologica d’Italia alla scalla 1:50 000, foglio 316-317-328-329, ISOLA D’ELBA, Servizio Geologico d’Italia (ISPRA) (2009).
 
-* For citations in the text please use square brackets and consecutive numbers: [1], [2], [3]
+//3
+* [[[B3]]], Drewes, H.: Geologic map of the Bartlett Mountain Quadrangle, Pima and Santa Cruz counties, Arizona, I-2624. Lat 31 deg 22’30" to 31 deg 30’, long 111 deg 15’ to 111 deg 22’30". Scale 1:24,000 (1 inch = 2,000 feet). Sheet 43 by 39 1/2 inches (1998)
 
-– Actual References:
+//4
+* [[[B4]]], Dunham, R.J.: Classification of carbonate rocks according to depositional texture. In Ham, W.E. Classification of carbonate rocks. American Association of Petroleum Geologists Memoir. 1, 108–121 (1962).
 
-[n] Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)
+//5
+* [[[B5]]], Folk, R.L.: Petrology of sedimentary rocks. Hemphill’s. Austin, Texas (1968)
 
-[n] Web: Author Surname, A.: Title, http://Website-Url
+//6
+* [[[B6]]], Folk, R.L.: Petrology of Sedimentary Rocks. Hemphill Publishing Company, Austin, Texas (1974)
 
-===============================================
+//7 - continue cross reference check from here ++[++<<B7,7>>++]++
+* [[[B7]]], Hobbs, B. E., Means, W. D., & Williams, P. F.: An outline of structural geology. New York: Wiley (1976)
 
-* [[[OGC2015,OGCTB12]]], _OGC: OGC Testbed 12 Annex B: Architecture_ (2015).
+//8
+* [[[B8]]], INSPIRE: D2.8.II.4 Data Specification on Geology – Technical Guidelines. D2.8.II.4_v3.0. European Commission, Thematic Working Group Geology, (2013) http://inspire.jrc.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_GE_v3.0.pdf
+
+//9
+* [[[B9]]], ISSC (International Subcommission on Stratigraphic Classification) of IUGS International Commission on Stratigraphy, International stratigraphic guide (2d edition, Amos Salvador, ed.): Trondheim, Norway, International Union of Geological Sciences, and Boulder, Colorado, Geological Society of America (1994)
+
+//10
+* [[[B10]]], Jackson, J.A.: Glossary of geology, 4th ed.:  Alexandria, Virginia, American Geological Institute (1997)
+
+//11
+* [[[B11]]], Munsell soil color charts (Munsell Color: New Windsor, NY) Passey HB, Hugie VK, Williams EW, Ball DE (1994)
+
+
+//12
+* [[[B12]]], NADM Conceptual Model 1.0, A Conceptual Model for Geologic Map Information, co published as U.S. Geological Survey Open-File Report 2004-1334 and Geological Survey of Canada Open File 4737. (2004) <http://pubs.usgs.gov/of/2004/1334/2004-1334.pdf>
+
+
+//13
+* [[[B13]]], NADM Science-language Technical Team, http://ngmdb.usgs.gov/www-nadm/sltt/products.html (2004)
+
+
+//14
+* [[[B14]]], North American Commission of Stratigraphic Nomenclature (NACSN), North American Stratigraphic Code: American Association of Petroleum Geologists Bulletin, 89, 11, 1547-1591 (2005)
+
+
+//15
+* [[[B15]]], Passchier, C.W. & Trouw, R.A.J.: Microtectonics, Springer, ISBN 3-540-58713-6 (1998)
+
+
+//16
+* [[[B16]]], Sneed E.D, Folk R.L.. Pebbles in the lower Colorado River, Texas, a study of particle morphogenesis. Journal of Geology 66(2), 114–150, (1958)
+
+
+//17
+* [[[B17]]], Steno, N.: The Prodromus of Nicolaus Steno’s Dissertation Concerning a Solid Body Enclosed by Process of Nature Within a Solid (1669)
+
+
+//18
+* [[[B18]]], Túnyi, I.: Magnetostratigraphy of Badenian evaporite deposits (East Slovak Basin), GEOLOGICA CARPATHICA, JUNE 2005, 56, 3, 273–284, (2005) <http://www.geologicacarpathica.com/GeolCarp_Vol56_No3_273_284.html>
+
+
+//19
+* [[[B19]]], Turner, F.J., Weiss, L.E.:  Structural Analysis of Metamorphic Tectonites. McGraw-Hill, New York, N.Y, 545 (1963)
+
+
+//20
+* [[[B20]]], van der Plicht, J., A. Hogg, A.:A note on reporting radiocarbon. Quaternary Geochronology 1 (4): 237–240 (2006) doi:10.1016/j.quageo.2006.07.001.
+
+
+//21
+* [[[B21]]], Ventouras, S., Lawrence, B.N. and Cox, S.:MOLES-v3 Information Model. In: EGU General Assembly Vienna 2010. (http://meetingorganizer.copernicus.org/EGU2010/EGU2010-5080.pdf)
+
+
+//22
+* [[[B22]]], Wadell, H.: Volume, shape, and roundness of rock particles. Journal of Geology 40 (1932)
+
+
+//23
+* [[[B23]]], Walshe, S.L. Gradstein, F.M. & Ogg, J.G.: History, philosophy, and application of the Global Stratotype Section and Point (GSSP), Lethaia, 37, 201-218,  ISSN 0024-1164 (2004) <http://precambrian.stratigraphy.org/Walsh_et_al_2004.pdf>
+
+
+//24
+* [[[B24]]], Zingg, T.: Beiträge zur Schotteranalyze:  In Schweiz. Mineralog. Petrog. Mitt, v. 15, 39-140 (1935)

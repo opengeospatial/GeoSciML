@@ -3,7 +3,7 @@
 
 include::/requirements/requirements_class_geologic-time.adoc[]
 
-The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) ++[++1++]++, contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
+The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) ++[++<<B1,1>>++]++, contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
 
 
 .GeologicTime dependencies

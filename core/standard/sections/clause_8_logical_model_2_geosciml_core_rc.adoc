@@ -37,7 +37,7 @@ The type hierarchy of the UML model implies type substitutions for property valu
 
 include::/requirements/core/REQ_gsml-core_quantities-uom.adoc[]
 
-The quantities and measurements units of measure shall be taken from a standard vocabulary governed by an appropriate community, for example the Unified Code for Units of Measure (UCUM).
+The quantities and measurements units of measure shall be taken from a standard vocabulary governed by an appropriate community, for example the Unified Code for Units of Measure (<<UCUM201>>). 
 
 ==== QuantityRange
 

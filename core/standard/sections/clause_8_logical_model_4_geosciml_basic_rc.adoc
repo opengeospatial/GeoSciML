@@ -378,7 +378,7 @@ A geomorphologic feature is a kind of GeologicFeature describing the shape and n
 .Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009)
 image::images/image23.png[width=601,height=279]
 
-<<img_partial_encoding_of_landform>> shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from ++[++2++]++) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
+<<img_partial_encoding_of_landform>> shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from ++[++<<B2,2>>++]++) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
 
 ====== unitDescription
 
@@ -658,7 +658,7 @@ e.g., "upright", "overturned", "vertical"
 
 ==== Instance examples
 
-The following figure shows a partial encoding of an existing map from Drewes ++[++3++]++.  This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/[http://ngmdb.usgs.gov/www-nadm/dmdt/]).  <<img_excerpt_from_drewes_map>> shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA.  The original legend description is shown in <<img_original_description_from_drewes_map>>.
+The following figure shows a partial encoding of an existing map from Drewes ++[++<<B3,3>>++]++.  This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/[http://ngmdb.usgs.gov/www-nadm/dmdt/]).  <<img_excerpt_from_drewes_map>> shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA.  The original legend description is shown in <<img_original_description_from_drewes_map>>.
 
 [[img_excerpt_from_drewes_map]]
 .Excerpt from Drewes map ++[++3++]++ with a Dacitic vent breccia unit highlighted (Ttv)

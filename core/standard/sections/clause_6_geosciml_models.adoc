@@ -13,7 +13,7 @@ GeoSciML has been through 4 major releases and a few minor releases since 2005.Â
 
 This fourth iteration is essentially a repackaging of the previous version 3.2 from 13 packages organised by themes into 6 packages organised by use cases (<<img_geosciml_packages>>):
 
-* *GeoSciML Basic*: a set of core geologic features, aligned to the INSPIRE Data Specification on Geology.
+* *GeoSciML Basic*: a set of core geologic features, aligned to the <<INSPIRE>> Data Specification on Geology.
 * *GeoSciML Extension*: an extension providing detailed description of basic features which adds additional properties and associations.
 * *GeoSciML Geologic Age*: a model for the representation of geologic time using procedures adopted by the International Stratigraphic Commission.
 * *GeoSciML Borehole*: a model for boreholes, including geologic logs and drilling details and other engineering information.

@@ -100,7 +100,7 @@ AlterationDescription describes aspects of a geologic unit or earth material tha
 .Example of a weathering profile
 image::images/image40.png[Example of a weathering profile.,width=486,height=143]
 
-An example encoding of an altered geologic unit from Drewes ++[++3++]++ is shown in <<img_example_of_describing_alteration>>.
+An example encoding of an altered geologic unit from Drewes ++[++<<B3,3>>++]++ is shown in <<img_example_of_describing_alteration>>.
 
 [[img_example_of_describing_alteration]]
 .Example of describing alteration halo from Drewes ++[++3++]++.
@@ -192,7 +192,7 @@ The property size (SWE::QuantityRange) reports the size that specifies particle 
 
 ====== sorting
 
-The sorting property (SWE::Category) contains a term from a vocabulary that specifies the size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk ++[++5++]++ ++[++6++]++.  Example for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranular, seriate.
+The sorting property (SWE::Category) contains a term from a vocabulary that specifies the size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk ++[++<<B5,5>>++]++ ++[++<<B6,6>>++]++.  Example for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranular, seriate.
 
 ====== sourceOrganism
 
@@ -205,7 +205,7 @@ image::images/image45.png[ConstituentPart context diagram.,width=601,height=691]
 
 The ConstituentPart class describes how Earth materials may be made up of other Earth materials, including the proportion of the constituent part in the whole (e.g., 20%, minor, dominant); and the role that the constituent plays in the whole (e.g., matrix, groundmass, framework, phenocryst, xenolith, vein).
 
-The distinction between "role" and "particleType" is subtle.  An operational test is that particleType may be determined independent of relationship between particles in the aggregation, whereas role requires consideration of the relationship to other particles. A particle may be identified as a clast, independent of its material composition, and independent of its relationship to other grains in a rock. The term ‘floating clast’ is a role, because it is dependent on the relationship ‘not in contact with other clasts’. Readers should consider Dunham’s textural classification of carbonate rocks (wackestone, packstone, grainstone, etc.) in the description of carbonate rocks ++[++4++]++. The description is predicated on identification of two kinds of intraclasts (grains) and matrix (carbonate mud), and then uses this distinction to establish relationships–mud supported vs. grain supported – that define roles for the two types of constituents (framework, matrix…).
+The distinction between "role" and "particleType" is subtle.  An operational test is that particleType may be determined independent of relationship between particles in the aggregation, whereas role requires consideration of the relationship to other particles. A particle may be identified as a clast, independent of its material composition, and independent of its relationship to other grains in a rock. The term ‘floating clast’ is a role, because it is dependent on the relationship ‘not in contact with other clasts’. Readers should consider Dunham’s textural classification of carbonate rocks (wackestone, packstone, grainstone, etc.) in the description of carbonate rocks ++[++<<B4,4>>++]++. The description is predicated on identification of two kinds of intraclasts (grains) and matrix (carbonate mud), and then uses this distinction to establish relationships–mud supported vs. grain supported – that define roles for the two types of constituents (framework, matrix…).
 
 ====== role
 

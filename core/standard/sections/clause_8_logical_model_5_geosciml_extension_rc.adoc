@@ -28,6 +28,7 @@ To prevent confusion and promote consistency, especially in query scenarios, ass
 
 include::/requirements/extension/REQ_gsml-extension_geologicfeature-history.adoc[]
 
+[[geologic_feature_relation]]
 ===== GeologicFeatureRelation
 
 The GeologicFeatureRelation class defines the general structure used to define relationships between any GeoSciML feature types.  Relationships are always binary and directional.  There is always a single source and a single target.  The relationship is always defined from the perspective of the Source and is generally an active verb. 
@@ -287,6 +288,7 @@ Organism is a broad class to represent any living or once living things. This is
 .Organism context diagram
 image::images/image50.png[Organism context diagram.,width=276,height=456]
 
+[[physical_description_section]]
 ===== PhysicalDescription
 
 PhysicalDescription is a class that describes the numeric physical properties of a geologic unit (GeologicUnit 8.4.1.3), earth material (EarthMaterial 8.4.1.6), or geologic structure (GeologicStructure 8.4.3.1). (e.g., density, porosity, magnetic susceptibility, remanent magnetism).  These properties are modelled here as scalar numeric values (SWE::Quantity).
@@ -317,7 +319,7 @@ The consolidationDegree property (SWE::Category) contains a term from a controll
 
 ==== GeologicAgeDetails
 
-GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model.  GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see 8.6).
+GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model.  GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see <<geologic_time_rc_section>>).
 
 .GeologicAgeDetails summary diagram
 image::images/image53.png[GeologicAgeDetails summary diagram.,width=548,height=726]
@@ -368,7 +370,7 @@ image::images/image56.png[DisplacementEvent context diagram,width=391,height=575
 
 ====== incrementalDisplacement
 
-The incrementalDisplacement:DisplacementValue property contains a DisplacementValue (8.5.4.4) reporting the parameters of the displacement.
+The incrementalDisplacement:DisplacementValue property contains a DisplacementValue (<<displacement_value_section>>) reporting the parameters of the displacement.
 
 ===== Layering
 
@@ -381,6 +383,7 @@ image::images/image57.png[Layering context diagram,width=552,height=440]
 
 The layerComposition property is an association between a Layering and a RockMaterial that describes the rock material that may define compositional layering.
 
+[[displacement_value_section]]
 ====== DisplacementValue
 
 A displacement value expresses the displacement on a fault with respect to a planar approximation of its shape.
@@ -546,7 +549,7 @@ The spacing property (SWE::QuantityRange) contains a linear dimension representi
 
 ===== ShearDisplacementStructureDescription
 
-ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in 8.4.3.5 by extending the abstract property block ShearDisplacementStructureAbstractDescription.
+ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in <<ShearDisplacementStructure_section>> by extending the abstract property block ShearDisplacementStructureAbstractDescription.
 
 .ShearDisplacementStructureDescription context diagram
 image::images/image62.png[ShearDisplacementStructureDescription context diagram.,width=601,height=447]
@@ -561,7 +564,7 @@ The property planeOrientation:GSML++_++PlanarOrientation contains a description 
 
 ====== stPhysicalProperty
 
-The property stPhysicalProperty:PhysicalDescription contains a value of generic physical properties (8.5.2.11) not addressed in this specification.
+The property stPhysicalProperty:PhysicalDescription contains a value of generic physical properties (<<physical_description_section>>) not addressed in this specification.
 
 ==== GeologicUnitDetails
 

@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /rec/gsml-lab-analysis/outcrop-pattern
-part:: Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5
+part:: Observations at outcrop SHOULD be encoded using the pattern described at <<outcrop_encoding_pattern>>
 ====

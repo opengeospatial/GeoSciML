@@ -2,6 +2,8 @@
 [[Bibliography]]
 == Bibliography
 
+// Example citation ++[++<<B7,7>>++]++
+
 //1
 * [[[B1]]], Cox, S. J. D., S. M. Richard, S.M.: A formal model for the geologic time scale and global stratotype section and point, compatible with geospatial information transfer standards. Geosphere, 1, 119 (2005). http://www.chronos.org/pdfs/publications/geosphere2005.pdf
 
@@ -20,7 +22,7 @@
 //6
 * [[[B6]]], Folk, R.L.: Petrology of Sedimentary Rocks. Hemphill Publishing Company, Austin, Texas (1974)
 
-//7 - continue cross reference check from here ++[++<<B7,7>>++]++
+//7 
 * [[[B7]]], Hobbs, B. E., Means, W. D., & Williams, P. F.: An outline of structural geology. New York: Wiley (1976)
 
 //8
@@ -86,3 +88,4 @@
 
 //24
 * [[[B24]]], Zingg, T.: Beiträge zur Schotteranalyze:  In Schweiz. Mineralog. Petrog. Mitt, v. 15, 39-140 (1935)
+

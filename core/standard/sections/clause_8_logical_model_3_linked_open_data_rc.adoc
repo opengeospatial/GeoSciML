@@ -7,7 +7,7 @@ Although OGC standards are not restricted to a web environment, they are strongl
 
 Linked Open Data is a method to publish structured data on the web.  It leverages existing web technologies such as HTTP (transfer protocol) and URI (addressing over the web) to connect structured resources.  The principle is similar to interconnected web pages through hyperlinks, except that pages are replace with structured information that can be processed by machines.
 
-The following requirements essentially impose that URI used as vocabulary, identifiers and references can be “dereferenced”, which is “_The act of retrieving a representation of a resource identified by a URI_”https://docs.ogc.org/is/16-008/16-008.html#_ftnref2[[.underline]#++[++2++]++#] from the web.  A resource can have multiple representations (GML, XML, RDF, etc.) and this specification does not impose a particular one, although it is common sense in this context to provide a GeoSciML representation for geological features.
+The following requirements essentially impose that URI used as vocabulary, identifiers and references can be “dereferenced”, which is “_The act of retrieving a representation of a resource identified by a URI_” footnote:[https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14 Clause 2] from the web.  A resource can have multiple representations (GML, XML, RDF, etc.) and this specification does not impose a particular one, although it is common sense in this context to provide a GeoSciML representation for geological features.
 
 It is important to note that a HTTP URI in this context is [.underline]#both# an identifier and a location.  The same identifier is used to refer to any number of representations.  Therefore, different representations are selected through content negotiation with the server.
 
@@ -16,8 +16,9 @@ It is important to note that a HTTP URI in this context is [.underline]#both# 
 
 include::/requirements/linked-open-data/REQ_gsml-lod_codelistURI.adoc[]
 
-The requirement described at 8.2.7  in Abstract Requirements Class demand that a vocabulary reference be encoded as a URI, but does not require that the URI actually resolve to anything (it could, but it is not required).  In this class, the target must ensure that the URI used to identify vocabulary terms SHALL dereference to one or more representations of a definition of the term (eg, RDF/SKOS, HTML, GML Definition, etc.)
+The requirement described at <<code_lists>> in Abstract Requirements Class demand that a vocabulary reference be encoded as a URI, but does not require that the URI actually resolve to anything (it could, but it is not required).  In this class, the target must ensure that the URI used to identify vocabulary terms SHALL dereference to one or more representations of a definition of the term (eg, RDF/SKOS, HTML, GML Definition, etc.)
 
+[[identifier_section]]
 ==== Identifier
 
 
@@ -35,4 +36,4 @@ It is expected that one of the representations should be a XML (GML) or any GeoS
 
 include::/requirements/linked-open-data/REQ_gsml-lod_byref.adoc[]
 
-Serialization of a dataset will often omit the full description of a feature and replace the property value with an external reference.  A reference to this feature is formed by the dereferenceable identifier described in clause 8.3.2. A client ingesting the dataset can use this reference to extract a feature representation if need be.  Over the web, this reference shall be a HTTP URI that can be dereferenced to one or more representations of that feature.
+Serialization of a dataset will often omit the full description of a feature and replace the property value with an external reference.  A reference to this feature is formed by the dereferenceable identifier described in <<identifier_section>>. A client ingesting the dataset can use this reference to extract a feature representation if need be.  Over the web, this reference shall be a HTTP URI that can be dereferenced to one or more representations of that feature.

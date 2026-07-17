@@ -292,6 +292,7 @@ Vocabularies used in the LaboratoryAnalysis-Specimen package are listed <<tbl_la
 |*GeologicSpecimenPreparationTerm* |Refers to a vocabulary of terms to describe sample preparation applied to geologic specimens, typically in preparation for analytical processes like geochemistry or microscopy.  e.g., crush, mineral separation, thin section, cut, polish, mount, acid digestion.
 |===
 
+[[outcrop_encoding_pattern]]
 ==== Outcrop encoding pattern (Informative)
 
 It is suggested to use SamplingFeatureCollection for representing geological field data collected at an outcrop, (i.e., an outcrop is modelled as a collection of sampling points).  At each point at an outcrop, observations may be made on a single geologic feature (sampledFeature), such as a geologic unit description, a fault description, a contact description, or structural measurements on a foliation.  If more than one geologic feature is observed at an outcrop, it is delivered as a separate sampling point.

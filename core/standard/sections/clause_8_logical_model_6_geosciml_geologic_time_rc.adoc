@@ -1,3 +1,4 @@
+[[geologic_time_rc_section]]
 === GeoSciML GeologicTime Requirements Class (Normative)
 
 
@@ -141,7 +142,7 @@ image::images/image70.png[Time scale summary diagram.,width=601,height=515]
 
 ===== GeologicTimeScale
 
-The classic “Geologic Timescale” (http://www.stratigraphy.org/index.php/ics-chart-timescale[[.underline]#http://www.stratigraphy.org/index.php/ics-chart-timescale#]) comprising an ordered, hierarchical set of named “eras” is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is, in principle, defined independently.
+The classic “Geologic Timescale” (http://www.stratigraphy.org/index.php/ics-chart-timescale) comprising an ordered, hierarchical set of named “eras” is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is, in principle, defined independently.
 
 ===== GeochronologicEra
 

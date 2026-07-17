@@ -42,16 +42,14 @@ NOTE: The security measures discussed in the following sections only provide var
 All questions regarding this submission should be directed to the editor or the submitters:
 
 [%unnumbered%]
-[width="100%",cols="30%,70%",options="header",]
+[width="100%",cols="30%,60%,10%",options="header",]
 |===
-|*Name* |*Affiliation* 
-|Eric Boisvert |Geological Survey of Canada (Natural Resources Canada) 
-|Ollie Raymond |Geoscience Australia 
-|Marcus Sen |British Geological Survey
-|Edd Lewis |British Geological Survey
-|Mark Rattenbury |Earth Sciences New Zealand
+|*Name* |*Affiliation* |*OGC Member* 
+|Eric Boisvert |Geological Survey of Canada (Natural Resources Canada) | TBA
+|Marcus Sen |British Geological Survey | TBA
+|Edd Lewis |British Geological Survey | TBA
+|Mark Rattenbury |Earth Sciences New Zealand | TBA
 |===
-
 
 == Contributors
 
@@ -60,3 +58,9 @@ All questions regarding this submission should be directed to the editor or the 
 Additional contributors to this Standard include the following:
 
 Individual name(s), Organization
+
+* Eric Boisvert, Geological Survey of Canada (Natural Resources Canada)
+* Ollie Raymond, Geoscience Australia
+* Marcus Sen, British Geological Survey
+* Edd Lewis, British Geological Survey
+* Mark Rattenbury, Earth Sciences New Zealand

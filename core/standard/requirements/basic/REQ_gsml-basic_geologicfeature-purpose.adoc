@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /req/gsml-basic/geologicfeature-purpose
-part:: Purpose SHALL be a value from Table 2 of clause 8.4.1.1.2.
+part:: Purpose SHALL be a value from <<valid_purpose_values>> of <<purpose_section>>.
 ====

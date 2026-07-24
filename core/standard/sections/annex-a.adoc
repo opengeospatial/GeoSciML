@@ -200,8 +200,8 @@ abstract-test:: /conf/gsml-basic/quantity-range-repeat
 [%metadata]
 identifier:: /conf/gsml-basic/geologicfeature-purpose
 target:: /req/gsml-basic/geologicfeature-purpose
-test-purpose:: Ensure that the target implementation enforces the purpose property to be restricted to the values provided in Table 2 (instance, typicalNorm, definingNorm) of 8.4.1.1.2
-test-method:: Visual inspection that the target implementation has a mechanism to limit the property value to those provided in Table 2
+test-purpose:: Ensure that the target implementation enforces the purpose property to be restricted to the values provided in <<valid_purpose_values>> (instance, typicalNorm, definingNorm) of <<purpose_section>>
+test-method:: Visual inspection that the target implementation has a mechanism to limit the property value to those provided in <<valid_purpose_values>>
 ====
 
 [[conf_gsml-basic_geologicevent-non-null]]

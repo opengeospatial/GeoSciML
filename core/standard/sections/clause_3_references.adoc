@@ -48,6 +48,6 @@
 
 * [[[INSPIRE]]], INSPIRE Thematic Woring Group Geology: _INSPIRE Data Specification for the spatial data theme Geology Version 3.0. European Commission Joint Research Centre (2013)_
 
-* [[[NAGMDM_SC]]], North American Geologic Map Data Model Steering Committee: _NADM Conceptual Model 1.0—A conceptual model for geologic map information. U.S. Geological Survey Open-File Report 2004-1334, 58 p., accessed online at URL http://pubs.usgs.gov/of/2004/1334[[.underline]#http://pubs.usgs.gov/of/2004/1334#] (2004)_
+* [[[NAGMDM_SC]]], North American Geologic Map Data Model Steering Committee: _NADM Conceptual Model 1.0—A conceptual model for geologic map information. U.S. Geological Survey Open-File Report 2004-1334, 58 p., accessed online at URL http://pubs.usgs.gov/of/2004/1334 (2004)_
 
 * [[[NAGMDM_Science]]],North American Geologic Map Data Model science language products _(http://ngmdb.usgs.gov/www-nadm/sltt/products.html)_

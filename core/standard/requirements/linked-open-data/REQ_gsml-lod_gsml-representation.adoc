@@ -4,5 +4,5 @@
 ====
 [%metadata]
 identifier:: /req/gsml-lod/gsml-representation
-part:: Dereferenceable HTTP URI used as identifiers SHOULD provide GeoSciML 5.0 as one of its representations.
+part:: Dereferenceable HTTP URI used as identifiers SHOULD provide GeoSciML {edition} as one of its representations.
 ====

@@ -5,7 +5,7 @@ include::/requirements/requirements_class_geosciml_basic.adoc[]
 
  
 
-Basic package provides a collection of classes representing fundamental geological and geomorphological features (units, structures, and events), earth materials, geologic time, and the relations between them.  It limits the number of descriptive properties to match important common use cases, including the INSPIRE geological theme specification ++[++8++]++.
+Basic package provides a collection of classes representing fundamental geological and geomorphological features (units, structures, and events), earth materials, geologic time, and the relations between them.  It limits the number of descriptive properties to match important common use cases, including the INSPIRE geological theme specification ++[++<<B8,8>>++]++.
 
 [img_geosciml_basic_dependencies]
 .GeoSciML Basic dependencies
@@ -35,6 +35,7 @@ The GeologicFeature observationMethod (SWE::Category) specifies the approach to 
 
 ObservationMethod is a convenience property that provides a simple approach to observation metadata when data are reported using a feature view (as opposed to observation view).  This property corresponds (loosely) to ISO19115 Lineage.
 
+[[purpose_section]]
 ====== purpose
 
 
@@ -72,7 +73,7 @@ To avoid extra complexity, GeoSciML Basic provides an explicit geologicHistory p
 
 A relatedFeature is a general structure used to define relationships between any features or objects within GeoSciML. Relationships are always binary and directional.  There is always a single source and a single target for a given FeatureRelation (which is abstract in GeoSciML Basic).  The relationship is always defined from the perspective of the Source and is generally an active verb. 
 
-In GeoSciML Basic, relatedFeature is a stub association (see clause 5.1.1).   However some encodings (such as XML) will allow a “by reference” value (for example xlink:href) to an external instance.
+In GeoSciML Basic, relatedFeature is a stub association (see <<abstract_description_classes>>).   However some encodings (such as XML) will allow a “by reference” value (for example xlink:href) to an external instance.
 
 ===== MappedFeature
 
@@ -108,7 +109,7 @@ The specification association links an instance of MappedFeature to the GFI++_++
 
 ===== GeologicUnit
 
-Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit ++[++12++]++, Stratigraphic unit in the sense of NACSN ++[++14++]++, or International Stratigraphic Code ++[++9++]++), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like ‘granitic rock’ or ‘alluvial deposit’, surficial units like ‘till’ or ‘old alluvium’). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).
+Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit ++[++<<B12,12>>++]++, Stratigraphic unit in the sense of NACSN ++[++<<B14,14>>++]++, or International Stratigraphic Code ++[++<<B9,9>>++]++), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like ‘granitic rock’ or ‘alluvial deposit’, surficial units like ‘till’ or ‘old alluvium’). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised).  In simpler terms, a geologic unit is a package of earth material (generally rock).
 
 [[img_geologicunit_context_diagram]]
 .GeologicUnit context diagram
@@ -130,7 +131,7 @@ Examples: group, subgroup, formation, member, bed, intrusion, complex, batholith
 
 ====== hierarchyLink
 
-The property hierarchyLink is an association that links a GeologicUnit with a GeologicUnitHierarchy (8.4.1.4) to represent containment of a part GeologicUnit within another GeologicUnit. It indicates a subsidiary unit with its role and proportion with respect to the container unit.  For example, members are described as part of formations, or different facies can be described as parts of a GeologicUnit.
+The property hierarchyLink is an association that links a GeologicUnit with a GeologicUnitHierarchy (<<geologic_unit_hierarchy>>) to represent containment of a part GeologicUnit within another GeologicUnit. It indicates a subsidiary unit with its role and proportion with respect to the container unit.  For example, members are described as part of formations, or different facies can be described as parts of a GeologicUnit.
 
 ====== composition
 
@@ -138,12 +139,13 @@ The property composition is an association that links a GeologicUnit with Compos
 
 ====== gbMaterialDescription (stub property)
 
-The property gbMaterialDescription:EarthMaterialAbstractDescription is a placeholder that provides detailed material description.  This is a stub property (See 5.1.1) in GeoSciML Basic as EarthMaterialAbstractDescription is abstract with subtypes defined in GeoSciML Extension. 
+The property gbMaterialDescription:EarthMaterialAbstractDescription is a placeholder that provides detailed material description.  This is a stub property (See <<abstract_description_classes>>) in GeoSciML Basic as EarthMaterialAbstractDescription is abstract with subtypes defined in GeoSciML Extension. 
 
 ====== gbUnitDescription (stub property)
 
-The property gbUnitDescription:GeologicUnitAbstractDescriptio is a placeholder that provides detailed material description.  This is a stub property (See 5.1.1) in GeoSciML Basic as GeologicUnitAbstractDescription is abstract with subtypes defined in GeoSciML Extension. 
+The property gbUnitDescription:GeologicUnitAbstractDescription is a placeholder that provides detailed material description.  This is a stub property (See <<abstract_description_classes>>) in GeoSciML Basic as GeologicUnitAbstractDescription is abstract with subtypes defined in GeoSciML Extension. 
 
+[[geologic_unit_hierarchy]]
 ===== GeologicUnitHierarchy
 
 GeologicUnitHierarchy associates a GeologicUnit with another GeologicUnit that is a proper part of that unit. Parts may be formal or notional. Formal parts refer to a specific body of rock, as in formal stratigraphic members. Notional parts refer to assemblages of particular EarthMaterials with particular internal structure, which may be repeated in various places within a unit (e.g. ‘turbidite sequence’, ‘point bar assemblage’, ‘leucosome veins’). 
@@ -174,8 +176,9 @@ The proportion property (SWE::QuantityRange) specifies the fraction of the geolo
 
 ====== Material
 
-The material:EarthMaterial property contains the material description (8.4.1.6) of the composing part.
+The material:EarthMaterial property contains the material description (<<earth_material>>) of the composing part.
 
+[[earth_material]]
 ===== EarthMaterial
 
 The EarthMaterial class holds a description of a naturally occurring substance in the Earth.  EarthMaterial represents material composition or substance, and is thus independent of quantity or location. Ideally, EarthMaterials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations enter into the description as well.  
@@ -186,11 +189,11 @@ image::images/image14.png[EarthMaterial and related classes.,width=516,height=23
 
 ====== color
 
-The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes ++[++11++]++ may be used.
+The color property (SWE::Category) is a term from a controlled vocabulary that specifies the colour of the earth material. Color schemes such as the Munsell rock and soil color schemes ++[++<<B11,11>>++]++ may be used.
 
 ====== purpose
 
-The purpose:DescriptionPurpose property provides a specification of the intended purpose or level of abstraction for the given EarthMaterial. The intent is the same a GeologicFeature’s purpose (see 8.4.1.1.2) and it shares the same vocabulary (instance, typicalNorm, definingNorm).
+The purpose:DescriptionPurpose property provides a specification of the intended purpose or level of abstraction for the given EarthMaterial. The intent is the same a GeologicFeature’s purpose (see <<purpose_section>>) and it shares the same vocabulary (instance, typicalNorm, definingNorm).
 
 ====== gbEarthMaterialDescription (stub property)
 
@@ -220,7 +223,7 @@ GeologicalHistory is an ordered aggregation of GeologicalEvent objects, each of 
 
 The age attributes are representations of a particular geological event or feature expressed as absolute age in terms of years (numericAge) before present or named time periods in the geological time scale (youngerNamedAge and olderNamedAge), or by comparison with other geological events or features (relative age).  An event age can represent an instant in time, an interval of time, or any combination of multiple instants or intervals.
 
-Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages specified by geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or “contains inclusions of” (a.k.a, Steno laws ++[++17++]++).
+Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages specified by geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or “contains inclusions of” (a.k.a, Steno laws ++[++<<B17,17>>++]++).
 
 [[img_geologic_event_summary_diagram]]
 .Geologic Event summary diagram
@@ -246,7 +249,7 @@ The eventProcess:EventProcessTerm property provides a term from a controlled voc
 
 ====== numericAge
 
-The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1^st^ 1950 (although van der Plitch & Hogg ++[++20++]++, suggests this convention to be restricted to radiocarbon estimations).
+The numericAge:NumericAgeRange property provides an age in absolute year before present (BP).  Present is defined by convention to be January 1^st^ 1950 (although van der Plitch & Hogg ++[++<<B20,20>>++]++, suggests this convention to be restricted to radiocarbon estimations).
 
 ====== olderNamedAge
 
@@ -294,7 +297,7 @@ image::images/image17.png[Summary diagram of Geologic structures.,width=601,heig
 
 ===== GeologicStructure
 
-A geologic structure is a configuration of matter in the Earth based on describable inhomogeneity, pattern, or fracture in an earth material.  The identity of a GeologicStructure is independent of the material that is the substrate for the structure.  The general GeologicFeatureRelation (available in the Extension package – see 8.5) is used to associate penetrative GeologicStructures with GeologicUnits.  GeoSciML Basic only provides a limited set of core structures (Contact, Fold, ShearDisplacementStructure and Foliation) with a single property to categorise them.  Supplemental properties (through the pattern described in 5.1.1) and geologic structure types are available from the Extension package.
+A geologic structure is a configuration of matter in the Earth based on describable inhomogeneity, pattern, or fracture in an earth material.  The identity of a GeologicStructure is independent of the material that is the substrate for the structure.  The general GeologicFeatureRelation (available in the Extension package – see 8.5) is used to associate penetrative GeologicStructures with GeologicUnits.  GeoSciML Basic only provides a limited set of core structures (Contact, Fold, ShearDisplacementStructure and Foliation) with a single property to categorise them.  Supplemental properties (through the pattern described in <<abstract_description_classes>>) and geologic structure types are available from the Extension package.
 
 ===== Contact
 
@@ -330,7 +333,7 @@ The property stFoldDescription:FoldAbstractDescription provides a detailed fold 
 
 ===== Foliation
 
-A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team ++[++12++]++, penetrative planar foliation defined by layers ++>++ 5 mm thick is considered Layering.
+A foliation is a planar arrangement of textural or structural features in any type of rock.  It includes any of a wide variety of penetrative planar geological structures that may be present in a rock.  Examples include schistosity, mylonitic foliation, penetrative bedding structure (lamination), and cleavage.  Following the proposed definition of gneiss by the NADM Science Language Technical Team ++[++<<B12,12>>++]++, penetrative planar foliation defined by layers ++>++ 5 mm thick is considered Layering.
 
 Bedding is a fabric representing the average orientation of paleodepositional surface and should be encoded through the foliationType property.  It might apply to bedding that is layering or a foliation without layering (e.g. clast alignment in amalgamated beds).
 
@@ -346,9 +349,10 @@ The foliationType:FoliationTypeTerm property specifies the type of foliation fro
 
 The property stFoliationDescription:FoliationAbstractDescription provides a detailed foliation description.  This is a stub property in GeoSciML Basic since FoliationAbstractDescription is an abstract class with subtypes defined in GeoSciML Extension.
 
+[[ShearDisplacementStructure_section]]
 ===== ShearDisplacementStructure
 
-A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single ‘planar’ brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package (8.5.1.2).
+A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single ‘planar’ brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package (<<geologic_feature_relation>>).
 
 [[img_ShearDisplacementStructure_context_diagram]]
 .ShearDisplacementStructure context diagram
@@ -378,7 +382,7 @@ A geomorphologic feature is a kind of GeologicFeature describing the shape and n
 .Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009)
 image::images/image23.png[width=601,height=279]
 
-<<img_partial_encoding_of_landform>> shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from ++[++2++]++) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
+<<img_partial_encoding_of_landform>> shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from ++[++<<B2,2>>++]++) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
 
 ====== unitDescription
 
@@ -442,7 +446,7 @@ b)    using GSMLItem as a validation constraint
 [%unnumbered%]
 image::images/image26.png[width=292,height=70]
 
-This requirements class does not impose any encoding style for Union stereotype, although in the XML encoding requirements class (see 9.3) we chose the second option.
+This requirements class does not impose any encoding style for Union stereotype, although in the XML encoding requirements class (see Part 2) we chose the second option.
 
 [[tbl_types_of_GSMLItem_members]]
 .Types of GSMLItem members
@@ -487,13 +491,14 @@ include::/requirements/basic/REQ_gsml-basic_plane-pol-dip-az-not-null.adoc[]
 
 To have any meaningful value, the planar orientation shall have at least a value for polarity, azimuth or dip.
 
+[[convention_section]]
 ====== convention
 
 The property convention:ConventionCode contains the convention used for the measurement from a controlled vocabulary.
 
 ====== azimuth
 
-The azimuth (SWE::QuantityRange) property (compass point, bearing etc.) contains the value of the orientation. The convention property (8.4.6.2.1) reports how azimuth is interpreted (if it is relative to a quadrant).
+The azimuth (SWE::QuantityRange) property (compass point, bearing etc.) contains the value of the orientation. The convention property (<<convention_section>>) reports how azimuth is interpreted (if it is relative to a quadrant).
 
 ====== dip
 
@@ -536,7 +541,7 @@ The magnitude property (SWE::QuantityRange) reports the magnitude of the vector.
 
 ===== GSML++_++QuantityRange
 
-GSML++_++QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13)  where lower and upper values are made explicit.  SWE::QuantityRange uses an array of values (RealPair, see Clause OGC 08-094r1,7.2.1) where the lowest value is the first element and the highest the second.  This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrayshttps://docs.ogc.org/is/16-008/16-008.html#_ftnref3[[.underline]#++[++3++]++#] (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).
+GSML++_++QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13)  where lower and upper values are made explicit.  SWE::QuantityRange uses an array of values (RealPair, see Clause OGC 08-094r1,7.2.1) where the lowest value is the first element and the highest the second.  This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrays footnote:[SWE RealPair is encoded as space delimited lists (<swe:value>10 300</swe:value> in XML) , which demands that clients parse the string to extract each token.  To build a WFS/FES query that tests the first element, it requires parsing the string either using string-before(swe:value,’ ’)  or tokenize(swe:value,’ ’).  This is cumbersome at best, or not even supported by the server at worst.  09-026r2 Clause 7.4.4 describes the minimal XPath supports and string parsing is not present.] (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).
 
 [[img_Context_diagram_for_QuantityRange]]
 .Context diagram for QuantityRange making lower and upper values explicit
@@ -567,7 +572,7 @@ image::images/image29.png[width=166,height=126]
 
 ==== GeoSciML Basic vocabularies
 
-Geology is a descriptive science and uses vocabularies extensively.  <<tbl_vocabularies_used_in_geosciml_basic>> lists the vocabularies used in GeoSciML Basic.  Each of those vocabularies shall be implemented using externally managed vocabularies as specified in clause 8.2.7
+Geology is a descriptive science and uses vocabularies extensively.  <<tbl_vocabularies_used_in_geosciml_basic>> lists the vocabularies used in GeoSciML Basic.  Each of those vocabularies shall be implemented using externally managed vocabularies as specified in <<code_lists>>
 
 [[tbl_vocabularies_used_in_geosciml_basic]]
 .Vocabularies used in GeoSciML Basic
@@ -658,7 +663,7 @@ e.g., "upright", "overturned", "vertical"
 
 ==== Instance examples
 
-The following figure shows a partial encoding of an existing map from Drewes ++[++3++]++.  This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/[http://ngmdb.usgs.gov/www-nadm/dmdt/]).  <<img_excerpt_from_drewes_map>> shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA.  The original legend description is shown in <<img_original_description_from_drewes_map>>.
+The following figure shows a partial encoding of an existing map from Drewes ++[++<<B3,3>>++]++.  This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/[http://ngmdb.usgs.gov/www-nadm/dmdt/]).  <<img_excerpt_from_drewes_map>> shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA.  The original legend description is shown in <<img_original_description_from_drewes_map>>.
 
 [[img_excerpt_from_drewes_map]]
 .Excerpt from Drewes map ++[++3++]++ with a Dacitic vent breccia unit highlighted (Ttv)

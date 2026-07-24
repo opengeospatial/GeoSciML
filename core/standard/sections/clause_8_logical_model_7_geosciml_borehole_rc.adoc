@@ -130,10 +130,10 @@ include::/requirements/borehole/REQ_gsml-borehole_interval-1D.adoc[]
 
 include::/requirements/borehole/REQ_gsml-borehole_interval-1D-CRS.adoc[]
 
-Instance example for Klčovo and Lastomir Formation adapted from Túnyi ++[++18++]++:
+Instance example for Klčovo and Lastomir Formation adapted from Túnyi ++[++<<B18,18>>++]++:
 
 [[img_top__part_tunyi]]
-.Top part of Figure 2 from Túnyi ++[++18++]++
+.Top part of Figure 2 from Túnyi ++[++<<B18,18>>++]++
 image::images/image80.png[width=426,height=549]
 
 <<img_encoding_of_a_borehole_with_two_logs>> shows an encoding of the first lithostratigraphic and magnetostratigraphic units from <<img_top__part_tunyi>> showing how the collection identifiers group BoreholeIntervals into two groups.

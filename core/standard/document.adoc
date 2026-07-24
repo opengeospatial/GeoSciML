@@ -14,7 +14,7 @@
 :fullname_2: Editor Two
 :docsubtype: Interface
 :keywords: ogcdoc, OGC document, API, openapi, html
-:submitting-organizations: Arizona Geological Survey (AzGS), Arizona, USA; British Geological Survey (NERC-BGS), UK; Bureau de Recherches Géologiques et Minières (BRGM), France; Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia; Geological Survey of Victoria (GSV), Australia; Geological Survey of Finland (GTK), Finland; Geological Survey of Italy (ISPRA), Italy; Geological Survey of Sweden (SGU), Sweden; Geoscience Australia (GA), Australia; Institute of Geological and Nuclear Sciences (GNS), New Zealand; Landcare Research, New Zealand; Natural Resources Canada (NRCan), Canada; U.S. Geological Survey (USGS), United States of America
+:submitting-organizations: Arizona Geological Survey (AzGS), Arizona, USA; British Geological Survey (NERC-BGS), UK; Bureau de Recherches Géologiques et Minières (BRGM), France; Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia; Geological Survey of Victoria (GSV), Australia; Geological Survey of Finland (GTK), Finland; Geological Survey of Italy (ISPRA), Italy; Geological Survey of Sweden (SGU), Sweden; Geoscience Australia (GA), Australia; Earth Sciences New Zealand; Landcare Research, New Zealand; Natural Resources Canada (NRCan), Canada; U.S. Geological Survey (USGS), United States of America
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf
 :local-cache-only:

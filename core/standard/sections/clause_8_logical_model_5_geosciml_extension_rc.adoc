@@ -28,6 +28,7 @@ To prevent confusion and promote consistency, especially in query scenarios, ass
 
 include::/requirements/extension/REQ_gsml-extension_geologicfeature-history.adoc[]
 
+[[geologic_feature_relation]]
 ===== GeologicFeatureRelation
 
 The GeologicFeatureRelation class defines the general structure used to define relationships between any GeoSciML feature types.  Relationships are always binary and directional.  There is always a single source and a single target.  The relationship is always defined from the perspective of the Source and is generally an active verb. 
@@ -100,7 +101,7 @@ AlterationDescription describes aspects of a geologic unit or earth material tha
 .Example of a weathering profile
 image::images/image40.png[Example of a weathering profile.,width=486,height=143]
 
-An example encoding of an altered geologic unit from Drewes ++[++3++]++ is shown in <<img_example_of_describing_alteration>>.
+An example encoding of an altered geologic unit from Drewes ++[++<<B3,3>>++]++ is shown in <<img_example_of_describing_alteration>>.
 
 [[img_example_of_describing_alteration]]
 .Example of describing alteration halo from Drewes ++[++3++]++.
@@ -174,7 +175,7 @@ The particleType:ParticleTypeTerm provides a term from a controlled vocabulary t
 
 ====== aspectRatio
 
-The aspectRatio property (SWE::Category) contains a term from a controlled vocabulary describing the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. It equates to sphericity in sedimentary rocks (i.e., the degree to which the shape of a particle approximates a sphere).  The formal definition is “_A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape_” ++[++16++]++ ++[++24++]++. (e.g., prolate, slightly flattened, very bladed, equant, acicular, tabular).
+The aspectRatio property (SWE::Category) contains a term from a controlled vocabulary describing the geometry of particles based on the ratios of lengths of long, intermediate and short axes of grains. It equates to sphericity in sedimentary rocks (i.e., the degree to which the shape of a particle approximates a sphere).  The formal definition is “_A quantitative specification based on the ratio of lengths of long, intermediate and short axes of grain shape_” ++[++<<B16,16>>++]++ ++[++<<B24,24>>++]++. (e.g., prolate, slightly flattened, very bladed, equant, acicular, tabular).
 
 ====== shape
 
@@ -182,7 +183,7 @@ The shape property (SWE::Category) describes,
 
 [loweralpha]
 .  the development of crystal faces bounding particles in crystalline compound materials, and
-.  the surface rounding of grains in sedimentary rocks. Roundness is a measure of the sharpness of the edges between surfaces bounding a particle ++[++10++]++ ++[++22++]++.
+.  the surface rounding of grains in sedimentary rocks. Roundness is a measure of the sharpness of the edges between surfaces bounding a particle ++[++<<B10,10>>++]++ ++[++<<B22,22>>++]++.
 
 The terms shall be a term from a controlled vocabulary and be appropriate for the kind of compound material (e.g., for crystalline rocks- euhedral, ideoblastic, subhedral, anhedral, xenoblastic; for sedimentary rocks - angular, rounded).
 
@@ -192,7 +193,7 @@ The property size (SWE::QuantityRange) reports the size that specifies particle 
 
 ====== sorting
 
-The sorting property (SWE::Category) contains a term from a vocabulary that specifies the size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk ++[++5++]++ ++[++6++]++.  Example for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranular, seriate.
+The sorting property (SWE::Category) contains a term from a vocabulary that specifies the size distribution of particles in a CompoundMaterial. Terminology for sorting in sedimentary rocks is based on the quantitative Graphic Standard Deviation (IGSD) scheme proposed by Folk ++[++<<B5,5>>++]++ ++[++<<B6,6>>++]++.  Example for this attribute may include sedimentary terms such as well sorted and poorly sorted, or igneous terms such as porphyritic, equigranular, seriate.
 
 ====== sourceOrganism
 
@@ -205,7 +206,7 @@ image::images/image45.png[ConstituentPart context diagram.,width=601,height=691]
 
 The ConstituentPart class describes how Earth materials may be made up of other Earth materials, including the proportion of the constituent part in the whole (e.g., 20%, minor, dominant); and the role that the constituent plays in the whole (e.g., matrix, groundmass, framework, phenocryst, xenolith, vein).
 
-The distinction between "role" and "particleType" is subtle.  An operational test is that particleType may be determined independent of relationship between particles in the aggregation, whereas role requires consideration of the relationship to other particles. A particle may be identified as a clast, independent of its material composition, and independent of its relationship to other grains in a rock. The term ‘floating clast’ is a role, because it is dependent on the relationship ‘not in contact with other clasts’. Readers should consider Dunham’s textural classification of carbonate rocks (wackestone, packstone, grainstone, etc.) in the description of carbonate rocks ++[++4++]++. The description is predicated on identification of two kinds of intraclasts (grains) and matrix (carbonate mud), and then uses this distinction to establish relationships–mud supported vs. grain supported – that define roles for the two types of constituents (framework, matrix…).
+The distinction between "role" and "particleType" is subtle.  An operational test is that particleType may be determined independent of relationship between particles in the aggregation, whereas role requires consideration of the relationship to other particles. A particle may be identified as a clast, independent of its material composition, and independent of its relationship to other grains in a rock. The term ‘floating clast’ is a role, because it is dependent on the relationship ‘not in contact with other clasts’. Readers should consider Dunham’s textural classification of carbonate rocks (wackestone, packstone, grainstone, etc.) in the description of carbonate rocks ++[++<<B4,4>>++]++. The description is predicated on identification of two kinds of intraclasts (grains) and matrix (carbonate mud), and then uses this distinction to establish relationships–mud supported vs. grain supported – that define roles for the two types of constituents (framework, matrix…).
 
 ====== role
 
@@ -221,7 +222,7 @@ The constituentMaterial property is an association between a ConstituentPart and
 
 ===== FabricDescription
 
-The FabricDescription data type describes all types of fabrics associated with a CompoundMaterial (i.e., tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale.  FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++15++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly (++[++19++]++ p. 21-24; ++[++7++]++ p. 73; ++[++10++]++,++[++15++]++).
+The FabricDescription data type describes all types of fabrics associated with a CompoundMaterial (i.e., tectonic, metamorphic, sedimentary, igneous fabrics or textures).  It denotes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale.  FabricDescription is defined based on the average configuration of many constituents.  Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++<<B15,15>>++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly (++[++<<B19,19>>++]++ p. 21-24; ++[++<<B7,7>>++]++ p. 73; ++[++<<B10,10>>++]++,++[++15++]++).
 
 FabricDescription is distinguished from ParticleGeometry based on the criteria that particle geometry is preserved if a CompoundMaterial is disaggregated, while FabricDescription is not defined if the material is disaggregated.
 
@@ -231,7 +232,7 @@ image::images/image46.png[Fabric description context diagram.,width=456,height=3
 
 ====== fabricType
 
-The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++15++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.
+The fabricType:FabricTypeTerm property contains a term from a controlled vocabulary to denote the type of fabric in the CompoundMaterial (e.g., rapikivi texture, autobrecciation, spaced cleavage, porphyroblastic, cross-bedding).  The fabricType describes a pattern, defined by one or more CompoundMaterial constituents, that is present throughout a rock body when considered at some scale. It is defined based on the average configuration of many constituents. Penetrative fabric denotes that these constituents are distributed throughout the rock volume at the scale of observation ++[++<<B15,15>>++]++, and are repeated at distances that are small relative to the scale of the whole, such that they can be considered to pervade the whole uniformly.
 
 ===== InorganicFluid
 
@@ -287,6 +288,7 @@ Organism is a broad class to represent any living or once living things. This is
 .Organism context diagram
 image::images/image50.png[Organism context diagram.,width=276,height=456]
 
+[[physical_description_section]]
 ===== PhysicalDescription
 
 PhysicalDescription is a class that describes the numeric physical properties of a geologic unit (GeologicUnit 8.4.1.3), earth material (EarthMaterial 8.4.1.6), or geologic structure (GeologicStructure 8.4.3.1). (e.g., density, porosity, magnetic susceptibility, remanent magnetism).  These properties are modelled here as scalar numeric values (SWE::Quantity).
@@ -313,11 +315,11 @@ image::images/image52.png[Rock material description context diagram.,width=271,h
 
 ====== consolidationDegree
 
-The consolidationDegree property (SWE::Category) contains a term from a controlled vocabulary that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration ++[++13++]++.
+The consolidationDegree property (SWE::Category) contains a term from a controlled vocabulary that specifies the degree to which an aggregation of EarthMaterial particles is a distinct solid material. Consolidation and induration are related concepts specified by this property. They define a continuum from unconsolidated material to very hard rock. Induration is the degree to which a consolidated material is made hard, operationally determined by how difficult it is to break a piece of the material. Consolidated materials may have varying degrees of induration ++[++<<B13,13>>++]++.
 
 ==== GeologicAgeDetails
 
-GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model.  GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see 8.6).
+GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model.  GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see <<geologic_time_rc_section>>).
 
 .GeologicAgeDetails summary diagram
 image::images/image53.png[GeologicAgeDetails summary diagram.,width=548,height=726]
@@ -368,11 +370,11 @@ image::images/image56.png[DisplacementEvent context diagram,width=391,height=575
 
 ====== incrementalDisplacement
 
-The incrementalDisplacement:DisplacementValue property contains a DisplacementValue (8.5.4.4) reporting the parameters of the displacement.
+The incrementalDisplacement:DisplacementValue property contains a DisplacementValue (<<displacement_value_section>>) reporting the parameters of the displacement.
 
 ===== Layering
 
-A planar foliation is defined by a tabular succession of layers ++>++ 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team ++[++13++]++.  The GeologicStructure characteristic of gneiss is layering.
+A planar foliation is defined by a tabular succession of layers ++>++ 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team ++[++<<B13,13>>++]++.  The GeologicStructure characteristic of gneiss is layering.
 
 .Layering context diagram
 image::images/image57.png[Layering context diagram,width=552,height=440]
@@ -381,6 +383,7 @@ image::images/image57.png[Layering context diagram,width=552,height=440]
 
 The layerComposition property is an association between a Layering and a RockMaterial that describes the rock material that may define compositional layering.
 
+[[displacement_value_section]]
 ====== DisplacementValue
 
 A displacement value expresses the displacement on a fault with respect to a planar approximation of its shape.
@@ -546,7 +549,7 @@ The spacing property (SWE::QuantityRange) contains a linear dimension representi
 
 ===== ShearDisplacementStructureDescription
 
-ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in 8.4.3.5 by extending the abstract property block ShearDisplacementStructureAbstractDescription.
+ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in <<ShearDisplacementStructure_section>> by extending the abstract property block ShearDisplacementStructureAbstractDescription.
 
 .ShearDisplacementStructureDescription context diagram
 image::images/image62.png[ShearDisplacementStructureDescription context diagram.,width=601,height=447]
@@ -561,7 +564,7 @@ The property planeOrientation:GSML++_++PlanarOrientation contains a description 
 
 ====== stPhysicalProperty
 
-The property stPhysicalProperty:PhysicalDescription contains a value of generic physical properties (8.5.2.11) not addressed in this specification.
+The property stPhysicalProperty:PhysicalDescription contains a value of generic physical properties (<<physical_description_section>>) not addressed in this specification.
 
 ==== GeologicUnitDetails
 

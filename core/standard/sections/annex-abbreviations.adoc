@@ -9,10 +9,10 @@ IUGS: International Union of Geological Sciences (www.iugs.org)
 
 IUGS CGI: International Union of Geological Sciences, Commission for the Management and Application of Geoscience Information (www.cgi-iugs.org)
 
-GeoSciML:  Geoscience Markup Language (http://www.geosciml.org/[[.underline]#www.geosciml.org#])
+GeoSciML:  Geoscience Markup Language (http://www.geosciml.org/)
 
 GWML: GroundWater Markup Language
 
 RDBMS: Relational database management system
 
-UCUM: Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html[[.underline]#http://unitsofmeasure.org/ucum.html#])
+UCUM: Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)

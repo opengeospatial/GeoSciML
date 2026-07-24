@@ -2,7 +2,7 @@
 
 include::/requirements/requirements_class_lab-analysis.adoc[]
 
-The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model ++[++21++]++. 
+The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling.  It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model ++[++<<B21,21>>++]++. 
 
 .LaboratoryAnalysis and Specimen dependencies
 image::images/image84.png[LaboratoryAnalysis and Specimen dependencies.,width=601,height=506]
@@ -292,6 +292,7 @@ Vocabularies used in the LaboratoryAnalysis-Specimen package are listed <<tbl_la
 |*GeologicSpecimenPreparationTerm* |Refers to a vocabulary of terms to describe sample preparation applied to geologic specimens, typically in preparation for analytical processes like geochemistry or microscopy.  e.g., crush, mineral separation, thin section, cut, polish, mount, acid digestion.
 |===
 
+[[outcrop_encoding_pattern]]
 ==== Outcrop encoding pattern (Informative)
 
 It is suggested to use SamplingFeatureCollection for representing geological field data collected at an outcrop, (i.e., an outcrop is modelled as a collection of sampling points).  At each point at an outcrop, observations may be made on a single geologic feature (sampledFeature), such as a geologic unit description, a fault description, a contact description, or structural measurements on a foliation.  If more than one geologic feature is observed at an outcrop, it is delivered as a separate sampling point.

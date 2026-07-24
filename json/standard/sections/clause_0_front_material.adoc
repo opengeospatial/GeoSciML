@@ -60,7 +60,7 @@ Additional contributors to this Standard include the following:
 | Mark Rattenbury | Earth Sciences New Zealand
 | Alejandro Villar | Open Geospatial Consortium
 | Gobe Hobona | Open Geospatial Consortium
-| Add Name |
+| Stephen Richard |
 | Add Name |
 | Add Name |
 | Add Name |

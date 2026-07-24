@@ -3,7 +3,7 @@
 include::/requirements/requirements_class_geosciml_core.adoc[]
 
 
-This section presents requirements to which all target encodings must conform in to order to claim compliance to GeoSciML 4.1.
+This section presents requirements to which all target encodings must conform in to order to claim compliance to GeoSciML {edition}.
 
 ==== Naming of entities
 
@@ -37,7 +37,7 @@ The type hierarchy of the UML model implies type substitutions for property valu
 
 include::/requirements/core/REQ_gsml-core_quantities-uom.adoc[]
 
-The quantities and measurements units of measure shall be taken from a standard vocabulary governed by an appropriate community, for example the Unified Code for Units of Measure (UCUM).
+The quantities and measurements units of measure shall be taken from a standard vocabulary governed by an appropriate community, for example the Unified Code for Units of Measure (<<UCUM201>>). 
 
 ==== QuantityRange
 
@@ -46,6 +46,7 @@ A QuantityRange is a quantity formed of a lower and upper value forming a range 
 
 include::/requirements/core/REQ_gsml-core_quantities-single-range.adoc[]
 
+[[code_lists]]
 ==== Code lists
 
 
@@ -57,6 +58,6 @@ All properties that require formal vocabularies are modelled in the UML as class
 .Example CodeLists, with a) a prescribed list of terms (DescriptionPurpose) and b) 'open' with no prescribed terms (GeologicUnitHierarchyRoleTerm)
 image::images/image9.png[width=118,height=96] 
 
-When the list is open, the vocabulary is managed externally over the web where each vocabulary term should be encoded as a resource.  Vocabulary term identifiers are URIs representing concepts from a standard vocabulary governed by an appropriate community - for example, the IUGS CGI Geoscience Terminology Working Group (http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html[http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html] and http://resource.geosciml.org/[http://resource.geosciml.org/]) or INSPIRE ++[++8++]++.
+When the list is open, the vocabulary is managed externally over the web where each vocabulary term should be encoded as a resource.  Vocabulary term identifiers are URIs representing concepts from a standard vocabulary governed by an appropriate community - for example, the IUGS CGI Geoscience Terminology Working Group (http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html[http://www.cgi-iugs.org/tech_collaboration/geoscience_terminology_working_group.html] and http://resource.geosciml.org/[http://resource.geosciml.org/]) or INSPIRE ++[++<<B8,8>>++]++.
 
 This requirement does not require that URIs be actually dereferenceable, but just that a vocabulary term is associated with a syntactically correct URI.

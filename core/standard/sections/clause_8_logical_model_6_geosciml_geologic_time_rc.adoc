@@ -1,9 +1,10 @@
+[[geologic_time_rc_section]]
 === GeoSciML GeologicTime Requirements Class (Normative)
 
 
 include::/requirements/requirements_class_geologic-time.adoc[]
 
-The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) ++[++1++]++, contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
+The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) ++[++<<B1,1>>++]++, contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
 
 
 .GeologicTime dependencies
@@ -141,7 +142,7 @@ image::images/image70.png[Time scale summary diagram.,width=601,height=515]
 
 ===== GeologicTimeScale
 
-The classic “Geologic Timescale” (http://www.stratigraphy.org/index.php/ics-chart-timescale[[.underline]#http://www.stratigraphy.org/index.php/ics-chart-timescale#]) comprising an ordered, hierarchical set of named “eras” is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is, in principle, defined independently.
+The classic “Geologic Timescale” (http://www.stratigraphy.org/index.php/ics-chart-timescale) comprising an ordered, hierarchical set of named “eras” is an example of an Ordinal Temporal Reference System. It may be calibrated with reference to a numeric Temporal Coordinate System, but is, in principle, defined independently.
 
 ===== GeochronologicEra
 
@@ -183,7 +184,7 @@ image::images/image74.png[NumericEraBoundary context diagram.,width=400,height=4
 
 ===== StandardGlobalNumericalAge
 
-A standard numeric age point (a numeric analogue to a ‘golden spike’) is applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary (++[++23++]++; http://www.stratigraphy.org/index.php/ics-chart-timescale[[.underline]#http://www.stratigraphy.org/index.php/ics-chart-timescale#]).  The boundary is not defined from a physical stratotype, although it can be influence by some, but placed at a convenient numerical value.
+A standard numeric age point (a numeric analogue to a ‘golden spike’) is applicable to the formal subdivision of the Precambrian, and perhaps the Pleistocene/Holocene boundary (++[++<<B23,23>>++]++; http://www.stratigraphy.org/index.php/ics-chart-timescale[http://www.stratigraphy.org/index.php/ics-chart-timescale]).  The boundary is not defined from a physical stratotype, although it can be influence by some, but placed at a convenient numerical value.
 
 ==== GeoSciML GeologicTime vocabularies
 

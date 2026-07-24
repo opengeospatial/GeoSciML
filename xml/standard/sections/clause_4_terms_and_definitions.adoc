@@ -73,7 +73,7 @@ Set of operations having the objective of determining the value of a quantity.
 Act of observing a property.
 
 [.source]
-<<ISO 19156:2011>>
+<<ISO19156:2011>>
 
 NOTE: The goal of an observation may be to measure or otherwise determine the value of a property.
 

@@ -3,7 +3,7 @@
 
 === GeoSciML Models
 
-The GeoSciML 4.1 is an ISO General Feature Model (ISO19101, ISO19109) implementation of portions of the North American Data Model ++[++12++]++ and CSIRO’s XMML model.  GeoSciML also provides models for concepts at the immediate periphery of geological mapping, such as boreholes, geologic specimens and laboratory analysis, modelled as SF++_++SamplingFeatures and OM++_++Observations (OGC 10-004r3). 
+The GeoSciML {edition} is an ISO General Feature Model (ISO19101, ISO19109) implementation of portions of the North American Data Model ++[++<<B12,12>>++]++ and CSIRO’s XMML model.  GeoSciML also provides models for concepts at the immediate periphery of geological mapping, such as boreholes, geologic specimens and laboratory analysis, modelled as SF++_++SamplingFeatures and OM++_++Observations (OGC 10-004r3). 
 
 .Model lineage. Geological entities are logical implementations of NADM while sampling and observations entities are implementations of O&M (ISO19156).
 image::images/image1.png[width=601,height=520]
@@ -13,7 +13,7 @@ GeoSciML has been through 4 major releases and a few minor releases since 2005.�
 
 This fourth iteration is essentially a repackaging of the previous version 3.2 from 13 packages organised by themes into 6 packages organised by use cases (<<img_geosciml_packages>>):
 
-* *GeoSciML Basic*: a set of core geologic features, aligned to the INSPIRE Data Specification on Geology.
+* *GeoSciML Basic*: a set of core geologic features, aligned to the <<INSPIRE>> Data Specification on Geology.
 * *GeoSciML Extension*: an extension providing detailed description of basic features which adds additional properties and associations.
 * *GeoSciML Geologic Age*: a model for the representation of geologic time using procedures adopted by the International Stratigraphic Commission.
 * *GeoSciML Borehole*: a model for boreholes, including geologic logs and drilling details and other engineering information.
@@ -21,7 +21,7 @@ This fourth iteration is essentially a repackaging of the previous version 3.2 f
 * *GeoSciML Lite*: previously known as “GeoSciML Portrayal” in version 3.2; a simplified alternate implementation of the conceptual model for layer based applications.
 
 [[img_geosciml_packages]]
-.GeoSciML 4.1 packages
+.GeoSciML {edition} packages
 image::images/image2.png[width=601,height=525]
 
  Each application package is the subject of at least one requirements class (to conform to the modular specification) per target implementation (this specification has three targets; logical model, encoding and data instance).  More target implementations might be published as separate documents.
@@ -44,6 +44,7 @@ GeologicFeature can share arbitrary relationships through a relation class (Abst
 
 In order to provide a simple entry level model for data providers, but also to align to INSPIRE, only a minimal set of properties are supported by the _basic_ package.  When more properties are required, the data provider can use the _extension_ package.  To split properties between _basic_ and _extension_, a modelling pattern has been adopted to overcome the limitations of classical object oriented subtyping imposed by UML and XSD.
 
+[[abstract_description_classes]]
 ==== AbstractDescription classes
 
 The technique to add extended properties to an existing class is normally to create a subtype to carry the new properties (<<img_adding_properties_by_extension>>).
@@ -52,7 +53,7 @@ The technique to add extended properties to an existing class is normally to cre
 .Adding properties by extension
 image::images/image5.png[width=601,height=892]
 
-But this only works when properties need to be added to a leaf class.  Properties added by subtyping a class higher up in the chain of inheritance will create a new branch, and new properties won’t propagate to existing subtypes in the main branch. GeoSciML 4 adopts an extension pattern using abstract property blocks or ‘AbstractDescription’ classes (<<img_extension_pattern>>).  Blocks of extended properties are organized in their own Datatype, subtyping AbstractDescription.
+But this only works when properties need to be added to a leaf class.  Properties added by subtyping a class higher up in the chain of inheritance will create a new branch, and new properties won’t propagate to existing subtypes in the main branch. GeoSciML {edition} adopts an extension pattern using abstract property blocks or ‘AbstractDescription’ classes (<<img_extension_pattern>>).  Blocks of extended properties are organized in their own Datatype, subtyping AbstractDescription.
 
 [[img_extension_pattern]]
 .Extension pattern using a property block (AbstractDescription class)
@@ -87,7 +88,7 @@ This modelling pattern is also used by other standards communities (e.g., ISO 19
 
 === GeoSciML Lite
 
-GeoSciML Lite is a denormalised view, or a transformation, of key geological and sampling features, designed as a simple entry-level model to publish datasets, particularly adapted to geographic visualization with key reporting properties.  The use case for GeoSciML Lite is a simple layer-based application; such as web map application or GIS where the key functionality is to display a map layer and perform simple identify or query operations.  The classes are modelled to be easily implementable in any GIS or web mapping application.  One feature type maps to one table composed of optional, single-occurrence properties – consistent with the structure of denormalised RDBMS tables.  The XML implementation (clause 9.8) is conformant with GML Simple Feature (OGC 10-100r3).
+GeoSciML Lite is a denormalised view, or a transformation, of key geological and sampling features, designed as a simple entry-level model to publish datasets, particularly adapted to geographic visualization with key reporting properties.  The use case for GeoSciML Lite is a simple layer-based application; such as web map application or GIS where the key functionality is to display a map layer and perform simple identify or query operations.  The classes are modelled to be easily implementable in any GIS or web mapping application.  One feature type maps to one table composed of optional, single-occurrence properties – consistent with the structure of denormalised RDBMS tables.  The XML implementation (defined in the separate Part 2 document) is conformant with GML Simple Feature (OGC 10-100r3).
 
 Each property of GeoSciML Lite classes is derived from a subset of the properties available in the full GeoSciML model, with the exception of “genericSymbolizer”, which is a convenience property providing a cartographic symbol or code. The property is a shortcut to symbolisation that would otherwise be provided by an SLD (Styled Layer Descriptor).
 

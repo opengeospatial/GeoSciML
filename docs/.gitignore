@@ -4,3 +4,20 @@
 
 # Deploy key
 deploy_key
+
+# Metanorma build output (produced by local or CI builds)
+/public/
+/_site/
+/relaton/cache
+document.asciidoc.log.txt
+document.html
+document.xml
+document.presentation.xml
+document.rxl
+document.err.html
+document.pdf
+document.pdf.err
+document.pdf.fo.xml
+document.doc
+document_*/
+metanorma.asciidoc.log.txt

@@ -1,18 +1,62 @@
-= Standard template in Metanorma
+= GeoSciML 4.1 (OGC 16-008) — Metanorma source
 
-== Content
+This directory contains the OGC standard *Geoscience Markup Language 4.1
+(GeoSciML)*, OGC document *16-008*, re-encoded in OGC Metanorma AsciiDoc.
 
-This repository contains the content for an OGC standard.
+It is a faithful conversion of the canonical published standard
+(`https://docs.ogc.org/is/16-008/16-008.html`) into the current OGC Metanorma
+`standard` template, so that the document can be rebuilt and re-published from
+source instead of the legacy hand-produced HTML.
 
-* `document.adoc` - the main standard document with references to all sections
-* remaining ``adoc``s - each section of the standard document is in a separate document: follow directions in each document to populate
-* `figures` - figures go here
-* `images` - Image files for graphics go here. Image files for figures go in the `figures` directory. Only place in here images not used in figures (e.g., as parts of tables, as logos, etc.)
-* `requirements` - directory for requirements and requirement classes to be referenced in `clause_7_normative_text.adoc`
-* `code` - sample code to accompany the standard, if desired
-* `abstract_tests` - the Abstract Test Suite comprising one test for every requirement, optional
-* `UML` - UML diagrams, if applicable
+== Entry point
+
+`document.adoc` is the master file. It sets all document metadata and then
+`include::`s the clauses and annexes from `sections/`. Figures are in `images/`.
 
 == Building
 
-Run `make`.
+The whole document builds with a single command using the official Metanorma
+docker image (no local Ruby/gem install required). Run these from *this*
+`docs/` directory:
+
+[source,sh]
+----
+docker run --rm -v "$(pwd)":/metanorma metanorma/metanorma metanorma compile document.adoc
+----
+
+or, if Metanorma is installed locally (for example in WSL — see the repository
+`README.MD`):
+
+[source,sh]
+----
+metanorma compile document.adoc
+----
+
+This produces `document.html`, `document.xml` (Metanorma semantic XML), and,
+when fonts are available, `document.pdf` and `document.doc`.
+
+A multi-document *site* build (what the CI publishes to GitHub Pages) is
+configured through the site manifest in `metanorma.yml`:
+
+[source,sh]
+----
+metanorma site generate --output-dir public --agree-to-terms .
+----
+
+The repository `README.MD` has step-by-step local-build instructions for both
+the Docker image and a native WSL/Ubuntu install, plus notes on the GitHub
+Actions workflow that builds and publishes this document.
+
+== Layout
+
+[cols="1,3"]
+|===
+|`document.adoc` |Master document: metadata + includes
+|`sections/` |Clauses 1–11 and Annexes A (Conformance), B (Revision history), C (Bibliography), plus the front matter (`clause_0_front_material.adoc`)
+|`images/` |All 107 figures (PNG), referenced from the clauses
+|`metanorma.yml` |Metanorma site manifest
+|`Makefile`, `Gemfile`, `.gitlab-ci.yml` |OGC build/CI scaffolding (from the OGC template)
+|===
+
+See `STATUS.adoc` for the conversion method, decisions, and items to review on
+the first CI build.

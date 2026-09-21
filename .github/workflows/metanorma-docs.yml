@@ -1,0 +1,86 @@
+name: metanorma-docs
+
+# Build the GeoSciML 4.1 (OGC 16-008) Metanorma standard that lives in docs/.
+# This is the GitHub Actions equivalent of docs/.gitlab-ci.yml.
+#
+#   * On every push / PR that touches docs/, the standard is built with the
+#     official Metanorma Docker image and the rendered site is attached to the
+#     run as a downloadable artifact (so reviewers can preview a branch).
+#   * On main / master, the site is additionally published to GitHub Pages.
+#
+# One-time setup: in the repository, go to Settings -> Pages and set
+# "Build and deployment" -> "Source" to "GitHub Actions".
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/metanorma-docs.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/metanorma-docs.yml'
+  workflow_dispatch:
+
+# Permissions required by the GitHub Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only let one Pages deployment run at a time.
+concurrency:
+  group: "pages-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build the GeoSciML standard
+    runs-on: ubuntu-latest
+    # Run inside the official Metanorma image – the whole toolchain (Ruby,
+    # the OGC flavour, fontist, PlantUML, etc.) is already installed, exactly
+    # like the `image: metanorma/mn` line in the old GitLab CI.
+    container:
+      image: metanorma/metanorma:latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Generate the Metanorma site
+        working-directory: docs
+        # `.` is the source directory (docs/, which holds metanorma.yml).
+        # --agree-to-terms accepts the font licences non-interactively.
+        run: metanorma site generate --output-dir public --agree-to-terms .
+
+      - name: Upload the rendered site as a build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: geosciml-site
+          path: docs/public
+          if-no-files-found: error
+
+  deploy:
+    name: Publish to GitHub Pages
+    # Only publish from the default branch, never from pull requests.
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download the rendered site
+        uses: actions/download-artifact@v4
+        with:
+          name: geosciml-site
+          path: public
+
+      - name: Package the site for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

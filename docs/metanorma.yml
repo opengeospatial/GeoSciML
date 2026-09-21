@@ -1,4 +1,10 @@
 ---
 metanorma:
+  source:
+    files:
+      - document.adoc
+  collection:
+    organization: "OGC: The Open Geospatial Consortium"
+    name: "OGC Geoscience Markup Language 4.1 (GeoSciML)"
   deploy:
     email: "ci@metanorma.org"

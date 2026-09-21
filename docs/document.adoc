@@ -1,32 +1,46 @@
-= OGC (add title text)
+= OGC Geoscience Markup Language 4.1 (GeoSciML)
+:comment: Change "standard" to "draft-standard" for draft standards.
+:comment: The front page notice updates automatically to reflect the document type.
 :doctype: standard
+:docsubtype: conceptual-model-and-implementation
 :encoding: utf-8
 :lang: en
-:status: draft
+:status: published
 :committee: technical
-:draft: 3.0
-:external-id: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
-:docnumber: YY-999
-:received-date: 2029-03-30
-:issued-date: 2029-03-30
-:published-date: 2029-03-30
-:fullname: Editor One
-:fullname_2: Editor Two
-:docsubtype: Interface
-:keywords: ogcdoc, OGC document, API, openapi, html
-:submitting-organizations: Organization One; Organization Two
+:external-id: http://www.opengis.net/doc/IS/geosciml/4.1
+:docnumber: 16-008
+:received-date: 2016-08-23
+:issued-date: 2016-11-29
+:published-date: 2017-01-31
+:copyright-year: 2017
+:copyright-holder: Open Geospatial Consortium; IUGS Commission for the Management and Application of Geoscience Information
+:fullname: Eric Boisvert
+:role: editor
+:fullname_2: Oliver Raymond
+:role_2: editor
+:fullname_3: Marcus Sen
+:role_3: editor
+:keywords: ogcdoc, OGC document, geology, geoscience, stratigraphy, borehole, geochemistry, geophysics, lithology, fault, contact, fold, fossil, UML, GML, XML, GeoSciML
+:submitting-organizations: Arizona Geological Survey (AzGS), Arizona, USA; British Geological Survey (NERC-BGS), UK; Bureau de Recherches Géologiques et Minières (BRGM), France; Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia; Geological Survey of Victoria (GSV), Australia; Geological Survey of Finland (GTK), Finland; Geological Survey of Italy (ISPRA), Italy; Geological Survey of Sweden (SGU), Sweden; Geoscience Australia (GA), Australia; Institute of Geological and Nuclear Sciences (GNS), New Zealand; Landcare Research, New Zealand; Natural Resources Canada (NRCan), Canada; U.S. Geological Survey (USGS), United States of America
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf
 :local-cache-only:
 :data-uri-image:
-:pdf-uri: ./document.pdf
-:xml-uri: ./document.xml
-:doc-uri: ./document.doc
-:edition: 1.0
+:toc-figures:
+:toc-tables:
+:edition: 4.1
 
-////
-Make sure to complete each included document
-////
+// ============================================================================
+// GeoSciML 4.1 (OGC 16-008) — Metanorma source
+//
+// This document re-encodes OGC 16-008 "OGC Geoscience Markup Language 4.1
+// (GeoSciML)" using the current OGC Metanorma `standard` template, to replace
+// the legacy HTML published at https://docs.ogc.org/is/16-008/16-008.html.
+//
+// See STATUS.adoc for the conversion status of each clause and for the items
+// that must be transcribed from the canonical source document.
+// ============================================================================
+
 include::sections/clause_0_front_material.adoc[]
 
 include::sections/clause_1_scope.adoc[]
@@ -37,25 +51,29 @@ include::sections/clause_3_references.adoc[]
 
 include::sections/clause_4_terms_and_definitions.adoc[]
 
-include::sections/clause_5_conventions.adoc[]
+include::sections/clause_5_geosciml_models.adoc[]
 
-include::sections/clause_6_informative_text.adoc[]
+include::sections/clause_6_conventions.adoc[]
 
-include::sections/clause_7_normative_text.adoc[]
+include::sections/clause_7_conceptual_model.adoc[]
 
-include::sections/clause_8_media_types.adoc[]
+include::sections/clause_8_logical_model.adoc[]
 
-////
-add or remove annexes after "A" as necessary
-////
-include::sections/annex-a.adoc[]
+include::sections/clause_9_xml_encoding.adoc[]
 
-include::sections/annex-n.adoc[]
+include::sections/clause_10_media_types.adoc[]
 
-////
-Revision History should be the last annex before the Bibliography
-Bibliography should be the last annex
-////
-include::sections/annex-history.adoc[]
+include::sections/clause_11_abbreviations.adoc[]
 
-include::sections/annex-bibliography.adoc[]
+//
+// Annexes
+//
+include::sections/annex-a-conformance.adoc[]
+
+//
+// Revision History should be the last annex before the Bibliography.
+// Bibliography should be the last annex.
+//
+include::sections/annex-b-history.adoc[]
+
+include::sections/annex-c-bibliography.adoc[]

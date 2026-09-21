@@ -1,81 +1,67 @@
-.Preface
-
-[NOTE]
-====
-Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work.
-====
-
-////
-*OGC Declaration*
-////
-
-Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
-
-Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
-
-////
-NOTE: Uncomment ISO section if necessary
-
-*ISO Declaration*
-
-ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies). The work of preparing International Standards is normally carried out through ISO technical committees. Each member body interested in a subject for which a technical committee has been established has the right to be represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also take part in the work. ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of electrotechnical standardization.
-
-International Standards are drafted in accordance with the rules given in the ISO/IEC Directives, Part 2.
-
-The main task of technical committees is to prepare International Standards. Draft International Standards adopted by the technical committees are circulated to the member bodies for voting. Publication as an International Standard requires approval by at least 75 % of the member bodies casting a vote.
-
-Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
-////
-
 [abstract]
 == Abstract
 
-<Insert Abstract Text here>
+GeoSciML is a model of geological features commonly described and portrayed in geological maps, cross sections, geological reports and databases. The model was developed by the IUGS CGI (Commission for the Management and Application of Geoscience Information) and version 4.1 is the first version officially submitted as an OGC standard. This specification describes a logical model and GML/XML encoding rules for the exchange of geological map data, geological time scales, boreholes, and metadata for laboratory analyses. It includes a _Lite_ model, used for simple map-based applications; a _basic_ model, aligned on INSPIRE, for basic data exchange; and an _extended_ model to address more complex scenarios.
 
-== Keywords
+The specification also provides patterns, profiles (most notably of Observations and Measurements - ISO 19156), and best practices to deal with common geoscience use cases.
 
-//Keywords inserted here by Metanorma
+////
+The Keywords clause is generated automatically by Metanorma from the :keywords:
+document attribute set in document.adoc. Subjects covered: ogcdoc, OGC document,
+geology, geoscience, stratigraphy, borehole, geochemistry, geophysics, rock,
+fault, contact, fold, fossil, UML, GML, XML.
+////
 
 == Preface
 
-[NOTE]
-====
-Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work. >
+The primary goal of this specification is to capture the semantics, schema, and encoding syntax of key elements described and portrayed in geological maps and databases, in order to enable information systems to interoperate with such data.
+
+GeoSciML (Geoscience Markup Language) covers the domain of geology (earth materials, geological units and stratigraphy, geological time, geological structures, geomorphology, geochemistry) and sampling features common to the practice of geoscience, such as boreholes and geological specimens. The specification also proposes a simplified version of GeoSciML suitable for portrayal of geological features on digital maps.
+
+This specification does not address (or very partially addresses) more specialised geoscience domains such as hydrogeology, seismology, geophysics or economic geology. Some of these domains are covered by other specifications (for example GroundwaterML for hydrogeology, OGC 16-032, and EarthResourceML for economic geology — both developed in concert with GeoSciML). This standard defines a logical model and an XML encoding which conform to OGC GML 3.3 encoding rules, itself an iteration over ISO 19136 (2007).
+
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
 
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
-====
 
-== Security considerations
-
-//If no security considerations have been made for this Standard, use the following text.
+[.preface]
+== Security Considerations
 
 No security considerations have been made for this Standard.
 
 ////
-If security considerations have been made for this Standard, follow the examples found in IANA or IETF documents. Please see the following example.
-“VRRP is designed for a range of internetworking environments that may employ different security policies. The protocol includes several authentication methods ranging from no authentication, simple clear text passwords, and strong authentication using IP Authentication with MD5 HMAC. The details on each approach including possible attacks and recommended environments follows.
-Independent of any authentication type VRRP includes a mechanism (setting TTL=255, checking on receipt) that protects against VRRP packets being injected from another remote network. This limits most vulnerabilities to local attacks.
-NOTE: The security measures discussed in the following sections only provide various kinds of authentication. No confidentiality is provided at all. This should be explicitly described as outside the scope....”
+The Submitting Organizations clause is generated automatically by Metanorma from
+the :submitting-organizations: document attribute set in document.adoc:
+
+* Arizona Geological Survey (AzGS), Arizona, USA
+* British Geological Survey (NERC-BGS), UK
+* Bureau de Recherches Géologiques et Minières (BRGM), France
+* Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia
+* Geological Survey of Victoria (GSV), Australia
+* Geological Survey of Finland (GTK), Finland
+* Geological Survey of Italy (ISPRA), Italy
+* Geological Survey of Sweden (SGU), Sweden
+* Geoscience Australia (GA), Australia
+* Institute of Geological and Nuclear Sciences (GNS), New Zealand
+* Landcare Research, New Zealand
+* Natural Resources Canada (NRCan), Canada
+* U.S. Geological Survey (USGS), United States of America
 ////
 
-== Submitting organizations
-
-// Submitting organizations inserted here by Metanorma
-
+[.preface]
 == Submitters
 
 All questions regarding this submission should be directed to the editor or the submitters:
 
+[width="90%",options="header"]
 |===
-|*Name* |*Affiliation*
-| |
+|Name |Affiliation |OGC member
+|Eric Boisvert |Geological Survey of Canada (Natural Resources Canada) |Yes
+|Ollie Raymond |Geoscience Australia |Yes
+|Marcus Sen |British Geological Survey |Yes
 |===
 
+[.preface]
 == Contributors
 
-//This clause is optional.
-
-Additional contributors to this Standard include the following:
-
-Individual name(s), Organization
+Additional contributors to this Standard include the GeoSciML Modeling Team of the IUGS CGI. Simon Cox (CSIRO) and Stephen Richard (Arizona Geological Survey) developed the GeologicTime package. The standard reflects many years of collaborative development by the IUGS CGI Interoperability Working Group and partner national geological survey organisations, who contributed to the design, encoding, and testing of GeoSciML.

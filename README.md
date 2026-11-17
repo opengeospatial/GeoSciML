@@ -13,7 +13,7 @@ GeoSciML is the OGC and IUGS-CGI standard for geological data: geologic units, c
 | Part 2: XML encoding | `xml/` | Draft (v5); 4.1 XML schemas remain at [schemas.opengis.net/gsml](https://schemas.opengis.net/gsml/) |
 | Part 3: JSON encoding (JSON-FG) | `json/` | Draft (v5); schemas and examples for every 4.1 package |
 | Part 4: Earth Resources (EarthResourceML) | — | Proposed |
-| GeoSciML 4.1 in Metanorma | `releases/4.1/` | Conversion of OGC 16-008 for docs.ogc.org |
+| GeoSciML 4.1 in Metanorma | `releases/4.1/` | Conversion of OGC 16-008; not yet verified against the published standard |
 
 The drafts are working documents and are not yet OGC standards.
 

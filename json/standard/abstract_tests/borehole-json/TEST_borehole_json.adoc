@@ -1,0 +1,9 @@
+[[conf_gsmljson-borehole_json]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmljson-borehole/json
+target:: /req/gsmljson-borehole/json
+test-purpose:: Ensure that GeoSciML Borehole JSON documents are valid
+test-method:: Perform a JSON validation on a JSON instance document, using the JSON Schema files provided in this Standard.  Test succeeds if the validation does not report any error.
+====

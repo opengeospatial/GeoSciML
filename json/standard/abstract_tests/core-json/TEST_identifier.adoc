@@ -1,0 +1,9 @@
+[[conf_gsmljson-core_identifier]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmljson-core/identifier
+target:: /req/gsmljson-core/identifier
+test-purpose:: Ensure that the id member of a GeoJSON feature is used to encode the identifier of a GeoSciML feature.
+test-method:: Check that the target implementation assigns a value to the id member of a GeoJSON feature to encode the identifier of a GeoSciML feature.
+====

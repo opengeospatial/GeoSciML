@@ -1,0 +1,75 @@
+{
+  "type": "Feature",
+  "featureType": "MappedFeature",
+  "id": "mappedfeature-fault-complex",
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        149.387,
+        -35.124
+      ],
+      [
+        149.412,
+        -35.198
+      ],
+      [
+        149.435,
+        -35.271
+      ],
+      [
+        149.461,
+        -35.344
+      ]
+    ]
+  },
+  "place": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        149.387,
+        -35.124
+      ],
+      [
+        149.412,
+        -35.198
+      ],
+      [
+        149.435,
+        -35.271
+      ],
+      [
+        149.461,
+        -35.344
+      ]
+    ]
+  },
+  "time": null,
+  "properties": {
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifierScheme/cgi/mappedfeatureobservationmethod",
+        "label": "inferred from aeromagnetic survey",
+        "value": "http://resource.geosciml.org/classifier/cgi/mappedfeatureobservationmethod/inferred_aeromagnetic_survey"
+      }
+    ],
+    "positionalAccuracy": {
+      "type": "Quantity",
+      "uom": {
+        "code": "m"
+      },
+      "value": 250.0,
+      "definition": "http://www.opengis.net/def/property/OGC/0/PositionalAccuracy",
+      "label": "positional accuracy"
+    },
+    "resolutionRepresentativeFraction": 250000,
+    "mappingFrame": "http://resource.geoscience.gov.au/vocabulary/mappingframe/earth-surface",
+    "exposure": "http://resource.geosciml.org/classifier/cgi/exposure/concealed",
+    "specification": {
+      "href": "http://data.geoscience.gov.au/feature/fault/lake-george-fault-1",
+      "title": "Lake George Fault"
+    }
+  },
+  "coordRefSys": "http://www.opengis.net/def/crs/EPSG/0/4283"
+}

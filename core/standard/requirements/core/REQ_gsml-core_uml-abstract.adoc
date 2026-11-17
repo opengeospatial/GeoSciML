@@ -1,0 +1,8 @@
+[[req_gsml-core_uml-abstract]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/uml-abstract
+part:: Abstract classes SHALL NOT be materialised.
+====

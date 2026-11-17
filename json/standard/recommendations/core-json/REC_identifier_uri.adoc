@@ -1,0 +1,8 @@
+[[rec_gsmljson_core_identifier_uri]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsmljson-core/identifier-uri
+part:: Feature identifiers (unique name) provided in the 'id' property of a feature SHOULD be URI of resource using Linked Open Data principles.
+====

@@ -1,0 +1,9 @@
+[[conf_gsmljson-core_codelist]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmljson-core/codelist
+target:: /req/gsmljson-core/codelist
+test-purpose:: Ensure that vocabulary reference contain an absolute http URI and this URL resolves to relevant content
+test-method:: Test the URI on the web.  If the URI does not resolve or return a 4xx error, the test fails.
+====

@@ -1,0 +1,8 @@
+[[req_gsml-basic_geologicfeature-purpose]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-basic/geologicfeature-purpose
+part:: Purpose SHALL be a value from <<valid_purpose_values>> of <<purpose_section>>.
+====

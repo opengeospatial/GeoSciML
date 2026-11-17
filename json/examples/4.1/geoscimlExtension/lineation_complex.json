@@ -1,0 +1,61 @@
+{
+  "type": "Feature",
+  "featureType": "Lineation",
+  "id": "ga-lineation-525947",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "featureType": "GeologicEvent",
+        "id": "ga-lineation-525947-age",
+        "geometry": null,
+        "place": null,
+        "time": null,
+        "properties": {
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/deformation"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Carboniferous"
+        }
+      }
+    ],
+    "lineationType": "http://resource.geoscience.gov.au/classifier/cgi/lineationtype/mineral_lineation",
+    "definingElement": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geoscience.gov.au/classifierScheme/cgi/definingelement",
+        "label": "aligned minerals",
+        "value": "http://resource.geoscience.gov.au/classifier/cgi/definingelement/aligned_minerals"
+      }
+    ],
+    "intensity": {
+      "type": "Category",
+      "definition": "http://resource.geoscience.gov.au/classifierScheme/cgi/intensity",
+      "label": "strong",
+      "value": "http://resource.geoscience.gov.au/classifier/cgi/intensity/strong"
+    },
+    "orientation": [
+      {
+        "plunge": {
+          "type": "QuantityRange",
+          "definition": "http://sweet.jpl.nasa.gov/2.3/reprMathOperation.owl#Plunge",
+          "label": "plunge",
+          "uom": {"code": "deg"},
+          "value": [65.0, 75.0]
+        },
+        "trend": {
+          "type": "QuantityRange",
+          "definition": "http://sweet.jpl.nasa.gov/2.3/reprMathOperation.owl#Trend",
+          "label": "trend",
+          "uom": {"code": "deg"},
+          "value": [10.0, 10.0]
+        }
+      }
+    ]
+  }
+}

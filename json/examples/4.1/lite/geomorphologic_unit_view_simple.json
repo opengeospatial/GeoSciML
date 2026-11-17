@@ -1,0 +1,41 @@
+{
+  "type": "Feature",
+  "featureType": "GeomorphologicUnitView",
+  "id": "geomorph-view-1",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          148.21,
+          -36.445
+        ],
+        [
+          148.29,
+          -36.445
+        ],
+        [
+          148.29,
+          -36.51
+        ],
+        [
+          148.21,
+          -36.51
+        ],
+        [
+          148.21,
+          -36.445
+        ]
+      ]
+    ]
+  },
+  "time": null,
+  "properties": {
+    "name": "Snowy Mountains terminal moraine",
+    "geomorphologicFeatureType": "natural",
+    "unitType": "moraine",
+    "activity": "inactive",
+    "geomorphologicFeatureType_uri": "http://resource.geosciml.org/classifier/cgi/geomorphologicfeaturetype/natural",
+    "unitType_uri": "http://resource.geosciml.org/classifier/cgi/geomorphologicunittype/moraine"
+  }
+}

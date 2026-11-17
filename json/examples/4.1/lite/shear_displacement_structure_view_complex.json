@@ -1,0 +1,72 @@
+{
+  "type": "Feature",
+  "featureType": "ShearDisplacementStructureView",
+  "id": "fault-view-complex",
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        149.387,
+        -35.124
+      ],
+      [
+        149.412,
+        -35.198
+      ],
+      [
+        149.435,
+        -35.271
+      ],
+      [
+        149.461,
+        -35.344
+      ]
+    ]
+  },
+  "time": null,
+  "properties": {
+    "name": "Lake George Fault",
+    "description": "NNE-trending normal fault with down-thrown east block; forms eastern boundary of Lake George basin. Historically active, with evidence of Holocene movement.",
+    "faultType": "normal fault",
+    "movementType": "dip-slip",
+    "deformationStyle": "brittle",
+    "displacement": "estimated maximum vertical displacement ~400 m",
+    "geologicHistory": "Initiated in the Devonian, reactivated during Carboniferous Kanimblan Orogeny, most recent movement in the Cenozoic.",
+    "observationMethod": "synthesis from geophysical survey, field mapping and borehole data",
+    "positionalAccuracy": "100 m",
+    "source": "Geoscience Australia (2009). Lake George Fault \u2013 fault characterisation report.",
+    "faultType_uri": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault",
+    "movementType_uri": "http://resource.geosciml.org/classifier/cgi/faultmovementtype/dip_slip",
+    "deformationStyle_uri": "http://resource.geosciml.org/classifier/cgi/deformationstyle/brittle",
+    "representativeAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+    "representativeOlderAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+    "representativeYoungerAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Cenozoic",
+    "numericOlderAge": 419.2,
+    "numericYoungerAge": 0.0,
+    "specification_uri": "http://data.geoscience.gov.au/feature/fault/lake-george-fault-1",
+    "metadata_uri": "http://data.geoscience.gov.au/metadata/record/fault-99",
+    "genericSymbolizer": "FA_Normal"
+  },
+  "coordRefSys": "http://www.opengis.net/def/crs/EPSG/0/4283",
+  "place": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        149.387,
+        -35.124
+      ],
+      [
+        149.412,
+        -35.198
+      ],
+      [
+        149.435,
+        -35.271
+      ],
+      [
+        149.461,
+        -35.344
+      ]
+    ]
+  }
+}

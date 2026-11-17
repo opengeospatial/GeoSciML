@@ -1,0 +1,150 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-09</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Information technology</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Document Schema Definition Languages (DSDL)</title>
+  <title type="title-part" format="text/plain" language="en" script="Latn">Part 3: Rule-based validation using Schematron</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Information technology - Document Schema Definition Languages (DSDL) - Part 3: Rule-based validation using Schematron</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Technologies de l'information</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Langages de définition de schéma de documents (DSDL)</title>
+  <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 3: Validation basée sur des règles à l'aide de Schematron</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Technologies de l'information - Langages de définition de schéma de documents (DSDL) - Partie 3: Validation basée sur des règles à l'aide de Schematron</title>
+  <uri type="src">https://www.iso.org/standard/74515.html</uri>
+  <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74515:en</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74515.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO/IEC 19757-3</docidentifier>
+  <docidentifier type="iso-reference">ISO/IEC 19757-3(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso-iec:19757:-3:stage-90.92</docidentifier>
+  <docnumber>19757</docnumber>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Electrotechnical Commission</name>
+      <abbreviation>IEC</abbreviation>
+      <uri>www.iec.ch</uri>
+    </organization>
+  </contributor>
+  <edition>3</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <status>
+    <stage>90</stage>
+    <substage>92</substage>
+  </status>
+  <copyright>
+    <from>2020</from>
+    <owner>
+      <organization>
+        <name>ISO/IEC</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO/IEC 19757-3:2016</formattedref>
+      <docidentifier type="ISO" primary="true">ISO/IEC 19757-3:2016</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO/IEC FDIS 19757-3</formattedref>
+      <docidentifier type="ISO" primary="true">ISO/IEC FDIS 19757-3</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2026-07-09</fetched>
+      <title type="title-intro" format="text/plain" language="en" script="Latn">Information technology</title>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Document Schema Definition Languages (DSDL)</title>
+      <title type="title-part" format="text/plain" language="en" script="Latn">Part 3: Rule-based validation using Schematron</title>
+      <title type="main" format="text/plain" language="en" script="Latn">Information technology - Document Schema Definition Languages (DSDL) - Part 3: Rule-based validation using Schematron</title>
+      <title type="title-intro" format="text/plain" language="fr" script="Latn">Technologies de l'information</title>
+      <title type="title-main" format="text/plain" language="fr" script="Latn">Langages de définition de schéma de documents (DSDL)</title>
+      <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 3: Validation basée sur des règles à l'aide de Schematron</title>
+      <title type="main" format="text/plain" language="fr" script="Latn">Technologies de l'information - Langages de définition de schéma de documents (DSDL) - Partie 3: Validation basée sur des règles à l'aide de Schematron</title>
+      <uri type="src">https://www.iso.org/standard/74515.html</uri>
+      <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74515:en</uri>
+      <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74515.detail.rss</uri>
+      <docidentifier type="ISO" primary="true">ISO/IEC 19757-3:2020</docidentifier>
+      <docidentifier type="iso-reference">ISO/IEC 19757-3:2020(E)</docidentifier>
+      <docidentifier type="URN">urn:iso:std:iso-iec:19757:-3:stage-90.92</docidentifier>
+      <docnumber>19757</docnumber>
+      <date type="published">
+        <on>2020-06</on>
+      </date>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Organization for Standardization</name>
+          <abbreviation>ISO</abbreviation>
+          <uri>www.iso.org</uri>
+        </organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Electrotechnical Commission</name>
+          <abbreviation>IEC</abbreviation>
+          <uri>www.iec.ch</uri>
+        </organization>
+      </contributor>
+      <edition>3</edition>
+      <language>en</language>
+      <language>fr</language>
+      <script>Latn</script>
+      <abstract format="text/plain" language="en" script="Latn">This document specifies Schematron, a schema language for XML. This document establishes requirements for Schematron schemas and specifies when an XML document matches the patterns specified by a Schematron schema. Schematron uses query languages such as XPath for writing assertions.</abstract>
+      <abstract format="text/plain" language="fr" script="Latn">This document specifies Schematron, a schema language for XML. This document establishes requirements for Schematron schemas and specifies when an XML document matches the patterns specified by a Schematron schema. Schematron uses query languages such as XPath for writing assertions.</abstract>
+      <status>
+        <stage>90</stage>
+        <substage>92</substage>
+      </status>
+      <copyright>
+        <from>2020</from>
+        <owner>
+          <organization>
+            <name>ISO/IEC</name>
+          </organization>
+        </owner>
+      </copyright>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO/IEC 19757-3:2016</formattedref>
+          <docidentifier type="ISO" primary="true">ISO/IEC 19757-3:2016</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO/IEC FDIS 19757-3</formattedref>
+          <docidentifier type="ISO" primary="true">ISO/IEC FDIS 19757-3</docidentifier>
+        </bibitem>
+      </relation>
+      <place>
+        <city>Geneva</city>
+      </place>
+    </bibitem>
+  </relation>
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="1" type="IEC" identifier="ISO/IEC JTC 1/SC 34">Document description and processing languages</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.30</code>
+      <text>IT applications in information, documentation and publishing</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>74515</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

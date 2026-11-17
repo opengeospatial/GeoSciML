@@ -1,0 +1,8 @@
+[[req_gsml-timescale-start]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-timescale/start
+part:: The start TimeOrdinalEraBoundary SHALL refer to the oldest boundary
+====

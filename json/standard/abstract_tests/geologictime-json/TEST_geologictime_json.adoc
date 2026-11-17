@@ -1,0 +1,9 @@
+[[conf_gsmljson-geologictime_json]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmljson-geologictime/json
+target:: /req/gsmljson-geologictime/json
+test-purpose:: Ensure that GeoSciML Geologic Time JSON documents are valid
+test-method:: Perform a JSON validation on a JSON instance document, using the JSON Schema files provided in this Standard.  Test succeeds if the validation does not report any error.
+====

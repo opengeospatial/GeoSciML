@@ -1,0 +1,8 @@
+[[rec_gsml-lite_boreholeview-parentBorehole-uri]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lite/boreholeview-parentBorehole-uri
+part:: If present, parentBorehole_uri SHOULD resolve to a representation of a GeoSciML borehole.
+====

@@ -1,0 +1,8 @@
+[[req_gsmljson_extension_json]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmljson-extension/json
+part:: A JSON instance document SHALL validate with schema located at {json-schema-repo}/geoscimlExtension.json
+====

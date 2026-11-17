@@ -1,0 +1,8 @@
+[[req_gsml-borehole-borehole-elevation-dim]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/borehole-elevation-dim
+part:: Origin elevation SHALL be a geometry with a dimension of 1.
+====

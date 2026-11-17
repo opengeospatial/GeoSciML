@@ -1,0 +1,377 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geosciml_laboratoryanalysisspecimen_featurecollection.json",
+  "$defs": {
+    "FeatureCollection": {
+      "$anchor": "FeatureCollection",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/featurecollection.json"
+        },
+        {
+          "if": {
+            "required": [
+              "featureType"
+            ]
+          },
+          "then": {
+            "allOf": [
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "AnalyticalInstrument"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#AnalyticalInstrument"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "AnalyticalProcess"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#AnalyticalProcess"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "AnalyticalSession"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#AnalyticalSession"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "GeochronologicInterpretation"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#GeochronologicInterpretation"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "GeologicSamplingMethod"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#GeologicSamplingMethod"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "Image"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#Image"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "ReferenceSpecimen"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#ReferenceSpecimen"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "not": {
+                    "required": [
+                      "featureType"
+                    ],
+                    "properties": {
+                      "featureType": {
+                        "enum": [
+                          "AnalyticalInstrument",
+                          "AnalyticalProcess",
+                          "AnalyticalSession",
+                          "GeochronologicInterpretation",
+                          "GeologicSamplingMethod",
+                          "Image",
+                          "ReferenceSpecimen"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": false
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "required": [
+              "features"
+            ],
+            "properties": {
+              "features": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "AnalyticalInstrument"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#AnalyticalInstrument"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "AnalyticalProcess"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#AnalyticalProcess"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "AnalyticalSession"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#AnalyticalSession"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "GeochronologicInterpretation"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#GeochronologicInterpretation"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "GeologicSamplingMethod"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#GeologicSamplingMethod"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "Image"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#Image"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "ReferenceSpecimen"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/laboratoryAnalysisSpecimen.json#ReferenceSpecimen"
+                      }
+                    },
+                    {
+                      "if": {
+                        "not": {
+                          "required": [
+                            "featureType"
+                          ],
+                          "properties": {
+                            "featureType": {
+                              "enum": [
+                                "AnalyticalInstrument",
+                                "AnalyticalProcess",
+                                "AnalyticalSession",
+                                "GeochronologicInterpretation",
+                                "GeologicSamplingMethod",
+                                "Image",
+                                "ReferenceSpecimen"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "then": false
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$ref": "#FeatureCollection"
+}

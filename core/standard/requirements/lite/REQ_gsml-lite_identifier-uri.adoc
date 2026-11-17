@@ -1,0 +1,8 @@
+[[req_gsml-lite_identifier-uri]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/identifier-uri
+part:: Identifiers SHALL be formatted as URI according to RFC 3986.
+====

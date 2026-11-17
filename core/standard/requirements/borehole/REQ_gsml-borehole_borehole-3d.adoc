@@ -1,0 +1,8 @@
+[[req_gsml-borehole_borehole-3d]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/borehole-3d
+part:: Implementers delivering 3-D origin locations SHOULD provide an elevation.
+====

@@ -1,0 +1,711 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json",
+  "description": "The GeoSciML Lite (previously name \"Portrayal\") schema standardizes the interaction (request/response formats) with layer-based map services. It is best thought of as a view of GeoSciML and O\u0026M data that denormalizes the data and concatenates complex property values into single, human-readable, labels and returns single, representative, values from controlled vocabularies for properties multi-valued properties that can be used when generating thematic maps, or portrayals, of the data.\r\n\r\nIt is separate to, but harmonized with, GeoSciML and O\u0026M and conforms to the level 0 of the Simple Features Profile for GML (link). Labels, will be \u0027free-text\u0027 fields that will be, in robust services, well-structured summaries of complex GeoSciML data, while the representative thematic properties will be URIs of concepts in a controlled vocabulary (for example CGI Simple Lithology). There will also be links, via identifier URIs, providing hooks to full GeoSciML or O\u0026M representations of a the geologic feature in question.",
+  "$defs": {
+    "BoreholeView": {
+      "$anchor": "BoreholeView",
+      "description": "BoreholeView is a simplified view of a GeoSciML Borehole. In GeoSciML terms, this will be an instance of a Borehole feature with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "If present, the property name:Primitive::CharacterString contains a human-readable display name for the borehole.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString contains a human-readable description for the borehole.",
+                  "type": "string"
+                },
+                "purpose": {
+                  "description": "If present, the purpose:Primitive::CharacterString property reports the purpose or purposes for which the borehole was drilled. (e.g., mineral exploration, hydrocarbon exploration, hydrocarbon production, groundwater monitoring, geothermal), possibly formatted with formal syntax.",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "If present, the property status:Primitive::CharacterString reports the current status of the borehole (e.g., abandoned, completed, proposed, suspended).",
+                  "type": "string"
+                },
+                "drillingMethod": {
+                  "description": "If present, the property drillingMethod:Primitive::CharacterString indicates the drilling method, or methods, used for this borehole (e.g., RAB, auger, diamond core drilling, air core drilling, piston), possibly formatted with formal syntax.",
+                  "type": "string"
+                },
+                "operator": {
+                  "description": "If present, the property operator:Primitive::CharacterString reports the organisation or agency responsible for commissioning of the borehole (as opposed to the agency which drilled the borehole).",
+                  "type": "string"
+                },
+                "driller": {
+                  "description": "If present, the property driller:Primitive::CharacterString reports the organisation responsible for drilling the borehole (as opposed to commissioning the borehole).",
+                  "type": "string"
+                },
+                "drillStartDate": {
+                  "description": "If present, the property drillStartDate:Primitive::CharacterString reports the date of the start of drilling formatted according to ISO8601 (e.g., 2012-03-17).",
+                  "type": "string"
+                },
+                "drillEndDate": {
+                  "description": "If present, the property drillEndData:Primitive::CharacterString reports the date of the end of drilling formatted according to ISO8601 (e.g., 2012-03-28).",
+                  "type": "string"
+                },
+                "startPoint": {
+                  "description": "If present, the property startPoint:Primitive::CharacterString indicates the position relative to the ground surface where the borehole commenced (e.g., open pit floor or wall, underground, natural land surface, sea floor).",
+                  "type": "string"
+                },
+                "inclinationType": {
+                  "description": "If present, the property inclinationType:Primitive::CharacterString indicates the type of inclination of the borehole (e.g., vertical, inclined up, inclined down, horizontal).",
+                  "type": "string"
+                },
+                "boreholeMaterialCustodian": {
+                  "description": "If present, the property boreholeMaterialCustodian:Primitive::CharacterString reports the organisation that is the custodian of the material recovered from the borehole.",
+                  "type": "string"
+                },
+                "boreholeLength_m": {
+                  "description": "If present, the property boreholeLength_m:Primitive::Number reports the length of a borehole, in metres, as determined by the data provider. Length may have different sources (e.g., driller\u0027s measurement, logger\u0027s measurement, survey measurement).",
+                  "type": "number"
+                },
+                "elevation_m": {
+                  "description": "If present, the property elevation_m:Primitive::Number reports the elevation data, in metres, for the borehole (i.e., wellbore) start point. This is a compromise approach to allow for delivery of legacy 2D data without elevation data, and for software that cannot process a 3D GM_Point.",
+                  "type": "number"
+                },
+                "elevation_srs": {
+                  "description": "If present, the property elevation_srs:Primitive::CharacterString is a URI of a spatial reference system of the elevation value. (e.g., mean sea level). Mandatory if elevation_m is populated. The SRS shall be a one dimensional vertical SRS (i.e., EPSG code in the range 5600-5799).",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionalAccuracy:Primitive::CharacterString reports an estimate of the accuracy of the location of the borehole collar location.  Ideally, this would be a quantitative estimate of accuracy (e.g., 20 metres).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the source:Primitive::CharacterString property describes details and citations to source materials for the borehole and, if available, providing URLs to reference material and publications describing the borehole. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri.",
+                  "type": "string"
+                },
+                "parentBorehole_uri": {
+                  "description": "When present, the parentBorehole_uri:Primitive::CharacterString contains a URI referring to one or more representations of a parent borehole (e.g., a parent well of a sidetrack wellbore).\r\n\r\nIf the borehole does not have any parent, this field shall be empty.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ContactView": {
+      "$anchor": "ContactView",
+      "description": "ContactView is a simplified view of a GeoSciML MappedFeature with key property values from an associated Contact feature.  These properties are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "If present, the property name:Primitive::CharacterString reports the display name for the Contact.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString reports the description of the Contact, typically taken from an entry on a geological map legend.",
+                  "type": "string"
+                },
+                "contactType": {
+                  "description": "If present, the property contactType:Primitive::CharacterString reports the type of Contact (as defined in GeoSciML) as a human readable label.  To report an identifier from a controlled vocabulary, contactType_uri shall be used.",
+                  "type": "string"
+                },
+                "observationMethod": {
+                  "description": "If present, the property observationMethod:Primitive::CharacterString reports a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and simple approach to observation metadata when data are reported using a feature view (as opposed to observation view).",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionalAccuracy:Primitive::CharacterString reports quantitative values defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the property source:Primitive::CharacterString contains a text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the contact feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri.",
+                  "type": "string"
+                },
+                "contactType_uri": {
+                  "description": "The property contactType_uri:Primitive::CharacterString reports a URI referring to a controlled concept from a vocabulary defining the Contact types.",
+                  "type": "string"
+                },
+                "specification_uri": {
+                  "description": "If present, the property specification_uri:Primitive::CharacterString reports a URI referring the GeoSciML Contact feature that describes the instance in detail.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString reports a URI referring to a metadata record describing the provenance of data.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the genericSymbolizer:Primitive::CharacterString property contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeologicSpecimenView": {
+      "$anchor": "GeologicSpecimenView",
+      "description": "GeologicSpecimenView is a simplified view of a point-located specimen from GeoSciML GeologicSpecimen (an extension of Observations \u0026 Measurements - ISO19156) with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "description": "If present, the property label:Primitive::CharacterString contains a short label for map display. (e.g., a sample number).",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString contains a detailed description of the specimen.",
+                  "type": "string"
+                },
+                "specimenType": {
+                  "description": "If present, the property specimentType:Primitive::CharacterString contains a human readable description of the specimen type (e.g., hand specimen, thin section, drill core).  To report an identifier from a controlled vocabulary, specimenType_uri shall be used.",
+                  "type": "string"
+                },
+                "materialClass": {
+                  "description": "If present, the property materialClass:Primitive::CharacterString reports the classification of the material that comprises the specimen (e.g., rock, sediment, etc.).  To report an identifier from a controlled vocabulary, materialClass_uri shall be used.",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionalAccuracy:Primitive::CharacterString contains a description of the positional accuracy of the sampling location. (e.g., 50 metres).",
+                  "type": "string"
+                },
+                "samplingTime": {
+                  "description": "If present, the property samplingTime:Primitive::CharacterString reports a date or a date with time of when the specimen was collected formatted according to ISO 8601.\r\n\r\nExamples:\r\n\r\n\t- 2012-03-28\r\n\t- 2008-02-28T14:15:23-05",
+                  "type": "string"
+                },
+                "samplingMethod": {
+                  "description": "If present, the property samplingMethod:Primitive::CharacterString reports the method used to collect the specimen (e.g., diamond drilling, field mapping survey).",
+                  "type": "string"
+                },
+                "currentLocation": {
+                  "description": "If present, the property currentLocation:Primitive::CharacterString reports the current location of the specimen (e.g., a warehouse or other repository location).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the property source:Primitive::CharacterString reports the citation of the source of the data (e.g., a publication, map, etc.).",
+                  "type": "string"
+                },
+                "specimenType_uri": {
+                  "description": "The property specimentType_uri:Primitive::CharacterString contains a URI link for a specimen type identifier from a controlled vocabulary.",
+                  "type": "string"
+                },
+                "materialClass_uri": {
+                  "description": "The property materialClass_uri:Primitive::CharacterString contains a URI link for a class of material drawn from a controlled vocabulary.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString contains a URI link to a metadata document.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the genericSymbolizer:Primitive::CharacterString property contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeologicUnitView": {
+      "$anchor": "GeologicUnitView",
+      "description": "GeologicUnitView is a simplified view of a GeoSciML MappedFeature feature with key property values from an associated GeologicUnit.   The GeologicUnitView property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "If present, the property name:Primitive::CharacterString is a display name for the GeologicUnit.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString is a description of the GeologicUnit, typically taken from an entry on a geological map legend.",
+                  "type": "string"
+                },
+                "geologicUnitType": {
+                  "description": "If present, the property geologicUnitType (Primitive::CharacterString) contains the type of GeologicUnit (as defined in GeoSciML). To report an identifier from a controlled vocabulary, geologicUnitType_uri shall be used.",
+                  "type": "string"
+                },
+                "rank": {
+                  "description": "If present, the property rank:Primitive::CharacterString contain the rank of GeologicUnit (as defined by ISC. e.g., group, formation, member).",
+                  "type": "string"
+                },
+                "lithology": {
+                  "description": "If present, lithology contains a human readable description as Primitive::CharacterString of the GeologicUnit’s lithology, possibly formatted with formal syntax.  The description can be language-dependent.  To report an identifier from a controlled vocabulary, representativeLithology_uri shall be used.",
+                  "type": "string"
+                },
+                "geologicHistory": {
+                  "description": "If present, contains a human readable description in Primitive::CharacterString, possibly formatted with formal syntax, of the age of the GeologicUnit (where age is a sequence of events and may include process and environment information). To report an identifier from a controlled vocabulary, representativeAge_uri, representativeOlderAge_uri, representativeYoungerAge_uri shall be used.",
+                  "type": "string"
+                },
+                "numericOlderAge": {
+                  "description": "If present, the property numericOlderAge age is a numerical representation (Primitive::Number) of the unit’s older age in million years (Ma).",
+                  "type": "number"
+                },
+                "numericYoungerAge": {
+                  "description": "If present, the property numericYoungerAge is a numerical representation (Primitive::Number) of the unit’s younger age in million years (Ma).",
+                  "type": "number"
+                },
+                "observationMethod": {
+                  "description": "If present, the property observationMethod:Primitive::CharacterString is a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a simple approach to observation metadata when data are reported using a feature view (as opposed to observation view).",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionalAccuracy:Primitive::CharacterString is a quantitative value (a numerical value and a unit of length) defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the property source:Primitive::CharacterString is human readable text describing feature-specific details and citations to source materials, and if available provides URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri.",
+                  "type": "string"
+                },
+                "geologicUnitType_uri": {
+                  "description": "The property geologicUnitType_uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the GeologicUnit types.",
+                  "type": "string"
+                },
+                "representativeLithology_uri": {
+                  "description": "The property representativeLithology_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit.",
+                  "type": "string"
+                },
+                "representativeAge_uri": {
+                  "description": "The property representativeAge_uri:Primitive::CharacterString shall  contain a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature\u0027s geological history or a value summarising the all or part of the feature\u0027s history.",
+                  "type": "string"
+                },
+                "representativeOlderAge_uri": {
+                  "description": "The property representativeOlderAge_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative older value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature\u0027s geological history or a value summarising the all or part of the feature\u0027s history.",
+                  "type": "string"
+                },
+                "representativeYoungerAge_uri": {
+                  "description": "The property representativeYoungerAge_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative younger value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature\u0027s geological history or a value summarising the all or part of the feature\u0027s history.",
+                  "type": "string"
+                },
+                "specification_uri": {
+                  "description": "If present, the property specification_uri:Primitive::CharacterString shall contain a URI referring the GeoSciML GeologicUnit feature that describes the instance in detail.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the property genericSymbolizer:CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "GeomorphologicUnitView": {
+      "$anchor": "GeomorphologicUnitView",
+      "description": "GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In GeoSciML terms this will be in instance of a MappedFeature with key property values from the associated GeomorphologicUnit feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "If present, the property name:Primitive::CharacterString contains a display name for the GeomorphologicUnit.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString contains human readable text description of the GeomorphologicUnit, typically taken from an entry on a map legend.",
+                  "type": "string"
+                },
+                "activity": {
+                  "description": "If present, the property activity:Primitive::CharacterString contains a human readable term to specify if the feature is changing and how fast. E.g. active, dormant, stable.  To report an identifier from a controlled vocabulary, activity_uri shall be used.",
+                  "type": "string"
+                },
+                "geomorphologicFeatureType": {
+                  "description": "If present, the property geomorphologicFeatureType:Primitive::CharacterString contains a human readable term to specify a broad classification of landform. (e.g., anthropogenic, natural).  To report an identifier from a controlled vocabulary, geomorphologicFeatureType_uri shall be used.",
+                  "type": "string"
+                },
+                "unitType": {
+                  "description": "If present, the property unitType:Primitive::CharacterString contains a human readable term for the type of GeomorphologicUnit (e.g., hill, crater, moraine, plain).  To report an identifier from a controlled vocabulary, unitType_uri shall be used.",
+                  "type": "string"
+                },
+                "lithology": {
+                  "description": "If present, the property lithology:Primitive::CharacterString contains a text, possibly formatted with formal syntax (see ??????), for the description of the GeomorphologicUnit\u0027s lithological composition.  To report an identifier from a controlled vocabulary, representativeLithology_uri shall be used.",
+                  "type": "string"
+                },
+                "geologicHistory": {
+                  "description": "If present, the property geologicHistory:Primitive::CharacterString contains text, possibly formatted with formal syntax, for the description of the age of the GeomorphologicUnit (where age is a sequence of events and may include process and environment information).  To report identifier from a controlled vocabulary, representativeAge_uri shall be used.",
+                  "type": "string"
+                },
+                "observationMethod": {
+                  "description": "If present, the property observationMethod:Primitive::CharacterString contains a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick approach to observation metadata when data are reported using a feature view (as opposed to observation view).",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionAccuracy:Primitive::CharacterString contains quantitative values defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the source:Primitive::CharacterString property contains text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri.",
+                  "type": "string"
+                },
+                "activity_uri": {
+                  "description": "If present, the activity_uri:Primitive::CharacterString property reports a URI identifier of activity term drawn from a controlled vocabulary.",
+                  "type": "string"
+                },
+                "geomorphologicFeatureType_uri": {
+                  "description": "If present, the property geomorphologicFeatureType_uri:Primitive::CharacterString reports a URI identifier of landform term drawn from a controlled vocabulary.",
+                  "type": "string"
+                },
+                "unitType_uri": {
+                  "description": "If present, the property unitType_uri:Primitive::CharacterString reports a URI referring to a controlled concept from a vocabulary defining the GeomorphologicUnit types.",
+                  "type": "string"
+                },
+                "representativeLithology_uri": {
+                  "description": "The property representativeLithology_uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeomorphologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit.",
+                  "type": "string"
+                },
+                "representativeAge_uri": {
+                  "description": "The property representativeAge_uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeomorphologicUnit. This will be defined entirely at the discretion of the data provider. Typically geomorphic units are not assigned age ranges.",
+                  "type": "string"
+                },
+                "representativeNumericAge": {
+                  "description": "If present, the property representativeNumericAge:Primitive::Number contains a numerical value of the representative age in million years (Ma).",
+                  "type": "number"
+                },
+                "specification_uri": {
+                  "description": "If present, the property specification_uri:Primitive::CharacterString contains a URI referring the GeoSciML GeomorphologicUnit feature that describes the instance in detail.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ShearDisplacementStructureView": {
+      "$anchor": "ShearDisplacementStructureView",
+      "description": "ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacementStructure. In GeoSciML terms this will be an instance of a MappedFeature with key property values from the associated ShearDisplacementStructure feature summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "If present, the property name:Primitive::CharacterString contains a display name for the ShearDisplacementStructure.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString contains a human readable text description of the ShearDisplacementStructure, typically taken from an entry on a geological map legend.",
+                  "type": "string"
+                },
+                "faultType": {
+                  "description": "If present, the property faultType:Primitive::CharacterString contains a human readable description of the type of ShearDisplacementStructure (as defined in GeoSciML). To report an identifier from a controlled vocabulary, faultType_uri shall be used.",
+                  "type": "string"
+                },
+                "movementType": {
+                  "description": "If present, the property movementType:Primitive::CharacterString contains a human readable summary of the type of movement (e.g. dip-slip, strike-slip) on the ShearDisplacementStructure. To report an identifier from a controlled vocabulary, movementType_uri shall be used.",
+                  "type": "string"
+                },
+                "deformationStyle": {
+                  "description": "If present, the property deformationStyle:Primitive::CharacterString contain a human readable description of the style of deformation (e.g. brittle, ductile etc.) for the ShearDisplacementStructure.  To report an identifier from a controlled vocabulary, deformationStyle_uri shall be used.",
+                  "type": "string"
+                },
+                "displacement": {
+                  "description": "If present, the property displacement:Primitive::CharacterString contains a text summarising the displacement across the ShearDisplacementStructure.",
+                  "type": "string"
+                },
+                "geologicHistory": {
+                  "description": "If present, the property geologicHistory:Primitive::CharacterString contains a text, possibly formatted with formal syntax, describing the age of the ShearDisplacementStructure (where age is a sequence of events and may include process and environment information).  To report identifiers from a controlled vocabulary, representativeAge_uri, representativeOlderAge_uri and representativeYoungerAge_uri shall be used.",
+                  "type": "string"
+                },
+                "observationMethod": {
+                  "description": "If present, the property observationMethod:Primitive::CharacterString contains a metadata snippet indicating how the spatial extent of the feature was determined. ObservationMethod is a convenience property that provides a quick and dirty approach to observation metadata when data are reported using a feature view (as opposed to observation view).",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionAccuracy:Primitive::CharacterString contains quantitative representation defining the radius of an uncertainty buffer around a MappedFeature (e.g., a positionalAccuracy of 100 m for a line feature defines a buffer polygon of total width 200 m centred on the line).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the property source:Primitive::CharacterString contains a text describing feature-specific details and citations to source materials, and if available providing URLs to reference material and publications describing the geologic feature. This could be a short text synopsis of key information that would also be in the metadata record referenced by metadata_uri.",
+                  "type": "string"
+                },
+                "faultType_uri": {
+                  "description": "The property faultType_uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the fault (ShearDisplacementStructure) type.",
+                  "type": "string"
+                },
+                "movementType_uri": {
+                  "description": "The property movementType_uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the ShearDisplacementStructure movement type.",
+                  "type": "string"
+                },
+                "deformationStyle_uri": {
+                  "description": "The property deformationStyle_uri:Primitive::CharacterString contains a URI referring to a controlled concept from a vocabulary defining the ShearDisplacementStructure deformation style.",
+                  "type": "string"
+                },
+                "representativeAge_uri": {
+                  "description": "The property representativeAge_uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature\u0027s geological history or a value summarising all or part of the feature\u0027s history.",
+                  "type": "string"
+                },
+                "representativeOlderAge_uri": {
+                  "description": "The property representativeOlderAge_uri:Primitive:CharacterString contains a URI referring to a controlled concept specifying the most representative lower value in a range of stratigraphic age intervals for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature\u0027s geological history or a value summarising all or part of the feature\u0027s history.",
+                  "type": "string"
+                },
+                "representativeYoungerAge_uri": {
+                  "description": "The property representativeYoungerAge_uri:Primitive::CharacterString contains a URI referring to a controlled concept specifying the most representative upper value in a range of stratigraphic age intervals for the ShearDisplacementStructure. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature\u0027s geological history or a value summarising all or part of the feature\u0027s history.",
+                  "type": "string"
+                },
+                "numericOlderAge": {
+                  "description": "If present, the property numericOlderAge:Primitive::Number reports the older age of the fault/shear structure, represented million years (Ma).",
+                  "type": "number"
+                },
+                "numericYoungerAge": {
+                  "description": "If present, the property numericYoungerAge:Primitive::Number reports the younger age of the fault/shear structure, represented million years (Ma).",
+                  "type": "number"
+                },
+                "specification_uri": {
+                  "description": "If present, the property specification_uri:Primitive::CharacterString contains a URI referring the GeoSciML ShearDisplacementStructure feature that describes the instance in detail.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString contains a URI referring to a metadata record describing the provenance of data.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol from standard (locally or community defined) symbolization scheme for portrayal.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "SiteObservationView": {
+      "$anchor": "SiteObservationView",
+      "description": "SiteObservationView is a simplified view of a generally point-located geological observation, like a structural measurement. This is a simplified instance of a sampling geometry from Observations \u0026 Measurements (ISO19156) with an associated geological observation. Each tuple should represent a single observation. Key property values are summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/feature.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "place": {
+              "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json"
+            },
+            "properties": {
+              "type": "object",
+              "properties": {
+                "siteName": {
+                  "description": "If present, the property siteName:Primitive::CharacterString contains the name of the sampling feature at this location (e.g. a station number, a borehole).",
+                  "type": "string"
+                },
+                "observationName": {
+                  "description": "If present, the property observationName:Primitive::CharacterString contains a text identifying the observation.",
+                  "type": "string"
+                },
+                "label": {
+                  "description": "If present, the property label:Primitive::CharacterString contains a short text string to associate with a symbol in a visualization/portrayal.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "If present, the property description:Primitive::CharacterString contains a text string providing descriptive information about the observation.",
+                  "type": "string"
+                },
+                "featureOfInterest": {
+                  "description": "If present, the property featureOfInterest:Primitive::CharacterString contains a description of the geologic feature that the observation is intended to characterize, e.g. foliation (observed property\u003d orientation), a geologic unit (observed property \u003d age, magnetic susceptibility, density, uranium content).  The property is equivalent to O\u0026M OM_Observation::featureOfInterest. To report a URI of the feature of interest, featureOfInterest_uri shall be used.",
+                  "type": "string"
+                },
+                "observedProperty": {
+                  "description": "If present, the property observedProperty:Primitive::CharacterString contains a description of the property reported in this record. (E.g. orientation, age, density, gold content) as a human readable text. To report an identifier of the observedProperty from a controlled vocabulary, propertyType_uri shall be used.",
+                  "type": "string"
+                },
+                "observedValue": {
+                  "description": "If present, the property observedValue:Primitive::CharacterString contains the result of the observation. This field is implemented as a character string to allow reporting various type of values, the value may be numeric (e.g., 235) or textual (e.g., red). Units of measure shall be reported in observedValueUom.",
+                  "type": "string"
+                },
+                "observedValueUom": {
+                  "description": "If relevant, the property observedValueUom:Primitive::CharacterString contains the unit of measure for a numerical value of an observation or measurement, preferably from a controlled vocabulary.",
+                  "type": "string"
+                },
+                "observationMethod": {
+                  "description": "If present, the observationMethod:Primitive::CharacterString property contains a method description, preferably a term from a controlled vocabulary, to categorize the observation method. Further details on procedure can be put in the source field.",
+                  "type": "string"
+                },
+                "positionalAccuracy": {
+                  "description": "If present, the property positionalAccuracy:Primitive::CharacterString provides an estimate of the position uncertainty for the site location. For numerical measurements, include a unit of measure in the description. (e.g., 50 metres, poor, good).",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "If present, the property source:Primitive::CharacterString contains a text description of measurement procedure, processing, and provenance of data.",
+                  "type": "string"
+                },
+                "featureOfInterest_uri": {
+                  "description": "The property featureOfInterest:Primitive::CharacterString is functionally equivalent to OM_Observation::featureOfInterest of IS19156.  It contains a URI link to a representation of the feature of interest (e.g., a GeoSciML geologic unit or structure).",
+                  "type": "string"
+                },
+                "propertyType_uri": {
+                  "description": "The property propertyType_uri:Primitive:CharacterString is functionally equivalent to OM_Observation::observedProperty.  It contains a URI to a term from a controlled vocabulary of observed property types.",
+                  "type": "string"
+                },
+                "metadata_uri": {
+                  "description": "If present, the property metadata_uri:Primitive::CharacterString contains a URI link to metadata document.",
+                  "type": "string"
+                },
+                "genericSymbolizer": {
+                  "description": "If present, the property genericSymbolizer:Primitive::CharacterString contains an identifier for a symbol to portray this observation. Conventions for symbol identifiers can be adopted within information exchange communities.",
+                  "type": "string"
+                },
+                "symbolRotation": {
+                  "description": "If present, the symbolRotation:Integer property contains an integer value between 0 and 359 to specify rotation of symbol at this location, e.g. rotation of a geologic strike and dip symbol to reflect the strike azimuth.  The angular convention shall be geographic angle (clockwise with 0 at geographic north pole, therefore 90 degree is east).",
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": [
+            "featureType",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$comment": "Minimal Extended-profile FeatureCollection. The Extended profile dispatches on featureType into the Basic anchors with extra description-slot constraints. Each constraint only fires when the slot is present, so a minimal instance with no description content still validates and exercises the dispatcher routing.",
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnit",
+      "id": "ext.minimal.gu.1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "typicalNorm",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "Contact",
+      "id": "ext.minimal.contact.1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "instance",
+        "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/conformable_contact"
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleComplexContacts.ttl — the contact `con:contact_Js_on_Xm`, a Nonconformable Contact where Jurassic Js Formation (sedimentary) unconformably overlies the Early Proterozoic Xm Rock Body (metamorphic basement). Validates against schemas/json/4.1/geoscimlBasic.json#Contact. The TTL also defines part-whole decomposition into Rock_Body_Boundary instances (KdBoundaryDownSide-3_1_1, baseJs-6_3, etc.); those are outside GeoSciML Basic's Contact model and are not represented here.",
+  "type": "Feature",
+  "id": "contact.JsOnXm",
+  "featureType": "Contact",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json"
+  ],
+  "geometry": null,
+  "properties": {
+    "name": "Js on Xm nonconformity",
+    "description": "Nonconformable contact: Jurassic Js Formation (sedimentary) deposited on the eroded surface of the Early Proterozoic Xm Rock Body (medium-grade gneiss). Hosted on rock-body boundaries `baseJs-6_3` (younger, base of Js) and `XmBoundary-6_3` (older, erosional top of Xm). The older surface records pre-Jurassic erosion of crystalline basement.",
+    "purpose": "instance",
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod",
+        "label": "synthesis from multiple sources",
+        "codeSpace": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod",
+        "value": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_from_multiple_sources"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "id": "JsDeposition",
+        "featureType": "GeologicEvent",
+        "geometry": null,
+        "properties": {
+          "name": "Deposition of Unit Js",
+          "description": "Jurassic-age deposition of the Js Formation onto eroded Paleozoic and Proterozoic substrate.",
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/EarlyJurassic",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/LateJurassic"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "preJurassicErosion",
+        "featureType": "GeologicEvent",
+        "geometry": null,
+        "properties": {
+          "name": "Pre-Jurassic erosion of Xm basement",
+          "description": "Long erosional interval that exposed the Xm metamorphic basement before Js deposition; produces the nonconformity surface.",
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/erosion"
+          ]
+        }
+      }
+    ],
+    "relatedFeature": [
+      {
+        "href": "https://example.org/loop3d/JsFormation",
+        "title": "Js Formation (Jurassic) — younger host",
+        "rel": "youngerHost"
+      },
+      {
+        "href": "https://example.org/loop3d/XmRockBody",
+        "title": "Xm Rock Body (Early Proterozoic gneiss) — older host",
+        "rel": "olderHost"
+      }
+    ],
+    "contactType": "http://resource.geosciml.org/classifier/cgi/contacttype/nonconformity"
+  }
+}

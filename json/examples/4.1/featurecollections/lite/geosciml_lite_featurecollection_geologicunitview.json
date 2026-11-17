@@ -1,0 +1,156 @@
+{
+  "type": "FeatureCollection",
+  "featureType": "GeologicUnitView",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnitView",
+      "id": "gu-view-1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              149.12,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.31
+            ],
+            [
+              149.45,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.31
+            ]
+          ]
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "Hervey Group",
+        "description": "Terrigenous to shallow marine, red to white and green, quartzose to lithic sandstone, siltstone, shale and conglomerate.",
+        "geologicUnitType": "lithostratigraphic unit",
+        "rank": "group",
+        "lithology": "sandstone, siltstone, shale and conglomerate",
+        "geologicHistory": "Frasnian to Famennian (Late Devonian) fluvial to shallow marine deposition",
+        "numericOlderAge": 382.7,
+        "numericYoungerAge": 358.9,
+        "geologicUnitType_uri": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "representativeLithology_uri": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone",
+        "representativeAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+        "representativeOlderAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Frasnian",
+        "representativeYoungerAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Famennian",
+        "specification_uri": "http://data.geoscience.gov.au/feature/geologicunit/hervey-group-1",
+        "genericSymbolizer": "GU_DevSS"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnitView",
+      "id": "gu-view-2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              149.45,
+              -35.31
+            ],
+            [
+              149.78,
+              -35.31
+            ],
+            [
+              149.78,
+              -35.58
+            ],
+            [
+              149.45,
+              -35.58
+            ],
+            [
+              149.45,
+              -35.31
+            ]
+          ]
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "Lachlan Fold Belt Basement",
+        "description": "Deformed Ordovician turbidites and volcanic rocks forming the pre-Devonian basement of the Lachlan Orogen.",
+        "geologicUnitType": "lithotectonic unit",
+        "rank": "supergroup",
+        "lithology": "turbiditic sandstone, shale and volcanic rocks",
+        "geologicHistory": "Ordovician deep marine turbidite deposition; deformed during Silurian to Devonian Benambran Orogeny",
+        "numericOlderAge": 485.4,
+        "numericYoungerAge": 419.2,
+        "geologicUnitType_uri": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithotectonic_unit",
+        "representativeLithology_uri": "http://resource.geosciml.org/classifier/cgi/simplelithology/turbidite",
+        "representativeAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Ordovician",
+        "representativeOlderAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Ordovician",
+        "representativeYoungerAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Silurian",
+        "specification_uri": "http://data.geoscience.gov.au/feature/geologicunit/lachlan-basement-1",
+        "genericSymbolizer": "GU_OrdVol"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnitView",
+      "id": "gu-view-3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              148.8,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.58
+            ],
+            [
+              149.12,
+              -35.85
+            ],
+            [
+              148.8,
+              -35.85
+            ],
+            [
+              148.8,
+              -35.58
+            ]
+          ]
+        ]
+      },
+      "time": null,
+      "properties": {
+        "name": "Snowy Mountains Granite",
+        "description": "Coarse-grained, porphyritic biotite granite intruded during the Silurian as part of the Lachlan Fold Belt I-type granite suite.",
+        "geologicUnitType": "lithodemic unit",
+        "rank": "pluton",
+        "lithology": "granite",
+        "geologicHistory": "Silurian magmatic intrusion (~430 Ma)",
+        "numericOlderAge": 435.0,
+        "numericYoungerAge": 425.0,
+        "geologicUnitType_uri": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithodemic_unit",
+        "representativeLithology_uri": "http://resource.geosciml.org/classifier/cgi/simplelithology/granite",
+        "representativeAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Silurian",
+        "representativeOlderAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Silurian",
+        "representativeYoungerAge_uri": "http://resource.geosciml.org/classifier/ics/ischart/Silurian",
+        "specification_uri": "http://data.geoscience.gov.au/feature/geologicunit/snowy-mountains-granite-1",
+        "genericSymbolizer": "GU_SilGran"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1" xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:sc="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
+ elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1.0b1" xmlns:saxon="http://saxon.sf.net/" xmlns:xerces="http://xerces.apache.org">
+ <import namespace="http://www.w3.org/2001/XInclude" schemaLocation="w3c/XInclude.xsd"/>
+ <import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="w3c/xml.xsd"/>
+ <element name="ShapeChangeConfiguration" type="sc:ShapeChangeConfigurationType"> </element>
+ <complexType name="ShapeChangeConfigurationType">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="sc:ShapeChangeConfiguration"/>
+   <element ref="sc:input"/>
+   <element ref="sc:dialog"/>
+   <element ref="sc:log"/>
+   <element ref="sc:transformers"/>
+   <element ref="sc:targets"/>
+   <element ref="sc:validators"/>
+   <element ref="xi:include"/>
+  </choice>
+  <attribute ref="xml:base"/>
+  <assert test="
+    every $id in distinct-values((sc:transformers/*/tokenize(string(@validators), '\s+'), sc:targets/*/tokenize(string(@validators), '\s+')))
+     satisfies exists(sc:validators/sc:Validator[string(@id) = $id])"
+   saxon:message="Every ID in a validators XML-attribute must be the ID of a configured Validator element. Check if any validators XML-attribute contains the ID of the input element or of a transformer."
+   xerces:message="Every ID in a validators XML-attribute must be the ID of a configured Validator element. Check if any validators XML-attribute contains the ID of the input element or of a transformer.">
+   <annotation>
+    <documentation>Every ID in a validators XML-attribute must be the ID of a configured Validator element. Check if any validators XML-attribute contains the ID of the input element or of a transformer.</documentation>
+   </annotation>
+  </assert>
+  <assert test="
+    every $id in distinct-values((sc:transformers/*/@input, sc:targets/*/tokenize(string(@inputs), '\s+')))
+     satisfies ($id = 'INPUT' or exists(sc:input[@id = $id]) or exists(sc:transformers/*[@id = $id]))"
+   saxon:message="Every ID in an input or inputs XML-attribute must be the ID of a configured transformer or input element. Check if any input or inputs XML-attribute contains the ID of a validator."
+   xerces:message="Every ID in an input or inputs XML-attribute must be the ID of a configured transformer or input element. Check if any input or inputs XML-attribute contains the ID of a validator.">
+   <annotation>
+    <documentation>Every ID in an input or inputs XML-attribute must be the ID of a configured transformer or input element. Check if any input or inputs XML-attribute contains the ID of a validator.</documentation>
+   </annotation>
+  </assert>
+ </complexType>
+ <element name="input">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:parameter"/>
+    <element ref="sc:stereotypeAliases"/>
+    <element ref="sc:tagAliases"/>
+    <element ref="sc:descriptorSources"/>
+    <element ref="sc:packages"/>
+    <element ref="xi:include"/>
+   </choice>
+   <attribute name="id" type="ID"/>
+  </complexType>
+ </element>
+ <element name="parameter">
+  <complexType>
+   <attribute name="name" type="string" use="required"/>
+   <attribute name="value" type="string" use="required"/>
+  </complexType>
+ </element>
+ <element name="stereotypeAliases">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:StereotypeAlias"/>
+   </sequence>
+   <attribute ref="xml:base"/>
+  </complexType>
+ </element>
+ <element name="StereotypeAlias" type="sc:StereotypeAliasType"/>
+ <complexType name="StereotypeAliasType">
+  <sequence/>
+  <attribute name="wellknown" use="required">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value=""/>
+     <enumeration value="Abstract"/>
+     <enumeration value="ADEElement"/>
+     <enumeration value="AIXMExtension"/>
+     <enumeration value="Application Schema"/>
+     <enumeration value="attributeConcept"/>
+     <enumeration value="BasicType"/>
+     <enumeration value="bundle"/>
+     <enumeration value="CodeList"/>
+     <enumeration value="DataType"/>
+     <enumeration value="disjoint"/>
+     <enumeration value="enum"/>
+     <enumeration value="Enumeration"/>
+     <enumeration value="estimated"/>
+     <enumeration value="FachId"/>
+     <enumeration value="featureConcept"/>
+     <enumeration value="FeatureType"/>
+     <enumeration value="identifier"/>
+     <enumeration value="import"/>
+     <enumeration value="include"/>
+     <enumeration value="Interface"/>
+     <enumeration value="leaf"/>
+     <enumeration value="property"/>
+     <enumeration value="retired"/>
+     <enumeration value="roleConcept"/>
+     <enumeration value="schema"/>
+     <enumeration value="Schluesseltabelle"/>
+     <enumeration value="Type"/>
+     <enumeration value="Union"/>
+     <enumeration value="valueConcept"/>
+     <enumeration value="version"/>
+     <enumeration value="voidable"/>
+     <enumeration value="propertyMetadata"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="alias" type="string" use="required"/>
+ </complexType>
+ <element name="tagAliases">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:TagAlias"/>
+   </sequence>
+   <attribute ref="xml:base"/>
+  </complexType>
+ </element>
+ <element name="TagAlias" type="sc:TagAliasType"/>
+ <complexType name="TagAliasType">
+  <sequence/>
+  <attribute name="wellknown" use="required" type="string"/>
+  <attribute name="alias" type="string" use="required"/>
+ </complexType>
+ <element name="descriptorSources">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:DescriptorSource"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="DescriptorSource" type="sc:DescriptorSourceType"/>
+ <complexType name="DescriptorSourceType">
+  <sequence/>
+  <attribute name="descriptor" use="required">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="documentation"/>
+     <enumeration value="definition"/>
+     <enumeration value="description"/>
+     <enumeration value="example"/>
+     <enumeration value="alias"/>
+     <enumeration value="legalBasis"/>
+     <enumeration value="dataCaptureStatement"/>
+     <enumeration value="primaryCode"/>
+     <enumeration value="language"/>
+     <enumeration value="globalIdentifier"/>
+     <!-- more descriptors may be added as needed -->
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="source" use="required">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="tag"/>
+     <enumeration value="ea:notes"/>
+     <enumeration value="ea:alias"/>
+     <enumeration value="sc:extract"/>
+     <enumeration value="ea:guidtoxml"/>
+     <enumeration value="none"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="token" type="string"/>
+  <attribute name="tag" type="string"/>
+ </complexType>
+ <element name="packages">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:PackageInfo"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="PackageInfo" type="sc:PackageInfoType"/>
+ <complexType name="PackageInfoType">
+  <sequence/>
+  <attribute name="packageName" type="string" use="required"/>
+  <attribute name="nsabr" type="string"/>
+  <attribute name="ns" type="string"/>
+  <attribute name="xsdDocument" type="string"/>
+  <attribute name="version" type="string"/>
+ </complexType>
+ <element name="dialog">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:parameter"/>
+   </choice>
+  </complexType>
+ </element>
+ <element name="log">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:parameter"/>
+   </choice>
+  </complexType>
+ </element>
+ <simpleType name="ProcessMode">
+  <restriction base="string">
+   <enumeration value="enabled"/>
+   <enumeration value="disabled"/>
+   <enumeration value="diagnostics-only"/>
+  </restriction>
+ </simpleType>
+ <complexType name="ProcessBaseType">
+  <sequence>
+   <element minOccurs="0" ref="sc:advancedProcessConfigurations"/>
+  </sequence>
+  <attribute name="class" type="string" use="required"/>
+  <attribute name="mode" type="sc:ProcessMode" default="enabled"/>
+ </complexType>
+ <element name="ProcessParameter" type="sc:ProcessParameterType"/>
+ <complexType name="ProcessParameterType">
+  <attribute name="name" type="string" use="required"/>
+  <attribute name="value" type="string" use="required"/>
+ </complexType>
+ <element name="ProcessRuleSet" type="sc:ProcessRuleSetType"/>
+ <complexType name="ProcessRuleSetType">
+  <choice maxOccurs="unbounded" minOccurs="0">
+   <element name="rule" type="sc:RuleRefType"/>
+  </choice>
+  <attribute name="name" type="string" use="required"/>
+  <attribute name="extends" type="string"/>
+ </complexType>
+ <element name="ProcessMapEntry" type="sc:MapEntryType"/>
+ <complexType name="TransformerType">
+  <complexContent>
+   <extension base="sc:ProcessBaseType">
+    <choice maxOccurs="unbounded" minOccurs="0">
+     <element name="parameters">
+      <complexType>
+       <choice maxOccurs="unbounded">
+        <element ref="sc:ProcessParameter"/>
+       </choice>
+      </complexType>
+     </element>
+     <element name="rules">
+      <complexType>
+       <choice maxOccurs="unbounded" minOccurs="1">
+        <element ref="sc:ProcessRuleSet"/>
+       </choice>
+      </complexType>
+     </element>
+     <element name="mapEntries">
+      <complexType>
+       <choice maxOccurs="unbounded">
+        <element ref="sc:ProcessMapEntry"/>
+       </choice>
+      </complexType>
+     </element>
+     <element name="taggedValues">
+      <complexType>
+       <choice maxOccurs="unbounded">
+        <element ref="sc:TaggedValue"/>
+       </choice>
+      </complexType>
+     </element>
+     <element ref="xi:include"/>
+    </choice>
+    <attribute name="id" type="ID" use="required"/>
+    <attribute name="input" type="IDREF"/>
+    <attribute name="validators" type="IDREFS"/>
+    <assert test="not(@input) or not(@id = @input)" saxon:message="The values of transformer XML-attributes id and input must not be equal (no self-reference)."
+     xerces:message="The values of transformer XML-attributes id and input must not be equal (no self-reference).">
+     <annotation>
+      <documentation>The values of transformer XML-attributes id and input must not be equal (no self-reference).</documentation>
+     </annotation>
+    </assert>
+    <assert test="not(@validators) or (count(tokenize(string(@validators), '\s+')) = count(distinct-values(tokenize(string(@validators), '\s+'))))"
+     saxon:message="The values of XML-attribute validators must be unique. Check for duplicate values in the validators XML-attribute."
+     xerces:message="The values of XML-attribute validators must be unique. Check for duplicate values in the validators XML-attribute.">
+     <annotation>
+      <documentation>The values of XML-attribute validators must be unique. Check for duplicate values in the validators XML-attribute.</documentation>
+     </annotation>
+    </assert>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="transformers">
+  <complexType>
+   <sequence maxOccurs="unbounded" minOccurs="1">
+    <element ref="sc:Transformer"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="Transformer" type="sc:TransformerType"/>
+ <element name="validators">
+  <complexType>
+   <sequence maxOccurs="unbounded">
+    <element ref="sc:Validator"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="Validator" type="sc:ValidatorType"/>
+ <complexType name="ValidatorType">
+  <complexContent>
+   <extension base="sc:ProcessBaseType">
+    <choice maxOccurs="unbounded" minOccurs="0">
+     <element name="parameters">
+      <complexType>
+       <choice maxOccurs="unbounded">
+        <element ref="sc:ProcessParameter"/>
+       </choice>
+      </complexType>
+     </element>
+     <element name="rules">
+      <complexType>
+       <choice maxOccurs="unbounded">
+        <element ref="sc:ProcessRuleSet"/>
+       </choice>
+      </complexType>
+     </element>
+     <element ref="xi:include"/>
+    </choice>
+    <attribute name="id" type="ID" use="required"/>
+    <attribute default="strict" name="validationMode">
+     <simpleType>
+      <restriction base="string">
+       <enumeration value="strict"/>
+       <enumeration value="lax"/>
+      </restriction>
+     </simpleType>
+    </attribute>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="targets">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:Target"/>
+    <element ref="sc:TargetXmlSchema"/>
+    <element ref="sc:TargetOwl"/>
+   </choice>
+  </complexType>
+ </element>
+ <element name="Target" type="sc:TargetType">
+  <unique name="TargetUniqueEncodingRuleName">
+   <selector xpath=".//sc:EncodingRule"/>
+   <field xpath="@name"/>
+  </unique>
+ </element>
+ <complexType name="TargetType">
+  <complexContent>
+   <extension base="sc:TargetBaseType">
+    <choice minOccurs="0" maxOccurs="unbounded">
+     <element ref="sc:targetParameter"/>
+     <element ref="sc:targetParameters"/>
+     <element ref="sc:rules"/>
+     <element ref="sc:mapEntries"/>
+     <element ref="sc:namespaces"/>
+     <element ref="xi:include"/>
+    </choice>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="targetParameter">
+  <complexType>
+   <attribute name="name" type="string" use="required"/>
+   <attribute name="value" type="string" use="required"/>
+  </complexType>
+ </element>
+ <element name="mapEntries" type="sc:MapEntriesType"/>
+ <complexType name="MapEntriesType">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="sc:MapEntry"/>
+   <element ref="sc:mapEntries"/>
+  </choice>
+ </complexType>
+ <element name="MapEntry" type="sc:MapEntryType"/>
+ <complexType name="MapEntryType">
+  <attribute name="type" type="string" use="required"/>
+  <attribute name="rule" type="string" use="required"/>
+  <attribute name="targetType" type="string"/>
+  <attribute name="param" type="string"/>
+ </complexType>
+ <element name="TargetXmlSchema" type="sc:TargetXmlSchemaType">
+  <unique name="TargetXmlSchemaUniqueEncodingRuleName">
+   <selector xpath=".//sc:EncodingRule"/>
+   <field xpath="@name"/>
+  </unique>
+ </element>
+ <complexType name="TargetXmlSchemaType">
+  <complexContent>
+   <extension base="sc:TargetBaseType">
+    <choice minOccurs="0" maxOccurs="unbounded">
+     <element ref="sc:targetParameter"/>
+     <element ref="sc:targetParameters"/>
+     <element ref="sc:rules"/>
+     <element ref="sc:xsdMapEntries"/>
+     <element ref="sc:xmlNamespaces"/>
+     <element ref="xi:include"/>
+    </choice>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="namespaces">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:Namespace"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="Namespace" type="sc:NamespaceType"/>
+ <complexType name="NamespaceType">
+  <sequence/>
+  <attribute name="nsabr" type="string" use="required"/>
+  <attribute name="ns" type="string" use="required"/>
+  <attribute name="location" type="string" use="optional"/>
+ </complexType>
+ <element name="xmlNamespaces">
+  <complexType>
+   <choice maxOccurs="unbounded" minOccurs="0">
+    <element ref="sc:XmlNamespace"/>
+    <element ref="sc:xmlNamespaces"/>
+   </choice>
+   <attribute ref="xml:base"/>
+  </complexType>
+ </element>
+ <element name="XmlNamespace" type="sc:XmlNamespaceType"/>
+ <complexType name="XmlNamespaceType">
+  <sequence/>
+  <attribute name="nsabr" type="string" use="required"/>
+  <attribute name="ns" type="string" use="required"/>
+  <attribute name="location" type="string" use="optional"/>
+  <attribute name="packageName" type="string"/>
+ </complexType>
+ <element name="xsdMapEntries">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:XsdMapEntry"/>
+    <element ref="sc:XsdPropertyMapEntry"/>
+    <element ref="sc:xsdMapEntries"/>
+   </choice>
+   <attribute ref="xml:base"/>
+  </complexType>
+ </element>
+ <element name="XsdMapEntry" type="sc:XsdMapEntryType"/>
+ <complexType name="XsdMapEntryType">
+  <sequence/>
+  <attribute name="type" type="string" use="required"/>
+  <attribute name="xsdEncodingRules" use="required">
+   <simpleType>
+    <list itemType="string"/>
+   </simpleType>
+  </attribute>
+  <attribute name="xmlType" type="string"/>
+  <attribute name="xmlTypeContent" default="complex">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="simple"/>
+     <enumeration value="complex"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="xmlTypeType" default="complex">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="simple"/>
+     <enumeration value="complex"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="xmlTypeNilReason" type="boolean"/>
+  <attribute name="xmlElement" type="string"/>
+  <attribute name="xmlPropertyType" type="string"/>
+  <attribute name="xmlAttribute" type="string"/>
+  <attribute name="xmlAttributeGroup" type="string"/>
+  <attribute name="xmlReferenceable" type="boolean"/>
+  <attribute name="xmlElementHasSimpleContent" type="boolean"/>
+  <attribute name="nsabr" type="string"/>
+ </complexType>
+ <element name="XsdPropertyMapEntry" type="sc:XsdPropertyMapEntryType"/>
+ <complexType name="XsdPropertyMapEntryType">
+  <attribute name="property" type="string" use="required">
+   <annotation>
+    <documentation>Name of a UML property, optionally scoped to a class (example: FeatureX::propertyY).</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="schema" type="string">
+   <annotation>
+    <documentation>The name of the application schema package to which the UML property belongs. Used to avoid ambiguity in case that multiple schemas are being processed.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="targetElement" type="string" use="optional">
+   <annotation>
+    <documentation>XML Element to which the UML property shall be mapped (e.g. ex:elementX). Can be empty or omitted if the property shall not be encoded</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="rules">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element name="EncodingRule" type="sc:EncodingRuleType"/>
+   </sequence>
+   <attribute ref="xml:base"/>
+  </complexType>
+ </element>
+ <complexType name="RuleRefType">
+  <attribute name="name" type="string" use="required"/>
+ </complexType>
+ <complexType name="EncodingRuleType">
+  <sequence minOccurs="0" maxOccurs="unbounded">
+   <element name="rule" type="sc:RuleRefType"/>
+  </sequence>
+  <attribute name="name" type="string" use="required"/>
+  <attribute name="extends" type="string"/>
+ </complexType>
+ <element name="targetParameters">
+  <complexType>
+   <choice maxOccurs="unbounded" minOccurs="0">
+    <element ref="sc:targetParameter"/>
+   </choice>
+  </complexType>
+ </element>
+ <attributeGroup name="modelElementSelectionGroup">
+  <attribute name="modelElementName" type="string"/>
+  <attribute name="modelElementType">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="Association"/>
+     <enumeration value="Class"/>
+     <enumeration value="Package"/>
+     <enumeration value="Property"/>
+     <enumeration value="Attribute"/>
+     <enumeration value="AssociationRole"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="modelElementStereotype" type="string"/>
+  <attribute name="modelElementOwnerName" type="string"/>
+  <attribute name="modelElementOwnerStereotype" type="string"/>
+  <attribute name="propertyValueTypeStereotype" type="string"/>
+  <attribute name="propertyValueTypeName" type="string"/>
+  <attribute name="applicationSchemaName" type="string"/>
+  <attribute name="classIsAbstract" type="boolean"/>
+ </attributeGroup>
+ <element name="TaggedValue" type="sc:TaggedValueType"/>
+ <complexType name="TaggedValueType">
+  <attribute name="name" type="string" use="required"/>
+  <attribute name="value" type="string"/>
+  <attributeGroup ref="sc:modelElementSelectionGroup"/>
+ </complexType>
+ <element name="DescriptorValue" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:DescriptorValueType"/>
+ <complexType name="DescriptorValueType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element minOccurs="0" name="values">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" ref="sc:LangString"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+    <attribute name="descriptorName" type="string" use="required"/>
+    <attributeGroup ref="sc:modelElementSelectionGroup"/>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="descriptorValues" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:descriptorValuesType"/>
+ <complexType name="descriptorValuesType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <choice maxOccurs="unbounded">
+     <element ref="sc:DescriptorValue"/>
+    </choice>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="LangString" type="sc:LangStringType"/>
+ <complexType name="LangStringType">
+  <simpleContent>
+   <extension base="string">
+    <attribute name="lang" type="string"/>
+   </extension>
+  </simpleContent>
+ </complexType>
+ <element name="TargetOwl" type="sc:TargetOwlType">
+  <unique name="uniqueConstraintType">
+   <selector xpath=".//sc:ConstraintMapping"/>
+   <field xpath="@constraintType"/>
+  </unique>
+  <unique name="TargetOwlUniqueEncodingRuleName">
+   <selector xpath=".//sc:EncodingRule"/>
+   <field xpath="@name"/>
+  </unique>
+ </element>
+ <complexType name="TargetOwlType">
+  <complexContent>
+   <extension base="sc:TargetBaseType">
+    <choice minOccurs="0" maxOccurs="unbounded">
+     <element ref="sc:targetParameter"/>
+     <element ref="sc:targetParameters"/>
+     <element ref="sc:rules"/>
+     <element ref="sc:rdfMapEntries"/>
+     <element ref="sc:rdfConversionParameters"/>
+     <element ref="sc:rdfGeneralProperties"/>
+     <element ref="sc:namespaces"/>
+     <element ref="sc:descriptorTargets"/>
+     <element ref="sc:constraintMappings"/>
+     <element ref="xi:include"/>
+    </choice>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="stereotypeMappings">
+  <complexType>
+   <sequence minOccurs="0" maxOccurs="unbounded">
+    <element name="StereotypeMapping" type="sc:StereotypeMappingType"/>
+   </sequence>
+  </complexType>
+ </element>
+ <complexType name="StereotypeMappingType">
+  <sequence/>
+  <attribute name="wellknown" use="required">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value=""/>
+     <enumeration value="Abstract"/>
+     <enumeration value="DataType"/>
+     <enumeration value="FeatureType"/>
+     <enumeration value="Enumeration"/>
+     <enumeration value="CodeList"/>
+     <enumeration value="Union"/>
+     <enumeration value="BasicType"/>
+     <enumeration value="Interface"/>
+     <enumeration value="Type"/>
+     <enumeration value="Union"/>
+     <enumeration value="Application Schema"/>
+     <enumeration value="Leaf"/>
+     <enumeration value="Schluesseltabelle"/>
+     <enumeration value="FachId"/>
+     <enumeration value="ADEElement"/>
+     <enumeration value="import"/>
+     <enumeration value="include"/>
+     <enumeration value="disjoint"/>
+     <enumeration value="voidable"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="mapsTo" type="string" use="required"/>
+ </complexType>
+ <complexType name="TargetBaseType">
+  <complexContent>
+   <extension base="sc:ProcessBaseType">
+    <attribute name="inputs" type="IDREFS"/>
+    <attribute name="validators" type="IDREFS"/>
+    <assert test="not(@validators) or (count(tokenize(string(@validators), '\s+')) = count(distinct-values(tokenize(string(@validators), '\s+'))))"
+     saxon:message="The values of XML-attribute validators must be unique. Check for duplicate values in the validators XML-attribute."
+     xerces:message="The values of XML-attribute validators must be unique. Check for duplicate values in the validators XML-attribute.">
+     <annotation>
+      <documentation>The values of XML-attribute validators must be unique. Check for duplicate values in the validators XML-attribute.</documentation>
+     </annotation>
+    </assert>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="advancedProcessConfigurations">
+  <complexType>
+   <choice maxOccurs="unbounded">
+    <element ref="sc:AdvancedProcessConfigurationElement"/>
+    <any namespace="##other"/>
+   </choice>
+  </complexType>
+ </element>
+ <element abstract="true" name="AdvancedProcessConfigurationElement" type="sc:AdvancedProcessConfigurationType"/>
+ <complexType name="AdvancedProcessConfigurationType"/>
+ <element name="AttributeDefinition" type="sc:AttributeDefinitionType" substitutionGroup="sc:AdvancedProcessConfigurationElement"/>
+ <complexType name="AttributeDefinitionType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element name="classSelection">
+      <complexType>
+       <sequence>
+        <element ref="sc:PackageSelector"/>
+        <element ref="sc:ClassSelector"/>
+       </sequence>
+      </complexType>
+     </element>
+     <element maxOccurs="1" minOccurs="0" name="aliasName" type="string"/>
+     <element maxOccurs="1" minOccurs="0" name="descriptors">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" ref="sc:Descriptor"/>
+       </sequence>
+      </complexType>
+     </element>
+     <element minOccurs="0" name="initialValue" type="string"/>
+     <element default="false" minOccurs="0" name="isDerived" type="boolean"/>
+     <element default="false" minOccurs="0" name="isOrdered" type="boolean"/>
+     <element default="false" minOccurs="0" name="isReadOnly" type="boolean"/>
+     <element default="false" minOccurs="0" name="isOwned" type="boolean"/>
+     <element name="name" type="string"/>
+     <element default="1" minOccurs="0" name="multiplicity" type="string"/>
+     <element minOccurs="0" name="stereotypes">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" name="Stereotype" type="string"/>
+       </sequence>
+      </complexType>
+     </element>
+     <element minOccurs="0" name="taggedValues">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" name="TaggedValue">
+         <complexType>
+          <attribute name="name" use="required"/>
+          <attribute name="value" use="required"/>
+         </complexType>
+        </element>
+       </sequence>
+      </complexType>
+     </element>
+     <element name="type" type="string"/>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="CDBUnitDefinition" type="sc:CDBUnitDefinitionType" substitutionGroup="sc:AdvancedProcessConfigurationElement"/>
+ <complexType name="CDBUnitDefinitionType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element name="name" type="token"/>
+     <element maxOccurs="unbounded" minOccurs="0" name="alias" type="token"/>
+     <element name="description" type="string" minOccurs="0"/>
+    </sequence>
+    <attribute name="code" type="positiveInteger"/>
+    <attribute name="symbol" type="token" use="required"/>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="GeoPackageSrsDefinitions" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:GeoPackageSrsDefinitionsType">
+  <unique name="uniqueSrsIds">
+   <selector xpath=".//sc:srsId"/>
+   <field xpath="."/>
+  </unique>
+ </element>
+ <complexType name="GeoPackageSrsDefinitionsType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="unbounded" name="srsDefinition">
+      <complexType>
+       <sequence>
+        <element ref="sc:GeoPackageSrsDefinition"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="GeoPackageSrsDefinition" type="sc:GeoPackageSrsDefinitionType"/>
+ <complexType name="GeoPackageSrsDefinitionType">
+  <sequence>
+   <element name="srsName" type="string">
+    <annotation>
+     <documentation>Human readable name of the SRS</documentation>
+    </annotation>
+   </element>
+   <element name="srsId" type="positiveInteger">
+    <annotation>
+     <documentation>Unique identifier for each Spatial Reference System within the GeoPackage</documentation>
+    </annotation>
+   </element>
+   <element name="organization" type="string">
+    <annotation>
+     <documentation>Case-insensitive name of the defining organization, e.g. EPSG or epsg</documentation>
+    </annotation>
+   </element>
+   <element name="organizationCoordSysId" type="positiveInteger">
+    <annotation>
+     <documentation>Numeric ID of the Spatial Reference System assigned by the organization; can be equal to the value of srsId</documentation>
+    </annotation>
+   </element>
+   <element name="definition" type="string">
+    <annotation>
+     <documentation>Well-known Text representation of the Spatial Reference System following the WKT format defined by http://portal.opengeospatial.org/files/?artifact_id=999</documentation>
+    </annotation>
+   </element>
+   <element minOccurs="0" name="description" type="string">
+    <annotation>
+     <documentation>Human readable description of the SRS</documentation>
+    </annotation>
+   </element>
+   <element minOccurs="0" name="definition_12_063" type="string">
+    <annotation>
+     <documentation>Well-known Text representation of the Spatial Reference System, following the WKT format defined by http://docs.opengeospatial.org/is/12-063r5/12-063r5.html</documentation>
+    </annotation>
+   </element>
+  </sequence>
+ </complexType>
+ <element name="PackageSelector">
+  <complexType>
+   <attribute name="schemaNameRegex"/>
+   <attribute name="nameRegex"/>
+   <attribute name="stereotypeRegex"/>
+  </complexType>
+ </element>
+ <element name="ClassSelector">
+  <complexType>
+   <attribute name="nameRegex"/>
+   <attribute name="stereotypeRegex"/>
+  </complexType>
+ </element>
+ <element name="rdfMapEntries">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:RdfTypeMapEntry"/>
+    <element ref="sc:RdfPropertyMapEntry"/>
+    <element ref="sc:rdfMapEntries"/>
+   </choice>
+  </complexType>
+ </element>
+ <element name="RdfTypeMapEntry" type="sc:RdfTypeMapEntryType"/>
+ <complexType name="RdfTypeMapEntryType">
+  <sequence/>
+  <attribute name="type" type="string" use="required">
+   <annotation>
+    <documentation>Name of a UML type</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="schema" type="string">
+   <annotation>
+    <documentation>The name of the application schema package to which the UML type belongs. Used to avoid ambiguity in case that multiple schemas are being processed.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="target" type="string" use="required">
+   <annotation>
+    <documentation>IRI of the RDFS/OWL class or datatype to which the UML type shall be mapped (e.g. "ex1:A"). Note: the value is expected to be given as a QName, with the namespace prefix matching
+     the namespace abbreviation of a namespace declared in the configuration.</documentation>
+   </annotation>
+  </attribute>
+  <attribute default="class" name="targetType">
+   <annotation>
+    <documentation>Type of the target (class or datatype) to which the UML type will be mapped.</documentation>
+   </annotation>
+   <simpleType>
+    <restriction base="string">
+     <pattern value="datatype"/>
+     <pattern value="class"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="rule" type="string" use="optional" default="*">
+   <annotation>
+    <documentation>The encoding rule to which this mapping applies. May be “*” to indicate that the mapping applies to all encoding rules.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="RdfPropertyMapEntry" type="sc:RdfPropertyMapEntryType"/>
+ <complexType name="RdfPropertyMapEntryType">
+  <sequence/>
+  <attribute name="property" type="string" use="required">
+   <annotation>
+    <documentation>Name of a UML property, optionally scoped to a class from the application schema (example: FeatureX::propertyY).</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="schema" type="string">
+   <annotation>
+    <documentation>The names of the application schema package to which the UML property belongs. Used to avoid ambiguity in case that multiple schemas are being processed.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="target" type="string" use="optional">
+   <annotation>
+    <documentation>IRI of the RDF/OWL property to which the UML property shall be mapped (e.g. "ex1:propZ"). Can be omitted or empty if the property shall not be encoded. Note: the value is expected
+     to be given as a QName, with the namespace prefix matching the namespace abbreviation of a namespace declared in the configuration.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="range" type="string">
+   <annotation>
+    <documentation>Range to use in class expressions involving the target (RDF/OWL) property. Note: the value is expected to be given as a QName, with the namespace prefix matching the namespace
+     abbreviation of a namespace declared in the configuration.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="rule" type="string" use="optional" default="*">
+   <annotation>
+    <documentation>The encoding rule to which this mapping applies. May be “*” to indicate that the mapping applies to all encoding rules.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="rdfConversionParameters">
+  <complexType>
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <element ref="sc:StereotypeConversionParameter"/>
+    <element ref="sc:TypeConversionParameter"/>
+    <element ref="sc:PropertyConversionParameter"/>
+    <element ref="sc:rdfConversionParameters"/>
+   </choice>
+  </complexType>
+ </element>
+ <element name="StereotypeConversionParameter" type="sc:StereotypeConversionParameterType"/>
+ <complexType name="StereotypeConversionParameterType">
+  <sequence/>
+  <attribute name="wellknown" use="required">
+   <annotation>
+    <documentation>Stereotype that is well-known to ShapeChange</documentation>
+   </annotation>
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="DataType"/>
+     <enumeration value="FeatureType"/>
+     <enumeration value="Enumeration"/>
+     <enumeration value="CodeList"/>
+     <enumeration value="Union"/>
+     <enumeration value="Type"/>
+     <enumeration value="BasicType"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="subClassOf" type="string" use="required">
+   <annotation>
+    <documentation>IRIs of classes of which UML types with this stereotype shall be subClassOf. Multiple IRIs are separated with spaces. Note: the values are expected to be given as QNames, with the
+     namespace prefixes matching the namespace abbreviations of the namespaces declared in the configuration.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="rule" type="string" use="optional" default="*">
+   <annotation>
+    <documentation>The encoding rule to which this parameter applies. May be “*” to indicate that the parameter applies to all encoding rules.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="TypeConversionParameter" type="sc:TypeConversionParameterType"/>
+ <complexType name="TypeConversionParameterType">
+  <sequence/>
+  <attribute name="type" type="string" use="required">
+   <annotation>
+    <documentation>Name of a UML type</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="schema" type="string">
+   <annotation>
+    <documentation>The name of the application schema package to which the UML type belongs. Used to avoid ambiguity in case that multiple schemas are being processed.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="subClassOf" type="string" use="required">
+   <annotation>
+    <documentation>IRIs of classes of which the UML type shall be a subClassOf. Multiple IRIs are separated with spaces. Note: the values are expected to be given as QNames, with the namespace
+     prefixes matching the namespace abbreviations of the namespaces declared in the configuration.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="rule" type="string" use="optional" default="*">
+   <annotation>
+    <documentation>The encoding rule to which this parameter applies. May be “*” to indicate that the parameter applies to all encoding rules.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="PropertyConversionParameter" type="sc:PropertyConversionParameterType"/>
+ <complexType name="PropertyConversionParameterType">
+  <sequence/>
+  <attribute name="property" type="string" use="required">
+   <annotation>
+    <documentation>Name of a UML property, optionally scoped to a class from the application schema (example: FeatureX::propertyY).</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="schema" type="string">
+   <annotation>
+    <documentation>The name of the application schema package to which the UML property belongs. Used to avoid ambiguity in case that multiple schemas are being processed.</documentation>
+   </annotation>
+  </attribute>
+  <attribute default="false" name="global" type="boolean">
+   <annotation>
+    <documentation>Specifies if the UML property shall be encoded as a global property</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="subPropertyOf" type="string">
+   <annotation>
+    <documentation>IRIs of RDF/OWL properties of which the RDF/OWL implementation of the UML property shall be a subPropertyOf. Multiple IRIs are separated with spaces. Note: the values are expected
+     to be given as QNames, with the namespace prefixes matching the namespace abbreviations of the namespaces declared in the configuration.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="target" type="string">
+   <annotation>
+    <documentation>Name of the target UML property (scoped to a class from the application schema - example: FeatureX::propertyY), whose RDF/OWL implementation will be used to implement this
+     property.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="targetSchema" type="string">
+   <annotation>
+    <documentation>The name of the application schema package to which the target property belongs. Used to avoid ambiguity in case that multiple schemas are being processed.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="rule" type="string" use="optional" default="*">
+   <annotation>
+    <documentation>The encoding rule to which this parameter applies. May be “*” to indicate that the parameter applies to all encoding rules.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="descriptorTargets">
+  <complexType>
+   <sequence>
+    <element maxOccurs="unbounded" minOccurs="0" name="DescriptorTarget">
+     <complexType>
+      <attribute name="appliesTo" default="all">
+       <simpleType>
+        <restriction base="string">
+         <enumeration value="ontology"/>
+         <enumeration value="class"/>
+         <enumeration value="conceptscheme"/>
+         <enumeration value="property"/>
+         <enumeration value="all"/>
+        </restriction>
+       </simpleType>
+      </attribute>
+      <attribute name="target" type="string" use="required"/>
+      <attribute name="template" type="string" use="required"/>
+      <attribute default="langString" name="format">
+       <simpleType>
+        <restriction base="string">
+         <enumeration value="langString"/>
+         <enumeration value="IRI"/>
+         <enumeration value="string"/>
+        </restriction>
+       </simpleType>
+      </attribute>
+      <attribute default="ignore" name="noValueBehavior">
+       <simpleType>
+        <restriction base="string">
+         <enumeration value="ignore"/>
+         <enumeration value="populateOnce"/>
+        </restriction>
+       </simpleType>
+      </attribute>
+      <attribute default="" name="noValueText" type="string"/>
+      <attribute default="connectInSingleTarget" name="multiValueBehavior">
+       <simpleType>
+        <restriction base="string">
+         <enumeration value="connectInSingleTarget"/>
+         <enumeration value="splitToMultipleTargets"/>
+        </restriction>
+       </simpleType>
+      </attribute>
+      <attribute default=" " name="multiValueConnectorToken" type="string"/>
+     </complexType>
+    </element>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="constraintMappings">
+  <complexType>
+   <sequence>
+    <element maxOccurs="unbounded" minOccurs="0" name="ConstraintMapping">
+     <complexType>
+      <attribute name="constraintType" use="required">
+       <simpleType>
+        <restriction base="string">
+         <enumeration value="Text"/>
+         <enumeration value="FOL"/>
+         <enumeration value="OCL"/>
+        </restriction>
+       </simpleType>
+      </attribute>
+      <attribute default="iso19150-2:constraint" name="target" type="string"/>
+      <attribute name="template" type="string" use="required"/>
+      <attribute default="" name="noValue" type="string"/>
+      <attribute default=" " name="multiValueConnectorToken" type="string"/>
+      <attribute default="string" name="format">
+       <simpleType>
+        <restriction base="string">
+         <enumeration value="langString"/>
+         <enumeration value="string"/>
+        </restriction>
+       </simpleType>
+      </attribute>
+     </complexType>
+    </element>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="Descriptor" type="sc:DescriptorType"/>
+ <complexType name="DescriptorType">
+  <sequence>
+   <element minOccurs="1" name="descriptorValues">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="DescriptorValue">
+       <complexType>
+        <simpleContent>
+         <extension base="string">
+          <attribute name="lang" type="string"/>
+         </extension>
+        </simpleContent>
+       </complexType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+  <attribute name="name" type="string" use="required"/>
+ </complexType>
+ <element name="rdfGeneralProperties">
+  <complexType>
+   <sequence>
+    <element maxOccurs="unbounded" minOccurs="0" ref="sc:AbstractRdfGeneralProperty"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element abstract="true" name="AbstractRdfGeneralProperty" type="sc:AbstractRdfGeneralPropertyType"/>
+ <complexType abstract="true" name="AbstractRdfGeneralPropertyType">
+  <sequence>
+   <element minOccurs="0" name="namespaceAbbreviation" type="string">
+    <annotation>
+     <documentation>Abbreviation of the RDF namespace to which the general property shall belong. Note: the target configuration must contain a namespace definition with a matching abbreviation, or
+      the abbreviation matches one of the ontologies that is created by ShapeChange.</documentation>
+    </annotation>
+   </element>
+   <element name="name" type="string">
+    <annotation>
+     <documentation>Local name of the property.</documentation>
+    </annotation>
+   </element>
+   <choice minOccurs="0">
+    <element maxOccurs="1" minOccurs="1" name="domain" type="string">
+     <annotation>
+      <documentation>The domain of the general property. The element value is the IRI of an RDF/OWL class. Note: the value is expected to be given as a QName, with the namespace prefix matching a
+       namespace abbreviation of the namespaces declared in the configuration.</documentation>
+     </annotation>
+    </element>
+    <element fixed="true" name="domainByUnionOfSubPropertyDomains" type="boolean">
+     <annotation>
+      <documentation>Use this element to construct the domain of the general property as the union of all domains of its sub-properties.</documentation>
+     </annotation>
+    </element>
+   </choice>
+   <element minOccurs="0" name="range" type="string">
+    <annotation>
+     <documentation>Range of the general property. Note: the value is expected to be given as a QName, with the namespace prefix matching the namespace abbreviation of a namespace declared in the
+      configuration.</documentation>
+    </annotation>
+   </element>
+   <element maxOccurs="unbounded" minOccurs="0" name="equivalentProperty" type="string">
+    <annotation>
+     <documentation>Identifies a UML or RDF/OWL property to which the RDF/OWL implementation of the UML property is equivalent. Note: the value is expected to be given as either 1) a QName, with the
+      namespace prefix matching the namespace abbreviation of a namespace declared in the configuration, or 2) the full name of a UML property (i.e. the package qualified name of the UML property,
+      starting with the application schema package, and using '::' as separator).</documentation>
+    </annotation>
+   </element>
+   <element maxOccurs="unbounded" minOccurs="0" name="disjointProperty" type="string">
+    <annotation>
+     <documentation>Identifies a UML or RDF/OWL property to which the RDF/OWL implementation of the UML property is disjoint. Note: the value is expected to be given as either 1) a QName, with the
+      namespace prefix matching the namespace abbreviation of a namespace declared in the configuration, or 2) the full name of a UML property (i.e. the package qualified name of the UML property,
+      starting with the application schema package, and using '::' as separator).</documentation>
+    </annotation>
+   </element>
+   <element maxOccurs="unbounded" minOccurs="0" name="subPropertyOf" type="string">
+    <annotation>
+     <documentation>Identifies a UML or RDF/OWL property for which the RDF/OWL implementation of the UML property is a subPropertyOf. Note: the value is expected to be given as either 1) a QName, with
+      the namespace prefix matching the namespace abbreviation of a namespace declared in the configuration, or 2) the full name of a UML property (i.e. the package qualified name of the UML property,
+      starting with the application schema package, and using '::' as separator).</documentation>
+    </annotation>
+   </element>
+   <element maxOccurs="unbounded" minOccurs="0" name="additionalProperty">
+    <annotation>
+     <documentation>Additional property expression that applies to the general property (e.g. skos:definition, rdfs:label).</documentation>
+    </annotation>
+    <complexType>
+     <sequence>
+      <element name="property" type="string">
+       <annotation>
+        <documentation>Identifies the additional property. Note: the value is expected to be given as a QName, with the namespace prefix matching the namespace abbreviation of a namespace declared in
+         the configuration.</documentation>
+       </annotation>
+      </element>
+      <element maxOccurs="unbounded" name="value">
+       <annotation>
+        <documentation>Value of the additional property. A simple type if the additional property is a datatype property (@isIRI=false), otherwise an IRI (isIRI=true). A simple value can be tagged
+         with a language identifier (@lang). </documentation>
+       </annotation>
+       <complexType>
+        <simpleContent>
+         <extension base="string">
+          <attribute name="lang" type="string"/>
+          <attribute default="false" name="isIRI" type="boolean">
+           <annotation>
+            <documentation>If set to true, the value is interpreted as an IRI.</documentation>
+           </annotation>
+          </attribute>
+         </extension>
+        </simpleContent>
+       </complexType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <element name="GeneralObjectProperty" substitutionGroup="sc:AbstractRdfGeneralProperty" type="sc:GeneralObjectPropertyType"/>
+ <complexType name="GeneralObjectPropertyType">
+  <complexContent>
+   <extension base="sc:AbstractRdfGeneralPropertyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="inverseProperty" type="string">
+      <annotation>
+       <documentation>Identifies a UML or RDF/OWL property to which the RDF/OWL implementation of the UML property is inverse. Note: the value is expected to be given as either 1) a QName, with the
+        namespace prefix matching the namespace abbreviation of a namespace declared in the configuration, or 2) the full name of a UML property (i.e. the package qualified name of the UML property,
+        starting with the application schema package, and using '::' as separator).</documentation>
+      </annotation>
+     </element>
+     <element default="" minOccurs="0" name="propertyCharacteristicAxioms" type="sc:ObjectPropertyCharacteristicAxiomList">
+      <annotation>
+       <documentation>List of characteristic axioms that apply to the general object property.</documentation>
+      </annotation>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="GeneralDataProperty" substitutionGroup="sc:AbstractRdfGeneralProperty" type="sc:GeneralDataPropertyType"/>
+ <complexType name="GeneralDataPropertyType">
+  <complexContent>
+   <extension base="sc:AbstractRdfGeneralPropertyType">
+    <sequence>
+     <element default="false" minOccurs="0" name="isFunctional" type="boolean">
+      <annotation>
+       <documentation>If set to true, the general property is a functional data property.</documentation>
+      </annotation>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <simpleType name="ObjectPropertyCharacteristicAxiomList">
+  <list itemType="sc:ObjectPropertyCharacteristicAxiom"/>
+ </simpleType>
+ <simpleType name="ObjectPropertyCharacteristicAxiom">
+  <restriction base="string">
+   <enumeration value="Functional"/>
+   <enumeration value="InverseFunctional"/>
+   <enumeration value="Reflexive"/>
+   <enumeration value="Irreflexive"/>
+   <enumeration value="Symmetric"/>
+   <enumeration value="Asymmetric"/>
+   <enumeration value="Transitive"/>
+  </restriction>
+ </simpleType>
+ <!-- <element name="JsonSchemaAnnotation" abstract="true" type="sc:JsonSchemaAnnotationType"> </element>
+ <complexType abstract="false" name="JsonSchemaAnnotationType">
+  <attribute name="annotation" type="string" use="required"/>
+  <attribute default="ignore" name="noValueBehavior">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="ignore"/>
+     <enumeration value="populateOnce"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute name="noValueValue" type="string"/>
+  <attribute default="false" name="arrayValue" type="boolean"/>
+ </complexType>
+ <element abstract="true" name="JsonSchemaSimpleAnnotation" substitutionGroup="sc:JsonSchemaAnnotation" type="sc:JsonSchemaSimpleAnnotationType"/>
+ <complexType name="JsonSchemaSimpleAnnotationType">
+  <complexContent>
+   <extension base="sc:JsonSchemaAnnotationType">
+    <attribute name="descriptorOrTaggedValue" type="string" use="required"/>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="JsonSchemaTemplateAnnotation" substitutionGroup="sc:JsonSchemaAnnotation" type="sc:JsonSchemaTemplateAnnotationType"/>
+ <complexType name="JsonSchemaTemplateAnnotationType">
+  <complexContent>
+   <extension base="sc:JsonSchemaAnnotationType">
+    <attribute name="valueTemplate" type="string" use="required"/>
+    <attribute default="connectInSingleAnnotationValue" name="multiValueBehavior">
+     <simpleType>
+      <restriction base="string">
+       <enumeration value="connectInSingleAnnotationValue"/>
+       <enumeration value="createMultipleAnnotationValues"/>
+      </restriction>
+     </simpleType>
+    </attribute>
+    <attribute default=" " name="multiValueConnectorToken" type="string"/>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="JsonSchemaNumberAnnotation" substitutionGroup="sc:JsonSchemaSimpleAnnotation" type="sc:JsonSchemaNumberAnnotationType"/>
+ <complexType name="JsonSchemaNumberAnnotationType">
+  <complexContent>
+   <extension base="sc:JsonSchemaSimpleAnnotationType"/>
+  </complexContent>
+ </complexType>
+ <element name="JsonSchemaBooleanAnnotation" substitutionGroup="sc:JsonSchemaSimpleAnnotation" type="sc:JsonSchemaBooleanAnnotationType"/>
+ <complexType name="JsonSchemaBooleanAnnotationType">
+  <complexContent>
+   <extension base="sc:JsonSchemaSimpleAnnotationType"/>
+  </complexContent>
+ </complexType>
+ <element name="JsonSchemaStringAnnotation" substitutionGroup="sc:JsonSchemaSimpleAnnotation" type="sc:JsonSchemaStringAnnotationType"/>
+ <complexType name="JsonSchemaStringAnnotationType">
+  <complexContent>
+   <extension base="sc:JsonSchemaSimpleAnnotationType"/>
+  </complexContent>
+ </complexType>-->
+ <element name="OpenApiConfigItems" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:OpenApiConfigItemsType"/>
+ <complexType name="OpenApiConfigItemsType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element name="conformanceClasses">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" name="ConformanceClass">
+         <complexType>
+          <attribute name="uri" type="anyURI" use="required"/>
+          <attribute name="overlay" type="string" use="optional"/>
+          <attribute name="param" type="string"/>
+         </complexType>
+        </element>
+       </sequence>
+      </complexType>
+     </element>
+     <element minOccurs="0" name="queryParameters">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" name="QueryParameter">
+         <complexType>
+          <attribute name="name" type="string" use="required"/>
+          <attribute name="overlay" type="string" use="required"/>
+          <attribute default="finalization" name="appliesToPhase" use="optional">
+           <simpleType>
+            <restriction base="string">
+             <enumeration value="pre-feature-identification"/>
+             <enumeration value="finalization"/>
+            </restriction>
+           </simpleType>
+          </attribute>
+         </complexType>
+        </element>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="ProcessRuleModelElementSelection" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:ProcessRuleModelElementSelectionType"/>
+ <complexType name="ProcessRuleModelElementSelectionType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <attribute name="rule" type="string" use="required"/>
+    <attributeGroup ref="sc:modelElementSelectionGroup"/>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="XmlEncodingInfos" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:XmlEncodingInfosType"/>
+ <complexType name="XmlEncodingInfosType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="modelElementEncodings">
+      <complexType>
+       <sequence>
+        <element ref="sc:ModelElementXmlEncoding" maxOccurs="unbounded" minOccurs="1"/>
+       </sequence>
+      </complexType>
+     </element>
+     <element maxOccurs="1" minOccurs="0" name="namespaces">
+      <complexType>
+       <sequence>
+        <element ref="sc:XmlNamespace" maxOccurs="unbounded" minOccurs="1"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="ModelElementXmlEncoding" type="sc:ModelElementXmlEncodingType"/>
+ <complexType name="ModelElementXmlEncodingType">
+  <attribute name="applicationSchemaName" type="string" use="optional">
+   <annotation>
+    <documentation>Name of the application schema to which the model element belongs.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="modelElementName" type="string" use="required">
+   <annotation>
+    <documentation>Class name or class-qualified property name.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="xmlName" type="string" use="required">
+   <annotation>
+    <documentation>The name of the element or attribute via which the model element is represented in XML. Expected to be given as plain name, i.e. without namespace prefix.</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="xmlNamespace" type="string" use="required">
+   <annotation>
+    <documentation>The XML namespace to which the XML element or attribute belongs.</documentation>
+   </annotation>
+  </attribute>
+  <attribute default="false" name="xmlAttribute" type="boolean">
+   <annotation>
+    <documentation>true, if the model element is encoded as an XML attribute, false (the default) if it is encoded as an XML element.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="SqlEncodingInfos" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:SqlEncodingInfosType"/>
+ <complexType name="SqlEncodingInfosType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="modelElementEncodings">
+      <complexType>
+       <sequence>
+        <element ref="sc:ModelElementSqlEncodingInfo" maxOccurs="unbounded" minOccurs="1"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="ModelElementSqlEncodingInfo" type="sc:ModelElementSqlEncodingInfoType" abstract="true"/>
+ <complexType name="ModelElementSqlEncodingInfoType">
+  <attribute name="schemaName" type="string" use="required">
+   <annotation>
+    <documentation>Name of the schema to which the model element belongs (in the model encoded by the SqlDdl target).</documentation>
+   </annotation>
+  </attribute>
+  <attribute name="originalSchemaName" type="string">
+   <annotation>
+    <documentation>Name of the schema to which the model element originally belonged. Can be omitted, if the value is the same as schemaName.</documentation>
+   </annotation>
+  </attribute>
+ </complexType>
+ <element name="SqlClassEncodingInfo" type="sc:SqlClassEncodingInfoType" substitutionGroup="sc:ModelElementSqlEncodingInfo"/>
+ <complexType name="SqlClassEncodingInfoType">
+  <complexContent>
+   <extension base="sc:ModelElementSqlEncodingInfoType">
+    <attribute name="className" type="string" use="required">
+     <annotation>
+      <documentation>Class name (in the model encoded by the SqlDdl target).</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="originalClassName" type="string" use="optional">
+     <annotation>
+      <documentation>Name of the class in the original schema. Can be omitted, if the value is the same as className.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="tableName" type="string" use="optional">
+     <annotation>
+      <documentation>Identifier of the database table that represents the class. Multiple SqlClassEncodingInfo elements may exist with same className but different tableName. That can be the case if
+       the class is represented by multiple, property usage specific tables.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="databaseSchema" type="string" use="optional">
+     <annotation>
+      <documentation>Identifier of the database schema, in which the table is defined. Can be omitted if no particular schema is defined for the table.</documentation>
+     </annotation>
+    </attribute>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="SqlPropertyEncodingInfo" type="sc:SqlPropertyEncodingInfoType" substitutionGroup="sc:ModelElementSqlEncodingInfo"/>
+ <complexType name="SqlPropertyEncodingInfoType">
+  <complexContent>
+   <extension base="sc:ModelElementSqlEncodingInfoType">
+    <attribute name="propertyName" type="string" use="required">
+     <annotation>
+      <documentation>Property name (in the model encoded by the SqlDdl target).</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="inClassName" type="string" use="required">
+     <annotation>
+      <documentation>Name of the class that owns the property (in the model encoded by the SqlDdl target).</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="propertyValueType" type="string" use="required">
+     <annotation>
+      <documentation>Name of the property value type (in the model encoded by the SqlDdl target).</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="propertyMultiplicity" type="string" use="required">
+     <annotation>
+      <documentation>Multiplicity of the property (in the model encoded by the SqlDdl target).</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="originalPropertyName" type="string" use="optional">
+     <annotation>
+      <documentation>Name of the property in the original schema. Can be omitted, if the value is the same as propertyName.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="originalInClassName" type="string" use="optional">
+     <annotation>
+      <documentation>Name of the class that owned the property in the original schema. Can be omitted, if the value is the same as inClassName.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="originalPropertyValueType" type="string" use="optional">
+     <annotation>
+      <documentation>Name of the property value type in the original schema. Can be omitted, if the value is the same as propertyValueType.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="originalPropertyMultiplicity" type="string" use="optional">
+     <annotation>
+      <documentation>Multiplicity of the property in the original schema. Can be omitted, if the value is the same as propertyMultiplicity.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="sourceTable" type="string" use="required">
+     <annotation>
+      <documentation>Name of the database table that provides the context for the sourcePath.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="sourceTableSchema" type="string" use="optional">
+     <annotation>
+      <documentation>Identifier of the database schema, in which the sourceTable is defined. Can be omitted if no particular schema is defined for the sourceTable.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="valueSourcePath" type="string" use="required">
+     <annotation>
+      <documentation>Path expression (in syntax used by the Ldproxy2Target) that is used to access the property values in the database. </documentation>
+     </annotation>
+    </attribute>
+    <attribute name="idSourcePath" type="string" use="optional">
+     <annotation>
+      <documentation>Path expression (in syntax used by the Ldproxy2Target) that is used to access the database identifiers, i.e., the primary keys, of property values in the database. Can be omitted
+       for cases in which the property values are simple, such as strings and integers.</documentation>
+     </annotation>
+    </attribute>
+    <attribute default="integer" name="idValueType">
+     <annotation>
+      <documentation>Type of value provided by the idSourcePath, if one is defined. 'integer' is assumed by default.</documentation>
+     </annotation>
+     <simpleType>
+      <restriction base="string">
+       <enumeration value="integer"/>
+       <enumeration value="string"/>
+      </restriction>
+     </simpleType>
+    </attribute>
+    <attribute name="targetTable" type="string" use="optional">
+     <annotation>
+      <documentation>Name of the database table that the source path evaluates to. Can be omitted, if no such table exists - then the source path typically resolves to a simple value contained in a
+       field within the source table, not to a complex value in another table.</documentation>
+     </annotation>
+    </attribute>
+    <attribute name="targetTableSchema" type="string" use="optional">
+     <annotation>
+      <documentation>Identifier of the database schema, in which the targetTable is defined. Can be omitted if no particular schema is defined for the targetTable</documentation>
+     </annotation>
+    </attribute>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="JsonSchemaAnnotations" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:JsonSchemaAnnotationsType"/>
+ <complexType name="JsonSchemaAnnotationsType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="annotations">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" ref="sc:AbstractJsonSchemaAnnotation"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element abstract="true" name="AbstractJsonSchemaAnnotation" type="sc:AbstractJsonSchemaAnnotationType"/>
+ <complexType name="AbstractJsonSchemaAnnotationType">
+  <attribute name="annotation" type="string" use="required"> </attribute>
+  <attributeGroup ref="sc:modelElementSelectionGroup"/>
+  <attribute default="false" name="arrayValue" type="boolean"> </attribute>
+  <attribute default="ignore" name="noValueBehavior">
+   <simpleType>
+    <restriction base="string">
+     <enumeration value="ignore"/>
+     <enumeration value="populateOnce"/>
+    </restriction>
+   </simpleType>
+  </attribute>
+  <attribute default="" name="noValueValue" type="string"> </attribute>
+ </complexType>
+ <element abstract="false" name="SimpleAnnotation" substitutionGroup="sc:AbstractJsonSchemaAnnotation" type="sc:SimpleAnnotationType"/>
+ <complexType name="SimpleAnnotationType">
+  <complexContent>
+   <extension base="sc:AbstractJsonSchemaAnnotationType">
+    <attribute name="descriptorOrTaggedValue" type="string" use="required"> </attribute>
+    <attribute default="string" name="type">
+     <simpleType>
+      <restriction base="string">
+       <enumeration value="string"/>
+       <enumeration value="integer"/>
+       <enumeration value="boolean"/>
+       <enumeration value="number"/>
+      </restriction>
+     </simpleType>
+    </attribute>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="TemplateAnnotation" substitutionGroup="sc:AbstractJsonSchemaAnnotation" type="sc:TemplateAnnotationType"/>
+ <complexType name="TemplateAnnotationType">
+  <complexContent>
+   <extension base="sc:AbstractJsonSchemaAnnotationType">
+    <attribute name="valueTemplate" type="string" use="required"> </attribute>
+    <attribute default="connectInSingleAnnotationValue" name="multiValueBehavior">
+     <simpleType>
+      <restriction base="string">
+       <enumeration value="connectInSingleAnnotationValue"/>
+       <enumeration value="createMultipleAnnotationValues"/>
+      </restriction>
+     </simpleType>
+    </attribute>
+    <attribute default=" " name="multiValueConnectorToken" type="string"> </attribute>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="BasicContentTests" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:BasicContentTestsType"/>
+ <complexType name="BasicContentTestsType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="tests">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" ref="sc:AbstractContentTest"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element abstract="true" name="AbstractContentTest" type="sc:AbstractContentTestType"/>
+ <complexType name="AbstractContentTestType">
+  <attributeGroup ref="sc:modelElementSelectionGroup"/>
+ </complexType>
+ <element abstract="false" name="DescriptorContentTest" substitutionGroup="sc:AbstractContentTest" type="sc:DescriptorContentTestType"/>
+ <complexType name="DescriptorContentTestType">
+  <complexContent>
+   <extension base="sc:AbstractContentTestType">
+    <attribute name="descriptorOrTaggedValue" type="string" use="required"> </attribute>
+    <attribute name="regex" type="string" use="required"> </attribute>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="LdproxyStoredQueryDefinitions" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:LdproxyStoredQueryDefinitionsType">
+  <unique name="uniqueStoredQueryIds">
+   <annotation>
+    <documentation>The id of LdproxyStoredQuery elements must be unique.</documentation>
+   </annotation>
+   <selector xpath="./*/sc:LdproxyStoredQuery"/>
+   <field xpath="@id"/>
+  </unique>
+ </element>
+ <complexType name="LdproxyStoredQueryDefinitionsType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="unbounded" name="storedQuery">
+      <complexType>
+       <sequence>
+        <element name="LdproxyStoredQuery">
+         <complexType>
+          <sequence>
+           <element minOccurs="0" name="title" type="string"/>
+           <element minOccurs="0" name="description" type="string"/>
+           <element minOccurs="0" name="limit" type="positiveInteger"/>
+           <element minOccurs="0" name="crs" type="string"/>
+           <element maxOccurs="unbounded" name="queryDefinition">
+            <complexType>
+             <sequence>
+              <element name="PropertyEqualToCollectionQuery">
+               <complexType>
+                <sequence>
+                 <element name="property" type="string"/>
+                 <element name="parameter" type="string"/>
+                </sequence>
+               </complexType>
+              </element>
+             </sequence>
+            </complexType>
+           </element>
+          </sequence>
+          <attribute name="id" type="string" use="required"/>
+         </complexType>
+        </element>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="PropertyTransformations" substitutionGroup="sc:AdvancedProcessConfigurationElement" type="sc:PropertyTransformationsType"/>
+ <complexType name="PropertyTransformationsType">
+  <complexContent>
+   <extension base="sc:AdvancedProcessConfigurationType">
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="transformations">
+      <complexType>
+       <sequence>
+        <element maxOccurs="unbounded" ref="sc:PropertyTransformation"/>
+       </sequence>
+      </complexType>
+     </element>
+    </sequence>
+   </extension>
+  </complexContent>
+ </complexType>
+ <element name="PropertyTransformation" type="sc:PropertyTransformationType"/>
+ <complexType name="PropertyTransformationType">
+  <attribute name="rule" type="string" use="required"> </attribute>
+  <attributeGroup ref="sc:modelElementSelectionGroup"/>
+ </complexType>
+</schema>

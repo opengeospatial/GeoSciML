@@ -1,0 +1,3 @@
+== Scope
+
+Part 2 of GeoSciML covers the representation in XML of features from the domain of geology (earth materials, geological units and stratigraphy, geological time, geological structures, geomorphology, geochemistry) and sampling features common to the practice of geoscience, such as boreholes and geological specimens.  

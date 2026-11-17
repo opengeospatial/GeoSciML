@@ -1,0 +1,8 @@
+[[req_gsml-lite_datetime]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/datetime
+part:: Calendar date and time SHALL be formatted according to ISO 8601.
+====

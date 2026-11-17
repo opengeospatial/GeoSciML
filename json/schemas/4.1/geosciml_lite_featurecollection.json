@@ -1,0 +1,377 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geosciml_lite_featurecollection.json",
+  "$defs": {
+    "FeatureCollection": {
+      "$anchor": "FeatureCollection",
+      "allOf": [
+        {
+          "$ref": "https://schemas.opengis.net/json-fg/featurecollection.json"
+        },
+        {
+          "if": {
+            "required": [
+              "featureType"
+            ]
+          },
+          "then": {
+            "allOf": [
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "BoreholeView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#BoreholeView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "ContactView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#ContactView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "GeologicSpecimenView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#GeologicSpecimenView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "GeologicUnitView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#GeologicUnitView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "GeomorphologicUnitView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#GeomorphologicUnitView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "ShearDisplacementStructureView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#ShearDisplacementStructureView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "featureType"
+                  ],
+                  "properties": {
+                    "featureType": {
+                      "const": "SiteObservationView"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#SiteObservationView"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "not": {
+                    "required": [
+                      "featureType"
+                    ],
+                    "properties": {
+                      "featureType": {
+                        "enum": [
+                          "BoreholeView",
+                          "ContactView",
+                          "GeologicSpecimenView",
+                          "GeologicUnitView",
+                          "GeomorphologicUnitView",
+                          "ShearDisplacementStructureView",
+                          "SiteObservationView"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "features"
+                  ],
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": false
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "required": [
+              "features"
+            ],
+            "properties": {
+              "features": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "BoreholeView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#BoreholeView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "ContactView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#ContactView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "GeologicSpecimenView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#GeologicSpecimenView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "GeologicUnitView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#GeologicUnitView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "GeomorphologicUnitView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#GeomorphologicUnitView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "ShearDisplacementStructureView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#ShearDisplacementStructureView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "required": [
+                          "featureType"
+                        ],
+                        "properties": {
+                          "featureType": {
+                            "const": "SiteObservationView"
+                          }
+                        }
+                      },
+                      "then": {
+                        "$ref": "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlLite.json#SiteObservationView"
+                      }
+                    },
+                    {
+                      "if": {
+                        "not": {
+                          "required": [
+                            "featureType"
+                          ],
+                          "properties": {
+                            "featureType": {
+                              "enum": [
+                                "BoreholeView",
+                                "ContactView",
+                                "GeologicSpecimenView",
+                                "GeologicUnitView",
+                                "GeomorphologicUnitView",
+                                "ShearDisplacementStructureView",
+                                "SiteObservationView"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "then": false
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$ref": "#FeatureCollection"
+}

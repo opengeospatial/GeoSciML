@@ -1,0 +1,8 @@
+[[req_gsml-extension_geologicfeature-history]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-extension/geologicfeature-history
+part:: A GeologicFeatureRelation SHALL not be used to associate a GeologicFeature to a GeologicEvent if GeologicFeature::geologicHistory can provide the same information.
+====

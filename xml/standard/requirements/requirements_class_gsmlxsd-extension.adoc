@@ -1,0 +1,17 @@
+[[req_class_gsmlxsd_extension]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML Extension XML'
+====
+[%metadata]
+identifier:: {spec-part2-uri}/req/gsmlxsd-extension
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-extension
+inherit:: /req/gsmlxsd-basic
+inherit:: /req/gsmlxsd-geologictime
+requirement:: /req/gsmlxsd-extension/xsd
+requirement:: /req/gsmlxsd-extension/sch
+====
+
+

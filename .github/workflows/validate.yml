@@ -1,0 +1,43 @@
+name: Validate examples
+
+on:
+  workflow_dispatch: 
+  push:
+    branches: ["**"]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run validator and refresh report
+        run: |
+          python validate.py > examples/json/4.1/validation_report.txt
+          echo "VALIDATION_EXIT=$?" >> "$GITHUB_ENV"
+        shell: bash {0}
+
+      - name: Commit updated report
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add examples/json/4.1/validation_report.txt
+          git diff --cached --quiet || git commit -m "chore: refresh validation report [skip ci]"
+          git push
+
+      - name: Fail if validation failed
+        if: env.VALIDATION_EXIT != '0'
+        run: |
+          echo "::error::Validation failed — see examples/json/4.1/validation_report.txt for details"
+          exit 1

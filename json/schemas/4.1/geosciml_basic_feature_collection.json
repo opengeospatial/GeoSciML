@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ext.iide.dev/schemas/geosciml/json/4.1/geosciml_basic_feature_collection.json",
+  "description": "Generic GeoSciML Basic FeatureCollection wrapper: combines json-fg/featurecollection.json with `features[]` items validated by geosciml_basic_feature.json (which dispatches each item to the right $anchor in geoscimlBasic.json via featureType). Use this with any standards-compliant JSON Schema 2020-12 validator. The companion schema geosciml_basic_featurecollection.json (no underscore) is the OGC team's ShapeChange-generated version which performs the same dispatch inline.",
+  "allOf": [
+    {
+      "$ref": "https://schemas.opengis.net/json-fg/featurecollection.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "geosciml_basic_feature.json"
+          }
+        }
+      }
+    }
+  ]
+}

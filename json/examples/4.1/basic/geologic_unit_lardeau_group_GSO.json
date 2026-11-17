@@ -1,0 +1,31 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-LardeauGroup.ttl. The source describes the Lardeau Group (Trout Lake area, British Columbia) — a stratigraphic group composed of Ajax fm and Sharon Creek fm (gsrl:stratUnderlies relationships) plus additional formations in the TTL. This example encodes the Group as a top-level GeologicUnit with hierarchyLink references to constituent Formation features (left as href stubs). Source reference: ResearchGate publication 237174271 (structural geology of Lardeau Group near Trout Lake).",
+  "type": "Feature",
+  "featureType": "GeologicUnit",
+  "id": "https://w3id.org/gso/1.0/ex-lardeaustrat#Lardeau_Group",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "name": "Lardeau Group",
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/typicalNorm",
+    "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+    "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+    "hierarchyLink": [
+      {
+        "role": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "targetUnit": {
+          "href": "https://w3id.org/gso/1.0/ex-lardeaustrat#ajaxfm",
+          "title": "Ajax Formation (constituent of Lardeau Group)"
+        }
+      },
+      {
+        "role": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "targetUnit": {
+          "href": "https://w3id.org/gso/1.0/ex-lardeaustrat#sharoncreekfm",
+          "title": "Sharon Creek Formation (constituent of Lardeau Group)"
+        }
+      }
+    ]
+  }
+}

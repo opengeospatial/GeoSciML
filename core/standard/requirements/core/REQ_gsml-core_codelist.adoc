@@ -1,0 +1,8 @@
+[[req_gsml-core_codelist]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-core/codelist
+part:: Empty classes with stereotype `++<++<CodeList++>++>` SHALL be implemented as externally governed vocabularies which terms are encoded as URI (RFC 3986).
+====

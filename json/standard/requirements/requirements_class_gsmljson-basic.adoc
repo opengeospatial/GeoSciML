@@ -1,0 +1,15 @@
+[[req_class_gsmljson-basic]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML Basic JSON'
+====
+[%metadata]
+identifier:: {spec-part3-uri}/req/gsmljson-basic
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-basic
+inherit:: /req/gsmljson-core
+requirement:: /req/gsmljson-basic/json
+====
+
+

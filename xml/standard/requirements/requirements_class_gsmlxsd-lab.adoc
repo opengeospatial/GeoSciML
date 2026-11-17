@@ -1,0 +1,16 @@
+[[req_class_gsmlxsd_lab]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML LaboratoryAnalysis-Specimen XML'
+====
+[%metadata]
+identifier:: {spec-part2-uri}/req/gsmlxsd-lab
+subject:: Data instance
+inherit:: /req/gsml-lab
+inherit:: /req/gsmlxsd-core
+requirement:: /req/gsmlxsd-lab/xsd
+requirement:: /req/gsmlxsd-lab/sch
+====
+
+

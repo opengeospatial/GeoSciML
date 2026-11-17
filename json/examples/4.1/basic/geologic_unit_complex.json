@@ -1,0 +1,146 @@
+{
+  "type": "Feature",
+  "featureType": "GeologicUnit",
+  "id": "hervey-group-complex",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifierScheme/cgi/featureobservationmethod",
+        "label": "synthesis from multiple sources",
+        "value": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_from_multiple_sources"
+      }
+    ],
+    "occurrence": [
+      {
+        "href": "http://data.geoscience.gov.au/mappedfeature/polygon/6735427298",
+        "title": "Mapped occurrence on 1:250000 sheet"
+      }
+    ],
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/typicalNorm",
+    "classifier": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifierScheme/cgi/geologicunittype",
+        "label": "Hervey Group stratigraphic lexicon entry",
+        "value": "http://data.geoscience.gov.au/stratlex/unit/hervey-group"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "featureType": "GeologicEvent",
+        "id": "hervey-group-depositional-age",
+        "geometry": null,
+        "place": null,
+        "time": null,
+        "properties": {
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Frasnian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Famennian",
+          "eventEnvironment": [
+            {
+              "type": "Category",
+              "definition": "http://resource.geosciml.org/classifierScheme/cgi/valuequalifier",
+              "label": "fluvial to shallow marine",
+              "value": "http://resource.geosciml.org/classifier/cgi/geologicenvironment/fluvial"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "featureType": "GeologicEvent",
+        "id": "hervey-group-deformation-age",
+        "geometry": null,
+        "place": null,
+        "time": null,
+        "properties": {
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/deformation"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Tournaisian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Serpukhovian"
+        }
+      }
+    ],
+    "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+    "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+    "composition": [
+      {
+        "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+        "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-mudstone",
+          "geometry": null,
+          "place": null,
+          "time": null,
+          "properties": {
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+          }
+        },
+        "proportion": {
+          "type": "QuantityRange",
+          "uom": {
+            "code": "%"
+          },
+          "value": [
+            5.0,
+            50.0
+          ],
+          "definition": "http://resource.geosciml.org/property/proportion",
+          "label": "proportion"
+        }
+      },
+      {
+        "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+        "material": {
+          "type": "Feature",
+          "featureType": "RockMaterial",
+          "id": "hervey-group-sandstone",
+          "geometry": null,
+          "place": null,
+          "time": null,
+          "properties": {
+            "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+          }
+        },
+        "proportion": {
+          "type": "QuantityRange",
+          "uom": {
+            "code": "%"
+          },
+          "value": [
+            50.0,
+            95.0
+          ],
+          "definition": "http://resource.geosciml.org/property/proportion",
+          "label": "proportion"
+        }
+      }
+    ],
+    "hierarchyLink": [
+      {
+        "role": "http://resource.geoscience.gov.au/vocabulary/geologicunit_hierarchy_role/constituent_unit",
+        "targetUnit": {
+          "type": "Feature",
+          "featureType": "GeologicUnit",
+          "id": "boulton-formation-1",
+          "geometry": null,
+          "place": null,
+          "time": null,
+          "properties": {
+            "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+            "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation"
+          }
+        }
+      }
+    ]
+  }
+}

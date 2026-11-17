@@ -1,1 +1,17 @@
 *.EAP
+.DS_Store
+.idea/
+__pycache__/
+.schema_cache/
+/model/shapechange/scresults/
+# Metanorma build output
+*/standard/document.html
+*/standard/document.pdf
+*/standard/document.xml
+*/standard/document.presentation.xml
+*/standard/*.err*
+*/standard/*.abort
+*/standard/*_tmp
+*/standard/*.log.txt
+*/standard/_plantuml_images/
+releases/*/public/

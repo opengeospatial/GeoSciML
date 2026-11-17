@@ -1,0 +1,64 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-08</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Temporal schema</title>
+  <title type="title-part" format="text/plain" language="en" script="Latn">Technical Corrigendum 1</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Geographic information - Temporal schema - Technical Corrigendum 1</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Information géographique</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Schéma temporel</title>
+  <title type="title-part" format="text/plain" language="fr" script="Latn">Rectificatif technique 1</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Information géographique - Schéma temporel - Rectificatif technique 1</title>
+  <uri type="src">https://www.iso.org/standard/44883.html</uri>
+  <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:44883:en</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/04/48/44883.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO 19108:2002/Cor 1:2006</docidentifier>
+  <docidentifier type="iso-reference">ISO 19108:2002/Cor 1:2006(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:19108:ed-1:stage-60.60:cor:2006:v1</docidentifier>
+  <docnumber>19108</docnumber>
+  <date type="published">
+    <on>2002</on>
+  </date>
+  <date type="updated">
+    <on>2006-10</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>1</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <status>
+    <stage>60</stage>
+    <substage>60</substage>
+  </status>
+  <copyright>
+    <from>2002</from>
+    <owner>
+      <organization>
+        <name>ISO</name>
+      </organization>
+    </owner>
+  </copyright>
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="211" type="TC" identifier="ISO/TC 211">Geographic information/Geomatics</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.70</code>
+      <text>IT applications in science</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>44883</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

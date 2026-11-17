@@ -1,0 +1,13 @@
+{
+  "type": "Feature",
+  "featureType": "ReferenceSpecimen",
+  "id": "reference-specimen-simple-1",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "referenceDescription": {
+      "title": "91500 zircon standard: Wiedenbeck et al. 1995, Geostandards Newsletter"
+    }
+  }
+}

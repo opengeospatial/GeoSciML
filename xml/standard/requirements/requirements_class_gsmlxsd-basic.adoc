@@ -1,0 +1,16 @@
+[[req_class_gsmlxsd-basic]]
+
+
+[requirements_class]
+.Requirements Class 'GeoSciML Basic XML'
+====
+[%metadata]
+identifier:: {spec-part2-uri}/req/gsmlxsd-basic
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-basic
+inherit:: /req/gsmlxsd-core
+requirement:: /req/gsmlxsd-basic/xsd
+requirement:: /req/gsmlxsd-basic/sch
+====
+
+

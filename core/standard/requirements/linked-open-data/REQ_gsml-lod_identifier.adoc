@@ -1,0 +1,8 @@
+[[req_gsml-lod_identifier]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lod/identifier
+part:: HTTP URI used as entity identifiers SHALL be to one or more representations of that entity.
+====

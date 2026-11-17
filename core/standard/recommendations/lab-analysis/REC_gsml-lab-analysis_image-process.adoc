@@ -1,0 +1,8 @@
+[[rec_gsml-lab-analysis_image-process]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lab-analysis/image-process
+part:: The image om:procedure SHOULD make reference to a camera.
+====

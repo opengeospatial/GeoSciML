@@ -1,0 +1,19 @@
+[[req_class_gsmlxsd-lite]]
+
+
+[requirements_class]
+.Requirements Class 'Abstract GeoSciML Lite XML'
+====
+[%metadata]
+identifier:: {spec-part2-uri}/req/gsmlxsd-lite
+subject:: Data instance
+inherit:: {spec-part1-uri}/req/gsml-lite
+inherit:: /req/gsmlxsd-core
+inherit:: GML Simple Feature OGC 10-100r3 SF-0
+requirement:: /req/gsmlxsd-lite/SF-0
+recommendation:: /rec/gsmlxsd-lite/SF-0-simpletype
+recommendation:: /rec/gsmlxsd-lite/user-xsd
+recommendation:: /rec/gsmlxsd-lite/user-ns
+====
+
+

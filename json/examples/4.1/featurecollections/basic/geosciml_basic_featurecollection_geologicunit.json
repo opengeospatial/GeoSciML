@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "featureType": "GeologicUnit",
+  "features": [
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnit",
+      "id": "hervey-group-1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/typicalNorm",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group",
+        "occurrence": [
+          {
+            "href": "http://data.geoscience.gov.au/mappedfeature/polygon/6735427298",
+            "title": "Mapped occurrence on 1:250000 sheet"
+          }
+        ],
+        "geologicHistory": [
+          {
+            "type": "Feature",
+            "featureType": "GeologicEvent",
+            "id": "hervey-group-depositional-age",
+            "geometry": null,
+            "place": null,
+            "time": null,
+            "properties": {
+              "eventProcess": [
+                "http://resource.geosciml.org/classifier/cgi/eventprocess/deposition"
+              ],
+              "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Frasnian",
+              "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Famennian"
+            }
+          }
+        ],
+        "composition": [
+          {
+            "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+            "material": {
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "hervey-group-fc-sandstone",
+              "geometry": null,
+              "place": null,
+              "time": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/sandstone"
+              }
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                50.0,
+                95.0
+              ],
+              "definition": "http://resource.geosciml.org/property/proportion",
+              "label": "proportion"
+            }
+          },
+          {
+            "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+            "material": {
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "hervey-group-fc-mudstone",
+              "geometry": null,
+              "place": null,
+              "time": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/mudstone"
+              }
+            },
+            "proportion": {
+              "type": "QuantityRange",
+              "uom": {
+                "code": "%"
+              },
+              "value": [
+                5.0,
+                50.0
+              ],
+              "definition": "http://resource.geosciml.org/property/proportion",
+              "label": "proportion"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "featureType": "GeologicUnit",
+      "id": "boulton-formation-1",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/typicalNorm",
+        "geologicUnitType": "http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit",
+        "rank": "http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation",
+        "composition": [
+          {
+            "role": "http://inspire.ec.europa.eu/codelist/CompositionPartRoleValue/unspecifiedPartRole",
+            "material": {
+              "type": "Feature",
+              "featureType": "RockMaterial",
+              "id": "boulton-formation-fc-conglomerate",
+              "geometry": null,
+              "place": null,
+              "time": null,
+              "properties": {
+                "lithology": "http://resource.geosciml.org/classifier/cgi/simplelithology/conglomerate"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

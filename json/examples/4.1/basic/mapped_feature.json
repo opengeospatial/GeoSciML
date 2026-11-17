@@ -1,0 +1,45 @@
+{
+  "$comment": "Translated from https://geosciml.org/schemas/geosciml/4.0/examples/GSML4-MappedFeature.xml — a fold mapped from aeromagnetic data at 1:250,000, with 100 m positional accuracy. Geometry is a curved arc trace. Validates against schemas/json/4.1/geoscimlBasic.json#MappedFeature.",
+  "type": "Feature",
+  "id": "mappedfeature.1",
+  "featureType": "MappedFeature",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json"
+  ],
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [132.334, -25.9020],
+      [132.43,  -25.9025],
+      [132.67,  -25.9030]
+    ]
+  },
+  "place": null,
+  "properties": {
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifier/cgi/mappedfeatureobservationmethod",
+        "label": "inferred aeromagnetic survey",
+        "codeSpace": "http://resource.geosciml.org/classifier/cgi/mappedfeatureobservationmethod",
+        "value": "http://resource.geosciml.org/classifier/cgi/mappedfeatureobservationmethod/inferred_aeromagnetic_survey"
+      }
+    ],
+    "positionalAccuracy": {
+      "type": "Quantity",
+      "definition": "http://resource.geosciml.org/concept/mappedfeature/positionalAccuracy",
+      "label": "positional accuracy buffer radius (100 m)",
+      "uom": { "code": "m", "href": "http://www.opengis.net/def/uom/OGC/1.0/metre" },
+      "value": 100
+    },
+    "resolutionRepresentativeFraction": 250000,
+    "mappingFrame": "http://resource.geosciml.org/classifier/cgi/mappingframe/top-of-bedrock",
+    "exposure": "http://resource.geosciml.org/classifier/cgi/exposure/concealed",
+    "specification": {
+      "href": "https://example.org/geosci-json/fold.1",
+      "title": "Inferred fold structure (Fold)",
+      "rel": "specifies",
+      "type": "application/geo+json"
+    }
+  }
+}

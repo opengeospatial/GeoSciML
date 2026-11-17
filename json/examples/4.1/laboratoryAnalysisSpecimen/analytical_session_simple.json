@@ -1,0 +1,22 @@
+{
+  "type": "Feature",
+  "featureType": "AnalyticalSession",
+  "id": "uageochronlab-session-37658",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "time": ["2015-07-10T08:00:00Z", "2015-07-10T18:00:00Z"],
+    "operator": {
+      "href": "http://linked.data.gov.au/org/ua-geochronology-lab",
+      "title": "UA LaserChron Center, University of Arizona"
+    },
+    "instrument": {
+      "href": "http://labsrus.org/instrument/shrimp-ii-1",
+      "title": "SHRIMP II"
+    },
+    "referenceAnalyses": [
+      {"href": "http://geochronology.org/standards/91500-zircon", "title": "91500 zircon standard"}
+    ]
+  }
+}

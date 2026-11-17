@@ -1,0 +1,8 @@
+[[req_gsml-lite_user-defined]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/user-defined
+part:: Features delivered with user defined properties SHALL be conformant to GML Simple Feature Level 0.
+====

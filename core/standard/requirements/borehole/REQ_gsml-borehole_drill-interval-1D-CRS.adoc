@@ -1,0 +1,8 @@
+[[req_gsml-borehole_drill-interval-1D-CRS]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/drill-interval-1D-CRS
+part:: Coordinate Reference System shall be a reference to the borehole geometry.
+====

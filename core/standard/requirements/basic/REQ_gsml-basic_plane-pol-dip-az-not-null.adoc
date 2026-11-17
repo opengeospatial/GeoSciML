@@ -1,0 +1,8 @@
+[[req_gsml-basic_plane-pol-dip-az-not-null]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-basic/plane-pol-dip-az-not-null
+part:: At least one of polarity, azimuth or dip SHALL not be null.
+====

@@ -1,0 +1,8 @@
+[[rec_gsml-lab-analysis_image-url]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lab-analysis/image-url
+part:: The identifier of the image should be a HTTP URI referring to a representation of the image.
+====

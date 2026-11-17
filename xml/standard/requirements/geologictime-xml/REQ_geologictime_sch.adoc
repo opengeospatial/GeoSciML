@@ -1,0 +1,8 @@
+[[req_gsmlxsd_geologictime_sch]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmlxsd-geologictime/sch
+part:: An XML instance document SHALL pass schematron rules defined in schematron file located at   http://schemas.opengis.net/gsml/4.1/geologicTime.sch.
+====

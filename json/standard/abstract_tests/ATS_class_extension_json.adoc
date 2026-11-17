@@ -1,0 +1,13 @@
+[[conf_gsmljson-extension,/conf/gsmljson-extension]]
+.GeoSciML Extension JSON Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-extension  
+target:: /req/gsmljson-extension 
+
+inherit:: /conf/gsmljson-core/basic 
+
+abstract-test:: /conf/gsmljson-extension/json 
+
+====

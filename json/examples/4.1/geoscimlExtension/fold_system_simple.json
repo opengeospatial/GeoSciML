@@ -1,0 +1,19 @@
+{
+  "type": "Feature",
+  "featureType": "FoldSystem",
+  "id": "lachlan-fold-system-1",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "periodic": true,
+    "wavelength": {
+      "type": "QuantityRange",
+      "definition": "http://resource.geosciml.org/property/wavelength",
+      "label": "wavelength",
+      "uom": {"code": "m"},
+      "value": [500.0, 2000.0]
+    }
+  }
+}

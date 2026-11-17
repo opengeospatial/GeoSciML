@@ -1,0 +1,8 @@
+[[req_gsml-lite_identifier-unique]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lite/identifier-unique
+part:: Identifiers SHALL be unique to a dataset.
+====

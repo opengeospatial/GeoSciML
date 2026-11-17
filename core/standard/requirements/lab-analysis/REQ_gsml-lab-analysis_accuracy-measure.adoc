@@ -1,0 +1,8 @@
+[[req_gsml-lab-analysis_accuracy-measure]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lab-analysis/accuracy-measure
+part:: For analytical error and detection limits, both DQ_QuantitativeAttributeAccuracy::nameOfMeasure and DQ_QuantitativeAttributeAccuracy::result SHALL NOT be null.
+====

@@ -1,0 +1,8 @@
+[[rec_gsmlxsd_core_iso8601_time]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsmlxsd-core/iso8601-time
+part:: All date-time occurrences SHOULD be encoded using ISO8601 extended time format.
+====

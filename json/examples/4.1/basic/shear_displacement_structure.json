@@ -1,0 +1,40 @@
+{
+  "$comment": "Translated from https://geosciml.org/schemas/geosciml/4.0/examples/GSML4-ShearDisplacementStructure-Basic.xml — the Lake George Fault, a normal fault active during the Devonian–Carboniferous, characterised by synthesis from multiple sources. Validates against schemas/json/4.1/geoscimlBasic.json#ShearDisplacementStructure.",
+  "type": "Feature",
+  "id": "fault.1",
+  "featureType": "ShearDisplacementStructure",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json"
+  ],
+  "geometry": null,
+  "properties": {
+    "name": "Lake George Fault",
+    "purpose": "instance",
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod",
+        "label": "synthesis from multiple sources",
+        "codeSpace": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod",
+        "value": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_from_multiple_sources"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "id": "fault.1.age",
+        "featureType": "GeologicEvent",
+        "geometry": null,
+        "properties": {
+          "name": "Lake George Fault movement age",
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/faulting"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Devonian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Carboniferous"
+        }
+      }
+    ],
+    "faultType": "http://resource.geosciml.org/classifier/cgi/faulttype/normal_fault"
+  }
+}

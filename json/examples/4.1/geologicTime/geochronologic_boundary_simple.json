@@ -1,0 +1,22 @@
+{
+  "type": "Feature",
+  "featureType": "GeochronologicBoundary",
+  "id": "ics-base-cambrian",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "stratotype": {
+      "type": "Feature",
+      "featureType": "StratigraphicPoint",
+      "id": "ics-base-cambrian-gssp",
+      "geometry": {"type": "Point", "coordinates": [117.0, 31.0]},
+      "place": null,
+      "time": null,
+      "properties": {
+        "primaryGuidingCriterion": "First appearance datum of trace fossil Treptichnus pedum",
+        "status": "ratified GSSP"
+      }
+    }
+  }
+}

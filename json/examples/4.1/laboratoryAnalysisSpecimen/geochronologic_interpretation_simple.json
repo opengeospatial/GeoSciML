@@ -1,0 +1,28 @@
+{
+  "type": "Feature",
+  "featureType": "GeochronologicInterpretation",
+  "id": "geochrono-interp-exeter-formation",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "interpretedAge": {
+      "type": "Feature",
+      "featureType": "GeologicEvent",
+      "id": "exeter-formation-crystallisation",
+      "geometry": null,
+      "place": null,
+      "time": null,
+      "properties": {
+        "eventProcess": [
+          "http://resource.geosciml.org/classifier/cgi/eventprocess/intrusion"
+        ],
+        "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Cambrian",
+        "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Ordovician"
+      }
+    },
+    "isotopicSystem": "http://resource.geoscience.gov.au/classifier/cgi/isotopicsystem/U-Pb",
+    "statisticalMethod": "http://resource.geoscience.gov.au/classifier/cgi/statisticalmethod/weighted_mean",
+    "preferredInterpretation": true
+  }
+}

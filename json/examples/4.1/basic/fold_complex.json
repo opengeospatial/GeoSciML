@@ -1,0 +1,43 @@
+{
+  "type": "Feature",
+  "featureType": "Fold",
+  "id": "anticline-complex",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "observationMethod": [
+      {
+        "type": "Category",
+        "definition": "http://resource.geosciml.org/classifierScheme/cgi/featureobservationmethod",
+        "label": "field observation",
+        "value": "http://resource.geosciml.org/classifier/cgi/featureobservationmethod/field_observation"
+      }
+    ],
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "occurrence": [
+      {
+        "href": "http://data.geoscience.gov.au/mappedfeature/fold/anticline-mf-1",
+        "title": "Anticline trace – 1:50000 sheet"
+      }
+    ],
+    "geologicHistory": [
+      {
+        "type": "Feature",
+        "featureType": "GeologicEvent",
+        "id": "anticline-deformation",
+        "geometry": null,
+        "place": null,
+        "time": null,
+        "properties": {
+          "eventProcess": [
+            "http://resource.geosciml.org/classifier/cgi/eventprocess/folding"
+          ],
+          "olderNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Silurian",
+          "youngerNamedAge": "http://resource.geosciml.org/classifier/ics/ischart/Devonian"
+        }
+      }
+    ],
+    "profileType": "http://resource.geosciml.org/classifier/cgi/foldprofiletype/anticline"
+  }
+}

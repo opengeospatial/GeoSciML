@@ -1,0 +1,8 @@
+[[rec_gsml-lite_sheardisplacemenstructureview-identifier]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lite/sheardisplacemenstructureview-identifier
+part:: identifier SHOULD correspond to a representation of GeoSciML MappedFeature.
+====

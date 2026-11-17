@@ -1,0 +1,23 @@
+== Logical Model
+
+This section describes requirements that must be met by all target implementations that claim conformance to this specification.  The target implementation of the logical model is generally an encoding specification or a schema (which could use technologies like XSD, for example) and not a data instance.  The logical model, expressed using UML, provides naming, structure and cardinality for any physical implementation.  The UML model is a normative artefact as the official representation of GeoSciML.  Rules that can be unambiguously inferred from the UML model will not be documented as explicit requirements.  Specific encoding idiosyncrasies shall be addressed in the requirement clauses pertaining to that encoding.
+
+The logical model contains almost no semantic requirements (i.e., vocabularies, enumerations).  It is expected that users will employ controlled vocabularies of terms which are developed by user communities.  The model provides mechanisms for delivering concepts from controlled vocabularies via URI’s and linked data principles.
+
+include::./clause_8_logical_model_1_uml_model.adoc[]
+
+include::./clause_8_logical_model_2_geosciml_core_rc.adoc[]
+
+include::./clause_8_logical_model_3_linked_open_data_rc.adoc[]
+
+include::./clause_8_logical_model_4_geosciml_basic_rc.adoc[]
+
+include::./clause_8_logical_model_5_geosciml_extension_rc.adoc[]
+
+include::./clause_8_logical_model_6_geosciml_geologic_time_rc.adoc[]
+
+include::./clause_8_logical_model_7_geosciml_borehole_rc.adoc[]
+
+include::./clause_8_logical_model_8_geosciml_lab_analysis_rc.adoc[]
+
+include::./clause_8_logical_model_9_geosciml_lite_rc.adoc[]

@@ -1,0 +1,18 @@
+{
+  "type": "Feature",
+  "featureType": "NaturalGeomorphologicFeature",
+  "id": "river-valley-1",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "naturalGeomorphologicFeatureType": "http://resource.geosciml.org/classifier/cgi/geomorphologicfeaturetype/river_channel",
+    "activity": {
+      "type": "Category",
+      "definition": "http://resource.geosciml.org/classifierScheme/cgi/geomorphologicactivity",
+      "label": "active",
+      "value": "http://resource.geosciml.org/classifier/cgi/geomorphologicactivity/active"
+    }
+  }
+}

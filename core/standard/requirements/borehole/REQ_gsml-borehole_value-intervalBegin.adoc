@@ -1,0 +1,8 @@
+[[req_gsml-borehole_value-intervalBegin]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-borehole/value-intervalBegin
+part:: The value of intervalBegin SHALL be less or equal to the value of intervalEnd.
+====

@@ -1,0 +1,33 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleEpochLowerJurassic.ttl. The source TTL describes a chronostratigraphic Series (`Lower_Jurassic_Series`, gsgu:Series) that `gsoc:hosts gstime:LowerJurassic2012` — the time-side ICS Epoch. Encoded here as a GeochronologicEra (≡ time:ProperInterval per OWL-Time / Cox & Richard 2015) representing the Lower Jurassic Epoch. The Epoch is bounded by the base-of-Hettangian GSSP (= base of Jurassic, ratified at Kuhjoch, Austria) and the base-of-Bajocian (the top of Toarcian / base of Middle Jurassic). The Series rock unit from the TTL is referenced via `stratotype`. As the TTL notes, the ICS time scale does not formally define stratotypes for its Geochronologic Eras; the stratotype here is the GeoSciML-side rock-unit anchor.",
+  "type": "Feature",
+  "featureType": "GeochronologicEra",
+  "id": "http://resource.geosciml.org/classifier/ics/ischart/LowerJurassic",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "rank": "http://resource.geosciml.org/classifier/ics/ischart/Epoch",
+    "start": {
+      "href": "http://resource.geosciml.org/classifier/ics/ischart/BaseJurassic",
+      "rel": "time:hasBeginning",
+      "title": "Base of Jurassic (= base of Hettangian; ratified GSSP at Kuhjoch, Austria)"
+    },
+    "end": {
+      "href": "http://resource.geosciml.org/classifier/ics/ischart/BaseBajocian",
+      "rel": "time:hasEnd",
+      "title": "Base of Bajocian (= top of Toarcian, beginning of Middle Jurassic)"
+    },
+    "member": [
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Hettangian",   "title": "Hettangian Age"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Sinemurian",   "title": "Sinemurian Age"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Pliensbachian","title": "Pliensbachian Age"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Toarcian",     "title": "Toarcian Age"}
+    ],
+    "stratotype": {
+      "href": "https://w3id.org/gso/ex-timelowerjurassic#Lower_Jurassic_Series",
+      "rel": "isHostedBy",
+      "title": "Lower_Jurassic_Series (chronostratigraphic Series; the rock-record host of this Epoch per gsoc:hosts in the source TTL)"
+    }
+  }
+}

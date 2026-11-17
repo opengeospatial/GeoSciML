@@ -1,0 +1,8 @@
+[[rec_gsml-lite_geomorphologicunitview-identifier]]
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/gsml-lite/geomorphologicunitview-identifier
+part:: identifier SHOULD correspond to a representation of GeoSciML MappedFeature.
+====

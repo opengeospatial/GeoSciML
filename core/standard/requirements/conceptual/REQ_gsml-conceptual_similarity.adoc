@@ -1,0 +1,8 @@
+[[req_gsml_conceptual_similarity]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-conceptual/similarity
+part:: A target logical model, when claiming compliance with this conceptual model, SHALL implement its components (classes, attributes, relationships) respecting the conceptual model definitions and intent, such that high semantic similarity is obtained between the logical and conceptual model components.
+====

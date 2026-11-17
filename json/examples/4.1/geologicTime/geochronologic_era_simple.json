@@ -1,0 +1,28 @@
+{
+  "type": "Feature",
+  "featureType": "GeochronologicEra",
+  "id": "ics-devonian",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "rank": "http://resource.geosciml.org/classifier/ics/ischart/Period",
+    "start": {
+      "href": "http://resource.geosciml.org/classifier/ics/ischart/BaseDevonian",
+      "title": "base of Devonian"
+    },
+    "end": {
+      "href": "http://resource.geosciml.org/classifier/ics/ischart/BaseDevonianTop",
+      "title": "top of Devonian"
+    },
+    "member": [
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Lochkovian", "title": "Lochkovian"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Pragian",    "title": "Pragian"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Emsian",     "title": "Emsian"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Eifelian",   "title": "Eifelian"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Givetian",   "title": "Givetian"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Frasnian",   "title": "Frasnian"},
+      {"href": "http://resource.geosciml.org/classifier/ics/ischart/Famennian",  "title": "Famennian"}
+    ]
+  }
+}

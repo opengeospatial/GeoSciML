@@ -1,0 +1,7 @@
+=== feature collection
+
+set of features from a dataset
+
+[.source]
+<<ISO19168-1:2020>>
+

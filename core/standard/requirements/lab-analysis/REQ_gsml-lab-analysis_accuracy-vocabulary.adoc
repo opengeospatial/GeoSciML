@@ -1,0 +1,8 @@
+[[req_gsml-lab-analysis_accuracy-vocabulary]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-lab-analysis/accuracy-vocabulary
+part:: The value of DQ_Element:nameOfMeasure SHOULD be a term from a controlled vocabulary.
+====

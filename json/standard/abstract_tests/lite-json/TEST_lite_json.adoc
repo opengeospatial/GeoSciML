@@ -1,0 +1,9 @@
+[[conf_gsmljson-lite_json]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/gsmljson-lite/json
+target:: /req/gsmljson-lite/json
+test-purpose:: Ensure that GeoSciML Lite JSON documents are valid
+test-method:: Perform a JSON validation on a JSON instance document, using the JSON Schema files provided in this Standard.  Test succeeds if the validation does not report any error.
+====

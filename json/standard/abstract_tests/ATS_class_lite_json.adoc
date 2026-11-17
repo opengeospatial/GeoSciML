@@ -1,0 +1,13 @@
+[[conf_gsmljson-lite,/conf/gsmljson-lite]]
+.GeoSciML Lite JSON Abstract Encoding
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-lite  
+target:: /req/gsmljson-lite 
+
+inherit:: OGC 21-045r1: Annex A 
+
+abstract-test:: /conf/gsmljson-lite/json
+
+====

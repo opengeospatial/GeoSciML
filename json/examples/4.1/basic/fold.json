@@ -1,0 +1,16 @@
+{
+  "$comment": "Adapted from Loop3D-GSO/Examples/GSO-ExampleFold.ttl — an antiform with a hinge plunging 33° toward 330° and an axial surface dipping 78° toward 310°, amplitude 10 m. Only Antiform classification + name/description fit GeoSciML Basic's Fold class; the structured hinge/axial-surface/amplitude measurements require GeoSciML Extension's FoldDescription (carried via the stFoldDescription stub, abstract in Basic). They are summarised here as prose in `description`. Validates against schemas/json/4.1/geoscimlBasic.json#Fold.",
+  "type": "Feature",
+  "id": "fold.gso.1",
+  "featureType": "Fold",
+  "conformsTo": [
+    "https://ext.iide.dev/schemas/geosciml/json/4.1/geoscimlBasic.json"
+  ],
+  "geometry": null,
+  "properties": {
+    "name": "is test fold",
+    "description": "Test fold properties — an antiform. Hinge line plunges 33° toward azimuth 330°; axial surface dips 78° toward 310° (Plane_Dip_Dip_Direction convention); fold amplitude 10 m. (Structured orientation and amplitude values are carried in GeoSciML Extension's FoldDescription, not in this Basic encoding.)",
+    "purpose": "instance",
+    "profileType": "http://resource.geosciml.org/classifier/cgi/foldprofiletype/antiform"
+  }
+}

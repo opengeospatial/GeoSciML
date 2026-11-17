@@ -1,0 +1,26 @@
+name: validate-json
+on:
+  push:
+    branches: [master]
+    paths: ['json/**', 'tools/validate/**']
+  pull_request:
+    paths: ['json/**', 'tools/validate/**']
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r tools/validate/requirements.txt
+      - name: Validate examples
+        shell: bash
+        run: |
+          set -o pipefail
+          python tools/validate/validate.py | tee validation_report.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-report
+          path: validation_report.txt

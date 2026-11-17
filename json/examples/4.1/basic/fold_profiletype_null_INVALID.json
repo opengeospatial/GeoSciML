@@ -1,0 +1,12 @@
+{
+  "type": "Feature",
+  "featureType": "Fold",
+  "id": "fold-null-profiletype-invalid",
+  "geometry": null,
+  "place": null,
+  "time": null,
+  "properties": {
+    "purpose": "http://inspire.ec.europa.eu/codelist/DescriptionPurpose/instance",
+    "profileType": null
+  }
+}

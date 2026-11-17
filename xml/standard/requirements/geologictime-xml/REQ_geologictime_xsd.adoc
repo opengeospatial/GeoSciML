@@ -1,0 +1,8 @@
+[[req_gsmlxsd-_eologictime_xsd]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsmlxsd-geologictime/xsd
+part:: An XML instance document SHALL validate with schema located at   http://schemas.opengis.net/gsml/4.1/geologicTime.xsd.
+====

@@ -1,0 +1,17 @@
+[[conf_gsmljson_core,/conf/gsmljson-core]]
+.GeoSciML JSON Encoding Abstract Core
+[conformance_class]
+====
+[%metadata]
+identifier:: /conf/gsmljson-core  
+target:: /req/gsmljson-core 
+
+abstract-test:: /conf/gsmljson-core/json 
+
+abstract-test:: /conf/gsmljson-core/codelist 
+
+abstract-test:: /conf/gsmljson-core/time-zone 
+
+abstract-test:: /conf/gsmljson-core/identifier
+
+====

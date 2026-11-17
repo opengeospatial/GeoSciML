@@ -1,0 +1,8 @@
+[[req_gsml-basic_quantity-range-repeat]]
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/gsml-basic/quantity-range-repeat
+part:: The QuantityRange’s value[0] SHALL provide the same value as lowerValue and value[1] SHALL provide the same value as upperValue.
+====

@@ -1,0 +1,98 @@
+[appendix,obligation="informative"]
+== Revision history
+
+[cols="5*",options="header"]
+|===
+|Date |Release |Author |Paragraph modified |Description
+
+|2015-10-02
+|1
+|Eric Boisvert
+|All
+|Moved text into standard OGC template
+
+|2015-10-
+|1
+|Eric Boisvert
+|Portrayal and basic
+|Group review of some clauses at Ispra meeting.
+
+|2016-01-05
+|1
+|Eric Boisvert
+|All
+|Global review of text for first draft
+
+|2016-02-03
+|1
+|Ollie Raymond
+|Many
+|General review
+
+|2016-04-02
+|1
+|Eric Boisvert
+|All
+|Review, document structure, Bibliography
+
+|2016-05-04
+|1
+|Marcus Sen
+|All
+|Editorial changes, removed all tracks
+
+|2016-05-26
+|2
+|Eric Boisvert
+|Lite (previously Portrayal)
+|Portrayal -> Lite (Req and Conformance)
+
+|2016-06-02
+|2
+|Eric Boisvert
+|Lite (previously Portrayal) Conceptual
+|Added mapping table for Lite->GeoSciML Added a small text for conceptual model + requirement class + conformance class
+
+|2016-06-25
+|2
+|Eric Boisvert, Oliver Raymond, Carlo Cipolloni
+|All
+|Updated Etna example Addressed OGC OAB issues
+
+|2016-07-02
+|2
+|Eric Boisvert
+|All
+|Added discussion on Conceptual model. Move Lite (old Portrayal) after other package to enforce the fact that Lite is a transformation of the other packages.
+
+|2016-08-02
+|2
+|Eric Boisvert, Oliver Raymond
+|All
+|Addressed remaining comments Updated all diagram to 4.1
+
+|2016-08-03
+|2
+|Eric Boisvert
+|All
+|Revised conformance classes
+
+|2016-08-05
+|2
+|Eric Boisvert
+|All
+|Check if descriptions of req in summary matched descriptions in text
+
+|2016-08-12
+|2
+|Ollie Raymond
+|All
+|Final checks for grammar, typos, formatting.
+
+|2016-11-20
+|2
+|Eric Boisvert
+|All
+|Fixed a few broken references links and turned some static references into links
+
+|===

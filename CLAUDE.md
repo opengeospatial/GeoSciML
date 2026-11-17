@@ -13,25 +13,25 @@ file before writing a new example for a given type.
 ## Repository layout
 
 ```
-schemas/json/4.1/           JSON Schema documents (one per feature family)
-examples/json/4.1/
+json/schemas/4.1/           JSON Schema documents (one per feature family)
+json/examples/4.1/
   <schema-name>/            Individual feature examples for that schema
   featurecollections/
     <schema-name>/          FeatureCollection examples for that schema
   validation_report.txt     Last recorded validate.py run
-validate.py                 Validation script (see below)
+tools/validate/validate.py  Validation script (see below)
 venv/                       Python venv with jsonschema installed
 .schema_cache/              Remote schema cache — auto-populated, git-ignored
 ```
 
-Each schema file `schemas/json/4.1/<name>.json` has a companion example
-directory `examples/json/4.1/<name>/` (individual features) and optionally
-`examples/json/4.1/featurecollections/<name>/` (FeatureCollection documents).
+Each schema file `json/schemas/4.1/<name>.json` has a companion example
+directory `json/examples/4.1/<name>/` (individual features) and optionally
+`json/examples/4.1/featurecollections/<name>/` (FeatureCollection documents).
 
 ## Validation
 
 ```bash
-venv/bin/python validate.py
+venv/bin/python tools/validate/validate.py
 ```
 
 The script maps each example directory to its schema, fetches remote dependency
@@ -41,14 +41,14 @@ and exits with code 1 if any file fails.
 Always run validation before committing and update the recorded report:
 
 ```bash
-venv/bin/python validate.py > examples/json/4.1/validation_report.txt
+venv/bin/python tools/validate/validate.py > json/examples/4.1/validation_report.txt
 ```
 
 ## Adding a new example directory
 
-1. Create `examples/json/4.1/<schema-name>/` for individual features, or
-   `examples/json/4.1/featurecollections/<schema-name>/` for collections.
-2. Register the directory in `validate.py` by adding an entry to `DIR_SCHEMA`:
+1. Create `json/examples/4.1/<schema-name>/` for individual features, or
+   `json/examples/4.1/featurecollections/<schema-name>/` for collections.
+2. Register the directory in `tools/validate/validate.py` by adding an entry to `DIR_SCHEMA`:
    ```python
    EXAMPLES_DIR / "<schema-name>": f"{_BASE}/<schema-name>.json",
    EXAMPLES_DIR / "featurecollections/<schema-name>": f"{_BASE}/<schema-collection-name>.json",

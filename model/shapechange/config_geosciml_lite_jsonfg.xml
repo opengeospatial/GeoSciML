@@ -7,7 +7,7 @@
   -->
   <input id="INPUT">
     <parameter name="inputModelType" value="EA7"/>
-    <parameter name="inputFile" value="../document/UML/GeoSciML4.1_unversioned.qea"/>
+    <parameter name="inputFile" value="../uml/GeoSciML4.1_unversioned.qea"/>
     <parameter name="appSchemaNameRegex" value="^GeoSciMLLite$"/>
     <parameter name="checkingConstraints" value="disabled"/>
     <parameter name="addTaggedValues" value="*"/>

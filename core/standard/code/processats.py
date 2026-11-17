@@ -1,7 +1,7 @@
 
 
-fin = open('/Users/gobehobona/Documents/GitHub/geosciml-json-code-sprint/part1_core/sections/annex-a-old.adoc','r')
-fout = open('/Users/gobehobona/Documents/GitHub/geosciml-json-code-sprint/part1_core/sections/annex-a.adoc','w')
+fin = open('core/standard/sections/annex-a-old.adoc','r')
+fout = open('core/standard/sections/annex-a.adoc','w')
 
 fout.write('[appendix]\n== Conformance Class Abstract Test Suite (Normative)\n')
 

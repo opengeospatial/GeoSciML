@@ -1,0 +1,62 @@
+name: standards
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: metanorma/metanorma:latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: core, dir: core/standard }
+          - { name: xml,  dir: xml/standard }
+          - { name: json, dir: json/standard }
+          - { name: "4.1", dir: releases/4.1 }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        working-directory: ${{ matrix.dir }}
+        run: |
+          if [ -f metanorma.yml ]; then
+            metanorma site generate --output-dir _out --agree-to-terms .
+          else
+            metanorma compile --agree-to-terms -t ogc -x html,pdf document.adoc
+            mkdir -p _out && cp document.html _out/index.html && cp document.pdf _out/
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ matrix.name }}
+          path: ${{ matrix.dir }}/_out
+          if-no-files-found: error
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: site-*
+          path: public
+      - name: Arrange parts under /core, /xml, /json, /4.1
+        shell: bash
+        run: for d in public/site-*; do mv "$d" "public/${d#public/site-}"; done
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -26,7 +26,7 @@
 
 :spec-part1-uri: https://www.opengis.net/spec/geosciml-part1/5.0
 :spec-part3-uri: https://www.opengis.net/spec/geosciml-part3/5.0
-:json-schema-repo: https://raw.githubusercontent.com/opengeospatial/geosciml-json-code-sprint/refs/heads/main/schemas/json/4.1
+:json-schema-repo: https://raw.githubusercontent.com/opengeospatial/GeoSciML/refs/heads/master/json/schemas/4.1
 
 ////
 Make sure to complete each included document

@@ -3,10 +3,10 @@
 Validate GeoSciML JSON examples against their schemas.
 
 Directory → schema mapping:
-  examples/json/4.1/basic/                     → geoscimlBasic.json
-  examples/json/4.1/lite/                      → geoscimlLite.json
-  examples/json/4.1/featurecollections/basic/  → geosciml_basic_featurecollection.json
-  examples/json/4.1/featurecollections/lite/   → geosciml_lite_featurecollection.json
+  json/schemas/4.1                    → geoscimlBasic.json
+  json/schemas/4.1                      → geoscimlLite.json
+  json/schemas/4.1  → geosciml_basic_featurecollection.json
+  json/schemas/4.1   → geosciml_lite_featurecollection.json
 
 For individual features the validator is narrowed to the $anchor matching the
 instance's "featureType" property (e.g. #GeologicUnit within geoscimlBasic.json).
@@ -29,9 +29,9 @@ from referencing.jsonschema import DRAFT202012
 
 # ── paths ─────────────────────────────────────────────────────────────────────
 
-ROOT = Path(__file__).parent
-SCHEMA_DIR = ROOT / "schemas" / "json" / "4.1"
-EXAMPLES_DIR = ROOT / "examples" / "json" / "4.1"
+ROOT = Path(__file__).resolve().parents[2]  # repo root
+SCHEMA_DIR = ROOT / "json" / "schemas" / "4.1"
+EXAMPLES_DIR = ROOT / "json" / "examples" / "4.1"
 CACHE_DIR = ROOT / ".schema_cache"
 
 # ── directory → schema $id ────────────────────────────────────────────────────
